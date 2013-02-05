@@ -1,0 +1,577 @@
+\documentclass[11pt]{article}
+
+\usepackage{latexsym}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{enumerate}
+\usepackage{amsmath}
+\usepackage{cancel}
+\numberwithin{equation}{section}
+
+\setlength{\evensidemargin}{.25in}
+\setlength{\oddsidemargin}{-.25in}
+\setlength{\topmargin}{-.75in}
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{9.5in}
+\newcommand{\due}{October 14th, 2009}
+\newcommand{\HWnum}{7}
+\newcommand{\grad}{\bold\nabla}
+\newcommand{\vecE}{\vec{E}}
+\newcommand{\scrptR}{\vec{\mathfrak{R}}}
+
+\begin{document}
+\input{../title.tex}
+
+\section{Problem \#1}
+\begin{enumerate}[(i)]
+\item
+To calculate the potential due to a sphere with constant surface charge density $\sigma_0$. We use separation of variables in spherical coordinates. We see that the sphere has azimuthal symmetry so there is no dependence on $\phi$ and we can guess that the solution looks like
+$$V(r,\theta) = R(r)\Theta(\theta)$$
+When we apply \emph{Laplace's Equation}
+$$\grad^2V(r,\theta)=0$$
+we get
+\begin{align*}
+\grad^2V(r,\theta) &= \frac{1}{r^2}\frac{\partial}{\partial r}\left(r^2\frac{\partial V(r,\theta)}{\partial r}\right) + \frac{1}{r^2\sin(\theta)}\frac{\partial}{\partial \theta}\left(\sin(\theta)\frac{\partial V(r,\theta)}{\partial \theta}\right) = 0\\ 
+&=\frac{1}{r^2}\frac{\partial}{\partial r}\left(r^2\frac{\partial }{\partial r}R(r)\Theta(\theta)\right) + \frac{1}{r^2\sin(\theta)}\frac{\partial}{\partial \theta}\left(\sin(\theta)\frac{\partial}{\partial \theta}R(r)\Theta(\theta)\right)\\
+&=\Theta(\theta)\frac{1}{r^2}\frac{\partial}{\partial r}\left(r^2\frac{\partial }{\partial r}R(r)\right) + R(r)\frac{1}{r^2\sin(\theta)}\frac{\partial}{\partial \theta}\left(\sin(\theta)\frac{\partial}{\partial \theta}\Theta(\theta)\right)
+\end{align*}
+Now if we divide by $V(r,\theta)$ we get
+\begin{align*}
+0&=\frac{\Theta(\theta)}{R(r)\Theta(\theta)}\frac{1}{r^2}\frac{\partial}{\partial r}\left(r^2\frac{\partial }{\partial r}R(r)\right) + \frac{R(r)}{R(r)\Theta(\theta)}\frac{1}{r^2\sin(\theta)}\frac{\partial}{\partial \theta}\left(\sin(\theta)\frac{\partial}{\partial \theta}\Theta(\theta)\right)\\
+&=\frac{1}{R(r)}\frac{1}{r^2}\frac{\partial}{\partial r}\left(r^2\frac{\partial }{\partial r}R(r)\right) + \frac{1}{\Theta(\theta)}\frac{1}{r^2\sin(\theta)}\frac{\partial}{\partial \theta}\left(\sin(\theta)\frac{\partial}{\partial \theta}\Theta(\theta)\right)
+\end{align*}
+We can cancel the $\frac{1}{r^2}$ from both terms to yield
+$$0=\frac{1}{R(r)}\frac{\partial}{\partial r}\left(r^2\frac{\partial }{\partial r}R(r)\right) + \frac{1}{\Theta(\theta)}\frac{1}{\sin(\theta)}\frac{\partial}{\partial \theta}\left(\sin(\theta)\frac{\partial}{\partial \theta}\Theta(\theta)\right)$$ 
+We can see that we have 2 terms each is only dependent on $r$ or $\theta$ that sum to 0. So we can say that they have to be constant this gives us 
+$$\frac{\partial}{\partial r}\left(r^2\frac{\partial }{\partial r}R(r)\right) = C_1 R(r)$$
+$$\frac{\partial}{\partial \theta}\left(\sin(\theta)\frac{\partial}{\partial \theta}\Theta(\theta)\right) = C_2\sin(\theta)\Theta(\theta)$$ 
+We assume that $C_1 = l(l+1)$ where $l\in\mathbb{Z}$. This also implies that $C_2 = -l(l+1)$ due to the fact that $C_1+C_2=0$ from the solution of \emph{Laplace's Equation}. So
+$$\frac{\partial}{\partial r}\left(r^2\frac{\partial }{\partial r}R(r)\right) = l(l+1)R(r)$$
+$$\frac{\partial}{\partial \theta}\left(\sin(\theta)\frac{\partial}{\partial \theta}\Theta(\theta)\right) =-l(l+1)\sin(\theta)\Theta(\theta)$$ 
+Where the general solutions to these differential equation are
+$$R(r) = Ar^l+\frac{B}{r^{l+1}}$$
+$$\Theta(\theta) = P_l(\cos\theta)$$
+Where $P_l$ are the \emph{Legendre polynomials} which are given by
+$$P_l(x) = \frac{1}{2^ll!}\left(\frac{d}{dx}\right)^l(x^2-1)^l$$
+So we can say that
+\begin{align*}
+&P_0(\cos\theta) = 1\\
+&P_1(\cos\theta) = \cos\theta \\
+&P_2(\cos\theta) =  \frac{3}{2}\cos^2\theta-\frac{1}{2}\\ 
+\end{align*}
+So we know that $V$ is given by
+$$V_l(r,\theta) = \left(Ar^l+\frac{B}{r^{l+1}}\right)P_l(\cos\theta)$$
+$$V(r,\theta) = \sum_{l=0}^{\infty}\left(A_lr^l+\frac{B_l}{r^{l+1}}\right)P_l(\cos\theta)$$
+Now before we apply the boundary conditions we need to find what the potential on the surface is. We can do this using the identity 
+$$\sigma = -\epsilon_0 \frac{\partial V}{\partial n}$$
+In this case the normal direction is $r$ and $\sigma=\sigma_0$ so we get
+$$\sigma_0 = -\epsilon_0 \frac{\partial V}{\partial r}$$
+We can use separation of variables to get
+$$\sigma_0 \partial r = -\epsilon_0\partial V$$
+$$\int\sigma_0 \partial r = -\epsilon_0\int\partial V$$
+$$\sigma_0 r = -\epsilon_0 V$$
+$$V = -\frac{\sigma_0 r}{\epsilon_0}$$
+This is only when we are on the surface of the sphere or $r=R$ so 
+$$V(R,\theta) = -\frac{\sigma_0 R}{\epsilon_0}$$
+So for outside the sphere we can say that
+$$V(r\rightarrow\infty,\theta) = 0$$
+This implies that all $A_l$ terms are zero so we have
+$$V(r,\theta) = \sum_{l=0}^{\infty}\left(\frac{B_l}{r^{l+1}}\right)P_l(\cos\theta)$$
+Now if we apply the condition on the surface we have
+$$V(R,\theta) = -\frac{\sigma_0 R}{\epsilon_0} = \sum_{l=0}^{\infty}\left(\frac{B_l}{R^{l+1}}\right)P_l(\cos\theta)$$
+We can see that we have no $\cos$ terms to match so we can assume that $l=0$ this yields
+\begin{align*}
+-\frac{\sigma_0 R}{\epsilon_0} &= \left(\frac{B_0}{R^{0+1}}\right)P_0(\cos\theta)\\
+ &= \left(\frac{B_0}{R}\right)\cancelto{1}{P_0(\cos\theta)}\\
+-\frac{\sigma_0 R}{\epsilon_0} &= \left(\frac{B_0}{R}\right)
+\end{align*}
+If we solve for $B_0$ we get
+$$B_0 = -\frac{\sigma_0 R^2}{\epsilon_0}$$
+So we can say the potential outside the sphere is
+$$V(r\ge R,\theta) = -\frac{\sigma_0 R^2}{\epsilon_0 r}$$
+
+For inside the sphere we can see that for
+$$V(r,\theta) = \sum_{l=0}^{\infty}\left(A_lr^l+\frac{B_l}{r^{l+1}}\right)P_l(\cos\theta)$$
+all the $B_l$ terms must be zero or else at $r=0$ the potential is undefined. So we have
+$$V(r,\theta) = \sum_{l=0}^{\infty}\left(A_lr^l\right)P_l(\cos\theta)$$
+Now we can see that at the surface of the sphere we have
+$$V(R,\theta) = -\frac{\sigma_0 R}{\epsilon_0} = \sum_{l=0}^{\infty}\left(A_lR^l\right)P_l(\cos\theta)$$
+Again we can see that there are no $\cos$ terms so we can say that $l=0$ this yields
+\begin{align*}
+-\frac{\sigma_0 R}{\epsilon_0} &= \left(A_0R^0\right)P_0(\cos\theta)\\
+&= \left(A_0R^0\right)\cancelto{1}{P_0(\cos\theta)}\\
+&= A_0\cancelto{1}{R^0}\\
+-\frac{\sigma_0 R}{\epsilon_0} &= A_0\\
+\end{align*}
+So we found that the potential is constant inside of the sphere and is given by
+$$V(r\le R,\theta) = -\frac{\sigma_0 R}{\epsilon_0}$$
+
+So the potential over all space is
+$$V(r,\theta) = \left\{\begin{array}{cc}
+	-\dfrac{\sigma_0 R}{\epsilon_0} &\mbox{for } r\le R\\
+	-\dfrac{\sigma_0 R^2}{\epsilon_0 r} &\mbox{for } r\ge R
+	\end{array}\right.$$
+
+\item
+This looks like a charged conductor and it is what we would expect from a sphere of constant charge distribution in principle we did not need to solve \emph{Laplace's Equation} we could have just used \emph{Gauss' Law} to find the electric field then the potential from there because the charge distribution is constant.
+\item
+First we need to find the potential on the surface. We know that the potential has to be continuous so we can say
+$$\sigma_0 = -\epsilon_0 \left(\left.\frac{\partial V_{in}}{\partial r} - \frac{\partial B_{out}}{\partial r}\right|_R\right)$$
+Where
+$$V_{in} = A_lr^lP_l(\cos\theta)$$
+$$V_{out} = \frac{B_l}{r^{l+1}}P_l(\cos\theta)$$
+So we can calculate 
+\begin{align*}
+\sigma_0 &= -\epsilon_0 \left(\left.\frac{\partial V_{in}}{\partial r} - \frac{\partial B_{out}}{\partial r}\right|_R\right)\\
+&= \left(\left.\frac{\partial V_{in}}{\partial r} - \frac{\partial B_{out}}{\partial r}\right|_R\right)\\
+&= \frac{\partial}{\partial r}A_lr^lP_l(\cos\theta) - \frac{\partial}{\partial r}\frac{B_l}{r^{l+1}}P_l(\cos\theta)\\
+&= A_lr^{l-1}lP_l(\cos\theta) - -(l+1)\frac{B_l}{r^{l+1+1}}P_l(\cos\theta)\\
+&= A_lR^{l-1}lP_l(\cos\theta) +(l+1)\frac{B_l}{R^{l+2}}P_l(\cos\theta)\\
+\end{align*}
+Now we need to use the fact that on the surface $V_{in} = V_{out}$ this give us
+\begin{align*}
+A_lR^lP_l(\cos\theta) &= \frac{B_l}{R^{l+1}}P_l(\cos\theta)\\
+A_lR^l&= \frac{B_l}{R^{l+1}}\\
+A_l&= \frac{B_l}{R^{l+1}R^l}\\
+&= \frac{B_l}{R^{l+1+l}}\\
+&= \frac{B_l}{R^{2l+1}}\\
+\end{align*}
+So now we can replace our $A_l$ in our term to get
+\begin{align*}
+A_lR^{l-1}lP_l(\cos\theta) +(l+1)\frac{B_l}{R^{l+1+1}}P_l(\cos\theta) &= \frac{B_l}{R^{2l+1}}R^{l-1}lP_l(\cos\theta) +(l+1)\frac{B_l}{R^{l+1+1}}P_l(\cos\theta) \\
+&= \frac{B_l}{R^{2l+1}R^{-(l-1)}}lP_l(\cos\theta) +(l+1)\frac{B_l}{R^{l+2}}P_l(\cos\theta) \\
+&= \frac{B_l}{R^{2l+1}R^{-(l-1)}}lP_l(\cos\theta) +(l+1)\frac{B_l}{R^{l+2}}P_l(\cos\theta) \\
+&= \frac{B_l}{R^{2l+1-l+1}}lP_l(\cos\theta) +(l+1)\frac{B_l}{R^{l+2}}P_l(\cos\theta) \\
+&= \frac{B_l}{R^{l+2}}lP_l(\cos\theta) +(l+1)\frac{B_l}{R^{l+2}}P_l(\cos\theta) \\
+&= P_l(\cos\theta)\left(\frac{B_l}{R^{l+2}}l +(l+1)\frac{B_l}{R^{l+2}}\right) \\
+&= P_l(\cos\theta)\left(\frac{B_l}{R^{l+2}}(l +(l+1))\right) \\
+&= P_l(\cos\theta)\left(\frac{B_l}{R^{l+2}}(2l+1)\right) \\
+&= \frac{B_l(2l+1)}{R^{l+2}}P_l(\cos\theta)\\
+\end{align*}
+Note that this is only for the top hemisphere where $\sigma_0$ is posive for the bottom hemisphere its the same but oppisite. Now we can find our $B_l$ from 
+$$\sum_{l=0}^{\infty}\frac{B_l(2l+1)}{R^{l+2}}P_l(\cos\theta) = \left\{\begin{array}{cc}
+	\dfrac{\sigma_0}{\epsilon_0} &\mbox{for } 0\le\theta<\pi/2\\
+\\
+	-\dfrac{\sigma_0}{\epsilon_0} &\mbox{for } \pi/2\le\theta<\pi\\
+	\end{array}\right.$$
+So now we can use Fourier's trick with Lagandre polynomials which is given by
+$$\int_0^{\pi} P_l(\cos\theta)P_{l'}(\cos\theta)\sin\theta d\theta = \left\{\begin{array}{cc}
+		0 &\mbox{for } l\ne l'\\
+		\dfrac{2}{2l+1} &\mbox{for } l\ne l'\\
+		\end{array}\right.$$
+Now we can say
+$$\sum_{l=0}^{\infty}\frac{B_l(2l+1)}{R^{l+2}}\int_0^{\pi} P_l(\cos\theta)P_{l'}(\cos\theta)\sin\theta d\theta = \int_0^{\pi} V_R P_{l'}(\cos\theta)\sin\theta d\theta$$
+Where $V_R$ is definded as
+$$V_R = \left\{\begin{array}{cc}
+	\dfrac{\sigma_0}{\epsilon_0} &\mbox{for } 0\le\theta<\pi/2\\
+\\
+	-\dfrac{\sigma_0}{\epsilon_0} &\mbox{for } \pi/2\le\theta<\pi\\
+	\end{array}\right.$$
+So we see that using Fourier's trick we get
+$$\frac{B_l(2l+1)}{R^{l+2}}\frac{2}{2l+1} = \int V_R P_{l}(\cos\theta)\sin\theta d\theta$$
+$$\frac{2B_l}{R^{l+2}}= \int V_R P_{l}(\cos\theta)\sin\theta d\theta$$
+Notice how we isolated the a sigle $l$ from the sum. (It is actually $l'$ but the index is arbitrary so we just change it back to $l$). We can now see that the integral on the left can be split due to the piecewise function $V_R$ so 
+$$\frac{2B_l}{R^{l+2}}= \frac{\sigma_0}{\epsilon_0}\int_0^{\pi/2} P_{l}(\cos\theta)\sin\theta d\theta - \frac{\sigma_0}{\epsilon_0}\int_{\pi/2}^{\pi} P_{l}(\cos\theta)\sin\theta d\theta$$
+$$B_l= \frac{R^{l+2}}{2}\frac{\sigma_0}{\epsilon_0}\int_0^{\pi/2} P_{l}(\cos\theta)\sin\theta d\theta - \frac{\sigma_0}{\epsilon_0}\int_{\pi/2}^{\pi} P_{l}(\cos\theta)\sin\theta d\theta$$
+$$B_l= \frac{R^{l+2}}{2}\frac{\sigma_0}{\epsilon_0}\left(\int_0^{\pi/2} P_{l}(\cos\theta)\sin\theta d\theta - \int_{\pi/2}^{\pi} P_{l}(\cos\theta)\sin\theta d\theta\right)$$
+So find the first two non-zero terms we start with $l=0$
+\begin{align*}
+B_0 &= \frac{R^{0+2}}{2}\frac{\sigma_0}{\epsilon_0}\int_0^{\pi/2} P_{0}(\cos\theta)\sin\theta d\theta - \frac{\sigma_0}{\epsilon_0}\int_{\pi/2}^{\pi} P_{0}(\cos\theta)\sin\theta d\theta\\
+&= \frac{R^{2}}{2}\frac{\sigma_0}{\epsilon_0}\int_0^{\pi/2} (1)\sin\theta d\theta - \frac{\sigma_0}{\epsilon_0}\int_{\pi/2}^{\pi} (1)\sin\theta d\theta\\
+&= \frac{R^{2}}{2}\frac{\sigma_0}{\epsilon_0}\int_0^{\pi/2} \sin\theta d\theta - \frac{\sigma_0}{\epsilon_0}\int_{\pi/2}^{\pi} \sin\theta d\theta\\
+&= \frac{R^{2}}{2}\frac{\sigma_0}{\epsilon_0}\left(\cos\theta\right|_0^{\pi/2} - \frac{\sigma_0}{\epsilon_0}\left(\cos\theta \right|_{\pi/2}^{\pi}\\
+&= \frac{R^{2}}{2}\frac{\sigma_0}{\epsilon_0}\left(\cos(\pi/2)-\cos(0)\right) - \frac{\sigma_0}{\epsilon_0}\left(\cos(\pi)-\cos(\pi/2)\right)\\
+&= \frac{R^{2}}{2}\frac{\sigma_0}{\epsilon_0}\left(0-1\right) - \frac{\sigma_0}{\epsilon_0}\left(1-0\right)\\
+&= \frac{R^{2}}{2}\frac{-\sigma_0}{\epsilon_0}- \frac{\sigma_0}{\epsilon_0}\\
+&=0
+\end{align*}
+Now for $l=1$
+\begin{align*}
+B_1 &= \frac{R^{1+2}}{2}\frac{\sigma_0}{\epsilon_0}\left(\int_0^{\pi/2} P_{1}(\cos\theta)\sin\theta d\theta - \int_{\pi/2}^{\pi} P_{1}(\cos\theta)\sin\theta d\theta\right)\\
+&= \frac{R^{3}}{2}\frac{\sigma_0}{\epsilon_0}\left(\int_0^{\pi/2}\cos\theta\sin\theta d\theta - \int_{\pi/2}^{\pi} \cos\theta\sin\theta d\theta\right)
+\end{align*}
+Using a $u$ subsitiution where
+$$u=\cos\theta$$
+$$du=-\sin\theta d\theta$$
+\end{enumerate}
+\begin{align*}
+\frac{R^{3}}{2}\frac{\sigma_0}{\epsilon_0}\left(\int_0^{\pi/2}\cos\theta\sin\theta d\theta - \int_{\pi/2}^{\pi} \cos\theta\sin\theta d\theta\right) &= \frac{R^3}{2}\frac{\sigma_0}{\epsilon_0}\left(-\int_{u(0)}^{u(\pi/2)}udu +\int_{u(\pi/2)}^{u(\pi)} udu\right)\\
+&= \frac{R^{3}}{2}\frac{\sigma_0}{\epsilon_0}\left(-\left(\frac{1}{2}u^2\right|_{u(0)}^{u(\pi/2)} +\left(\frac{1}{2}u^2\right|_{u(\pi/2)}^{u(\pi)}\right)\\
+&= \frac{R^{3}}{2}\frac{\sigma_0}{\epsilon_0}\left(-\left(\frac{1}{2}\cos^2(\theta)\right|_{0}^{\pi/2} +\left(\frac{1}{2}\cos^2(\theta)\right|_{\pi/2}^{\pi}\right)\\
+&= \frac{R^{3}}{2}\frac{\sigma_0}{\epsilon_0}\left(-\frac{1}{2}\left(\cos^2(\pi/2)- \cos^2(0)\right) +\frac{1}{2}\left(\cos^2(\pi)- \cos^2(\pi/2)\right)\right)\\
+&= \frac{R^{3}}{2}\frac{\sigma_0}{\epsilon_0}\left(-\frac{1}{2}\left(\cos^2(\pi/2)- \cos^2(0)\right) +\frac{1}{2}\left(\cos^2(\pi)- \cos^2(\pi/2)\right)\right)\\
+&= \frac{R^{3}}{2}\frac{\sigma_0}{\epsilon_0}\left(-\frac{1}{2}\left(0- 1^2\right) +\frac{1}{2}\left((-1)^2- 0\right)\right)\\
+&= \frac{R^{3}}{2}\frac{\sigma_0}{\epsilon_0}\left(-\frac{1}{2}\left(-1\right) +\frac{1}{2}\left(1\right)\right)\\
+&= \frac{R^{3}}{2}\frac{\sigma_0}{\epsilon_0}\left(\frac{1}{2} +\frac{1}{2}\right)\\
+&= \frac{R^{3}}{2}\frac{\sigma_0}{\epsilon_0}(1)\\
+B_1&= \frac{R^{3}}{2}\frac{\sigma_0}{\epsilon_0}\\
+\end{align*}
+Now for $l=2$ we have
+\begin{align*}
+B_2 &= \frac{R^{2+2}}{2}\frac{\sigma_0}{\epsilon_0}\left(\int_0^{\pi/2} P_{2}(\cos\theta)\sin\theta d\theta - \int_{\pi/2}^{\pi} P_{2}(\cos\theta)\sin\theta d\theta\right)\\
+&= \frac{R^{4}}{2}\frac{\sigma_0}{\epsilon_0}\left(\int_0^{\pi/2}\left( \frac{3}{2}\cos^2(\theta)-\frac{1}{2}\right)\sin\theta d\theta - \int_{\pi/2}^{\pi}\left(\frac{3}{2}\cos^2(\theta)-\frac{1}{2}\right)\sin\theta d\theta\right)\\
+\end{align*}
+Again we do a $u$ substitution where
+$$u = \cos(\theta)$$
+$$du = -\sin(\theta)d\theta$$
+\begin{align*}
+&\frac{R^{4}}{2}\frac{\sigma_0}{\epsilon_0}\left(\int_0^{\pi/2}\left( \frac{3}{2}\cos^2(\theta)-\frac{1}{2}\right)\sin\theta d\theta - \int_{\pi/2}^{\pi}\left(\frac{3}{2}\cos^2(\theta)-\frac{1}{2}\right)\sin\theta d\theta\right)\\
+&=\frac{R^{4}}{2}\frac{\sigma_0}{\epsilon_0}\left(\int_{u(0)}^{u(\pi/2)}\left(-\frac{3}{2}u^2-\frac{1}{2}\right)du + \int_{u(\pi/2)}^{u(\pi)}\left(\frac{3}{2}u^2-\frac{1}{2}\right)du\right)\\
+&=\frac{R^{4}}{2}\frac{\sigma_0}{\epsilon_0}\left(-\frac{3}{6}u^3-\frac{1}{2}u\right|_{u(0)}^{u(\pi/2)} + \left(\frac{3}{6}u^3-\frac{1}{2}u\right|_{u(\pi/2)}^{u(\pi)} \\
+\end{align*}
+\begin{align*}
+&=\frac{R^{4}}{2}\frac{\sigma_0}{\epsilon_0}\left(-\frac{1}{2}\cos^3(\theta)-\frac{1}{2}\cos(\theta)\right|_{0}^{\pi/2} + \left(\frac{3}{2}\cos^3(\theta)-\frac{1}{2}\cos(\theta)\right|_{\pi/2}^{\pi} \\
+&=\frac{R^{4}}{2}\frac{\sigma_0}{\epsilon_0}\left(-(\frac{1}{2}\cos^3(0)-\frac{1}{2}\cos(0)-\frac{1}{2}\cos^3(\pi/2)-\frac{1}{2}\cos(\pi/2)\right) + \left(\frac{1}{2}\cos^3(\theta)-\frac{1}{2}\cos(\theta)\right|_{\pi/2}^{\pi} \\
+&=\frac{R^{4}}{2}\frac{\sigma_0}{\epsilon_0}\left(-(\frac{1}{2}1^3-\frac{1}{2}1-\frac{1}{2}(0)-\frac{1}{2}(0)\right) + \left(\frac{1}{2}\cos^3(\pi)-\frac{1}{2}\cos(\pi)- \frac{1}{2}\cos^3(\pi/2)-\frac{1}{2}\cos(\pi/2)\right) \\
+&=\frac{R^{4}}{2}\frac{\sigma_0}{\epsilon_0}\left(-(\frac{1}{2}-\frac{1}{2}\right) + \left(\frac{1}{2}(-1)^3-\frac{1}{2}(-1)- \frac{1}{2}0 - \frac{1}{2}0\right) \\
+&=\frac{R^{4}}{2}\frac{\sigma_0}{\epsilon_0}\left(-(\frac{1}{2}-\frac{1}{2}\right) + \left(-\frac{1}{2}+\frac{1}{2}\right) \\
+&=\frac{R^{4}}{2}\frac{\sigma_0}{\epsilon_0}\left(0\right) + \left(0\right) \\
+&=\frac{R^{4}}{2}\frac{\sigma_0}{\epsilon_0}\left(0\right) + \left(0\right) \\
+&=0
+\end{align*}
+Ok now our now we can do $l=3$
+\begin{align*}
+B_3 &= \frac{R^{3+2}}{2}\frac{\sigma_0}{\epsilon_0}\left(\int_0^{\pi/2} P_{3}(\cos\theta)\sin\theta d\theta - \int_{\pi/2}^{\pi} P_{3}(\cos\theta)\sin\theta d\theta\right)\\
+ &= \frac{R^{5}}{2}\frac{\sigma_0}{\epsilon_0}\left(\int_0^{\pi/2} \left(\frac{5}{2}\cos^3(\theta)-\frac{1}{2}\cos(\theta)\right)\sin\theta d\theta - \int_{\pi/2}^{\pi} \left(\frac{5}{2}\cos^3(\theta)-\frac{1}{2}\cos(\theta)\right)\sin\theta d\theta\right)\\
+ &= \frac{R^{5}}{2}\frac{\sigma_0}{\epsilon_0}\left(-\int_{u(0)}^{u(\pi/2)} \left(\frac{5}{2}u^3-\frac{1}{2}u\right)du + \int_{u(\pi/2)}^{u(\pi)} \left(\frac{5}{2}u^3-\frac{1}{2}u\right)du\right)\\
+ &= \frac{R^{5}}{2}\frac{\sigma_0}{\epsilon_0}\left(-\left(\frac{5}{6}u^4-\frac{1}{4}u^2\right|_{u(0)}^{u(\pi/2)} + \left(\frac{5}{6}u^4-\frac{1}{4}u^2\right|_{u(\pi/2)}^{u(\pi)} \right)\\
+ &= \frac{R^{5}}{2}\frac{\sigma_0}{\epsilon_0}\left(-\left(\frac{5}{6}u^4-\frac{1}{4}u^2\right|_{1}^{0} + \left(\frac{5}{6}u^4-\frac{1}{4}u^2\right|_{0}^{-1} \right)\\
+ &= \frac{R^{5}}{2}\frac{\sigma_0}{\epsilon_0}\left(-\left(\frac{5}{6}0^4-\frac{1}{4}0^2-\frac{5}{6}1^4-\frac{1}{4}1^2\right) + \left(\frac{5}{6}(-1)^4-\frac{1}{4}(-1)^2-0\right) \right)\\
+ &= \frac{R^{5}}{2}\frac{\sigma_0}{\epsilon_0}\left(\left(\frac{5}{6}-\frac{1}{4}\right) + \left(\frac{5}{6}-\frac{1}{4}\right)\right)\\
+ &= \frac{R^{5}}{2}\frac{\sigma_0}{\epsilon_0}\left(\left(\frac{10}{12}-\frac{3}{12}\right) + \left(\frac{10}{12}-\frac{3}{12}\right)\right)\\
+ &= \frac{R^{5}}{2}\frac{\sigma_0}{\epsilon_0}\left(\left(\frac{7}{12}\right) + \left(\frac{7}{12}\right)\right)\\
+ &= \frac{R^{5}}{2}\frac{\sigma_0}{\epsilon_0}\left(\frac{7}{6}\right)\\
+B_3 &= \frac{7R^{5}}{12}\frac{\sigma_0}{\epsilon_0}
+\end{align*}
+Yay! Now we have our first two non-zero terms so we can say our potential is
+$$V(r,\theta) = \sum_{l=0}^{\infty}\frac{B_l}{r^{l+1}}P_l(\cos\theta)$$
+$$V(r,\theta) = \frac{R^{3}}{2}\frac{\sigma_0}{\epsilon_0}\frac{1}{r^{2}}P_1(\cos\theta) + \frac{7R^{5}}{12}\frac{\sigma_0}{\epsilon_0}\frac{1}{r^{l+1}}P_3(\cos\theta)+...$$
+
+\section{Problem \#2}
+We can assume the general solution for \emph{Laplace's Equation} applies here. So we assume that
+$$V(r,\theta) = \sum_{l=0}^{\infty}\left(A_lr^l+\frac{B_l}{r^{l+1}}\right)P_l(\cos\theta)$$
+is a solution. So we can apply the boundary conditions
+$$V(a,\theta) = V_{in}$$
+$$V(b,\theta) = V_{out} \cos(\theta)$$
+to find the potential between the two concentric spheres. We see that we have a constant term and a term that has a first order $\cos$ so we are going to say that we need $l=0$ and $l=1$ this gives us the general solution 
+\begin{align*}
+V(r,\theta) &= \left(A_0r^0+\frac{B_0}{r^{0+1}}\right)P_0(\cos\theta) + \left(A_1r^1+\frac{B_1}{r^{1+1}}\right)P_1(\cos\theta)\\
+&= \left(A_0+\frac{B_0}{r}\right) + \left(A_1r+\frac{B_1}{r^{2}}\right)\cos(\theta)\\
+\end{align*}
+
+So to apply the boundary condition we get
+$$V(a,\theta) = V_{in} = \left(A_0+\frac{B_0}{a}\right) + \left(A_1a+\frac{B_1}{a^{2}}\right)\cos(\theta)$$
+We see that we do not have any $\cos$ terms so we know that 
+$$A_1a+\frac{B_1}{a^2} = 0$$
+and
+$$A_0+\frac{B_0}{a} = V_{in}$$
+
+Now for the boundary on the outside sphere we get
+$$V(b,\theta) = V_{out} \cos(\theta) = \left(A_0+\frac{B_0}{b}\right) + \left(A_1b+\frac{B_1}{b^{2}}\right)\cos(\theta)$$
+We see that we have a $\cos$ term to the first order. This implies that
+$$A_0+\frac{B_0}{b}=0 $$
+$$A_1b+\frac{B_1}{b^{2}}=V_{out}$$
+So we now have 2 system of equations to solve for our constants. First lets solve the ones for $l=1$.
+$$A_1a+\frac{B_1}{a^2} = 0$$
+$$-A_1a=\frac{B_1}{a^2}$$
+$$B_1=-A_1 a^3$$
+Now we can substitute $B_1$ into our next equation to get
+\begin{align*}
+V_{out} &= A_1b-\frac{1}{b^{2}}A_1 a^3\\
+&=A_1\left(b-\frac{a^3}{b^{2}}\right)\\
+&=A_1\left(\frac{b^3-a^3}{b^{2}}\right)\\
+&=A_1\left(\frac{b^3-a^3}{b^{2}}\right)\\
+A_1&=V_{out}\frac{b^{2}}{b^3-a^3}
+\end{align*}
+Now we can solve for $B_1$
+\begin{align*}
+B_1&=-A_1 a^3\\
+&=-V_{out}\frac{b^{2}}{b^3-a^3}a^3\\
+&=-V_{out}\frac{b^{2}a^3}{b^3-a^3}
+\end{align*}
+Now for the system of equations for $l=0$
+$$A_0+\frac{B_0}{b}=0 $$
+$$A_0=-\frac{B_0}{b}$$
+Now if we substitute into the other equation
+\begin{align*}
+V_{in}&=A_0+\frac{B_0}{a} \\
+&=-\frac{B_0}{b}+\frac{B_0}{a} \\
+&=B_0\left(-\frac{1}{b}+\frac{1}{a}\right) \\
+&=B_0\left(\frac{1}{a}-\frac{1}{b}\right) \\
+B_0&=V_{in}\left(\frac{1}{a}-\frac{1}{b}\right)^{-1} \\
+\end{align*}
+Now to find $A_0$
+\begin{align*}
+A_0 &=-\frac{B_0}{b}\\
+&=-\frac{1}{b}V_{in}\left(\frac{1}{a}-\frac{1}{b}\right)^{-1} \\
+&=-V_{in}b^{-1}\left(\frac{1}{a}-\frac{1}{b}\right)^{-1} \\
+&=-V_{in}\left(\frac{b}{a}-\frac{b}{b}\right)^{-1} \\
+&=-V_{in}\left(\frac{b}{a}-1\right)^{-1} \\
+\end{align*}
+Now that we have all the boundary conditions met we can write the full function of the potential
+$$V(r,\theta) = \left(-V_{in}\left(\frac{b}{a}-1\right)^{-1}+V_{in}\left(\frac{1}{a}-\frac{1}{b}\right)^{-1}\frac{1}{r}\right) + \left(V_{out}\frac{b^{2}}{b^3-a^3}r-V_{out}\frac{b^{2}a^3}{b^3-a^3}\frac{1}{r^{2}}\right)\cos(\theta)$$
+$$V(r,\theta) = \frac{V_{in}}{\dfrac{1}{a}-\dfrac{1}{b}}\left(-\frac{1}{b}+\frac{1}{r}\right) + V_{out}\frac{b^{2}}{b^3-a^3}\left(r-\frac{a^3}{r^{2}}\right)\cos(\theta)$$
+$$V(r,\theta) = \frac{V_{in}}{\dfrac{b-a}{ab}}\left(\frac{1}{r}-\frac{1}{b}\right) + V_{out}\frac{b^{2}}{b^3-a^3}\left(r-\frac{a^3}{r^{2}}\right)\cos(\theta)$$
+$$V(r,\theta) = \frac{V_{in}ab}{b-a}\left(\frac{1}{r}-\frac{1}{b}\right) + V_{out}\frac{b^{2}}{b^3-a^3}\left(r-\frac{a^3}{r^{2}}\right)\cos(\theta)$$
+$$V(r,\theta) = \frac{V_{in}}{b-a}\left(\frac{ab}{r}-\frac{ab}{b}\right) + V_{out}\frac{b^{2}}{b^3-a^3}\left(r-\frac{a^3}{r^{2}}\right)\cos(\theta)$$
+$$V(r,\theta) = \frac{V_{in}}{b-a}\left(\frac{ab}{r}-a\right) + V_{out}\frac{b^{2}}{b^3-a^3}\left(r-\frac{a^3}{r^{2}}\right)\cos(\theta)$$
+
+\section{Problem \#3}
+\begin{enumerate}[(i)]
+\item
+Again we assume that the general solution
+$$V(r,\theta) = \sum_{l=0}^{\infty}\left(A_lr^l+\frac{B_l}{r^{l+1}}\right)P_l(\cos\theta)$$
+is valid for this problem. So we can apply the boundary condition that is given in the problem.
+$$V(r,0) = \frac{\sigma_0}{2\epsilon_0}\left(\sqrt{r^2+R^2}-r\right)$$
+We rewrite this function
+\begin{align*}
+V(r,0) &= \frac{\sigma_0}{2}\left(\sqrt{r^2+R^2}-r\right)\\
+&= \frac{\sigma_0}{2\epsilon_0}\left(\frac{r}{r}\sqrt{r^2+R^2}-r\right)\\
+&= \frac{\sigma_0}{2\epsilon_0}\left(r\sqrt{\frac{1}{r^2}(r^2+R^2)}-r\right)\\
+&= \frac{\sigma_0}{2\epsilon_0}\left(r\sqrt{\frac{r^2}{r^2}+\frac{R^2}{r^2}}-r\right)\\
+&= \frac{\sigma_0}{2\epsilon_0}\left(r\sqrt{1+\frac{R^2}{r^2}}-r\right)\\
+&= \frac{\sigma_0r}{2\epsilon_0}\left(\sqrt{1+\frac{R^2}{r^2}}-1\right)\\
+\end{align*}
+We can see that if we are very far away ($r>>R$) $\dfrac{R^2}{r^2}$ is small. So we can say that we have 
+$$\epsilon \equiv \frac{R^2}{r^2}$$
+this gives us
+$$f(\epsilon)=\sqrt{1+\epsilon}$$
+We can expand this using a \emph{Taylor Series} around zero or
+$$f(\epsilon) = f(0) + \frac{f'(0)}{1!}\epsilon + \frac{f''(0)}{2!}\epsilon^2 + ...+ \frac{f^{(n)}(0)}{n!}\epsilon^n$$
+So we can calculate the derivatives of $f(\epsilon)$ to get
+\begin{align*}
+f(0) &= \sqrt{1+0} = 1\\
+f'(0) &= \frac{1}{2}(1+0)^{-1/2} = \frac{1}{2}\\
+f''(0) &= -\frac{1}{4}(1+0)^{-3/2} = -\frac{1}{4}\\
+f^{(3)}(0) &= \frac{3}{8}(1+0)^{-5/2} = \frac{3}{8}
+\end{align*}
+So now we can write the expansion as
+$$f(\epsilon) = 1+\frac{1}{2}\epsilon-\frac{1}{4}\frac{\epsilon^2}{2!}+\frac{3}{8}\frac{\epsilon^3}{3!}+...$$
+Now if we replace our $\epsilon$ we get
+$$f(r) = 1+\frac{1}{2}\frac{R^2}{r^2}-\frac{1}{8}\left(\frac{R^2}{r^2}\right)^2+\frac{1}{16}\left(\frac{R^2}{r^2}\right)^3+...$$
+Now if we replace this expansion into our boundary condition we find
+\begin{align*}
+V(r,0) &= \frac{\sigma_0r}{2\epsilon_0}\left(1+\frac{1}{2}\frac{R^2}{r^2}-\frac{1}{8}\left(\frac{R^2}{r^2}\right)^2+\frac{1}{16}\left(\frac{R^2}{r^2}\right)^3+...-1\right)\\
+&= \frac{\sigma_0r}{2\epsilon_0}\left(\frac{1}{2}\frac{R^2}{r^2}-\frac{1}{8}\left(\frac{R^2}{r^2}\right)^2+\frac{1}{16}\left(\frac{R^2}{r^2}\right)^3+...\right)\\
+&= \frac{\sigma_0r}{2\epsilon_0}\left(\frac{1}{2}\frac{R^2}{r^2}-\frac{1}{8}\frac{R^4}{r^4}+\frac{1}{16}\frac{R^6}{r^6}+...\right)\\
+&= \frac{\sigma_0}{2\epsilon_0}\left(\frac{1}{2}\frac{R^2r}{r^2}-\frac{1}{8}\frac{R^4r}{r^4}+\frac{1}{16}\frac{R^6r}{r^6}+...\right)\\
+&= \frac{\sigma_0}{2\epsilon_0}\left(\frac{1}{2}\frac{R^2}{r^1}-\frac{1}{8}\frac{R^4}{r^3}+\frac{1}{16}\frac{R^6}{r^5}+...\right)
+\end{align*}
+So now we can apply the boundary condition to get
+$$V(r,0) = \frac{\sigma_0}{2\epsilon_0}\left(\frac{1}{2}\frac{R^2}{r^1}-\frac{1}{8}\frac{R^4}{r^3}+\frac{1}{16}\frac{R^6}{r^5}+...\right) = \sum_{l=0}^{\infty}\left(A_lr^l+\frac{B_l}{r^{l+1}}\right)P_l(\cos0)$$
+We can see right off the bat that there are no $r$ terms with positive exponents therefore we know that $A_l$ is zero for all $l$ so we have
+$$V(r,0) = \frac{\sigma_0}{2\epsilon_0}\left(\frac{1}{2}\frac{R^2}{r^1}-\frac{1}{8}\frac{R^4}{r^3}+\frac{1}{16}\frac{R^6}{r^5}+...\right) = \sum_{l=0}^{\infty}\left(\frac{B_l}{r^{l+1}}\right)P_l(1)$$
+We know that $P_l(1) =1$ for all $l$ so that term drops off.
+$$V(r,0) = \frac{\sigma_0}{2\epsilon_0}\left(\frac{1}{2}\frac{R^2}{r^1}-\frac{1}{8}\frac{R^4}{r^3}+\frac{1}{16}\frac{R^6}{r^5}+...\right) = \sum_{l=0}^{\infty}\left(\frac{B_l}{r^{l+1}}\right)$$
+Now we have 2 infinite sums so we can see that for any odd $l$ we do not have a term in the expansion so we know for all odd $l$ $B_l=0$. For the first three non-zero terms we see that 
+$$V(r,0) = \frac{\sigma_0}{2\epsilon_0}\left(\frac{1}{2}\frac{R^2}{r^1}-\frac{1}{8}\frac{R^4}{r^3}+\frac{1}{16}\frac{R^6}{r^5}\right) = \frac{B_0}{r^1}+\frac{B_2}{r^3}+\frac{B_4}{r^5}$$
+So we can see that 
+\begin{align*}
+B_0 &= \frac{\sigma_0R^2}{4\epsilon_0}\\
+B_2 &= -\frac{\sigma_0R^4}{16\epsilon_0}\\
+B_4 &= \frac{\sigma_0R^6}{32\epsilon_0}\\
+\end{align*}
+So we know that our potential takes the form of
+$$V(r,\theta) = \frac{\sigma_0R^2}{4\epsilon_0}\frac{1}{r}P_0(\cos\theta) -\frac{\sigma_0R^4}{16\epsilon_0}\frac{1}{r^3}P_2(\cos\theta) + \frac{\sigma_0R^6}{32\epsilon_0}\frac{1}{r^5}P_4(\cos\theta)$$
+
+\item
+The potential calculated in part (i) does not have the dipole term in the expansion. This makes sense because we have a net charge due to the $\sigma$ on the disk.
+
+\end{enumerate}
+
+\section{Problem \#4}
+\begin{enumerate}[(i)]
+\item
+The total charge of the four point charges is 
+$$3q+(-q)+(-q)+(-q)=0$$
+so we have no net charge. Now we can find the 2 dipole moments of this system of charges. In the $x$ direction we have
+\begin{align*}
+\vec{P_x} &= [a(-q)+(-a)(-q)]\hat{x}\\
+&= [-aq+aq]\hat{x}\\
+&= 0\hat{x}
+\end{align*}
+So we have no dipole moment in the $x$ direction. For the $z$ direction we have
+\begin{align*}
+\vec{P_z} &= [b(3q)+(-b)(-q)]\hat{z}\\
+&= [3bq+bq]\hat{z}\\
+&= 4bq\hat{z}
+\end{align*}
+Now that we see that this system has a dipole moment we know that the potential is going to drop off by $1/r^2$, and because we know that their is no net charge the monopole term
+$$V_{mon}(\vec{r}) = \frac{1}{4\pi\epsilon_0}\frac{Q}{r}$$
+becomes zero ($Q=0$). So the leading term for the multipole expansion is the dipole term. This is given by
+$$V_{dip}(\vec{r}) = \frac{1}{r\pi\epsilon_0}\frac{\vec{P}\cdot\hat{r}}{r^2}$$
+So we know that $\vec{P}$ only has a $z$ component and that
+\begin{align*}
+\vec{P}\cdot\hat{r} &= P\cos(\theta)\\
+ &= 4bq\cos(\theta)
+\end{align*}
+So we can say that our potential is 
+$$V(r,\theta) = \frac{1}{4\pi\epsilon_0}\frac{4bq\cos(\theta)}{r^2}$$
+$$V(r,\theta) = \frac{bq}{\pi\epsilon_0}\frac{\cos(\theta)}{r^2}$$
+\item
+We can find the electric field using
+$$\vecE = -\grad V(r,\theta)$$
+Where $\grad$ in spherical coordinates is given by
+$$\grad = \frac{\partial}{\partial r}\hat{r}+\frac{1}{r}\frac{\partial}{\partial \theta}\hat{\theta}$$
+\begin{align*}
+\vecE &= -\grad V(r,\theta)\\
+&=  -\left(\frac{\partial}{\partial r}\hat{r}+\frac{1}{r}\frac{\partial}{\partial \theta}\hat{\theta}\right) V(r,\theta)\\
+&=  -\left(\frac{\partial}{\partial r}\hat{r}+\frac{1}{r}\frac{\partial}{\partial \theta}\right)\frac{bq}{\pi\epsilon_0\hat{\theta}}\frac{\cos(\theta)}{r^2}\\
+&=  -\frac{bq}{\pi\epsilon_0}\left(\frac{\partial}{\partial r}\frac{\cos(\theta)}{r^2}\hat{r}+\frac{1}{r}\frac{\partial}{\partial \theta}\frac{\cos(\theta)}{r^2}\hat{\theta}\right)\\
+&=  -\frac{bq}{\pi\epsilon_0}\left(\frac{-2\cos(\theta)}{r^3}\hat{r}+\frac{1}{r^3}\frac{\partial}{\partial \theta}{\cos(\theta)}\hat{\theta}\right)\\
+&=  -\frac{bq}{\pi\epsilon_0}\left(\frac{2\cos(\theta)}{r^3}\hat{r}-\frac{\sin(\theta)}{r^3}\hat{\theta}\right)\\
+&=  \frac{bq}{\pi\epsilon_0}\left(\frac{2\cos(\theta)}{r^3}\hat{r}+\frac{\sin(\theta)}{r^3}\hat{\theta}\right)\\
+\end{align*}
+See attached for the sketch of this electric field.
+\end{enumerate}
+
+\section{Problem \#5}
+\begin{enumerate}[(i)]
+\item
+To find the dipole moment we can use
+$$\vec{P} = \int_V\vec{r}\rho(\vec{r})d\tau$$
+Where $\rho$ is the volume charge distribution described by 
+$$\rho(\vec{r}) = \sigma_0\delta(r-R)\cos(\theta)$$
+Now we see that we have to have 3 components to $\vec{P}$ so we need to describe each component of $\vec{r}$ in spherical coordinates given by
+\begin{align*}
+r_x&=r\sin(\theta)\cos(\phi)\hat{x}\\
+r_y&=r\sin(\theta)\sin(\phi)\hat{y}\\
+r_z&=r\cos(\theta)\hat{z}
+\end{align*}
+Now we can take the integrals. Not that there are three different integrals, one for each component of $\vec{P}$. Also we use the limits of integration in spherical coordinates or
+$$d\tau = r^2\sin(\theta)drd\theta d\phi$$
+So for the $x$ direction we get
+\begin{align*}
+\vec{P_x} &= \int_V\vec{r_x}\rho(\vec{r})d\tau\\
+ &= \int_0^R\int_0^{\pi}\int_0^{2\pi}(r\sin(\theta)\cos(\phi)\hat{x})(\sigma_0\delta(r-R)\cos(\theta))r^2\sin(\theta)drd\theta d\phi\\
+ &= \sigma_0\int_0^Rr^3\delta(r-R)dr\int_0^{2\pi}\cos(\phi) d\phi\int_0^{\pi}\sin(\theta)\cos(\theta)\sin(\theta)d\theta\hat{x}\\
+ &= \sigma_0\int_0^Rr^3\delta(r-R)dr\int_0^{2\pi}\cos(\phi) d\phi\int_0^{\pi}\sin^2(\theta)\cos(\theta)d\theta\hat{x}\\
+ &= \sigma_0R^3\left(-\sin(\phi)\right|_0^{2\pi}\int_0^{\pi}\sin^2(\theta)\cos(\theta)d\theta\hat{x}\\
+ &= \sigma_0R^3\left(-\sin(2\pi)-(-\sin(0))\right)\int_0^{\pi}\sin^2(\theta)\cos(\theta)d\theta\hat{x}\\
+ &= \sigma_0R^3\left(0-0\right)\int_0^{\pi}\sin^2(\theta)\cos(\theta)d\theta\hat{x}\\
+ &= \sigma_0R^3\left(0\right)\int_0^{\pi}\sin^2(\theta)\cos(\theta)d\theta\hat{x}\\
+\vec{P_x}&=0
+\end{align*}
+
+So there is no dipole in the $x$ direction. And for the $y$ direction 
+\begin{align*}
+\vec{P_y} &= \int_V\vec{r_y}\rho(\vec{r})d\tau\\
+ &= \int_0^R\int_0^{\pi}\int_0^{2\pi}(r\sin(\theta)\sin(\phi)\hat{y})(\sigma_0\delta(r-R)\cos(\theta))r^2\sin(\theta)drd\theta d\phi\\
+ &= \sigma_0\int_0^Rr^3\delta(r-R)dr\int_0^{2\pi}\sin(\phi) d\phi\int_0^{\pi}\sin(\theta)\cos(\theta)\sin(\theta)d\theta\hat{y}\\
+ &= \sigma_0\int_0^Rr^3\delta(r-R)dr\int_0^{2\pi}\sin(\phi) d\phi\int_0^{\pi}\sin^2(\theta)\cos(\theta)d\theta\hat{y}\\
+ &= \sigma_0R^3\left(\cos(\phi)\right|_0^{2\pi}\int_0^{\pi}\sin^2(\theta)\cos(\theta)d\theta\hat{y}\\
+ &= \sigma_0R^3\left(\cos(2\pi)-\cos(0)\right)\int_0^{\pi}\sin^2(\theta)\cos(\theta)d\theta\hat{y}\\
+ &= \sigma_0R^3\left(1-1\right)\int_0^{\pi}\sin^2(\theta)\cos(\theta)d\theta\hat{y}\\
+ &= \sigma_0R^3\left(0\right)\int_0^{\pi}\sin^2(\theta)\cos(\theta)d\theta\hat{y}\\
+\vec{P_y}&=0
+\end{align*}
+So there is no dipole in the $y$ direction either. Now for the $z$ direction we have
+\begin{align*}
+\vec{P_z} &= \int_V\vec{r_z}\rho(\vec{r})d\tau\\
+ &= \int_0^R\int_0^{\pi}\int_0^{2\pi}(r\cos(\theta)\hat{z})(\sigma_0\delta(r-R)\cos(\theta))r^2\sin(\theta)drd\theta d\phi\\
+ &= \sigma_0\int_0^Rr^3\delta(r-R)dr\int_0^{2\pi} d\phi\int_0^{\pi}\sin(\theta)\cos(\theta)\cos(\theta)d\theta\hat{z}\\
+ &= \sigma_0\int_0^Rr^3\delta(r-R)dr\int_0^{2\pi} d\phi\int_0^{\pi}\sin(\theta)\cos^2(\theta)d\theta\hat{z}\\
+ &= \sigma_0R^3\int_0^{2\pi} d\phi\int_0^{\pi}\sin(\theta)\cos^2(\theta)d\theta\hat{z}\\
+ &= \sigma_0R^32\pi \int_0^{\pi}\sin(\theta)\cos^2(\theta)d\theta\hat{z}\\
+ &= 2\sigma_0R^3\pi \int_0^{\pi}\sin(\theta)\cos^2(\theta)d\theta\hat{z}\\
+\end{align*}
+We need to use a $u$ substitution to solve the last integral we can say that 
+$$u=\cos(\theta)$$
+$$du=-\sin(\theta)d\theta$$
+
+\begin{align*}
+\int_0^{\pi}\sin(\theta)\cos^2(\theta)d\theta &= -\int_{u(0)}^{u(\pi)}u^2du\\
+&= -\left(\frac{1}{3}u^3\right|_{u(0)}^{u(\pi)}\\
+&= -\left(\frac{1}{3}\cos^3(\theta)\right|_{0}^{\pi}\\
+&= -\frac{1}{3}(\cos^3(\pi)-\cos^3(0))\\
+&= -\frac{1}{3}((-1)^3-1^3)\\
+&= -\frac{1}{3}((-1)-1)\\
+&= -\frac{1}{3}((-2)\\
+\int_0^{\pi}\sin(\theta)\cos^2(\theta)d\theta &= \frac{2}{3}
+\end{align*}
+Now we can find $\vec{P_z}$
+\begin{align*}
+\vec{P_z}  &= 2\sigma_0R^3\pi \int_0^{\pi}\sin(\theta)\cos^2(\theta)d\theta\hat{z}\\
+&= 2\sigma_0R^3\pi \frac{2}{3}\hat{z}\\
+\vec{P_z}&= \frac{4\pi}{3}\sigma_0R^3\hat{z}
+\end{align*}
+Now because $\vec{P_x}$ and $\vec{P_y}$ are zero we can say that
+$$\vec{P} = \frac{4\pi}{3}\sigma_0R^3\hat{z}$$
+and we see that the dipole moment only points in the $z$ direction. To find the total charge $Q$ we can use
+$$Q = \int_V\rho(\vec{r})d\tau$$
+Where we integrate over all space so we calculate
+\begin{align*}
+Q &= \int_V\rho(\vec{r})d\tau\\
+ &= \int_V\sigma_0\delta(r-R)\cos(\theta)d\tau\\
+ &= \int_0^{\infty}\int_0^{\pi}\int_0^{2\pi}\sigma_0\delta(r-R)\cos(\theta)r^2\sin(\theta)drd\theta d\phi\\
+ &= \sigma_0\int_0^{\infty}\delta(r-R)r^2dr\int_0^{2\pi}d\phi\int_0^{\pi}\cos(\theta)\sin(\theta)d\theta\\
+ &= \sigma_0R^2\int_0^{2\pi}d\phi\int_0^{\pi}\cos(\theta)\sin(\theta)d\theta\\
+ &= \sigma_0R^22\pi\int_0^{\pi}\cos(\theta)\sin(\theta)d\theta\\
+ &= 2\pi\sigma_0R^2\int_0^{\pi}\cos(\theta)\sin(\theta)d\theta\\
+\end{align*}
+again we need to use a $u$ sub with 
+$$u=\cos(\theta)$$
+$$du=-\sin(\theta)d\theta$$
+\begin{align*}
+\int_0^{\pi}\cos(\theta)\sin(\theta)d\theta &= -\int_{u(0)}^{u(\pi)}udu \\
+&= -\left(\frac{1}{2}u^2\right|_{u(0)}^{u(\pi)}\\
+&= -\left(\frac{1}{2}\cos^2(\theta)\right|_{0}^{\pi}\\
+&= -\frac{1}{2}\left(\cos^2(\pi)-\cos^2(0)\right)\\
+&= -\frac{1}{2}\left((-1)^2-1^2\right)\\
+&= -\frac{1}{2}\left(1-1\right)\\
+&= -\frac{1}{2}\left(0\right)\\
+\int_0^{\pi}\cos(\theta)\sin(\theta)d\theta &= 0\\
+\end{align*}
+Therefore the total charge $Q$ is zero
+
+\item
+We can use the multipole expansion to estimate the potential due to this sphere.
+$$V(r,\theta)= \frac{1}{4\pi\epsilon_0}\left(\frac{Q}{r}+\frac{\vec{P}\cdot\hat{r}}{r^2}+...\right)$$
+Where $Q$ is the total charge which we found to be zero so the first term approximation of the potential is
+\begin{align*}
+V(r,\theta) &= \frac{1}{4\pi\epsilon_0}\frac{\vec{P}\cdot\hat{r}}{r^2}\\
+&= \frac{1}{4\pi\epsilon_0}\frac{\left(\dfrac{4\pi}{3}\sigma_0R^3\hat{z}\right)\cdot\hat{r}}{r^2}\\
+&= \frac{1}{4\pi\epsilon_0}\frac{\left(\dfrac{4\pi}{3}\sigma_0R^3\right)\cos(\theta)}{r^2}\\
+&= \frac{1}{4\pi\epsilon_0}\left(\dfrac{4\pi}{3}\sigma_0R^3\right)\frac{\cos(\theta)}{r^2}\\
+&= \frac{1}{\epsilon_0}\left(\dfrac{1}{3}\sigma_0R^3\right)\frac{\cos(\theta)}{r^2}\\
+V(r,\theta) &= \frac{\sigma_0R^3}{3\epsilon_0}\frac{\cos(\theta)}{r^2}
+\end{align*}
+We see that using \emph{Laplace's Equation} to find the potential we get (Griffiths' equation (3.87))
+$$V(r,\theta) = \frac{kR^3}{3\epsilon_0}\frac{1}{r^2}\cos(\theta)$$
+this is the same result that we found with the multipole expansion! Note that $\sigma_0$ and $k$ are just constants represent the same value. This means that the higher order term of our expansion are zero.
+\end{enumerate}
+
+\section{Problem \#6}
+So we can say that from Griffiths equation (4.2)
+$$\alpha = 4\pi\epsilon_0 a^3$$
+So we need to solve for $a$ or the radius of the atom
+$$a=\sqrt[3]{\frac{\alpha}{4\pi\epsilon_0}}$$
+where we are given $\dfrac{\alpha}{4\pi\epsilon} = 0.667\times10^{-30}$ so
+$$a=\sqrt[3]{0.667\times10^{-30}}$$
+$$a=8.74\times10^{-11}\ m$$
+Now we can use the equation
+$$E=\frac{1}{4\pi\epsilon_0}\frac{qd}{a^3}$$
+to find $d$ the separation distance
+$$d= \frac{E4\pi\epsilon_0a^3}{q}$$
+where $q$ is the charge of an electron $e$ and $E$ is given by
+$$E= \frac{V}{x}$$
+$$E= \frac{500}{.001}$$
+$$E= 500000$$
+So we can calculate
+$$d= \frac{(500000)4\pi\epsilon_0(8.74\times10^{-11})^3}{e}$$
+$$d=2.31\times10^{-16}\ m$$
+This is a very small distance it is less than one millionth of the radius of the atom. Now if we wanted to ionizes the atom we would want $d=a$ in the equation
+$$E=\frac{1}{4\pi\epsilon_0}\frac{ed}{a^3}$$
+$$E=\frac{1}{4\pi\epsilon_0}\frac{ea}{a^3}$$
+$$E=\frac{1}{4\pi\epsilon_0}\frac{e}{a^2}$$
+$$E=\frac{1}{4\pi\epsilon_0}\frac{e}{(8.74\times10^{-11})^2}$$
+$$E=1.89\times10^{11}$$
+So now we can solve for the voltage needed using 
+$$E=\frac{V}{x}$$
+$$V=E{x}$$
+$$V=1.89\times10^{11}(0.001)$$
+$$V=1.89\times10^{8}\ V$$
+
+
+\end{document}
+

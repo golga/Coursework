@@ -1,0 +1,119 @@
+\documentclass[11pt]{article}
+
+\usepackage{latexsym}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{enumerate}
+\usepackage{amsmath}
+\usepackage{cancel}
+\numberwithin{equation}{section}
+
+\setlength{\evensidemargin}{.25in}
+\setlength{\oddsidemargin}{-.25in}
+\setlength{\topmargin}{-.75in}
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{9.5in}
+\newcommand{\due}{November 17th, 2009}
+\newcommand{\HWnum}{11}
+\newcommand{\grad}{\bold\nabla}
+\newcommand{\vecE}{\vec{E}}
+\newcommand{\vecscrptR}{\vec{\mathfrak{R}}}
+\newcommand{\scrptR}{\mathfrak{R}}
+\newcommand{\kapa}{\frac{1}{4\pi\epsilon_0}}
+
+\begin{document}
+\input{../title.tex}
+
+\section{Problem \#1}
+\begin{enumerate}[(a)]
+\item
+To find the magnetic field due to an infinite sheet of uniform surface current density $K_0\hat{x}$ we use 
+\begin{equation}
+\vec{B}(\vec{r}) = \frac{\mu_0}{4\pi}\int\frac{\vec{K}\times\hat{\scrptR}}{\scrptR^2}da'
+\label{Biosav}
+\end{equation}
+Where $\vecscrptR$ is given by $\vecscrptR = \vec{r}-\vec{r'}$. Where $\vec{r}$ is the vector that points to the point of interest, and $\vec{r'}$ points to the source. These are given by
+$$\vec{r} = z\hat{z}$$
+and
+$$\vec{r'} = x'\hat{x} + y'\hat{y}$$
+note that we put the origin under the point where we are trying to find the B-field to make things simpler. So if follows that
+$$\vecscrptR = -x'\hat{x} - y'\hat{y} + z\hat{z}$$
+where
+$$|\vecscrptR| = \scrptR = \sqrt{x'^2+y'^2+z^2}$$
+So we can now solve equation \ref{Biosav}
+$$\vec{B}(\vec{r}) = \frac{\mu_0}{4\pi}\int\frac{K_0\hat{x}\times\vecscrptR}{\scrptR^3}da'$$
+Note that we changed the unit vector $\hat{\scrptR}$ to $\vecscrptR/\scrptR$. Now we can calculate the vector product as
+\begin{align*}
+{K_0\hat{x}\times\vecscrptR} &= \det\left(\begin{array}{ccc}
+			\hat{x}		&\hat{y}	&\hat{z}	\\
+			K_0		&0		&0		\\
+			-x'		&-y'		&z
+			\end{array}\right)\\
+&= -K_0z\hat{y}+K_0y'\hat{z}
+\end{align*}
+So now we can split equation \ref{Biosav} into the 2 vector components (note that we are actually doing all 3 but the $\hat{x}$ component is zero).
+$$\vec{B}(\vec{r}) = \frac{\mu_0}{4\pi}\int\frac{-K_0z}{(x'^2+y'^2+z^2)^{3/2}}\hat{y}da' + \frac{\mu_0}{4\pi}\int\frac{K_0y'}{(x'^2+y'^2+z^2)^{3/2}}\hat{z}da'$$
+Now we see that our point is in the center of the sheet so we can see that the symmetry of the sheet will make all the contributions from the $y'$ cancel out. Therefore we do not have a magnetic field component in the $\hat{z}$ direction so our magnetic field is given by
+$$\vec{B}(\vec{r}) = \frac{\mu_0}{4\pi}\int\frac{-K_0z}{(x'^2+y'^2+z^2)^{3/2}}\hat{y}da'$$
+where $da'=dx'dy'$ and we integrate over all space so we have
+\begin{align*}
+\vec{B}(\vec{r}) &= \frac{\mu_0}{4\pi}\int\frac{-K_0z}{(x'^2+y'^2+z^2)^{3/2}}\hat{y}da'\\
+&= \frac{\mu_0}{4\pi}\int_{-\infty}^{\infty}\int_{-\infty}^{\infty}\frac{-K_0z}{(x'^2+y'^2+z^2)^{3/2}}\hat{y}dx'dy'\\
+&= \frac{-\mu_0K_0z}{4\pi}\int_{-\infty}^{\infty}\frac{2dy'}{(y'^2+z^2)^{3/2}}\hat{y}\\
+&= \frac{-\mu_0K_0z}{4\pi}\frac{2\pi}{z}\hat{y}\\
+&= \frac{-\mu_0K_0}{2}\hat{y}
+\end{align*}
+This is the field for above the sheet. Now we see that the only change when we go below the sheet is $z\rightarrow-z$ so we just change the sign. So we can say the magnetic field is
+$$\vec{B} = \left\{\begin{array}{lc}
+	\dfrac{-\mu_0K_0}{2}\hat{y}	&z>0\\
+\\
+	\dfrac{\mu_0K_0}{2}\hat{y}	&z<0
+	\end{array}\right.$$
+
+\item
+We can use \emph{Amp\`{e}re's Law} 
+\begin{equation}
+\oint\vec{B}\cdot d\vec{l} = \mu_0 I_{enc}
+\label{amplaw}
+\end{equation}
+to find the magnetic field for the system in part (a). We know that the magnetic field points in the $y$ direction so if we make and Amp\`{e}rean loop that is parallel to the $yz$ plane we can see that the B-field points along the top and bottom of the square loop and does not contribute along the sides ($x$ direction). So we see that the B-field is constant and parallel to our loop we can say
+\begin{align*}
+\oint\vec{B}\cdot d\vec{l} &= \mu_0 I_{enc}
+Bl+Bl &= \mu_0 I_{enc}
+2Bl &= \mu_0 I_{enc}
+\end{align*}
+Where $l$ is the length of the top and bottom of the loop. To find the current enclosed we can say that $I_{enc} = K_0l$. This is from the definition of $\vec{K}$. So equation \ref{amplaw} becomes 
+\begin{align*}
+2Bl &= \mu_0 I_{enc}
+\end{align*}
+
+$$\vec{B} = \left\{\begin{array}{lc}
+	\dfrac{-\mu_0K_0}{2}\hat{y}	&z>0\\
+\\
+	\dfrac{\mu_0K_0}{2}\hat{y}	&z<0
+	\end{array}\right.$$
+
+\item
+\end{enumerate}
+
+\section{Problem \#2}
+\begin{enumerate}[(a)]
+\item
+\end{enumerate}
+
+\section{Problem \#3}
+
+\section{Problem \#4}
+\begin{enumerate}[(a)]
+\item
+\item
+\end{enumerate}
+
+\section{Problem \#5}
+\begin{enumerate}[(a)]
+\item
+\item
+\end{enumerate}
+
+\end{document}
+

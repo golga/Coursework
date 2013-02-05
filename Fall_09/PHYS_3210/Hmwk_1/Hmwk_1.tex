@@ -1,0 +1,426 @@
+\documentclass[11pt]{article}
+
+\usepackage{latexsym}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{cancel}
+\numberwithin{equation}{section}
+
+\setlength{\evensidemargin}{.25in}
+\setlength{\oddsidemargin}{-.25in}
+\setlength{\topmargin}{-.75in}
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{9.5in}
+
+\newcommand{\due}{September $2^{nd}$, 2009}
+\newcommand{\HWnum}{1}
+\newcommand{\partdr}{\frac{\partial L}{\partial \dot{r}}}
+\newcommand{\partr}{\frac{\partial L}{\partial r}}
+\newcommand{\partdth}{\frac{\partial L}{\partial \dot{\theta}}}
+\newcommand{\partth}{\frac{\partial L}{\partial \theta}}
+\newcommand{\partdj}{\frac{\partial L}{\partial \dot{j}}}
+\newcommand{\partj}{\frac{\partial L}{\partial j}}
+\newcommand{\partdk}{\frac{\partial L}{\partial \dot{k}}}
+\newcommand{\partk}{\frac{\partial L}{\partial k}}
+
+\begin{document}
+\input{../title.tex}
+
+\section{Problem \#1}
+\subsection{part (a)}
+The bead starts at an initial point $x_o$ on the $x$ axis and has an 
+initial height of $\frac{1}{2}x_o^2$. Once the bead is released it follows the 
+wire and accelerates to the origin. The bead once past the origin decelerates 
+back to it's initial height at $-x_o$ and velocity of zero. Now the bead 
+accelerates back to the origin and decelerates back to it's initial position. This motion continues harmonically in the $x$ direction between the points $x_o$ and $-x_o$.
+
+\subsection{part (b)}
+First let us assume that the bead does not change in the $y$ direction so 
+$y = 0$ for all $x$ and $z$. This eliminates the generalized coordinate $y$.
+
+Next we define the Lagrangean ($L$) as
+\begin{center}
+\begin{equation}
+L = T - U
+\label{Lagrangean}
+\end{equation}
+\end{center}
+where $T$ is the kinetic energy of the system and $U$ is the potential energy of the system. We define $T$ to be
+\begin{center} 
+\begin{equation}
+T = \frac{1}{2} m (\dot{x}^2 + \dot{z}^2)
+\label{Kin_en}
+\end{equation}
+\end{center}
+where $\dot{x}$ and $\dot{z}$ are the first time derivatives of the functions $x(t)$ and $z(t)$ or their velocities. The potential energy ($U$) is due to the
+gravity potential and is given by
+\begin{equation}
+U = mgz
+\label{Pot}
+\end{equation}
+
+The $z$ and $\dot{z}$ are converted to the generalized coordinates $x$ and $\dot{x}$ by the equation of constraint $z = \frac{1}{2} c x^2$. We find $\dot{z}$ by taking the time derivative of $z$. 
+
+Note that there is a constant $c$ in $z(t)$ this constant is equal to one but has a unit of $m^{-1}$ this is because the units of $z$ are meters ($<z> = m$) and the units of $x^2$ are $m^2$ ($<x^2> = m^2$).
+
+\begin{equation}
+z = \frac{1}{2}cx^2
+\label{z}
+\end{equation}
+$$\frac{dz}{dt} = \frac{c}{2}\frac{d}{dt}(x^2)$$
+$$\frac{dz}{dt} = \frac{c}{2} 2 x \dot{x}$$
+\begin{equation}
+\dot{z} = c x \dot{x}
+\label{zdot}
+\end{equation}
+Now we replace $z$ and $\dot{z}$ in equations \ref{Kin_en} and \ref{Pot} by using equations \ref{z} and \ref{zdot}. This gives us
+$$T = \frac{1}{2}m(\dot{x}^2 + c^2 x^2\dot{x}^2)$$
+$$U = \frac{1}{2}cmgx^2$$
+
+We now have the values for $T$ and $U$ in one generalized coordinate, $x$. Equation \ref{Lagrangean} now looks like
+$$L = \frac{1}{2}m(\dot{x}^2 + c^2x^2\dot{x}^2) - \frac{1}{2}mgx^2$$
+
+Now that we know the Lagrangean we can derive the equations of motion. We know
+\begin{equation}
+\frac{\partial L}{\partial x} - \frac{d}{dt}\left(\frac{\partial L}{\partial \dot{x}}\right) = 0
+\label{Ham}
+\end{equation}
+from Hamilton's principle of least action.
+
+Now we find
+$$\frac{\partial L}{\partial x} = \frac{1}{2}m(c^2(2x)\dot{x}^2) - \frac{1}{2}cmg(2x)$$
+$$\frac{d}{dt}\left(\frac{\partial L}{\partial \dot{x}}\right) = \frac{d}{dt}\left(\frac{1}{2}m(c^2x^2(2\dot{x}) + 2\dot{x}) - 0\right)$$
+the twos cancel and we factor a $m$ out to get
+\begin{equation}
+\frac{\partial L}{\partial x} = m(c^2x\dot{x}^2 - cgx)
+\label{dldx}
+\end{equation}
+$$\frac{d}{dt}\left(\frac{\partial L}{\partial \dot{x}} \right)= \frac{d}{dt}\left(m(c^2x^2\dot{x} + \dot{x})\right)$$
+By taking the time derivative of $\partial L$ \textbackslash $\partial \dot{x}$ we get
+$$\frac{d}{dt}\left(\frac{\partial L}{\partial \dot{x}} \right)= m(c^2x^2\ddot{x} + c^2(2x)\dot{x}\dot{x} + \ddot{x})$$
+\begin{equation}
+\frac{d}{dt}\left(\frac{\partial L}{\partial \dot{x}} \right)= m(c^2x^2\ddot{x} + 2c^2x\dot{x}^2 + \ddot{x})
+\label{ddtdldx}
+\end{equation}
+where chain rule was used for the term $x^2\dot{x}$
+
+Now we combine equations \ref{Ham}, \ref{dldx}, and \ref{ddtdldx} to give us
+$$\frac{\partial L}{\partial x} - \frac{d}{dt}\left(\frac{\partial L}{\partial \dot{x}}\right) = 0$$
+$$m(c^2x\dot{x}^2 - cgx) - m(c^2x^2\ddot{x} + 2c^2x\dot{x}^2 + \ddot{x}) = 0$$
+We cancel out the common $m$ and combine the like terms of $x\dot{x}^2$ to get
+$$ - cgx - c^2x^2\ddot{x} - c^2x\dot{x}^2 - \ddot{x} = 0$$
+We remove the negatives from all the terms, because addition looks better. This is actually trivial.
+\begin{equation}
+cgx + c^2x^2\ddot{x} + c^2x\dot{x}^2 + \ddot{x} = 0
+\label{eqmot}
+\end{equation}
+Over a period of small oscillation we can assume the $x^2$ and $\dot{x}^2$ term are very small and go to zero. With this assumption equation \ref{eqmot} becomes
+$$cgx + \cancelto{0}{c^2x^2\ddot{x}} + \cancelto{0}{c^2x\dot{x}^2} + \ddot{x} = 0$$
+\begin{equation}
+cgx + \ddot{x} = 0
+\label{eqHarm}
+\end{equation}
+This is the differential equation for harmonic motion. Which is what we predicted the motion to look like in part (a). We can guess the solution is 
+$$x(t) = A\cos{(\omega t + \phi)}$$
+$$\dot{x(t)} =- A \omega \sin{(\omega t + \phi)}$$
+$$\ddot{x(t)} =- A \omega^2 \cos{(\omega t + \phi)}$$
+where $A$ and $\phi$ are constants found from the initial conditions, and $\omega$ is the frequency of small oscillation.
+
+By combining the guess for $x(t)$ with equation \ref{eqHarm} we get
+$$- A \omega^2 \cos{(\omega t + \phi)} +  cgA\cos{(\omega t + \phi)} = 0$$
+$$\omega^2 \cancel{A\cos{(\omega t + \phi)}} = cg\cancel{A\cos{(\omega t + \phi)}}$$
+$$\omega^2 = cg$$
+\begin{equation}
+\omega = \sqrt{cg}
+\label{omega}
+\end{equation}
+New we find $A$ and $\phi$ through the initial conditions $x(0) = x_o$ and $\dot{x(0)} = 0$ (in words starting at position $x_o$ with no initial velocity).
+$$\dot{x(0)} = 0 =- A \sqrt{cg} \sin{(\sqrt{cg} 0 + \phi)}$$
+$$\dot{x(0)} = 0 =- A \sqrt{cg} \sin{(\phi)}$$
+since $-A$ and $\sqrt(cg)$ are not zero they can be divided out and you get
+$$\dot{x(0)} = 0 =\sin{(\phi)}$$
+$$\phi = \arcsin{0}$$
+$$\phi = 0$$
+
+Now that we know $\phi$ is zero we can find $A$
+$$x(0) = x_o = A\cos{(\sqrt{cg} 0 + 0)}$$
+$$x(0) = x_o = A\cos{(0)}$$
+$$x(0) = x_o = A$$
+
+With the constants $A$ $\phi$ and $\omega$ found we can write the full equation of motion as
+\begin{equation}
+x(t) = x_o\cos{(\sqrt{cg}t)}
+\label{equofmot}
+\end{equation}
+With a frequency of small oscillation, $\omega$ where
+$$\omega = \sqrt{cg}$$
+We can do a quick dimensional analysis of $\omega$ as a double check. The units of $\omega$ should be $Hz$ or $s^{-1}$. We know the units of $c$ and $g$ are
+$$<c> = m^{-1} <g> = ms{-2}$$
+$$<\sqrt{cg}> = \sqrt{m^{-1}ms^{-2}}$$
+$$<\sqrt{cg}> = \sqrt{s^{-2}}$$
+$$<\sqrt{cg}> = s^{-1}$$
+This is the result we want and expect our units of $\omega$ are $s^{-1}$. We can also know that the units of $x(t)$ are meters and the only value with dimension in $x(t)$ is $x_o$ which is also in meters. Therefore it is safe to say that equations \ref{equofmot} and \ref{omega} are physical and the answer for part (b).
+\begin{center}
+\fbox {$x(t) = x_o\cos{(\sqrt{cg}t)}; \omega = \sqrt{cg}$}
+\end{center}
+\subsection{part (c)}
+The Mathematica notebook is attached.
+
+\section{Problem \#2}
+\subsection{part (a)}
+This problem will be easier to think of in polar notation. This is because the spring system moves with an angular velocity ($\dot{\theta}$). The motion of the spring also moves in and out in the $\hat{r}$ direction. These reasons make it obvious to work in polar notation. We can now think of equation \ref{Lagrangean} from problem 1.
+$$L = T - U$$
+Where the velocity in $T$ is written in polar form or $\dot{r}\hat{r} + r\dot{\theta}\hat{\theta}$. The square of the velocity is $\dot{r}^2 + r^2\dot{\theta}^2$. The individual components are orthogonal so the square of the velocity is equal to the sum of the square of the individual components. Now that we know a $v^2$ we can find the kinetic energy $T$
+\begin{equation}
+T = \frac{1}{2}m(\dot{r}^2 + r^2\dot{\theta}^2)
+\label{KinEn2}
+\end{equation}
+The find that the potential in this system is only due to the spring constant. Which is (in polar form) $\frac{1}{2}k(r-l)^2$ where $r$ is the displacement from the equilibrium length, $l$, and $k$ is a known spring constant. This gives us the equation for the potential energy
+\begin{equation}
+U = \frac{1}{2}k(r - l)^2
+\label{SpringPot}
+\end{equation}
+By combining equations \ref{KinEn2} and \ref{SpringPot} into equation \ref{Lagrangean} we get
+\begin{equation}
+L = \frac{1}{2}m(\dot{r}^2 + r^2\dot{\theta}^2) - \frac{1}{2}k(r-l)^2
+\label{Larg2}
+\end{equation}
+Equation \ref{Larg2} is the Lagrangean of the system and the answer to part (a). Note that equation \ref{Larg2} has two generalized coordinates $r$ and $\theta$. The coordinate $\theta$ is constrained by the fact that there is a constant angular velocity $\Omega$. This means that $\dot{\theta} = \Omega$, but for a more rigorous solution we will leave $\dot{\theta}$ in equation \ref{Larg2} and replace it with $\Omega$ when we solve.
+\begin{center}
+\fbox{$L = \frac{1}{2}m(\dot{r}^2 + r^2\dot{\theta}^2) - \frac{1}{2}k(r-l)^2$}
+\end{center}
+
+\subsection{part (b)}
+To find the Lagrange equation of motion we can use equation \ref{Ham} on the answer we found in part (a) (equation \ref{Larg2}). We find the individual components of equation \ref{Ham} for $r$ to be
+$$\partr = \frac{1}{2}m(2r)\dot{\theta}^2 - \frac{1}{2}k(2(r-l))$$
+$$\partr = mr\dot{\theta}^2 - k(r-l)$$
+$$\partr = mr\dot{\theta}^2 - k(r-l)$$
+$$\partr = mr\dot{\theta}^2 - kr + kl$$
+\begin{equation}
+\partr = (m\dot{\theta}^2 - k)r + kl
+\label{dLdr}
+\end{equation}
+$$\frac{d}{dt}\left(\partdr\right) = \frac{d}{dt}\left(\frac{1}{2}m(2\dot{r})\right)$$
+$$\frac{d}{dt}\left(\partdr\right) = \frac{d}{dt}\left(m\dot{r}\right)$$
+\begin{equation}
+\frac{d}{dt}\left(\partdr\right) = m\ddot{r}
+\label{dLddr}
+\end{equation}
+The individual components of equation \ref{Ham} for $\theta$ are
+$$\partth = \cancelto{0}{\frac{1}{2}m(\dot{r}^2 + r^2\dot{\theta}^2) - \frac{1}{2}kr^2}$$
+Because there is no explicit $\theta$ dependence in $L$ we find
+\begin{equation}
+\partth = 0
+\label{dLdth}
+\end{equation}
+$$\frac{d}{dt}\left(\partdth\right) = \frac{d}{dt}\left(\frac{1}{2}m(r^2(2\dot{\theta})\right)$$
+\begin{equation}
+\frac{d}{dt}\left(\partdth\right) = \frac{d}{dt}\left(mr^2\dot{\theta}\right)
+\label{dLddth}
+\end{equation}
+
+Now can use equation \ref{Ham} to combine equations \ref{dLdr} and \ref{dLddr} to give us
+$$(m\dot{\theta}^2 - k)r +kl - m\ddot{r} = 0$$
+$$(m\dot{\theta}^2 - k)r + kl = m\ddot{r}$$
+$$\frac{(m\dot{\theta}^2 - k)}{m}r +\frac{kl}{m}= \ddot{r}$$
+$$(\dot{\theta}^2 - \frac{k}{m})r + \frac{kl}{m}= \ddot{r}$$
+where $\dot{\theta} = \Omega$ (given as a constraint to the problem). The Lagrange equation of motion for $r$ becomes
+\begin{equation}
+(\Omega^2 - \frac{k}{m})r + \frac{kl}{m}= \ddot{r}
+\label{diffeq2}
+\end{equation}
+Equations \ref{dLdth} and \ref{dLddth} give us equation \ref{Ham} for $\theta$
+$$0 - \frac{d}{dt}\left(mr^2\dot{\theta}\right) = 0$$
+$$\frac{d}{dt}\left(mr^2\dot{\theta}\right) = 0$$
+We know that if the derivative is 0 then the term inside the $d$ \textbackslash $dt$ is constant giving us
+$$mr^2\dot{\theta} = C$$
+where $C$ is not only constant, but the angular momentum of the system. It is worth noting that this is an expected result. We can now replace $\dot{\theta}$ with $\Omega$ to yield
+\begin{equation}
+\Omega = \frac{C}{mr^2}
+\label{AngMom}
+\end{equation}
+Doing a dimensional check on equation \ref{AngMom} we find
+\begin{center}
+$<C> = Nms = kg m^2 s^{-1}; <m> = kg; <r^2> = m^2$
+\end{center}
+$$\left<\frac{C}{mr^2}\right> = kg m^2 s^{-1} kg^{-1} m^{-2}$$
+$$\left<\frac{C}{mr^2}\right> = s^{-1}$$
+This is the expected result because the units of angular velocity (in this problem $\Omega$) are $s^{-1}$. Technically there are radians too but radians have no units.
+The dimensions of the constant term are
+$$<k> = kg s^{-2}; <l> = m; <m> = kg$$
+$$\left<\frac{kl}{m}\right> = kg s^{-2} m kg^{-1}$$
+$$\left<\frac{kl}{m}\right> = m s^{-2}$$
+This is the expected result because it is a constant in $\ddot{r}$ which has units of $m s^{-2}$. So we know the Lagrange equation of motion is equation \ref{diffeq2} or
+\begin{center}
+\fbox{$(\Omega^2 - \frac{k}{m})r +\frac{kl}{m} = \ddot{r}$}
+\end{center}
+
+\subsection{part (c)}
+The equilibria of the radial motion is when $r$ is at the equilibrium point. This is defined in part (a) as $l$. So the system is at equilibrium when $r=l$. With this identity equation \ref{diffeq2} becomes
+$$(\Omega^2 - \frac{k}{m})l +\frac{kl}{m} = \ddot{r}$$
+where $\dot{r}$ and $\ddot{r}$ are zero because $r$ is constant now we have 
+$$(\Omega^2 - \frac{k}{m})l +\frac{kl}{m} = 0$$
+$$\Omega^2l - \frac{kl}{m} +\frac{kl}{m} = 0$$
+$$\Omega^2l = 0$$
+and $l$ cannot be zero so we find that at equilibrium
+\begin{equation}
+\Omega = 0
+\end{equation}
+
+\subsection{part (d)}
+Equation \ref{diffeq2} still needs to be solved and it is in the same form as the differential equation in Problem 1. So it is safe to say that the solution guessed there will work for the homogeneous solution. So we shall guess $r(t)$ to equal 
+$$r(t) = A\cos{(\omega t + \phi)}$$
+where $A$ and $\phi$ are constants found from the initial conditions, and $\omega$ is the frequency of small oscillation. Following the same process that gave us equation \ref{omega} we can quickly see that 
+$$\omega^2 = \Omega^2 - \frac{k}{m}$$
+\begin{equation}
+\omega = \sqrt{\Omega^2 - \frac{k}{m}}
+\label{omega2}
+\end{equation}
+We were not given initial conditions for this problem so the solution of $A$ and $\phi$ just remain in the function as constants.
+\begin{equation}
+r(t) = A\cos{(\sqrt{\Omega^2 - \frac{k}{m}} t + \phi)}
+\label{EqMot2} 
+\end{equation}
+
+Again we will do a dimensional check of $\omega$, which we know to have units of $s^{-1}$.
+$$<\Omega> = s^{-1}; <k> = kg s^{-2}; <m> = kg$$ 
+$$ \left<\sqrt{\Omega^2 - \frac{k}{m}}\right> = \sqrt{s^{-2} - kg s^{-2} kg{-1}}$$
+$$ \left<\sqrt{\Omega^2 - \frac{k}{m}}\right> = \sqrt{s^{-2}}$$
+$$ \left<\sqrt{\Omega^2 - \frac{k}{m}}\right> = s^{-1}$$
+This is the expected result so we now know that $\omega$ is physical, and equation \ref{omega2} is most likely the frequency of small oscillation about a stable equilibrium.
+\begin{center}
+\fbox{$\omega = \sqrt{\Omega^2 - \frac{k}{m}}$}
+\end{center}
+
+\section{Problem \#3}
+In this problem we have two generalized coordinates. The distance the ramp moved
+we will call this distance $j$. The other coordinate is the distance the block moved down the ramp we will call this distance $k$. We use these coordinates in equation \ref{Lagrangean}. 
+
+This problem is difficult to figure out without drawing a picture first. Attached is a drawing of the system at time $0$ and then after some time $t$. We see in the picture that the velocity in $T$, the kinetic energy, is not as simple as $\dot{j} + \dot{k}$. The velocity is the sum of $\dot{j} + \dot{k}$ after they are converted to cartesian coordinates. This is where the drawing comes in handy it is easy to see once the system is drawn out that the components of $j$ are
+$$x_j = -j$$
+$$y_j = 0$$
+due to the fact that the ramp cannot move in the $y$ direction. The blocks components are not as easy to see, but drawing a similar triangle helps us see that the block moves down $k\sin{(\alpha)}$ from height $h$ ($\alpha$ and $h$ are the angle and height of the ramp respectively these are constant), and moves over a distance of $k\cos{(\alpha)}$ and back a distance $j$. Now that we know this we can write the components as
+\begin{equation}
+x_k = k\cos{(\alpha)} - j  
+\label{x_k}
+\end{equation}
+\begin{equation}
+y_k = h - k\sin{(\alpha)}
+\label{y_k}
+\end{equation}
+
+Now we can find the velocity of the block ($v_b = \dot{x_k} + \dot{y_k}$)
+$$\dot{x_k} = \frac{d}{dt}(k\cos{(\alpha)} - j)$$  
+\begin{equation}
+\dot{x_k} = \dot{k}\cos{(\alpha) - \dot{j}}  
+\label{dotxk}
+\end{equation}
+$$\dot{y_k} = \frac{d}{dt}(h - k\sin{(\alpha)})$$
+\begin{equation}
+\dot{y_k} = \dot{k}\sin{(\alpha)}
+\label{dotyk}
+\end{equation}
+we can combine equations \ref{dotxk} and \ref{dotyk} into
+$$v_b =(\dot{k}\cos{(\alpha)} - \dot{j})\hat{x} + \dot{k}\sin{(\alpha)\hat{y}}$$
+$$v_b^2 =(\dot{k}\cos{(\alpha)} - \dot{j})^2 + (\dot{k}\sin{(\alpha)})^2$$
+Because of they are orthogonal you only square the individual components $\hat{x}$ and $\hat{y}$
+
+$$v_b^2 =(\dot{k}^2\cos^2{(\alpha)} + \dot{j}^2 -2\dot{k}\dot{j}\cos{(\alpha)}) + \dot{k}^2\sin^2{(\alpha)}$$
+$$v_b^2 =\dot{k}^2(\cos^2{(\alpha)} + \sin^2{(\alpha)}) + \dot{j}^2 -2\dot{k}\dot{j}\cos{(\alpha)} $$
+\begin{equation}
+v_b^2 =\dot{k}^2 + \dot{j}^2 - 2\dot{k}\dot{j}\cos{(\alpha)} 
+\label{vsq}
+\end{equation}
+We us equation \ref{vsqP} write the full value of the kinetic energy as
+$$T = \frac{1}{2}M\dot{j}^2 + \frac{1}{2}m(\dot{k}^2 + \dot{j}^2 - 2\dot{k}\dot{j}\cos{(\alpha))} $$
+\begin{equation}
+T = \frac{1}{2}(M+m)\dot{j}^2 + \frac{1}{2}m(\dot{k}^2 - 2\dot{k}\dot{j}\cos{(\alpha))} 
+\label{KinEn3}
+\end{equation}
+Where $M$ is the mass of the ramp and $m$ is the mass of the block. Now we find the potential energy $U$. We know the potential is due to gravity and is equal to $mgy$. We replace equation \ref{y_k} for $y$ (there is no $y$ component for the ramp) this gives us
+$$U = m g (h - k \sin{(\alpha)})$$
+\begin{equation}
+U = m g h - m g k \sin{(\alpha)}
+\label{PotEn3}
+\end{equation}
+
+So our total Lagrangean is given by equation \ref{Lagrangean} and looks like
+\begin{equation}
+L = \frac{1}{2}(M+m)\dot{j}^2 + \frac{1}{2}m(\dot{k}^2 - 2\dot{k}\dot{j}\cos{(\alpha))} + m g k \sin{(\alpha)} - mgh
+\label{Lag3}
+\end{equation}
+
+Now we take equation \ref{Lag3} and find the components of equation \ref{Ham}. The components of equation \ref{Ham} for the generalized coordinate $j$ are
+\begin{equation}
+\partj = 0
+\label{dLdj}
+\end{equation}
+because there is no explicit $j$ dependence in $L$
+$$\frac{d}{dt}\left(\partdj\right) = \frac{d}{dt}\left(\frac{1}{2}(M +m)(2\dot{j}) - \frac{1}{2}m(-2\dot{k}\cos{(\alpha)}\right)$$
+after we cancel $2$s and negatives we get
+\begin{equation}
+\frac{d}{dt}\left(\partdj\right) = \frac{d}{dt}\left((M +m)\dot{j} +  m(\dot{k}\cos{(\alpha)}\right)
+\label{dLddj}
+\end{equation}
+
+Now for the $k$ coordinate
+\begin{equation}
+\partk = mg\sin{(\alpha)}
+\label{dLdk}
+\end{equation}
+$$\frac{d}{dt}\left(\partdk\right) = \frac{d}{dt}\left(\frac{1}{2}m(2\dot{k} - 2\dot{j}\cos{(\alpha)})\right)$$
+$$\frac{d}{dt}\left(\partdk\right) = \frac{d}{dt}\left(m(\dot{k} - \dot{j}\cos{(\alpha)})\right)$$
+
+\begin{equation}
+\frac{d}{dt}\left(\partdk\right) = m(\ddot{k} - \ddot{j}\cos{(\alpha)})
+\label{dLddk}
+\end{equation}
+We can now write equation \ref{Ham} using equations \ref{dLdk} and \ref{dLddk} for the $k$ coordinate. And equations \ref{dLdj} and \ref{dLddj} for the $j$ coordinate.
+$$0 - \frac{d}{dt}\left((M +m)\dot{j} +  m\dot{k}\cos{(\alpha)}\right) = 0$$
+$$\frac{d}{dt}\left((M +m)\dot{j} +  m\dot{k}\cos{(\alpha)}\right) = 0$$
+\begin{equation}
+(M +m)\dot{j} +  m\dot{k}\cos{(\alpha)} = C
+\label{HamJ}
+\end{equation}
+Equation \ref{HamJ} says that the momentum of the system is conserved. Where $C$ is the initial momentum of the system which remains constant. This is an expected physical result.
+
+Equation \ref{Ham} for $k$ uses equations \ref{dLdk} and \ref{dLddk}. It looks like
+$$mg\sin{(\alpha)} - m(\ddot{k} - \ddot{j}\cos{(\alpha)}) = 0$$
+\begin{equation}
+\ddot{k} = \ddot{j}\cos{(\alpha)} + g\sin{(\alpha)}
+\label{HamK}
+\end{equation}
+By checking the units of equation \ref{HamK} we find
+$$<\ddot{k}> = m s^{-2}$$
+$$<\ddot{j}> = m s^{-2}; <g> = m s^{-2}$$
+$$<\ddot{j} + g> = m s^{-2}$$
+Good our units check out. So equations \ref{HamJ} and \ref{HamK} are the equations of motion. They are written as
+\begin{center}
+\fbox{$\ddot{k} = \ddot{j}\cos{(\alpha)} + g\sin{(\alpha)}$}
+\fbox{$(M +m)\dot{j} +  m\dot{k}\cos{(\alpha)} = C$}
+\end{center}
+
+\subsection{part (a)}
+For the case where $M \rightarrow \infty$ we look at equation \ref{HamJ} and seethe term $(M+m)\dot{j}$. That term must stay constant. So if the mass increases to $\infty$ then the velocity has to decrease to zero to compensate. This turns equation \ref{HamK} into
+$$\ddot{k} = \cancelto{0}{\ddot{j}\cos{(\alpha)}} + g\sin{(\alpha)}$$
+$$\ddot{k} = g\sin{(\alpha)}$$
+This makes sense because when the mass goes to infinity it is like the ramp is fixed.
+
+\subsection{part (b)}
+For the case where $\alpha = 0$ equations \ref{HamJ} and \ref{HamK} become
+$$\ddot{k} = \ddot{j}\cos{0} + \cancelto{0}{g\sin{0)}}$$
+$$\ddot{k} = \ddot{j}$$
+$$(M +m)\dot{j} +  m\dot{k}\cos{(0)} = C$$
+$$(M +m)\dot{j} +  m\dot{k} = C$$
+This also makes sense because when $\alpha = 0$ the ramp is flat. If the ramp is flat then there is no change in gravitation potential. This is in agreement with the results here for all $g$ terms went to zero.
+
+\subsection{part (c)}
+For the case where $\alpha = \frac{\pi}{2}$ equations \ref{HamJ} and \ref{HamK} become
+$$\ddot{k} = \ddot{j}\cancelto{0}{\cos{\frac{\pi}{2}}} + {g\sin{\frac{\pi}{2})}}$$
+$$\ddot{k} = g$$
+$$(M +m)\dot{j} +  m\dot{k}\cancelto{0}{\cos{(\frac{\pi}{2})}} = C$$
+$$(M +m)\dot{j} = C$$
+Again we get the result we expect. If $\alpha = \frac{\pi}{2}$ then there is no normal force from the ramp and the block just falls with acceleration $g$.
+
+\end{document}

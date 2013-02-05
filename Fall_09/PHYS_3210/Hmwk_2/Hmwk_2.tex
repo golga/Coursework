@@ -1,0 +1,184 @@
+\documentclass[11pt]{article}
+
+\usepackage{latexsym}
+\usepackage{amssymb}
+\usepackage{enumerate}
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{cancel}
+\numberwithin{equation}{section}
+
+\setlength{\evensidemargin}{.25in}
+\setlength{\oddsidemargin}{-.25in}
+\setlength{\topmargin}{-.75in}
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{9.5in}
+\newcommand{\due}{September $9^{th}$, 2009}
+\newcommand{\HWnum}{2}
+
+\begin{document}
+\input{../title.tex}
+
+\section{Problem \#1}
+\begin{enumerate}[(a)]
+\item(see Homework \# 1)
+\item(see Homework \# 1)
+\item(see attached Mathematica notebook)
+\end{enumerate}
+
+\section{Problem \#2}
+The first assumption of this problem is that the messenger is trying to reduce the amount of time needed to travel. For this problem we will reduce the time $t$. We will express $t$ as 
+\begin{equation}
+t=\frac{s}{v}
+\label{time}
+\end{equation} 
+where $s$ is the distance the messenger travels and $v$ is the velocity of the messenger.
+
+To simplify the problem we will assume that the destination point $B$ is at the top edge of the river. This makes it so that the messenger travels on land once and in water once. Now by looking at the figure drawn we seen that the distance is given by Pythagorean's theorem. For the messenger on land $s$ is given by 
+
+$$s_{land} = \sqrt{x^2 + (y_o - d)^2}$$ 
+and the distance for the messenger on water is given by 
+$$s_{water} = \sqrt{(x_o - x)^2 + d^2}$$ 
+The velocities are given as $v_0$ for the velocity on land and $v_1$ as the velocity in water. Now we can use equation \ref{time} to find the time it takes for the trip or $t_{tot}$ which we can write as
+\begin{equation}
+t_{tot} = \frac{\sqrt{x^2 + (y_o - d)^2}}{v_0} + \frac{\sqrt{(x_o - x)^2 + d^2}}{v_1}
+\label{ttot}
+\end{equation}
+
+Now remember the assumption that the time is being minimized. To do this we set $\frac{d t_{tot}}{dx} = 0$ as that is the minimum of the time.
+$$\frac{d t_{tot}}{dx} = \frac{\frac{1}{2}(x^2 + (y_o - d)^2)^{-1/2} (2x)}{v_0} + \frac{\frac{1}{2}((x_o - x)^2 + d^2)^{-1/2}2(x_o - x)(-1)}{v_1}$$
+$$\frac{d t_{tot}}{dx} = \frac{\frac{1}{2}(2x)}{v_0 \sqrt{x^2 + (y_o - d)^2}} - \frac{\frac{1}{2}2(x_o -x)} {v_1 \sqrt{(x_o - x)^2 + d^2}}$$
+\begin{equation}
+\frac{d t_{tot}}{dx} = \frac{1}{v_0}\frac{x}{\sqrt{x^2 + (y_o - d)^2}} - \frac{1}{v_1}\frac{x_o -x} {\sqrt{(x_o - x)^2 + d^2}}
+\label{dtdx}
+\end{equation}
+Now we can set equation \ref{dtdx} to zero and get
+$$0 = \frac{1}{v_0}\frac{x}{\sqrt{x^2 + (y_o - d)^2}} - \frac{1}{v_1}\frac{x_o -x} {\sqrt{(x_o - x)^2 + d^2}}$$
+We see that they are equal.
+\begin{equation}
+\frac{1}{v_0}\frac{x}{\sqrt{x^2 + (y_o - d)^2}} = \frac{1}{v_1}\frac{x_o -x} {\sqrt{(x_o - x)^2 + d^2}}
+\label{equals}
+\end{equation}
+Now if we look back to the figure we can see the relations
+$$\sin{\theta_0} = \frac{x}{\sqrt{x^2 + (y_o - d)^2}}$$
+and
+$$\sin{\theta_1} = \frac{x_o -x} {\sqrt{(x_o - x)^2 + d^2}}$$
+By replacing these into equation \ref{equals} we get
+\begin{equation}
+\frac{\sin{\theta_0}}{v_0} = \frac{\sin{\theta_1}}{v_1}  
+\label{snells}
+\end{equation}
+One should recognize equation \ref{snells} as Snell's law of refraction for light. This is not surprising as the system with the messenger is very similar to the situation of light traveling through two mediums where the light's velocity changes due to the medium. We know Snells law to be 
+$$n_1 \sin{\theta_1} = n_0 \sin{\theta_0}$$
+so the refraction coefficient is $$\frac{1}{v_i}$$
+
+\section{Problem \#3}
+\begin{enumerate}[(a)]
+\item 
+To find the Lagrangean
+\begin{equation}
+L = T - U
+\label{lagran}
+\end{equation}
+we need to begin by finding our generalized coordinates we can quickly define the position of mass $m_2$ as $x_2$ or its position in the $x$ direction. Mass $m_2$ is constrained in both the $y$ and $z$ direction or $y=0$ and $z=0$. For mass $m_1$ the motion is constrained in the $z$ by $z=0$, but can move freely in the $x$ and $y$ directions. These are given by
+$$x_1 = x_2 + l\sin{\theta}$$
+$$y_1 = l - l\cos{\theta}$$
+where the velocities are the time derivatives 
+$$\dot{x_1} = \dot{x_2} + l\cos{\theta}\dot{\theta}$$
+$$\dot{y_1} = l\sin{\theta}\dot{\theta}$$
+
+Now we can write our kinetic energy with our generalized coordinates
+$$T = \frac{1}{2} m_2 \dot{x_2}^2 + \frac{1}{2} m_1 \left(\dot{x_1}^2 + \dot{y_1}^2\right)$$
+$$T = \frac{1}{2} m_2 \dot{x_2}^2 + \frac{1}{2} m_1 \left((\dot{x_2} + l\cos{\theta}\dot{\theta})^2 + (l\sin{\theta}\dot{\theta})^2\right)$$
+$$T = \frac{1}{2} m_2 \dot{x_2}^2 + \frac{1}{2} m_1 \left(\dot{x_2}^2 + l^2\cos^2{\theta}\dot{\theta}^2 + 2l\dot{x_2}\cos{\theta}\dot{\theta} + l^2\sin^2{\theta}\dot{\theta}^2\right)$$
+$$T = \frac{1}{2} m_2 \dot{x_2}^2 + \frac{1}{2} m_1 \left(\dot{x_2}^2 + l^2\dot{\theta}^2 \cancelto{1}{(\cos^2{\theta}+\sin^2{\theta})} + 2l\dot{x_2}\cos{\theta}\dot{\theta}\right)$$
+$$T = \frac{1}{2} m_2 \dot{x_2}^2 + \frac{1}{2} m_1 \left(\dot{x_2}^2 + l^2\dot{\theta}^2 + 2l\dot{x_2}\cos{\theta}\dot{\theta}\right)$$
+$$T = \frac{1}{2} m_2 \dot{x_2}^2 + \frac{1}{2} m_1 \dot{x_2}^2 +\frac{1}{2} m_1 \left( l^2\dot{\theta}^2 + 2l\dot{x_2}\cos{\theta}\dot{\theta}\right)$$
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{equation}
+T = \frac{1}{2} (m_2 + m_1) \dot{x_2}^2 + \frac{1}{2} m_1 \left( l^2\dot{\theta}^2 + 2l\dot{x_2}\cos{\theta}\dot{\theta}\right)
+\label{KinEn}
+\end{equation}
+And for the potential in our generalized coordinates comes from the spring on mas $m_2$ and gravity on mass $m_1$
+$$U = \frac{1}{2}k(b - x_2)^2 + mgy_1$$
+$$U = \frac{1}{2}k(b - x_2)^2 + mg(l-l\cos{\theta})$$
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{equation}
+U = \frac{1}{2}k(b - x_2)^2 + mgl(1-\cos{\theta})
+\label{PotEn}
+\end{equation}
+Now lets combine equations \ref{KinEn} and \ref{PotEn} into equation \ref{lagran} to yield
+\begin{equation}
+L = \frac{1}{2} (m_2 + m_1) \dot{x_2}^2 + \frac{1}{2} m_1 \left( l^2\dot{\theta}^2 + 2l\dot{x_2}\cos{\theta}\dot{\theta}\right) - \frac{1}{2}k(b - x_2)^2 - mgl(1-\cos{\theta})
+\label{ProbLagran}
+\end{equation}
+Using eular's equation
+\begin{equation}
+\frac{\partial L}{\partial q_i} = \frac{d}{dt}\frac{\partial L}{\partial \dot{q_i}}
+\label{eular}
+\end{equation}
+we can find the equations of motion for each generalized coordinate. So for $x_2$ the components of equation \ref{eular} are
+$$\frac{\partial L}{\partial x_2} = -\frac{1}{2}k2(b-x_2)(-1)$$
+$$\frac{\partial L}{\partial x_2} = k(b-x_2)$$
+$$\frac{d}{dt}\frac{\partial L}{\partial \dot{x_2}} = \frac{d}{dt}\left(\frac{1}{2}(m_2 + m_1) (2\dot{x_2}) + \frac{1}{2}m_1(2l\cos{\theta}\dot{\theta})\right)$$
+$$\frac{d}{dt}\frac{\partial L}{\partial \dot{x_2}} = \frac{d}{dt}\left((m_2 + m_1)\dot{x_2} + m_1l\cos{\theta}\dot{\theta}\right)$$
+now by taking the time derivative we get
+$$\frac{d}{dt}\frac{\partial L}{\partial \dot{x_2}} = (m_2 + m_1)\ddot{x_2} + m_1l(\cos{\theta}\ddot{\theta} - \sin{\theta}\dot{\theta}\dot{\theta})$$
+$$\frac{d}{dt}\frac{\partial L}{\partial \dot{x_2}} = (m_2 + m_1)\ddot{x_2} + m_1l(\cos{\theta}\ddot{\theta} - \sin{\theta}\dot{\theta}^2)$$
+Now we can fully write equation \ref{eular} with the coordinate $x_2$ as
+$$k(b-x_2) = (m_2 + m_1)\ddot{x_2} + m_1l(\cos{\theta}\ddot{\theta} - \sin{\theta}\dot{\theta}^2)$$
+Solving for $\ddot{x_2}$ gives us
+\begin{equation}
+\ddot{x_2} = \frac{m_1l(\cos{\theta}\ddot{\theta} - \sin{\theta}\dot{\theta}^2) - k(b-x_2)}{(m_2 + m_1)}
+\label{x2mot}
+\end{equation}
+To check the dimensions we expect $<\ddot{x_2}> = m s^{-2}$ and we know that
+$$<\ddot{\theta}> = s^{-2}; <\dot{\theta}> = s^{-1}; <m_1> = <m_2> = kg; <l> = m;<b> = m; <k> = kg s^{-2}; <x_2> = m$$ and $\cos$ and $\sin$ are unitless.
+So we get
+$$\left<\frac{m_1l(\cos{\theta}\ddot{\theta} - \sin{\theta}\dot{\theta}^2) - k(b-x_2)}{(m_2 + m_1)}\right> = \frac{kg m(s^{-2} + (s^{-1})^2) - kg s^{-2}(m - m)}{kg -kg}$$
+$$\left<\frac{m_1l(\cos{\theta}\ddot{\theta} - \sin{\theta}\dot{\theta}^2) - k(b-x_2)}{(m_2 + m_1)}\right> = \frac{\cancel{kg} ms^{-2} - \cancel{kg} s^{-2} m}{\cancel{kg}}$$
+$$\left<\frac{m_1l(\cos{\theta}\ddot{\theta} - \sin{\theta}\dot{\theta}^2) - k(b-x_2)}{(m_2 + m_1)}\right> = m s^{-2}$$
+Which is what we expected therefore our units are correct.
+
+Now the generalized coordinate of $\theta$ the components of equation \ref{eular} are
+$$\frac{\partial L}{\partial \theta} = \frac{1}{2}m_1(2l\dot{x_2}\dot{\theta}(-\sin{\theta})) - m_1gl(\sin{\theta}) $$
+$$\frac{\partial L}{\partial \theta} = -m_1l\dot{x_2}\dot{\theta}\sin{\theta} - m_1gl\sin{\theta} $$
+
+$$\frac{d}{dt}\frac{\partial L}{\partial \dot{\theta}} = \frac{d}{dt}\left(\frac{1}{2}m_1(l^2(2\dot{\theta}) + 2l\dot{x_2}\cos{\theta})\right)$$
+$$\frac{d}{dt}\frac{\partial L}{\partial \dot{\theta}} = \frac{d}{dt}\left(m_1l(l\dot{\theta} + \dot{x_2}\cos{\theta})\right)$$
+$$\frac{d}{dt}\frac{\partial L}{\partial \dot{\theta}} = m_1l(l\ddot{\theta} + \ddot{x_2}\cos{\theta}-\dot{x_2}\sin{\theta}\dot{\theta})$$
+So now we can write equation \ref{eular} for the $\theta$ coordinate.
+$$ -\cancel{m_1l}\dot{x_2}\dot{\theta}\sin{\theta} - \cancel{m_1l}g\sin{\theta} = \cancel{m_1l}(l\ddot{\theta} + \ddot{x_2}\cos{\theta}-\dot{x_2}\sin{\theta}\dot{\theta})$$
+$$ -\dot{x_2}\dot{\theta}\sin{\theta} - g\sin{\theta} = l\ddot{\theta} + \ddot{x_2}\cos{\theta}-\dot{x_2}\sin{\theta}\dot{\theta}$$
+Solving for $\ddot{\theta}$ we get
+$$\ddot{\theta} = \frac{\cancel{-\dot{x_2}\dot{\theta}\sin{\theta}} - g\sin{\theta} - \ddot{x_2}\cos{\theta} + \cancel{\dot{x_2}\sin{\theta}\dot{\theta}}}{l}$$
+\begin{equation}
+\ddot{\theta} = \frac{g}{l}\sin{\theta} - \frac{\ddot{x_2}}{l}\cos{\theta}
+\label{thetaMot}
+\end{equation}
+Quickly we can check the units of the problem. We expect $\ddot{\theta}$'s units to be $s^{-2}$ and we know
+$$<g> = m s^{-2}; <l> = m; <\ddot{x_2}>m s^{-2}$$ and sine and cosine are unitless. So we get
+$$\left<\frac{g}{l}\sin{\theta} - \frac{\ddot{x_2}}{l}\cos{\theta}\right> = \frac{m s^{-2}}{m} - \frac{m s^{-2}}{m}$$
+$$\left<\frac{g}{l}\sin{\theta} - \frac{\ddot{x_2}}{l}\cos{\theta}\right> = s^{-2} -  s^{-2}$$
+$$\left<\frac{g}{l}\sin{\theta} - \frac{\ddot{x_2}}{l}\cos{\theta}\right> = s^{-2}$$
+This is what we expected. So we can assume our units are correct.
+Now we have equations \ref{x2mot} and \ref{thetaMot} as our equations of motion. They are rewritten together here
+$$\ddot{x_2} = \frac{m_1l(\cos{\theta}\ddot{\theta} - \sin{\theta}\dot{\theta}^2) - k(b-x_2)}{(m_2 + m_1)}$$
+$$\ddot{\theta} = \frac{g}{l}\sin{\theta} - \frac{\ddot{x_2}}{l}\cos{\theta}$$
+%We see we have a system of equations so we can replace equation \ref{thetaMot} in equation \ref{x2mot}. This give us
+%$$\ddot{x_2} = \frac{m_1l(\cos{\theta}\frac{g}{l}\sin{\theta} - \frac{\ddot{x_2}}{l}\cos{\theta} - \sin{\theta}\dot{\theta}^2) - k(b-x_2)}{(m_2 + m_1)}$$
+
+\item
+For the case where $k \rightarrow 0$ we have the situation where the potential from the spring goes away and the only potential left is the potential due to gravity. A system like this is one where mass $m_2$ can move freely in the $x$ direction, but is still constrained by $y=0$ and $z=0$. This means that equation \ref{ProbLagran} becomes
+$$L = \frac{1}{2} (m_2 + m_1) \dot{x_2}^2 + \frac{1}{2} m_1 \left( l^2\dot{\theta}^2 + 2l\dot{x_2}\cos{\theta}\dot{\theta}\right) - \cancelto{0}{\frac{1}{2}k(b - x_2)^2} - mgl(1-\cos{\theta})$$
+\begin{equation}
+L = \frac{1}{2} (m_2 + m_1) \dot{x_2}^2 + \frac{1}{2} m_1 \left( l^2\dot{\theta}^2 + 2l\dot{x_2}\cos{\theta}\dot{\theta}\right) - mgl(1-\cos{\theta})
+\label{PBLagran}
+\end{equation}
+This change will not affect equation \ref{eular} for the generalized coordinate $\theta$, but $x_2$ will change, namely 
+$$\frac{\partial L}{\partial x_2} = 0$$
+This creates a cyclic coordinate in $x_2$. More importantly this creates a conserved quantity. In this case because it is a linear position, $x_2$, the conserved quantity is linear momentum in the $x$ direction.
+
+\end{enumerate}
+\end{document}
+

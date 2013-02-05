@@ -1,0 +1,245 @@
+\documentclass[11pt]{article}
+
+\usepackage{latexsym}
+\usepackage{amssymb}
+\usepackage{enumerate}
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{ulem}
+\usepackage{cancel}
+
+\setlength{\evensidemargin}{.25in}
+\setlength{\oddsidemargin}{-.25in}
+\setlength{\topmargin}{-.75in}
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{9.5in}
+\newcommand{\due}{November 11th, 2009}
+\newcommand{\HWnum}{10}
+\newcommand{\CC}{\mathbb{C}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\zbar}{\overline{z}}
+\newcommand{\Let}{\textnormal{Let }}
+\newcommand{\Arg}{\textnormal{arg}}
+\newcommand{\Log}{\textnormal{Log}}
+
+\begin{document}
+\input{../title.tex}
+\subsection*{Written Problems}
+\begin{enumerate}
+\item 4.6: 14\\
+\newtheorem{Theo14}{Theorem}
+\begin{Theo14}
+Let $f$ be analytic in a bounded domain $D$ and continuous up to and including its boundary. Then if $f$ is nonzero in $D$, the modulus $|f(z)|$ attains its minimum balue on the boundary of $D$.
+\end{Theo14}
+\begin{proof}
+If we consider the function $1/f(z)$ in $D$, while assuming that $f$ is nonzero. We can infer that $1/f(z)$ is analytic in $D$ as well. Due to the fact that $f$ is nonzero we can see that where ever $|1/f(z)|$ is at a maximum, we know that $|f|$ is at a minimum. So we see that $|1/f(z)|$ attains its maximum on the boundary of $D$ by definition. Therefore we see that $|f(z)|$ is at a minimum on $D$. Consider the function $f(z) = z$ on a disk centered at the origin. We see that if we allow $f(z)$ to be zero then the minimum of $f$ is at zero, and not the boundary of $D$.
+\end{proof}
+
+\item 5.1: 12\\
+\textit{Let 
+$$F_n(z) = \frac{nz}{n+1}+\frac{3}{n},$$
+$n=1,2,3...$. Prove that the sequence $\{F_n(z)\}_1^{\infty}$ converges uniformly to $F(z) = z$ on every closed disk $|z|\le R$.}
+
+So we take the magnitude of the difference $|F_n(z) - F(z)|$ or
+\begin{align*}
+\left|\frac{nz}{n+1}+\frac{3}{n} - z\right| &= \left|\frac{nz}{n+1}+\frac{3}{n} - \frac{z(n+1)}{n+1}\right|\\
+&= \left|\frac{nz}{n+1}+\frac{3}{n} - \frac{nz+z)}{n+1}\right|\\
+&= \left|\frac{nz-nz-z}{n+1}+\frac{3}{n}\right|\\
+&= \left|\frac{-z}{n+1}+\frac{3}{n}\right|
+\end{align*}
+Using the \emph{Triangle Inequality} we see that
+\begin{align*}
+\left|\frac{-z}{n+1}+\frac{3}{n}\right| \le \frac{|-z|}{n+1}+\frac{3}{n} 
+\end{align*}
+Now we assume we are on a closed disk given by $|z|\le R$ so we see that
+$$\left|\frac{-z}{n+1}+\frac{3}{n}\right| \le \frac{R}{n+1}+\frac{3}{n}$$
+Now if we take the limit as $n$ goes to infinity we see
+\begin{align*}
+\lim_{n\rightarrow\infty} \left|F_n(z) - F(z)\right| &\le \lim_{n\rightarrow\infty} \frac{R}{n+1}+\frac{3}{n}\\
+\lim_{n\rightarrow\infty} \left|F_n(z) - F(z)\right| &\le 0
+\end{align*}
+Therefore the sequence $\{F_n(z)\}_1^{\infty}$ converges to $F(z) = z$ uniformly.
+
+\end{enumerate}
+
+\subsection*{Problems}
+\begin{enumerate}
+\item 4.6: 10 \\
+We see that $f(z)$ reaches a maximum in $D: |z|<R$ because of the assumption that $|f(z)|\le 1$. So we see that at $z=0$ $f(z=0) = i$. We see that the magnitude of $f$ at this point is
+$$|f(0)| = |i| = 1.$$
+So we see that $f$ is at a maximum in $D$ so by 
+\newtheorem{Theo23}{Theorem 23}
+\begin{Theo23}
+If $f$ is analytic in a domain $D$ and $|f(z)|$ achieves its maximum value at a point $z_0$ in $D$, then $f$ is constant in $D$.
+\end{Theo23}
+We can say the $f$ is constant in $D$ and we know that $f(0)=i$ so $$f(z) = i$$ for all $z\in D$.
+
+\item 5.1: 7 (be sure to supply justification), 8, 10, 16  
+\begin{enumerate}[(i)]
+\item 7)
+\begin{enumerate}[(a)]
+\item 
+The series 
+$$\sum_{k=0}^{\infty}\left(\frac{1+2i}{1-i}\right)^k$$
+diverges. The is due to the fact that if we take the limit of the sequence 
+$$a_k = \left(\frac{1+2i}{1-i}\right)^k$$
+We see that 
+$$\lim{k\rightarrow\infty}\left(\frac{1+2i}{1-i}\right)^k= \infty$$
+because 
+$$\left|\frac{1+2i}{1-i}\right| > 1$$
+
+\item
+The series 
+$$\sum_{j=1}^{\infty}\frac{1}{j^23^j}$$
+converges, because 
+$$\lim_{j\rightarrow\infty}\frac{1}{j^23^j}=0$$
+So we know that the sequence converges and by definition a series converges if the sequence has a limit.
+
+\item
+The series 
+$$\sum_{n=1}^{\infty}\frac{ni^n}{2n+1}$$
+diverges. This is due to the fact that the limit as $n$ goes to infinity of the sequence 
+$$\lim_{n\rightarrow\infty}\frac{ni^n}{2n+1}$$
+goes to infinity. Therefore the series diverges as well.
+
+\item To see if the series
+$$\sum_{j=1}^{\infty}\frac{j!}{5^j}$$
+diverges or converges we apply the \emph{ratio test}. So we take the limit as $j\rightarrow\infty$ of the ratio of $c_{j+1}/c_j$ or
+\begin{align*}
+\lim_{j\rightarrow\infty} \frac{c_{j+1}}{c_j} &=  \lim_{j\rightarrow\infty} \frac{(j+1)!}{5^{j+1}}\frac{5^j}{j!}\\
+&= \lim_{j\rightarrow\infty} \frac{j+1}{5}
+\end{align*}
+We see that the ratio goes to infinity, so we can say the series diverges.
+
+\item
+To see if series
+$$\sum_{k=1}^{\infty}\frac{(-1)^kk^3}{(1+i)^k}$$
+converges or diverges we can say that 
+$$\sum_{k=1}^{\infty}\left(\frac{-1}{1+i}\right)^kk^3$$
+and we see that $|-1/(1+i)|<1$ so we can say that the series converges.
+
+\item
+The series
+$$\sum_{k=1}^{\infty}\left(i^k-\frac{1}{k^2}\right)$$
+diverges because the limit 
+$$\lim_{k\rightarrow\infty}\left(i^k-\frac{1}{k^2}\right)$$
+does not converge to a value. Therefore the series diverges.
+
+\end{enumerate}
+
+\item 8)
+\begin{enumerate}[(a)]
+\item
+If we assume that
+$$\sum_{j=0}^{\infty}c_j = S$$
+and we assume that $c_J$ and $S$ can be separated into their real and imaginary parts so they are in the form $c_j = x_j+iy_j$ and $S = a+ib$ we see that
+$$\sum_{j=0}^{\infty}x_j + i\sum_{j=0}^{\infty}y_j = a+ib$$
+so if we group the components together we get the two sums
+$$\sum_{j=0}^{\infty}x_j = a$$
+and
+$$\sum_{j=0}^{\infty}y_j = b$$
+So if we take $\overline{c_j}$ we see that we have
+\begin{align*}
+\sum_{j=0}^{\infty}c_j &= \sum_{j=0}^{\infty}x_j - i\sum_{j=0}^{\infty}y_j\\
+&= a - ib\\
+&= \overline{S}
+\end{align*}
+
+\item
+If the sum
+$$\sum_{j=0}^{\infty}c_j$$
+sums to $S$ we see that for any complex number $\lambda$ the sum
+$$\sum_{j=0}^{\infty}\lambda c_j$$
+becomes
+$$\lambda\sum_{j=0}^{\infty} c_j$$
+because we can factor the constant out. Now we just have the sum which we assumed to be $S$ so we can say that
+$$\sum_{j=0}^{\infty}\lambda c_j=\lambda S$$
+\item
+If we assume that
+$$\sum_{j=0}^{\infty}c_j=S$$
+and that
+$$\sum_{j=0}^{\infty}d_j=T.$$
+Then the sum
+$$\sum_{j=0}^{\infty}\left(c_j+d_j\right)$$
+can be factored such that 
+$$\sum_{j=0}^{\infty}\left(c_j+d_j\right) = \sum_{j=0}^{\infty}c_j + \sum_{j=0}^{\infty}d_j$$
+because the sum is a linear operator . It follows from our initial assumptions that this equals $S+T$, so we see that
+$$\sum_{j=0}^{\infty}\left(c_j+d_j\right)=S+T$$
+\end{enumerate}
+
+\item 10)\\
+The sequence of functions
+$$F_n(z) = \frac{z^n}{z^n-3^n}$$
+can be rewritten as
+\begin{align*}
+F_n(z) &= \frac{z^n}{z^n-3^n}\\
+&= \frac{z^n}{z^n/z^n(z^n-3^n)}\\
+&= \frac{z^n}{z^n(z^n/z^n-3^n/z^n)}\\
+&= \frac{z^n}{z^n(1-{3}/{z}^n)}\\
+&= \frac{1}{1-({3}/{z})^n}\\
+\end{align*}
+Now for the case when $|z|<3$ we take the limit as $n$ goes the infinity and we see that
+$$\lim_{n\rightarrow\infty}\frac{1}{1-({3}/{z})^n} = 0$$
+this is because the term $(3/z)^n$ goes to infinity as $n\rightarrow\infty$. Now for the case when $|z|>3$ the term $(3/z)^n$ goes to zero as $n$ goes to infinity. So it follows that
+$$\lim_{n\rightarrow\infty}\frac{1}{1-({3}/{z})^n} = 1$$
+
+\item 16)
+\newtheorem{theo16}{Theorem}
+\begin{theo16}
+The sequence $\{z_n\}_1^{\infty}$ converges if and only if the series $\sum_{k=1}^{\infty}(z_{k+1}-z_k)$ converges.
+\end{theo16}
+\begin{proof}
+We see that the series
+$$\sum_{k=1}^{\infty}(z_{k+1}-z_k)$$
+telescopes such that 
+\begin{align*}
+\sum_{k=1}^{\infty}(z_{k+1}-z_k) &= \cancel{z_2}-z_1+\cancel{z_3}-\cancel{z_2}+...+z_{n}-\cancel{z_{n-1}}\\
+&= z_n - z_1
+\end{align*}
+So we see that the leading term remaining is $z_n$ so the series converges if and only if $z_n$ converges. Therefore $\{z_n\}_1^{\infty}$ converges if and only if the series $\sum_{k=1}^{\infty}(z_{k+1}-z_k)$ converges.
+\end{proof}
+
+\end{enumerate}
+
+\item 5.2: 4, 13
+\begin{enumerate}[(i)]
+\item 4)\\
+We see that if we write $(1+z)^{\alpha}$ as $e^{\alpha\Log(1+z)}$ we see that this function is analytic everywhere, but at $z=-1$ and the negative real axis below $-1$. This implies that $(1+z)^{\alpha}$ is analytic in $|z|<1$. Therefore we can expand $(1+z)^{\alpha}$ using a \emph{Taylor Series} or
+$$f(z) = f(0) + f'(0)z + \frac{f''(0)}{2!}z^2 +...+ \frac{f^{(n)}(0)}{n!}z^n$$ 
+So we can calculate the first 3 derivatives of $f(z) = (1+z)^{\alpha}$
+\begin{align*}
+f(0) &= (1+0)^{\alpha} = 1\\
+f'(0) &= \alpha(1+0)^{\alpha-1} = \alpha\\
+f''(0) &= \alpha(\alpha-1)(1+0)^{\alpha-2}= \alpha(\alpha-1)\\
+f^{(3)}(0) &= \alpha(\alpha-1)(\alpha-2)(1+0)^{\alpha-3}= \alpha(\alpha-1)(\alpha-2)
+\end{align*}
+So we see that the \emph{Taylor Series} is
+$$(1+z)^{\alpha} = 1 + {\alpha}z + \frac{\alpha(\alpha-1)}{2}z^2 + \frac{\alpha(\alpha-1)(\alpha-2)}{6}z^3 +...$$
+
+\item 13)\\
+We assume that 
+$$(1-z)^{-1} = \sum_{k=0}^{\infty}z^k$$
+now if we take the derivative of both sides get
+\begin{align*}
+(1-z)^{-1} &= \sum_{k=0}^{\infty}z^k\\
+\frac{d}{dz}(1-z)^{-1} &=\frac{d}{dz}\sum_{k=0}^{\infty}z^k\\
+(1-z)^{-2} &= \sum_{k=0}^{\infty}kz^{k-1}
+\end{align*}
+Now we multiply by $z$ to raise the power of $z$ from $k-1$ back to $k$
+$$z(1-z)^{-2} = \sum_{k=0}^{\infty}kz^{k}$$
+Now if we take the derivative again we get
+\begin{align*}
+\frac{d}{dz} z(1-z)^{-2} &=\frac{d}{dz} \sum_{k=0}^{\infty}kz^{k}\\
+2z(1-z)^{-3}+(1-z)^{-2} &= \sum_{k=0}^{\infty}k^2z^{k-1}
+\end{align*}
+Now if we raise the power of $z$ again by multiplying by $z$ we get
+\begin{align*}
+\sum_{k=0}^{\infty}k^2z^{k} &= 2z^2(1-z)^{-3}+z(1-z)^{-2} \\
+&= (2z(1-z)^{-1}+1)z(1-z)^{-2}\\
+\end{align*}
+
+\end{enumerate}
+\end{enumerate}
+
+\end{document}
+

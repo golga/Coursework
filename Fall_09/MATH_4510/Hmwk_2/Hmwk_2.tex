@@ -1,0 +1,225 @@
+\documentclass[11pt]{article}
+
+\usepackage{latexsym}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{cancel}
+
+\setlength{\evensidemargin}{.25in}
+\setlength{\oddsidemargin}{-.25in}
+\setlength{\topmargin}{-.75in}
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{9.5in}
+\newcommand{\due}{September 11th, 2009}
+\newcommand{\HWnum}{2}
+
+\begin{document}
+\input{../title.tex}
+\begin{enumerate}
+\item Problem 1 \\
+The sample space for a box that contains 1 red marble, 1 green marble, and 1 blue marble is $$S = \{\textnormal{red},\textnormal{blue},\textnormal{green}\}$$ before we draw any marbles. If we replace the marble after we draw it then the sample space will stay as $$S = \{\textnormal{red},\textnormal{blue},\textnormal{green}\}$$
+For the case where we do not replace the marble the sample space to begin with is the same, but the sample space for the second draw does not remain the same. The sample space actually changes depending on what you draw. If you draw the red marble first the sample space becomes
+$$T = \{\textnormal{blue},\textnormal{green}\}$$
+and if you draw the blue marble first the sample space is
+$$T = \{\textnormal{red},\textnormal{green}\}$$
+and for the last case if you draw the blue marble first the sample space is
+$$T = \{\textnormal{red},\textnormal{blue}\}$$
+
+\item Problem 2 \\
+So if you assume that rolling a 6 ends the experiment then you know each roll before that is not a 6 so the sample space $E_n$ where $n$ is the number of times the die has been rolled will look like
+$$E_n = \{1,2,3,4,5\}^n$$
+So you can see from that that each time $n$ increases it contains the set before it ($E_{n-1} \subset E_n$). 
+So we can say that
+$$\left(\bigcup_{n=1}^{\infty} E_n\right)^c = (\lim_{n \rightarrow \infty} E_n)^c$$
+And the only point in that set is 
+$$(\lim_{n \rightarrow \infty} E_n)^c = \{6\}$$
+
+\item Problem 3 \\
+The sample space $E$ represents when the sum of the dice is odd, and the sample space $F$ represents when at least one die lands on 1, and the sample space $G$ is when when the sum is 5. 
+So $EF$ is the set where the sum of the dice is odd and at least one die is 1
+$$EF = \{(1,2),(1,4),(1,6),(6,1),(4,1),(2,1)\}$$
+So $E\cup F$ is the set where the sum of the dice is odd or at least one die is 1. This set is pretty large so I'm not going to write it all out.
+$FG$ is the set where at least one die is 1 and the sum is 5.
+$$FG = \{(1,4),(4,1)\}$$
+$EF^c$ is the set where the sum of the dice is odd and neither of the dice is 1. This set is also pretty big so I wont write it all out.
+$EFG$ is the set where the sum of the dice is odd and one of the dice is 1 and the sum is 5. An important thing to note is that $G$ is a subset of $E$ so this set is the same as $FG$.
+$$EFG = \{(1,4),(4,1)\}$$
+
+\item Problem 8 
+\begin{enumerate}
+\item
+We can use the third axiom of probability which states for mutually exclusive events
+
+\begin{equation}
+P\left(\bigcup_{i=1}^{\infty} E_i\right) = \sum_{i=1}^{\infty} P(E_i)
+\label{thirdax}
+\end{equation}
+So when we find how likely $A$ or $B$ occurs we are looking for $P(A\cup B)$ which according to equation \ref{thirdax} is
+$$P(A \cup B) = P(A) + P(B)$$
+where $P(A)$ and $P(B)$ are given by the problem as $0.3$ and $0.5$ so
+\begin{center}
+\fbox{$P(A\cup B) = 0.8$}
+\end{center}
+
+\item
+The situation where $A$ occurs and $B$ does not is written as $A\cap B^c$ where $B^c$ is the event $B$ not occurring. So $P(A\cap B^c) = P(A)P(B^c)$ or 
+\begin{center}
+\fbox{$P(A\cap B^c) = 0.15$}
+\end{center}
+
+\item
+The situation where both $A$ and $B$ occurs is written mathematically as $A\cap B$ or $AB$. And we know that $P(AB) = P(A)P(B)$ or
+\begin{center}
+\fbox{$P(AB) = 0.15$}
+\end{center}
+\end{enumerate}
+
+\item Problem 11 
+\begin{enumerate}
+\item
+So first let us say that $E$ is the number of cigarette smokers (28\%) and $F$ is the number of cigar smokers (7\%). So the number of people that don't smoke cigarettes or cigars is $(E\cup F)^c$. Where $E\cup F$ is 35\%. So the remaining people who don't smoke is 
+\begin{center}
+\fbox{$= 65\%$}
+\end{center}
+
+\item
+So if we keep the $E$ and $F$ from before we know that the number of smokers who smoke both cigarettes and cigars is $EF$ given as 7\%. So the number of smokers who only smoke cigars is
+\begin{center}
+\fbox{$= 2\%$}
+\end{center}
+\end{enumerate}
+
+\item Problem 15
+\begin{enumerate}
+\item
+So we know the total number of possible hands is $$52\choose{5}$$ and there is $$13\choose{5}$$ ways to to be dealt all the same suit and $$4\choose1$$ ways to pick the suit. So the total number of ways to be dealt a flush is 
+$$\frac{4 {{13\choose5}}}{{52\choose5}}$$
+\begin{center}
+\fbox{$= 0.002$}
+\end{center}
+
+\item
+For the pair we can see that for any of the 13 values we can pick one to be a pair or $$13\choose1$$ and for each pair we can pick 2 of any four suits so there is a $${13\choose1}{4\choose2}$$ ways to pick the pairs. Now for the other 3 cards we have 12 remaining values to the remaining 3 cards or $$12\choose3$$ and for each of those cards we can pick 1 of the 4 suits. So for all three cards there is $${4\choose1}{4\choose1}{4\choose1}$$ ways to pick the suits. So the total number of hands with just a pair is $${13\choose1}{4\choose2}{12\choose3}{4\choose1}^3$$
+With the total percentage of pairs is
+$$\frac{{13\choose1}{4\choose2}{12\choose3}{4\choose1}^3}{{52\choose5}}$$
+\begin{center}
+\fbox{$= 0.42$}
+\end{center}
+
+\item
+For 2 pairs can see that we pick 2 values (one for each pair) out of the possible 13 or $$13\choose2$$ For each pair there we pick 2 out of the 4 suits or $${4\choose2}^2$$ Where it is squared, because each pair has 4 choose 2 possibilities and they are combined using the counting principal. Now we pick 1 card from the remaining 11 values and 4 suits so $${11\choose1}{4\choose1}$$
+So the total number of hands with 2 pairs is
+$${11\choose1}{4\choose1}{13\choose2}{4\choose2}^2$$
+and the percentage is
+$$\frac{{11\choose1}{4\choose1}{13\choose2}{4\choose2}^2}{{52\choose5}}$$
+\begin{center}
+\fbox{$= 0.05$}
+\end{center}
+
+\item
+For 3 of a kind we have to pick 1 value of the 13 and 3 out of the 4 suits or 
+$${13\choose1}{4\choose3}$$
+Then we have to pick 2 values out of the remaining 12 values and 1 out of the 4 suits for each card giving us
+$${12\choose2}{4\choose1}{4\choose1}$$
+So the total number of hands with 3 of a kind is 
+$${13\choose1}{4\choose3}{12\choose2}{4\choose1}^2$$
+and the percentage is
+$$\frac{{13\choose1}{4\choose3}{12\choose2}{4\choose1}^2}{{52\choose5}}$$
+\begin{center}
+\fbox{$= 0.02$}
+\end{center}
+
+\item
+For 4 of a kind we pick 1 value of the 13 again and 4 out of the 4 suits (this is one as there is only one way to have all the suits). So we get
+$$13\choose1$$
+and for the last card we can pick it out of the remaining 12 values and that one can be 1 of the 4 suits
+$${12\choose1}{4\choose1}$$
+so the total number of way to get 4 of a kind is
+$${13\choose1}{12\choose1}{4\choose1}$$
+so the percentage is
+$$\frac{{13\choose1}{12\choose1}{4\choose1}}{{52\choose5}}$$
+\begin{center}
+\fbox{$= 0.0002$}
+\end{center}
+
+\end{enumerate}
+
+\item Problem 16 
+\begin{enumerate}
+\item
+For the case where no two dice we can see the first die can be any of the 6 values then the next die can only be one of the 5 remaining values and so on. So there are $6!$ ways to have 5 distinct valued dice.
+So the total percentage is
+$$\frac{6!}{5^6}$$
+\begin{center}
+\fbox{$= 0.0926$}
+\end{center}
+
+\item
+For the case where we have a pair we have 6 possible values for the first die and if we assume that the next die will make the pair we only have 1 value and the rest count down so
+$$6*1*5*4*3 = 360$$ 
+ways to have the first 2 be a pair. And then there is $5\choose2=10$ ways to arrange a pair so the total number of ways to have a pair is
+$$360*10=3600$$
+and the probability is
+$$\frac{3600}{6^5}$$
+\begin{center}
+\fbox{$= 0.4630$}
+\end{center}
+
+\item
+For the case where we have 2 pairs we can assume that the first two will be pairs. So we have 6 possible values for the first pair and 5 for the next pair and 4 for the last die 
+$$6*5*4 = 120$$ 	
+And we can arrange the first pair in $5\choose2$ ways and the next pair in $3\choose2$ ways, but this time we count them twice because the each die in the pair is not unique so we get 
+$$120\frac{{5\choose2}{3\choose2}}{2}=1800$$
+ways to have 2 pair.
+This means our percentage is
+$$\frac{1800}{6^5}$$
+\begin{center}
+\fbox{$= 0.2315$}
+\end{center}
+
+\item
+For 3 of a kind we have 6 ways to pick the value for the 3 of a kind and 5 and 4 ways to pick the next 2 dice so one arrangement of the 3 of a kind has
+$$6*5*4=120$$
+permutations. The 3 of a kind has $5\choose3$ ways to arrange the 3 of a kind so the total number of possible 3 of a kinds is
+$$120{5\choose3}=1200$$
+So
+$$\frac{1200}{6^5}$$  
+\begin{center}
+\fbox{$= 0.1543$}
+\end{center}
+
+\item
+To get a full house you have 6 ways to pick the 3 of a kind and 5 ways to pick the pair or
+$$6*5=30$$
+And you can arrange the 3 of a kind in $5\choose3$ ways. Giving us
+$$30{5\choose3} = 300$$
+So
+$$\frac{300}{6^5}$$
+\begin{center}
+\fbox{$= 0.0386$}
+\end{center}
+
+\item
+Four 4 of a kind you have 6 ways to pick the value of the 4 of a kind and 5 for the other die, or
+$$6*5=30$$
+And you can arrange the 4 of a kind in $5\choose4$ ways. So the total number of possible 4 of a kinds is
+$$30{5\choose4}=150$$
+So
+$$\frac{150}{6^5}$$
+\begin{center}
+\fbox{$= 0.0193$}
+\end{center}
+
+\item
+To get all the same value for all five dice is only 6 possible ways to do it. One for each value so the probability of that happening is
+$$\frac{6}{6^5}$$
+\begin{center}
+\fbox{$= 0.0008$}
+\end{center}
+\end{enumerate}
+
+
+\end{enumerate}
+\end{document}
+

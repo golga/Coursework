@@ -1,0 +1,211 @@
+\documentclass[11pt]{article}
+
+\usepackage{latexsym}
+\usepackage{amssymb}
+\usepackage{enumerate}
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{cancel}
+\numberwithin{equation}{section}
+
+\setlength{\evensidemargin}{.25in}
+\setlength{\oddsidemargin}{-.25in}
+\setlength{\topmargin}{-.75in}
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{9.5in}
+\newcommand{\due}{September 30th, 2009}
+\newcommand{\HWnum}{5}
+
+\begin{document}
+\input{../title.tex}
+
+\section{Problem \#1}
+So we know that our total energy is 
+$$E = T+U$$
+where $$T = \frac{1}{2}m_e(\dot{r}^2 +r^2\dot{\theta}^2)$$ we can see that the kinetic energy is not effected by the mass of the sun. And we know that
+$$U = \frac{Gm_em_s}{r}$$
+We see that if the sun's mass drops by one half the new potential energy becomes
+$$U'= \frac{1}{2}U$$
+So our energy becomes 
+\begin{equation}
+E = T+\frac{1}{2}U
+\label{energy}
+\end{equation}
+once the sun's mass drops by one half.
+Now we need to find a comparison between the kinetic energy and the potential energy. We know that because the motion is orbital we can describe the motion as
+$$\frac{\alpha}{r} = 1 +\epsilon\cos\theta$$
+Where
+$$\epsilon = \sqrt{1+\dfrac{2El^2}{\mu k^2}}$$
+and
+$$\alpha = \frac{l^2}{\mu k}$$
+Where $k=Gm_em_s$.
+We know that because we are in a circular orbit that $\epsilon = 0$, and we can see that $\epsilon$ is dependent on $E$ so we can solve for $E$ to find the total energy of the orbit
+$$\epsilon = 0 = \sqrt{1+\dfrac{2El^2}{\mu k^2}}$$
+$$ 0 = 1+\dfrac{2El^2}{\mu k^2}$$
+$$ -\dfrac{2El^2}{\mu k^2} = 1$$
+$$ E =-\dfrac{\mu k^2}{2l^2}$$
+So we now know that the total energy. We can express the total energy as
+\begin{equation}
+E = T + U
+\label{totEn}
+\end{equation}
+where $U=-\dfrac{k}{r}$ and we can find $r$ from the fact that the orbit is circular and $\epsilon$ is zero. Our orbital motion is
+$$\frac{\alpha}{r} = 1$$
+So $r=\alpha$ or
+$$r= \frac{l^2}{\mu k}$$
+So now we can find the $U$ as
+$$U = -k\frac{\mu k}{l^2}$$
+$$U = -\frac{\mu k^2}{l^2}$$
+Now if we look at $E$ again we see that
+$$ E =-\dfrac{\mu k^2}{2l^2}$$
+$$ E =\frac{1}{2}\left(-\dfrac{\mu k^2}{l^2}\right)$$
+$$ E =\frac{1}{2}U$$
+So if we replace $E$ in equation \ref{totEn} we get
+$$\frac{1}{2}U = T + U$$
+Solving for $T$ gives us
+$$T = -\frac{1}{2}U$$
+So if use this in equation \ref{energy} we get 
+$$E = -\frac{1}{2}U + \frac{1}{2}U$$
+$$E=0$$
+Therefore the orbit becomes parabolic once the mass of the sun drops by one half. This also means that earth will escape the solar system.
+
+
+\section{Problem \#2}
+So initially we can say that the energy is given by
+$$E_1 = \frac{-k}{2R}$$ 
+where $R$ is the radius that the satellite is at initially given by the problem as a distance equal to the radius of the earth so $R=2R_e$. So we can find its initial velocity from the energy or
+$$E_1 = \frac{1}{2}mv_1^2-\frac{k}{R}$$
+Set the two energies equal and solve for $v_1$
+$$\frac{-k}{2R} = \frac{1}{2}mv_1^2-\frac{k}{R}$$
+$$\frac{1}{2}mv_1^2 = \frac{-k}{2R}+\frac{k}{R}$$
+$$\frac{1}{2}mv_1^2 = \frac{-k+2k}{2R}$$
+$$ v_1^2 = \frac{k}{mR}$$
+$$v_1 = \sqrt{\frac{k}{mR}}$$
+Now we are going to move to a radius that is twice the height or $R'=3R_e$ so our energy is now
+$$E_t = \frac{-k}{R+R'}$$
+Again we need to find the velocity of this orbit by using energies
+$$E_t = \frac{1}{2}mv_t^2 -\frac{k}{R}$$
+Setting them equal we get
+$$\frac{-k}{2R_e+3R_e} = \frac{1}{2}mv_t^2 -\frac{k}{R}$$
+Now solving for $v_t$
+$$ \frac{1}{2}mv_t^2 = \frac{-k}{R+R'} +\frac{k}{R}$$
+$$ \frac{1}{2}mv_t^2 = \frac{-kR}{(R+R')R} +\frac{k(R+R')}{R(R+R')}$$
+$$ \frac{1}{2}mv_t^2 = \frac{-kR + k(R+R')}{R(R+R')}$$
+$$ \frac{1}{2}mv_t^2 = \frac{-kR + kR + kR')}{R(R+R')}$$
+$$ \frac{1}{2}mv_t^2 = \frac{kR'}{R(R+R')}$$
+$$ \frac{1}{2}mv_t^2 = \frac{k}{R}\frac{R'}{R+R'}$$
+$$ v_t^2 = \frac{k}{mR}\frac{2R'}{R+R'}$$
+$$ v_t = \sqrt{\frac{k}{mR}\frac{2R'}{R+R'}}$$
+So now we can find $\Delta v$ as
+$$\Delta v = v_1 - v_t$$
+$$\Delta v = \sqrt{\frac{k}{mR}} - \sqrt{\frac{k}{mR}\frac{2R'}{R+R'}}$$
+Factoring out a $\sqrt{\dfrac{k}{mR}}$
+$$\Delta v = \sqrt{\frac{k}{mR}} \left(1 - \sqrt{\frac{2R'}{R+R'}}\right)$$
+
+\section{Problem \#3}
+\begin{enumerate}[(a)]
+\item
+We know that we have a potential 
+$$U(r) = \alpha r^n$$
+So we can calculate the Lagrangian 
+$$L=T-U$$
+Where we know $U$ and we know that the kinetic energy is
+$$T = \frac{1}{2}\mu(\dot{r}^2 +r^2\dot{\theta}^2) $$
+So the Lagrangian is
+$$L = \frac{1}{2}\mu(\dot{r}^2 +r^2\dot{\theta}^2) - \alpha r^n$$
+Now we can find the Hamiltonian by 
+$$p_r = \frac{\partial L}{\partial \dot{r}}$$
+$$\frac{\partial L}{\partial \dot{r}} = \mu\dot{r}$$
+$$p_r = \mu\dot{r}$$
+$$\dot{r}= \frac{p_r}{\mu}$$
+$$p_{\theta} = \frac{\partial L}{\partial \dot{\theta}}$$
+$$\frac{\partial L}{\partial \dot{\theta}} = \mu r^2\dot{\theta}$$
+We know that this is constant because the angular momentum is conserved so 
+$$l=\mu r^2 \dot{\theta}$$
+$$\dot{\theta} = \frac{l}{\mu r^2}$$
+So now we can calculated the Hamiltonian using 
+$$H = p_r\dot{r} + p_{\theta}\dot{\theta} - L$$
+$$H = \frac{p_r^2}{\mu} + \frac{l^2}{\mu r^2} -\frac{1}{2}\mu\left(\frac{p_r^2}{\mu^2} +r^2\frac{l^2}{\mu^2r^4}\right) + \alpha r^n$$
+$$H = \frac{p_r^2}{\mu} + \frac{l^2}{\mu r^2} - \frac{p_r^2}{2\mu} +\frac{l^2}{\mu r^2} + \alpha r^n$$
+$$H = \frac{p_r^2}{2\mu} + \frac{l^2}{2\mu r^2} + \alpha r^n$$
+So we can see that our effective potential is 
+$$U_{eff} = \frac{l^2}{2\mu r^2} + \alpha r^n$$
+So if we are looking for a stable circular orbit we are looking for the minimum of the effective potential. We can calculate that by finding where the first derivative is zero. 
+$$\frac{d U_{eff}}{dr} = \frac{l^2}{2\mu}(-2r^{-3}) + \alpha nr^{n-1}$$
+$$\frac{d U_{eff}}{dr} = \frac{-l^2}{\mu r^3} + \alpha nr^{n-1}$$
+$$0 = \frac{-l^2}{\mu r^3} + \alpha nr^{n-1}$$
+$$\frac{l^2}{\mu r^3} = \alpha nr^{n-1}$$
+$$\frac{l^2}{\mu\alpha n} = r^3r^{n-1}$$
+$$\frac{l^2}{\mu\alpha n} = r^{n-1+3}$$
+$$\frac{l^2}{\mu\alpha n} = r^{n+2}$$
+$$r_0=\left(\frac{l^2}{\alpha\mu n}\right)^{1/n+2} $$
+Where $r_0$ is the radius of a circular orbit.
+Now lets check the dimensions, we assume $$<r_0> = m$$
+So we know that 
+$$<l> = kg\ m^2\ s^{-1};\ <\mu>=kg;\ <\alpha> = kg\ m^{2-n}\ s^{-2}$$
+Note that $n$ has no units and $<\alpha>$ is calculated from 
+$$<U_{eff}> = <\alpha><r^n>$$
+$$kg\ m^2\ s^{-2}= <\alpha>m^n$$
+$$<\alpha>=m^{-n}\ kg\ m^2\ s^{-2}$$
+$$<\alpha>= kg\ m^{2-n}\ s^{-2}$$
+So we can calculate the units
+$$\left<\left(\frac{l^2}{\alpha\mu n}\right)^{1/n+2}\right> = \left(\frac{kg^2\ m^4\ s^{-2}}{kg\ kg\ m^{2-n}\ s^{-2}}\right)^{1/n+2}$$
+$$\left<\left(\frac{l^2}{\alpha\mu n}\right)^{1/n+2}\right> = \left(\frac{m^4}{m^{2-n}}\right)^{1/n+2}$$
+$$\left<\left(\frac{l^2}{\alpha\mu n}\right)^{1/n+2}\right> = \left(m^{4-2+n}\right)^{1/n+2}$$
+$$\left<\left(\frac{l^2}{\alpha\mu n}\right)^{1/n+2}\right> = \left(m^{2+n}\right)^{1/n+2}$$
+$$\left<\left(\frac{l^2}{\alpha\mu n}\right)^{1/n+2}\right> = m$$
+Good our units are in agreement.
+
+\item
+To find the ratio between the angular frequency and the frequency of small oscillations we need to calculate them. First the angular frequency, assuming that we are in a circular orbit we can say
+$$a = \frac{r_0^2\Omega^2}{r_0}$$
+$$a = {r_0\Omega^2}$$
+And from Newton we get
+$$F= \mu a$$
+so now we need to calculate $F$ from $U$ using
+$$F = -\frac{dU}{dr}$$
+$$F = -\alpha n r_0^{n-1}$$
+So we can say that 
+$$-\alpha n r_0^{n-1}= \mu{r_0\Omega^2}$$
+Solving for $\Omega^2$ we get
+$$-\alpha n r_0^{n-1}= \mu{r_0\Omega^2}$$
+$$\Omega^2 = \frac{-\alpha n r_0^{n-1}}{\mu{r_0}}$$
+$$\Omega^2 = \frac{-\alpha n r_0^{n-2}}{\mu}$$
+Now to calculate the frequency of small oscillations we use
+$$\omega^2 = \frac{1}{\mu}\left. \frac{d^2 U_{eff}}{dr^2}\right|_{r_0}$$
+Finding 
+$$\frac{d^2 U_{eff}}{dr^2} = \frac{d}{dr}\frac{-l^2}{\mu r^3} + \alpha nr^{n-1}$$
+$$\frac{d^2 U_{eff}}{dr^2} = \frac{-l^2}{\mu r^4}(-3) + \alpha n(n-1)r^{n-2}$$
+$$\frac{d^2 U_{eff}}{dr^2} = \frac{3l^2}{\mu r^4} + \alpha n(n-1)r^{n-2}$$
+Evaluated at $r_0$ 
+$$\frac{d^2 U_{eff}}{dr^2} = \frac{3l^2}{\mu r_0^4} + \alpha n(n-1)r_0^{n-2}$$
+So we can say $\omega^2$ is equal to 
+$$\omega^2 = \frac{1}{\mu}\left(\frac{3l^2}{\mu r_0^4} + \alpha n(n-1)r_0^{n-2}\right)$$
+Now to find the ratio
+$$\frac{\omega^2}{\Omega^2} = \frac{\mu}{-\alpha n r_0^{n-2}}\frac{1}{\mu}\left(\frac{3l^2}{\mu r_0^4} + \alpha n(n-1)r_0^{n-2}\right)$$
+$$\frac{\omega^2}{\Omega^2} = \frac{1}{-\alpha n r_0^{n-2}}\left(\frac{3l^2}{\mu r_0^4} + \alpha n(n-1)r_0^{n-2}\right)$$
+$$\frac{\omega^2}{\Omega^2} = \frac{1}{-\alpha n r_0^{n-2}}\frac{3l^2}{\mu r_0^4} + \frac{1}{-\alpha n r_0^{n-2}}\alpha n(n-1)r_0^{n-2}$$
+$$\frac{\omega^2}{\Omega^2} = \frac{1}{-\alpha n r_0^{n-2}}\frac{3l^2}{\mu r_0^4} -(n-1)$$
+$$\frac{\omega^2}{\Omega^2} = \frac{3l^2}{-\alpha\mu n}\frac{1}{r_0^4}\frac{1}{r_0^{n-2}} -(n-1)$$
+$$\frac{\omega^2}{\Omega^2} = \frac{3l^2}{-\alpha\mu n}r_0^{-4}r_0^{-(n-2)} -(n-1)$$
+$$\frac{\omega^2}{\Omega^2} = \frac{3l^2}{-\alpha\mu n}r_0^{-4}r_0^{-n+2} -(n-1)$$
+$$\frac{\omega^2}{\Omega^2} = \frac{3l^2}{-\alpha\mu n}r_0^{-4-n+2} -(n-1)$$
+$$\frac{\omega^2}{\Omega^2} = \frac{3l^2}{-\alpha\mu n}r_0^{-2-n} -(n-1)$$
+$$\frac{\omega^2}{\Omega^2} = \frac{3l^2}{-\alpha\mu n}r_0^{-(n+2)} -(n-1)$$
+Now we can use what we found $r_0$ to be in part (a) which is 
+$$r_0=\left(\frac{l^2}{\alpha\mu n}\right)^{1/n+2}$$
+So we get 
+$$\frac{\omega^2}{\Omega^2} = \frac{3l^2}{-\alpha\mu n}\left(\left(\frac{l^2}{\alpha\mu n}\right)^{1/n+2}\right)^{-(n+2)} -(n-1)$$
+$$\frac{\omega^2}{\Omega^2} = \frac{3l^2}{-\alpha\mu n}\left(\frac{l^2}{\alpha\mu n}\right)^{-(n+2)/n+2} -(n-1)$$
+$$\frac{\omega^2}{\Omega^2} = \frac{3l^2}{-\alpha\mu n}\left(\frac{l^2}{\alpha\mu n}\right)^{-1} -(n-1)$$
+$$\frac{\omega^2}{\Omega^2} = \frac{3l^2}{-\alpha\mu n}\frac{\alpha\mu n}{l^2} -(n-1)$$
+$$\frac{\omega^2}{\Omega^2} = \frac{3}{-1} -(n-1)$$
+$$\frac{\omega^2}{\Omega^2} = -3 -(n-1)$$
+$$\frac{\omega^2}{\Omega^2} = -3 - n + 1$$
+$$\frac{\omega^2}{\Omega^2} = -(2 + n)$$
+Checking the units is pretty easy. We know the ratio of two frequencies is unitless and that $n$ is unitless so our units agree.
+
+
+\end{enumerate}
+\end{document}
+

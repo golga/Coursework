@@ -1,0 +1,164 @@
+\documentclass[11pt]{article}
+
+\usepackage{latexsym}
+\usepackage{amssymb}
+\usepackage{enumerate}
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{cancel}
+\numberwithin{equation}{section}
+
+\setlength{\evensidemargin}{.25in}
+\setlength{\oddsidemargin}{-.25in}
+\setlength{\topmargin}{-.75in}
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{9.5in}
+\newcommand{\due}{October 14th, 2009}
+\newcommand{\HWnum}{6}
+
+\begin{document}
+\input{../title.tex}
+
+\section{Problem \#1}
+\begin{enumerate}[(a)]
+\item
+To find the energy of the cylinder of density $\rho$ rolling with a angular velocity is given by
+$$\int_V \rho v(\vec{s})^2 d\tau$$
+where $v$ is the velocity given by the vector product
+$$\vec{s}\times\vec{\omega} = s\omega\sin(\theta)$$
+So our integral becomes
+$${\rho}\int_V  (s\omega\sin(\theta))^2 d\tau$$
+where $d\tau$ in cylindrical coordinates is 
+$$d\tau = sdsd\theta dz$$
+So our integral becomes
+\begin{align*}
+{\rho}{2}\int_0^R\int_0^l\int_0^{2\pi} (s\omega\sin(\theta))^2 sdsd\theta dz &= {\rho}\int_0^R\int_0^l\int_0^{2\pi} s^2\omega^2\sin^2(\theta) sdsd\theta dz \\
+&= {\rho\omega^2}\int_0^R\int_0^l\int_0^{2\pi} s^3\sin^2(\theta)dsd\theta dz \\
+&= {\rho\omega^2}\int_0^Rs^3dr\int_0^ldz\int_0^{2\pi}\sin^2(\theta)d\theta \\
+&= {\rho\omega^2}\left(\frac{1}{4}r^4\right|_0^R\int_0^ldz\int_0^{2\pi}\sin^2(\theta)d\theta \\
+&= {\rho\omega^2}\left(\frac{1}{4}R^4-0\right)\int_0^ldz\int_0^{2\pi}\sin^2(\theta)d\theta \\
+&= {\rho\omega^2}\left(\frac{1}{4}R^4\right)(l)\int_0^{2\pi}\sin^2(\theta)d\theta \\
+&= {\rho\omega^2}\left(\frac{1}{4}R^4\right)(l)\int_0^{2\pi}\frac{1}{2}(1-\cos(2\theta))d\theta \\
+&= {\rho\omega^2}\left(\frac{1}{4}R^4\right)(l)\frac{1}{2}\left(\theta-\frac{1}{2}\sin(2\theta)\right|_0^{2\pi}\\
+&= {\rho\omega^2}\left(\frac{1}{4}R^4\right)(l)\frac{1}{2}\left(2\pi-\frac{1}{2}\sin(4\pi)-\left(0-\frac{1}{2}\sin(0)\right)\right)\\
+&= {\rho\omega^2}\left(\frac{1}{4}R^4\right)(l)\frac{1}{2}\left(2\pi-\frac{1}{2}(0)-\left(0-\frac{1}{2}(0)\right)\right)\\
+&= {\rho\omega^2}\left(\frac{1}{4}R^4\right)(l)\frac{1}{2}\left(2\pi\right)\\
+&= \frac{R^2\omega^2}{4}\left(\rho l\pi R^2\right)\\
+\end{align*}
+We see that we have the volume of the sphere ($l\pi R^2$) times the density of the sphere or the total mass of the sphere.
+$$E = \frac{R^2\omega^2}{4}M$$
+Note if we define a moment of inertia for a cylinder $I$ as 
+$$I = \frac{MR^2}{2}$$
+we see that
+$$E = \frac{1}{2}I\omega^2$$
+Which is an expected result. Also we can check our units we assume that $$<E> = kg\ m^2\ s^{-2}$$
+and we know that
+$$<R>=m;\ <\omega>=s^{-2};\ <M>=kg$$
+so we can say that
+$$\left<\frac{R^2\omega^2}{4}M\right> = kg\ {m^2\ s^{-2}}$$
+Good our units agree.
+
+\item
+For a sphere of density $\rho$ we can say our energy is given by
+$$E = \int_V \rho v(\vec{r})^2 d\tau$$
+Where 
+$$\vec{r}\times\vec{\omega} = r\omega\sin(\theta)$$
+And the limits of integration $d\tau$ in spherical coordinates are given by
+$$d\tau = r^2\sin(\theta)drd\theta d\phi$$
+So we get
+\begin{align*}
+E &= \int_0^R\int_0^{\pi}\int_0^{2\pi} \rho (r\omega\sin(\theta))^2 r^2\sin(\theta)drd\theta d\phi\\
+&= \rho\int_0^R\int_0^{\pi}\int_0^{2\pi} r^2\omega^2\sin^2(\theta) r^2\sin(\theta)drd\theta d\phi\\
+&= \rho\omega^2\int_0^Rr^4dr\int_0^{\pi}\sin^2(\theta)\sin(\theta)d\theta\int_0^{2\pi} d\phi\\
+&= \rho\omega^2\left(\frac{1}{5}r^5\right|_0^R\int_0^{\pi}\sin^3(\theta)d\theta\int_0^{2\pi} d\phi\\
+&= \rho\omega^2\left(\frac{1}{5}R^5-0\right)\int_0^{\pi}\sin^3(\theta)d\theta(2\pi)\\
+&= \frac{2}{5}\pi\rho\omega^2R^5\int_0^{\pi}\sin^3(\theta)d\theta\\
+&= \frac{2}{5}\pi\rho\omega^2R^5\int_0^{\pi}(1-\cos^2(\theta))\sin(\theta)d\theta\\
+\end{align*}
+We need to use a $u$ substitution where
+$$u=\cos(\theta)$$
+$$du=-\sin(\theta)d\theta$$
+So we can see that
+\begin{align*}
+\frac{2}{5}\pi\rho\omega^2R^5\int_0^{\pi}(1-\cos^2(\theta))\sin(\theta)d\theta &= \frac{2}{5}\pi\rho\omega^2R^5\left(-\int_{u(0)}^{u(\pi)}(1-u^2)du\right)\\
+&= \frac{2}{5}\pi\rho\omega^2R^5\left(-\left(u-\frac{1}{3}u^3\right|_{u(0)}^{u(\pi)}\right)\\
+&= \frac{2}{5}\pi\rho\omega^2R^5\left(-\left(\cos(\theta)-\frac{1}{3}\cos^3(\theta)\right|_{0}^{\pi}\right)\\
+&= \frac{2}{5}\pi\rho\omega^2R^5\left(-\left(\cos(\pi)-\frac{1}{3}\cos^3(\pi)-\left(\cos(0) - \frac{1}{3}\cos^3(0)\right)\right)\right)\\
+&= \frac{2}{5}\pi\rho\omega^2R^5\left(-\left(-1-\frac{1}{3}(-1)^3-1 + \frac{1}{3}1^3\right)\right)\\
+&= \frac{2}{5}\pi\rho\omega^2R^5\left(-\left(-1+\frac{1}{3}-1 + \frac{1}{3}\right)\right)\\
+&= \frac{2}{5}\pi\rho\omega^2R^5\left(-\left(-2+\frac{2}{3}\right)\right)\\
+&= \frac{2}{5}\pi\rho\omega^2R^5\left(2-\frac{2}{3}\right)\\
+&= \frac{2}{5}\pi\rho\omega^2R^5\frac{4}{3}\\
+&= \frac{2}{5}\omega^2R^2\left(\rho\frac{4}{3}\pi R^3\right)\\
+\end{align*}
+Again we see that we have the volume of the sphere given by $\frac{4}{3}\pi R^3$ times the density $\rho$ which is the total mass so
+$$E = \frac{2}{5}\omega^2R^2M$$
+Again we expect the units of $E$ to be
+$$<E> = kg\ m^2\ s^{-2}$$
+and we know that
+$$<R>=m;\ <\omega>=s^{-2};\ <M>=kg$$
+And we can calculate 
+$$\left<\frac{2}{5}\omega^2R^2M\right> = kg\ m^2\ s^{-2}$$
+Good our units agree.
+\end{enumerate}
+
+\section{Problem \#2}
+See attached
+
+\section{Problem \#3}
+So we know that the only force acting on the rope is the gravity pulling on the section of the rope that is hanging over the table or
+$$F = \rho x g$$
+where $\rho$ is the linear density of the rope and $x$ is the amount of rope that is hanging over the table after a given amount of time where $x(0) = s_0$. Now we know that the net force on the rope is given by \emph{Newton's 2nd Law}
+$$F=ma$$
+Where $m$ is the total mass of the rope given by $\rho l$ and the acceleration of the rope is the acceleration of the amount of the rope hanging off the edge of the table or $\ddot{x}$ or 
+$$F=\rho l \ddot{x}$$ 
+So we know that these are equal so we can say
+$$\rho x g =\rho l \ddot{x}$$ 
+Now we have a differential equation which we guess the solution as $x(t) = e^{rt}$ this gives us
+$$\rho g e^{rt} =\rho l r^2e^{rt}$$ 
+$$g = l r^2$$ 
+$$r = \sqrt{\frac{g}{l}}$$ 
+So we can say the general solution of this differential equation is
+$$x(t) = Ae^{rt} + Be^{-rt}$$
+where 
+$$r = \sqrt{\frac{g}{l}}$$ 
+Now if we apply the initial conditions $x(0)=s_0$ and $\dot{x}(0) = 0$. So we find 
+\begin{align*}
+\dot{x}(0) = 0 &= A r e^{r0} - B r e^{-r0}\\
+ A r  &= B r\\
+ A &= B \\
+\end{align*}
+So we know that $A=B$ so we can factor it out
+\begin{align*}
+x(0) =s_0 &= Ae^{rt} + Ae^{-rt}\\
+s_0 &= A(e^{r0} + e^{-r0})\\
+s_0 &= A(1 + 1)\\
+s_0 &= A(2)\\
+A &= \frac{s_0}{2}\\
+\end{align*}
+So our equation of motion is
+$$x(t) = \frac{s_0}{2}(e^{rt}+e^{-rt})$$
+We see that this is a $\cosh$ so we get
+$$x(t) = s_0\cosh(rt)$$
+$$x(t) = s_0\cosh\left(\sqrt{\dfrac{g}{l}}t\right)$$
+We can check our units, we expect $$<x(t)> = m$$
+and we know that
+$$<g> = m\ s^{-2};\ <l> = m;\ <t> = s;\ <s_0> = m$$
+So we calculate 
+\begin{align*}
+\left<s_0\cosh\left(\sqrt{\dfrac{g}{l}}t\right)\right> &= m\cosh\left(\sqrt{\dfrac{m s^{-2}}{m}}s\right)\\
+&= m\cosh\left(\sqrt{{s^{-2}}}s\right)\\
+&= m\cosh\left(s^{-1}s\right)\\
+&= m\\
+\end{align*}
+Good our units agree. Now to find the time when the full $l$ is off the table we have to solve for $t$ when $x(t)=l$ or 
+\begin{align*}
+x(t) = l &= s_0\cosh\left(\sqrt{\dfrac{g}{l}}t\right)\\
+\frac{l}{s_0} &= \cosh\left(\sqrt{\dfrac{g}{l}}t\right)\\
+\cosh^{-1}\left(\frac{l}{s_0}\right) &= \sqrt{\dfrac{g}{l}}t\\
+\frac{\cosh^{-1}\left(\dfrac{l}{s_0}\right)}{\sqrt{\dfrac{g}{l}}} &=t\\
+\end{align*}
+
+
+\end{document}
+

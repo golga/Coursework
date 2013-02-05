@@ -1,0 +1,133 @@
+\documentclass[11pt]{article}
+
+\usepackage{latexsym}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{enumerate}
+\usepackage{amsmath}
+\usepackage{cancel}
+\numberwithin{equation}{section}
+
+\setlength{\evensidemargin}{.25in}
+\setlength{\oddsidemargin}{-.25in}
+\setlength{\topmargin}{-.75in}
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{9.5in}
+\newcommand{\due}{August 26th, 2011}
+\newcommand{\HWnum}{1}
+\input{/home/joey/Documents/Class/Define.tex}
+
+\begin{document}
+\input{../title.tex}
+
+\section{Problem \#1}
+Given the Maxwellian distribution
+$$\hat{f}(u) = A\exp(-mu^2/2KT)$$
+we can derive the constant $A$ by using the normalization condition
+$$\int_{-\infty}^{\infty}\hat{f}(u)du = 1$$
+so we calculate
+\begin{align*}
+1 &= \int_{-\infty}^{\infty}\hat{f}(u)du \\
+&= \int_{-\infty}^{\infty} A\exp(-mu^2/2KT)du 
+\end{align*}
+To solve this integral we use the \emph{Gaussian Integral Identity}
+\begin{equation}
+\int_{-\infty}^{\infty}e^{-ax^2} = \sqrt{\frac{\pi}{a}}
+\label{Gauss}
+\end{equation}
+So we see that for our distribution $a = m/2KT$. Now by equation \ref{Gauss} we have
+\begin{align*}
+1 &= A\int_{-\infty}^{\infty} \exp(-mu^2/2KT)du\\
+&= A\sqrt{2\pi KT}{m}\\
+\Rightarrow A &= \sqrt{\frac{m}{2\pi KT}}
+\end{align*}
+
+\section{Problem \#2}
+For a plasma with electron and ion temperature $KT_{e} = KT_{i} = 20\unit{keV}$ and particle density $n = 10^{21}\unit{m^{-3}}$ we can calculate the pressure of the plasma on its container by using
+\begin{equation}
+P = nKT
+\label{Press}
+\end{equation}
+where $T = T_e+T_i$. So equation \ref{Press} yields
+\begin{align*}
+P &= nKT\\
+&= nK(T_e+T_i)\\
+&= n(KT_e+KT_i)\\
+&= 10^{21}\unit{m^{-3}}(20\unit{keV}+20\unit{keV})\\
+&= \left(\frac{4.0\times10^{22}\unit{keV}}{\unit{m^{-3}}}\right)\left(\frac{1000\unit{eV}}{1\unit{keV}}\right)\left(\frac{1.6\times10^{-19}\unit{J}}{1\unit{eV}}\right)\\
+&= 6.4\times10^{6}\unit{N\ m^{-2}}\left(\frac{1\unit{atm}}{10^5\unit{N\ m^{-2}}}\right) = 64\unit{atm}
+\end{align*}
+
+\section{Problem \#3}
+\begin{enumerate}[(i)]
+\item
+Given the \emph{Maxwell Equations}
+\begin{align}
+\grad\cdot\vec{E} &= 0 \\
+\grad\cdot\vec{B} &= 0 \\
+\grad\times\vec{E} &= -\frac{\partial\vec{B}}{\partial t} \\   
+\grad\times\vec{B} &= \mu_0\epsilon_0\frac{\partial\vec{E}}{\partial t}
+\end{align}
+Note that these equations are in a vacuum. Now we can calculate the wave equation 
+$$\grad^2\vec{E} = \mu_0\epsilon_0\frac{\partial^2\vec{E}}{\partial t^2}$$
+so by taking the curl of equation 3.3 and using the vector identity 
+\begin{equation}
+\grad\times(\grad\times\vec{A}) = \grad(\grad\cdot\vec{A}) - (\grad\cdot\grad)\vec{A}
+\label{ident}
+\end{equation}
+we can find that
+\begin{align*}
+\grad\times(\grad\times\vec{E}) &= \grad\cancelto{0}{(\grad\cdot\vec{E})} - (\grad\cdot\grad)\vec{E}\\
+\Rightarrow -\grad^2\vec{E} &= \grad\times\left(-\frac{\partial\vec{B}}{\partial t}\right)\\
+\grad^2\vec{E} &= \frac{\partial}{\partial t}(\grad\times\vec{B})\\
+&= \frac{\partial}{\partial t}\left(\mu_0\epsilon_0\frac{\partial\vec{E}}{\partial t}\right)\\
+\Rightarrow \grad^2\vec{E} &= \mu_0\epsilon_0\frac{\partial^2\vec{E}}{\partial t^2}
+\end{align*}
+
+\item
+Given the electric field
+$$\vec{E} = \vec{E}_0\exp(i(2\pi/\lambda)z-i(2\pi f)t)$$
+we can calculate show that this electric field is a solution to the wave equation we found in part i. First we see that the right hand side yields
+\begin{align*}
+\grad^2\vec{E} &= \frac{\partial^2}{\partial z^2}\vec{E}_0\exp(i(2\pi/\lambda)z-i(2\pi f)t)\\
+&= \vec{E}_0\exp(i(2\pi/\lambda)z-i(2\pi f)t)(i(2\pi/\lambda))^2\\
+&= -\vec{E}_0\exp(i(2\pi/\lambda)z-i(2\pi f)t)(2\pi/\lambda)^2
+\end{align*}
+And the left hand side yields
+\begin{align*}
+\mu_0\epsilon_0\frac{\partial^2\vec{E}}{\partial t^2} &= \mu_0\epsilon_0\frac{\partial^2}{\partial t^2}(\vec{E}_0\exp(i(2\pi/\lambda)z-i(2\pi f)t))\\
+&= \mu_0\epsilon_0\vec{E}_0\exp(i(2\pi/\lambda)z-i(2\pi f)t)(i(2\pi f))^2\\
+&= -\mu_0\epsilon_0\vec{E}_0\exp(i(2\pi/\lambda)z-i(2\pi f)t)(2\pi f)^2
+\end{align*}
+Now if we combine both sides we have
+\begin{align*}
+-\vec{E}_0\exp(i(2\pi/\lambda)z-i(2\pi f)t)(2\pi/\lambda)^2 &= -\mu_0\epsilon_0\vec{E}_0\exp(i(2\pi/\lambda)z-i(2\pi f)t)(2\pi f)^2 \\
+&\Downarrow\\
+\lambda^{-1} &= \sqrt{\mu_0\epsilon_0} f \\
+\lambda^{-1} &=  c^{-1}f \\
+&\Downarrow\\
+f = c/\lambda
+\end{align*}
+So the given electric field only satisfies the wave equation if $f = c/\lambda$
+\end{enumerate}
+
+\section{Problem \#4}
+If we assume a Maxwellian distribution we can take Maxwell equation to say that
+\begin{align*}
+\grad\cdot\vec{E} &= \frac{\rho}{\epsilon_0}\\
+&\Downarrow\\
+-\epsilon_0\grad^2\phi &= q_in_i + q_en_e\\
+&= en_0 - en_0\exp\left(\frac{e\phi}{KT_e}\right)\\
+&= en_0\left(1 - \exp\left(\frac{e\phi}{KT_e}\right)\right)
+\end{align*}
+Now if we use the fact that $e\phi<<KT_e$ we can approximate the exponential such that
+\begin{align*}
+&= en_0\left(1 - 1 - \frac{e\phi}{KT_e}\right)\\
+&\Downarrow\\
+\grad^2\phi &= \frac{e^2n_0}{\epsilon_0KT_e}\phi
+\end{align*}
+We see that this has a solution 
+$$\phi(x) = Ae^{-x/\lambda_D}+Be^{x/\lambda_D}$$
+But we want the potential to be zero far away so we take $B=0$ now we see that the potential potential at $x=0$ is given by $e$ the charge of the proton. So outside of the shielding the proton charge is canceled out.
+\end{document}
+

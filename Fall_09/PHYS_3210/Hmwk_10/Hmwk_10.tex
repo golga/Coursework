@@ -1,0 +1,229 @@
+\documentclass[11pt]{article}
+
+\usepackage{latexsym}
+\usepackage{amssymb}
+\usepackage{enumerate}
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{cancel}
+\numberwithin{equation}{section}
+
+\setlength{\evensidemargin}{.25in}
+\setlength{\oddsidemargin}{-.25in}
+\setlength{\topmargin}{-.75in}
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{9.5in}
+\newcommand{\due}{November 18th, 2009}
+\newcommand{\HWnum}{10}
+
+\begin{document}
+\input{../title.tex}
+
+\section{Problem \#1}
+We are given the moment of inertia tensor as
+$$\vec{\vec{I}} = \left\{\begin{array}{ccc}
+	\dfrac{2}{3}Mb^2	&-\dfrac{1}{4}Mb^2	&-\dfrac{1}{4}Mb^2\\
+\\
+	-\dfrac{1}{4}Mb^2	&\dfrac{2}{3}Mb^2	&-\dfrac{1}{4}Mb^2\\
+\\
+	-\dfrac{1}{4}Mb^2	&-\dfrac{1}{4}Mb^2	&\dfrac{2}{3}Mb^2	
+		\end{array}\right\}$$
+We can diagonalize this matrix by using row operations. But first to make the calculations easier we can say 
+$$\vec{\vec{I}} = \frac{Mb^2}{12}\left\{\begin{array}{ccc}
+	8	&-3	&-3\\
+	-3	&8	&-3\\
+	-3	&-3	&8
+		\end{array}\right\}$$
+Now if we subtract $R_1$ from $R_2$ or $R_2-R_1\Rightarrow R_2$
+$$\vec{\vec{I}} = \frac{Mb^2}{12}\left\{\begin{array}{ccc}
+	8	&-3	&-3\\
+	-11	&11	&0\\
+	-3	&-3	&8
+		\end{array}\right\}$$
+$R_3-R_1\Rightarrow R_3$
+$$\vec{\vec{I}} = \frac{Mb^2}{12}\left\{\begin{array}{ccc}
+	8	&-3	&-3\\
+	-11	&11	&0\\
+	-11	&0	&11
+		\end{array}\right\}$$
+$R_1+\frac{3}{11}R_3\Rightarrow R_1$
+$$\vec{\vec{I}} = \frac{Mb^2}{12}\left\{\begin{array}{ccc}
+	5	&-3	&0\\
+	-11	&11	&0\\
+	-11	&0	&11
+		\end{array}\right\}$$
+$R_1+\frac{3}{11}R_2\Rightarrow R_1$
+$$\vec{\vec{I}} = \frac{Mb^2}{12}\left\{\begin{array}{ccc}
+	2	&0	&0\\
+	-11	&11	&0\\
+	-11	&0	&11
+		\end{array}\right\}$$
+$R_2+\frac{11}{2}R_1\Rightarrow R_2$ and $R_3+\frac{11}{2}R_1\Rightarrow R_3$
+$$\vec{\vec{I}} = \frac{Mb^2}{12}\left\{\begin{array}{ccc}
+	2	&0	&0\\
+	0	&11	&0\\
+	0	&0	&11
+		\end{array}\right\}$$
+This is the diagonalized moment of inertia tensor for a cube. Now to find the eigenvectors we find the solutions to $\det(\vec{\vec{I}}-J\lambda=0$ where $J$ is the identity matrix.
+\begin{align*}
+\det(\vec{\vec{I}}-J\lambda) &= \frac{Mb^2}{12}\left|\begin{array}{ccc}
+	2-\lambda&0	&0\\
+	0	&11-\lambda	&0\\
+	0	&0	&11-\lambda
+		\end{array}\right|\\
+&=(2-\lambda)(11-\lambda)(11-\lambda) = 0
+\end{align*}
+So we can see easily that the eigenvalues for our tensor are $\lambda_1=2$ and $\lambda_2=\lambda_3=11$. Note that these eigenvalues are the same for the original tensor. This is because we only performed row operations on the tensor. Now to find the eigenvectors we have to use the original tensor, because the eigenvectors are unique to the specific tensor. So we calculate for $\lambda_1$
+\begin{align*}
+&\frac{Mb^2}{12}\left\{\begin{array}{cccc}
+	8-2	&-3	&-3	&0\\
+	-3	&8-2	&-3	&0\\
+	-3	&-3	&8-2	&0
+		\end{array}\right\}\\
+&\frac{Mb^2}{12}\left\{\begin{array}{cccc}
+	5	&-3	&-3	&0\\
+	-3	&5	&-3	&0\\
+	-3	&-3	&5	&0
+		\end{array}\right\}\\
+&\frac{Mb^2}{12}\left\{\begin{array}{cccc}
+	1	&0	&0	&0\\
+	0	&1	&0	&0\\
+	0	&0	&1	&0
+		\end{array}\right\}
+\end{align*}
+This result implies that $x_1=x_2=x_3$ so we can say that they are all valued at $1$ and we see that
+$$\vec{v}_1 = \left(\begin{array}{c}
+	1\\ 1\\ 1
+	\end{array}\right)$$
+Now for $\lambda_2$ and $\lambda_3$
+\begin{align*}
+&\frac{Mb^2}{12}\left\{\begin{array}{cccc}
+	8-11	&-3	&-3	&0\\
+	-3	&8-11	&-3	&0\\
+	-3	&-3	&8-11	&0
+		\end{array}\right\}\\
+&\frac{Mb^2}{12}\left\{\begin{array}{cccc}
+	-3	&-3	&-3	&0\\
+	-3	&-3	&-3	&0\\
+	-3	&-3	&-3	&0
+		\end{array}\right\}\\
+&\frac{Mb^2}{12}\left\{\begin{array}{cccc}
+	1	&1	&1	&0\\
+	0	&0	&0	&0\\
+	0	&0	&0	&0
+		\end{array}\right\}
+\end{align*}
+So we see that $x_1+x_2+x_3=0$ for any $x_2$ and $x_3$. So we need two linearly independent vectors for each eigenvalue we found so we can pick $x_2=1$ and $x_3=0$ for $\lambda_2$ making $x_1=-1$ and yielding
+$$\vec{v}_2 = \left(\begin{array}{c}
+	-1\\ 1\\ 0
+	\end{array}\right)$$
+Now for $\lambda_3$ we can say $x_2=0$ and $x_3=1$. This makes $x_1=-1$ thus
+$$\vec{v}_3 = \left(\begin{array}{c}
+	-1\\ 0\\ 1
+	\end{array}\right)$$
+
+\section{Problem \#2}
+If we pick the origin to be the center of mass which is at 
+$$R = d\frac{m_2}{m_1+m_2}$$
+we can say that the position of the two masses is given by
+$$\vec{r_1} = -\frac{m_2}{m_1+m_2}d\hat{x_1}$$
+\begin{align*}
+\vec{r_2} &= d-\frac{m_2}{m_1+m_2}d\\
+&= d\left(1-\frac{m_2}{m_1+m_2}\right)\\
+&= d\left(\frac{m_1+m_2}{m_1+m_2}-\frac{m_2}{m_1+m_2}\right)\\
+&= d\frac{m_1}{m_1+m_2}\hat{x_1}
+\end{align*}
+where $\vec{r_1}$ and $\vec{r_2}$ are the position of their respective masses. We calculate the moment of inertia tensor using 
+$$I_{ij} = \sum_{\alpha}\left(\delta_{ij}\sum_kx^2_{\alpha,k}-x_{\alpha,i}x_{\alpha,j}\right)$$
+It is easy to tell because we only have positions in $\hat{x_1}$ that only $I_{22}$ and $I_{33}$ will be non zero. So we can calculate them as
+\begin{align*}
+I_{22} &= \sum_{\alpha}m_{\alpha}(x^2_{\alpha,1}+\cancelto{0}{x^2_{\alpha,3}})\\
+&= m_1\left(\frac{dm_2}{m_1+m_2}\right)^2 + m_2\left(\frac{dm_1}{m_1+m_2}\right)^2\\
+&= \frac{d^2m_2^2m_1}{(m_1+m_2)^2} + \frac{d^2m_1^2m_2}{(m_1+m_2)^2}\\
+&= \frac{d^2m_2^2m_1+d^2m_1^2m_2}{(m_1+m_2)^2}\\
+&= \frac{d^2m_2m_1(m_2+m_1)}{(m_1+m_2)^2}\\
+&= \frac{d^2m_1m_2}{m_1+m_2}
+\end{align*}
+And for $I_{33}$ we know that
+$$I_{33} = \sum_{\alpha}m_{\alpha}(x^2_{\alpha,1}+\cancelto{0}{x^2_{\alpha,2}})$$
+So $I_{33}=I_{22}$. Therefore the moment of inertia tensor is 
+$$\vec{\vec{I}} = \left\{\begin{array}{ccc}
+	0	&0				&0\\
+	0	&\dfrac{d^2m_1m_2}{m_1+m_2}	&0\\
+	0	&0				&\dfrac{d^2m_1m_2}{m_1+m_2}
+		\end{array}\right\}$$
+\section{Problem \#3}
+\begin{enumerate}[(a)]
+\item
+Let
+$$\vec{C} = \vec{A}\times\vec{B}$$
+so it follows that
+$$c_i = \epsilon_{ijk}a_jb_k$$
+Now if we rotate the system we get
+$$c'_l = \epsilon_{lnm}a'_mb'_n$$
+
+\item
+If we use the definition of the moment of inertia 
+$$I_{ij} = m_{\alpha}\left(\delta_{ij}x^2_{\alpha,k}-x_{\alpha,i}x_{\alpha,j}\right)$$
+And place it in a rotated transformation we get
+\begin{align*}
+I'_{ij} &= m_{\alpha}\left(\delta_{ij}x^2_{\alpha,k}-x'_{\alpha,i}x'_{\alpha,j}\right)\\
+&= m_{\alpha}\left(\delta_{ij}x^2_{\alpha,k}-\Omega_{il}x_{\alpha,l}\Omega_{jm}x_{\alpha,m}\right)\\
+&= m_{\alpha}\left(\Omega^T_{im}\Omega_{jm}x^2_{\alpha,k}-\Omega_{il}x_{\alpha,l}\Omega_{jm}x_{\alpha,m}\right)\\
+&= m_{\alpha}\left(\Omega^T_{im}\Omega_{jm}(\delta_{lm}\Omega_{il}\Omega^T_{im})x^2_{\alpha,k}-\Omega_{il}x_{\alpha,l}\Omega_{jm}x_{\alpha,m}\right)\\
+&= m_{\alpha}\left(\Omega_{jm}\delta_{lm}\Omega_{il}x^2_{\alpha,k}-\Omega_{il}x_{\alpha,l}\Omega_{jm}x_{\alpha,m}\right)\\
+&= \Omega_{jm}\Omega_{il}m_{\alpha}\left(\delta_{lm}x^2_{\alpha,k}-x_{\alpha,l}x_{\alpha,m}\right)\\
+&= \Omega_{jm}\Omega_{il}I_{lm}
+\end{align*}
+We see that the moment of inertia transforms as a tensor, therefore the moment of inertia is a tensor.
+\item
+If we define rotational kinetic energy as
+$$T_{rot} = \vec{\omega}\vec{\vec{I}}\vec{\omega}$$
+we can see if it is a scalar quantity or not by rotating the tensor and vector
+\begin{align*}
+\vec{\omega'}\vec{\vec{I'}}\vec{\omega'} &= \omega'_iI'_{ij}\omega'_j\\
+&= (\Omega_{il}\omega_l)(I_{lm}\Omega_{il}\Omega_{jm})(\Omega_{jm}\omega_m)\\
+&= \Omega_{il}\Omega_{il}\Omega_{jm}\Omega_{jm}(\omega_lI_{lm}\omega_m)\\
+&= \Omega^T_{li}\Omega_{il}\Omega^T_{mj}\Omega_{jm}(\omega_lI_{lm}\omega_m)\\
+&= \delta_{ll}\delta_{mm}(\omega_lI_{lm}\omega_m)\\
+\end{align*}
+Now we see that $\delta_{ll}$ and $\delta_{mm}$ are always 1 so we are left with
+\begin{align*}
+&= \cancelto{1}{\delta_{ll}\delta_{mm}}(\omega_lI_{lm}\omega_m)\\
+&= \omega_lI_{lm}\omega_m\\
+&= \omega_iI_{ij}\omega_j
+\end{align*}
+We end up at the same result that we started with. So under transformation the rotational kinetic energy does not change, therefore the rotational kinetic energy is a scalar quantity.
+\item
+To show that 
+$$\vec{A}\times(\vec{B}\times \vec{C}) = \vec{B}(\vec{A}\cdot\vec{C})-\vec{C}(\vec{A}\cdot\vec{B})$$
+We need to use the definition of the cross product 
+$$(\vec{u}\times\vec{v})_i = \epsilon_{ijk}u_jv_k$$
+So we see
+\begin{align*}
+\vec{A}\times(\vec{B}\times \vec{C}) &= \epsilon_{ijk}a_j(\vec{B}\times\vec{C})_k\\
+&= \epsilon_{ijk}a_j\epsilon_{klm}b_lc_m\\
+&= \epsilon_{ijk}\epsilon_{klm}a_jb_lc_m
+\end{align*}
+Now we can apply the identity 
+$$\epsilon_{ijk}\epsilon_{klm} = \delta_{jl}\delta_{km} - \delta_{jm} \delta_{kl}$$
+Note that we can rotate the indices such that $\epsilon_{ijk} = \epsilon_{kij}$ so that we are in the same form.
+\begin{align*}
+\vec{A}\times(\vec{B}\times \vec{C}) &= \epsilon_{ijk}\epsilon_{klm}a_jb_lc_m\\
+&= \epsilon_{kij}\epsilon_{klm}a_jb_lc_m\\
+&= (\delta_{il}\delta_{jm} - \delta_{im} \delta_{jl})a_jb_lc_m\\
+&= \delta_{il}\delta_{jm}a_jb_lc_m - \delta_{im} \delta_{jl}a_jb_lc_m
+\end{align*}
+We see that the \emph{Kronecker delta} function implies that $i=l$ and $j=m$ for any non zero value in the first term and $i=m$, $j=l$ in the second term. So
+\begin{align*}
+&= \delta_{il}\delta_{jm}a_jb_lc_m - \delta_{im} \delta_{jl}a_jb_lc_m\\
+&= a_jb_ic_j - a_jb_jc_i\\
+&= b_ia_jc_j - c_ia_jb_j\\
+\vec{A}\times(\vec{B}\times \vec{C}) &= \vec{B}(\vec{A}\cdot\vec{C})-\vec{C}(\vec{A}\cdot\vec{B})
+\end{align*}
+
+
+\end{enumerate}
+
+\end{document}
+

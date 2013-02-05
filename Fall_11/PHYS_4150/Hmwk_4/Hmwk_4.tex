@@ -1,0 +1,168 @@
+\documentclass[11pt]{article}
+
+\usepackage{latexsym}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{enumerate}
+\usepackage{amsmath}
+\usepackage{cancel}
+\numberwithin{equation}{section}
+
+\setlength{\evensidemargin}{.25in}
+\setlength{\oddsidemargin}{-.25in}
+\setlength{\topmargin}{-.75in}
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{9.5in}
+\newcommand{\due}{September 23rd, 2010}
+\newcommand{\HWnum}{4}
+\newcommand{\grad}{\bold\nabla}
+\newcommand{\vecE}{\vec{E}}
+\newcommand{\scrptR}{\vec{\mathfrak{R}}}
+\newcommand{\kapa}{\frac{1}{4\pi\epsilon_0}}
+\newcommand{\emf}{\mathcal{E}}
+\newcommand{\unit}[1]{\ensuremath{\, \mathrm{#1}}}
+
+\begin{document}
+\input{../title.tex}
+
+\section{Problem \#1}
+If we assume that the deuterium atoms have a charge $q=2e$, where $e$ is the charge of an electron, and mass $m=2m_p$ where $m_p$ is the mass of a proton. Now if we assume that the energy of the deuterium atoms are $200\unit{keV}$. We see that the velocity of the atom is related to the energy by
+$$\frac{1}{2}mv^2 = \frac{3}{2}KT$$
+where $KT$ is the energy in eV. So
+\begin{align*}
+v &= \sqrt{\frac{3KT}{2m_p}}\\
+&= \sqrt{\frac{3(200\unit{keV})}{2(1.67\times10^{-27}\unit{kg})}}\\
+&= \sqrt{\frac{9.6\times10^{-14}\unit{J}}{3.32\times10^{-27}\unit{kg}}}\\
+&= 5.36\times10^{6}\unit{m\ s^{-1}}
+\end{align*}
+So if we assume that the ion if moving only perpendicular to the magnetic field so that $v_{\perp}$ is at a maximum. We see that in a $5\unit{T}$ B-field the \emph{Larmor radius} is
+\begin{align*} 
+r_L &= \frac{mv_{\perp}}{|q|B}\\
+&= \frac{2m_pv_{\perp}}{|2e|B}\\
+&= \frac{({4.32\times10^{-27}\unit{kg})(5.36\times10^{6}\unit{m\ s^{-1})}}}{2(1.6\times10^{-19}\unit{C})(5\unit{T})}\\
+&= 0.011\unit{m}
+\end{align*} 
+So we see that the \emph{Larmor radius} is smaller than the minor radius of the toroidal plasma, $a=0.6\unit{m}$.
+
+\section{Problem \#2}
+To begin this problem we first need to find the magnitude of the electric field outside of the electron beam. To do this we will use \emph{Gauss' Law} 
+\begin{equation}
+\oint\vec{E}\cdot d\vec{a} = \frac{q_{enc}}{\epsilon_0}
+\label{Gauss}
+\end{equation}
+with a Gaussian cylinder with $r>a$. We assume that the density of the electron beam in $n_e = 10^{14}\unit{m^{-3}}$. So we see that for equation \ref{Gauss} the change enclosed is given by
+$$q_{enc} = \pi a^2 l n_e e$$
+where $a$ is the radius of the electron beam, $e$ is the charge of an electron, and $l$ is the length of the Gaussian cylinder. So equation \ref{Guass} yields
+\begin{align*}
+\oint\vec{E}\cdot d\vec{a} &= \frac{q_{enc}}{\epsilon_0}\\
+E\oint da &= \frac{\pi a^2 l n_ee}{\epsilon_0}\\
+E(2\pi r l)&= \frac{\pi a^2 l n_ee}{\epsilon_0}\\
+\vec{E} &= \frac{a^2 n_ee}{2\epsilon_0}\frac{1}{r}\hat{r}
+\end{align*}
+Note that we used the fact that both $\vec{E}$ and $d\vec{a}$ point in the $\hat{r}$ direction. So we can see for $r=a=0.01\unit{m}$ we get
+\begin{align*} 
+\vec{E} &= \frac{a^2 n_ee}{2\epsilon_0}\frac{1}{a}\hat{r}\\
+&= \frac{(0.01\unit{m})(10^{14}\unit{m^{-3}})(-1.6\times10^{-19}\unit{C})}{2(8.85\times10^{-12}\unit{C^2\ N^{-1}\ m^{-2}})}\hat{r}\\
+&= -9.04\times10^{4}\unit{N\ C^{-1}}\hat{r}
+\end{align*} 
+Now we can find the $\vec{E}\times\vec{B}$ drift at $r=a$ by
+\begin{align*}
+\vec{v}_E &= \frac{\vec{E}\times\vec{B}}{B^2}\\
+&= \frac{(-9.04\times10^4\unit{N\ C^{-1}})(2\unit{T})(\hat{r}\times\hat{z})}{2^2\unit{T^2}}\\
+&= -4.5\times10^{4}\unit{m\ s^{-1}}(\hat{r}\times\hat{z})\\
+&= 4.5\times10^{4}\unit{m\ s^{-1}}\hat{\theta}
+\end{align*}
+
+
+
+\section{Problem \#3}
+\begin{enumerate}[(a)]
+\item
+If we assume that the magnetic field that goes like a dipole looks like
+$$\vec{B} = C\frac{1}{r^3}\hat{\phi}$$
+where $C$ is a constant of proportionality with the value of $C = 3\times10^{-5}\unit{(earth\ radii)^3\ T}$. We can find the drift velocity of the electrons at $30\unit{keV}$ by
+\begin{align*}
+v &= \sqrt{\frac{3KT}{m_e}}\\
+&= \sqrt{\frac{3(30\unit{keV})}{9.11\times10^{-31}\unit{kg}}}\\
+&= \sqrt{\frac{1.44\times10^{-14}\unit{J}}{9.11\times10^{-31}\unit{kg}}}\\
+&= 1.25\times10^{8}\unit{m\ s^{-1}}
+\end{align*}
+Now if we assume that $v$ is the tangential velocity we can then calculate the grad-B drift velocity by first finding $\grad B$ or
+\begin{align*}
+\grad B &= C\grad\frac{1}{r^3}\\
+&= C\frac{\partial}{\partial r}\frac{1}{r^3}\hat{r}\\
+&= -3C\frac{1}{r^4}\hat{r}\\
+\end{align*}
+So we can find $v_{\grad B}$ at $r=5\unit{earth\ radii}$ by
+\begin{align*}
+\vec{v}_{\grad B} &= -\frac{1}{2}v_{\perp}r_L \frac{\vec{B}\times\grad B}{B^2}\\
+\vec{v}_{\grad B} &= -\frac{1}{2}v_{\perp}\frac{m_ev_{\perp}}{eB}\frac{\vec{B}\times\grad B}{B^3}\\
+&= -\frac{1}{2}v_{\perp}\frac{m_ev_{\perp}}{e}\frac{C}{r^3}\frac{-3C}{r^4}\frac{r^9}{C^3}(\hat{\phi}\times\hat{r})\\
+&= \frac{3}{2}\frac{m_ev_{\perp}^2}{e}\frac{r^2}{C}\hat{\theta}\\
+&= \frac{3}{2}\frac{(9.11\times10^{-31}\unit{kg})(1.25\times10^{8}\unit{m\ s^{-1}})^2}{1.6\times10^{-19}\unit{C}}\frac{(5\unit{earth\ radii})^2}{3\times10^{-5}\unit{(earth radii)^3\ T}}\hat{\theta}\\
+&= \frac{3}{2}\frac{(9.11\times10^{-31}\unit{kg})(1.25\times10^{8}\unit{m\ s^{-1}})^2}{1.6\times10^{-19}\unit{C}}(0.13\unit{m^{-1}\ T})\hat{\theta}\\
+&= 1.16\times10^{4}\unit{m\ s^{-1}}\hat{\theta}
+\end{align*}
+Now for the $1\unit{keV}$ protons we can find the velocity of the protons like we did for the electrons
+\begin{align*}
+v &= \sqrt{\frac{3KT}{m_p}}\\
+&= \sqrt{\frac{3(1\unit{keV})}{1.67\times10^{-27}\unit{kg}}}\\
+&= \sqrt{\frac{4.8\times10^{-16}\unit{J}}{1.67\times10^{-27}\unit{kg}}}\\
+&= 5.36\times10^{5}\unit{m\ s^{-1}}
+\end{align*}
+Now we can find the grad-B drift velocity the same as way we did for the electron 
+\begin{align*}
+\vec{v}_{\grad B} &= -\frac{3}{2}\frac{m_pv_{\perp}^2}{e}\frac{r^2}{C}\hat{\theta}\\
+&= -\frac{3}{2}\frac{(1.67\times10^{-27}\unit{kg})(5.36\times10^{5}\unit{m\ s^{-1}})^2}{1.6\times10^{-19}\unit{C}}(0.13\unit{m^{-1}\ T})\hat{\theta}\\
+&= -585\unit{m\ s^{-1}}\hat{\theta}
+\end{align*}
+
+\item
+The electron moves in the positive $\hat{\theta}$ direction. So the electron drifts eastward.
+
+\item
+If we assume that the electron is at $5\unit{earth\ radii}$ or $3.19\times10^{7}\unit{m}$ we see that for the electron to complete one orbit the electron must travel
+$$2\pi(3.19\times10^{7}\unit{m}) = 2.00\times10^{8}\unit{m}$$
+so if the electron is traveling at $5.36\times10^{5}\unit{m\ s^{-1}}$ as we found in part (a) we see that the time for the electron the make one for revolution is 
+$$\frac{2.00\times10^{8}\unit{m}}{5.36\times10^{5}\unit{m\ s^{-1}}} = 3.74\times10^{2}\unit{s}$$
+
+\item
+The ring current density for the electron is
+\begin{align*}
+j_{e} &= nev_{\grad B}\\
+&= (10^{7}\unit{m^{-3}})(-1.6\times10^{-19}\unit{C})(5.36\times10^{5}\unit{m\ s^{-1}})\\
+&= -8.58\times10^{-6}\unit{A\ s^{-2}}
+\end{align*}
+and for the proton we get
+\begin{align*}
+j_{p} &= nev_{\grad B}\\
+&= (10^{7}\unit{m^{-3}})(1.6\times10^{-19}\unit{C})(-585\unit{m\ s^{-1}})\\
+&= -9.36\times10^{-9}\unit{A\ s^{-2}}
+\end{align*}
+Now we can just add the two separate ring current densities to get
+$$j = -8.60\times10^{-6}\unit{A\ s^{-2}}$$
+\end{enumerate}
+
+\section{Problem \#4}
+\begin{enumerate}[(a)]
+\item
+To find the total drift velocity of the electron outside an infinite wire carrying current $I$. First we see from \emph{Amp\'{e}re's Law} that the magnetic field if given by
+\begin{align*}
+\oint \vec{B}\cdot d\vec{l} &= \mu_0I_{enc}\\
+B\oint dl &= \mu_0I\\
+B(2\pi r) &= \mu_0I\\
+\vec{B} &= \frac{\mu_0I}{2\pi r}\hat{\theta}
+\end{align*}
+Now we can use the equation
+$$\vec{v}_R+\vec{v}_{\grad B} = \frac{m}{q}\frac{\vec{R}_c\times\vec{B}}{R_c^2B^2}\left(v_{\parallel}^2+\frac{1}{2}v_{\perp}^2\right)$$
+to find the total drift velocity. Where $\vec{R}_c = r_0\hat{r}$ and $v_{\parallel} = v_{\perp}$. So we can calculate
+\begin{align*}
+\vec{v}_R+\vec{v}_{\grad B} &= \frac{m}{q}\frac{\vec{R}_c\times\vec{B}}{R_c^2B^2}\left(v_{\parallel}^2+\frac{1}{2}v_{\perp}^2\right)\\
+&= \frac{m_e}{e} \frac{R_cB}{R_c^2B^2}(\hat{r}\times\hat{\theta})\left(v_{\perp}^2+\frac{1}{2}v_{\perp}^2\right)\\
+&= \frac{m_e}{e} \frac{1}{R_cB}\frac{3}{2}v_{\perp}^2\hat{z}\\
+&= \frac{3}{2}\frac{m_e}{e} \frac{2\pi r_0}{r_0\mu_0I}v_{\perp}^2\hat{z}\\
+&= \frac{3}{2}\frac{m_e}{e}\frac{2\pi}{\mu_0I}v_{\perp}^2\hat{z}
+\end{align*}
+\end{enumerate}
+\end{document}
+

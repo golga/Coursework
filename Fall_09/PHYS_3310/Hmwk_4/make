@@ -1,0 +1,3 @@
+latex Hmwk_3.tex
+latex Hmwk_3.tex
+dvips Hmwk_3.dvi

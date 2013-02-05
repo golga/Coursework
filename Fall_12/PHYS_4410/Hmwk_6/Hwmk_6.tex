@@ -1,0 +1,170 @@
+\documentclass[11pt]{article}
+
+\usepackage{latexsym}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{enumerate}
+\usepackage{amsmath}
+\usepackage{cancel}
+\numberwithin{equation}{section}
+
+\setlength{\evensidemargin}{.25in}
+\setlength{\oddsidemargin}{-.25in}
+\setlength{\topmargin}{-.75in}
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{9.5in}
+\newcommand{\due}{October 24th, 2012}
+\newcommand{\HWnum}{6}
+\input{/home/joey/Documents/Class/Define.tex}
+
+\begin{document}
+\input{../title.tex}
+
+\section{Problem \#1}
+\begin{enumerate}[(a)]
+\item
+Given that the \emph{Fine-Structure} splitting of the spectrum is given by
+\begin{equation}
+E_{nlj}^{fs} = (Z\alpha)^2(-E_n^{(0)})\frac{1}{n}\left(\frac{3}{4n} - \frac{1}{j+1/2}\right)
+\label{FineS}
+\end{equation}
+we can work out the energy spectrum for $n=2$ state in the hydrogen atom ($Z=1$) such that equation \ref{FineS} becomes
+$$E_{2lj}^{fs} = -\frac{1}{2}\alpha^2E_2^{(0)}\left(\frac{3}{8} - \frac{1}{j+1/2}\right)$$
+Now we use the fact that for $n=2$ we have the orbital angular momentum $l=1,0$ and the spin angular momentum $s=1/2, -1/2$. This results in the following possible states
+$$^{2}S_{1/2}, ^{2}P_{3/2,1/2}$$
+Note for the $l=0$ states we the spectrum does not move. So for the $l=1$ states we have $j=3/2$ and $j=1/2$ which due to the perturbation shifts the spectrum. So for $j=3/2$ we have
+\begin{align*}
+E_{2lj}^{fs} &= -\frac{1}{2}\alpha^2E_2^{(0)}\left(\frac{3}{8} - \frac{1}{3/2+1/2}\right)\\
+&= -\frac{1}{2}\alpha^2E_2^{(0)}\left(\frac{3}{8} - \frac{1}{2}\right)\\
+&= -\frac{1}{2}\alpha^2E_2^{(0)}\left(-\frac{1}{8}\right)\\
+&= \frac{1}{16}\alpha^2E_2^{(0)}
+\end{align*}
+and for $j=1/2$ 
+\begin{align*}
+E_{2lj}^{fs} &= -\frac{1}{2}\alpha^2E_2^{(0)}\left(\frac{3}{8} - \frac{1}{1/2+1/2}\right)\\
+&= -\frac{1}{2}\alpha^2E_2^{(0)}\left(\frac{3}{8} - 1\right)\\
+&= -\frac{1}{2}\alpha^2E_2^{(0)}\left(-\frac{5}{8}\right)\\
+&= \frac{5}{16}\alpha^2E_2^{(0)}
+\end{align*}
+Where the $l=0$ state remains at $E_2^{(0)}$.
+
+\item
+If we place the atom described in part (a) in a strong magnetic field ($B = 5\unit{T}$) we apply the \emph{Zeeman Effect} in the strong-field limit. This implies that the perturbation is
+$$H^{ZSF} = \frac{eB}{2m_e}[\hat{L}_z+2\hat{S}_z]$$
+which we can calculate the energy by
+\begin{align*}
+E^{ZSF}_{nl(1/2)m_lm_s} &= \bra{nlm_lm_s}H^{ZSF}\ket{nlm_lm_s}\\
+&= \frac{eB}{2m_e}\bra{nlm_lm_s}[\hat{L}_z+2\hat{S}_z]\ket{nlm_lm_s}\\
+&= \frac{e\hbar}{2m_e}B(m_l+2m_s) 
+\end{align*}
+Now we know that $m_l = 1,0-1$ for $l=1$ and $m_s = 1/2,-1/2$ for an electron. This implies that the possible values for $(m_l+2m_s)$ are $2,1,0,-1,-2$. This lifts the degeneracy.
+
+\item
+For a magnetic field of $B=0.05\unit{T}$ we take into account the weak-field limit of the \emph{Zeeman Effect} which states that
+$$E^{ZWF}_{nlsjm} = g_J\mu_BB$$
+where $\mu_B$ is the magnetic moment given by
+$$\mu_B \equiv \frac{e\hbar}{2m_e} = 5.8\times10^{-5}\unit{eV\ T^{-1}}$$
+and the \emph{Land\'{e} g-factor} $g_J$ is given by
+$$g_J = 1+\frac{j(j+1)-l(l+1)+s(s+1)}{2j(j+1)}$$
+so to find the shift to the spectrum we account for the fact that $s=1/2$ and $l=1,0$ which implies that $j=3/2$ for $l=1$ and $j=1/2$ for $l=0$. So for $l=0$ we have
+\begin{align*}
+g_J &= 1+\frac{1/2(1/2+1)-0(0+1)+3/4}{2(1/2)(1/2+1)}\\
+&= 1+\frac{2}{3}\frac{6}{4}\\
+&= 2
+\end{align*}
+And for $l=1$ we have
+\begin{align*}
+g_J &= 1+\frac{3/2(3/2+1)-1(1+1)+3/4}{2(3/2)(3/2+1)}\\
+&= 1+\frac{15/4-2+3/4}{3(3/2+1)}\\
+&= 1+\frac{10/4}{15/2}\\
+&= 1+\frac{2}{15}\frac{10}{4}\\
+&= 1+\frac{1}{3} = \frac{4}{3}
+\end{align*}
+\end{enumerate}
+
+\section{Problem \#2}
+Given that $\mathbf{a}$ and $\mathbf{b}$ are constant vectors we can calculate
+$$\int_{0}^{\pi}\int_{0}^{2\pi}(\mathbf{a}\cdot\hat{r})(\mathbf{b}\cdot\hat{r})\sin(\theta)d\theta d\phi$$
+using the fact that 
+$$\hat{r} = \sin(\theta)\cos(\phi)\hat{x} + \sin(\theta)\sin(\phi)\hat{y} + \cos(\phi)\hat{z}$$
+in spherical coordinates. So we can see that the dot products become
+$$\mathbf{a}\cdot\hat{r} =  a_x\sin(\theta)\cos(\phi) + a_y\sin(\theta)\sin(\phi) + a_z\cos(\phi)$$
+and
+$$\mathbf{b}\cdot\hat{r} =  b_x\sin(\theta)\cos(\phi) + b_y\sin(\theta)\sin(\phi) + b_z\cos(\phi)$$
+Now before we take the product of these we can see that the $xy$ crossterms are all going to have a $\sin(\phi)\cos(\phi)$ which goes to zero under the integration. By the same token the $xz$ and $zy$ cross terms will only have $\sin(\phi)$ or $\cos(\phi)$ term for $\phi$ component this too goes to zero under the integration. Therefore the only non-zero terms of the integral are the $a_xb_x$, $a_yb_y$, and $a_zb_z$ terms. So
+\begin{align*}
+\int_{0}^{\pi}\int_{0}^{2\pi}(\mathbf{a}\cdot\hat{r})(\mathbf{b}\cdot\hat{r})\sin(\theta)d\theta d\phi &= \int_{0}^{\pi}\int_{0}^{2\pi}\left(a_xb_x(\sin(\theta)\cos(\phi))^2 + a_yb_y(\sin(\theta)\sin(\phi))^2 + a_zb_z\cos^2(\theta)\frac{}{}\right)\sin(\theta)d\theta d\phi
+\end{align*}
+So we can calculate each integral individually so the $a_xb_x$ term gives
+\begin{align*}
+a_xb_x\int_{0}^{\pi}\sin^3(\theta)d\theta\int_{0}^{2\pi}\cos^2(\phi)d\phi &= a_xb_x\frac{4}{3}\int_{0}^{2\pi}\cos^2(\phi)d\phi\\
+&= a_xb_x\frac{4}{3}\pi
+\end{align*}
+and the $a_yb_y$ term yields
+\begin{align*}
+a_yb_y\int_{0}^{\pi}\sin^3(\theta)d\theta\int_{0}^{2\pi}\sin^2(\phi)d\phi &= a_yb_y\frac{4}{3}\int_{0}^{2\pi}\sin^2(\phi)d\phi\\
+&= a_xb_x\frac{4}{3}\pi
+\end{align*}
+and the $a_zb_z$ term
+\begin{align*}
+a_zb_z\int_{0}^{\pi}\cos^2(\theta)\sin(\theta)d\theta\int_{0}^{2\pi}d\phi &= a_zb_z\frac{2}{3}2\pi\\
+&= a_zb_z\frac{4}{3}\pi\\
+\end{align*}
+So our integral becomes
+\begin{align*}
+\int_{0}^{\pi}\int_{0}^{2\pi}(\mathbf{a}\cdot\hat{r})(\mathbf{b}\cdot\hat{r})\sin(\theta)d\theta d\phi &= a_xb_x\frac{4}{3}\pi + a_yb_y\frac{4}{3}\pi + a_zb_z\frac{4}{3}\pi\\
+&= \frac{4\pi}{3}\left(a_xb_x+ a_yb_y+ a_zb_z\right)\\
+&= \frac{4\pi}{3}\left(\mathbf{a}\cdot\mathbf{b}\right)
+\end{align*}
+Now we can uses this relation to show that
+$$\left\langle \frac{3(\mathbf{S}_p\cdot\hat{r})(\mathbf{S}_e\cdot\hat{r}) - \mathbf{S}_p\cdot\mathbf{S}_e}{r^3}\right\rangle = 0$$
+for states with $l=0$. This implies that the state has no $\theta$ or $\phi$ dependence so we can say that the expectation is calculated by
+\begin{align*}
+\left\langle \frac{3(\mathbf{S}_p\cdot\hat{r})(\mathbf{S}_e\cdot\hat{r}) - \mathbf{S}_p\cdot\mathbf{S}_e}{r^3}\right\rangle &= \frac{3}{4\pi}\int_{0}^{\pi}\int_{0}^{2\pi}(\mathbf{S}_p\cdot\hat{r})(\mathbf{S}_e\cdot\hat{r})\sin(\theta)d\theta d\phi - \frac{1}{4\pi}\int_{0}^{\pi}\int_{0}^{2\pi}\mathbf{S}_p\cdot\mathbf{S}_e\sin(\theta)d\theta d\phi\\
+&= \frac{3}{4\pi}\frac{4\pi}{3}\mathbf{S}_p\cdot\mathbf{S}_e - \frac{1}{4\pi}\mathbf{S}_p\cdot\mathbf{S}_e\int_{0}^{\pi}\int_{0}^{2\pi}\sin(\theta)d\theta d\phi\\
+&= \frac{3}{4\pi}\frac{4\pi}{3}\mathbf{S}_p\cdot\mathbf{S}_e - \frac{1}{4\pi}\mathbf{S}_p\cdot\mathbf{S}_e4\pi\\
+&= \mathbf{S}_p\cdot\mathbf{S}_e - \mathbf{S}_p\cdot\mathbf{S}_e = 0
+\end{align*}
+Note we the radial integral was just the expectation of $r$ and was not important for this calculation. Also the factor of $1/4\pi$ comes from $Y_{0}^{0}$.
+
+\section{Problem \#3}
+For a symmetric rotator with the Hamiltonian
+$$H_0 = \frac{\mathbf{L}^2}{2I}$$
+we assume the eigenstates are the spherical harmonics $Y_l^m(\theta,\phi)$. For the perturbation
+$$H' = E_1\cos(\theta)$$
+we calculate the energy shifts for $l=1$. Note for $l=1$ the possible values for $m$ are $m=1,0,-1$ where
+$$\ket{10} = Y_1^0 = \left(\frac{3}{4\pi}\right)^{1/2}\cos(\theta)$$
+and
+$$\ket{1\pm1} = Y_1^{\pm1} = \mp\left(\frac{3}{8\pi}\right)^{1/2}\sin(\theta)e^{\pm i\phi}$$
+So we can calculate the first order correction to the energy for $m=0$ by
+\begin{align*}
+E^{(1)} = \bra{10}H'\ket{10} &= \int_{0}^{\pi}\int_{0}^{\pi}(Y_1^0)^*H'Y_1^0\sin(\theta)d\theta d\phi\\
+&= \frac{3}{4\pi}2\pi\int_{0}^{\pi}\cos^2(\theta)E_1\cos(\theta)\sin(\theta)d\theta\\
+&= \frac{3E_1}{2}\pi\int_{0}^{\pi}\cos^3(\theta)\sin(\theta)d\theta = 0
+\end{align*}
+So to first order the correction is zero. Therefore we need to go to second order
+$$E^{(2)} = \sum_{m'\ne m}\frac{\left|\bra{lm'}H'\ket{lm}\right|^2}{E^{0}_{m'}-E^{0}_m}$$
+Note the energy is given by the eigenstate of the angular momentum such that
+$$E^{(0)}_{m} = \frac{\hbar^2m(m+1)}{2I}$$
+We can see that the terms that mix a $m=1$ with a $m'=-1$ results in an integral over $\cos(\theta)\sin^3(\theta)$ which is zero. This implies that the only non-zero terms in the sum are $m'=0,m=\pm1$. So we calculate the integral
+\begin{align*}
+\bra{10}H'\ket{1-1} &= \int_{0}^{\pi}\int_{0}^{2\pi}(Y_1^0)^*H'Y_1^{-1}\sin(\theta)d\theta d\phi\\
+&= \frac{3}{\sqrt{32}\pi}\int_{0}^{\pi}\int_{0}^{2\pi}\cos(\theta)(E_1\cos(\theta))\sin(\theta)e^{-i\phi}\sin(\theta)d\theta d\phi\\
+&= -\frac{3E_1}{\sqrt{32}\pi}\int_{0}^{\pi}\sin^2(\theta)\cos^2(\theta)d\theta\int_{0}^{\pi}e^{-i\phi}d\phi\\
+&= -\frac{3E_1}{\sqrt{32}\pi}\frac{\pi}{8}\cancelto{0}{\int_{0}^{2\pi}e^{-i\phi}d\phi} = 0
+\end{align*} 
+This implies that the second order correction is also zero.
+
+\section{Problem \#4}
+For the $(1s)(2p)$ configuration of helium we have one excited electron with $l=1$ so the total orbital angular momentum is 1 which puts us in the $P$ state. Since the electrons are not in the same subshell the total spin angular momentum can be either $1$ or $0$ so the possible states are
+$$^1P_{1},^3P_{2}$$
+Note the magnetic moment is given by
+$$\mu = \frac{e\hbar}{2m_e}(m_l+2m_s)$$
+so the possible values for the total $l$ and total $s$ are 
+\begin{align*}
+m_l &= 1,0,-1\\
+m_s &= 1,0,-1\\
+\end{align*}
+which results in a splitting as shown in the figure attached.
+\end{document}
+

@@ -1,0 +1,401 @@
+\documentclass[11pt]{article}
+
+\usepackage{latexsym}
+\usepackage{amssymb}
+\usepackage{enumerate}
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{cancel}
+\numberwithin{equation}{section}
+
+\setlength{\evensidemargin}{.25in}
+\setlength{\oddsidemargin}{-.25in}
+\setlength{\topmargin}{-.75in}
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{9.5in}
+\newcommand{\due}{November 4th, 2009}
+\newcommand{\HWnum}{9}
+\newcommand{\vecF}{\vec{F}}
+\newcommand{\vecomg}{\vec{\omega}}
+
+\begin{document}
+\input{../title.tex}
+
+\section{Problem \#1}
+We assume that the bucket is spinning at a constant angular velocity $\vec{\omega}$ and that the water inside of the bucket is at equilibrium. So it follows that 
+$$\vecF_{eff} = \vec{F}-m\ddot{R}_f-m\dot{\vecomg}\times\vec{r}-m\vecomg\times(\vecomg\times\vec{r})-2m\vecomg\times v_r$$
+So we know that because the water is at equilibrium that $\vecF_{eff}=0$ and that $\dot{\vecomg}=0$. We also assume that the water is not moving in the rotated frame or $v_r=0$ and that the center of mass is not being linearly accelerated as well. These facts yield 
+$$0 = \vec{F}-m\vecomg\times(\vecomg\times\vec{r})$$
+or
+$$\vec{F} = m\vecomg\times(\vecomg\times\vec{r})$$
+for an individual mass particle of water. We know that the 2 forces acting upon the water are the force of gravity and a normal force. So $\vecF = \vecF_g+\vecF_N$ where $\vecF_g=m\vec{g}$. So
+$$0 = \vecF_n +m\vec{g} -m\vecomg\times(\vecomg\times\vec{r})$$
+Now if we say that $\vecomg$ points in the $\hat{z}$ direction and $\vec{r}$ points in the $\hat{s}$ direction we can say
+$$m\vecomg\times(\vecomg\times\vec{r}) = m\omega^2r$$
+so
+$$0 = \vecF_n +m\vec{g} -m\omega^2r$$
+So if we look at the free body diagram (attached) we see that 
+\begin{align*}
+\tan\theta &= \frac{m\omega^2r}{mg}\\
+\tan\theta &= \frac{\omega^2r}{g}
+\end{align*}
+Now we see that the slope of the water is given by rise over run. Or $dz/dr$ we see that due to the geometry of free body diagram that the angle that the slope of the water makes is the same as the angle $\theta$ or
+$$\tan\theta=\frac{dz}{dr}$$
+Now we already know what $\tan\theta$ is so we have
+$$\frac{dz}{dr} = \frac{\omega^2r}{g}$$
+Now we can use separation of variable to give us the function of the waterline.
+\begin{align*}
+\frac{dz}{dr} &= \frac{\omega^2r}{g}\\
+dz &= \frac{\omega^2r}{g}dr\\
+\int dz &= \int\frac{\omega^2r}{g}dr\\
+z(r) &= \frac{\omega^2}{g}\int rdr\\
+z(r) &= \frac{\omega^2}{g}r^2+C
+\end{align*}
+So the waterline is parabolic.
+
+\section{Problem \#2}
+So if we define our rotated coordinate system at the surface of the earth where the origin is at the point where the projectile is launched. We can see from the sketch attached that the velocity of the projectile launched due south is given by
+$$\vec{v_r} = v_0\cos(\alpha)\hat{x'}+(v_0\sin(\alpha)-gt)\hat{y'}$$
+where $v_0$ is the initial speed of the projectile and $\alpha$ is the angle of elevation note the effect of gravity is only felt in the $\hat{y'}$ direction. So if we assume that $\vecomg$ points in the $\hat{z}$ direction we can say the vector is 
+$$\vecomg = -\omega\cos(\lambda)\hat{x'} + \omega\sin(\lambda)\hat{y'}$$
+in the rotated frame. Now we know that other than gravity (which we accounted for) the only other force on the projectile is the Coriolis force. Which is given by
+$$\vecF_{cor} = 2m\vecomg\times\vec{v_r}$$
+so we calculate the cross product as
+\begin{align*}
+\vecF_{cor} = m\vec{a}_{cor}&= 2m\vecomg\times\vec{v_r}\\
+\vec{a}_{cor}&= 2\vecomg\times\vec{v_r}\\
+&= 2\det\left(\begin{array}{ccc}
+	\hat{x'}		&\hat{y'}		&\hat{z'}\\
+	v_0\cos(\alpha)		&v_0\sin(\alpha)-gt	&0\\
+	-\omega\cos(\lambda)	&\omega\sin(\lambda)	&0
+	\end{array}\right)\\
+&= 2\hat{x'}(0) + \hat{y'}(0) + \hat{z'}(v_0\cos(\alpha)\omega\sin(\lambda)-(v_0\sin(\alpha)-gt)(-\omega\cos(\lambda)))\\
+&= 2\hat{z'}(v_0\cos(\alpha)\omega\sin(\lambda)+v_0\sin(\alpha)\omega\cos(\lambda)-gt\omega\cos(\lambda))\\
+&= 2\hat{z'}(v_0\omega[\cos(\alpha)\sin(\lambda)+\sin(\alpha)\cos(\lambda)]-gt\omega\cos(\lambda))\\
+&= 2(v_0\omega\sin(\alpha+\lambda)-gt\omega\cos(\lambda))\hat{z'}
+\end{align*}
+So now we have a function $a(t)$ so we now need to find the change in position ($z'$) in terms of $t$ so we integrate to get velocity.
+\begin{align*}
+a_{cor} &= 2(v_0\omega\sin(\alpha+\lambda)-gt\omega\cos(\lambda))\\
+\frac{dv_{cor}}{dt} &= 2(v_0\omega\sin(\alpha+\lambda)-gt\omega\cos(\lambda))\\
+\int dv_{cor} &= 2\int v_0\omega\sin(\alpha+\lambda)-gt\omega\cos(\lambda)dt\\
+v_{cor} &= 2v_0\omega\sin(\alpha+\lambda)t-g\omega\cos(\lambda)t^2
+\end{align*}
+We integrate again to get displacement
+\begin{align*}
+v_{cor} = \frac{dz_{cor}}{dt} &= 2v_0\omega\sin(\alpha+\lambda)t-g\omega\cos(\lambda)t^2\\
+\int dz_{cor} &= \int2v_0\omega\sin(\alpha+\lambda)t-g\omega\cos(\lambda)t^2dt\\
+z_{cor} &= v_0\omega\sin(\alpha+\lambda)t^2-\frac{1}{3}g\omega\cos(\lambda)t^3
+\end{align*}
+So now if we calculate the time the projectile is in the air we will know how far the projectile is displaced. So if we know that half the total time is the time the projectile takes to get to its max height where its velocity is zero so
+$$0 = v_0\sin(\alpha)-gt$$
+solving for $t$ gives us
+$$t = \frac{v_0\sin(\alpha)}{g}$$
+now we multiply by $2$ to give us the total time
+$$t = \frac{2v_0\sin(\alpha)}{g}$$
+now we replace this $t$ into $z_{cor}$ to find the displacement 
+\begin{align*}
+z_{cor} &= v_0\omega\sin(\alpha+\lambda)\left(\frac{2v_0\sin(\alpha)}{g}\right)^2-\frac{1}{3}g\omega\cos(\lambda)\left(\frac{2v_0\sin(\alpha)}{g}\right)^3\\
+z_{cor} &= \frac{4v_0^3\omega}{g^2}\sin(\alpha+\lambda)\sin^2(\alpha)-\frac{8v_0^3\omega}{3g^2}\cos(\lambda)\sin^3(\alpha)\\
+z_{cor} &= \frac{4v_0^3\omega}{g^2}\left(\sin(\alpha+\lambda)\sin^2(\alpha)-\frac{2}{3}\cos(\lambda)\sin^3(\alpha)\right)
+\end{align*}
+Note that the units are calculated as
+\begin{align*}
+\left<\frac{4v_0^3\omega}{g^2}\right> &= \frac{m^3\ s^{-3}\ s^{-1}}{m^2\ s^{-4}}\\
+&= \frac{m^3\ s^{-4}}{m^2\ s^{-4}}\\
+&= \frac{m^3}{m^2}\\
+&= m
+\end{align*}
+Now for a projectile that is fired due north we get that 
+$$\vec{v_r} = -v_0\cos(\alpha)\hat{x'}+(v_0\sin(\alpha)-gt)\hat{y'}$$
+Note that the velocity in the $y'$ direction remains the same and the velocity in the $x'$ direction is reversed. So it remains that our angular velocity is
+$$\vecomg = -\omega\cos(\lambda)\hat{x'} + \omega\sin(\lambda)\hat{y'}$$
+So we can calculate the Coriolis effect as
+\begin{align*}
+\vecF_{cor} = m\vec{a}_{cor}&= 2m\vecomg\times\vec{v_r}\\
+\vec{a}_{cor}&= 2\vecomg\times\vec{v_r}\\
+&= 2\det\left(\begin{array}{ccc}
+	\hat{x'}		&\hat{y'}		&\hat{z'}\\
+	-v_0\cos(\alpha)		&v_0\sin(\alpha)-gt	&0\\
+	-\omega\cos(\lambda)	&\omega\sin(\lambda)	&0
+	\end{array}\right)\\
+&= 2\hat{x'}(0) + \hat{y'}(0) + \hat{z'}(-v_0\cos(\alpha)\omega\sin(\lambda)-(v_0\sin(\alpha)-gt)(-\omega\cos(\lambda)))\\
+&= 2\hat{z'}(-v_0\cos(\alpha)\omega\sin(\lambda)+v_0\sin(\alpha)\omega\cos(\lambda)-gt\omega\cos(\lambda))\\
+&= 2\hat{z'}(v_0\omega[\sin(\alpha)\cos(\lambda)-\cos(\alpha)\sin(\lambda)]-gt\omega\cos(\lambda))\\
+&= 2(v_0\omega\sin(\alpha-\lambda)-gt\omega\cos(\lambda))\hat{z'}
+\end{align*}
+Note that the only change is the changing of the sign. So we can quickly say that
+$$z_{cor} = v_0\omega\sin(\alpha-\lambda)t^2-\frac{1}{3}g\omega\cos(\lambda)t^3$$
+and we know that the time in the air is not changed because we did not change the velocity in the $y'$ direction so we know that 
+$$t = \frac{2v_0\sin(\alpha)}{g}$$
+so it follows that.
+$$z_{cor} = \frac{4v_0^3\omega}{g^2}\left(\sin(\alpha-\lambda)\sin^2(\alpha)-\frac{2}{3}\cos(\lambda)\sin^3(\alpha)\right)$$
+Now for a projectile fired due west (we defined this as the positive $\hat{z'}$ direction) has a velocity given by
+$$\vec{v_r} = (v_0\sin(\alpha)-gt)\hat{y'}+v_0\cos(\alpha)\hat{z'}$$
+and again our angular velocity is
+$$\vecomg = -\omega\cos(\lambda)\hat{x'} + \omega\sin(\lambda)\hat{y'}$$
+So we calculate the Coriolis effect as
+\begin{align*}
+\vecF_{cor} = m\vec{a}_{cor}&= 2m\vecomg\times\vec{v_r}\\
+\vec{a}_{cor}&= 2\vecomg\times\vec{v_r}\\
+&= 2\det\left(\begin{array}{ccc}
+	\hat{x'}		&\hat{y'}		&\hat{z'}\\
+	0			&v_0\sin(\alpha)-gt	&v_0\cos(\alpha)\\
+	-\omega\cos(\lambda)	&\omega\sin(\lambda)	&0
+	\end{array}\right)\\
+&= 2\hat{x'}(0-\omega\sin(\lambda)v_0\cos(\alpha)) 
+	+ 2\hat{y'}(-\omega\cos(\lambda)v_0\cos(\alpha)-0) 
+	+ 2\hat{z'}(0-\omega\cos(\lambda)(v_0\sin(\alpha)-gt))\\
+&= -(2v_0\omega\sin(\lambda)\cos(\alpha))\hat{x'} 
+	- (2v_0\omega\cos(\lambda)\cos(\alpha))\hat{y'}
+	+ (2\omega\cos(\lambda)(v_0\sin(\alpha)-gt))\hat{z'}\\
+\end{align*}
+So we can say that from integration
+$$\vec{v_{cor}}= -(2v_0\omega\sin(\lambda)\cos(\alpha)t)\hat{x'} 
+	- (2v_0\omega\cos(\lambda)\cos(\alpha)t)\hat{y'}
+	+ (\omega\cos(\lambda)(2v_0\sin(\alpha)t-gt^2))\hat{z'}$$
+and 
+$$\vec{r_{cor}}= -(v_0\omega\sin(\lambda)\cos(\alpha)t^2)\hat{x'} 
+	- (v_0\omega\cos(\lambda)\cos(\alpha)t^2)\hat{y'}
+	+ (\omega\cos(\lambda)(v_0\sin(\alpha)t^2-\frac{1}{3}gt^3))\hat{z'}$$
+Now we find the time the projectile is in the air. This is not the same as before, because we can see the Coriolis force is in the $y'$ direction so it effects the time it takes the projectile to land. So we say that 
+$$v_y = v_0\sin(\alpha)-gt- 2v_0\omega\cos(\lambda)\cos(\alpha)t$$
+So if we calculate the point where $v_y=0$ or the maximum we know half the time off the ground so
+\begin{align*}
+0 &= v_0\sin(\alpha)-gt- 2v_0\omega\cos(\lambda)\cos(\alpha)t\\
+0 &= v_0\sin(\alpha) - (g+ 2v_0\omega\cos(\lambda)\cos(\alpha))t\\
+v_0\sin(\alpha) &= (g+ 2v_0\omega\cos(\lambda)\cos(\alpha))t\\
+t &= \frac{v_0\sin(\alpha)}{g+ 2v_0\omega\cos(\lambda)\cos(\alpha)}
+\end{align*}
+So we know the total time in the air is 
+$$t = \frac{2v_0\sin(\alpha)}{g+ 2v_0\omega\cos(\lambda)\cos(\alpha)}$$
+Now we solve $r_{cor}$ at this time. We will calculate this with its separate components 
+\begin{align*}
+\vec{r_{cor}}_x &= -v_0\omega\sin(\lambda)\cos(\alpha)\left(\frac{2v_0\sin(\alpha)}{g+ 2v_0\omega\cos(\lambda)\cos(\alpha)}\right)^2 \\
+\end{align*}
+\begin{align*}
+\vec{r_{cor}}_y &= -v_0\omega\cos(\lambda)\cos(\alpha)\left(\frac{2v_0\sin(\alpha)}{g+ 2v_0\omega\cos(\lambda)\cos(\alpha)}\right)^2
+\end{align*}
+\begin{align*}
+\vec{r_{cor}}_z &= \omega\cos(\lambda)\left[v_0\sin(\alpha)\left(\frac{2v_0\sin(\alpha)}{g+ 2v_0\omega\cos(\lambda)\cos(\alpha)}\right)^2-\frac{1}{3}g\left(\frac{2v_0\sin(\alpha)}{g+ 2v_0\omega\cos(\lambda)\cos(\alpha)}\right)^3\right]
+\end{align*}
+For the case where we fire the projectile due east we have 
+$$\vec{v_r} = (v_0\sin(\alpha)-gt)\hat{y'}-v_0\cos(\alpha)\hat{z'}$$
+and again our angular velocity is
+$$\vecomg = -\omega\cos(\lambda)\hat{x'} + \omega\sin(\lambda)\hat{y'}$$
+So we calculate the Coriolis effect again
+\begin{align*}
+\vecF_{cor} = m\vec{a}_{cor}&= 2m\vecomg\times\vec{v_r}\\
+\vec{a}_{cor}&= 2\vecomg\times\vec{v_r}\\
+&= 2\det\left(\begin{array}{ccc}
+	\hat{x'}		&\hat{y'}		&\hat{z'}\\
+	0			&v_0\sin(\alpha)-gt	&-v_0\cos(\alpha)\\
+	-\omega\cos(\lambda)	&\omega\sin(\lambda)	&0
+	\end{array}\right)\\
+&= 2\hat{x'}(0-\omega\sin(\lambda)(-v_0\cos(\alpha))) 
+	+ 2\hat{y'}(-\omega\cos(\lambda)(-v_0\cos(\alpha))-0) 
+	+ 2\hat{z'}(0-\omega\cos(\lambda)(v_0\sin(\alpha)-gt))\\
+&= 2v_0\omega\sin(\lambda)\cos(\alpha)\hat{x'} 
+	+ 2v_0\omega\cos(\lambda)\cos(\alpha)\hat{y'}
+	+ 2\omega\cos(\lambda)(v_0\sin(\alpha)-gt)\hat{z'}\\
+\end{align*}
+Again through integration we get
+$$\vec{v_{cor}}= 2v_0\omega\sin(\lambda)\cos(\alpha)t\hat{x'} 
+	+ 2v_0\omega\cos(\lambda)\cos(\alpha)t\hat{y'}
+	+ \omega\cos(\lambda)(2v_0\sin(\alpha)t-gt^2)\hat{z'}$$
+and 
+$$\vec{r_{cor}}= v_0\omega\sin(\lambda)\cos(\alpha)t^2\hat{x'} 
+	+ v_0\omega\cos(\lambda)\cos(\alpha)t^2\hat{y'}
+	+ \omega\cos(\lambda)(v_0\sin(\alpha)t^2-\frac{1}{3}gt^3)\hat{z'}$$
+Again we need to find the time in the air of the projectile like when the projectile was fired to the west we have to account for the Coriolis force in the $y'$ direction so
+$$v_y = v_0\sin(\alpha)-gt + 2v_0\omega\cos(\lambda)\cos(\alpha)t$$
+Like before we need to find the time when $v_y=0$ so we calculate
+\begin{align*}
+0 &= v_0\sin(\alpha)-gt+ 2v_0\omega\cos(\lambda)\cos(\alpha)t\\
+0 &= v_0\sin(\alpha) - (g - 2v_0\omega\cos(\lambda)\cos(\alpha))t\\
+v_0\sin(\alpha) &= (g- 2v_0\omega\cos(\lambda)\cos(\alpha))t\\
+t &= \frac{v_0\sin(\alpha)}{g- 2v_0\omega\cos(\lambda)\cos(\alpha)}
+\end{align*}
+So the total time is double or
+$$t = \frac{2v_0\sin(\alpha)}{g- 2v_0\omega\cos(\lambda)\cos(\alpha)}$$
+So we can say the total displacement is given by
+\begin{align*}
+\vec{r_{cor}}_x &= -v_0\omega\sin(\lambda)\cos(\alpha)\left(\frac{2v_0\sin(\alpha)}{g- 2v_0\omega\cos(\lambda)\cos(\alpha)}\right)^2 \\
+\end{align*}
+\begin{align*}
+\vec{r_{cor}}_y &= -v_0\omega\cos(\lambda)\cos(\alpha)\left(\frac{2v_0\sin(\alpha)}{g- 2v_0\omega\cos(\lambda)\cos(\alpha)}\right)^2
+\end{align*}
+\begin{align*}
+\vec{r_{cor}}_z &= \omega\cos(\lambda)\left[v_0\sin(\alpha)\left(\frac{2v_0\sin(\alpha)}{g- 2v_0\omega\cos(\lambda)\cos(\alpha)}\right)^2-\frac{1}{3}g\left(\frac{2v_0\sin(\alpha)}{g- 2v_0\omega\cos(\lambda)\cos(\alpha)}\right)^3\right]
+\end{align*}
+
+
+\section{Problem \#3}
+\begin{enumerate}[(a)]
+\item
+For the system of atoms we can define the origin of our coordinate system at the center of the base of the tetrahedron. With this fact and the figure attached we can say that the coordinates of our atoms are
+\begin{align*}
+\vec{r}_1 &= -\frac{a}{2}\hat{x_1}-\frac{\sqrt{3}a}{4}\hat{x_2}\\
+\vec{r}_2 &= \frac{a}{2}\hat{x_1}-\frac{\sqrt{3}a}{4}\hat{x_2}\\
+\vec{r}_3 &= \frac{\sqrt{3}a}{4}\hat{x_2}\\
+\vec{r}_4 &= b\hat{x_3}
+\end{align*}
+where the mass at $\vec{r}_1$, $\vec{r}_2$ and $\vec{r}_3$ is $m_1$ and the mass at $\vec{r}_4$ is $m_2$. So we can calculate the moment of inertia tensor using
+\begin{equation}
+I_{ij} = \sum_{\alpha}\left(\delta_{ij}\sum_kx^2_{\alpha,k}-x_{\alpha,i}x_{\alpha,j}\right)
+\label{mominer}
+\end{equation}
+So we calculate $I_{11}$ as
+\begin{align*}
+I_{11} &= \sum_{\alpha}m_{\alpha}(x^2_{\alpha,2}+x^2_{\alpha,3})\\
+&= m_1\left(\frac{(-\sqrt{3})^2}{4^2}+0\right)+m_1\left(\frac{(-\sqrt{3})^2}{4^2}+0\right)+m_1\left(\frac{\sqrt{3}^2}{4^2}+0\right)+m_2(0+b^2)\\
+&= m_1\left(\frac{3}{16}\right)+m_1\left(\frac{3}{16}\right)+m_1\left(\frac{3}{16}\right)+m_2b^2\\
+&= 3m_1\frac{3}{16}+m_2b^2\\
+I_{11} &= m_1\frac{9}{16}+m_2b^2
+\end{align*}
+For $I_{22}$
+\begin{align*}
+I_{22} &= \sum_{\alpha}m_{\alpha}(x^2_{\alpha,1}+x^2_{\alpha,3})\\
+&= m_1\left(\frac{a^2}{2^2}+0\right)+m_1\left(\frac{a^2}{2^2}+0\right)+m_1\left(0+0\right)+m_2(0+b^2)\\
+&= m_1\left(\frac{a^2}{4}\right)+m_1\left(\frac{a^2}{4}\right)+m_2b^2\\
+&= 2m_1\left(\frac{a^2}{4}\right)+m_2b^2\\
+I_{22} &= m_1\frac{a^2}{2}+m_2b^2
+\end{align*}
+For $I_{33}$
+\begin{align*}
+I_{33} &= \sum_{\alpha}m_{\alpha}(x^2_{\alpha,1}+x^2_{\alpha,2})\\
+&= m_1\left(\frac{(-a)^2}{2^2}+\frac{(-\sqrt{3}a)^2}{4^2}\right)+m_1\left(\frac{a^2}{2^2}+\frac{(-\sqrt{3}a)^2}{4^2}\right)+m_1\left(0+\frac{\sqrt{3}^2a^2}{4^2}\right) +m_2(0+0)\\
+&= m_1\left(\frac{a^2}{4}+\frac{3a^2}{16}\right)+m_1\left(\frac{a^2}{4}+\frac{3a^2}{16}\right)+m_1\left(\frac{3a^2}{16}\right) \\
+&= m_1\left(\frac{4a^2}{16}+\frac{3a^2}{16}\right)+m_1\left(\frac{4a^2}{16}+\frac{3a^2}{16}\right)+m_1\left(\frac{3a^2}{16}\right) \\
+&= 2m_1\frac{7a^2}{16}+m_1\frac{3a^2}{16} \\
+I_{33} &= m_1\frac{17a^2}{16} 
+\end{align*}
+For $I_{12}$ (note this is the same as $I_{21}$)
+\begin{align*}
+I_{12} &= -\sum_{\alpha}m_{\alpha}x_{\alpha,1}x_{\alpha,2}\\
+I_{12} &= -m_1\left(\frac{-a}{2}\frac{-\sqrt{3}a}{4}\right)-m_1\left(\frac{a}{2}\frac{-\sqrt{3}a}{4}\right)-m_1\left((0)\frac{-\sqrt{3}a}{4}\right)-m_2(0)(0)\\
+I_{12} &= -m_1\left(\frac{a}{2}\frac{\sqrt{3}a}{4}\right)+m_1\left(\frac{a}{2}\frac{\sqrt{3}a}{4}\right)\\
+I_{12} = I_{21} &=0 
+\end{align*}
+For $I_{13}$ (note this is the same as $I_{31}$)
+\begin{align*}
+I_{13} &= -\sum_{\alpha}m_{\alpha}x_{\alpha,1}x_{\alpha,3}\\
+I_{13} &= -m_1\left(\frac{-a}{2}(0)\right)-m_1\left(\frac{a}{2}(0)\right)-m_1(0)(0)-m_2(0)(b)\\
+I_{13} = I_{31} &=0 
+\end{align*}
+For $I_{23}$ (note this is the same as $I_{32}$)
+\begin{align*}
+I_{23} &= -\sum_{\alpha}m_{\alpha}x_{\alpha,2}x_{\alpha,3}\\
+I_{23} &= -m_1\left(\frac{-\sqrt{3}a}{2}(0)\right)-m_1\left(\frac{-\sqrt{3}a}{2}(0)\right)-m_1\left(\frac{-\sqrt{3}a}{2}(0)\right)-m_2(0)(b)\\
+I_{23} = I_{32} &=0 
+\end{align*}
+So we can write the full tensor as
+$$\vec{\vec{I}} = \left\{\begin{array}{ccc}
+		m_1\dfrac{9}{16}+m_2b^2	&0				&0\\
+ 		0			&m_1\dfrac{a^2}{2}+m_2b^2	&0\\
+ 		0			&0		&m_1\dfrac{17a^2}{16} 
+		\end{array}\right\}$$
+Note that this tensor only has elements on the diagonal. Therefore we picked our origin such that it lies on the principal axes of inertia. So we can say the principal axes of inertia goes from the center of the equilateral triangle (the base) to the atom at the top $r_4$.
+	
+\item
+For the cylindrical rod of uniform density $\rho$, length $l$ and diameter $d$. We use the integral form of equation \ref{mominer} or
+\begin{equation}
+I_{ij} = \int_V \rho(\vec{r}\left(\delta_{ij}\sum_kx^2_k-x_ix_j\right)dv
+\label{intmominer}
+\end{equation}
+Where $dv$ is $dx_1dx_2dx_3$ and we integrate over the volume of the cylinder. But it is easier to use cylindrical coordinates because of the symmetry of the cylinder so we say 
+$$x_1=s\cos(\phi)$$
+$$x_2=s\sin(\phi)$$
+$$x_3=z$$
+Where
+$$dv=sdsd\phi dz$$
+So we calculate $I_{11}$ as
+\begin{align*}
+I_{11} &= \int_V\rho(x^2_2+x^2_3)dv\\
+&= \rho\int_0^{d/2}\int_0^{2\pi}\int_0^l(s^2\sin^2(\phi)+z^2)sdsd\phi dz\\
+&= \rho\int_0^{d/2}\int_0^{2\pi}\int_0^l(s^3\sin^2(\phi)+z^2s)dsd\phi dz\\
+&= \rho\int_0^{d/2}\int_0^{2\pi}\left.s^3\sin^2(\phi)z+\frac{1}{3}z^3s\right|_0^ldsd\phi\\
+&= \rho\int_0^{d/2}\int_0^{2\pi}\left.s^3\sin^2(\phi)l+\frac{l^3}{3}s\right.dsd\phi\\
+&= \rho\int_0^{2\pi}\left.\frac{l}{4}s^4\sin^2(\phi)+\frac{l^3}{3}\frac{1}{2}s^2\right|_0^{d/2}d\phi\\
+&= \rho\int_0^{2\pi}\left.\frac{l}{4}\frac{d^4}{2^4}\sin^2(\phi)+\frac{l^3}{3}\frac{1}{2}\frac{d^2}{2^2}\right.d\phi\\
+&= \rho\int_0^{2\pi}\left.\frac{ld^4}{64}\sin^2(\phi)+\frac{l^3d^2}{24}\right.d\phi
+\end{align*}
+\begin{align*}
+&= \rho\int_0^{2\pi}\frac{ld^4}{64}\sin^2(\phi)d\phi+\left.\frac{l^3d^2}{24}\phi\right|_0^{2\pi}\\
+&= \rho\int_0^{2\pi}\frac{ld^4}{64}\frac{1}{2}(1-\cos(2\phi))d\phi+\frac{l^3d^2}{24}2\pi\\
+&= \rho\frac{ld^4}{128}\left.\phi-\frac{1}{2}\sin(2\phi)\right|_0^{2\pi}+\frac{l^3d^2}{24}2\pi\\
+&= \rho\frac{ld^4}{128}\left(2\pi-\frac{1}{2}\sin(4\pi)-0\right)+\frac{l^3d^2}{24}2\pi\\
+&= \rho\frac{ld^4}{64}\pi+\rho\frac{l^3d^2}{12}\pi\\
+&= \rho\pi\left(\frac{d}{2}\right)^2l\frac{d^2}{16}+\rho\pi\left(\frac{d}{2}\right)^2l\frac{l^2}{3}\\
+&= M\frac{d^2}{16}+M\frac{l^2}{3}
+\end{align*}
+So we calculate $I_{22}$ as
+\begin{align*}
+I_{22} &= \int_V\rho(x^1_2+x^2_3)dv\\
+&= \rho\int_0^{d/2}\int_0^{2\pi}\int_0^l(s^2\cos^2(\phi)+z^2)sdsd\phi dz\\
+&= \rho\int_0^{d/2}\int_0^{2\pi}\int_0^l(s^3\cos^2(\phi)+z^2s)dsd\phi dz\\
+&= \rho\int_0^{d/2}\int_0^{2\pi}\left.s^3\cos^2(\phi)z+\frac{1}{3}z^3s\right|_0^ldsd\phi\\
+&= \rho\int_0^{d/2}\int_0^{2\pi}\left.s^3\cos^2(\phi)l+\frac{l^3}{3}s\right.dsd\phi\\
+&= \rho\int_0^{2\pi}\left.\frac{l}{4}s^4\cos^2(\phi)+\frac{l^3}{3}\frac{1}{2}s^2\right|_0^{d/2}d\phi\\
+&= \rho\int_0^{2\pi}\left.\frac{l}{4}\frac{d^4}{2^4}\cos^2(\phi)+\frac{l^3}{3}\frac{1}{2}\frac{d^2}{2^2}\right.d\phi\\
+&= \rho\int_0^{2\pi}\left.\frac{ld^4}{64}\cos^2(\phi)+\frac{l^3d^2}{24}\right.d\phi\\
+&= \rho\int_0^{2\pi}\frac{ld^4}{64}\frac{1}{2}(1+\cos(2\phi))d\phi+\frac{l^3d^2}{24}2\pi\\
+&= \rho\frac{ld^4}{128}\left.\phi+\frac{1}{2}\sin(2\phi)\right|_0^{2\pi}+\frac{l^3d^2}{24}2\pi\\
+&= \rho\frac{ld^4}{128}\left(2\pi+\frac{1}{2}\sin(4\pi)-0\right)+\frac{l^3d^2}{24}2\pi\\
+&= \rho\frac{ld^4}{64}\pi+\rho\frac{l^3d^2}{12}\pi\\
+&= \rho\pi\left(\frac{d}{2}\right)^2l\frac{d^2}{16}+\rho\pi\left(\frac{d}{2}\right)^2l\frac{l^2}{3}\\
+&= M\frac{d^2}{16}+M\frac{l^2}{3}
+\end{align*}
+So we calculate $I_{33}$ as
+\begin{align*}
+I_{33} &= \int_V\rho(x^2_1+x^2_2)dv\\
+&= \rho\int_0^{d/2}\int_0^{2\pi}\int_0^l(s^2\cos^2(\phi)+s^2\cos^2(\phi))sdsd\phi dz\\
+&= \rho\int_0^{d/2}\int_0^{2\pi}\int_0^l(s^2(\cos^2(\phi)+\cos^2(\phi)))sdsd\phi dz\\
+&= \rho\int_0^{d/2}\int_0^{2\pi}\int_0^l(s^2)sdsd\phi dz\\
+&= \rho\int_0^{d/2}\int_0^{2\pi}\int_0^ls^3dsd\phi dz\\
+&= 2\pi\rho l\int_0^{d/2}s^3ds\\
+&= 2\pi\rho l\left.\frac{1}{4}s^4\right|_0^{d/2}\\
+&= \frac{1}{2}\pi\rho l\frac{d^4}{2^4}\\
+&= \pi\rho l\frac{d^4}{32}\\
+&= \rho\pi\left(\frac{d}{2}\right)^2 l\frac{d^2}{8}\\
+&= M\frac{d^2}{8}
+\end{align*}
+Note that $M$ is the total mass of the cylinder given by 
+$$M = \rho V$$
+where $V$ is the total volume of the cylinder or $\pi (d/2)^2 l$. Now calculating the off diagonals yields.
+\begin{align*}
+I_{12} = I_{21} &= -\int_V\rho x_1x_2dv\\
+&= -\rho\int_0^{d/2}\int_0^{2\pi}\int_0^l s\cos(\phi)s\sin(\phi) sdsd\phi dz\\
+&= -\rho\int_0^{d/2}s^3ds\int_0^ldz\int_0^{2\pi}\cos(\phi)\sin(\phi)d\phi \\
+&= -\rho\int_0^{d/2}s^3ds\int_0^ldz\left(\frac{1}{2}\sin^2(\phi)\right|_0^{2\pi} \\
+&= -\rho\int_0^{d/2}s^3ds\int_0^ldz\left(\frac{1}{2}\sin^2(2\pi)-\frac{1}{2}\sin(0)\right) \\
+&= -\rho\int_0^{d/2}s^3ds\int_0^ldz\left(0-0\right) \\
+I_{12} = I_{21} &= 0
+\end{align*}
+\begin{align*}
+I_{13} = I_{31} &= -\int_V\rho x_1x_3dv\\
+&= -\rho\int_0^{d/2}\int_0^{2\pi}\int_0^l s\cos(\phi)z sdsd\phi dz\\
+&= -\rho\int_0^{d/2}s^2ds\int_0^lzdz \int_0^{2\pi}\cos(\phi) d\phi \\
+&= -\rho\int_0^{d/2}s^2ds\int_0^lzdz\left(\sin(\phi)\right|_0^{2\pi} \\
+&= -\rho\int_0^{d/2}s^2ds\int_0^lzdz\left(\sin(2\pi)-\sin(0)\right) \\
+&= -\rho\int_0^{d/2}s^2ds\int_0^lzdz\left(0-0\right) \\
+I_{13} = I_{31} &= 0
+\end{align*}
+\begin{align*}
+I_{23} = I_{32} &= -\int_V\rho x_1x_2dv\\
+&= -\rho\int_0^{d/2}\int_0^{2\pi}\int_0^l s\sin(\phi)z sdsd\phi dz\\
+&= -\rho\int_0^{d/2}s^2ds\int_0^lzdz \int_0^{2\pi}\sin(\phi) d\phi \\
+&= -\rho\int_0^{d/2}s^2ds\int_0^lzdz\left(-\cos(\phi)\right|_0^{2\pi} \\
+&= -\rho\int_0^{d/2}s^2ds\int_0^lzdz\left(-1+1\right) \\
+I_{23} = I_{32} &= 0
+\end{align*}
+So the inertia tensor can be written as
+$$\vec{\vec{I}} = \left\{\begin{array}{ccc}
+	M\dfrac{d^2}{16}+M\dfrac{l^2}{3}	&0		&0\\
+	0		&M\dfrac{d^2}{16}+M\dfrac{l^2}{3}	&0\\
+	0				&0		&M\dfrac{d^2}{8}\\
+			\end{array}\right\}$$
+Again we have all the off diagonals equal to zero. Therefore we picked the origin on the principle axis. So we know that the principle axis runs along the center of the cylinder length wise.
+\end{enumerate}
+\end{document}
+

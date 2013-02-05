@@ -1,0 +1,92 @@
+\documentclass[11pt]{article}
+
+\usepackage{latexsym}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{enumerate}
+\usepackage{amsmath}
+\usepackage{cancel}
+\numberwithin{equation}{section}
+
+\setlength{\evensidemargin}{.25in}
+\setlength{\oddsidemargin}{-.25in}
+\setlength{\topmargin}{-.75in}
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{9.5in}
+\newcommand{\due}{September 17th, 2010}
+\newcommand{\HWnum}{4}
+\newcommand{\grad}{\bold\nabla}
+\newcommand{\vecE}{\vec{E}}
+\newcommand{\scrptR}{\vec{\mathfrak{R}}}
+\newcommand{\kapa}{\frac{1}{4\pi\epsilon_0}}
+\newcommand{\emf}{\mathcal{E}}
+
+\begin{document}
+\input{../title.tex}
+
+\section{Problem \#1}
+\begin{enumerate}[(a)]
+\item
+If we flip 50 fair coins we see that the number of microstates is the number of possible outcomes. Since each coin can have 2 different outcomes (heads or tails) there is a total of $2^{50}$ microstates.
+
+\item
+The total number of ways to get 25 heads and 25 tails or the multiplicity $\Omega$ of getting 25 heads is given by
+$$\Omega(25)={50\choose25} = \frac{50!}{(25!)(25!)}\approx 1.26\times10^{14}$$
+
+\item
+The probability of getting 25 heads is $\Omega(25)$ over the total number of outcomes 
+$$P(H=25) = \frac{\Omega(25)}{2^{50}} \approx 0.11$$
+
+\item
+To find the probability of getting 30 heads we first need to find $\Omega(30)$ by
+$$\Omega(30) = {50\choose30} =\frac{50!}{(30!)(20!)}\approx 4.71\times10^{13}$$
+now we just divide out by the total number of outcomes or $2^{50}$ to get
+$$P(H=30) = \frac{\Omega(30)}{2^{50}} \approx 0.042$$ 
+
+\item
+The multiplicity of getting 40 heads is given by
+$$\Omega(40) = {50\choose40} =\frac{50!}{(40!)(10!)}\approx 1.03\times10^{10}$$
+so the probability is 
+$$P(H=40) = \frac{\Omega(40)}{2^{50}} \approx 9.1\times10^{-6}$$
+
+\item
+To get 50 heads out of 50 coins we see that
+$$\Omega(50) = {50\choose50} = \frac{50!}{(50!)(0!)} = 1$$
+So the probability of getting 50 heads is
+$$P(H=50) = \frac{\Omega}{2^{50}} = \frac{1}{2^{50}} \approx 8.9\times10^{-16}$$
+
+\item
+See attached for the plot
+\end{enumerate}
+
+\section{Problem \#2}
+The total number of 5 card poker hands that you can be dealt from a 52 card deck is given by
+$${52\choose5} = \frac{52!}{(5!)(47!)} = 2598960$$
+Now there is only 4 possible ways to get a royal flush (one for each suit) so the probability of getting a royal flush on the first deal is
+$$P(\textnormal{Royal Flush}) = \frac{4}{2598960} \approx 1.54\times10^{-6}$$
+
+\section{Problem \#3}
+\begin{enumerate}[(a)]
+\item
+Each dipole $N$ can be either $+1$, $-1$, or $0$ so for each dipole there are 3 possible states. So for a system with $N$ dipoles there is a total of $3^N$ microstates.
+
+\item
+If we take the general form for finding the multiplicity for a 2 state system given by
+$$\Omega(N,M) = {N\choose\frac{M+N}{2}}$$
+Note that we can reduce the 3 body state to a 2 body state because we assume that $N_0=0$
+
+\item
+Given that we have a total of $N$ dipoles then we know that we have $N!$ different ways to order the dipoles. This does not take into account dipoles that are the same for example we have over count by $N_0!$ for all the $N_0$ dipoles so we can just divide these out to get the total number of microstates as
+$$\frac{N!}{(N_0!)(N_{-1}!)(N_1!)}$$
+
+
+\item
+Using the assumption that $M=0$ and that there is an even number of dipoles we can infer that the total number of up dipoles ($N_1$) is equal to the total number of down dipoles $N_{-1}$ or
+$$N_1 = N_{-1}$$
+So the total number of microstates for $M=0$ is 
+$$\frac{N!}{(N_0!)(N_{-1}!)^2}$$
+
+
+\end{enumerate}
+\end{document}
+

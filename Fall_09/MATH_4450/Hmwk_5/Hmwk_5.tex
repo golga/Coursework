@@ -1,0 +1,386 @@
+\documentclass[11pt]{article}
+
+\usepackage{latexsym}
+\usepackage{amssymb}
+\usepackage{enumerate}
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{ulem}
+\usepackage{cancel}
+
+\setlength{\evensidemargin}{.25in}
+\setlength{\oddsidemargin}{-.25in}
+\setlength{\topmargin}{-.75in}
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{9.5in}
+\newcommand{\due}{September 30th, 2009}
+\newcommand{\HWnum}{5}
+\newcommand{\CC}{\mathbb{C}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\zbar}{\overline{z}}
+\newcommand{\Let}{\textnormal{Let }}
+\newcommand{\Arg}{\textnormal{arg}}
+
+\begin{document}
+\input{../title.tex}
+\subsection*{Written Problems}
+\begin{enumerate}
+\item 2.5: 8
+\begin{enumerate}
+\item We are trying to show that the sum of the functions $u+v$ is harmonic given that $u$ and $v$ are harmonic in a domain $D$ we know that
+$$\frac{\partial^2 u}{\partial x^2} +\frac{\partial^2 u}{\partial y^2} =0$$
+$$\frac{\partial^2 v}{\partial x^2} +\frac{\partial^2 v}{\partial y^2} =0$$
+So if we take the partial derivatives of $u+v$ we get 
+$$\frac{\partial^2}{\partial x^2}(u+v) +\frac{\partial^2}{\partial y^2}(u+v)$$
+Due to the distributive properties of the derivative we can say
+$$\frac{\partial^2u}{\partial x^2} + \frac{\partial^2v}{\partial x^2}+ \frac{\partial^2u}{\partial y^2}+\frac{\partial^2v}{\partial y^2}$$
+$$\frac{\partial^2u}{\partial x^2} + \frac{\partial^2u}{\partial y^2}+\frac{\partial^2v}{\partial x^2}+ \frac{\partial^2v}{\partial y^2}$$
+So as stated before we can say that
+$$\cancelto{0}{\frac{\partial^2u}{\partial x^2} + \frac{\partial^2u}{\partial y^2}}+\cancelto{0}{\frac{\partial^2v}{\partial x^2}+ \frac{\partial^2v}{\partial y^2}} = 0$$
+Therefore we can say that 
+$$\frac{\partial^2}{\partial x^2}(u+v) +\frac{\partial^2}{\partial y^2}(u+v)=0$$
+thus the sum $u+v$ is harmonic in $D$.
+
+\item We are trying to show that the product $uv$ is harmonic given that $u$ and $v$ are harmonic in the domain $D$. So we are trying to show that 
+$$\frac{\partial^2 uv}{\partial x^2} +\frac{\partial^2 uv}{\partial y^2} =0$$
+Using the product rule to take the first derivative yields
+$$\frac{\partial}{\partial x}\left(\frac{\partial u}{\partial x}v+u\frac{\partial v}{\partial x}\right) + \frac{\partial}{\partial y}\left(\frac{\partial u}{\partial y}v+u\frac{\partial v}{\partial y}\right)$$
+Using the product rule again to take the next derivative yields
+$$\frac{\partial^2 u}{\partial x^2}v+\frac{\partial u}{\partial x}\frac{\partial v}{\partial x}+u\frac{\partial^2 v}{\partial^2 x}+\frac{\partial u}{\partial x}\frac{\partial v}{\partial x} + \frac{\partial^2 u}{\partial y^2}v+\frac{\partial u}{\partial y}\frac{\partial v}{\partial y}+u\frac{\partial^2 v}{\partial^2 y}+\frac{\partial u}{\partial y}\frac{\partial v}{\partial y} $$
+$$\frac{\partial^2 u}{\partial x^2}v+ \frac{\partial^2 u}{\partial y^2}v+2\frac{\partial u}{\partial x}\frac{\partial v}{\partial x}+u\frac{\partial^2 v}{\partial^2 x} + u\frac{\partial^2 v}{\partial^2 y}+2\frac{\partial u}{\partial y}\frac{\partial v}{\partial y} $$
+$$v\left(\frac{\partial^2 u}{\partial x^2}+ \frac{\partial^2 u}{\partial y^2}\right)+2\frac{\partial u}{\partial x}\frac{\partial v}{\partial x}+u\left(\frac{\partial^2 v}{\partial^2 x} + \frac{\partial^2 v}{\partial^2 y}\right)+2\frac{\partial u}{\partial y}\frac{\partial v}{\partial y} $$
+Assuming $u$ and $v$ are harmonic we know that
+$$\frac{\partial^2 u}{\partial x^2} +\frac{\partial^2 u}{\partial y^2} =0$$
+$$\frac{\partial^2 v}{\partial x^2} +\frac{\partial^2 v}{\partial y^2} =0$$
+So we get 
+$$v\left(\cancelto{0}{\frac{\partial^2 u}{\partial x^2}+ \frac{\partial^2 u}{\partial y^2}}\right)+2\frac{\partial u}{\partial x}\frac{\partial v}{\partial x}+u\left(\cancelto{0}{\frac{\partial^2 v}{\partial^2 x} + \frac{\partial^2 v}{\partial^2 y}}\right)+2\frac{\partial u}{\partial y}\frac{\partial v}{\partial y} $$
+$$2\frac{\partial u}{\partial x}\frac{\partial v}{\partial x}+2\frac{\partial u}{\partial y}\frac{\partial v}{\partial y} $$
+But we do not know anything about the first order derivatives of $u$ and $v$ so we cannot say that this term necessarily equals zero. Therefore we cannot say whether or not the product $uv$ is harmonic.
+
+\item We are trying to show that $\partial u/\partial x$ is harmonic given that $u$ is a harmonic function in a domain $D$, and assuming that $u$ has continuous partial derivatives of all orders. So we are trying to show that 
+$$\frac{\partial^2 }{\partial x^2}\left(\frac{\partial u}{\partial x}\right) +\frac{\partial^2 }{\partial y^2}\left(\frac{\partial u}{\partial x}\right) =0$$
+$$\frac{\partial^2 }{\partial x^2}\left(\frac{\partial u}{\partial x}\right) +\frac{\partial^2 }{\partial y^2}\left(\frac{\partial u}{\partial x}\right) =\frac{\partial^3 u}{\partial x^3} +\frac{\partial^3u}{\partial y^2\partial x}$$
+We can pull out one the partial with respect to $x$ to yield
+$$\frac{\partial^2 }{\partial x^2}\left(\frac{\partial u}{\partial x}\right) +\frac{\partial^2 }{\partial y^2}\left(\frac{\partial u}{\partial x}\right) =\frac{\partial }{\partial x}\left(\frac{\partial^2 u}{\partial x^2}\right) +\frac{\partial}{\partial x}\left(\frac{\partial^2 u}{\partial y^2}\right)$$
+Now due to the distributive properties of partial derivatives we can factor the partial out to get
+$$\frac{\partial^2 }{\partial x^2}\left(\frac{\partial u}{\partial x}\right) +\frac{\partial^2 }{\partial y^2}\left(\frac{\partial u}{\partial x}\right) =\frac{\partial }{\partial x}\left(\frac{\partial^2 u}{\partial x^2} +\frac{\partial^2 u}{\partial y^2}\right)$$
+Given that $u$ is harmonic we know that 
+$$\frac{\partial^2 u}{\partial x^2} +\frac{\partial^2 u}{\partial y^2} =0$$
+So we can immediately see that 
+$$\frac{\partial^2 }{\partial x^2}\left(\frac{\partial u}{\partial x}\right) +\frac{\partial^2 }{\partial y^2}\left(\frac{\partial u}{\partial x}\right) =\frac{\partial }{\partial x}\left(\cancelto{0}{\frac{\partial^2 u}{\partial x^2} +\frac{\partial^2 u}{\partial y^2}}\right)$$
+$$\frac{\partial^2 }{\partial x^2}\left(\frac{\partial u}{\partial x}\right) +\frac{\partial^2 }{\partial y^2}\left(\frac{\partial u}{\partial x}\right) =\frac{\partial }{\partial x}\left(0\right)$$
+And we know the derivative of zero is still zero so we can say that
+$$\frac{\partial^2 }{\partial x^2}\left(\frac{\partial u}{\partial x}\right) +\frac{\partial^2 }{\partial y^2}\left(\frac{\partial u}{\partial x}\right) =0$$
+Therefore the know that $\dfrac{\partial u}{\partial x}$ is a harmonic function in the domain $D$.
+
+\end{enumerate}
+
+\item 3.1: 7 \\
+Prove that if the polynomial $p(z)$ has a zero of order $m$ at $z_0$, then $p'(z)$ has a zero of order $m-1$ at $z_0$.
+
+$$p(z) = a_0(z-z_1)(z-z_2)(z-z_3)...(z-z_m)$$
+Where $z_0 = z_m$
+So we can take the first derivative to get
+$$p'(z) = a_0\left((1)(z-z_2)(z-z_3)...(z-z_m)+(z-z_1)(1)(z-z_3)...(z-z_m)\right.$$
+$$\left.+(z-z_1)(z-z_2)(z-z_3)...(1)\right)$$
+Now we can see that the derivative is the sum of the original polynomial with one zero dropped, this means that there is now $m-1$ zeros. Since $z_0$ was a zero of order $m$ in $p(z)$, we know that $z_0$ becomes a zero of order $m-1$ in $p'(z)$.
+\end{enumerate}
+
+\subsection*{Problems}
+
+\begin{enumerate}
+\item If the following functions were polynomials in $z$, what polynomials would they be?
+\begin{enumerate}
+\item $\dfrac{1}{1-z}$\\
+To make this function into a polynomial we can use the \emph{Taylor form} centered at 0 or
+$$f(z) = f(0) + \frac{f'(0)}{1!}z +\frac{f''(0)}{2!}z^2 + ...\frac{f^{(n)}(0)}{n!}z^n $$
+So if we say that $f(z) = \dfrac{1}{1-z}$ we can take the derivatives of $f(z)$.
+$$f(z) = (1-z)^{-1}$$
+$$f'(z) = -(1-z)^{-2}(-1) = (1-z)^{-2}$$
+$$f''(z) = -2(1-z)^{-3}(-1) = 2(1-z)^{-3}$$
+$$f^{(3)}(z) = -6(1-z)^{-4}(-1) = 6(1-z)^{-4}$$
+$$f^{(n)}(z) = -n!((1-z)^{-(n+1)}(-1) = n!(1-z)^{-(n+1)}$$
+So evaluating these at zero we get
+$$f(0) = (1-0)^{-1}=1$$
+$$f'(0) = (1-0)^{-2}=1$$
+$$f''(0) =  2(1-0)^{-3}=2$$
+$$f^{(3)}(0) = 6(1-0)^{-4}=6$$
+$$f^{(n)}(z) =  n!(1-0)^{-(n+1)} = n!$$
+Now using \emph{Taylor form}
+$$f(z) = 1 + \frac{1}{1!}z +\frac{2}{2!}z^2 + ...\frac{n!}{n!}z^n $$
+$$f(z) = 1 + z + z^2 + ...+z^n $$
+Note that this would work for a polynomial centered at any point except 1 where the function is not defined.
+\item $\ln(1-z)$\\
+Again lets make this function into a polynomial by using the \emph{Taylor form} centered at 0 or
+$$f(z) = f(0) + \frac{f'(0)}{1!}z +\frac{f''(0)}{2!}z^2 + ...\frac{f^{(n)}(0)}{n!}z^n $$
+So now we can take the derivatives of $f(z) = \ln(1-z)$
+$$f(z) = \ln(1-z)$$
+$$f'(z) = (1-z)^{-1}(-1) = -(1-z)^{-1}$$
+$$f''(z) = (1-z)^{-2}(-1)=-(1-z)^{-2}$$
+$$f^{(3)}(z) = 2(1-z)^{-3}(-1)=-2(1-z)^{-3}$$
+$$f^{(4)}(z) = -6(1-z)^{-4}(-1)=6(1-z)^{-4}$$
+$$f^{(n)}(z) = (n-1)!(1-z)^{-n}(-1)=-(n-1)!(1-z)^{-n}$$
+So evaluated at $z=0$ we get
+$$f(0) = \ln(1-0)=0$$
+$$f'(0) = -(1-0)^{-1}=-1$$
+$$f''(0) = -(1-0)^{-2}=-1$$
+$$f^{(3)}(0) = -2(1-0)^{-3}=-2$$
+$$f^{(4)}(0) = -6(1-0)^{-4}=-6$$
+$$f^{(n)}(0) = -(n-1)!(1-0)^{-n}=-(n-1)!$$
+So now plugging these into the \emph{Taylor form} we get
+$$f(z) = 0 + \frac{-1}{1!}z +\frac{-1}{2!}z^2 + \frac{-2}{3!}z^3 +\frac{-6}{4!}z^4 +...\frac{-(n-1)!}{n!}z^n $$
+$$f(z) = 0 - z -\frac{1}{2}z^2 - \frac{1}{3}z^3 -\frac{1}{4}z^4 -...-\frac{1}{n}z^n $$
+Note that this will not work for a polynomial centered at $z=1$, because the function is discontinuous at this point.
+
+\item $e^{1-z}$\\
+Again lets make this function into a polynomial by using the \emph{Taylor form}. This time the polynomial is centered at 1 or
+$$f(z) = f(1) + \frac{f'(1)}{1!}(z-1) +\frac{f''(1)}{2!}(z-1)^2 + ...\frac{f^{(n)}(1)}{n!}(z-1)^n $$
+Calculating the derivatives of $f(z) = e^{1-z}$ we get 
+$$f(z) = e^{1-z}$$
+$$f'(z) = e^{1-z}(-1) = -e^{1-z}$$
+$$f''(z) = -e^{1-z}(-1)=e^{1-z}$$
+$$f^{(3)}(z) = -e^{1-z}$$
+$$f^{(n)}(z) = -1^{n}e^{1-z}$$
+Evaluate at $z=1$
+$$f(1) = e^{1-1}=1$$
+$$f'(1) = -e^{1-1}=-1$$
+$$f''(1) = e^{1-1}=1$$
+$$f^{(3)}(1) = -e^{1-1}=-1$$
+$$f^{(n)}(1) = -1^ne^{1-1}=-1^n$$
+So now plugging into the \emph{Taylor form} we get
+$$f(z) = 1 + \frac{-1}{1!}(z-1) +\frac{1}{2!}(z-1)^2 + \frac{-1}{3!}(z-1)^3+...+\frac{-1^n}{n!}(z-1)^n $$
+$$f(z) = 1 - (z-1) + \frac{1}{2!}(z-1)^2 - \frac{1}{3!}(z-1)^3+...+\frac{-1^n}{n!}(z-1)^n $$
+Note that you can center this polynomial at any point as $f(z)$ does not have any discontinuities.
+\end{enumerate}
+\item 2.5: 10, 12, 14
+\begin{enumerate}[(i)]
+\item 10)\\
+We are trying to show that \emph{Laplace's equation} in polar coordinates is
+$$\frac{\partial^2\phi}{\partial r^2} + \frac{1}{r}\frac{\partial\phi}{\partial r}+\frac{1}{r^2}\frac{\partial^2\phi}{\partial \theta^2}=0$$
+So lets start with \emph{Laplace's equation} in Cartesian coordinates
+$$\frac{\partial^2 \phi}{\partial x^2}+\frac{\partial^2 \phi}{\partial y^2}=0$$
+So we can use the chain rule to say 
+$$\frac{\partial}{\partial x} = \frac{\partial}{\partial r}\frac{\partial r}{\partial x} +\frac{\partial}{\partial \theta}\frac{\partial \theta}{\partial x}$$
+Where (because we are converting to polar) $r = \sqrt{x^2+y^2}$ and $\theta = \arctan(\dfrac{x}{y})$
+So we can calculate the partials 
+$$\frac{\partial r}{\partial x} = \frac{1}{2}(x^2+y^2)^{-1/2}(2x)$$
+$$\frac{\partial r}{\partial x} = \frac{x}{\sqrt{x^2+y^2}}$$
+$$\frac{\partial \theta}{\partial x} = \frac{1}{1+\frac{x^2}{y^2}}\frac{1}{y}$$
+Reducing with some algebra to get
+$$\frac{\partial \theta}{\partial x} = \frac{1}{y+\frac{x^2}{y}}$$
+$$\frac{\partial \theta}{\partial x} = \frac{y}{y}\frac{1}{y+\frac{x^2}{y}}$$
+$$\frac{\partial \theta}{\partial x} = \frac{y}{y^2+x^2}$$
+Now we can see that these partials can be represented as the trig functions on $\theta$. As this is what we defined our $\theta$ to be. 
+$$x=r\cos(\theta)$$
+$$\cos(\theta) = \frac{x}{r}$$
+$$\cos(\theta) = \frac{x}{\sqrt{x^2+y^2}}$$
+$$y=r\sin(\theta)$$
+$$\sin(\theta) = \frac{y}{\sqrt{x^2+y^2}}$$
+So
+$$\frac{\partial r}{\partial x} = \cos(\theta)$$
+$$\frac{\partial \theta}{\partial x} = \frac{\sin(\theta)}{r}$$
+now we can say
+$$\frac{\partial}{\partial x} = \frac{\partial}{\partial r}\cos(\theta) +\frac{\partial}{\partial \theta}\frac{\sin(\theta)}{r}$$
+Now we need to take the partial derivative again 
+$$\frac{\partial^2}{\partial x^2} = \frac{\partial}{\partial r}\left(\frac{\partial}{\partial r}\cos(\theta) +\frac{\partial}{\partial \theta}\frac{\sin(\theta)}{r}\right)+\frac{\partial}{\partial \theta}\left(\frac{\partial}{\partial r}\cos(\theta) +\frac{\partial}{\partial \theta}\frac{\sin(\theta)}{r}\right)$$
+$$\frac{\partial^2}{\partial x^2} = \frac{\partial^2}{\partial r^2}\cos(\theta)+\frac{\partial}{\partial r}0 + \frac{\partial^2}{\partial r\partial\theta}\frac{\sin(\theta)}{r}+\frac{\partial}{\partial \theta}\frac{-\sin(\theta)}{r^2}+\frac{\partial^2}{\partial \theta\partial r}\cos(\theta)-\frac{\partial}{\partial r}\sin(\theta) +\frac{\partial^2}{\partial \theta^2}\frac{\sin(\theta)}{r} +\frac{\partial}{\partial \theta}\frac{\cos(\theta)}{r}$$
+$$\frac{\partial^2}{\partial x^2} = \frac{\partial^2}{\partial r^2}\cos(\theta)
++\frac{\partial^2}{\partial r\partial\theta}\left(\frac{\sin(\theta)}{r}+\cos(\theta)\right)
++\frac{\partial}{\partial \theta}\left(\frac{-\sin(\theta)}{r^2}+\frac{\cos(\theta)}{r}\right)
+-\frac{\partial}{\partial r}\sin(\theta) 
++\frac{\partial^2}{\partial \theta^2}\frac{\sin(\theta)}{r} $$
+
+Now if we repeat this process for $\frac{\partial^2}{\partial y^2}$ we get
+$$\frac{\partial}{\partial y} = \frac{\partial}{\partial r}\frac{\partial r}{\partial y} +\frac{\partial}{\partial \theta}\frac{\partial \theta}{\partial y}$$
+from chain rule and
+$$\frac{\partial r}{\partial y} = \frac{y}{\sqrt{x^2+y^2}}$$
+$$\frac{\partial r}{\partial y} = \sin(\theta)$$
+$$\frac{\partial \theta}{\partial y} = \frac{1}{1+\frac{x^2}{y^2}}\frac{x}{-y^2}$$
+$$\frac{\partial \theta}{\partial y} = \frac{-x}{y^2+{x^2}}$$
+$$\frac{\partial \theta}{\partial y} = -\frac{\cos(\theta)}{r}$$
+So we can say that 
+$$\frac{\partial}{\partial y} = \frac{\partial}{\partial r}\sin(\theta) +\frac{\partial}{\partial \theta}\frac{-\cos(\theta)}{r}$$
+Taking the derivative again we get
+$$\frac{\partial^2}{\partial y^2} = \frac{\partial^2}{\partial r^2}\sin(\theta)
++\frac{\partial^2}{\partial r\partial\theta}\left(\frac{-\cos(\theta)}{r}+\sin(\theta)\right)
++\frac{\partial}{\partial \theta}\left(\frac{\cos(\theta)}{r^2}+\frac{\sin(\theta)}{r}\right)
+-\frac{\partial}{\partial r}\cos(\theta) 
++\frac{\partial^2}{\partial \theta^2}\frac{-\cos(\theta)}{r} $$
+
+Now we can rewrite \emph{Laplace's equation} as
+$$\frac{\partial^2}{\partial r^2}\cos(\theta)
++\frac{\partial^2}{\partial r\partial\theta}\left(\frac{\sin(\theta)}{r}+\cos(\theta)\right)
++\frac{\partial}{\partial \theta}\left(\frac{-\sin(\theta)}{r^2}+\frac{\cos(\theta)}{r}\right)
+-\frac{\partial}{\partial r}\sin(\theta) 
++\frac{\partial^2}{\partial \theta^2}\frac{\sin(\theta)}{r} $$
+$$+\frac{\partial^2}{\partial r^2}\sin(\theta)
++\frac{\partial^2}{\partial r\partial\theta}\left(\frac{-\cos(\theta)}{r}+\sin(\theta)\right)
++\frac{\partial}{\partial \theta}\left(\frac{\cos(\theta)}{r^2}+\frac{\sin(\theta)}{r}\right)
+-\frac{\partial}{\partial r}\cos(\theta) 
++\frac{\partial^2}{\partial \theta^2}\frac{-\cos(\theta)}{r} $$
+
+
+
+$$\frac{\partial^2}{\partial r^2}\cos^2(\theta) +\frac{\partial^2}{\partial \theta^2}\frac{\sin^2(\theta)}{r^2} + 2\left(\frac{\partial}{\partial r}\cos(\theta)\frac{\partial}{\partial \theta}\frac{\sin(\theta)}{r}\right)+\frac{\partial^2}{\partial r^2}\sin^2(\theta) +\frac{\partial^2}{\partial \theta^2}\frac{\cos^2(\theta)}{r^2} - 2\left(\frac{\partial}{\partial r}\sin(\theta)\frac{\partial}{\partial \theta}\frac{\cos(\theta)}{r}\right)$$
+Combining the like terms
+$$\frac{\partial^2}{\partial r^2}\left(\cos^2(\theta)+\sin^2(\theta)\right) +\frac{\partial^2}{\partial \theta^2}\frac{\sin^2(\theta)}{r^2} +\frac{\cos^2(\theta)}{r^2}+2\left(\frac{\partial}{\partial r}\cos(\theta)\frac{\partial}{\partial \theta}\frac{\sin(\theta)}{r}\right) - 2\left(\frac{\partial}{\partial r}\sin(\theta)\frac{\partial}{\partial \theta}\frac{\cos(\theta)}{r}\right)$$
+Canceling out using the identity $\cos^2+\sin^2 = 1$ we get
+$$\frac{\partial^2\phi}{\partial r^2} + \frac{1}{r}\frac{\partial\phi}{\partial r}+\frac{1}{r^2}\frac{\partial^2\phi}{\partial \theta^2}=0$$
+\emph{Laplace's equation} in polar coordinates.
+
+\item 12)\\
+To show that $r^n\cos(n\theta)$ is a harmonic function we can use \emph{Laplace's equation} in polar coordinates or
+$$\frac{\partial^2\phi}{\partial r^2} + \frac{1}{r}\frac{\partial\phi}{\partial r}+\frac{1}{r^2}\frac{\partial^2\phi}{\partial \theta^2}=0$$
+So we can calculate the partials
+$$\frac{\partial^2}{\partial r^2}(r^n\cos(n\theta)) + \frac{1}{r}\frac{\partial}{\partial r}(r^n\cos(n\theta))+\frac{1}{r^2}\frac{\partial^2}{\partial \theta^2}(r^n\cos(n\theta))$$
+$$(n(n-1)r^n-2\cos(n\theta)) + r^{-1}(nr^{n-1}\cos(n\theta))-r^{-2}r^n(\cos(n\theta)n^2$$
+$$n(n-1)r^n-2\cos(n\theta) + nr^{n-2}\cos(n\theta)-n^2r^{n-2}(\cos(n\theta)$$
+Factoring out the $r^{n-2}\cos(n\theta)$
+$$r^n-2\cos(n\theta)(n(n-1) + n-n^2)$$
+$$r^n-2\cos(n\theta)(n(n-1) + n(1-n))$$
+$$r^n-2\cos(n\theta)(n(n-1) - n(n-1))$$
+$$r^n-2\cos(n\theta)(0)$$
+$$=0$$
+Therefore \emph{Laplace's equation} holds true and $r^n\cos(n\theta)$ is a harmonic function. Now for $r^n\sin(n\theta)$ we see
+$$\frac{\partial^2}{\partial r^2}(r^n\sin(n\theta)) + \frac{1}{r}\frac{\partial}{\partial r}(r^n\sin(n\theta))+\frac{1}{r^2}\frac{\partial^2}{\partial \theta^2}(r^n\sin(n\theta))$$
+$$(n(n-1)r^{n-2}\sin(n\theta)) + r^{-1}(nr^{n-1}\sin(n\theta))+r^{-2}(r^n(-\sin(n\theta)))$$
+$$(n(n-1)r^{n-2}\sin(n\theta)) + (nr^{n-2}\sin(n\theta))+(r^{n-2}(-\sin(n\theta)n^2))$$
+$$r^{n-2}\sin(n\theta))(n(n-1) + n-n^2)$$
+$$r^{n-2}\sin(n\theta))(0)$$
+$$=0$$
+Therefore \emph{Laplace's equation} also holds true for $r^n\sin(n\theta)$ making it a harmonic function. 
+
+\item 14)\\
+Prove that $\ln|f(z)|$ is harmonic in a domain $D$, assuming that $f(z)$ is analytic and nonzero in $D$. Assuming $z$ takes the form $z=x+iy$ and $f(z) = u(x,y) +iv(x,y)$ we know that due to \emph{theorem 7} that: If $f(z) = u(x,y) +iv(x,y)$ is analytic is a domain $D$, then each of the functions $u(x,y)$ and $v(x,y)$ is harmonic in $D$. So we know that $$|f(z)| = (u^2+v^2)^{1/2}$$
+Therefore we can can say that
+$$\ln((u^2+v^2)^{1/2})= \frac{1}{2}\ln(u^2+v^2)$$
+Now if we define a function $$w(x,y) = u^2+v^2$$
+We can say that 
+$$\ln((u^2+v^2)^{1/2})= \frac{1}{2}\ln(w)$$
+Now to calculate \emph{Laplace's equation}
+$$\frac{\partial^2}{\partial x^2}\frac{1}{2}\ln(w)+\frac{\partial^2}{\partial y^2}\frac{1}{2}\ln(w)$$
+$$\frac{1}{2}\left(\frac{\partial}{\partial x}\frac{1}{w}\frac{\partial w}{\partial x}+\frac{\partial}{\partial y}\frac{1}{w}\frac{\partial w}{\partial y}\right)$$
+$$\frac{1}{2}\left(\frac{1}{w}\frac{\partial^2 w}{\partial x^2}-\frac{1}{w^2}\frac{\partial w}{\partial x}+\frac{1}{w}\frac{\partial^2 w}{\partial y^2}-\frac{1}{w^2}\frac{\partial w}{\partial y}\right)$$
+$$\frac{1}{2}\left(\frac{1}{w}\frac{\partial^2 w}{\partial x^2}+\frac{1}{w}\frac{\partial^2 w}{\partial y^2}-\frac{1}{w^2}\frac{\partial w}{\partial x}-\frac{1}{w^2}\frac{\partial w}{\partial y}\right)$$
+$$\frac{1}{2}\left(\frac{1}{w}\left(\frac{\partial^2 w}{\partial x^2}+\frac{\partial^2 w}{\partial y^2}\right)-\frac{1}{w^2}\left(\frac{\partial w}{\partial x}+\frac{\partial w}{\partial y}\right)\right)$$
+We know that both $u$ and $v$ are harmonic function due to \emph{theorem 7}. So we can infer that $w(x,y)$ is harmonic as well. So we can say that
+$$\frac{1}{2}\left(\frac{1}{w}\left(\cancelto{0}{\frac{\partial^2 w}{\partial x^2}+\frac{\partial^2 w}{\partial y^2}}\right)-\frac{1}{w^2}\left(\frac{\partial w}{\partial x}+\frac{\partial w}{\partial y}\right)\right)$$
+$$\frac{1}{2}\left(-\frac{1}{w^2}\left(\frac{\partial w}{\partial x}+\frac{\partial w}{\partial y}\right)\right)$$
+Using chain rule we can say that 
+$$\frac{\partial w}{\partial x} = \frac{\partial w}{\partial u}\frac{\partial u}{\partial x} +\frac{\partial w}{\partial v}\frac{\partial v}{\partial x}$$
+$$\frac{\partial w}{\partial y} = \frac{\partial w}{\partial u}\frac{\partial u}{\partial y} +\frac{\partial w}{\partial v}\frac{\partial v}{\partial y}$$
+So
+$$-\frac{1}{2w^2}\left(\frac{\partial w}{\partial u}\frac{\partial u}{\partial x} +\frac{\partial w}{\partial v}\frac{\partial v}{\partial x}+\frac{\partial w}{\partial u}\frac{\partial u}{\partial y} +\frac{\partial w}{\partial v}\frac{\partial v}{\partial y}\right)$$
+Now because $u$ and $v$ are analytic we can say that the \emph{Cauchy-Riemann equations}
+$$\frac{\partial u}{\partial x}=\frac{\partial v}{\partial y}$$
+$$\frac{\partial u}{\partial y}=-\frac{\partial v}{\partial x}$$
+are true, so we can say
+$$-\frac{1}{2w^2}\left(\frac{\partial w}{\partial u}\frac{\partial u}{\partial x} -\frac{\partial w}{\partial v}\frac{\partial u}{\partial y}-\frac{\partial w}{\partial u}\frac{\partial v}{\partial x} +\frac{\partial w}{\partial v}\frac{\partial v}{\partial y}\right)$$
+Combining like terms we get
+$$-\frac{1}{2w^2}\left(\frac{\partial w}{\partial u}\frac{\partial u}{\partial x} -\frac{\partial w}{\partial u}\frac{\partial v}{\partial x}-\frac{\partial w}{\partial v}\frac{\partial u}{\partial y} +\frac{\partial w}{\partial v}\frac{\partial v}{\partial y}\right)$$
+$$-\frac{1}{2w^2}\left(\frac{\partial w}{\partial u}\left(\frac{\partial u}{\partial x} -\frac{\partial v}{\partial x}\right)-\frac{\partial w}{\partial v}\left(\frac{\partial u}{\partial y} +\frac{\partial v}{\partial y}\right)\right)$$
+$$-\frac{1}{2w^2}\left(\frac{\partial w}{\partial u}\left(\frac{\partial u}{\partial x} -\frac{\partial v}{\partial x}\right)+\frac{\partial w}{\partial v}\left(\frac{\partial v}{\partial y}- \frac{\partial u}{\partial y}\right)\right)$$
+Now because $u$ and $v$ are analytic we can say that
+$$\frac{\partial u}{\partial x} = \frac{\partial v}{\partial x}$$
+$$\frac{\partial v}{\partial y} = \frac{\partial u}{\partial y}$$
+Therefore we see that 
+$$-\frac{1}{2w^2}\left(\frac{\partial w}{\partial u}\left(\cancelto{0}{\frac{\partial u}{\partial x} -\frac{\partial v}{\partial x}}\right)+\frac{\partial w}{\partial v}\left(\cancelto{0}{\frac{\partial v}{\partial y}- \frac{\partial u}{\partial y}}\right)\right)$$
+$$-\frac{1}{2w^2}\left(\frac{\partial w}{\partial u}(0)+\frac{\partial w}{\partial v}(0)\right)$$
+Therefore the \emph{Laplace equation} is true or 
+$$\frac{\partial^2}{\partial x^2}\ln(|f(z)|)+\frac{\partial^2}{\partial y^2}\ln(|f(z)|)=0$$
+And that means $\ln(|f(z)|)$ is a harmonic function.
+
+\end{enumerate}
+\item 3.1: 4, 6, 17
+\begin{enumerate}[(i)]
+\item 4)\\
+Given the polynomial 
+$$p(z) = z^n+a_{n-1}z^{n-1}+...+a_0$$
+where $p(z)$ is of degree $n \ge 1$, and $|a_0|>1$
+So writing $p(z)$ in factorized form gives us
+$$p(z) = (z-z_n)(z-z_{n-1})...(z-z_0)$$
+Note that there is no leading constant because $a_n = 1$. Now we know that that product of all the zeros is equal to $a_0$ therefore
+$$a_0 = z_n z_{n-1} ...z_0$$
+Because we assume that $|a_0|>1$ so
+$$|z_n z_{n-1} ...z_0|>1$$
+Now we can see that if the magnitude of the product of all of the zeros is greater than one. Then at least one of the zeros has to be greater than 1. Therefore we know that the magnitude of at least on of the zeros is greater than 1 or outside the unit circle.
+
+\item 6)
+\begin{enumerate}[(a)]
+\item
+So if we have a polynomial 
+$$p(z) = a_nz^n + a_{n-1}z^{n-1} +...+a_0$$
+and is \emph{reverse polynomial} $p^*(z)$ is given by
+$$p^*(z) = \overline{a_n}+\overline{a_{n-1}}z+...\overline{a_0}z^n$$
+We want to show that 
+$$p^*(z) = z^n\overline{p(\dfrac{1}{\zbar})}$$
+So lets first find $p(\dfrac{1}{\zbar})$
+$$p\left(\dfrac{1}{\zbar}\right) = a_n\frac{1}{\zbar^n}+a_{n-1}\frac{1}{\zbar^{n-1}}+...+a_0$$
+Now if we take the complex conjugate of $p(\dfrac{1}{\zbar})$ we get
+$$\overline{p\left(\dfrac{1}{\zbar}\right)} = \overline{a_n\frac{1}{\zbar^n}+a_{n-1}\frac{1}{\zbar^{n-1}}+...+a_0}$$
+$$\overline{p\left(\dfrac{1}{\zbar}\right)} = \overline{a_n}\frac{1}{z^n}+\overline{a_{n-1}}\frac{1}{z^{n-1}}+...+\overline{a_0}$$
+Now if we multiply by $z^n$
+$$z^n\overline{p\left(\dfrac{1}{\zbar}\right)} = \overline{a_n}\frac{z^n}{z^n}+\overline{a_{n-1}}\frac{z^n}{z^{n-1}}+...+\overline{a_0}z^n$$
+$$z^n\overline{p\left(\dfrac{1}{\zbar}\right)} = \overline{a_n}+\overline{a_{n-1}}z +...+\overline{a_0}z^n$$
+Now we see that
+$$z^n\overline{p\left(\dfrac{1}{\zbar}\right)} = p^*(z)$$
+
+\item
+If $p^*(z)$ has a zero at $z_0$ then we can say that
+$$p^*(z_0) = 0$$
+and we know that from part (a) that 
+$$p^*(z)=z^n\overline{p\left( z_0\right)}=0$$
+so we see that we need a $z$ that gives a $z_0$ in the $\overline{p\left(\dfrac{1}{\zbar}\right)}$
+So we can say that 
+$$z_0 = \dfrac{1}{\zbar}$$
+$$\zbar = \dfrac{1}{z_0}$$
+$$z = \dfrac{1}{\overline{z_0}}$$
+So we can say that
+$$p^*\left(\dfrac{1}{\overline{z_0}}\right) = z^n\overline{p\left(\dfrac{1}{\overline{\frac{1}{\overline{z_0}}}}\right)}$$
+$$p^*\left(\dfrac{1}{\overline{z_0}}\right) = z^n\overline{p\left(\dfrac{1}{\frac{1}{z_0}}\right)}$$
+$$p^*\left(\dfrac{1}{\overline{z_0}}\right) = z^n\overline{p\left({z_0}\right)}$$
+And we know that $z_0$ is a zero of $p(z)$ so we see that 
+$$p^*\left(\dfrac{1}{\overline{z_0}}\right) = 0$$
+or $\dfrac{1}{\overline{z_0}}$ is a zero.
+\item
+Showing that $|p(z)| = |p^*(z)|$ assuming that $|z| =1$. So we can say that
+$$ p^*(z)=z^n\overline{p\left(\dfrac{1}{\zbar}\right)} $$
+Taking the magnitude of both sides
+$$ |p^*(z)|=\left|z^n\overline{p\left(\dfrac{1}{\zbar}\right)}\right|$$
+$$ |p^*(z)|=|z^n|\left|\overline{p\left(\dfrac{1}{\zbar}\right)}\right|$$
+$$ |p^*(z)|=|z|^n\left|\overline{p\left(\dfrac{1}{\zbar}\right)}\right|$$
+Because we know that $|z|=1$
+$$ |p^*(z)|=1^n\left|\overline{p\left(\dfrac{1}{\zbar}\right)}\right|$$
+We know that the complex conjugate has the same magnitude as the original so
+$$ |p^*(z)|=\left|p\left(\dfrac{1}{\zbar}\right)\right|$$
+Now we also know the identity that
+$$\frac{1}{\zbar} = \frac{z}{|z|}$$
+$$ |p^*(z)|=\left|p\left(\frac{z}{|z|}\right)\right|$$
+Again we know that $|z| = 1$ so
+$$ |p^*(z)|=\left|p\left(\frac{z}{1}\right)\right|$$
+$$ |p^*(z)|=\left|p\left(z\right)\right|$$
+
+\end{enumerate}
+
+\item 17)\\
+Show that if 
+$$p(z) = a_n(z-z_1)^{d_1}(z-z_2)^{d_2}...(z-z_r)^{d_r}$$
+then the partial fraction expansion of the \emph{logarithmic derivative} $p'/p$ is given by
+$$\frac{p'(z)}{p(z)}= \frac{d_1}{z-z_1}+\frac{d_2}{z-z_2}+...+\frac{d_1}{z-z_r}$$
+So first we need to take the derivative of $p(z)$
+\begin{align*}
+p'(z) &= a_nd_1(z-z_1)^{d_1-1}(z-z_2)^{d_2}...(z-z_r)^{d_r}\\
+ 	&+ a_n(z-z_1)^{d_1}d_2(z-z_2)^{d_2-1}...(z-z_r)^{d_r}+...\\
+	&+ a_n(z-z_1)^{d_1}(z-z_2)^{d_2}...d_r(z-z_r)^{d_r-1}
+\end{align*}
+So we can see that the derivative can be written as a sum of the original polynomial except one exponent is $d_i-1$ and a $d_i$ leading term. So if we divide by $p(z)$ we get
+$$\frac{p'(z)}{p(z)}= \frac{a_nd_1(z-z_1)^{d_1-1}(z-z_2)^{d_2}...(z-z_r)^{d_r}+...}{a_n(z-z_1)^{d_1}(z-z_2)^{d_2}...(z-z_r)^{d_r}}$$
+We can see that everything cancels completely except
+$$\frac{p'(z)}{p(z)}= \frac{d_1(z-z_1)^{d_1-1}}{(z-z_1)^{d_1}}+\frac{d_2(z-z_2)^{d_2-1}}{(z-z_2)^{d_2}}+...+\frac{d_r(z-z_r)^{d_r-1}}{(z-z_r)^{d_r}}$$
+And all but one term of $z-z_i$ cancels to give us
+$$\frac{p'(z)}{p(z)}= \frac{d_1}{(z-z_1)}+\frac{d_2}{(z-z_2)}+...+\frac{d_r}{(z-z_r)}$$
+\end{enumerate}
+\end{enumerate}
+
+\end{document}
+ 

@@ -1,0 +1,171 @@
+\documentclass[11pt]{article}
+
+\usepackage{latexsym}
+\usepackage{amssymb}
+\usepackage{enumerate}
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{cancel}
+\numberwithin{equation}{section}
+
+\setlength{\evensidemargin}{.25in}
+\setlength{\oddsidemargin}{-.25in}
+\setlength{\topmargin}{-.75in}
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{9.5in}
+\newcommand{\due}{October 28th, 2009}
+\newcommand{\HWnum}{8}
+
+\begin{document}
+\input{../title.tex}
+
+\section{Problem \#1}
+\begin{enumerate}[(a)]
+\item
+So we want to minimize $r$ in the equation
+$$\frac{\alpha}{r} = 1+\epsilon\cos\phi$$
+we see we need to maximize $\cos\phi$. This is when $\cos\phi=1$ or $\phi=0$. This is the case when the particle is aligned with the center of the planet. Now if we solve for when $r$ is a minimum we see
+$$r=\frac{\alpha}{1+\epsilon}$$
+where
+$$\alpha = \frac{2b^2 T_0'}{k}$$
+$$\epsilon = \sqrt{1+\frac{4T_0'^2b^2}{k^2}}$$
+This follows from the fact that $l=b\sqrt{2\mu T_0'}$ so we can say that $r$ is
+$$r= \frac{2b^2 T_0'}{k}\frac{1}{1+\sqrt{1+\dfrac{4T_0'^2b^2}{k^2}}}$$
+now we know that when $r$ is at a minimum it is on the surface of the planet or $r\le R$ so it follows that
+$$R \le \frac{2b^2 T_0'}{k}\frac{1}{1+\sqrt{1+\dfrac{4T_0'^2b^2}{k^2}}}$$
+Now if we solve for $b$ we find the maximum impact parameter that will have the particles fall into the planet. With a little rearranging we can get
+\begin{align*}
+\frac{2b^2 T_0'}{kR} &\le {1+\sqrt{1+\dfrac{4T_0'^2b^2}{k^2}}}\\
+\frac{2b^2 T_0'}{kR} -1 &\le \sqrt{1+\dfrac{4T_0'^2b^2}{k^2}}\\
+\left(\frac{2b^2 T_0'}{kR} -1\right)^2 &\le 1+\dfrac{4T_0'^2b^2}{k^2}\\
+\left(\frac{2b^2 T_0'}{kR}\right)^2-2\frac{2b^2 T_0'}{kR}+\cancel{1} &\le \cancel{1}+\dfrac{4T_0'^2b^2}{k^2}\\
+\frac{2b^2 T_0'}{kR}\left(\frac{2b^2 T_0'}{kR}-2\right) &\le \dfrac{4T_0'^2b^2}{k^2}\\
+\frac{\cancel{2b^2 T_0'}}{\cancel{k}R}\left(\frac{2b^2 T_0'}{kR}-2\right) &\le \dfrac{\cancelto{2T_0'}{4T_0'^2b^2}}{\cancelto{k}{k^2}}\\
+\frac{1}{R}\left(\frac{2b^2 T_0'}{kR}-1\right) &\le \dfrac{2T_0'}{k}\\
+\frac{2b^2 T_0'}{kR}-2 &\le \dfrac{2RT_0'}{k}\\
+\frac{2b^2 T_0'}{kR} &\le \dfrac{2RT_0'}{k}+2
+\end{align*}
+\begin{align*}
+b^2 &\le \frac{kR}{2 T_0'}\left(\dfrac{2RT_0'}{k}+2\right)\\
+b^2 &\le \frac{kR}{T_0'}\left(\dfrac{RT_0'}{k}+1\right)\\
+b &\le \sqrt{\frac{kR}{T_0'}\left(\dfrac{RT_0'}{k}+1\right)}\\
+b &\le \sqrt{R^2+\frac{kR}{T_0'}}
+\end{align*}
+So we now know the upper maximum distance $b$ from the center of the planet that the particle will still fall to the planet. So  the total cross section is the circle that $b$ makes or
+$$\sigma = \pi b^2$$
+$$\sigma = \pi \left(R^2+\frac{kR}{T_0'}\right)$$
+
+\item
+To begin this problem we will first state that instead of the planet moving through a stationary dust environment. We are rather looking at the dust moving at a constant velocity $v$ that is crashing into a stationary planet. So we know that for a given instant we have the area $\sigma$ or particles crashing into the so over a given time the total volume particles is given by
+$$V=\sigma vdt$$
+Now we find the total number of particles in this volume by multiplying by our particle density $\rho$ so we have
+$$N = \rho\sigma vdt$$
+So for a given amount of time we have
+$$\frac{N}{dt}=\rho\sigma v$$
+$$\frac{N}{dt}=\rho v\left(R^2+\frac{kR}{T_0'}\right)$$
+\end{enumerate}
+
+\section{Problem \#2}
+\begin{enumerate}[(a)]
+\item
+To numerically solve 
+$$\vec{a}_{eff} = -\vec{\omega}\times(\vec{\omega}\times\vec{r})-2\vec{\omega}\times\vec{v}_r$$
+We split everything into the components of $\vec{r}$ where
+$$\vec{r}=x\hat{x}+y\hat{y}$$
+$$\vec{v}_r=\dot{x}\hat{x}+\dot{y}\hat{y}$$
+and 
+$$\vec{\omega} = \omega\hat{z}$$
+So we can calculate the cross products as
+$$\vec{\omega}\times\vec{r} = \det\left(\begin{array}{ccc}
+			\hat{x}		&\hat{y}	&\hat{z}\\		
+			0		&0		&\omega\\
+			x		&y		&0\\
+				\end{array}\right)$$
+$$\vec{\omega}\times\vec{r} = \hat{x}(-\omega y)+\hat{y}(\omega x)$$
+$$\vec{\omega}\times(\vec{\omega}\times\vec{r})= \det\left(\begin{array}{ccc}
+			\hat{x}		&\hat{y}	&\hat{z}\\		
+			0		&0		&\omega\\
+			-\omega y	&\omega x 	0\\
+				\end{array}\right)$$
+$$\vec{\omega}\times(\vec{\omega}\times\vec{r})= \hat{x}(\omega^2 x)+\hat{y}(\omega^2y)$$
+And 
+$$\vec{\omega}\times\vec{v}_r = \det\left(\begin{array}{ccc}
+			\hat{x}		&\hat{y}	&\hat{z}\\		
+			0		&0		&\omega\\
+			\dot{x}		&\dot{y}	&0\\
+					\end{array}\right)$$
+$$\vec{\omega}\times\vec{r} = \hat{x}(-\omega \dot{y})+\hat{y}(\omega \dot{x})$$
+Now if we split everything into their individual components we get
+$$\ddot{\vec{x}} = \omega^2x+2\omega\dot{y}\hat{x}$$
+$$\ddot{\vec{y}} = \omega^2y-2\omega\dot{x}\hat{y}$$
+See Mathematica sheet attached for the numerical solution and plots of this differential equations.
+\item
+To make the puck appear to not be moving in the fixed frame we want
+$$\left.\frac{ds}{dt}\right|_f = 0$$
+So we know that the relationship between the fixed and rotated frames is given by
+$$\left.\frac{ds}{dt}\right|_f = \left.\frac{ds}{dt}\right|_r \vec{\omega}\times\vec{s}$$
+Where $\vec{\omega}$ is the vector of the rotation given by $\vec{\omega} = \omega\hat{z}$ and $\vec{s}$ is the position vector of the puck given by $\vec{s}=0.5R\hat{s}$ due to initial conditions. So if we can solve
+\begin{align*}
+\left.\frac{ds}{dt}\right|_f = 0 &= \left.\frac{ds}{dt}\right|_r \vec{\omega}\times\vec{s}\\
+0 &= \left.\frac{ds}{dt}\right|_r \omega\hat{z}\times 0.5R\hat{s}\\
+0 &= \left.\frac{ds}{dt}\right|_r \omega0.5R\hat{z}\times\hat{s}\\
+0 &= \left.\frac{ds}{dt}\right|_r \omega0.5R\\
+\left.\frac{ds}{dt}\right|_r &= -\omega0.5R\\
+\end{align*}
+So the puck appears to move in a clockwise circle of radius $0.5R$ to an observer in the rotated frame.
+\end{enumerate}
+
+\section{Problem \#3}
+\begin{enumerate}
+\item Thornton and Marion 10.12 \\
+First we can say that change in the center of mass denoted by $R$ in the rotated frame is given by
+$$\left.\frac{dR}{dt}\right|_f = \left.\frac{dR}{dt}\right|_r \vec{\omega}\times\vec{R}$$
+We know that the center of mass does not move outside of the rotation so we see that $\dot{\vec{R}}_r = 0$ this implies
+$$\dot{R}_f = \vec{\omega}\times\vec{R}$$
+So if we wish to find $$\ddot{R}_f$$ we can say
+$$\ddot{R}_f = \vec{\omega}\times\dot{\vec{R}}_f+\dot{\vec{\omega}}\times\vec{R}$$
+But $\omega$ is constant in time so that term becomes zero, and we already found $\dot{\vec{R}}_f =  \vec{\omega}\times\vec{R}$. So we can say
+$$\ddot{R}_f = \vec{\omega}\times(\vec{\omega}\times\vec{R})$$
+Now if we say that the effective force $F_{eff}$ is given by
+$$F_{eff} = F - m\ddot{R}_f - m\dot{\vec{\omega}}\times\vec{r} - m\vec{\omega}\times(\vec{\omega}\times\vec{r}) - 2m\vec{\omega}\times v_r$$
+First we can see that the $\dot{\vec{\omega}}$ term goes to zero. As does the term with the relative velocity as the plumb bob is stationary so we get
+\begin{align*}
+F_{eff} &= F - m\ddot{R}_f - m\vec{\omega}\times(\vec{\omega}\times\vec{r})\\
+&= F - m \vec{\omega}\times(\vec{\omega}\times\vec{R})- m\vec{\omega}\times(\vec{\omega}\times\vec{r})\\
+&= mg_0 - m\vec{\omega}\times(\vec{\omega}\times\vec{R+r})
+\end{align*}
+Because the only force that the bob feels is the force of gravity we write $F=mg_0$ where $g_0$ is the actual force of gravity to the center of the earth. So if we say the effective force that the plumb bob feels is $F_{eff} = mg$ where $g$ is the felt gravitation so we have
+$$ g = g_0 - \vec{\omega}\times(\vec{\omega}\times\vec{R+r})$$
+where we can use the definition of a cross product to say
+$$\vec{\omega}\times(\vec{\omega}\times\vec{R+r})=\omega^2R\sin(\pi/2-\lambda)\hat{s}$$
+where $\lambda$ is the angle of rise from the center of the earth. Using a trig identity we can say that the centrifugal acceleration is
+$$a_{cf}=-\omega^2R\cos(\lambda)\hat{s}$$
+So we get $g$ as
+$$g=\vec{g_0}+\omega^2R\cos(\lambda)\hat{s}$$
+So by looking at the drawing attached we can see the deflection angle $\epsilon$ is given by the law of sines as
+\begin{align*}
+\frac{a_{cf}}{\sin(\epsilon)} &= \frac{g_0}{\sin(\pi-\lambda-\epsilon)}\\
+ {\sin(\pi-\lambda-\epsilon)}&= \frac{g_0}{a_{cf}}{\sin(\epsilon)}\\
+\end{align*}
+Using the identity
+$$\sin(u-v) = \sin(u)\cos(v)-\cos(u)\sin(v)$$
+this gives us
+\begin{align*}
+ {\sin(\pi-\lambda)\cos(\epsilon)}- {\cos(\pi-\lambda)\sin(\epsilon)}&= \frac{g_0}{a_{cf}}{\sin(\epsilon)}\\
+ {\sin(\lambda)\cos(\epsilon)}- -\cos(\lambda)\sin(\epsilon)&= \frac{g_0}{a_{cf}}{\sin(\epsilon)}\\
+ {\sin(\lambda)\cos(\epsilon)}+\cos(\lambda)\sin(\epsilon)&= \frac{g_0}{a_{cf}}{\sin(\epsilon)}\\
+ \sin(\lambda)\cot(\epsilon)+\cos(\lambda)&= \frac{g_0}{a_{cf}}\\
+ \sin(\lambda)\cot(\epsilon)&= \frac{g_0}{a_{cf}}-\cos(\lambda)\\
+ \sin(\lambda)\cot(\epsilon)&= \frac{g_0-a_{cf}\cos(\lambda)}{a_{cf}}\\
+ \cot(\epsilon)&= \frac{g_0-a_{cf}\cos(\lambda)}{a_{cf}\sin(\lambda)}\\
+ \tan(\epsilon)&= \frac{a_{cf}\sin(\lambda)}{g_0-a_{cf}\cos(\lambda)}\\
+ \tan(\epsilon)&= \frac{\omega^2R\cos(\lambda)\sin(\lambda)}{g_0-\omega^2R\cos(\lambda)\cos(\lambda)}\\
+ \tan(\epsilon)&= \frac{\omega^2R\cos(\lambda)\sin(\lambda)}{g_0-\omega^2R\cos^2(\lambda)}
+\end{align*}
+Now because $\epsilon$ is a small angle we can say that $\tan(\epsilon) \approx \epsilon$ so
+$$\epsilon = \frac{\omega^2R\cos(\lambda)\sin(\lambda)}{g_0-\omega^2R\cos^2(\lambda)}$$
+We see that due to the $\cos(\lambda)\sin(\lambda)$ term we will have $\epsilon$ at a max when $\lambda = \pi/2$.
+
+\end{enumerate}
+\end{document}
+

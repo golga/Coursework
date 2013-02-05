@@ -1,0 +1,244 @@
+\documentclass[11pt]{article}
+
+\usepackage{latexsym}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{enumerate}
+\usepackage{amsmath}
+\usepackage{cancel}
+
+\setlength{\evensidemargin}{.25in}
+\setlength{\oddsidemargin}{-.25in}
+\setlength{\topmargin}{-.75in}
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{9.5in}
+\newcommand{\due}{November 6th, 2009}
+\newcommand{\HWnum}{9}
+
+\begin{document}
+\input{../title.tex}
+\section{Chapter 6}
+\begin{enumerate}
+\item Problem 22
+\begin{enumerate}
+\item
+For
+$$f(x,y) = \left\{\begin{array}{lc}
+		x+y	&0<x<1,0<y<1\\
+		0	&\textnormal{otherwise}
+		\end{array}\right.$$
+$X$ and $Y$ are not independent because we see that
+$$f(x,y)\ne f_X(x)f_Y(y)$$
+This is due to the fact that the value for $f_X(x)$ changes if $y$ changes.
+
+\item
+To find the density function of $X$ we use
+\begin{align*}
+f_X(x) &= \int_{-\infty}^{\infty}f(x,y)dy\\
+&= \int_{-\infty}^{0}(0)dy + \int_{0}^{1}x+ydy + \int_{1}^{\infty}(0)dy\\
+&= \int_{0}^{1}x+ydy\\
+&= \left.xy+\frac{1}{2}y^2\right|_{0}^{1}\\
+&= x(1)+\frac{1}{2}(1)^2 - x(0)+\frac{1}{2}(0)^2\\
+f_X(x) &= x+\frac{1}{2}
+\end{align*}
+
+\item
+To calculate $P(X+Y<1)$ we say
+$$P(X+Y<1) = P(X<1-Y)$$
+Which we can calculate as
+\begin{align*}
+P(X<1-Y) &= \int_{-\infty}^{\infty}\int_{-\infty}^{1-y}f(x,y)dxdy\\
+&= \int_{-\infty}^{0}\int_{-\infty}^{1-Y}(0)dxdy+\int_{0}^{1}\int_{0}^{1-y}(x+y)dxdy + \int_{1}^{\infty}\int^{\infty}_{1-Y}(0)dxdy\\
+&=  \int_{0}^{1}\int_{0}^{1-y}(x+y)dxdy\\
+&=  \int_{0}^{1}\left.\frac{1}{2}x^2+yx\right]_{0}^{1-y}dy\\
+&=  \int_{0}^{1}\frac{1}{2}(1-y)^2+y(1-y)dy\\
+&=  \int_{0}^{1}\frac{1}{2}(1+y^2-2y)+y-y^2dy\\
+&=  \int_{0}^{1}\frac{1}{2}+\frac{1}{2}y^2-y+y-y^2dy\\
+&=  \int_{0}^{1}\frac{1}{2}-\frac{1}{2}y^2dy\\
+&=  \left.\frac{1}{2}y-\frac{1}{6}y^3\right]_{0}^{1}
+\end{align*}
+\begin{align*}
+&=  \frac{1}{2}-\frac{1}{6}\\
+&=  \frac{1}{3}
+\end{align*}
+
+\end{enumerate}
+
+\item Problem 23
+\begin{enumerate}
+\item
+For the function
+$$f(x,y)=\left\{\begin{array}{lc}
+	12xy(1-x) 	&0<x<1,0<y<1\\
+	0	&\textnormal{otherwise}
+	\end{array}\right.$$
+we need to find $f_X(x)$ and $f_Y(y)$ to say if $X$ and $Y$ are independent. So
+\begin{align*}
+f_X(x) &= \int_0^112xy(1-x)dy\\
+&= 12x(1-x)\left(\frac{1}{2}y^2\right|_0^1\\
+&= 12x(1-x)\frac{1}{2}\\
+&= 6x(1-x)
+\end{align*}
+And
+\begin{align*}
+f_Y(y) &= \int_0^112xy(1-x)dx\\
+&= 12y\int_0^1x-x^2dx\\
+&= 12y\left(\frac{1}{2}x^2-\frac{1}{3}x^3\right|_0^1\\
+&= 12y\left(\frac{1}{2}-\frac{1}{3}\right)\\
+&= 12y\frac{1}{6}\\
+&= 2y
+\end{align*}
+So we see if $f(x,y) = f_X(x)f_Y(y)$. We calculate 
+
+\begin{align*}
+f(x,y) &= f_X(x)f_Y(y)\\  
+&= 6x(1-x)2y\\
+&= 12xy(1-x) 
+\end{align*}
+So we see that $X$ and $Y$ are independent.
+
+\item
+\begin{align*}
+E[X] &= \int_{-\infty}^{\infty}xf_X(x)dx\\
+&= \int_0^1 x6x(1-x)dx\\
+&= 6\int_0^1 x^2-x^3dx\\
+&=  6\left(\frac{1}{3}x^3-\frac{1}{4}x^3\right|_0^1\\
+&=  6\left(\frac{1}{3}-\frac{1}{4}\right)\\
+&=  6\left(\frac{1}{12}\right)\\
+&=  \frac{1}{2}
+\end{align*}
+
+\item
+\begin{align*}
+E[Y] &= \int_{-\infty}^{\infty}yf_Y(y)dy\\
+&= \int_0^1 y2ydy\\
+&= 2\int_0^1 y^2dy\\
+&= 2\left(\frac{1}{3}y^3\right|_0^1\\
+&= \frac{2}{3}
+\end{align*}
+
+\item
+To calculate the variance we use
+$$Var(X) = E[X^2] - (E[X])^2$$
+so we need to calculate $E[X^2]$ first
+\begin{align*}
+E[X^2] &=  \int_{-\infty}^{\infty}x^2f_X(x)dx\\
+&= \int_0^1 x^26x(1-x)dx\\
+&= 6\int_0^1 x^3-x^4dx\\
+&= 6\left(\frac{1}{4}x^4-\frac{1}{5}x^5\right|_0^1\\
+&= 6\left(\frac{1}{4}-\frac{1}{5}\right)\\
+&= \frac{6}{20}
+\end{align*}
+So now we can calculate $Var(X)$
+\begin{align*}
+Var(X) &= E[X^2] - (E[X])^2\\
+Var(X) &= \frac{6}{20} - \left(\frac{1}{2}\right)^2\\
+Var(X) &= \frac{6}{20} - \frac{1}{4}\\
+Var(X) &= \frac{1}{20}
+\end{align*}
+
+\item
+Like before we need to calculate $E[Y^2]$
+\begin{align*}
+E[Y^2] &= \int_{-\infty}^{\infty}y^2f_Y(y)dy\\
+&= \int_0^1 y^22ydy\\
+&= 2\int_0^1 y^3dy\\
+&= 2\left(\frac{1}{4}y^4\right|_0^1\\
+&= \frac{1}{2}
+\end{align*}
+So $Var(Y)$ is
+\begin{align*}
+Var(Y) &= E[Y^2] - (E[Y])^2\\
+Var(Y) &= \frac{1}{2} - \left(\frac{2}{3}\right)^2\\
+Var(Y) &= \frac{1}{2} - \frac{4}{9}\\
+Var(Y) &= \frac{9}{18} - \frac{8}{18}\\
+Var(Y) &= \frac{1}{18} 
+\end{align*}
+\end{enumerate}
+
+\item Problem 26
+\begin{enumerate}
+\item
+If we assume that $A$, $B$ and $C$ are uniformly distributed over $(0,1)$ we can say that
+$$f_A(a) = f_B(b) = f_C(c) = \left\{\begin{array}{lc}
+			1	&0<a,b,c<1\\
+			0	&\textnormal{otherwise}
+			\end{array}\right.$$
+And because $A$ $B$ and $C$ are independent we can say that
+$$F(a,b,c) = F_A(a)F_B(b)F_C(c)$$
+Where 
+$$F_A(a) = \left\{\begin{array}{lc}
+		0	&a<0\\
+		a	&0<a<1\\
+		1	&1<a
+		\end{array}\right.$$
+$$F_B(b) = \left\{\begin{array}{lc}
+		0	&b<0\\
+		b	&0<b<1\\
+		1	&1<b
+		\end{array}\right.$$
+$$F_C(c) = \left\{\begin{array}{lc}
+		0	&c<0\\
+		c	&0<c<1\\
+		1	&1<c
+		\end{array}\right.$$
+So we see that
+$$F(a,b,c) = \left\{\begin{array}{lc}
+		0	&a,b,c<0\\
+		abc	&0<a,b,c<1\\
+		1	&1<a,b,c
+		\end{array}\right.$$
+
+\item
+First we assume that the roots of 
+$$Ax^2+Bx+C = 0$$
+are real when $B^2-4AC\ge0$. So we are trying to find $P(B^2-4AC\ge0)$ or $P(B^2\ge4AC)$
+
+
+\end{enumerate}
+
+\item Problem 27\\
+If we assume that $X_1$ and $X_2$ are random variables of the form 
+$$f_{X1}(x_1) = \left\{\begin{array}{lc}
+		\lambda_1e^{-x_1\lambda_1}	&x_1>0\\
+		0				&\textnormal{otherwise}
+		\end{array}\right.$$	
+and
+$$f_{X2}(x_2) = \left\{\begin{array}{lc}
+		\lambda_2e^{-x_2\lambda_2}	&x_2>0\\
+		0				&\textnormal{otherwise}
+		\end{array}\right.$$	
+So to find the distribution of $Z = X_1/X_2$ we find the $P(X_1/X_2<a)$ or $P(X_1<aX_2)$ or 
+\begin{align*}
+f_{X_1/X_2}(a) &= \int_{-\infty}^{\infty}\int_{\infty}^{ax_2}f(x_1,x_2)dx_1dx_2\\
+\end{align*}
+
+We can calculate $P(X_1<X_2)$ as
+\begin{align*}
+P(X_1<X_2) &= \int_{-\infty}^{\infty} \int_{-\infty}^{x_2} f(x_1,x_2)dx_1dx_2\\
+&= \int_0^{\infty} \int_0^{x_2} \lambda_1e^{-x_1\lambda_1}\lambda_2e^{-x_2\lambda_2}dx_1dx_2\\
+&= \int_0^{\infty} \lambda_1\lambda_2e^{-x_2\lambda_2}\left(\frac{-1}{\lambda_1}e^{-x_1\lambda_1}\right]_0^{x_2}dx_2\\
+&= \int_0^{\infty} \lambda_2e^{-x_2\lambda_2}\left(e^{-x_2\lambda_1} - 1\right)dx_2\\
+&= \int_0^{\infty} \lambda_2e^{-x_2\lambda_2}e^{-x_2\lambda_1} - \lambda_2e^{-x_2\lambda_2}dx_2\\
+&= \int_0^{\infty} \lambda_2e^{-x_2\lambda_2-x_2\lambda_1} - \lambda_2e^{-x_2\lambda_2}dx_2\\
+&= \int_0^{\infty} \lambda_2e^{-x_2(\lambda_2+\lambda_1)} - \lambda_2e^{-x_2\lambda_2}dx_2\\
+&= \left.\frac{\lambda_2}{\lambda_2+\lambda_1}e^{-x_2(\lambda_2+\lambda_1)} - \frac{\lambda_2}{\lambda_2}e^{-x_2\lambda_2}\right]_0^{\infty}\\
+&= \left.0 - 0 - \frac{\lambda_2}{\lambda_2+\lambda_1}e^{-(0)(\lambda_2+\lambda_1)} + e^{-(0)\lambda_2}\right.\\
+&= -\frac{\lambda_2}{\lambda_2+\lambda_1}+1\\
+&= -\frac{\lambda_2}{\lambda_2+\lambda_1} + \frac{\lambda_2+\lambda_1}{\lambda_2+\lambda_1}\\
+&= \frac{-\lambda_2 + \lambda_2+\lambda_1}{\lambda_2+\lambda_1}\\
+&= \frac{\lambda_1}{\lambda_2+\lambda_1}\\
+\end{align*}
+
+\item Problem 29
+Let $X$ be the gross weekly sales at a certain restaurant
+\begin{enumerate}
+\item
+\item
+\end{enumerate}
+
+\item Problem 39\\
+
+\end{enumerate}
+\end{document}
+

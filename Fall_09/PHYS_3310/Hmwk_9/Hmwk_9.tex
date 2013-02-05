@@ -1,0 +1,232 @@
+\documentclass[11pt]{article}
+
+\usepackage{latexsym}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{enumerate}
+\usepackage{amsmath}
+\usepackage{cancel}
+\numberwithin{equation}{section}
+
+\setlength{\evensidemargin}{.25in}
+\setlength{\oddsidemargin}{-.25in}
+\setlength{\topmargin}{-.75in}
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{9.5in}
+\newcommand{\due}{October 28th, 2009}
+\newcommand{\HWnum}{9}
+\newcommand{\grad}{\bold\nabla}
+\newcommand{\vecE}{\vec{E}}
+\newcommand{\vecP}{\vec{P}}
+\newcommand{\scrptR}{\vec{\mathfrak{R}}}
+\newcommand{\kapa}{\frac{1}{4\pi\epsilon_0}}
+
+\begin{document}
+\input{../title.tex}
+
+\section{Problem \#1}
+\begin{enumerate}[(a)]
+\item
+The equality 
+$$\vecP =\epsilon_0\chi_e\vecE_0$$
+does not represent the polarization of the sphere in a uniform electric field $\vecE_0$ because $\vecE_0$ does not represent the total electric field in this system. The induced electric field has to be taken into account as well, but we can say we have polarization from just the external electric field as
+$$\vecP_0 =\epsilon_0\chi_e\vecE_0$$
+but now we need to find the electric field that is induced from this polarization. We know that a uniform polarized sphere creates an electric field given by (from Griffiths example 4.2)
+\begin{align*}
+\vecE_1 &= -\frac{1}{3\epsilon_0}\vecP_0\\
+&= -\frac{1}{3\epsilon_0}\epsilon_0\chi_e\vecE_0\\
+&= -\frac{1}{3}\chi_e\vecE_0
+\end{align*}
+Now this electric field induces \textit{another} polarization in the sphere. Which we approximate as
+\begin{align*}
+\vecP_1 &=\epsilon_0\chi_e\vecE_1\\
+&=\epsilon_0\chi_e\left(-\frac{1}{3}\chi_e\vecE_0\right)\\
+&=-\frac{1}{3}\epsilon_0\chi_e^2\vecE_0
+\end{align*}
+This is another uniform polarization like $\vecP_0$ and it creates an electric field similar. 
+\begin{align*}
+\vecE_2 &= -\frac{1}{3\epsilon_0}\vecP_1\\
+&= -\frac{1}{3\epsilon_0}\left(-\frac{1}{3}\epsilon_0\chi_e^2\vecE_0\right)\\
+&= \frac{1}{9}\chi_e^2\vecE_0
+\end{align*}
+Now we see that this is an endless iteration where the actual (or total) electric field is the sum of each of the electric fields we found or
+$$\vecE_{tot} = \sum_{n=0}^{\infty}\vecE_n$$
+Where
+$$E_n = \left(\frac{\chi_e}{3}\right)^n\vecE_0$$
+Now if we assume that $\chi_e$ is small (or at least less than 3) we can say that this summation is a geometric series and we can apply the identity
+$$\sum_{n=0}^{\infty}x^n=\frac{1}{1+x}$$
+So it follows that
+\begin{align*}
+\vecE_{tot} &= \sum_{n=0}^{\infty}\vecE_n\\
+&= \sum_{n=0}^{\infty}\left(\frac{\chi_e}{3}\right)^n\vecE_0\\
+&= \vecE_0\sum_{n=0}^{\infty}\left(\frac{\chi_e}{3}\right)^n\\
+&= \vecE_0\frac{1}{1+\dfrac{\chi_e}{3}}\\
+&= \vecE_0\frac{1}{\dfrac{3+\chi_e}{3}}\\
+&= \vecE_0\frac{3}{3+\chi_e}\\
+&= \vecE_0\frac{3}{2+(1+\chi_e)}
+\end{align*}
+By definition $1+\chi_e=\epsilon_r$ so this yields
+$$\vecE_{tot} = \vecE_0\frac{3}{2+\epsilon_r}$$
+This is in agreement with Griffiths example 4.7 
+
+\item
+Now if we assume that the sphere is make of Silicon we would have $\epsilon_r=11.8$ or $\chi_e = 10.8$. We can calculate $\vecP_0$ as
+\begin{align*}
+\vecP_0 &=\epsilon_0\chi_e\vecE_0\\
+&=(8.85\times10^{-12})(10.8)\vecE_0\\
+&=9.56\times10^{-11}\vecE_0\\
+\end{align*}
+Now we can compare this approximation to the actual polarization from the electric field we calculated in part (a)
+\begin{align*}
+\vecP &=\epsilon_0\chi_e\vecE_{tot}\\
+&=\epsilon_0\chi_e\vecE_0\frac{3}{2+\epsilon_r}\\
+&=(8.85\times10^{-12})(10.8)\frac{3}{2+11.8}\vecE_0\\
+&=2.08\times10^{-11}\vecE_0\\
+\end{align*}
+The "approximation" is off by more than a factor of 4! We can see that this comes from the rational that we derived. And this fraction gets larger as $\epsilon_r$ gets smaller. And in a vacuum the approximation is the same.
+\end{enumerate}
+
+\section{Problem \#2}
+So if we assume that each individual atom is a sphere of radius $4/3\pi R^3$. And we know that (from example 4.3) the electric field due to a polarized sphere is given by
+$$\vecE = -\frac{1}{3\epsilon_0}\vecP$$
+where $\vecP$ is the total polarization over a volume. So if we want the electric in terms of the dipole moment we use the fact that $$\vecP=\frac{p}{4/3\pi R^3}$$ this gives us
+$$\vecE_{atom} = -\frac{1}{4\pi\epsilon_0}\frac{\vec{p}}{R^3}$$
+Where this is only the electric field due to the atom's dipole moment. So the total electric field is given by
+$$\vecE = \vecE_{else}+\vecE_{atom}$$
+but we can relate $\vecE_{else}$ with $\vecE_{atom}$ by using the fact that the dipole moment is proportional to $\vecE_{else}$ or
+$$\vec{p} = \alpha \vecE_{else}$$
+so we see that the total electric field is given by
+\begin{align*}
+\vecE &= \vecE_{else}+\vecE_{atom}\\
+&= \vecE_{else}-\frac{1}{4\pi\epsilon_0}\frac{\vec{p}}{R^3}\\
+&= \vecE_{else}-\frac{1}{4\pi\epsilon_0}\frac{\alpha\vecE_{else}}{R^3}\\
+&= \vecE_{else}\left(1-\frac{1}{4\pi\epsilon_0}\frac{\alpha}{R^3}\right)
+\end{align*}
+Note that we say that $N$ is the number of atoms per volume. In this case we have the volume of a sphere so we can say that
+$$N=\frac{1}{4/3\pi R^3}$$
+so our electric field is given by
+$$\vecE= \vecE_{else}\left(1-\frac{N\alpha}{3\epsilon_0}\right)$$
+Now we know the equalities
+\begin{equation}
+\vecP = N\alpha\vecE_{else}
+\label{nalf}
+\end{equation}
+and
+\begin{equation}
+\vecP = \epsilon_0\chi_e\vecE
+\label{PalfE}
+\end{equation}
+So we solve for $\vecE_{else}$ to get
+$$\vecE_{else} =\vecE\left(1-\frac{N\alpha}{3\epsilon_0}\right)^{-1}$$
+So equation \ref{nalf} yields
+$$\vecP = N\alpha\vecE\left(1-\frac{N\alpha}{3\epsilon_0}\right)^{-1}$$
+So we set equations \ref{nalf} and \ref{PalfE} equal to each other to get
+\begin{align*}
+N\alpha\vecE\left(1-\frac{N\alpha}{3\epsilon_0}\right)^{-1} &= \epsilon_0\chi_e\vecE\\
+N\alpha\left(1-\frac{N\alpha}{3\epsilon_0}\right)^{-1} &= \epsilon_0\chi_e\\
+\frac{N\alpha}{\epsilon_0}\left(1-\frac{N\alpha}{3\epsilon_0}\right)^{-1} &= \chi_e
+\end{align*}
+Now we can solve for $\alpha$ to the proportionality between the dipole moment and the electric field.
+\begin{align*}
+\frac{N\alpha/\epsilon_0}{1-N\alpha/3\epsilon_0} &= \chi_e\\
+{N\alpha/\epsilon_0} &= {1-N\alpha/3\epsilon_0}\chi_e\\
+{N\alpha/\epsilon_0}+N\alpha\chi_e/3\epsilon_0 &= {\chi_e}\\
+\frac{N\alpha}{\epsilon_0}\left(1+\chi_e/3\right) &= {\chi_e}\\
+\frac{N\alpha}{\epsilon_0}\frac{3+\chi_e}{3} &= {\chi_e}\\
+\frac{N\alpha}{\epsilon_0} &= \frac{3}{3+\chi_e}{\chi_e}\\
+\alpha &= \frac{\epsilon_0}{N}\frac{3\chi_e}{3+\chi_e}\\
+\end{align*}
+If we use the fact that $\epsilon_r = \chi_e+1$ we get
+$$\alpha = \frac{3\epsilon_0}{N}\frac{\epsilon_r-1}{2+\epsilon_r}$$
+This is the \emph{Clausius-Mossotti} formula. This represents the proportionality between the dipole moments of the individual atoms and the electric field.
+
+\section{Problem \#3}
+So if we solve the \emph{Clausius-Mossotti} equation where $\epsilon_r = 1.00055$. Before we can calculate $\alpha$ we need to find a value for $N$. If we remember our high school chemistry we know that one mol of (Ideal) gas is 22.4 L or $22400m^3$ and that the number of molecules in a mol is \emph{Avogadro's number}  or $6.022\times10^{23}$ so $N$ is calculated by
+$$N = \frac{6.022\times10^{23}}{22400} = 2.69\times10^{19}$$
+So we can now calculate $\alpha$ as
+\begin{align*}
+\alpha &= \frac{3\epsilon_0}{N}\frac{\epsilon_r-1}{2+\epsilon_r}\\
+&= \frac{3(8.85\times10^{-12})}{2.69\times10^{19}}\frac{1.00055-1}{2+1.00055}\\
+&= 1.81\times10^{-34}
+\end{align*}
+
+So know we know that from Griffiths example 4.1 that
+$$\alpha = 4\pi \epsilon_0 a^3$$
+Where $a$ is the radius of our sphere. In this case it is the radius of our air molecules, so if we solve for $a$ we get
+$$a = \sqrt[3]{\frac{\alpha}{4\pi\epsilon_0}}$$
+So we calculate $a$ using the $\alpha$ from above to get
+\begin{align*}
+a &= \sqrt[3]{\frac{1.81\times10^{-34}}{4\pi(8.85\times10^{-12})}}\\
+&= 1.18\times10^{-8}
+\end{align*}
+
+\section{Problem \#4}
+\begin{enumerate}[(a)]
+\item
+The surface current density $\vec{K}$ is given by 
+$$\vec{K} = \frac{d\vec{I}}{dl_{\perp}}$$
+So for a cylinder (wire) of radius $a$ with a constant current $I$ flowing across the surface we see that that the $dl_{\perp}$ is just the surface area of the wire or $2\pi a$. So it follows that
+$$\vec{K} = \frac{\vec{I}}{2\pi a}$$
+where $\vec{K}$ points in the direction of the current flow.
+
+\item
+So if $\vec{J}$ grows quadratically with distance from the central axis, we can say that $J$ is given by
+$$J=ks^2$$
+where $k$ is just a constant of proportionality and $s$ is the distance from the center of the cylinder. So now we need to find $k$ we know that 
+$$I= \int J d\vec{a}$$
+\begin{align*}
+I= \int_0^{2\pi}\int_0^a ks^2 sdsd\theta\\
+I= 2\pi k \int_0^a s^3 ds\\
+I= 2\pi k \left(s^4\right|_0^a  \\
+I= 2\pi k \left(a^4-0\right)  \\
+I= 2\pi k a^4
+\end{align*}
+So if we solve for $k$ we get
+$$k =\frac{I}{2\pi a^4}$$
+so $J$ is given by
+$$\vec{J}=\frac{\vec{I}}{2\pi a^4}s^2\hat{z}$$
+and $J$ points in the direction of $I$
+
+\item
+If we use the fact that $K$ is given by
+$$\vec{K} = \sigma \vec{v}$$
+where $\vec{v}$ is the velocity of the charge and $\sigma$ is the charge distribution. So we know that the CD is spinning at a constant angular velocity $\omega$ and we can say that the tangential velocity of the CD at any given radius $r$ is 
+$$\vec{v} = \omega r\hat{\theta}$$
+Note that the tangential velocity is always tangent to the circle. So we can say that
+$$\vec{K} = \sigma\omega r\hat{\theta}$$
+
+\item
+Like in part (c) we can say that 
+$$\vec{J}=\rho \vec{v}$$
+where $\rho$ is the charge distribution given by the total charge $Q$ over the volume of the sphere or $4/3\pi R^3$ so
+$$\rho = \frac{3Q}{4\pi R^3}$$
+now the velocity of the charge is given by
+$$\vec{v} = \omega r\sin(\theta) \hat{\phi}$$
+where $\phi$ is the angle at which $\omega$ spins so
+$$\vec{J} = \frac{3Q}{4\pi R^3}\omega r\sin(\theta)\hat{\phi}$$
+\item
+So first we need to find $J$ which is given by
+$$J = \rho\vec{v}$$
+first we need to find $\rho$ we know that it is an thin line of charge in a circle so we know we need delta functions.
+$$\rho = \lambda\delta(s-R)\delta(z)$$
+Note that $s$ and $z$ are in cylindrical coordinates and $\lambda$ is given by
+$$\lambda = \frac{Q}{2\pi R}$$
+So 
+$$\rho = \frac{Q}{2\pi R}\delta(s-R)\delta(z)$$
+Now we know that the tangential velocity is given by $\vec{v} = \omega R\hat{\theta}$ so we can say
+$$J = \frac{Q}{2\pi R}\delta(s-R)\delta(z)\omega R$$
+$$J = \frac{Q\omega}{2\pi}\delta(s-R)\delta(z)$$
+So we know that 
+$$I = \int J da_{\perp}$$
+So we can calculate
+\begin{align*}
+I &= \int J da_{\perp}\\
+ &= \int_0^{l}\int_0^{R}\frac{Q\omega}{2\pi}\delta(s-R)\delta(z) sdsdz\\
+ &= \frac{Q\omega}{2\pi}\int_0^{l}\delta(z)dz\int_0^{R}\delta(s-R) sds\\
+ &= \frac{Q\omega}{2\pi}(1)\int_0^{R}\delta(s-R) sds\\
+ &= \frac{Q\omega}{2\pi}R\\
+ &= \frac{Q\omega R}{2\pi}
+\end{align*}
+\end{enumerate}
+\end{document}
+

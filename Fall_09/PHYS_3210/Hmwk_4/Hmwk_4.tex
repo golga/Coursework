@@ -1,0 +1,226 @@
+\documentclass[11pt]{article}
+
+\usepackage{latexsym}
+\usepackage{amssymb}
+\usepackage{enumerate}
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{cancel}
+\numberwithin{equation}{section}
+
+\setlength{\evensidemargin}{.25in}
+\setlength{\oddsidemargin}{-.25in}
+\setlength{\topmargin}{-.75in}
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{9.5in}
+\newcommand{\due}{September 23rd, 2009}
+\newcommand{\HWnum}{4}
+
+\begin{document}
+\input{../title.tex}
+
+\section{Problem \#1}
+\begin{enumerate}[(a)]
+\item
+So if we increase the velocity of the rocket by $v$ we see that
+$$T_1 = \frac{1}{2}m(v^2+v^2)$$
+$$T_1 = 2\frac{1}{2}m(v^2)$$
+And we know that $T_0 = \dfrac{1}{2}mv^2$ so we see that
+$$T_1 = 2T_0$$
+or the kinetic energy has doubled. Now we also know that the potential energy is conservative so it is not dependent on velocity so it will not change or
+$$U_1 = U_0$$
+So we can find the total energy before $E_0$ as
+$$E_0 = T_0 + U_0$$ and the energy after the rocket fires as
+$$E_1 = T_1 + U_1$$
+\begin{equation}
+E_1 = 2T_0 + U_0
+\label{Eng1}
+\end{equation}
+
+Now we need to find a comparison between the kinetic energy and the potential energy. We know that because the motion is orbital we can describe the motion as
+$$\frac{\alpha}{r} = 1 +\epsilon\cos\theta$$
+Where
+$$\epsilon = \sqrt{1+\dfrac{2El^2}{\mu k^2}}$$
+and
+$$\alpha = \frac{l^2}{\mu k}$$
+We know that because we are in a circular orbit that $\epsilon = 0$, and we can see that $\epsilon$ is dependent on $E$ so we can solve for $E$ to find the total energy of the orbit
+$$\epsilon = 0 = \sqrt{1+\dfrac{2El^2}{\mu k^2}}$$
+$$ 0 = 1+\dfrac{2El^2}{\mu k^2}$$
+$$ -\dfrac{2El^2}{\mu k^2} = 1$$
+$$ E =-\dfrac{\mu k^2}{2l^2}$$
+So we now know that the total energy. We can express the total energy as
+\begin{equation}
+E = T + U
+\label{totEn}
+\end{equation}
+where $U=-\dfrac{k}{r}$ and we can find $r$ from the fact that the orbit is circular and $\epsilon$ is zero. Our orbital motion is
+$$\frac{\alpha}{r} = 1$$
+So $r=\alpha$ or
+$$r= \frac{l^2}{\mu k}$$
+So now we can find the $U$ as
+$$U = -k\frac{\mu k}{l^2}$$
+$$U = -\frac{\mu k^2}{l^2}$$
+Now if we look at $E$ again we see that
+$$ E =-\dfrac{\mu k^2}{2l^2}$$
+$$ E =\frac{1}{2}\left(-\dfrac{\mu k^2}{l^2}\right)$$
+$$ E =\frac{1}{2}U$$
+So if we replace $E$ in equation \ref{totEn} we get
+$$\frac{1}{2}U = T + U$$
+Solving for $T$ gives us
+$$T = -\frac{1}{2}U$$
+Now if we use this identity in equation \ref{Eng1} we get
+$$E_1 = 2(-\frac{1}{2}U) + U$$
+$$E_1 = -U + U$$
+$$E_1 = 0$$
+So the ratio of the initial to final energy is zero.
+
+Now if we look at the angular momentum we see the tangential velocity does not change, because the rocket fired radially away. This means 
+$$l_1 = l_0$$
+and therefore
+$$\frac{l_1}{l_0} = 1$$
+
+\item
+We found in part (a) that the energy after the rocket launch is zero so this mean the motion after words is parabolic and the motion becomes unbounded. See attached for the plots of $T(r)$, $V(r)$, $U(r)$, and $E(r)$. 
+\end{enumerate}
+
+\section{Problem \#2}
+If we have a particle moving in an attractive central-force field described by 
+$$F(r) = \frac{-k}{r^3}$$
+the first step is to find the potential from this force. We do that by using
+$$-\frac{\partial U}{\partial r} = F(r)$$
+if we use the separation of variables we get
+$$\partial U= -F(r)\partial r $$
+$$\partial U= -\frac{-k}{r^3}\partial r $$
+$$\int\partial U= \int\frac{k}{r^3}\partial r $$
+$$U(r)= \frac{-k}{2r^2}$$
+And we can find the kinetic energy of the system in polar notation as
+$$T= \frac{1}{2}m(\dot{r}^2 + r^2\dot{\theta}^2)$$
+So now we can write our Lagrangian 
+$$L = T -U$$
+$$L = \frac{1}{2}m(\dot{r}^2 + r^2\dot{\theta}) + \frac{k}{2r^2}$$
+Now we can find the Hamiltonian so we can find the effective potential
+$$p_{\theta} = \frac{\partial L}{\partial \dot{\theta}}$$
+$$p_{\theta} = mr^2\dot{\theta}$$
+solving for $\dot{\theta}$
+$$\dot{\theta}=\frac{p_{\theta}}{mr^2}$$
+we can also see that from 
+$$\frac{d}{dt}\frac{\partial L}{\partial \dot{\theta}} = \frac{\partial L}{\partial \theta}$$
+and since there is no $\theta$ dependence in $L$ we know that 
+$$\frac{d}{dt}\frac{\partial L}{\partial \dot{\theta}} = 0$$
+and that 
+$$\frac{\partial L}{\partial \dot{\theta}} = l$$
+where $l$ is a constant. That represents angular momentum, so we can also say
+$$p_{\theta} = l$$
+and
+$$\dot{\theta}=\frac{l}{mr^2}$$
+
+Now for the $r$ component we get
+$$p_r = \frac{\partial L}{\partial \dot{r}}$$
+$$p_r = m\dot{r}$$
+solving for $\dot{r}$
+$$\dot{r}= \frac{p_r}{m}$$
+Now if we have the form of a Hamiltonian as
+$$H = p_r\dot{r} + p_{\theta}\dot{\theta} - L$$
+$$H = p_r\frac{p_r}{m} + l\frac{l}{mr^2} - L$$
+$$H = \frac{p_r^2}{m} + \frac{l^2}{mr^2} - \frac{1}{2}m\left(\frac{p_r^2}{m^2} + r^2\frac{l^2}{(mr^2)^2}\right) - \frac{k}{2r^2}$$
+$$H = \frac{p_r^2}{m} + \frac{l^2}{mr^2} - \frac{1}{2}m\frac{p_r^2}{m^2} - \frac{1}{2}m r^2\frac{l^2}{(mr^2)^2} - \frac{k}{2r^2}$$
+$$H = \frac{p_r^2}{m} - \frac{p_r^2}{2m} + \frac{l^2}{mr^2} - \frac{l^2}{2mr^2} - \frac{k}{2r^2}$$
+$$H = \frac{p_r^2}{2m} + \frac{l^2}{2mr^2} - \frac{k}{2r^2}$$
+So we know the kinetic energy is given by $\dfrac{p_r^2}{2m}$ so 
+$$U_{eff} = \frac{l^2}{2mr^2} - \frac{k}{2r^2}$$
+$$U_{eff} = \frac{1}{2}\left(\frac{l^2}{m} -k\right)\frac{1}{r^2}$$
+We can see that there are the three unique cases for the effective potential
+\begin{enumerate}[(i)]
+\item$\dfrac{l^2}{m} > k$
+\item$\dfrac{l^2}{m} < k$
+\item$\dfrac{l^2}{m} = k$
+\end{enumerate}
+For case (i) we see that the effective potential will be proportional to $\dfrac{1}{r^2}$. Looking at the attached sketch of this effective potential we can immediately tell that $r$ goes to $\infty$ for all energies. This means the motion is unbounded for this case. And with a constant angular velocity the motion will look like a spiral out.
+
+For case (ii) we see that the effective potential will be proportional to $\dfrac{-1}{r^2}$. Looking at the attached sketch of this effective potential we see that for any initial energy $r$ will be pulled to the central force with a constant angular velocity. This is also a spiral motion, but this time the particle spirals in toward the center. This, like case (i), does not have a stable equilibrium. 
+
+For case (iii) we do not get any information from the effective potential as it is zero when $\dfrac{l^2}{m} = k$. So the motion is dictated by the radial kinetic energy. The particle will still spiral in toward the center. 
+
+There is no case where there is a stable equilibrium, therefore a circular orbit is not possible.
+
+\section{Problem \#3}
+\begin{enumerate}[(a)]
+\item
+If we know that the particle is moving in a circular orbit we know that $$a = \frac{v^2}{r}$$
+where $v^2$ is the tangential velocity and $r$ is the radius. The problem gives these as
+$$r= r_0$$
+and
+$$v = r_0\omega_{\phi}$$
+We can find a as
+$$a = \frac{(r_0\omega_{\phi})^2}{r_0}$$
+$$a = {r_0\omega_{\phi}^2}$$
+so we can that 
+$$F_0 = m a$$
+where $F_0$ is given as the central force and $m$ is the mass of the particle so if we substitute the $a$ we can see that
+$$F_0 = m r_0\omega_{\phi}^2$$
+Solving for $\omega_{\phi}$ we find that 
+$$\omega_{\phi}^2= \frac{F_0}{m r_0}$$
+$$\omega_{\phi}= \sqrt{\frac{F_0}{m r_0}}$$
+We can check our units. We assume that $$<\omega_{\phi}>= s^{-1}$$
+and we know that 
+$$<F_0> = kg\ m\ s^{-2};\ <m> = kg;\ <r_0>=m$$
+so we can calculate 
+$$\left<\sqrt{\frac{F_0}{m r_0}}\right> = \sqrt{\frac{kg\ m\ s^{-2}}{kg\ m}}$$
+$$\left<\sqrt{\frac{F_0}{m r_0}}\right> = \sqrt{s^{-2}}$$
+$$\left<\sqrt{\frac{F_0}{m r_0}}\right> = s^{-1}$$
+Good our units agree
+
+\item
+We need to find the potential due to the force $F_0$ we can do this from the equation 
+$$F_0 = -\frac{\partial U}{\partial r}$$
+We can solve this by using separation of variables
+$$F_0 \partial r = -\partial U$$
+$$\int F_0 \partial r = -\int \partial U$$
+$$U =-F_0 r $$
+So now we can say that our effective potential is
+$$U_{eff} = \frac{l^2}{2mr^2} - F_0r$$
+but we want to deal with the angular momentum in terms of $F_0$, $m$, and $r_0$ 
+so we can say that the angular momentum is constant and given by
+$$l = mr_0^2\omega_{\phi}$$
+Now we can see from part (a) that 
+$$\omega_{\phi}= \sqrt{\frac{F_0}{m r_0}}$$
+So if we replace this into our angular momentum we get
+$$l = mr_0^2\sqrt{\frac{F_0}{m r_0}}$$
+$$l = \sqrt{\frac{F_0m^2r_0^4}{m r_0}}$$
+$$l = \sqrt{F_0mr_0^3}$$
+So now we can write our effective potential as
+$$U_{eff} = \frac{\sqrt{F_0mr_0^3}^2}{2mr^2} - F_0r$$
+$$U_{eff} = \frac{F_0r_0^3}{2r^2} - F_0r$$
+Now we can find the frequency of small oscillation by using 
+\begin{equation}
+\omega_r^2 = \left.\frac{1}{m}\frac{\partial^2 U_{eff}}{\partial r^2}\right|_{r=r_0}
+\label{FSO}
+\end{equation}
+We evaluate the second partial with respect to $r$ at $r_0$ because we know that $r_0$ is an equilibrium point ($r_0$ is the radius of the circular orbit).
+So we can calculate 
+$$\frac{\partial^2 U_{eff}}{\partial r^2}=\frac{\partial}{\partial r}\left(\frac{\partial U_{eff}}{\partial r}\right)$$
+$$\frac{\partial^2 U_{eff}}{\partial r^2}=\frac{\partial}{\partial r}\left(\frac{F_0r_0^3}{2r^3}(-2) \right)$$
+$$\frac{\partial^2 U_{eff}}{\partial r^2}=\frac{\partial}{\partial r}\left(-\frac{F_0r_0^3}{r^3} \right)$$
+$$\frac{\partial^2 U_{eff}}{\partial r^2}=-\frac{F_0r_0^3}{r^4}(-3)$$
+$$\frac{\partial^2 U_{eff}}{\partial r^2}=\frac{3F_0r_0^3}{r^4}$$
+Now we can solve equation \ref{FSO} to get
+$$\omega_r^2 = \left.\frac{1}{m}\frac{3F_0r_0^3}{r^4}\right|_{r=r_0}$$
+Evaluating at $r_0$
+$$\omega_r^2 = \frac{1}{m}\frac{3F_0r_0^3}{r_0^4}$$
+$$\omega_r^2 = \frac{1}{m}\frac{3F_0}{r_0}$$
+$$\omega_r^2 = \frac{3F_0}{mr_0}$$
+Solving the square we get
+$$\omega_r = \sqrt{\frac{3F_0}{mr_0}}$$
+Now we can check the dimensions. We assume that
+$$<\omega_r> = s^{-1}$$
+and we know that 
+$$<F_0> = kg\ m\ s^{-2};\ <m> = kg;\ <r_0>=m$$
+$$\left<\sqrt{\frac{3F_0}{mr_0}}\right> = \sqrt{\frac{kg\ m\ s^{-2}}{kg\ m}}$$
+$$\left<\sqrt{\frac{3F_0}{mr_0}}\right> = \sqrt{\frac{1}{s^{2}}}$$
+$$\left<\sqrt{\frac{3F_0}{mr_0}}\right> = \frac{1}{s}$$
+$$\left<\sqrt{\frac{3F_0}{mr_0}}\right> = s^{-1}$$
+Good our units agree.
+\end{enumerate}
+
+\end{document}
+

@@ -1,0 +1,368 @@
+\documentclass[11pt]{article}
+
+\usepackage{latexsym}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{enumerate}
+\usepackage{amsmath}
+\usepackage{cancel}
+\numberwithin{equation}{section}
+
+\setlength{\evensidemargin}{.25in}
+\setlength{\oddsidemargin}{-.25in}
+\setlength{\topmargin}{-.75in}
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{9.5in}
+\newcommand{\due}{November 4th, 2009}
+\newcommand{\HWnum}{10}
+\newcommand{\grad}{\bold\nabla}
+\newcommand{\vecE}{\vec{E}}
+\newcommand{\scrptR}{\vec{\mathfrak{R}}}
+\newcommand{\kapa}{\frac{1}{4\pi\epsilon_0}}
+
+\begin{document}
+\input{../title.tex}
+
+\section{Problem \#1}
+\begin{enumerate}[(a)]
+\item
+So Griffiths example 5.2 gives the general solution for the motion as
+\begin{align*}
+y(t) &= C_1\cos(\omega t)+C_2\sin(\omega t)+(E/B)t+C_3\\
+z(t) &= C_2\cos(\omega t)-C_1\sin(\omega t)+C_4
+\end{align*}
+We calculate the first time derivatives as
+\begin{align*}
+\dot{y}(t) &= -C_1\sin(\omega t)\omega + C_2\cos(\omega t)\omega+(E/B)\\
+\dot{z}(t) &= -C_2\sin(\omega t)\omega-C_1\cos(\omega t)\omega
+\end{align*}
+so if we apply the initial conditions 
+$$y(0) = 0$$
+$$\dot{y}(0) = E/B$$
+$$z(0) = 0$$
+$$\dot{z}(0) = 0$$
+We calculate 
+\begin{align*}
+y(0)=0 &= C_1\cos(\omega (0))+C_2\sin(\omega (0))+(E/B)(0)+C_3\\
+0 &= C_1+C_3\\
+C_1 &= -C_3
+\end{align*}
+\begin{align*}
+\dot{z}(0) = 0 &= -C_2\sin(\omega 0)\omega-C_1\cos(\omega 0)\omega\\
+0 &= -C_1\omega\\
+0 &= -C_1
+\end{align*}
+So we see that $C_1=0$ and $C_3=0$. 
+\begin{align*}
+z(0) = 0 &= C_2\cos(\omega 0)-C_1\sin(\omega 0)+C_4\\
+0 &= C_2+C_4\\
+C_2 &= -C_4
+\end{align*}
+\begin{align*}
+\dot{y}(0) = E/B &= -C_1\sin(\omega 0)\omega + C_2\cos(\omega 0)\omega+(E/B)\\
+E/B &=  + C_2\omega+(E/B)\\
+0 &= C_2\omega\\
+0 &= C_2
+\end{align*}
+So we see that $C_2=0$ and $C_4=0$. So all of our constants are zero. So our general solutions become 
+\begin{align*}
+y(t) &= (E/B)t\\
+z(t) &= 0
+\end{align*}
+
+\item
+Now our initial conditions are
+$$y(0) = 0$$
+$$\dot{y}(0) = E/2B$$
+$$z(0) = 0$$
+$$\dot{z}(0) = 0$$
+So it remains from part (a) that
+$$C_1 = -C_3$$
+$$C_1 = 0$$
+So $C_3=0$ 
+and 
+$$C_2 = -C_4$$
+So we apply the second initial condition we get
+\begin{align*}
+\dot{y}(0) = E/2B &= -C_1\sin(\omega 0)\omega + C_2\cos(\omega 0)\omega+(E/B)\\
+E/2B &= C_2\omega+(E/B)\\
+\frac{E}{2B}-\frac{E}{B} &= C_2\omega\\
+-\frac{E}{2B} &= C_2\omega\\
+-\frac{E}{2B\omega} &= C_2
+\end{align*}
+So our general solutions become
+\begin{align*}
+y(t) &= \frac{E}{2B\omega}\sin(\omega t)+(E/B)t\\
+z(t) &= \frac{E}{2B\omega}\cos(\omega t)
+\end{align*}
+
+\item
+Now our initial conditions are such that 
+$$C_1=-C_3$$
+$$C_2=-C_4$$
+is still true so we need to apply the new boundary conditions
+$$\dot{y}(0) = E/B$$
+$$\dot{z}(0) = E/B$$
+so we calculate 
+\begin{align*}
+\dot{z}(0) = E/B &= -C_2\sin(\omega 0)\omega-C_1\cos(\omega 0)\omega\\
+E/B &= -C_1\omega\\
+-\frac{E}{B\omega} &= C_1
+\end{align*}
+So it follows that $C_3 = \frac{E}{B\omega}$. Calculating the next initial condition yields
+\begin{align*}
+\dot{y}(0) = E/B &= -C_1\sin(\omega 0)\omega + C_2\cos(\omega 0)\omega+(E/B)\\
+E/B &= C_2\omega+(E/B)\\
+0 &= C_2\omega\\
+0 &= C_2
+\end{align*}
+So we know that $C_4=0$ as well. So we can write our general solution as
+\begin{align*}
+y(t) &= -\frac{E}{B\omega}\cos(\omega t)+(E/B)t+\frac{E}{B\omega}\\
+z(t) &= \frac{E}{B\omega}\sin(\omega t)
+\end{align*}
+
+\end{enumerate}
+\section{Problem \#2}
+So we can use the superposition principle to separate the B-field contributions from the different parts of the wire. We need to use the \emph{Biot-Savart Law} with a steady current or
+\begin{equation}
+\vec{B}(\vec{r}) = \frac{\mu_0}{4\pi} I\int \frac{d\vec{l}\times\hat{\scrptR}}{|\scrptR|^2}
+\label{BioSav}
+\end{equation}
+Now for the contribution to the B-field from the line that goes from $-\infty$ to the circle in the $x$ direction we have
+$$\scrptR = \sqrt{x^2+R^2}\hat{\scrptR}$$
+so 
+$$\scrptR^2 = x^2+R^2$$
+And our $d\vec{l} = dx$, so equation \ref{BioSav} becomes 
+$$\vec{B}(\vec{r}) = \frac{\mu_0}{4\pi} I\int \frac{dx\sin(\theta)}{x^2+R^2}$$
+Where $\sin(\theta)$ is the angle between the wire and the position vector. Looking at the geometry of the system we see that
+$$\sin(\theta) = \frac{-x}{\sqrt{x^2+R^2}}$$
+So we have
+$$\vec{B}(\vec{r}) = \frac{\mu_0}{4\pi} I\int_{-\infty}^{0} \frac{-x dx}{(x^2+R^2)^{3/2}}$$
+We can use a $u$ substitution solve this integral, where
+$$u=x^2+R^2$$
+$$du=2xdx$$
+So we calculate
+\begin{align*}
+\vec{B}(\vec{r}) &= -\frac{\mu_0}{4\pi} I\int_{-\infty}^{0} \frac{x dx}{(x^2+R^2)^{3/2}}\\
+&= -\frac{\mu_0}{4\pi} I\int_{u(-\infty)}^{u(0)} \frac{du}{2u^{3/2}}\\
+&= -\frac{\mu_0}{4\pi} I \left.\frac{1}{2u^{1/2}}(-2)\right|_{u(-\infty)}^{u(0)}\\
+&= \frac{\mu_0}{4\pi} I \left.\frac{1}{(x^2+R^2)^{1/2}}\right|_{-\infty}^{0}\\
+&= \frac{\mu_0}{4\pi} I \left(\frac{1}{(0^2+R^2)^{1/2}}-0\right)\\
+&= \frac{\mu_0I}{4\pi R}
+\end{align*}
+Now for the line that goes from $0$ to $\infty$ in the $y$ direction we have
+$$\scrptR = \sqrt{y^2+R^2}$$
+And seeing the similarity in this line with the line we just calculated we can write equation \ref{BioSav} as
+$$\vec{B}(\vec{r}) = \frac{\mu_0}{4\pi} I\int_0^{\infty} \frac{y dy}{(y^2+R^2)^{3/2}}$$
+again we use a $u$ substitution where
+$$u=y^2+R^2$$
+$$du=2ydy$$
+So we calculate
+\begin{align*}
+\vec{B}(\vec{r}) &= \frac{\mu_0}{4\pi} I\int_0^{\infty} \frac{y dy}{(y^2+R^2)^{3/2}}\\
+&= \frac{\mu_0}{4\pi} I\int_{u(0)}^{u(\infty)} \frac{du}{2u^{3/2}}\\
+&= \frac{\mu_0}{4\pi} I \left.\frac{1}{2u^{1/2}}(-2)\right|_{u(0)}^{u(\infty)}\\
+&= -\frac{\mu_0}{4\pi} I \left.\frac{1}{(y^2+R^2)^{1/2}}\right|_0^{\infty}\\
+&= -\frac{\mu_0}{4\pi} I \left(0-\frac{1}{(0^2+R^2)^{1/2}}\right)\\
+&= \frac{\mu_0I}{4\pi R}
+\end{align*}
+Now for the bend in the wire. We know that the distance from the point $p$ is always $R$ so $\scrptR=R$. We say that the $d\vec{l}$ is given by $Rd\theta\hat{\theta}$ so we see that $d\vec{l}$ is perpendicular to $\scrptR$ so the cross product is just $d\theta$. So equation \ref{BioSav} is
+\begin{align*}
+\vec{B}(\vec{r}) &= \frac{\mu_0}{4\pi} I\int_{-\pi/2}^{0} \frac{Rd\theta}{R^2}\\
+&= \frac{\mu_0I}{4\pi R}\int_{-\pi/2}^{0} d\theta\\
+&= \frac{\mu_0I}{4\pi R}\left.\theta\right|_{-\pi/2}^{0} \\
+&= \frac{\mu_0I}{4\pi R}\left(0--\frac{\pi}{2}\right) \\
+&= \frac{\mu_0I}{4\pi R}\frac{\pi}{2} \\
+&= \frac{\mu_0I}{8 R}
+\end{align*}
+So the total B-field is the sum of the three different contributions due to super position. So,
+\begin{align*}
+\vec{B} &= \frac{\mu_0I}{4\pi R}\hat{z} + \frac{\mu_0I}{4\pi R}\hat{z} + \frac{\mu_0I}{8 R}\hat{z}\\
+&= \frac{2\mu_0I}{4\pi R}\hat{z} + \frac{\mu_0I}{8 R}\hat{z}\\
+&= \frac{\mu_0I}{2R}\left(\frac{1}{\pi}+\frac{1}{4}\right)\hat{z} 
+\end{align*}
+Note that the wire and the position vector both lie in the plane of the page. Therefore the cross product points out of the page or the $\hat{z}$ direction.
+
+\section{Problem \#3}
+\begin{enumerate}[(a)]
+\item
+So for the square loop we can use the relation 
+\begin{equation}
+\vec{B} = \frac{\mu_0I}{4\pi s}(\cos(\theta_1)-\cos(\theta_2))
+\label{magthe}
+\end{equation}
+Where $s$ is the distance from the point of interest to the line or $a/2$, and $\theta_1$ and $\theta_2$ are the angle between the line and the position vector. See attached sketch. So we do each line individually and sum them to find the total magnetic field. Now we see that each line has the same contribution so if we find one we have one fourth of the total field. So we calculate the magnetic field due to the bottom line. So first we calculate
+\begin{align*}
+\cos(\theta_1) &= \frac{a/2}{a/\sqrt{2}}\\
+&= \frac{a}{2}\frac{\sqrt{2}}{a}\\
+&= \frac{1}{2}\frac{\sqrt{2}}{1}\\
+&= \frac{\sqrt{2}}{2}
+\end{align*}
+and
+\begin{align*}
+\cos(\theta_2) &= \frac{-a/2}{a/\sqrt{2}}\\
+&= \frac{-a}{2}\frac{\sqrt{2}}{a}\\
+&= \frac{-1}{2}\frac{\sqrt{2}}{1}\\
+&= -\frac{\sqrt{2}}{2}
+\end{align*}
+So we can calculate the magnetic field as using equation \ref{magthe} we get
+\begin{align*}
+\vec{B} &= \frac{\mu_0I}{4\pi s}(\cos(\theta_1)-\cos(\theta_2))\\
+&= \frac{\mu_0I}{4\pi a/2}\left(\frac{\sqrt{2}}{2}-\frac{-\sqrt{2}}{2}\right)\\
+&= \frac{2\mu_0I}{4\pi a}\left(\frac{\sqrt{2}}{2}+\frac{\sqrt{2}}{2}\right)\\
+&= \frac{\mu_0I}{2\pi a}\left(\frac{2\sqrt{2}}{2}\right)\\
+&= \frac{\mu_0I}{2\pi a}\sqrt{2}\\
+&= \frac{\sqrt{2}\mu_0I}{2\pi a}
+\end{align*}
+So the total is four times this or
+$$\vec{B} = \frac{2\sqrt{2}\mu_0I}{\pi a}\hat{z}$$
+where $\hat{z}$ points out of the page.
+
+\item
+We can calculate the magnetic field due to a loop of radius $R$ we can use equation \ref{BioSav} where
+$$\scrptR = R$$
+and $d\vec{l}$ is given by $Rd\theta$ so equation \ref{BioSav} becomes
+\begin{align*}
+\vec{B}(\vec{r}) &= \frac{\mu_0}{4\pi} I\int \frac{d\vec{l}\times\hat{\scrptR}}{|\scrptR|^2}\\
+&= \frac{\mu_0}{4\pi} I\int_0^{2\pi} \frac{Rd\theta}{R^2}\\
+&= \frac{\mu_0}{4\pi} I\int_0^{2\pi} \frac{d\theta}{R}\\
+&= \frac{\mu_0}{4\pi} I\frac{2\pi}{R}\\
+&= \frac{\mu_0}{2} I\frac{1}{R}\\
+&= \frac{\mu_0I}{2R}
+\end{align*}
+So now it is simple to find the magnetic field due to the inscribed and circumscribed loops. For the inscribed loop $R=a/2$ and for the circumscribed loop $R=a/\sqrt{2}$ so if we calculate the estimate as the average of these two loops we get
+\begin{align*}
+\vec{B} &\approx \frac{1}{2}\left(\frac{\mu_0I}{2R_{in}} + \frac{\mu_0I}{2R_{cir}}\right)\\
+\vec{B} &\approx \frac{\mu_0I}{4}\left(\frac{1}{R_{in}} + \frac{1}{R_{cir}}\right)\\
+\vec{B} &\approx \frac{\mu_0I}{4}\left(\frac{1}{a/2} + \frac{1}{a/\sqrt{2}}\right)\\
+\vec{B} &\approx \frac{\mu_0I}{4}\left(\frac{2}{a} + \frac{\sqrt{2}}{a}\right)\\
+\vec{B} &\approx \frac{\mu_0I}{4}\left(\frac{2+\sqrt{2}}{a}\right)\\
+\vec{B} &\approx \frac{\mu_0I(2+\sqrt{2})}{4a}
+\end{align*}
+\end{enumerate}
+
+\section{Problem \#4}
+\begin{enumerate}[(a)]
+\item
+So we start with equation \ref{BioSav}
+$$\vec{B}(\vec{r}) = \frac{\mu_0}{4\pi} I\int \frac{d\vec{l}\times\hat{\scrptR}}{\scrptR^2}$$
+Which we can rewrite as
+$$\vec{B}(\vec{r}) = \frac{\mu_0}{4\pi}\int\frac{\vec{J}(\vec{r'})\times\hat{\scrptR}}{\scrptR^2}d\tau'$$
+Now if we take the curl of this equation we see that we get 
+$$\grad\times\vec{B}(\vec{r}) = \frac{\mu_0}{4\pi}\int\grad\times\left(\vec{J}\times\frac{\hat{\scrptR}}{\scrptR^2}\right)d\tau'$$
+Note that we pull the grad operator into the integral because the integral is over the primed coordinates and we are taking the curl with respect to the unprimed coordinates. Now we see that we can apply \emph{Product Rule Number 8} or
+$$\grad\times(\vec{A}\times\vec{B}) = (\vec{B}\cdot\grad)\vec{A}-(\vec{A}\cdot\grad)\vec{B} + \vec{A}(\grad\cdot\vec{B})-\vec{B}(\grad\cdot\vec{A})$$
+We see that
+\begin{align*}
+\left(\vec{J}\times\frac{\hat{\scrptR}}{\scrptR^2}\right) &= \left(\frac{\hat{\scrptR}}{\scrptR^2}\cdot\grad\right)\vec{J}-(\vec{J}\cdot\grad)\frac{\hat{\scrptR}}{\scrptR^2} + \vec{J}\left(\grad\cdot\frac{\hat{\scrptR}}{\scrptR^2}\right)-\frac{\hat{\scrptR}}{\scrptR^2}(\grad\cdot\vec{J})\\
+&= \cancelto{0}{\left(\frac{\hat{\scrptR}}{\scrptR^2}\cdot\grad\right)\vec{J}}-(\vec{J}\cdot\grad)\frac{\hat{\scrptR}}{\scrptR^2} + \vec{J}\left(\grad\cdot\frac{\hat{\scrptR}}{\scrptR^2}\right)-\cancelto{0}{\frac{\hat{\scrptR}}{\scrptR^2}(\grad\cdot\vec{J})}\\
+&= -(\vec{J}\cdot\grad)\frac{\hat{\scrptR}}{\scrptR^2} + \vec{J}\left(\grad\cdot\frac{\hat{\scrptR}}{\scrptR^2}\right)
+\end{align*}
+Note that the derivative of $\vec{J}$ is zero because $\vec{J}$ is a function of the primed coordinates, and that we know
+$$\grad\cdot\left(\frac{\scrptR}{\scrptR^2}\right) = 4\pi\delta^3(\scrptR)$$
+Where we define $\scrptR$ as $\vec{r} - \vec{r'}$. So if follows that our integral becomes
+\begin{align*}
+\grad\times\vec{B} &= \frac{\mu_0}{4\pi}\int \vec{J}\left(\grad\cdot\frac{\hat{\scrptR}}{\scrptR^2}\right)-(\vec{J}\cdot\grad)\frac{\hat{\scrptR}}{\scrptR^2}d\tau'\\
+&= \frac{\mu_0}{4\pi}\int \vec{J}4\pi\delta^3(\vec{r}-\vec{r'})-(\vec{J}\cdot\grad)\frac{\hat{\scrptR}}{\scrptR^2}d\tau'\\
+&= \frac{\mu_0}{4\pi}\int \vec{J}4\pi\delta^3(\vec{r}-\vec{r'})d\tau'-\int(\vec{J}\cdot\grad)\frac{\hat{\scrptR}}{\scrptR^2}d\tau'\\
+&= \frac{\mu_0}{4\pi}\vec{J}(\vec{r})4\pi-\int(\vec{J}\cdot\grad)\frac{\hat{\scrptR}}{\scrptR^2}d\tau'\\
+&= \mu_0\vec{J}(\vec{r})-\frac{\mu_0}{4\pi}\int(\vec{J}\cdot\grad)\frac{\hat{\scrptR}}{\scrptR^2}d\tau'
+\end{align*}
+Now for the remaining integral we first need to change our grad operator from the unprimed to the primed coordinates. We can do this by flipping a negative because we define $\scrptR$ as $\vec{r}-\vec{r'}$ so the we need to account for the negative in front of the $\vec{r'}$ so we say
+$$-(\vec{J}\cdot\grad)\frac{\scrptR}{\scrptR^2} = (\vec{J}\cdot\grad')\frac{\scrptR}{\scrptR^2}$$
+Now if we apply \emph{Product Rule Number 5}
+$$\grad\cdot(f\vec{A}) = f(\grad\cdot\vec{A})+\vec{A}\cdot(\grad f)$$
+we get
+\begin{align*}
+(\vec{J}\cdot\grad')\frac{\scrptR}{\scrptR^2} &= (\vec{J}\cdot\grad')\frac{r-r'}{\scrptR^3}\\
+&= \grad'\cdot\left(\frac{r-r'}{\scrptR^3}\vec{J}\right) - \frac{r-r'}{\scrptR^3}(\grad'\cdot\vec{J})\\
+&= \grad'\cdot\left(\frac{r-r'}{\scrptR^3}\vec{J}\right) - \frac{r-r'}{\scrptR^3}\cancelto{0}{(\grad'\cdot\vec{J})}\\
+&= \grad'\cdot\left(\frac{r-r'}{\scrptR^3}\vec{J}\right)
+\end{align*}
+Note that the divergence of $\vec{J}$ is zero because $\vec{J}$ represents a steady current. So our integral is now (using the \emph{Divergence Theorem})
+\begin{align*}
+\frac{\mu_0}{4\pi}\int(\vec{J}\cdot\grad)\frac{\hat{\scrptR}}{\scrptR^2}d\tau' &= \frac{\mu_0}{4\pi}\int \grad'\cdot\left(\frac{r-r'}{\scrptR^3}\vec{J}\right) d\tau'\\
+&= \frac{\mu_0}{4\pi}\int_S \frac{r-r'}{\scrptR^3}\vec{J}\cdot d\vec{a'}
+\end{align*}
+Now we know that the surface in this integral is such that it contains all the current inside of it. Therefore the is no current on the surface and the integral is zero. So we are left with
+$$\grad\times\vec{B} = \mu_0\vec{J}$$
+or \emph{Ampere's Law}
+
+\item
+Let us start with the equation
+$$\vec{B}(\vec{r}) = \frac{\mu_0}{4\pi}\int\frac{\vec{J}(\vec{r'})\times\hat{\scrptR}}{\scrptR^2}d\tau'$$
+If we apply the fact that
+$$\frac{\hat{\scrptR}}{\scrptR^2} = -\grad\frac{1}{|\scrptR|}$$
+we see that
+\begin{align*}
+\vec{B}(\vec{r}) &= \frac{\mu_0}{4\pi}\int\vec{J}\times\frac{\hat{\scrptR}}{\scrptR^2}d\tau'\\
+&= \frac{\mu_0}{4\pi}\int\vec{J}\times\left(\grad\frac{-1}{|\scrptR|}\right)d\tau'
+\end{align*}
+Now we apply \emph{Product Rule Number 7} or
+$$\grad\times(f\vec{A})=f(\grad\times\vec{A})-\vec{A}\times(\grad f)$$
+Rewritten as
+$$\vec{A}\times(\grad f)= f(\grad\times\vec{A})-\grad\times(f\vec{A}) $$
+So we see that
+\begin{align*}
+\vec{B}(\vec{r}) &= \frac{\mu_0}{4\pi}\int\vec{J}\times\left(\grad\frac{-1}{|\scrptR|}\right)d\tau'\\
+&= \frac{\mu_0}{4\pi}\int\frac{-1}{|\scrptR|}\left(\grad\times\vec{J}\right) - \grad\times\left(\frac{-1}{|\scrptR|}\vec{J}\right)d\tau'\\
+&= \frac{\mu_0}{4\pi}\int\frac{-1}{|\scrptR|}\cancelto{0}{\left(\grad\times\vec{J}\right)} - \grad\times\left(\frac{-1}{|\scrptR|}\vec{J}\right)d\tau'\\
+&= \frac{\mu_0}{4\pi}\int  \grad\times\left(\frac{1}{|\scrptR|}\vec{J}\right)d\tau'
+\end{align*}
+Again we know that the curl of $\vec{J}$ is zero because $\vec{J}$ is only dependent on the primed coordinates. And if we say that
+$$\vec{B} = \grad\times\vec{A}$$
+we see that if we pull the curl out of the integral we can do this because the integral is over the primed coordinates and the curl is on the unprimed coordinates.
+\begin{align*}
+\vec{B} = \grad\times\vec{A} &= \frac{\mu_0}{4\pi}\int  \grad\times\left(\frac{1}{|\scrptR|}\vec{J}\right)d\tau'\\
+\grad\times\vec{A} &= \grad\times\frac{\mu_0}{4\pi}\int\left(\frac{1}{|\scrptR|}\vec{J}\right)d\tau'\\
+\vec{A} &= \frac{\mu_0}{4\pi}\int\frac{\vec{J}}{|\scrptR|}d\tau'\\
+\end{align*}
+
+
+\end{enumerate}
+
+\section{Problem \#5}
+We know that the current density is given by 
+$$\vec{K} = \sigma\omega r'\hat{\theta}$$
+So we can calculate the magnetic field using the relation
+\begin{equation}
+\vec{B} = \frac{\mu_0}{4\pi}\int\frac{\vec{K}\times\hat{\scrptR}}{\scrptR^2}da'
+\label{magsig}
+\end{equation}
+Where $\scrptR$ is given by 
+$$\scrptR = \sqrt{r'^2+z^2}$$
+So we can calculate the magnetic field using equation \ref{magsig}. Note that the $\sin(\theta)$ is the sine of the angle between the two vectors and is equal to $\dfrac{r'}{\scrptR}$
+\begin{align*}
+\vec{B} &= \frac{\mu_0}{4\pi}\int\frac{\vec{K}\times\hat{\scrptR}}{\scrptR^2}da'\\
+&= \frac{\mu_0}{4\pi}\int\frac{\sigma\omega r'\hat{\theta}\times\hat{\scrptR}}{r'^2+z^2}da'\\
+&= \frac{\mu_0}{4\pi}\int\frac{\sigma\omega r'\sin(\theta)}{r'^2+z^2}da'
+\end{align*}
+\begin{align*}
+&= \frac{\mu_0}{4\pi}\int\frac{\sigma\omega r'^2}{(r'^2+z^2)^{3/2}}da'\\
+&= \frac{\mu_0}{4\pi}\int_0^R\int_0^{2\pi}\frac{\sigma\omega r'^2}{(r'^2+z^2)^{3/2}}r'dr'd\phi'\\
+&= \frac{\mu_0}{4\pi}\int_0^R\int_0^{2\pi}\frac{\sigma\omega r'^3}{(r'^2+z^2)^{3/2}}dr'd\phi'\\
+&= \frac{\mu_0}{4\pi}2\pi\int_0^R\frac{\sigma\omega r'^3}{(r'^2+z^2)^{3/2}}dr'\\
+&= \frac{\mu_0\sigma\omega}{2}\int_0^R\frac{r'^3}{(r'^2+z^2)^{3/2}}dr'\\
+&= \frac{\mu_0\sigma\omega}{2}\left.\frac{2z^2+r'^2}{\sqrt{r'^2+z^2}}\right|_0^R\\
+&= \frac{\mu_0\sigma\omega}{2}\left(\frac{2z^2+R^2}{\sqrt{R^2+z^2}}-\frac{2z^2+0^2}{\sqrt{0^2+z^2}}\right)\\
+&= \frac{\mu_0\sigma\omega}{2}\left(\frac{2z^2+R^2}{\sqrt{R^2+z^2}}-\frac{2z^2}{z}\right)\\
+&= \frac{\mu_0\sigma\omega}{2}\left(\frac{2z^2+R^2}{\sqrt{R^2+z^2}}-2z\right)\hat{z}
+\end{align*}
+So now we can check the units we expect a magnetic field to have the units of
+$$<\vec{B}> = kg\ C^{-1}\ s^{-1}$$
+and we know that
+$$<\mu_0> = kg\ m\ C^{-2};\ <\sigma> = C\ m^{-2};\ <\omega> = s^{-1};\ <R>=<z>=m$$
+So we calculate
+\begin{align*}
+\left<\frac{\mu_0\sigma\omega}{2}\left(\frac{2z^2+R^2}{\sqrt{R^2+z^2}}-2z\right)\right> &=  (kg\ m\ C^{-2} C\ m^{-2}\ s^{-1})\frac{m^2+m^2}{\sqrt{m^2+m^2}}-m\\
+&= (kg\ C^{-1} m^{-1}\ s^{-1})\frac{m^2}{\sqrt{m^2}}-m\\
+&= (kg\ C^{-1} m^{-1}\ s^{-1})\frac{m^2}{m}-m\\
+&= (kg\ C^{-1} m^{-1}\ s^{-1})(m-m)\\
+&= (kg\ C^{-1} m^{-1}\ s^{-1})(m)\\
+&= kg\ C^{-1}\ s^{-1}
+\end{align*}
+Good our units agree. Now we can check the limiting behaviours of this field. We see that when $\omega$ goes to zero the magnetic field goes to zero. This makes sense because if the charges are not moving there can be no magnetic field. For the case where $R\rightarrow0$ again we see that the function goes to zero. This makes sense because without the area there are no charges so there can be no magnetic field.
+
+\end{document}
+

@@ -1,0 +1,290 @@
+\documentclass[11pt]{article}
+
+\usepackage{latexsym}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{enumerate}
+\usepackage{amsmath}
+\usepackage{cancel}
+\numberwithin{equation}{section}
+
+\setlength{\evensidemargin}{.25in}
+\setlength{\oddsidemargin}{-.25in}
+\setlength{\topmargin}{-.75in}
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{9.5in}
+\newcommand{\due}{October 17th, 2012}
+\newcommand{\HWnum}{5}
+\input{/home/joey/Documents/Class/Define.tex}
+
+\begin{document}
+\input{../title.tex}
+
+\section{Problem \#1}
+\begin{enumerate}[(a)]
+\item
+For the \emph{Stark Effect} we have an atom in a uniform electric field given by
+$$\mathbf{E} = \epsilon_0\hat{z}$$
+where the electric potential of this field is given by $-\epsilon z$. This implies that our perturbation on the hydrogen atom Hamiltonian is
+$$H_1 = e\epsilon_0 z$$
+or in spherical coordinates
+$$H_1 = e\epsilon_0 r\cos(\theta)$$
+Due to the fact that the $n=1$ energy level is non-degenerate we can easily calculate the first order correction to this energy level as
+\begin{align*}
+E_1^{(1)} &= e\epsilon_0\bra{100}r\cos(\theta)\ket{100}\\
+&= e\epsilon_0\int_{0}^{\infty}\int_{0}^{\pi}\int_{0}^{2\pi}r\cos(\theta)|\psi_{100}(r)|^2r^2\sin(\theta)drd\theta d\phi\\
+&= \frac{2e\epsilon_0}{a^3}\int_{0}^{\infty}r^3e^{-2r/a}dr\int_{0}^{\pi}\cos(\theta)\sin(\theta)d\theta
+\end{align*}
+Note that the integral over $\theta$ contains the product of an even and a odd function over the interval $[0,\pi]$. This implies that the integral is zero, which in turn implies that the correction to the ground state due to the perturbation $H_1$ is zero. Note we can prove this by a simple $u$ substitution where
+\begin{align*}
+u &= \sin(\theta)\\
+du &= \cos(\theta)d\theta\\
+\end{align*}
+which gives us
+\begin{align*}
+\int_{0}^{\pi}\cos(\theta)\sin(\theta)d\theta &= \int_{u(0)}^{u(\pi)}udu\\
+&= \left.\frac{1}{2}u^2\right|_{0}^{0} = 0
+\end{align*}
+
+\item
+For the $n=2$ energy level we have a 4-fold degeneracy with the stats $\ket{200}$, $\ket{211}$, $\ket{210}$, and $\ket{21-1}$. By forming a vector basis of the degenerate states such that
+$$\ket{200}=\left(\begin{array}{c}1\\0\\0\\0\end{array}\right),
+\ket{211}=\left(\begin{array}{c}0\\1\\0\\0\end{array}\right),
+\ket{210}=\left(\begin{array}{c}0\\0\\1\\0\end{array}\right),
+\ket{21-1}=\left(\begin{array}{c}0\\0\\0\\1\end{array}\right)$$
+we can form the matrix representation of $H_1$ by 
+$$\bra{2l'm'}H_1\ket{2lm} = \int_{0}^{\infty}rR^{*}_{l'm'}R_{lm}r^2dr\int\cos(\theta)Y_{l'm'}^{*}Y_{lm}d\Omega$$
+Note that the spherical harmonics $Y_{lm}$ are related to the \emph{Laguerre Polynomials} where $l$ is the order of the polynomial. This implies that $Y_{lm}$ is an even function where $\cos(\theta)$ is an odd function. This in turn leads us to the result that if $l=l'$ we have a zero matrix element. This is due to the fact that if $l=l'$ we have an integral of the product of an even function with an odd function which is zero. Now we can use the fact that $H_1$ commutes with the operator $L_z$
+$$[\hat{H}_1,\hat{L}_z] = 0$$
+which we can write as
+\begin{align*}
+\bra{2l'm'}[\hat{H}_1,\hat{L}_z]\ket{2lm} &= \bra{2l'm'}\hat{H}_1\hat{L}_z\ket{2lm} - \bra{2l'm'}\hat{L}_z\hat{H}_1\ket{2lm}\\
+&= m\hbar\bra{2l'm'}\hat{H}_1\ket{2lm} - m'\hbar\bra{2l'm'}\hat{H}_1\ket{2lm}\\
+&\Downarrow\\
+(m\hbar-m'\hbar)\bra{2l'm'}\hat{H}_1\ket{2lm} &= 0
+\end{align*}
+This implies that the only non-zero matrix elements are when $m=m'$. So given the two restrictions that $l\ne l'$ and $m=m'$ we see that the only non-zero matrix element is $\bra{200}H_1\ket{210}$ and its complex conjugate $\bra{210}H_1\ket{200}$ which we can calculate using
+\begin{align*}
+\ket{200} &= \frac{1}{\sqrt{2\pi a}}\frac{1}{2a}\left(1-\frac{r}{2a}\right)e^{-r/2a}\\
+\ket{210} &= \frac{1}{\sqrt{2\pi a}}\frac{1}{4a^2}re^{-r/2a}\cos(\theta)
+\end{align*}
+So
+\begin{align*}
+\bra{200}H_1\ket{210} &= 
+\int\int\frac{1}{\sqrt{2\pi a}}\frac{1}{2a}\left(1-\frac{r}{2a}\right)e^{-r/2a}e\epsilon_0r\cos(\theta)\frac{1}{\sqrt{2\pi a}}\frac{1}{4a^2}re^{-r/2a}\cos(\theta)r^2drd\Omega\\
+&= \frac{e\epsilon_0}{16\pi a^4}\int_0^{\infty}\left(1-\frac{r}{2a}\right)r^4e^{-r/a}dr\int_0^{\pi}\cos^2(\theta)\sin(\theta)d\theta\int_{0}^{2\pi}d\phi\\
+&= \frac{e\epsilon_0}{8a^4}\int_0^{\infty}\left(1-\frac{r}{2a}\right)r^4e^{-r/a}dr\int_0^{\pi}\cos^2(\theta)\sin(\theta)d\theta
+\end{align*}
+Again we can solve the integral over $\theta$ by substitution
+\begin{align*}
+u &= \cos(\theta)\\
+du &= -\sin(\theta)d\theta
+\end{align*}
+which gives
+\begin{align*}
+\int_0^{\pi}\cos^2(\theta)\sin(\theta)d\theta &= -\int_{u(0)}^{u(\pi)}u^2du\\
+&= -\int_{1}^{-1}u^2du\\
+&= \left.\frac{1}{3}u^3\right|_{-1}^{1}\\
+&= \frac{1}{3}(1^3-(-1)^3) = \frac{2}{3}
+\end{align*}
+This leaves us with the final integral
+\begin{align*}
+\bra{200}H_1\ket{210} &= \frac{e\epsilon_0}{12a^4}\int_0^{\infty}\left(1-\frac{r}{2a}\right)r^4e^{-r/a}dr\\
+&= \frac{e\epsilon_0}{12a^4}\left(\int_0^{\infty}r^4e^{-r/a}dr-\int_{0}^{\infty}\frac{r^5}{2a}e^{-r/a}dr\right)\\
+&= \frac{e\epsilon_0}{12a^4}\left(24a^5-60a^5\right) = -\frac{e\epsilon_0}{12a^4}36a^5 = -3e\epsilon_0a
+\end{align*}
+Note we found that $\bra{200}H_1\ket{210}$ is real valued so we can say that 
+$$\bra{200}H_1\ket{210} = \bra{210}H_1\ket{200}$$
+so we can write $H_1$ in the form
+$$H_1 = -3e\epsilon_0 a\left(\begin{array}{cccc}
+        0   &0   &1   &0\\
+        0   &0   &0   &0\\
+        1   &0   &0   &0\\
+        0   &0   &0   &0
+                        \end{array}\right)$$
+We see from this matrix that the degeneracy splits into three separate levels the $\ket{211}$ and $\ket{21-1}$ states stay at the same level and the $\ket{200}$ and $\ket{210}$ states mix and separate from the unperturbed energy by $\pm3e\epsilon_0a$.
+
+\item
+The good states are the states that correspond to the eigenvectors of the matrix found in part (b). These are the unperturbed states $\ket{211}$ and $\ket{21-1}$ as well as a equal mixing of the two mixed states given by 
+$$\frac{1}{\sqrt{2}}\left(\ket{200}+\ket{210}\right)$$
+and
+$$\frac{1}{\sqrt{2}}\left(\ket{200}-\ket{210}\right)$$
+using these good states we can find the expectation value of the electric dipole moment 
+$$\mathbf{p}_e = -e\mathbf{r}$$
+where $\mathbf{r}$ is the position vector given as 
+$$\mathbf{r} = r\sin(\theta)\cos(\phi)\hat{x} + r\sin(\theta)\sin(\phi)\hat{y} + r\cos(\theta)\hat{z}$$
+so we can calculate the expectation value of the dipole moment for $\ket{211}$ and $\ket{21-1}$ using
+$$\ket{21\pm1} = \frac{1}{\sqrt{\pi a}}\frac{1}{8a^2}re^{-r/a}\sin(\theta)e^{\pm i\phi}$$
+note when you take the innerproduct of each of these with itself the phase factor cancels out for both. This implies that the expectation value for both $\ket{211}$ and $\ket{21-1}$ are the same. So 
+\begin{align*}
+\bra{211}-e\mathbf{r}\ket{211} &= \bra{21-1}-e\mathbf{r}\ket{21-1}\\ 
+&= \frac{-e}{64\pi a^5}\int_{0}^{\infty}\int_{0}^{\pi}\int_{0}^{2\pi} r^2e^{-2r/a}\sin^2(\theta)\left[r\sin(\theta)\cos(\phi)\hat{x} + r\sin(\theta)\sin(\phi)\hat{y} + r\cos(\theta)\hat{z}\right]r^2drd\Omega\\
+&= \frac{-e}{64\pi a^5}\int_{0}^{\infty} r^5e^{-2r/a}dr\int_{0}^{\pi}\int_{0}^{2\pi}\left[\sin^4(\theta)\cancelto{0}{\cos(\phi)}\hat{x} + \sin^4(\theta)\cancelto{0}{\sin(\phi)}\hat{y} + \sin^3(\theta)\cos(\theta)\hat{z}\right]d\theta d\phi\\
+&= \frac{-e}{64\pi a^5}\int_{0}^{\infty} r^5e^{-2r/a}dr\cancelto{0}{\int_{0}^{\pi}\sin^3(\theta)\cos(\theta)\hat{z}d\theta} = 0
+\end{align*}
+Note the integral over $\theta$ goes to zero due to the fact that it is an integral of an even and an odd function. So for $\ket{211}$ and $\ket{21-1}$ we find that
+$$\langle\mathbf{p}_e\rangle = 0$$
+Now for the mixed states given by $\frac{1}{\sqrt{2}}(\ket{200}\pm\ket{210})$ we see that
+\begin{align*}
+\frac{1}{\sqrt{2}}(\ket{200}\pm\ket{210}) &= \frac{1}{\sqrt{2}}\frac{1}{\sqrt{2\pi a}}\frac{1}{2a}\left(1-\frac{r}{2a}\right)e^{-r/2a} \pm \frac{1}{\sqrt{2\pi a}}\frac{1}{4a^2}re^{-r/2a}\cos(\theta)\\ 
+&= \frac{1}{\sqrt{2}}\frac{1}{\sqrt{2\pi a}}\frac{1}{2a}e^{-r/2a}\left(1-\frac{r}{2a} \pm \frac{r}{2a}\cos(\theta)\right)\\ 
+&=  \frac{1}{\sqrt{2}}\frac{1}{\sqrt{2\pi a}}\frac{1}{2a}e^{-r/2a}\left(1-\frac{r}{2a}\left(1 \pm \cos(\theta)\right)\right)
+\end{align*}
+So our the integral of the expectation value becomes after we cancel out the zeros due to the integral over $\phi$ which leaves only the $\hat{z}$ component
+\begin{align*}
+\langle\mathbf{p}_e\rangle &=  -2\pi\frac{e}{2}\frac{1}{2\pi a}\frac{1}{4a^2}\int_{0}^{\infty}\int_{0}^{\pi}e^{-r/a}\left(1-\frac{r}{2a}\left(1 \pm \cos(\theta)\right)\right)^2r\cos(\theta)\hat{z}r^2\sin(\theta)drd\theta\\
+&=  -\frac{e}{8 a^3}\int_{0}^{\infty}\int_{0}^{\pi}r^3e^{-r/a}\left(1-\frac{r}{2a}\left(1 \pm \cos(\theta)\right)\right)^2\cos(\theta)\sin(\theta)\hat{z}drd\theta\\
+&=  -\frac{e}{8 a^3}\int_{0}^{\infty}\int_{0}^{\pi}r^3e^{-r/a}\left(1 - \frac{r}{a}\left(1 \pm \cos(\theta)\right) + \frac{r^2}{4a^2}\left(1 \pm \cos(\theta)\right)^2\right)\cos(\theta)\sin(\theta)\hat{z}drd\theta
+\end{align*}
+Note of the three terms with the $\pm\cos(\theta)$ the only term that is an even function when multiplied by $\cos(\theta)$ is the cross term. This implies only the cross term is non zero so we have
+\begin{align*}
+\langle\mathbf{p}_e\rangle &=  \frac{e}{8 a^3}\int_{0}^{\infty}\int_{0}^{\pi}r^3e^{-r/a}\frac{r}{a}\left(1 \pm \cos(\theta)\right)\cos(\theta)\sin(\theta)\hat{z}drd\theta\\
+&=  \frac{e}{8 a^4}\int_{0}^{\infty}\int_{0}^{\pi}r^4e^{-r/a}\left(1 \pm \cos(\theta)\right)\cos(\theta)\sin(\theta)\hat{z}drd\theta\\
+&=  \frac{e}{8 a^4}\int_{0}^{\infty}r^4e^{-r/a}dr\left(\cancelto{0}{\int_{0}^{\pi}\cos(\theta)\sin(\theta)d\theta} \pm \int_{0}^{\pi}\cos^2(\theta)\sin(\theta)\hat{z}d\theta\right)\\
+&=  \frac{e}{8 a^4}\int_{0}^{\infty}r^4e^{-r/a}dr\left(\pm \frac{2}{3}\hat{z}\right)\\
+&=  \pm\frac{e\hat{z}}{12 a^4}\int_{0}^{\infty}r^4e^{-r/a}dr\\
+&=  \pm\frac{e\hat{z}}{12 a^4}24a^5 = \pm2ea\hat{z}
+\end{align*}
+\end{enumerate}
+
+\section{Problem \#2}
+\begin{enumerate}[(a)]
+\item
+We can use the \emph{Feynman-Hellmann theorem} which states
+\begin{equation}
+\partiald{E_n}{\lambda} = \left\langle\psi_n|\partiald{H}{\lambda}|\psi_n\right\rangle
+\label{Feynman}
+\end{equation}
+to find the expectation values of $1/r$ and $1/r^2$ for the hydrogen atom with the effective Hamiltonian 
+\begin{equation}
+H = -\frac{\hbar}{2m}\frac{d^2}{dr^2} + \frac{\hbar^2}{2m}\frac{l(l+1)}{r^2} - \frac{e^2}{4\pi\epsilon_0}\frac{1}{r}
+\label{Hamil}
+\end{equation}
+which has a corresponding eigenvalue
+\begin{equation}
+E_n = -\frac{me^4}{32\pi^2\epsilon_0^2\hbar^2(j_{max}+l+1)^2}
+\label{Energy}
+\end{equation}
+. We use $\lambda=e$ in equation \ref{Feynman} to find $\langle1/r\rangle$. First we calculate the right hand side of equation \ref{Feynman} using equation \ref{Energy}
+\begin{align*}
+\partiald{E_n}{e} &=  -\partiald{}{e}\frac{me^4}{32\pi^2\epsilon_0^2\hbar^2(j_{max}+l+1)^2}\\
+&= -\frac{me^3}{8\pi^2\epsilon_0^2\hbar^2(j_{max}+l+1)^2}
+\end{align*}
+and for the left hand side we use equation \ref{Hamil} to get
+\begin{align*}
+\partiald{H}{e} &= \partiald{}{e}\left(\cancelto{0}{-\frac{\hbar}{2m}\frac{d^2}{dr^2} + \frac{\hbar^2}{2m}\frac{l(l+1)}{r^2}} - \frac{e^2}{4\pi\epsilon_0}\frac{1}{r}\right)\\
+&= -\frac{e}{2\pi\epsilon_0}\frac{1}{r}
+\end{align*}
+Now we can apply equation \ref{Feynman} to get
+\begin{align*}
+-\frac{me^3}{8\pi^2\epsilon_0^2\hbar^2(j_{max}+l+1)^2}\frac{1}{n^2} &= -\frac{e}{2\pi\epsilon_0}\left\langle\frac{1}{r}\right\rangle\\
+&\Downarrow\\
+\left\langle\frac{1}{r}\right\rangle &= \frac{2\pi\epsilon_0me^2}{8\pi^2\epsilon_0^2\hbar^2(j_{max}+l+1)^2}\\
+&= \frac{me^2}{4\pi\epsilon_0\hbar^2}\frac{1}{n^2}
+\end{align*}
+Note we used the fact that $j_{max} + l +1 = n$ and we define the \emph{Bohr Radius} as
+$$a = \frac{4\pi\epsilon_0\hbar^2}{me^2}$$
+which results in
+$$\left\langle\frac{1}{r}\right\rangle = \frac{1}{an^2}$$
+
+\item
+To find $\langle1/r^2\rangle$ we repeat the process as in part (a) except we take $\lambda = l$. So we calculate 
+\begin{align*}
+\partiald{E_n}{l} &= -\partiald{}{l}\frac{me^4}{32\pi^2\epsilon_0^2\hbar^2(j_{max}+l+1)^2}\\
+&= \frac{me^4}{16\pi^2\epsilon_0^2\hbar^2(j_{max}+l+1)^3}
+\end{align*}
+and for the left hand side of equation \ref{Feynman} we have
+\begin{align*}
+\partiald{H}{l} &= \partiald{}{l}\left(\cancelto{0}{-\frac{\hbar}{2m}\frac{d^2}{dr^2}} + \frac{\hbar^2}{2m}\frac{l(l+1)}{r^2} - \cancelto{0}{\frac{e^2}{4\pi\epsilon_0}\frac{1}{r}}\right)\\
+&= \frac{\hbar^2}{2m}\frac{1}{r^2}\partiald{}{l}{l^2+l)}\\
+&= \frac{\hbar^2(2l + 1)}{2m}\frac{1}{r^2}
+\end{align*}
+Now equation \ref{Feynman} yields
+\begin{align*}
+\frac{me^4}{16\pi^2\epsilon_0^2\hbar^2(j_{max}+l+1)^3} &= \frac{\hbar^2(2l + 1)}{2m}\left\langle\frac{1}{r^2}\right\rangle\\
+&\Downarrow\\
+\left\langle\frac{1}{r^2}\right\rangle &= \frac{m^2e^4}{8\pi^2\epsilon_0^2\hbar^4(j_{max}+l+1)^3(2l + 1)} \\
+&= 2\left(\frac{me^2}{4\pi\epsilon_0\hbar^2}\right)^2\frac{1}{(j_{max}+l+1)^3(2l + 1)} \\
+&= \frac{2}{a^2n^3(2l + 1)} = \frac{1}{a^2n^3(l + 1/2)}
+\end{align*}
+\end{enumerate}
+
+\section{Problem \#3}
+For a non-point like nucleus we have a potential given by
+$$V(r) = \left\{\begin{array}{lr}
+-\dfrac{3e^2}{8\pi\epsilon_0R^3}\left(R^2-\dfrac{1}{3}r^2\right),  &r<R\\
+\\
+-\dfrac{e^2}{4\pi\epsilon_0r},                                     &r>R
+          \end{array}\right.$$
+where $R$ is the radius of the nucleus and $R<<a$ where $a$ is the Bohr radius. We see that for $r>R$ the Hamiltonian is the same as a point like hydrogen atom. So we take the potential for $r<R$ as the perturbation.
+$$H_1 = -\dfrac{3e^2}{8\pi\epsilon_0R^3}\left(R^2-\dfrac{1}{3}r^2\right)$$
+so for the ground state energy ($n=1$) we can find the correction as
+$$E_n^(1) = \bra{100}H_1\ket{100}$$
+where
+$$\ket{100} = \frac{1}{\sqrt{4\pi}}2a^{-3/2}e^{-r/a}$$
+so we can calculate the integral
+\begin{align*}
+\bra{100}H_1\ket{100} &= -4\pi\frac{1}{4\pi}\frac{2}{a^3}\int_{0}^{-\infty}re^{-2r/a}\dfrac{3e^2}{8\pi\epsilon_0R^3}\left(R^2-\dfrac{1}{3}r^2\right)dr\\
+&= -\frac{2}{a^3}\frac{3e^2}{8\pi\epsilon_0R^3}\int_{0}^{-\infty}R^2re^{-2r/a}-\frac{1}{3}r^3e^{-2r/a}dr\\
+&= -\frac{2}{a^3}\frac{3e^2}{8\pi\epsilon_0R^3}\left(R^2\frac{a^2}{4} - \frac{a^4}{8}\right)\\
+&= -\frac{2}{a^3}\frac{3e^2}{8\pi\epsilon_0R^3}R^2\frac{a^2}{4} + \frac{2}{a^3}\frac{3e^2}{8\pi\epsilon_0R^3}\frac{a^4}{8}\\
+&= -\frac{3e^2}{16\pi\epsilon_0Ra} + \frac{3e^2a}{64\pi\epsilon_0R^3}
+\end{align*}
+
+\section{Problem \#4}
+Given the relativistic correction 
+\begin{equation}
+E^{(1)}_{rel} = -\frac{(E_n)^2}{2mc^2}\left[\frac{4n}{l+1/2}-3\right]
+\label{rel}
+\end{equation}
+and the spin-orbit coupling correction
+\begin{equation}
+E^{(1)}_{so} = \frac{(E_n)^2}{mc^2}\left[\frac{n[j(j+1)-l(l+1)-3/4]}{l(l+1/2)(l+1)}\right]
+\label{so}
+\end{equation}
+to the atomic energy. We can combine equations \ref{rel} and \ref{so} to get the total fine-structure correction given by
+$$E_{fs}^{(1)} = E_{rel}^{(1)} + E_{so}^{(1)}$$
+using the fact that the total angular momentum in given by
+$$j=l\pm1/2$$
+so if we use the plus we find that equation \ref{so} becomes
+\begin{align*}
+E^{(1)}_{so} &= \frac{(E_n)^2}{mc^2}\left[\frac{n[(l+1/2)(l+3/2)-l(l+1)-3/4]}{l(l+1/2)(l+1)}\right]\\
+&= \frac{(E_n)^2}{mc^2}\left[\frac{n[l^2+2l+\cancel{3/4}-l(l+1)-\cancel{3/4}]}{l(l+1/2)(l+1)}\right]\\
+&= \frac{(E_n)^2}{mc^2}\left[\frac{n[l(l+2)-l(l+1)]}{l(l+1/2)(l+1)}\right]\\
+&= \frac{(E_n)^2}{mc^2}\left[\frac{n[l(l+2-l-1)]}{l(l+1/2)(l+1)}\right]\\
+&= \frac{(E_n)^2}{mc^2}\left[\frac{n}{(l+1/2)(l+1)}\right]
+\end{align*}
+Now we can reduce $E_{fs}^{(1)}$ by
+\begin{align*}
+E_{fs}^{(1)} &= E_{rel}^{(1)} + E_{so}^{(1)}\\
+&= -\frac{(E_n)^2}{2mc^2}\left[\frac{4n}{l+1/2}-3\right] + \frac{(E_n)^2}{mc^2}\left[\frac{n}{(l+1/2)(l+1)}\right]\\
+&= \frac{(E_n)^2}{mc^2}\left[-\frac{2n}{l+1/2} + \frac{3}{2} + \frac{n}{(l+1/2)(l+1)}\right]\\
+&= \frac{(E_n)^2}{mc^2}\left[\frac{3}{2} + \frac{n}{(l+1/2)(l+1)} - \frac{2n(l+1)}{(l+1/2)(l+1)}\right]\\
+&= \frac{(E_n)^2}{mc^2}\left[\frac{3}{2} + \frac{n - 2n(l+1)}{(l+1/2)(l+1)}\right]\\
+&= \frac{(E_n)^2}{mc^2}\left[\frac{3}{2} + \frac{n(1 - 2l - 2)}{(l+1/2)(l+1)}\right]\\
+&= \frac{(E_n)^2}{mc^2}\left[\frac{3}{2} + \frac{-n(2l+1)}{(l+1/2)(l+1)}\right]\\
+&= \frac{(E_n)^2}{mc^2}\left[\frac{3}{2} - \frac{2n\cancel{(l+1/2)}}{\cancel{(l+1/2)}(l+1)}\right]\\
+&= \frac{(E_n)^2}{mc^2}\left[\frac{3}{2} - \frac{2n}{l+1}\right]\\
+&= \frac{(E_n)^2}{2mc^2}\left[3 - \frac{4n}{j+1/2}\right]
+\end{align*}
+Note that $j+1/2 = l+1/2+1/2 = l+1$. Now if we use the subtracted total angular momentum we can use the fact that $l = j+1/2$ to calculate equation \ref{so} as
+\begin{align*}
+E^{(1)}_{so} &= \frac{(E_n)^2}{mc^2}\left[\frac{n[j(j+1)-(j+1/2)(j+3/2)-3/4]}{(j+1/2)(j+1)(j+3/4)}\right]\\
+&= \frac{(E_n)^2}{mc^2}\left[\frac{n[j^2 + j - j^2 - 2j - 3/4 - 3/4]}{(j+1/2)(j+1)(j+3/2)}\right]\\
+&= \frac{(E_n)^2}{mc^2}\left[\frac{-n\cancel{(j + 3/2)}}{(j+1/2)(j+1)\cancel{(j+3/2)}}\right]\\
+&= -\frac{(E_n)^2}{mc^2}\left[\frac{n}{(j+1/2)(j+1)}\right]
+\end{align*}
+And again we combine terms to get $E_{fs}^{(1)}$
+\begin{align*}
+E_{fs}^{(1)} &= -\frac{(E_n)^2}{2mc^2}\left[\frac{4n}{l+1/2}-3\right] -\frac{(E_n)^2}{mc^2}\left[\frac{n}{(j+1/2)(j+1)}\right]\\
+&= -\frac{(E_n)^2}{2mc^2}\left[\frac{4n}{j+1}-3 + \frac{2n}{(j+1/2)(j+1)}\right]\\
+&= -\frac{(E_n)^2}{2mc^2}\left[\frac{2n + 4n(j+1/2)}{(j+1/2)(j+1)} - 3\right]\\
+&= -\frac{(E_n)^2}{2mc^2}\left[\frac{2n[1 + 2(j+1/2)]}{(j+1/2)(j+1)} - 3\right]\\
+&= -\frac{(E_n)^2}{2mc^2}\left[\frac{2n[1 + 2j+1]}{(j+1/2)(j+1)} - 3\right]\\
+&= -\frac{(E_n)^2}{2mc^2}\left[\frac{4n\cancel{(j+1)}}{(j+1/2)\cancel{(j+1)}} - 3\right]\\
+&= \frac{(E_n)^2}{2mc^2}\left[3-\frac{4n}{j+1/2}\right]\\
+\end{align*}
+Note that we have agreement with both $j=l\pm1/2$ possibilities.
+
+\end{document}
+

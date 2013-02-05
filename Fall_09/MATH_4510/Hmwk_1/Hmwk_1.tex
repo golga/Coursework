@@ -1,0 +1,121 @@
+\documentclass[11pt]{article}
+
+\usepackage{latexsym}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{cancel}
+\numberwithin{equation}{section}
+
+\setlength{\evensidemargin}{.25in}
+\setlength{\oddsidemargin}{-.25in}
+\setlength{\topmargin}{-.75in}
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{9.5in}
+\newcommand{\due}{September $4^{th}$, 2009}
+\newcommand{\HWnum}{1}
+
+\begin{document}
+\input{../title.tex}
+\begin{enumerate}
+\item Problem 7
+\begin{enumerate}
+\item
+If we assume that each boy and girl is unique the number of combinations is
+$$6!$$
+\begin{center}
+\fbox{$=720$}
+\end{center}
+
+\item
+A group of 3 boys has $3!$ arrangements, and for each of those combinations we have $3!$ ways to arrange the girls. Also we have 2 ways to have 3 boys together and 3 girls together, the boys first or the girls first. So our total number of arrangements is 
+$$2(3!)(3!)$$
+\begin{center}
+\fbox{$=72$}
+\end{center}
+
+\item
+There are $4!$ ways to arrange 3 girls with a whole group of boys (think of the group of boys as only one boy). Then for each of those arrangements we have $3!$ ways to arrange the group of boys. So our total number of arrangements is
+$$4!(3!)$$
+\begin{center}
+\fbox{$=144$}
+\end{center}
+
+\item
+The only way for no girls and no boys to sit together is if they alternate boy girl. For this case there are $3!$ ways to arrange the girls, and for each arrangement of girls we have $3!$ to arrange the boys. Then there are 2 ways alternate boy and girl, a girl first or a boy first. So our total number of arrangements is 
+$$2(3!)(3!)$$
+\begin{center}
+\fbox{$=72$}
+\end{center}
+\end{enumerate}
+\item Problem 9\\
+There are $12!$ different arrangements of the blocks, but there are $6!$ arrangements of black blocks and $4!$ arrangements of red blocks that are not unique. So the total number of arrangements is
+$$\frac{12!}{(6!)(4!)}$$
+\begin{center}
+\fbox{$=27,720$}
+\end{center}
+\item Problem 13\\
+So the first person will shake hands with everyone (excluding herself). Then the next person will shake hands with everyone excluding herself and person one. This continues until everyone shakes hands with everyone else. Generally it is written as
+$$\sum_{i=1}^{n}{n-i}$$
+For the case in the problem $n = 20$ and we get
+$$\sum_{i=1}^{20}{20-i}$$
+$=19+18+17+16+15+14+13+12+11+10+9+8+7+6+5+4+3+2+1 $
+\fbox{$= 190$}
+\item Problem 15\\
+There are $12\choose{5}$ ways to pick 5 men from a group of 12 and $10\choose{5}$ ways to pick 5 women from a group of 10. So there are
+$${12\choose{5}} {10\choose{5}}$$
+ways to pick 2 groups of 5. Once the groups of are picked there are $5!$ ways to pair the groups. So the total number of combinations is
+$$5!{12\choose{5}} {10\choose{5}}$$
+\begin{center}
+\fbox{$=23,950,080$}
+\end{center}
+\item Problem 18\\
+There are $5\choose{2}$ ways to pick the Republicans. 
+There are $6\choose{2}$ ways to pick the Democrats. 
+There are $4\choose{3}$ ways to pick the Independents. Due to the counting principle the total combinations is
+$${5\choose{2}}{6\choose{2}}{4\choose{3}}$$
+\begin{center}
+\fbox{$=600$}
+\end{center}
+\item Problem 20
+\begin{enumerate}
+\item
+The total combinations of friends she can pick is $8\choose{5}$, but 2 are feuding. To find the combinations where 2 feuding friends are picked we split the total group into 2 groups a group of 2 friends that are feuding and the remaining 6 that aren't. So now she has to pick 2 from the feuding friends which is $2\choose{2}$ and 3 from the 6 remaining friends or $6\choose{3}$. Giving the total number of ways the two feuding friends go to the party together as
+$${2\choose{2}}{6\choose{3}}$$
+Now we need to remove these cases from the total to get the number of way she can pick her 5 friends without the 2 feuding friends being together.
+$${8\choose{5}} - {2\choose{2}}{6\choose{3}}$$
+$${56 - 20}$$
+\begin{center}
+\fbox{$=36$}
+\end{center}
+
+\item
+The number of cases where the 2 friend attend together is the same for the number of cases for when the 2 feuding friends attend together or 
+$${2\choose{2}}{6\choose{3}}$$
+But there are still the cases where the neither of the 2 friends attend this is when 5 friends are chosen from the remain 6 or $6\choose{5}$. So the total number of cases is 
+$${6\choose{5}} + {2\choose{2}}{6\choose{3}}$$
+$${6 + 20}$$
+\begin{center}
+\fbox{$=26$}
+\end{center}
+
+\end{enumerate}
+
+\item Problem 27\\
+So to start there are $12\choose{5}$ ways to form the group of 5. After the group of 5 is formed there are only 7 remaining people. So the number of ways to pick the group of 4 is $7\choose{5}$ leaving 2 people left. Therefore the last group has $2\choose{2}$ combinations. So due to the counting principle the total number of combination is
+$${12\choose{5}}{2\choose{2}}{7\choose{5}}$$
+\begin{center}
+\fbox{$= 27720$}
+\end{center}
+
+\item Problem 30\\
+If we make it so that the French and English need to sit next to each other we can treat them as one person and get a total of $9!$ arrangements. And for each of those $9!$ arrangements there are $2!$ ways the French and English delegates can sit. By the counting principle there are a total of
+$$9!(2!)$$
+possibilities. Now we need to remove the cases where the U.S. and Russian delegates sit next to each other. We look for the number of situations that both the French and English delegates sit next to each other and the U.S. and Russian delegates sit next to each other. Like before we can treat the pairs as a single delegate. So we have $8!$ possible arrangements with $2!$ ways to arrange the French and English delegates and $2!$ ways to arrange the U.S. and Russian delegates. Giving us $$8!(2!)(2!)$$ arrangements that the U.S. and Russian delegates sit next to each other. So the total number of arrangements is the difference between the two cases or 
+$$9!(2!) - 8!(2!)(2!)$$
+\begin{center}
+\fbox{$= 564,480$}
+\end{center}
+\end{enumerate}
+\end{document}
+

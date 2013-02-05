@@ -1,0 +1,217 @@
+\documentclass[11pt]{article}
+
+\usepackage{latexsym}
+\usepackage{amssymb}
+\usepackage{enumerate}
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{cancel}
+\numberwithin{equation}{section}
+
+\setlength{\evensidemargin}{.25in}
+\setlength{\oddsidemargin}{-.25in}
+\setlength{\topmargin}{-.75in}
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{9.5in}
+\newcommand{\due}{October 21st, 2009}
+\newcommand{\HWnum}{7}
+
+\begin{document}
+\input{../title.tex}
+
+\section{Problem \#1}
+We know that 
+$$T_0 = T_1+T_2$$
+and the relation
+$$\frac{T_1}{T_0} = 1 - \frac{2m_1m_2}{(m_1+m_2)^2}(1-\cos\theta)$$
+So if we replace $T_1$ with $T_2$ using the equality
+$$T_1 = T_0- T_2$$
+we get
+\begin{align*}
+\frac{T_0-T_2}{T_0} &= 1 - \frac{2m_1m_2}{(m_1+m_2)^2}(1-\cos\theta)\\
+\frac{T_0}{T_0}-\frac{T_2}{T_0} &= 1 - \frac{2m_1m_2}{(m_1+m_2)^2}(1-\cos\theta)\\
+1-\frac{T_2}{T_0} &= 1 - \frac{2m_1m_2}{(m_1+m_2)^2}(1-\cos\theta)\\
+\frac{T_2}{T_0} &= \frac{2m_1m_2}{(m_1+m_2)^2}(1-\cos\theta)\\
+\end{align*}
+Now if we solve for the $\cos$ we get
+\begin{align*}
+\frac{T_2}{T_0} &= \frac{2m_1m_2}{(m_1+m_2)^2}(1-\cos\theta)\\
+\frac{T_2}{T_0}\frac{(m_1+m_2)^2}{2m_1m_2} &= 1-\cos\theta\\
+\cos\theta  &= 1-\frac{T_2}{T_0}\frac{(m_1+m_2)^2}{2m_1m_2} \\
+\cos\theta  &= \frac{T_0}{T_0}-\frac{T_2}{T_0}\frac{(m_1+m_2)^2}{2m_1m_2} \\
+\cos\theta  &= \frac{T_0-T_2\dfrac{(m_1+m_2)^2}{2m_1m_2}}{T_0} \\
+\end{align*}
+If we take the derivative of this
+\begin{align*}
+d(\cos\theta) &= d\left(\frac{T_0-T_2\dfrac{(m_1+m_2)^2}{2m_1m_2}}{T_0}\right) \\
+\sin\theta d\theta &= d\left(\frac{T_0-T_2\dfrac{(m_1+m_2)^2}{2m_1m_2}}{T_0}\right) \\
+\sin\theta d\theta &= \frac{dT_2}{\dfrac{2m_1m_2}{(m_1+m_2)^2}T_0} \\
+\end{align*}
+Now we can see we have the equation
+$$\sigma(\theta) = \frac{1}{I}\frac{dN}{d\Omega'}$$
+where
+$$d\Omega' = 2\pi\sin\theta d\theta$$
+So we see that we have a relation therefore we can say that
+$$\sigma(\theta) \varpropto \frac{dN}{dT_2}$$
+
+\section{Problem \#2}
+First we can say that we know 
+$$\frac{\alpha}{r} = 1+\epsilon\cos(\phi)$$
+we need to look at this at the extremes. We know when $r$ goes to infinity we see
+$$0= 1+\epsilon\cos(\phi_{max})$$
+solving for $\phi_{max}$ we get
+$$\phi_{max} = \arccos\left(-\frac{1}{\epsilon}\right)$$
+We also know that at $r_{min}$ we have $\phi_{min} =0$
+So we can say
+\begin{align*}
+\Theta &= \phi_{max} - \phi_{min}\\
+\Theta &= \arccos\left(-\frac{1}{\epsilon}\right)-0\\
+\cos(\Theta) &= -\frac{1}{\epsilon}
+\end{align*}
+where $\epsilon$ is defined as
+$$\epsilon = \sqrt{1+\frac{2El^2}{\mu k^2}}$$
+Using the fact that when we are at $r_{max}$ we have no potential energy or are total energy is just kinetic given by $T_0'$. This and the identity
+$$l= b\sqrt{2\mu T_0'}$$
+We can rewrite $\epsilon$ as
+\begin{align*}
+\epsilon &= \sqrt{1+\frac{2T_0'(b\sqrt{2\mu T_0'})^2}{\mu k^2}}\\
+\epsilon &= \sqrt{1+\frac{4T_0'^2b^2\mu}{\mu k^2}}\\
+\epsilon &= \sqrt{1+\frac{4T_0'^2b^2}{k^2}}
+\end{align*}
+So now we can say that
+\begin{align*}
+\cos(\Theta) &= -\frac{1}{\epsilon}\\
+\cos(\Theta) &= -\frac{1}{\sqrt{1+\dfrac{4T_0'^2b^2}{k^2}}}
+\end{align*}
+Now if we define 
+$$\kappa\equiv \frac{k}{2T_0'}$$
+we can see
+\begin{align*}
+\cos(\Theta) &= -\frac{1}{\sqrt{1+\dfrac{4T_0'^2b^2}{k^2}}}\\
+&= -\frac{1}{\sqrt{1+b^2\dfrac{4T_0'^2}{k^2}}}\\
+&= -\frac{1}{\sqrt{1+b^2\dfrac{1}{\kappa^2}}}\\
+&= -\frac{1}{\sqrt{1+\dfrac{b^2}{\kappa^2}}}\\
+&= -\frac{\kappa/b}{\dfrac{\kappa}{b}\sqrt{1+\dfrac{b^2}{\kappa^2}}}\\
+&= -\frac{\kappa/b}{\sqrt{\left(\dfrac{\kappa}{b}\right)^2+\left(\dfrac{\kappa}{b}\right)^2\dfrac{b^2}{\kappa^2}}}\\
+\cos(\Theta) &= -\frac{\kappa/b}{\sqrt{\left(\dfrac{\kappa}{b}\right)^2+1}}
+\end{align*}
+Now if we that the angle $\Theta$ describes a triangle with the one leg as $\kappa/b$ and the opposite leg as 1. This means we can say
+\begin{align*}
+\tan(\Theta) &= \frac{b}{\kappa}\\
+\tan^2(\Theta) &= \frac{b^2}{\kappa^2}\\
+{b^2} &= \tan^2(\Theta){\kappa^2}
+\end{align*}
+Now we know that 
+$$\Theta = \frac{\pi}{2}+\frac{\theta}{2}$$
+so we can say that
+\begin{align*}
+{b^2} &= \tan^2\left(\frac{\pi}{2}+\frac{\theta}{2}\right){\kappa^2}\\
+{b^2} &= \cot^2\left(\frac{\theta}{2}\right){\kappa^2}\\
+{b} &= {\kappa}\cot\left(\frac{\theta}{2}\right)
+\end{align*}
+Using the trig identities
+$$\cos(\theta+\pi/2) = \sin(\theta)$$
+$$\sin(\theta+\pi/2) = \cos(\theta)$$
+We know that
+$$\tan(\theta) = \frac{\sin(\theta)}{\cos(\theta)}$$
+so we can see that
+\begin{align*}
+\tan(\theta+\pi/2) &= \frac{\sin(\theta+\pi/2)}{\cos(\theta+\pi/2)}\\
+&= \frac{\cos(\theta)}{\sin(\theta)}\\
+&= \cot(\theta)
+\end{align*}
+So now we need to calculate
+\begin{align*}
+\frac{db}{d\theta} &= \frac{d}{d\theta}{\kappa}\cot\left(\frac{\theta}{2}\right)\\
+\frac{db}{d\theta} &= {\kappa}\frac{d}{d\theta}\cot(\theta/2)\\
+\frac{db}{d\theta} &= -\frac{\kappa}{2}\frac{1}{\sin^2(\theta/2)}
+\end{align*}
+So we know that
+$$\sigma(\theta) = \frac{b}{\sin(\theta)}\left|\frac{db}{d\theta}\right|$$
+so we can say 
+\begin{align*}
+\sigma(\theta) &= \frac{b}{\sin(\theta)}\frac{\kappa}{2}\frac{1}{\sin^2(\theta/2)}\\
+&= \frac{{\kappa}\cot(\theta/2)}{\sin(\theta)}\frac{\kappa}{2}\frac{1}{\sin^2(\theta/2)}\\
+&= \frac{{\kappa^2}}{2}\frac{\cot(\theta/2)}{\sin(\theta)\sin^2(\theta/2)}
+\end{align*}
+Where
+$$\sin(\theta) = 2\sin(\theta/2)\cos(\theta/2)$$
+so $\sigma(\theta)$ becomes
+\begin{align*}
+\sigma(\theta) &= \frac{{\kappa^2}}{2}\frac{\cot(\theta/2)}{\sin(\theta)\sin^2(\theta/2)}\\
+\sigma(\theta) &= \frac{{\kappa^2}}{2}\frac{\cot(\theta/2)}{2\sin(\theta/2)\cos(\theta/2)\sin^2(\theta/2)}\\
+\sigma(\theta) &= \frac{{\kappa^2}}{4}\frac{\cot(\theta/2)}{\cos(\theta/2)\sin^3(\theta/2)}\\
+\sigma(\theta) &= \frac{{\kappa^2}}{4}\frac{\cos(\theta/2)}{\cos(\theta/2)\sin^4(\theta/2)}\\
+\sigma(\theta) &= \frac{{\kappa^2}}{4}\frac{1}{\sin^4(\theta/2)}\\
+\end{align*}
+Writing $\kappa$ out we get
+$$\sigma(\theta) = \frac{{k^2}}{(4T_0')^2}\frac{1}{\sin^4(\theta/2)}$$
+
+\section{Problem \#3}
+So we know that the effective potential due to
+$$U(r) = -\frac{\alpha}{r^2}$$
+is given by
+$$U_{eff} = \frac{l^2}{2\mu r^2} + \frac{\alpha}{r^2}$$
+So we can find the equilibrium point as where the first derivative is zero
+\begin{align*}
+\frac{d U_{eff}}{dr} = 0 &= \frac{d}{dr}\frac{l^2}{2\mu r^2} + \frac{\alpha}{r^2}\\
+0 &= \frac{l^2}{2\mu r^3}(-2) + \frac{\alpha}{r^3}(-2)\\
+0 &= -\frac{l^2}{\mu r^3}  -\frac{2\alpha}{r^3}\\
+0 &= -\frac{l^2}{\mu}\frac{1}{r^3}  -{2\alpha}\frac{1}{r^3}\\
+0 &= -\frac{1}{r^3}\left(\frac{l^2}{\mu}  + {2\alpha}\right)\\
+0 &= \frac{1}{r^3}\\
+0 &= {r^3}\\
+r_0 &=0
+\end{align*}
+Now for the potential
+$$U(r) = -\frac{\alpha}{r^n}$$
+so the effective potential is
+$$U_{eff} = \frac{l^2}{2\mu r^2} - \frac{\alpha}{r^n}$$
+So to find the equilibrium point we have
+\begin{align*}
+\frac{d U_{eff}}{dr} = 0 &= \frac{d}{dr}\frac{l^2}{2\mu r^2} - \frac{\alpha}{r^n}\\
+0 &= \frac{l^2}{2\mu r^3}(-2) - \frac{\alpha}{r^{n+1}}(-n)\\
+0 &= -\frac{l^2}{\mu r^3} + \frac{n\alpha}{r^{n+1}}\\
+\frac{l^2}{\mu r^3} &= \frac{n\alpha}{r^{n+1}}\\
+\frac{l^2}{\mu n\alpha} &= \frac{r^3}{r^{n+1}}\\
+\frac{l^2}{\mu n\alpha} &= \frac{1}{r^{n-2}}\\
+\frac{\mu n\alpha}{l^2} &= {r^{n-2}}\\
+r_0&= \left(\frac{\mu n\alpha}{l^2}\right)^{1/(n-2)}
+\end{align*}
+So we know that the equilibrium point is the minimum required energy make the particle fall into the center so we can say
+\begin{align*}
+T_0' &\ge U_{eff}(r_0)\\
+&\ge \frac{l^2}{2\mu r_0^2} - \frac{\alpha}{r_0^n}\\
+&\ge \frac{1}{r_0^2}\left(\frac{l^2}{2\mu} - \frac{\alpha}{r_0^{n-2}}\right)\\
+&\ge \frac{1}{r_0^2}\left(\frac{l^2}{2\mu} - \alpha\frac{1}{\dfrac{\mu n\alpha}{l^2}^{n-2/n-2}}\right)\\
+&\ge \frac{1}{r_0^2}\left(\frac{l^2}{2\mu} - \alpha\frac{1}{\dfrac{\mu n\alpha}{l^2}}\right)\\
+&\ge \frac{1}{r_0^2}\left(\frac{l^2}{2\mu} - \alpha \dfrac{l^2}{\mu n\alpha}\right)\\
+&\ge \frac{1}{r_0^2}\left(\frac{l^2}{2\mu} - \dfrac{l^2}{\mu n}\right)\\
+&\ge \frac{1}{r_0^2}\left(\frac{2b^2 T_0'\mu}{2\mu} - \dfrac{2b^2T_0'\mu}{\mu n}\right)\\
+&\ge \frac{1}{r_0^2}\left(b^2 T_0' - \dfrac{2b^2T_0'}{n}\right)\\
+&\ge \frac{T_0'b^2}{r_0^2}\left(1 - \dfrac{2}{n}\right)\\
+\frac{T_0'}{T_0'} &\le \frac{b^2}{r_0^2}\left(1 - \dfrac{2}{n}\right)\\
+1 &\le \frac{b^2}{r_0^2}\left(1 - \dfrac{2}{n}\right)
+\end{align*}
+\begin{align*}
+1 &\le \frac{b^2}{r_0^2}\left(\frac{n}{n} -\dfrac{2}{n}\right)\\
+1 &\le \frac{b^2}{r_0^2}\left(\frac{n-2}{n}\right)\\
+\left(\frac{n}{n-2}\right) &\le {b^2}r_0^{-2}\\
+\left(\frac{n}{n-2}\right) &\le {b^2}\left(\left(\frac{\mu n\alpha}{l^2}\right)^{1/(n-2)}\right)^{-2}\\
+\left(\frac{n}{n-2}\right) &\le {b^2}\left(\frac{\mu n\alpha}{l^2}\right)^{-2/(n-2)}\\
+\left(\frac{n}{n-2}\right) &\le {b^2}\left(\frac{\mu n\alpha}{2b^2T_0'\mu}\right)^{-2/(n-2)}\\
+\left(\frac{n}{n-2}\right) &\le {b^2}\left(\frac{n\alpha}{2b^2T_0'}\right)^{-2/(n-2)}\\
+\left(\frac{n}{n-2}\right) &\le {b^2}\left(b^{-2}\right)^{-2/(n-2)}\left(\frac{n\alpha}{2T_0'}\right)^{-2/(n-2)}\\
+\left(\frac{n}{n-2}\right)\left(\frac{n\alpha}{2T_0'}\right)^{(n-2)/-2}&\le {b^2}\left(b^{-2}\right)^{-2/(n-2)}\\
+\left(\frac{n}{n-2}\right)\left(\frac{n\alpha}{2T_0'}\right)^{(n-2)/-2}&\le {b^2}\left(b\right)^{(-2)-2/(n-2)}\\
+\left(\frac{n}{n-2}\right)\left(\frac{n\alpha}{2T_0'}\right)^{(n-2)/-2}&\le b^{2+4/(n-2)}\\
+\left(\frac{n}{n-2}\right)\left(\frac{n\alpha}{2T_0'}\right)^{(n-2)/-2}&\le b^{2(n-2)/(n-2)+4/(n-2)}\\
+\left(\frac{n}{n-2}\right)\left(\frac{n\alpha}{2T_0'}\right)^{(n-2)/-2}&\le b^{(2(n-2)+4)/(n-2)}\\
+\left(\frac{n}{n-2}\right)\left(\frac{n\alpha}{2T_0'}\right)^{(n-2)/-2}&\le b^{(2n-4+4)/(n-2)}\\
+\left(\frac{n}{n-2}\right)\left(\frac{n\alpha}{2T_0'}\right)^{(n-2)/-2}&\le b^{2n/(n-2)}\\
+\left(\left(\frac{n}{n-2}\right)\left(\frac{n\alpha}{2T_0'}\right)^{(n-2)/-2}\right)^{(n-2)/2n} &\le b\\
+\end{align*}
+
+
+\end{document}
+

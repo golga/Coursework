@@ -1,0 +1,355 @@
+\documentclass[11pt]{article}
+
+\usepackage{latexsym}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{enumerate}
+\usepackage{amsmath}
+\usepackage{cancel}
+
+\setlength{\evensidemargin}{.25in}
+\setlength{\oddsidemargin}{-.25in}
+\setlength{\topmargin}{-.75in}
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{9.5in}
+\newcommand{\due}{October 16th, 2009}
+\newcommand{\HWnum}{7}
+
+\begin{document}
+\input{../title.tex}
+\section{Chapter 5}
+\begin{enumerate}
+\item Problem 3\\
+The function 
+$$f(x) = \left\{\begin{array}{lc}
+		C(2x-x^3), &0<x<\dfrac{5}{2}\\
+		0	& \mbox{otherwise}
+		\end{array}\right.$$
+is a probability density function if
+$$\int_{-\infty}^{\infty} f(x)dx = 1$$
+So we can calculate
+\begin{align*}
+\int_{-\infty}^{\infty} f(x)dx &= \int_{-\infty}^{0} 0dx + \int_{0}^{5/2}C(2x-x^3) dx +\int_{5/2}^{\infty} 0dx\\
+&= \int_{0}^{5/2}C(2x-x^3) dx \\
+&= C\left(x^2-\frac{1}{4}x^4\right|_{0}^{5/2}\\
+&= C\left(\frac{5^2}{2^2}-\frac{1}{4}\frac{5^4}{2^4} - 0\right)\\
+&= C\left(\frac{25}{4}-\frac{1}{4}\frac{625}{16}\right)\\
+&= C\left(\frac{400}{64}-\frac{625}{64}\right)\\
+&= C\left(\frac{400-625}{64}\right)\\
+&= C\left(\frac{-225}{64}\right)
+\end{align*}
+So for $f(x)$ to be a probability density function 
+$$C\left(\frac{-225}{64}\right)=1$$
+has to hold true. Therefore $C$ must be
+$$C=-\frac{64}{225}$$
+for $f(x)$ to be a probability density function. We repeat the same process for
+$$g(x) = \left\{\begin{array}{lc}
+		C(2x-x^2), &0<x<\dfrac{5}{2}\\
+		0	& \mbox{otherwise}
+		\end{array}\right.$$
+So we calculate
+\begin{align*}
+\int_{-\infty}^{\infty} g(x)dx &= \int_{-\infty}^{0} 0dx + \int_{0}^{5/2}C(2x-x^2) dx +\int_{5/2}^{\infty} 0dx\\
+&= \int_{0}^{5/2}C(2x-x^2) dx \\
+&= C\left(x^2-\frac{1}{3}x^3\right|_{0}^{5/2}\\
+&= C\left(\frac{5^2}{2^2}-\frac{1}{3}\frac{5^3}{2^3} - 0\right)\\
+&= C\left(\frac{25}{4}-\frac{1}{3}\frac{125}{8} - 0\right)\\
+&= C\left(\frac{25}{4}-\frac{125}{24}\right)\\
+&= C\left(\frac{150}{24}-\frac{125}{24}\right)\\
+&= C\left(\frac{150-125}{24}\right)\\
+&= C\left(\frac{25}{24}\right)
+\end{align*}
+So if $g(x)$ is a probability density function $C$ must be
+$$C=\frac{24}{25}$$
+
+\item Problem 4
+\begin{enumerate}[(a)]
+\item
+We are given the probability density function of the lifetime of the electronic device as
+$$f(x) = \left\{\begin{array}{lc}
+	\dfrac{10}{x^2} &x>10\\
+	0		&x\le10	
+	\end{array}\right.$$
+So to calculate the probability that the lifetime of the electronic device is greater that 20 hours is given by 
+$$P\{X>20\} = \int_{20}^{\infty}f(x)dx$$
+so we can calculate
+\begin{align*}
+P\{X>20\} &= \int_{20}^{\infty}f(x)dx\\
+&= \int_{20}^{\infty}\dfrac{10}{x^2}dx\\
+&= 10\int_{20}^{\infty} x^{-2}dx\\
+&= 10\left((-1)x^{-1}\right|_{20}^{\infty} \\
+&= -10\left(\frac{1}{x}\right|_{20}^{\infty} 
+\end{align*}
+\begin{align*}
+&= -10\left(0-\frac{1}{20}\right)\\
+&= -10\left(-\frac{1}{20}\right)\\
+&= \frac{10}{20}\\
+&P\{X>20\} = \frac{1}{2}
+\end{align*}
+\item
+We can say that the cumulative distribution function of $X$ can be given by
+$$F(a) = \int_{-\infty}^af(x)dx$$ 
+Note that if $a<10$ then $f(x)$ is zero for the whole interval and the integral is zero. So for the case where $a>10$ we get
+\begin{align*}
+F(a) &= \int_{-\infty}^af(x)dx\\ 
+&= \int_{-\infty}^10(0)dx + \int_{10}^a\frac{10}{x^2}dx\\ 
+&=\int_{10}^a\frac{10}{x^2}dx\\ 
+&=10\int_{10}^a\frac{1}{x^2}dx\\ 
+&=-10\left.\frac{1}{x}\right|_{10}^a\frac{1}{x^2}dx\\ 
+&=-10\left(\frac{1}{a} - \frac{1}{10}\right)\\
+&=-\frac{10}{a} + \frac{10}{10}\\
+&=\frac{10}{10}-\frac{10}{a} \\
+&=\frac{10}{10}-\frac{10}{a} \\
+&=1-\frac{10}{a} 
+\end{align*}
+So 
+$$F(a) = \left\{\begin{array}{cc}
+		1-\dfrac{10}{a}, &a>10\\
+		0, &\mbox{otherwise}
+	\end{array}\right.$$
+\item
+First we need to calculate the probability that one device will function for at least 15 hours.
+
+\begin{align*}
+P\{X>15\} &= \int_{15}^{\infty}f(x)dx\\
+&= \int_{15}^{\infty}\frac{10}{x^2}dx
+\end{align*}
+\begin{align*}
+&= 10\int_{15}^{\infty}\frac{1}{x^2}dx\\
+&= 10\int_{15}^{\infty}x^{-2}dx\\
+&= 10\left(-x^{-1}\right|_{15}^{\infty}\\
+&= -10\left(\frac{1}{x}\right|_{15}^{\infty}\\
+&= -10\left(0-\frac{1}{15}\right)\\
+&= -10\left(-\frac{1}{15}\right)\\
+&= 10\frac{1}{15}\\
+&= \frac{10}{15}\\
+&= \frac{2}{3}
+\end{align*}
+So if 3 of 6 devices function for at least 15 hours. The probability of 3 working for more than 15 hours would be
+$$\left(\frac{2}{3}\right)^3$$
+with the probability of
+$$\left(1- \frac{2}{3}\right)^3$$
+$$\left(\frac{1}{3}\right)^3$$
+for the 3 devices that do not function for at least 15 hours. And there are 
+$${6\choose3}$$
+ways to order the working and non-working devices. So the total probability of having at least 3 of 6 working devices is given by
+\begin{align*}
+{6\choose3}\left(\frac{2}{3}\right)^3\left(\frac{1}{3}\right)^3 &= 20\frac{8}{27}\frac{1}{27}\\
+&= 20\frac{8}{729}\\
+&= \frac{160}{729}
+\end{align*}
+\end{enumerate}
+
+\item Problem 6
+\begin{enumerate}[(a)]
+\item
+To calculate the expected value of the random variable $X$ with a probability density function 
+$$f(x) = \left\{\begin{array}{lc}
+		\dfrac{1}{4}xe^{-x/2} &x>0\\
+		0	& \mbox{otherwise}
+		\end{array}\right.$$
+We use the formula 
+\begin{equation}
+E[X] = \int_{-\infty}^{\infty}xf(x)dx
+\label{exp}
+\end{equation}
+So for our $f(x)$ we calculate 
+\begin{align*}
+E[X] &= \int_{-\infty}^{\infty}xf(x)dx\\
+ &= \int_{-\infty}^{0}x(0)dx + \int_{0}^{\infty}x\dfrac{1}{4}xe^{-x/2} dx\\
+ &=\int_{0}^{\infty}x\dfrac{1}{4}xe^{-x/2} dx\\
+ &=\dfrac{1}{4}\int_{0}^{\infty}x^2e^{-x/2} dx\\
+ &=\dfrac{1}{4}\int_{0}^{\infty}x^2e^{-x/2} dx
+\end{align*}
+To evaluate this integral we need use integration by parts where
+$$u = x^2\  dv = e^{-x/2}$$
+$$du = 2x\  v = -2e^{-x/2}$$
+So using the form
+$$\int udv = uv - \int vdu$$
+we get
+\begin{align*}
+\dfrac{1}{4}\int_{0}^{\infty}x^2e^{-x/2} dx &=\dfrac{1}{4}\left[\left(-2x^2e^{-x/2}\right|_{0}^{\infty} + 2\int_{0}^{\infty}xe^{-x/2}\right] dx\\
+&=\dfrac{1}{4}\left[\left(0--2(0)^2e^{-0/2}\right)+ 4\int_{0}^{\infty}xe^{-x/2}\right] dx\\
+&=\dfrac{1}{4}\left[\left(0-0\right)+ 4\int_{0}^{\infty}xe^{-x/2}\right] dx\\
+&=\dfrac{1}{4}\left[4\int_{0}^{\infty}xe^{-x/2}\right] dx\\
+&=\int_{0}^{\infty}xe^{-x/2}dx
+\end{align*}
+We need to integrate by parts again this time with
+$$u = x\  dv = e^{-x/2}$$
+$$du = 1\  v = -2e^{-x/2}$$
+So we get
+\begin{align*}
+\int_{0}^{\infty}xe^{-x/2} dx &=\left[\left(-2xe^{-x/2}\right|_{0}^{\infty} + 2\int_{0}^{\infty}e^{-x/2}\right] dx\\
+&=\left[\left(0--2(0)e^{-0/2}\right)+ 2\int_{0}^{\infty}e^{-x/2}\right] dx\\
+&=\left[\left(0-0\right) + 2\int_{0}^{\infty}e^{-x/2}\right] dx\\
+&=\left[2\int_{0}^{\infty}e^{-x/2}\right] dx\\
+&=2\left(-2e^{-x/2}\right|_{0}^{\infty} \\
+&=2\left(0--2e^{-0/2}\right)
+\end{align*}
+\begin{align*}
+&=2\left(0+2(1)\right)\\
+&=2\left(2\right)\\
+E[X]&=4
+\end{align*}
+\item
+For the function
+$$f(x) = \left\{\begin{array}{lc}
+		c(1-x^2) & -1< x< 1\\
+		0	& \mbox{otherwise}
+		\end{array}\right.$$
+we use equation \ref{exp} to get
+\begin{align*}
+E[X] &= \int_{-\infty}^{\infty}xf(x)dx \\
+&= \int_{-\infty}^{-1}x(0)dx + \int_{-1}^{1}xc(1-x^2)dx + \int_{1}^{\infty}x(0)dx \\
+&= \int_{-1}^{1}xc(1-x^2)dx \\
+&= c\int_{-1}^{1}(x-x^3)dx \\
+&= c\left(\frac{1}{2}x^2-\frac{1}{4}x^4\right|_{-1}^{1}\\
+&= c\left(\frac{1}{2}(1)^2-\frac{1}{4}(1)^4 - \frac{1}{2}(-1)^2+\frac{1}{4}(-1)^4\right)\\
+&= c\left(\frac{1}{2}-\frac{1}{4} - \frac{1}{2}+\frac{1}{4}\right)\\
+&= c\left(\frac{1}{2}-\frac{1}{4} - \frac{1}{2}+\frac{1}{4}\right)\\
+&= c\left(0\right)\\
+E[X] &= 0
+\end{align*}
+\item
+For the function
+$$f(x) = \left\{\begin{array}{lc}
+		\dfrac{5}{x^2} & x>5\\
+\\
+		0	& x\le 5
+		\end{array}\right.$$
+we use equation \ref{exp} to get
+\begin{align*}
+E[X] &= \int_{-\infty}^{\infty}xf(x)dx\\
+&= \int_{-\infty}^{5}x(0)dx + \int_{5}^{\infty}x\frac{5}{x^2}dx\\
+&= \int_{5}^{\infty}x\frac{5}{x^2}dx\\
+&= \int_{5}^{\infty}\frac{5}{x}dx\\
+&= 5\int_{5}^{\infty}\frac{1}{x}dx\\
+&= 5\left(\ln(x)\right|_{5}^{\infty}\\
+&= 5\left.\ln(\infty)-\ln(5)\right.\\
+E[X]&= \infty
+\end{align*}
+\end{enumerate}
+
+\item Problem 7\\
+For the probability density function of $X$ given by
+$$f(x) = \left\{\begin{array}{lc}
+		a+bx^2  & 0\le x\le 1\\
+		0	& \mbox{otherwise}
+		\end{array}\right.$$
+we know that $E[X] = \dfrac{3}{5}$ so we can calculate equation \ref{exp}
+\begin{align*}
+E[X] &= \int_{-\infty}^{\infty}xf(x)dx\\
+ &= \int_{-\infty}^{0}x(0)dx + \int_{0}^{1}x(a+bx^2)dx + \int_{1}^{\infty}x(0)dx\\
+ &= \int_{0}^{1}x(a+bx^2)dx\\
+ &= \int_{0}^{1}ax+bx^3dx\\
+ &= \left.\frac{a}{2}x^2+\frac{b}{4}x^4\right|_{0}^{1}\\
+ &= \frac{a}{2}1^2+\frac{b}{4}1^4 - \frac{a}{2}0^2 - \frac{b}{4}0^4\\
+ &= \frac{a}{2}+\frac{b}{4} - 0\\
+E[X]=\frac{3}{5} &= \frac{a}{2}+\frac{b}{4}
+\end{align*}
+Now we also know that
+$$\int{-\infty}^{\infty}f(x)dx =1$$
+So we calculate
+\begin{align*}
+\int{-\infty}^{\infty}f(x)dx&= \int_{-\infty}^{0}(0)dx + \int_{0}^{1}(a+bx^2)dx + \int_{1}^{\infty}(0)dx\\
+ &= \int_{0}^{1}a+bx^2dx\\
+ &= \left.ax+\frac{b}{3}x^3\right|_{0}^{1}\\
+ &= a1+\frac{b}{3}1^3 - a(0) - \frac{b}{3}(0)^3\\
+ &= a+\frac{b}{3} - 0\\
+1 &= a+\frac{b}{3}
+\end{align*}
+Now we have the system of equations 
+$$\frac{3}{5} = \frac{a}{2}+\frac{b}{4}$$
+$$1 = a+\frac{b}{3}$$
+so we can solve for $a$ and $b$
+$$a = 1 - \frac{b}{3}$$
+Substituting for $a$ we get
+\begin{align*}
+\frac{3}{5} &= \frac{1}{2}\left(1 - \frac{b}{3}\right)+\frac{b}{4}\\
+&= \frac{1}{2} - \frac{b}{6}+\frac{b}{4}\\
+&= \frac{1}{2} - \frac{2b}{12}+\frac{3b}{12}\\
+&= \frac{1}{2}  + \frac{-2b+3b}{12}\\
+&= \frac{1}{2} - \frac{b}{12}\\
+\frac{3}{5} - \frac{1}{2} &= \frac{1}{12}b\\
+\frac{6}{10} - \frac{5}{10} &= \frac{1}{12}b\\
+\frac{6-5}{10} &=  \frac{1}{12}b\\
+\frac{1}{10}\frac{12}{1}&= b\\
+b &= \frac{12}{10}\\
+b &= \frac{6}{5}
+\end{align*}
+Now we can solve for a
+\begin{align*}
+a &= 1 - \frac{b}{3}\\
+&= 1 - \frac{1}{3}\frac{6}{5}\\
+&= 1 - \frac{1}{1}\frac{2}{5}\\
+&= 1 - \frac{2}{5}\\
+a&= \frac{3}{5}
+\end{align*}
+
+\item Problem 11\\
+Let $X$ denote the point chosen at random. Because we picking the point at random we assume that probability is uniform on $[0,L]$. So we can say the probability density function is
+$$f(x) = \left\{\begin{array}{cc}
+	\dfrac{1}{L} &0\le x\le L\\
+	0		&\mbox{otherwise}
+	\end{array}\right.$$
+So to find when the ratio is $\frac{1}{4}$ we see that $X$ is $\frac{L}{5}$ or $\frac{4L}{5}$ So the probability that the ratio is $1/4$ is 
+$$P\left\{X<\frac{L}{5}\right\}+P\left\{X>\frac{4L}{5}\right\}$$
+We can say that 
+\begin{align*}
+P\left\{X<\frac{L}{5}\right\} &= \int_{-\infty}^{L/5}f(x)dx\\
+&= \int_{-\infty}^{0}(0)dx + \int_{0}^{L/5}\frac{1}{L}dx\\
+&=\int_{0}^{L/5}\frac{1}{L}dx\\
+&=\left.\frac{1}{L}x\right|_{0}^{L/5}\\
+&=\frac{1}{L}\frac{L}{5} - 0\\
+&=\frac{1}{5}
+\end{align*}
+and
+\begin{align*}
+P\left\{X>\frac{4L}{5}\right\} &= \int_{4L/5}^{\infty}f(x)dx\\
+&= \int_{4L/5}^{L}\frac{1}{L}dx + \int_{L}^{\infty}(0)dx\\
+&= \int_{4L/5}^{L}\frac{1}{L}dx\\
+&=\frac{1}{L}L - \frac{1}{L}\frac{4L}{5}  \\
+&=1 - \frac{4}{5}  \\
+&=\left.\frac{1}{L}x\right|_{4L/5}^{L}\\
+&=\frac{1}{5}
+\end{align*}
+So we can say that
+\begin{align*}
+P\left\{X<\frac{L}{5}\right\}+P\left\{X>\frac{4L}{5}\right\} &= \frac{1}{5}+\frac{1}{5}\\
+&=\frac{2}{5}
+\end{align*}
+
+\item Problem 13
+\begin{enumerate}[(a)]
+\item
+Let X be the bus' arrival time which is uniformly distributed between 10 and 10.30. We can say that the probability distribution function (in minutes) is given by
+$$f(x)= \left\{\begin{array}{cc}
+	\dfrac{1}{30} 	&0\le x\le 30\\
+	0		&\mbox{otherwise}
+	\end{array}\right.$$
+We can calculate that you will have to wait for more than 10 minutes or
+\begin{align*}
+&= \int_{10}^{\infty}f(x)dx\\
+ &= \int_{10}^{30}\frac{1}{30}dx + \int_{30}^{\infty}(0)dx\\
+ &= \int_{10}^{30}\frac{1}{30}dx \\
+ &= \left.\frac{1}{30}x\right|_{10}^{30} \\
+ &= \frac{1}{30}30 - \frac{1}{30}10 \\
+ &= 1 - \frac{1}{3} \\
+P\{X>10\} &= \frac{2}{3} 
+\end{align*}
+
+\item
+For the probability of having to wait 10 minutes after already waiting 10 minutes is given by
+\begin{align*}
+P\{10\le X\le20\} &= \int_{10}^{20}f(x)dx\\
+&= \int_{10}^{20}\frac{1}{30}dx\\
+&= \left.\frac{1}{30}x\right|_{10}^{20}\\
+&= \frac{1}{30}20 - \frac{1}{30}10\\
+&= \frac{2}{3} - \frac{1}{3}\\
+P\{10\le X\le20\}&= \frac{1}{3} 
+\end{align*}
+\end{enumerate}
+
+\end{enumerate}
+\end{document}
+

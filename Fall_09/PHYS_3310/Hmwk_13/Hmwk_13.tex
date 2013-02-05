@@ -1,0 +1,247 @@
+\documentclass[11pt]{article}
+
+\usepackage{latexsym}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{enumerate}
+\usepackage{amsmath}
+\usepackage{cancel}
+\numberwithin{equation}{section}
+
+\setlength{\evensidemargin}{.25in}
+\setlength{\oddsidemargin}{-.25in}
+\setlength{\topmargin}{-.75in}
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{9.5in}
+\newcommand{\due}{December 9th, 2009}
+\newcommand{\HWnum}{13}
+\newcommand{\grad}{\bold\nabla}
+\newcommand{\vecE}{\vec{E}}
+\newcommand{\scrptR}{\vec{\mathfrak{R}}}
+\newcommand{\kapa}{\frac{1}{4\pi\epsilon_0}}
+
+\begin{document}
+\input{../title.tex}
+
+\section{Problem \#1}
+The survey is completed
+\section{Problem \#2}
+The survey is completed
+
+\section{Problem \#3}
+In homework \#4 we found that $\vec{H}$ is zero inside the cylinder and outside the cylinder the magnetization is zero, but the magnetic field is that of a magnetic dipole. So given that
+\begin{equation}
+\vec{H} = \frac{1}{\mu_0}\vec{B}-\vec{M}
+\label{Hfield}
+\end{equation}
+we see that $\vec{H}$ is only dependent on the magnetic field. See attached for the drawing.
+
+\section{Problem \#4}
+For a wire of radius $R$ assuming that the wire is magnetically linear we can find $\vec{H}$ using
+\begin{equation}
+\oint\vec{H}\cdot d\vec{l} = I_{f_{enc}}
+\label{Hgauss}
+\end{equation}
+where the current flowing down the wire $I$ is the free current. We can define the free volume current density $\vec{J}_f$ as
+$$\vec{J}_f = \frac{I}{\pi R^2}$$
+so for inside the wire we can calculate $\vec{H}$ using equation \ref{Hgauss}. Note that $\vec{H}$ is constant and parallel to $d\vec{l}$.
+\begin{align*}
+\oint\vec{H}\cdot d\vec{l} &= I_{f_{enc}}\\
+H\oint dl &= \vec{J}_f\pi s^2\\
+H(2\pi s) &= \frac{I}{\pi R^2}\pi s^2\\
+H &= \frac{Is^2}{2\pi sR^2}\\
+\vec{H} &= \frac{Is}{2\pi R^2}\hat{\phi}
+\end{align*}
+And for outside the wire
+\begin{align*}
+\oint\vec{H}\cdot d\vec{l} &= I_{f_{enc}}\\
+H\oint dl &= I\\
+H(2\pi s) &= I\\
+\vec{H} &= \frac{I}{2\pi s}\hat{\phi}
+\end{align*}
+So $\vec{H}$ everywhere is given by
+$$\vec{H} = \left\{\begin{array}{lc}
+	\dfrac{Is}{2\pi R^2}\hat{\phi}	&s<R\\
+\\
+ 	\dfrac{I}{2\pi s}\hat{\phi}	&s>R
+		\end{array}\right.$$
+Now we can find the magnetic field of the wire using 
+\begin{equation}
+\vec{B} = \mu_0(1+\chi_m)\vec{H}
+\label{BfromH}
+\end{equation}
+where $\chi_m$ is the magnetic susceptibility of the wire. So for outside the wire $\chi_m=0$ since there material is a vacuum. So we calculate the B-field using equation \ref{BfromH}
+\begin{align*}
+\vec{B} &= \mu_0(1+\chi_m)\vec{H}\\
+\vec{B} &= \mu_0(1+0)\frac{I}{2\pi s}\hat{\phi}\\
+\vec{B} &= \frac{I\mu_0}{2\pi s}\hat{\phi}
+\end{align*}
+and for inside the wire
+\begin{align*}
+\vec{B} &= \mu_0(1+\chi_m)\vec{H}\\
+\vec{B} &= \mu_0(1+\chi_m)\frac{Is}{2\pi R^2}\hat{\phi}\\
+\vec{B} &= \frac{Is\mu}{2\pi R^2}\hat{\phi}
+\end{align*}
+Note that $\mu\equiv\mu_0(1+\chi_m)$.
+So the magnetic field everywhere is
+$$\vec{B} = \left\{\begin{array}{lc}
+	\dfrac{Is\mu}{2\pi R^2}\hat{\phi}	&s<R\\
+\\
+ 	\dfrac{I\mu_0}{2\pi s}\hat{\phi}	&s>R
+		\end{array}\right.$$
+Now to find the bound currents we first need to find the magnetization using
+\begin{equation}
+\vec{M} = \chi_m \vec{H}
+\label{linear}
+\end{equation}
+Note that we only want to use $\vec{H}$ inside of the wire. So equation \ref{linear} yields
+$$\vec{M} = \chi_m\dfrac{Is}{2\pi R^2}\hat{\phi}$$
+So to find the bound currents we use
+\begin{equation}
+\vec{K}_b = \vec{M}\times\hat{n}
+\label{Kbound}
+\end{equation}
+\begin{equation}
+\vec{J}_b = \grad\times\vec{M}
+\label{Jbound}
+\end{equation}
+So the bound surface charge can be calculated 
+\begin{align*}
+\vec{K}_b &= \vec{M}\times\hat{n}\\
+&= \chi_m\dfrac{Is}{2\pi R^2}\hat{\phi}\times\hat{s}\\
+&= -\chi_m\dfrac{IR}{2\pi R^2}\hat{z}\\
+&= -\dfrac{I\chi_m}{2\pi R}\hat{z}
+\end{align*}
+and the bound volume current
+\begin{align*}
+\vec{J}_b &= \grad\times\vec{M}\\
+&= \cancelto{0}{\left[\frac{1}{s}\frac{\partial M_z}{\partial\phi} - \frac{\partial M_{\phi}}{\partial z}\right]\hat{s}} + \cancelto{0}{\left[\frac{\partial M_s}{\partial z} - \frac{\partial M_{z}}{\partial s}\right]\hat{\phi}} + \frac{1}{s}\left[\frac{\partial}{\partial s}(sM_{\phi}) - \cancelto{0}{\frac{\partial M_s}{\partial\phi}}\right]\hat{z}\\
+&= \frac{1}{s}\frac{\partial}{\partial s}(sM_{\phi})\hat{z}\\
+&= \frac{1}{s}\frac{\partial}{\partial s}(s\chi_m\dfrac{Is}{2\pi R^2}\hat{z}\\
+&= \frac{1}{s}\frac{\partial}{\partial s}(\chi_m\dfrac{Is^2}{2\pi R^2}\hat{z}\\
+&= \frac{1}{s}(\chi_m\dfrac{2Is}{2\pi R^2}\hat{z}\\
+&= \dfrac{\chi_mI}{\pi R^2}\hat{z}
+\end{align*}
+Note that the total bound current can be calculated  
+\begin{align*}
+I_{b_{tot}} &= J_b(\pi R^2) + K_b(2\pi R)\\
+&= \dfrac{\chi_mI}{\pi R^2}(\pi R^2) - \dfrac{I\chi_m}{2\pi R}(2\pi R)\\
+&= {\chi_mI} - {I\chi_m}\\
+&=0
+\end{align*}
+Note that the magnetic field is scaled by the magnetic susceptibility inside the wire and is the same outside the wire. So the material would effect the magnetic field inside the wire. So had we neglected the susceptibility the field would be similar.
+
+\section{Problem \#5}
+From section $6.1.3$ we use the equation
+\begin{equation}
+\Delta \vec{m} = -\frac{e^2R^2}{4m_e}\vec{B}
+\label{613}
+\end{equation}
+Note that equation \ref{613} is the magnetic dipole and we need the magnetization which is defined by
+$$\vec{M} = \frac{\Delta \vec{m}}{V}$$
+where $V$ is the volume of an electron. Now we can find $\chi_m$ using equations \ref{BfromH} and \ref{linear} by saying
+\begin{align*}
+\vec{M} &= \chi_m\vec{H}\\
+\vec{M} &= \chi_m\frac{1}{\mu}\vec{B}\\
+-\frac{e^2R^2}{4m_eV}\vec{B}&= \chi_m\frac{1}{\mu}\vec{B}\\
+-\frac{e^2R^2}{4m_eV} &= \chi_m\frac{1}{\mu}\\
+-\frac{e^2R^2\mu}{4m_eV} &= \chi_m
+\end{align*}
+Now if we neglect the $\chi_m$ in $\mu$ and say $\mu=\mu_0$ and say that the volume of an electron is $4/3 \pi R^3$ we can easily estimate $\chi_m$
+\begin{align*}
+\chi_m &= -\frac{e^2R^2\mu_0}{4m_eV}\\
+&= -\frac{e^2R^2\mu_0}{4m_e4/3 \pi R^3}\\
+&= -\frac{3e^2\mu_0}{16m_e\pi R}\\
+&= -\frac{3(1.6\times10^{-19})^2(1.3\times10^{-6})}{16(9.1\times10^{-31})\pi (1\times10^{-10})}\\
+&= -2.2\times10^{-5}
+\end{align*}
+This is in the same order of magnitude of the given values for a metal. Note that this value is unit-less.
+
+\section{Problem \#6}
+Let us assume that instead of having a cavity we have a sphere with a magnetization $-M_0\hat{z}$ superimposed on the original sphere. This is equal and opposite of the magnetization of the original sphere so it is the same has having a cavity in the original sphere. Now we can find $\vec{H}$ using equation \ref{linear}
+\begin{align*}
+\vec{M} &= \chi_m \vec{H}\\
+\vec{H} &= \frac{1}{\chi_m} \vec{M}\\
+\vec{H}_1 &= -\frac{M_0}{\chi_m} \hat{z}
+\end{align*}
+Now that we have $\vec{H}$ we can find the magnetic field due to this sphere using equation \ref{BfromH}
+\begin{align*}
+\vec{B} &= \mu \vec{H}\\
+\vec{B} &= \mu \left(-\frac{M_0}{\chi_m} \hat{z}\right)\\
+\vec{B}_1 &= -\frac{\mu M_0}{\chi_m} \hat{z}
+\end{align*}
+Now it is simple to see that the superposition of the known $\vec{B}$ and $\vec{H}$ fields, given by
+$$\vec{B}_0 = B_0\hat{z}$$
+and
+$$\vec{H}_0 = \frac{1}{\mu_0}B_0\hat{z} - M_0\hat{z}$$
+and the now calculated fields. So the B-field inside of the cavity is given by
+\begin{align*}
+\vec{B}_{tot} &= \vec{B}_0 + \vec{B}_1\\
+&= B_0\hat{z} + -\frac{\mu M_0}{\chi_m} \hat{z}\\
+&= \left(B_0 - \frac{\mu M_0}{\chi_m}\right)\hat{z}
+\end{align*}
+And $\vec{H}$ is given by
+\begin{align*}
+\vec{H}_{tot} &= \vec{H}_0 + \vec{H}_1\\
+&= \frac{1}{\mu_0}B_0\hat{z} - M_0\hat{z} - \frac{M_0}{\chi_m} \hat{z}\\
+&= \left(\frac{1}{\mu_0}B_0 - M_0 - \frac{M_0}{\chi_m}\right) \hat{z}\\
+&= \left(\frac{1}{\mu_0}B_0 - M_0\left(1+\frac{1}{\chi_m}\right)\right) \hat{z}
+\end{align*}
+
+\section{Problem \#7}
+\begin{enumerate}[(a)]
+\item
+To find the ratio between $\tan\theta_1$ and $\tan\theta_2$ we first see that
+$$\tan\theta_1 = \frac{B_1^{\perp}}{B_1^{\parallel}}$$
+and
+$$\tan\theta_2 = \frac{B_2^{\perp}}{B_2^{\parallel}}$$
+So the ration between the two is given by. 
+$$\frac{\tan\theta_2}{\tan\theta_1}  = \frac{B_2^{\perp}}{B_2^{\parallel}}\frac{B_1^{\parallel}}{B_1^{\perp}}$$
+
+Now if we note the boundary condition 
+\begin{equation}
+B_{above}^{\perp} - B_{below}^{\perp} = 0
+\label{perp}
+\end{equation}
+We see that equation \ref{perp} implies 
+$$B_{1}^{\perp} = B_{2}^{\perp} $$
+So now the ration between the tangents becomes
+\begin{align*}
+\frac{\tan\theta_2}{\tan\theta_1}  &= \frac{B_2^{\perp}}{B_2^{\parallel}}\frac{B_1^{\parallel}}{B_1^{\perp}}\\
+&= \frac{\cancel{B_1^{\perp}}}{B_2^{\parallel}}\frac{B_1^{\parallel}}{\cancel{B_1^{\perp}}}\\
+&= \frac{B_1^{\parallel}}{B_2^{\parallel}}
+\end{align*}
+Now if we use equation \ref{BfromH} we can see that the parallel magnetic field is given by
+$$\vec{B}_1^{\parallel} = \mu_1\vec{H}_1^{\parallel}$$
+And by equation \ref{BfromH} 
+$$\vec{B}_2^{\parallel}  = {\mu_2}\vec{H}_2^{\parallel}$$
+is also true. Now if we apply the boundary condition
+\begin{equation}
+\vec{H}_{above}^{\parallel} - \vec{H}_{below}^{\parallel} = \vec{K}_f\times\hat{n}
+\label{para}
+\end{equation}
+Now we assume that there is no free current so we see that equation \ref{para} becomes
+\begin{align*}
+\vec{H}_{1}^{\parallel} - \vec{H}_{2}^{\parallel} &= 0\\
+\vec{H}_{1}^{\parallel} = \vec{H}_{2}^{\parallel} 
+\end{align*}
+So now we can find the ratio of the tangents as
+\begin{align*}
+\frac{\tan\theta_2}{\tan\theta_1} &= \frac{B_1^{\parallel}}{B_2^{\parallel}}\\
+&= \frac{\mu_1H_1^{\parallel}}{\mu_2H_2^{\parallel}}\\
+&= \frac{\mu_1\cancel{H_1^{\parallel}}}{\mu_2\cancel{H_1^{\parallel}}}\\
+&= \frac{\mu_1}{\mu_2}
+\end{align*}
+
+\item
+We know that for paramagnets that $\chi_m$ is a positive value so we see from the definition of $\mu$
+$$\mu\equiv\mu_0(1+\chi_m)$$
+that $\mu$ will be larger for paramagnets compared to a vacuum. Note that in a vacuum $\mu=\mu_0$. So we found that the parallel B-field is given by
+$$\vec{B}^{\parallel} = \mu\vec{H}^{\parallel}$$
+and we know that the $\vec{H}^{\parallel}$ is the same in both regions so the larger region is the paramagnetic region. So we conclude that region I is the paramagnetic region and region II is the vacuum. Now if one of the regions is diamagnetic we know that $\chi_m$ is negative so we know that
+$$\mu<\mu_0$$
+Therefore the smaller parallel B-field is in the diamagnetic region. In this case region II would be diamagnetic and region I would be the vacuum.
+\end{enumerate}
+
+\end{document}
+

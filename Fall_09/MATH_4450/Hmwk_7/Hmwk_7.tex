@@ -1,0 +1,462 @@
+\documentclass[11pt]{article}
+
+\usepackage{latexsym}
+\usepackage{amssymb}
+\usepackage{enumerate}
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{ulem}
+\usepackage{cancel}
+
+\setlength{\evensidemargin}{.25in}
+\setlength{\oddsidemargin}{-.25in}
+\setlength{\topmargin}{-.75in}
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{9.5in}
+\newcommand{\due}{October 21st, 2009}
+\newcommand{\HWnum}{7}
+\newcommand{\CC}{\mathbb{C}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\zbar}{\overline{z}}
+\newcommand{\Let}{\textnormal{Let }}
+\newcommand{\Arg}{\textnormal{arg}}
+\newcommand{\Log}{\textnormal{Log}}
+
+\begin{document}
+\input{../title.tex}
+\subsection*{Written Problems}
+\begin{enumerate}
+\item 4.2: 14\\
+\textit{For each of the following, use Theorem 5 to establish the indicated estimate.}
+\begin{enumerate}[(a)]
+\item \textit{If $C$ is the circle $|z|=3$ traversed once, then}
+$$\left|\int_C\frac{dz}{z^2-i}\right|\le \frac{3\pi}{4}$$
+So by \emph{Theorem 5} we can say that
+$$\left|\int_C\frac{dz}{z^2-i}\right|\le \max_{z on C}|f(z)|l(C)$$
+We know the length of the circle is given by $2\pi r$ so for the circle C we get
+$$l(C) = 6\pi$$
+Now if we take the max of $f(z)$, by the triangle inequality we get
+$$\left|\frac{1}{z^2-i}\right|\le \frac{1}{|z|^2-|i|}$$
+$$\left|\frac{1}{z^2-i}\right|\le \frac{1}{3^2-1}$$
+$$\left|\frac{1}{z^2-i}\right|\le \frac{1}{8}$$
+So \emph{Theorem 5} yields
+$$\left|\int_C\frac{dz}{z^2-i}\right|\le \frac{1}{8}6\pi$$
+$$\left|\int_C\frac{dz}{z^2-i}\right|\le \frac{3\pi}{4}$$
+
+\item
+\textit{If $\gamma$ is the vertical line segment from $z=R (>0)$ to $z=R+2\pi i$, then}
+$$\left|\int_{\gamma} \frac{e^{3z}}{1+e^z}dz\right| \le \frac{2\pi e^{3R}}{e^R-1}$$
+So we can first see that the length of the line is given by
+$$l(\gamma) = 2\pi$$
+So now we need to find the max of $|f(z)|$ by the triangle inequality
+\begin{align*}
+\left|\frac{e^{3z}}{1+e^z}\right| &\le \frac{|e^{3z}|}{|1|+|e^z|}\\
+&\le \frac{|e^{3(x+iy)}|}{1+|e^{x+iy}|}\\
+&\le \frac{e^{3R}}{1+e^{R}}
+\end{align*}
+So by \emph{Theorem 5} we can say
+$$\left|\int_{\gamma} \frac{e^{3z}}{1+e^z}dz\right| \le \frac{e^{3R}}{1+e^R}2\pi$$
+$$\left|\int_{\gamma} \frac{e^{3z}}{1+e^z}dz\right| \le \frac{2\pi e^{3R}}{1+e^R}$$
+
+\item
+\textit{If $\Gamma$ is the arc of the circle $|z| =1$ that lies in the first quadrant, then}
+$$\left|\int_{\Gamma} \Log(z)dz\right| \le \frac{\pi^{2}}{4}$$
+First we can say the length of a quarter of a circle of radius 1 is
+\begin{align*}
+l(\Gamma) &= \frac{1}{4}2\pi(1)\\
+&= \frac{1}{2}\pi\\
+\end{align*}
+Now if we find the max of $|f(z)|$ using the triangle inequality we get
+\begin{align*}
+|\Log(z)| &\le \Log|z|\\
+&\le \Log(1)\\
+&\le \frac{\pi}{2}
+\end{align*}
+Note that the maximum of the $\Log(1)$ is $\frac{\pi}{2}$ on $\Gamma$. So \emph{Theorem 5} yields
+\begin{align*}
+\left|\int_{\Gamma}\Log z\right| &\le \max_{z on C}|f(z)|l(C)\\
+ &\le \frac{\pi}{2}\frac{1}{2}\pi\\
+ &\le \frac{\pi^2}{4}
+\end{align*}
+
+\item
+\textit{If $\gamma$ is the line segment from $z=0$ to $z=i$, then}
+$$\left|\int_{\gamma} e^{\sin z}dz\right| \le 1$$
+Again we first find the length of $\gamma$ which is
+$$l(\gamma) = 1$$
+Now to find the max of $f(z) = e^{\sin z}$ we say that
+$$|e^{\sin z}| \le e^{|\sin z|}$$ 
+$$|e^{\sin z}| \le e^{\sin |z|}$$ 
+We see that the magnitude of $\sin z$ over the line from $z=0$ to $z=i$ is when $z=0$ or $\sin z = 0$ so we get
+\begin{align*}
+|e^{\sin z}| &\le e^{\sin |0|}\\ 
+&\le e^{0}\\ 
+&\le 1 
+\end{align*}
+So by \emph{Theorem 5} we can say 
+$$\left|\int_{\gamma}e^{\sin z}\right|\le \max_{z on C}|f(z)|l(C)$$
+$$\left|\int_{\gamma}e^{\sin z}\right|\le 1$$
+\end{enumerate}
+
+\item 4.3: 6\\
+For the function $f(z)$
+$$f(z) = \frac{1}{z-z_0}$$
+we see that if we have a circle $C$ with a branch cut from $z_0$ to $\infty$ we can see that $f(z)$ has an antiderivative given by
+$$F(z) = \Log(z-z_0)$$
+therefore we can apply \emph{Theorem 6} or
+$$\int_C f(z)dz = F(z_2)-F(z_1)$$
+For the our particular $C$ we have endpoints of $\alpha$ and $\beta$ so we see that \emph{Theorem 6} yields
+$$\int_C \frac{1}{z-z_0}dz =\Log(\beta) - \Log(\alpha)$$
+Now if we take the limit as $\alpha$ and $\beta$ go to $\tau$, where $\tau$ is the point at which our branch cut meets the circle $C$ we get
+$$\int_C \frac{1}{z-z_0}dz =\lim_{\alpha,\beta\rightarrow\tau}\Log(\beta) - \Log(\alpha)$$
+We see that if $\alpha$ and $\beta$ approach from the same direction the integral becomes zero. If they approach from different directions the integral yields $2\pi i$ which is the result when we apply \emph{Theorem 6} to a closed circle around $z_0$.
+\end{enumerate}
+
+\subsection*{Problems}
+
+\begin{enumerate}
+\item 4.1:  2, 8, 10
+\begin{enumerate}[(i)]
+\item 2)\\
+\textit{Show why the condition that $z'(t)$ never vanishes is necessary to ensure that smooth curves have no cusps.}
+If we take a parametrization that has a cusp we can see that $z'(t)=0$ at some point in the interval. Say we have the curve
+$$z(t) = t^2 +it^3,\ (-1\le t\le 1)$$
+We can find that 
+$$z'(t) = 2t+3it^2$$
+we see that when $t=0$ (which is in the interval $-1\le t\le 1$) $z'(t) = 0$. And we know that $z(t)$ has a cusp at $t=0$ this shows that when $z'(t)=0$ we have a cusp. Therefore we know that $z'(t)$ cannot vanish if we wish to ensure that our curve has no cusps.
+
+
+\item 8)\\
+\textit{Parametrize the contour $\Gamma$ indicated in Fig. 4.14. Also give the parametrization for the opposite contour $-\Gamma$}
+
+For the positive $\Gamma$ we first go through the line from $-2+2i$ to $-1$. This is parametrized as
+$$z_1(t) = (-2+2i)(-t)-(1+t),\ (-1\le t\le 0)$$
+Now for the circle with radius of $1$ that is centered on the origin. This is parametrized as
+$$z_2(t) = e^{-\pi i(1-t)},\ (0\le t\le 1)$$
+So we can see these two smooth curves are components of $\Gamma$. Therefore we can represent $\Gamma$ as
+$$z(t)=\left\{\begin{array}{ll}
+	(-2+2i)(-t)-(1+t), &(-1\le t\le 0)\\
+	e^{-\pi i(1-t)}, &(0\le t\le 1)
+	\end{array}\right.$$
+Now for negative $\Gamma$ we start with the circle, which we can parametrize as
+$$z_1(t) = e^{-\pi i(1+t)},\ (-1\le t\le 0)$$
+and for the line we can say
+$$z_2(t) = (-2+2i)(t)-(1-t),\ (0\le t\le 1)$$
+So for the contour $-\Gamma$ we have the parametrization
+$$z(t)=\left\{\begin{array}{ll}
+	e^{-\pi i(1+t)}, &(-1\le t\le 0)\\
+ 	(-2+2i)(t)-(1-t), &(0\le t\le 1)
+	\end{array}\right.$$
+	
+
+\item 10)\\
+\textit{Using an admissible parametrization verify from formula (1) that}
+\begin{enumerate}[(a)]
+\item
+\textit{the length of the line segment from $z_1$ to $z_2$ is $|z_2-z_1|$}
+
+So if we can parametrize a line that goes from $z_1$ to $z_2$ as
+$$z(t) = z_1(1-t) + z_2t,\ (0\le t\le 1)$$
+We can calculate the length using
+$$l(\gamma) = \int_a^b \left|\frac{dz}{dt}\right| dt$$
+where
+$$\frac{dz}{dt} = z_2-z_1$$
+Solving the integral yields
+\begin{align*}
+l(\gamma) &= \int_a^b \left|\frac{dz}{dt}\right| dt\\
+&= \int_0^1 \left|z_2-z_1\right| dt\\
+&= \left.\left|z_2-z_1\right|t\right|_0^1 \\
+&= \left|z_2-z_1\right|1 - \left|z_2-z_1\right|0\\
+l(\gamma) &= \left|z_2-z_1\right|
+\end{align*}
+\item
+\textit{the length of a circle $|z-z_0|=r$ is $2\pi r$}
+
+We can parametrize the circle $|z-z_0|=r$ as 
+$$z(t) = z_0 + re^{it},\ (0\le t\le 2\pi)$$
+Again we calculate the length by
+$$l(\gamma) = \int_a^b \left|\frac{dz}{dt}\right| dt$$
+where
+$$\frac{dz}{dt} = ire^{it}$$
+Note the magnitude of $z'(t)$ is $r$. Now solving the integral yields
+\begin{align*}
+l(\gamma) &= \int_a^b \left|\frac{dz}{dt}\right| dt\\
+&= \int_0^{2\pi} \left|ire^{it}\right| dt\\
+&= \int_0^{2\pi} r dt\\
+&= \left.rx\right|_0^{2\pi}\\
+&= r(2\pi) - r(0)\\
+l(\gamma) &= 2\pi r
+\end{align*}
+\end{enumerate}
+\end{enumerate}
+
+\item 4.2:  6, 8, 10 
+\begin{enumerate}[(i)]
+\item 6)
+\textit{Compute
+$$\int_{\Gamma} \zbar dz$$
+where}
+\begin{enumerate}[(a)]
+\item \textit{$\Gamma$ is the circle $|z|=2$ traversed once anti-clockwise}
+
+We can represent $\Gamma$ as a single parametrization of the curve
+$$z(t) = 2e^{it},\ (0\le t\le 2\pi)$$
+where
+$$z'(t) = 2ie^{it},\ (0\le t\le 2\pi)$$
+With this parametrization we can calculate
+$$\int_{\Gamma} f(z) dz = \int_a^b f(z(t))z'(t)dt$$
+where $$f(z) = \zbar$$
+So we calculate
+\begin{align*}
+\int_{\Gamma} \zbar dz &= \int_0^{2\pi} \overline{z(t)}z'(t)dt\\
+&= \int_0^{2\pi} \overline{2e^{it}}\left(2ie^{it}\right)dt\\
+&= (2)(2)(i)\int_0^{2\pi} e^{-it}\left(e^{it}\right)dt\\
+&= 4i\int_0^{2\pi} e^{-it+it}dt\\
+&= 4i\int_0^{2\pi} e^0dt\\
+&= 4i\int_0^{2\pi} dt\\
+&= 4i(t|_0^{2\pi}\\
+&= 4i(2\pi-0)\\
+&= 4i(2\pi)\\
+&= 8i\pi
+\end{align*}
+\item \textit{$\Gamma$ is the circle $|z|=2$ traversed once clockwise}
+
+For this $\Gamma$ we have a single curve parametrized as
+$$z(t) = 2e^{-it},\ (-\pi\le t\le \pi)$$
+where
+$$z'(t) = -2ie^{-it},\ (-\pi\le t\le \pi)$$
+We can calculate
+\begin{align*}
+\int_{\Gamma} \zbar dz &= \int_{-\pi}^{\pi} \overline{z(t)}z'(t)dt\\
+&= \int_{-\pi}^{\pi} \overline{2e^{-it}}\left(-2ie^{it}\right)dt\\
+&= (2)(-2i)\int_0^{-\pi} e^{it}\left(e^{-it}\right)dt\\
+&= -4i\int_{-\pi}^{\pi} e^{it-it}dt\\
+&= -4i\int_{-\pi}^{\pi} e^0dt\\
+&= -4i\int_{-\pi}^{\pi} dt\\
+&= -4i(t|_{-\pi}^{\pi}\\
+&= -4i(\pi-{-\pi})\\
+&= -4i(2\pi)\\
+&= -8i\pi
+\end{align*}
+
+\item \textit{$\Gamma$ is the circle $|z|=2$ traversed three times clockwise}
+We see that $\Gamma$ is 3 smooth curves described in part (b)
+$$z(t) = 2e^{-it},\ (-\pi\le t\le \pi)$$
+where
+$$z'(t) = -2ie^{-it},\ (-\pi\le t\le \pi)$$
+Notice that we can say
+\begin{align*}
+\int_{\Gamma}f(z)dz &= \int_{\gamma} f(z)dz + \int_{\gamma} f(z)dz + \int_{\gamma} f(z)dz\\
+&= 3\int_{\gamma} f(z)dz\\
+&= 3\int_{\gamma} f(z(t))z'(t)dt
+\end{align*}
+We can calculate
+\begin{align*}
+\int_{\Gamma} \zbar dz &= 3\int_{-\pi}^{\pi} \overline{z(t)}z'(t)dt\\
+&= 3\int_{-\pi}^{\pi} \overline{2e^{-it}}\left(-2ie^{it}\right)dt\\
+&= (3)(2)(-2i)\int_0^{-\pi} e^{it}\left(e^{-it}\right)dt\\
+&= -12i\int_{-\pi}^{\pi} e^{it-it}dt\\
+&= -12i\int_{-\pi}^{\pi} e^0dt\\
+&= -12i\int_{-\pi}^{\pi} dt\\
+&= -12i(t|_{-\pi}^{\pi}\\
+&= -12i(\pi-{-\pi})\\
+&= -12i(2\pi)\\
+&= -24i\pi
+\end{align*}
+\end{enumerate}
+
+\item 8)\\
+\textit{Let $C$ be the perimeter of the square with vertices at the points $z=0$, $z=1$, $z=1+i$, $z=i$ traversed once in that order. Show that
+$$\int_C d^z dz =0$$}
+
+We can say that $C$ is sum of the smooth curves 
+$$C = \gamma_1+\gamma_2+\gamma_3+\gamma_4$$
+where 
+\begin{align*}
+z_1(t) &= t,\ (0\le t\le 1)\\
+z_2(t) &= 1+it,\ (0\le t\le 1)\\
+z_3(t) &= (i+1)(1-t)+it,\ (0\le t\le 1)\\
+z_4(t) &= i(1-t),\ (0\le t\le 1)\\
+\end{align*}
+and
+\begin{align*}
+z_1'(t) &= 1,\ (0\le t\le 1)\\
+z_2'(t) &= i,\ (0\le t\le 1)\\
+z_3'(t) &= -1,\ (0\le t\le 1)\\
+z_4'(t) &= -i,\ (0\le t\le 1)\\
+\end{align*}
+are the parametrizations for each of the respective smooth curves. So we can say that
+\begin{align*}
+\int_Cf(z)dz &=\int_{\gamma_1}f(z_1(t))z_1'(t)dz+\int_{\gamma_2}f(z_2(t))z_2'(t)dz+\int_{\gamma_3}f(z_3(t))z_3'(t)dz+\int_{\gamma_4}f(z_4(t))z_4'(t)dz
+\end{align*}
+Where $f(z) = e^z$. So we can calculate each integral
+\begin{align*}
+\int_{\gamma_1}f(z_1(t))z_1'(t)dz &= \int_0^1 e^{t}1dt\\
+&= e^{t}|_0^1 \\
+&= e^{1}-e^0 \\
+\int_{\gamma_1}f(z_1(t))z_1'(t)dz &= e-1 
+\end{align*}
+\begin{align*}
+\int_{\gamma_2}f(z_2(t))z_2'(t)dz &= \int_0^1 e^{1+it}idt\\
+ &= i\int_0^1 e^{1+it}dt\\
+ &= i\left(\frac{1}{i}e^{1+it}\right|_0^1 \\
+ &= \frac{i}{i}\left(e^{1+it}\right|_0^1 \\
+ &= e^{1+i(1)}-e^{1+i(0)} \\
+ &= e^{1+i}-e^{1} \\
+\int_{\gamma_2}f(z_2(t))z_2'(t)dz &= e^{1+i}-e 
+\end{align*}
+\begin{align*}
+\int_{\gamma_3}f(z_3(t))z_3'(t)dz &= \int_0^1 e^{(i+1)(1-t)+it}(-1)dt\\
+&= -\int_0^1 e^{(i+1)(1-t)+it}dt\\
+&= -\left(-e^{(i+1)(1-t)+it}\right|_0^1 \\
+&= e^{(i+1)(1-1)+i1}- e^{(i+1)(1-0)+i0}\\
+&= e^{(i+1)(0)+i}- e^{i+1}\\
+\int_{\gamma_3}f(z_3(t))z_3'(t)dz &= e^{i}- e^{i+1}
+\end{align*}
+\begin{align*}
+\int_{\gamma_4}f(z_4(t))z_4'(t)dz &= \int_0^1 e^{i(1-t)}(-i)dt\\
+&= -i\int_0^1 e^{i(1-t)}dt\\
+&= -i\left(\frac{1}{-i}e^{i(1-t)}\right|_0^1 \\
+&= -i\frac{1}{-i}\left(e^{i(1-1)}-e^{i(1-0)}\right) \\
+&= \frac{-i}{-i}\left(e^{(i+1)(0)}-e^{i(1)}\right) \\
+&= e^{0}-e^{i}\\
+\int_{\gamma_4}f(z_4(t))z_4'(t)dz &= 1-e^{i}
+\end{align*}
+So we can calculate
+\begin{align*}
+\int_Cf(z)dz &=\int_{\gamma_1}f(z_1(t))z_1'(t)dz+\int_{\gamma_2}f(z_2(t))z_2'(t)dz+\int_{\gamma_3}f(z_3(t))z_3'(t)dz+\int_{\gamma_4}f(z_4(t))z_4'(t)dz\\
+&= e-1 + e^{1+i}-e + e^{i}- e^{i+1} + 1-e^{i}\\
+&= 1 - 1 + e-e + e^{1+i}- e^{i+1} + e^{i}-e^{i}\\
+\int_Cf(z)dz &=0
+\end{align*}
+ 
+\item 10)\\
+\textit{Compute $$\int_C \zbar^2dz$$ along the perimeter of the square in Problem 8}
+
+Recall that we parametrized the square contour $C$ as
+\begin{align*}
+z_1(t) &= t,\ (0\le t\le 1)\\
+z_2(t) &= 1+it,\ (0\le t\le 1)\\
+z_3(t) &= (i+1)(1-t)+it,\ (0\le t\le 1)\\
+z_4(t) &= i(1-t),\ (0\le t\le 1)\\
+\end{align*}
+and
+\begin{align*}
+z_1'(t) &= 1,\ (0\le t\le 1)\\
+z_2'(t) &= i,\ (0\le t\le 1)\\
+z_3'(t) &= -1,\ (0\le t\le 1)\\
+z_4'(t) &= -i,\ (0\le t\le 1)\\
+\end{align*}
+\end{enumerate}
+So we know that
+$$\int_Cf(z)dz =\int_{\gamma_1}f(z_1(t))z_1'(t)dz+\int_{\gamma_2}f(z_2(t))z_2'(t)dz+\int_{\gamma_3}f(z_3(t))z_3'(t)dz+\int_{\gamma_4}f(z_4(t))z_4'(t)dz$$
+So we see that we need to calculate each individual integral as
+\begin{align*}
+\int_{\gamma_1}\overline{z_1(t)}^2z_1'(t)dz &=  \int_0^1\overline{t}^2(1)dt\\
+&= \int_0^1t^2dt\\
+&= \left.\frac{1}{3}t^3\right|_0^1\\
+&= \frac{1}{3}(1^3-0^3)\\
+&= \frac{1}{3}(1-0)\\
+\int_{\gamma_1}\overline{z_1(t)}^2z_1'(t)dz &= \frac{1}{3}
+\end{align*}
+
+\begin{align*}
+\int_{\gamma_2}\overline{z_2(t)}^2z_2'(t)dz &=  \int_0^1\overline{1+it}^2(i)dt\\
+&= i\int_0^1(1-it)^2dt\\
+&= i\int_0^1(1^2+i^2t^2-2it)dt\\
+&= i\int_0^1(1+(-1)2t^2-2it)dt\\
+&= i\int_0^1(1-2t^2-2it)dt\\
+&= i\left(t-\frac{2}{3}t^3-it^2\right|_0^1\\
+&= i\left(1-\frac{2}{3}1^3-i1^2 - 0 + \frac{2}{3}0^3 + i0^2\right)\\
+&= i\left(1-\frac{2}{3}-i - 0 \right)\\
+&= i\left(\frac{1}{3}-i\right)\\
+&= \frac{1}{3}i-i^2\\
+\int_{\gamma_2}\overline{z_2(t)}^2z_2'(t)dz &= 1+ \frac{1}{3}i
+\end{align*}
+\begin{align*}
+\int_{\gamma_3}\overline{z_3(t)}^2z_3'(t)dz &=  \int_0^1\overline{(i+1)(1-t)+it}^2(-1)dt\\
+&= -\int_0^1((-i+1)(1-t)-it)^2dt\\
+&= -\int_0^1(-i+1+it-t-it)^2dt\\
+&= -\int_0^1(-i+1-t)^2dt\\
+&= -\frac{-1}{3}\left((-i+1-t)^3\right|_0^1\\
+&= \frac{1}{3}\left((-i+1-1)^3-(-i+1-0)^3\right)\\
+&= \frac{1}{3}\left((-i)^3-(-i+1)^3\right)\\
+&= \frac{1}{3}\left(-i-(-2-2i)\right)\\
+&= \frac{1}{3}\left(-i+2+2i)\right)\\
+&= \frac{1}{3}\left(2+i)\right)\\
+\int_{\gamma_3}\overline{z_3(t)}^2z_3'(t)dz &= \frac{2}{3}+\frac{1}{3}i
+\end{align*}
+\begin{align*}
+\int_{\gamma_4}\overline{z_4(t)}^2z_4'(t)dz &=  \int_0^1\overline{i(1-t)}^2(-i)dt\\
+&= -i\int_0^1(-i(1-t))^2dt\\
+&= -i\int_0^1-i^2(1-t)^2dt\\
+&= -i\int_0^1(1)(1-t)^2dt\\
+&= -i\int_0^1(1-t)^2dt\\
+&= -i\left(\frac{-1}{3}(1-t)^3\right|_0^1\\
+&= \frac{i}{3}((1-1)^3-(1-0)^3)\\
+&= \frac{i}{3}((0)^3-(1)^3)\\
+&= \frac{i}{3}(-1)\\
+\int_{\gamma_4}\overline{z_4(t)}^2z_4'(t)dz &= \frac{-i}{3}
+\end{align*}
+So the integral over the whole contour $C$ is given by
+\begin{align*}
+\int_C\zbar^2dz &= \int_{\gamma_1}\overline{z_1(t)}^2z_1'(t)dz+\int_{\gamma_2}\overline{z_2(t)}^2z_2'(t)dz+\int_{\gamma_3}\overline{z_3(t)}^2z_3'(t)dz+\int_{\gamma_4}\overline{z_4(t)}^2z_4'(t)dz\\
+&= \frac{1}{3} + 1 + \frac{1}{3}i+ \frac{2}{3}+ \frac{i}{3}i - \frac{i}{3}\\
+&= \frac{1}{3} +\frac{2}{3}+ 1 + \frac{1}{3}i\\
+&= 1+ 1 + \frac{1}{3}i\\
+\int_C\zbar^2dz &= 2 + \frac{1}{3}i
+\end{align*}
+
+\item 4.3:  4, 11, 12
+\begin{enumerate}[(i)]
+\item 4)\\
+\textit{True or false: If $f$ is analytic at each point of a closed contour $\Gamma$, then $$\int_{\Gamma}f(z)dz=0$$}
+If $f$ is analytic at each point in $\Gamma$ then that implies that $f$ is continuous and has an anti-derivative for each point of a closed contour $\Gamma$. Therefore one can apply 
+$$\int_{\Gamma}f(z)dz = F(z_T) - F(z_I)$$
+for a closed loop we see that $z_T = z_I$ therefore we get
+\begin{align*}
+\int_{\Gamma}f(z)dz &= F(z_T) - F(z_I)\\
+&= F(z_T) - F(z_T)\\
+&= 0
+\end{align*}
+
+\item 11)\\
+\newtheorem{Theo11}{Theorem}
+\begin{Theo11}
+If $f$ and $g$ have continuous first derivatives in a domain containing the contour $\Gamma$, then
+$$\int_{\Gamma} f'(z)g(z) = f(z)g(z)\vert-\int_{\Gamma} f(z)g'(z)dz$$
+\end{Theo11}
+\begin{proof}
+Let us define a function $h(z)$ as
+$$h(z) = f(z)g(z)$$
+If we take the derivative of $h(z)$ we have to apply the product rule which yields
+$$\frac{dh(z)}{dz} = f'(z)g(z)+f(z)g'(z)$$
+So we can say that
+$$\int_{\Gamma}dh(z) =\int_{\Gamma} f'(z)g(z)dz+\int_{\Gamma}f(z)g'(z)dz$$
+$$f(z)g(z)|_{zI}^{zT} =\int_{\Gamma} f'(z)g(z)dz+\int_{\Gamma}f(z)g'(z)dz$$
+Now solving for the integral we get
+$$\left.\int_{\Gamma} f'(z)g(z)dz = f(z)g(z)\right|_{zI}^{zT} -\int_{\Gamma}f(z)g'(z)dz$$
+\end{proof}
+
+\item 12)\\
+\textit{Let $f$ be an analytic function with a continuous derivative satisfying $|f'(z)|\le M$ for all $z$ in the disk $D:|z|<1$. Show that}
+$$|f(z_2) - f(z_1)|\le M|z_2-z_1|\ (z_1,z_2 \mbox{ in } D)$$
+We see that 
+$$f(z_2)-f(z_1) = \int_{z_1}^{z_2} f'(z)dz$$
+so by the definition of an integral we can say that
+$$\int_{z_1}^{z_2} f'(z)dz = \lim_{n\rightarrow\infty} \sum_{j=1}^{n+1}f'(z_j)(z_j-z_{j-1})$$
+So if we take the magnitude of the sume we see that by the triangle formula we get
+$$\left|\lim_{n\rightarrow\infty} \sum_{j=1}^{n+1}f'(z_j)(z_j-z_{j-1})\right|\le\lim_{n\rightarrow\infty} \sum_{j=1}^{n+1}\left|f'(z_j)\right|\left|z_j-z_{j-1}\right|$$
+we know that the $|f'(z)|\le M$ so we can see that we have
+$$\left|\lim_{n\rightarrow\infty} \sum_{j=1}^{n+1}f'(z_j)(z_j-z_{j-1})\right|\le\lim_{n\rightarrow\infty} \sum_{j=1}^{n+1}M\left|z_j-z_{j-1}\right|$$
+Now if we take the limit we see that 
+$$|z_j-z_{j-1}| \rightarrow l(\gamma)$$
+in this case the length of $\gamma$ is the magnitude of the difference of the endpoints or $|z_2-z_1|$. So we see that
+$$\left|\int_{z_1}^{z_2} f'(z)dz\right|\le M\left|z_2-z_{1}\right|$$
+or 
+$$|f(z_2) - f(z_1)|\le M|z_2-z_1|$$
+\end{enumerate}
+\end{enumerate}
+
+\end{document}
+

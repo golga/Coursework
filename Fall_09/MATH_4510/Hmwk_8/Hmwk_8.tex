@@ -1,0 +1,64 @@
+\documentclass[11pt]{article}
+
+\usepackage{latexsym}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{enumerate}
+\usepackage{amsmath}
+\usepackage{cancel}
+
+\setlength{\evensidemargin}{.25in}
+\setlength{\oddsidemargin}{-.25in}
+\setlength{\topmargin}{-.75in}
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{9.5in}
+\newcommand{\due}{October 30th, 2009}
+\newcommand{\HWnum}{8}
+
+\begin{document}
+\input{../title.tex}
+\section{Chapter 5}
+\begin{enumerate}
+\item Problem 15\\
+\textit{If $X$ is a normal random variable with parameters $\mu=10$ and $\sigma^2 = 36$, compute}
+\begin{enumerate}
+\item \textit{$P\{X>5\}$}\\
+\begin{align*}
+P\{X>5\} &= P\left\{\frac{X-\mu}{\sigma}>\frac{5-\mu}{\sigma}\right\}\\
+&= P\left\{\frac{X-10}{6}>\frac{5-10}{6}\right\}\\
+&= P\left\{Z>\frac{-5}{6}\right\}\\
+&= 1-\Phi\left(-\frac{5}{6}\right)\\
+&= 1-\left(1-\Phi\left(\frac{5}{6}\right)\right)\\
+&= 1-1+\Phi\left(\frac{5}{6}\right)\\
+&= \Phi\left(\frac{5}{6}\right)\\
+&\approx 0.7967 
+\end{align*}
+\item \textit{$P\{4<X<16\}$}
+\begin{align*}
+P\{4<X<16\} &= P\left\{\frac{4-\mu}{\sigma}<\frac{X-\mu}{\sigma}<\frac{16-\mu}{\sigma}\right\}\\
+&= P\left\{\frac{4-5}{6}<\frac{X-5}{6}<\frac{16-5}{6}\right\}\\
+&= P\left\{\frac{-1}{6}<Z<\frac{11}{6}\right\}\\
+&= P\left\{\frac{-1}{6}<Z<\frac{11}{6}\right\}\\
+&= \Phi\left(\frac{11}{6}\right)-\Phi\left(-\frac{1}{6}\right)\\
+&= \Phi\left(\frac{11}{6}\right)-\right[1-\Phi\left(\frac{1}{6}\right)\right]\\
+&\approx 0.53
+%\end{align*}
+
+\item \textit{$P\{X<8\}$}
+\item \textit{$P\{X<20\}$}
+\item \textit{$P\{X>16\}$}
+\end{enumerate}
+\item Problem 19\\
+\item Problem 21\\
+
+\end{enumerate}
+
+\section{Chapter 6}
+\begin{enumerate}
+\item Problem 10\\
+\item Problem 11\\
+\item Problem 21\\
+
+\end{enumerate}
+
+\end{document}

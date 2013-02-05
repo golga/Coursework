@@ -1,0 +1,462 @@
+\documentclass[11pt]{article}
+
+\usepackage{latexsym}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{enumerate}
+\usepackage{amsmath}
+\usepackage{cancel}
+\numberwithin{equation}{section}
+
+\setlength{\evensidemargin}{.25in}
+\setlength{\oddsidemargin}{-.25in}
+\setlength{\topmargin}{-.75in}
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{9.5in}
+\newcommand{\due}{December 2nd, 2009}
+\newcommand{\HWnum}{12}
+\newcommand{\grad}{\bold\nabla}
+\newcommand{\vecE}{\vec{E}}
+\newcommand{\scrptR}{\vec{\mathfrak{R}}}
+\newcommand{\kapa}{\frac{1}{4\pi\epsilon_0}}
+
+\begin{document}
+\input{../title.tex}
+
+\section{Problem \#1}
+\begin{enumerate}[(a)]
+\item
+To find the magnetic field from a square loop we can use the equation
+\begin{equation}
+\vec{B} = \frac{\mu_0 I}{4\pi s}\left(\sin\theta_2-\sin\theta_1\right)
+\label{griff535}
+\end{equation}
+Now this is a bit complicated by the fact that our point of interest is not directly above the so our triangle is given by figures attached. From this triangle we can see that $s$ the distance from our point of interest to the line is 
+$$s = \sqrt{\left(\frac{a}{2}\right)^2 + z^2}$$ 
+And we calculate $h$ as
+\begin{align*}
+h &= \sqrt{\left(\frac{a}{2}\right)^2 + s^2}\\ 
+&= \sqrt{\left(\frac{a}{2}\right)^2 + \left(\frac{a}{2}\right)^2 + z^2}\\ 
+&= \sqrt{2\left(\frac{a}{2}\right)^2 +  z^2}\\ 
+&= \sqrt{2\frac{a^2}{4} +  z^2}\\ 
+&= \sqrt{\frac{a^2}{2} +  z^2}
+\end{align*}
+Now we can see that $\theta_1 = -\theta_2$ so 
+\begin{align*}
+\sin\theta_2-\sin\theta_1 &= \sin\theta_2-\sin(-\theta_2)\\
+&= \sin\theta_2+\sin\theta_2\\
+&= 2\sin\theta_2
+\end{align*}
+So we can calculate $2\sin\theta_2$ as
+\begin{align*}
+2\sin\theta_2 &= 2\frac{a}{2h}\\
+2\sin\theta_2 &= \frac{a}{h}\\
+2\sin\theta_2 &= \frac{a}{\sqrt{\dfrac{a^2}{2} + z^2}}
+\end{align*}
+So we can say that the total B-field is 
+$$\vec{B} = \frac{\mu_0 I}{4\pi s}\frac{a}{\sqrt{\frac{a^2}{2} + z^2}}\hat{\phi}$$
+Now we see that this field does not point only in the $\hat{z}$ direction so we need to find the $z$ component of the magnetic field using the relation
+$$\vec{B}_z = \vec{B}\sin\alpha$$
+where $\alpha$ is the angle shown in figure 1.b. So we calculate 
+\begin{align*}
+\vec{B}_z &= \vec{B}\sin\alpha\\
+&= \frac{\mu_0 I}{4\pi s}\frac{a}{\sqrt{\frac{a^2}{2} + z^2}}\sin\alpha\\
+&= \frac{\mu_0 I}{4\pi s}\frac{a}{\sqrt{\frac{a^2}{2} + z^2}}\frac{a}{2s}\\
+&= \frac{\mu_0 I}{4\pi}\frac{a}{\sqrt{\frac{a^2}{2} + z^2}}\frac{a}{2s^2}\\
+&= \frac{\mu_0 I}{8\pi}\frac{a}{\sqrt{\dfrac{a^2}{2} + z^2}}\frac{a}{\left(\dfrac{a}{2}\right)^2 + z^2}\hat{z}
+\end{align*}
+Now we found that this is due to one of the four wire so we multiply by four to get
+$$\vec{B}_z = \frac{\mu_0 I}{2\pi}\frac{a}{\sqrt{\dfrac{a^2}{2} + z^2}}\frac{a}{\left(\dfrac{a}{2}\right)^2 + z^2}\hat{z}$$
+We can check the units where we expect 
+$$<\vec{B}_z> = kg\ s^{-2}\ A^{-1}$$
+and we assume that
+$$<\mu_0> = m\ kg\ s^{-2}\ A^{-2};\ <I> = A;\ <a> = <z> = m$$
+So we calculate
+\begin{align*}
+\left<\frac{\mu_0 I}{2\pi}\frac{a}{\sqrt{\dfrac{a^2}{2} + z^2}}\frac{a}{\left(\dfrac{a}{2}\right)^2 + z^2}\hat{z}\right> &=  m\ kg\ s^{-2}\ A^{-2}\ A \frac{m^2}{m^3}\\
+&=  m\ kg\ s^{-2}\ A^{-2}\ A\ m^{-1}\\
+&=  kg\ s^{-2}\ A^{-1} 
+\end{align*}
+Good our units agree. Now if we take the limiting case where $z=0$ we get
+\begin{align*}
+\vec{B}_{z=0} &= \frac{\mu_0 I}{2\pi}\frac{a}{\sqrt{\dfrac{a^2}{2} + 0^2}}\frac{a}{\left(\dfrac{a}{2}\right)^2 + 0^2}\hat{z}\\
+\vec{B}_{z=0} &= \frac{\mu_0 I}{2\pi}\frac{a}{\sqrt{\dfrac{a^2}{2}}}\frac{a}{\left(\dfrac{a}{2}\right)^2}\hat{z}\\
+\vec{B}_{z=0} &= \frac{\mu_0 I}{2\pi}\frac{a}{\dfrac{a}{\sqrt{2}}}\frac{a}{\left(\dfrac{a}{2}\right)^2}\hat{z}\\
+\vec{B}_{z=0} &= \frac{\mu_0 I}{2\pi}\frac{\sqrt{2}a}{a}\frac{4a}{a^2}\hat{z}\\
+\vec{B}_{z=0} &= \frac{\mu_0 I}{2\pi}\frac{4\sqrt{2}a^2}{a^3}\hat{z}\\
+\vec{B}_{z=0} &= \frac{2\sqrt{2}\mu_0 I}{\pi a}\hat{z}
+\end{align*}
+This is what we found in Homework \#10 problem 3.
+
+\item
+Now for the case where $z>>a$ we can see that the B-field we found becomes
+\begin{align*}
+\vec{B}_z &= \frac{\mu_0 I}{2\pi}\frac{a}{\sqrt{\cancelto{0}{\dfrac{a^2}{2}} + z^2}}\frac{a}{\cancelto{0}{{\left(\dfrac{a}{2}\right)^2}} + z^2}\hat{z}\\
+\vec{B}_z &= \frac{\mu_0 I}{2\pi}\frac{a}{\sqrt{z^2}}\frac{a}{z^2}\hat{z}\\
+\vec{B}_z &= \frac{\mu_0 I}{2\pi}\frac{a}{z}\frac{a}{z^2}\hat{z}\\
+\vec{B}_z &= \frac{\mu_0 Ia^2}{2\pi z^3}\hat{z}
+\end{align*}
+We see that $Ia^2=m$ where $m$ is the magnetic dipole so
+$$\vec{B}_z = \frac{\mu_0 m}{2\pi z^3}\hat{z}$$
+This is what we see for the B-field due to a magnetic dipole which is what we expected.
+
+\end{enumerate}
+
+\section{Problem \#2}
+\begin{enumerate}[(a)]
+\item
+If we assume that we have 1 mol of gold we can say that we have $6.022\times10^{23}$ electrons so the total charge of one mol of gold is
+\begin{align*}
+Q &= (6.022\times10^{23})(1.602\times10^{-19})\\
+Q &= 9.65\times10^{4}\ C
+\end{align*}
+We can calculate the volume of a mol of gold 
+$$1\ \cancel{mol}\frac{197\ \cancel{g}}{\cancel{mol}}\frac{\cancel{cm^3}}{19.3 \cancel{g}}\frac{m^3}{1000000 \cancel{cm^3}} = 1.02\times10^{-5}\ m^3$$
+Now we can calculate the charge density $\rho$ as
+\begin{align*}
+\rho &= \frac{Q}{V}\\
+\rho &= \frac{9.65\times10^4}{1.02\times10^{-5}}\\
+\rho &= 9.45\times10^9\ C\ m^{-3}
+\end{align*}
+So we can now use the relation that 
+$$J = \frac{I}{\pi r^2} =\rho v$$
+where $r$ is the radius of the wire so if we solve for $v$ we get
+$$v = \frac{I}{\pi\rho r^2}$$
+if we assume that $I = 1\ A$ and $r = 0.001\ m$ then we calculate
+\begin{align*}
+v &= \frac{I}{\pi\rho r^2}\\
+v &= \frac{1}{\pi(9.45\times10^{9} (0.001)^2}\\
+v &= 3.37\times10^{-5}\ m\ s^{-1}
+\end{align*}
+This is a very slow speed, but we do not experience lag in our electronics because the electrons do not move very far. Each individual electron does not move far the signal is carried down from each electron to the next.
+
+\item
+To find the force on the two wires due to the magnetic force we can use the equation
+\begin{equation}
+F = \frac{\mu_0}{2\pi}\frac{I_1I_2}{d}
+\label{magfor}
+\end{equation}
+where $d$ is the distance between the two wires. If we assume that the wires are $0.0005\ m$ apart and each carries a current of $1\ A$ but opposite in sign we can calculate
+\begin{align*}
+F &= \frac{\mu_0}{2\pi}\frac{I_1I_2}{d}\\
+&= \frac{\mu_0}{2\pi}\frac{1(-1)}{0.0005}\\
+&= -4\times10^{-4}\ N\ m^{-1}
+\end{align*}
+For the $2\ m$ wire the total force is
+\begin{align*}
+F &= (-4\times10^{-4})(2)\\
+F &= -8\times10^{-4}\ N
+\end{align*}
+To calculate the electric force on the wires we can use \emph{Coulomb's Law} given by
+\begin{equation}
+F = \kapa\frac{q_1q_2}{r^2}
+\label{coul}
+\end{equation}
+So we need to find the charge in each wire. Note that $q_1=q_2$ in this case. So we assume that the wires have a radius of $0.001\ m$ and a length of $2\ m$ so the volume is
+\begin{align*}
+V &= \pi r^2l\\
+&= \pi (0.001)^2(2)\\
+&= 6.28\times10^{-6}\ m^3
+\end{align*}
+So we can calculate the total charge using
+\begin{align*}
+q &= \rho V\\
+q &= (9.45\times10^9)(6.28\times10^{-6})\\
+q &= 5.93\times10^4\ C
+\end{align*}
+so we can use equation \ref{coul} where $r=0.0005\ m$
+\begin{align*}
+F &= \kapa\frac{q^2}{r^2}\\
+&= \kapa\frac{(5.93\times10^4)^2}{(0.0005)^2}\\
+&= 1.26\times10^{26}\ N
+\end{align*}
+This number is way to large, but we did not account for the fact that the wire actually contain positive ions that would negate most of this force.
+
+
+
+\end{enumerate}
+
+\section{Problem \#3}
+\begin{enumerate}[(a)]
+\item
+First we need to find the current that the loop creates. We know that current is given by
+$$\vec{I} = \lambda\vec{v}$$
+where $\lambda$ is the linear charge distribution given by
+$$\lambda = \frac{Q}{2\pi R}$$
+where $R$ is the radius of the donut. So we can say that the current is given by
+$$\vec{I} = \frac{Q}{2\pi R}\vec{v}$$
+Note that $\vec{v}$ is the tangential velocity which we can define in terms of the angular velocity $\omega$
+$$\vec{v} = \omega R\hat{\phi}$$
+So
+\begin{align*}
+\vec{I} &= \frac{Q}{2\pi R}\omega R\hat{\phi}\\
+&= \frac{Q}{2\pi }\omega \hat{\phi}
+\end{align*}
+Now we know that the magnetic dipole is given by
+$$\vec{m} = I \int d\vec{a}$$
+where $\int d\vec{a}$ is just the area vector of the loop. So we get
+\begin{align*}
+\vec{m} &= I \int d\vec{a}\\
+&= I \pi R^2\hat{z}\\
+&= \frac{Q}{2\pi }\omega \pi R^2\hat{z}\\
+&= \frac{Q}{2}\omega R^2\hat{z}
+\end{align*}
+Now we know that the angular momentum is given by 
+\begin{align*}
+\vec{L} &= MR\vec{v}\\
+&= MR(\omega R)\hat{z}\\
+&= M\omega R^2\hat{z}
+\end{align*}
+So if we calculate the ratio between the magnetic dipole and the angular momentum we get
+\begin{align*}
+\frac{m}{L} &= \frac{\dfrac{Q}{2}\omega R^2}{M\omega R^2}\\
+&= \frac{Q}{2M}
+\end{align*}
+
+\item
+Note that the answer in part (a) has no dependence on the size (radius) of the ring. So if we thought of a sphere as a combination of rings we can see that the gyromagnetic ratio will remain the same for a sphere as is does for a donut. Or
+$$\frac{m}{L} = \frac{Q}{2M}$$
+
+\item
+Given that the angular momentum of a spinning electron is $\frac{1}{2}\hbar$ we can solve for the magnetic moment as
+\begin{align*}
+\frac{m}{L} &= \frac{Q}{2M}\\
+m &= \frac{Q}{2M}L\\
+&= \frac{Q}{2M}\frac{\hbar}{2}\\
+&= \frac{Q\hbar}{4M}\\
+&= \frac{(1.60\times10^{-19})(1.05\times10^{-34})}{4(9.11\times10^{-31})}\\
+m &= 4.64\times10^{-24}\ A\ m^2
+\end{align*}
+
+\end{enumerate}
+
+\section{Problem \#4}
+\begin{enumerate}[(a)]
+\item
+Given a magnetization of an infinitely long cylinder as 
+$$\vec{M} = k\hat{z}$$
+we can calculate the bound currents $\vec{K}_b$ and $\vec{J}_b$ using
+\begin{equation}
+\vec{J}_b = \grad\times\vec{M}
+\label{Jbond}
+\end{equation}
+and
+\begin{equation}
+\vec{K}_b = \vec{M}\times\hat{n}
+\label{Kbond}
+\end{equation}
+Now we can quickly note that $\vec{M}$ is constant so the bound volume current is zero, so all we need to calculate is the bound surface current. We note that $\hat{n}$ is equal to $\hat{s}$ on an infinitely long cylinder so
+\begin{align*}
+\vec{K}_b &= \vec{M}\times\hat{n}\\
+&= k\hat{z}\times\hat{s}\\
+&= k\hat{\phi}
+\end{align*}
+We see that the surface current is constant and flows around the surface of the cylinder. Therefore $k$ has the units of a surface current or
+$$<k> = A\ m^{-1}$$
+We can see that this surface current is the same as the surface current from a solenoid. So we use \emph{Amp\`{e}re's law} 
+\begin{equation}
+\oint\vec{B}\cdot d\vec{l} = \mu_0 I_{enc}
+\label{amplaw}
+\end{equation}
+We pick a loop that goes along the $\hat{z}$ direction inside of the cylinder and then goes back along $\hat{z}$ outside of the cylinder and $I_{enc}$ is the surface current by the length of the Amp\`{e}rian loop. We note that we assume that there is no magnetic field outside of the cylinder and that the only place where $\vec{B}\cdot d\vec{l}$ is non zero is inside the cylinder. So
+\begin{align*}
+\oint\vec{B}\cdot d\vec{l} &= \mu_0 I_{enc}\\
+B\int_0^L dl &= \mu_0 {K_b}{L}\\
+BL &= \mu_0 {k}{L}\\
+\vec{B} &= \mu_0 k\hat{z}
+\end{align*}
+So the magnetic field everywhere is 
+$$\vec{B} = \left\{\begin{array}{lc}
+	\mu_0 k		&s<R\\
+	0		&s>R
+		\end{array}\right.$$
+We can check the units of the magnetic field. We expect
+$$<\vec{B}> = kg\ s^{-2}\ A^{-1}$$
+and we know that
+$$<\mu_0> = m\ kg\ s^{-2}\ A^{-2};\ <k> = A\ m^{-1}$$
+so 
+\begin{align*}
+<\mu_0 k> &= m\ kg\ s^{-2}\ A^{-2}\ A\ m^{-1}\\
+&= kg\ s^{-2}\ A^{-1}
+\end{align*}
+Good our units agree. So now to find $\vec{H}$ we can use
+\begin{equation}
+\vec{H} = \frac{1}{\mu_0}\vec{B} - \vec{M}
+\label{equH}
+\end{equation}
+Note that the magnetic field and the magnetization are zero outside of the cylinder, so $\vec{H}$ is zero outside of the cylinder. Now we calculate $\vec{H}$ inside of the cylinder to get
+\begin{align*}
+\vec{H} &= \frac{1}{\mu_0}\vec{B} - \vec{M}\\
+&= \frac{1}{\mu_0}\mu_0k\hat{z} - k\hat{z}\\
+&= k\hat{z} - k\hat{z}\\
+&= 0
+\end{align*}
+So $\vec{H}$ is zero everywhere. This still works with Griffiths' equation 6.20 because we did not put any free current into the system. 
+
+\item
+If the cylinder is not finite then the magnetic field on the outside of the cylinder is not zero, and we can no longer hold that assumption. The field on the outside will look like a magnetic dipole. See attached for sketches of the magnetic field.
+\end{enumerate}
+
+\section{Problem \#5}
+For a magnetization $\vec{M} = cs\hat{\phi}$ we can calculate the bound currents using equations \ref{Jbond} and \ref{Kbond} so
+\begin{align*}
+\vec{J}_b &= \grad\times\vec{M}\\
+&= \cancelto{0}{\left[\frac{1}{s}\frac{\partial M_z}{\partial\phi} - \frac{\partial M_{\phi}}{\partial z}\right]\hat{s}} + \cancelto{0}{\left[\frac{\partial M_s}{\partial z} - \frac{\partial M_{z}}{\partial s}\right]\hat{\phi}} + \frac{1}{s}\left[\frac{\partial}{\partial s}(sM_{\phi}) - \cancelto{0}{\frac{\partial M_s}{\partial\phi}}\right]\hat{z}\\
+&= \frac{1}{s}\left[\frac{\partial}{\partial s}(cs^2)\right]\hat{z}\\
+&= \frac{1}{s}\left[2cs\right]\hat{z}\\
+&= 2c\hat{z}
+\end{align*}
+and
+\begin{align*}
+\vec{K}_b &= \vec{M}\times\hat{n}\\
+&= cs\hat{\phi}\times\hat{s}\\
+&= -cs\hat{z}\\
+&= -ca\hat{z}
+\end{align*}
+We see that the units of $c$ have to be the same as the volume current density or
+$$<c> = A\ m^{-2}$$
+Note that the units of the surface current density $\vec{J}_b$ work out with the units of $c$. Now to find the B-field due to these current densities we use \emph{Amp\`{e}re's Law} (equation \ref{amplaw}). With an Amp\`{e}rian loop that is a circle such that it aligns with the cross section of the cylinder. We are assuming that the B-field goes azimuthally, therefore the magnetic field is constant and parallel to the loop. So for inside the cylinder we can say that the current enclosed is given by 
+\begin{align*}
+I_{enc} &= {J_b}{\pi s^2}\\
+&= {2c}{\pi s^2}
+\end{align*}
+where $s$ is the radius of our Amp\`{e}rian loop. So using equation \ref{amplaw} yields
+\begin{align*}
+\oint\vec{B}\cdot d\vec{l} &= \mu_0 I_{enc}\\
+B\oint dl &= \mu_0 {2c}{\pi s^2}\\
+B(2\pi s) &= \mu_0 {2c}{\pi s^2}\\
+B &= \mu_0 \frac{2c\pi s^2}{2\pi s}\\
+\vec{B} &= \mu_0 c s\hat{\phi}
+\end{align*}
+And for outside the cylinder we can say that 
+\begin{align*}
+I_{enc} &= J_b(\pi a^2)+{K_b}(2\pi a)\\
+&= 2c(\pi a^2)-ca(2\pi a)\\
+&= 2c(\pi a^2)-2c(\pi a^2)\\
+&= 0
+\end{align*}
+This implies that the magnetic field outside of the cylinder is zero so we can say the total magnetic field is
+$$\vec{B} = \left\{\begin{array}{lc}
+	\mu_0cs\hat{\phi}	&s<a\\
+	0			&s>a\\
+		\end{array}\right.$$
+So now we can calculate $\vec{H}$ using equation \ref{equH}. For inside the cylinder we get
+\begin{align*}
+\vec{H} &= \frac{1}{\mu_0}\vec{B}-\vec{M}\\
+&= \frac{1}{\mu_0}\mu_0cs\hat{\phi}-cs\hat{\phi}\\
+&= 0
+\end{align*}
+We also can see that $\vec{H}$ outside the cylinder is zero as well because there is no magnetic field and no magnetization. So $\vec{H} = 0$ everywhere.
+
+\section{Problem \#6}
+\begin{enumerate}[(a)]
+\item
+For the magnetization $\vec{M} = ks\hat{z}$ we can calculate the bound current densities using equations \ref{Jbond} and \ref{Kbond}
+\begin{align*}
+\vec{J}_b &= \grad\times\vec{M}\\
+&= \cancelto{0}{\left[\frac{1}{s}\frac{\partial M_z}{\partial\phi} - \frac{\partial M_{\phi}}{\partial z}\right]\hat{s}} + \left[\cancelto{0}{\frac{\partial M_s}{\partial z}} - \frac{\partial M_{z}}{\partial s}\right]\hat{\phi} + \cancelto{0}{\frac{1}{s}\left[\frac{\partial}{\partial s}(sM_{\phi}) - \frac{\partial M_s}{\partial\phi}\right]\hat{z}}\\
+&= -\frac{\partial }{\partial s}(ks)\hat{\phi}\\  
+&= -k\hat{\phi}  
+\end{align*}
+And
+\begin{align*}
+\vec{K}_b &= \vec{M}\times\hat{n}\\
+&= ks\hat{z}\times\hat{s}\\
+&= ks\hat{\phi}\\
+&= kR\hat{\phi}
+\end{align*}
+We see that these currents are like a solenoid so we can use a Amp\`{e}rian loop like we used in problem 4. So we can say that the current enclosed is
+\begin{align*}
+I_{enc} &= J_b(R-s)l+K_b(l)\\
+I_{enc} &= -k(R-s)l+kRl\\
+I_{enc} &= -kRl+ksl+kRl\\
+I_{enc} &= ksl
+\end{align*}
+So we can use equation \ref{amplaw} to calculate the magnetic field
+\begin{align*}
+\oint\vec{B}\cdot d\vec{l} &= \mu_0I_{enc}\\
+B\int_0^l dl &= \mu_0ksl\\
+Bl &= \mu_0ksl\\
+B &= \mu_0ks\hat{z}
+\end{align*}
+Now we can see that outside of the cylinder the magnetic field is zero because we have an infinitely long cylinder. So the magnetic field is
+$$\vec{B} = \left\{\begin{array}{lc}
+	\mu_0ks\hat{z}		&s<R\\
+	0			&s>R
+		\end{array}\right.$$
+
+\item
+We can use \emph{Amp\`{e}re's law} for $\vec{H}$ which is given by
+$$\oint\vec{H}\cdot d\vec{l} = I_{fenc}$$
+where $I_{fenc}$ is the free charge enclosed. We can quickly see that there is no free charge in the system so $\vec{H} = 0$. So we can use equation \ref{equH} to find the B-field
+\begin{align*}
+\vec{H} &= \frac{1}{\mu_0}\vec{B} - \vec{M}\\ 
+0 &= \frac{1}{\mu_0}\vec{B} - ks\hat{z}\\ 
+\frac{1}{\mu_0}\vec{B} &= ks\hat{z}\\ 
+\vec{B} &= \mu_0ks\hat{z}
+\end{align*}
+And for outside the cylinder we know that $\vec{H}=0$ and $\vec{M} = 0$ so 
+$$\vec{B} = 0$$
+This is in agreement with our answers in part (a)
+$$\vec{B} = \left\{\begin{array}{lc}
+	\mu_0ks\hat{z}		&s<R\\
+	0			&s>R
+		\end{array}\right.$$
+\end{enumerate}
+
+\section{Problem \#7}
+\begin{enumerate}[(a)]
+\item
+We know that the force on a dipole in a magnetic field is given by
+\begin{equation}
+\vec{F} = \grad(\vec{m}\cdot\vec{B})
+\label{force}
+\end{equation}
+where the magnetic field due to the bottom dipole is given by
+$$\vec{B}_2 = \frac{\mu_0 m_2}{4\pi r^3}(2\cos\theta\hat{r}+\sin\theta\hat{\theta})$$
+We see that in this case $\theta = 0$ so our field becomes
+$$\vec{B}_2 = \frac{\mu_0 m_2}{2\pi r^3}\hat{r}$$
+Now we see that the other dipole is given by $m_1\hat{r}$ so equation \ref{force} becomes
+\begin{align*}
+\vec{F} &= \grad(\vec{m}_1\cdot\vec{B}_2)\\
+&= \grad(m_1\hat{r}\cdot\frac{\mu_0 m_2}{2\pi r^3}\hat{r}\\
+&= \grad(\frac{\mu_0 m_1m_2}{2\pi r^3})\\
+&= \frac{\partial}{\partial r}(\frac{\mu_0 m_1m_2}{2\pi r^3})\hat{r}\\
+&= \frac{-3\mu_0 m_1m_2}{2\pi r^4}\hat{r}
+\end{align*}
+
+\item
+First we need to find the dipole moment of the fridge magnet. We can assume that the magnet has a volume of $10.0\ mL$ and iron has a density of $7.87\ g\ mL^{-1}$. So we can estimate that the mass of the magnet is 
+\begin{align*}
+M &= (10.0)(7.87)\\
+&= 78.7\ g
+\end{align*}
+Now we assume that the dipole of the magnet is the sum of all the individual dipoles from each electron which we found in problem \#3 as
+$$m_e = 4.64\times10^{-24}\ A\ m^2$$
+So we know that the atomic number of iron is 56 so we calculate
+$$\frac{78.7\ \cancel{g}}{1}\frac{1\ \cancel{mol}}{56\ \cancel{g}}\frac{6.022\times10^{23}\ atoms}{1\ \cancel{mol}} = 8.46\times10^{23}\ atoms$$
+So if we assume that each atom has an unpaired electron with a dipole moment of $m_e$ we can say that the dipole moment of the magnet $m$ is
+\begin{align*}
+m &= (4.64\times10^{-24})(8.46\times10^{23})\\
+&= 3.63
+\end{align*}
+So we can use the force we calculated in part (a). 
+$$\vec{F} = \frac{-3\mu_0 m_1m_2}{2\pi r^4}\hat{r}$$
+Note that the dipoles face opposite directions in this system so it's the negative of the force and $m_1=m_2$ so the force in this system is
+$$\vec{F}_B = \frac{3\mu_0 m^2}{2\pi r^4}\hat{r}$$
+So if we want the point where the force of gravity equals the force of the magnets repulsion we get
+\begin{align*}
+\vec{F}_B &= \vec{F}_g \\ 
+\frac{3\mu_0 m^2}{2\pi r^4} &= Mg \\ 
+\frac{2\pi r^4}{3\mu_0 m^2} &=\frac{1}{Mg} \\ 
+r^4 &=\frac{3\mu_0 m^2}{2\pi Mg} \\ 
+r &=\sqrt[4]{\frac{3\mu_0 m^2}{2\pi Mg}} \\ 
+&=\sqrt[4]{\frac{3\mu_0 m^2}{2\pi Mg}} \\ 
+&=\sqrt[4]{1.03\times10^{-5}} \\ 
+&=0.057\ m
+\end{align*}
+
+\end{enumerate}
+
+\end{document}
+

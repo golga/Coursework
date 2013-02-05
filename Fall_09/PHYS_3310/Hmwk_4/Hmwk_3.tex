@@ -1,0 +1,416 @@
+\documentclass[11pt]{article}
+
+\usepackage{latexsym}
+\usepackage{amssymb}
+\usepackage{enumerate}
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{cancel}
+\numberwithin{equation}{section}
+
+\setlength{\evensidemargin}{.25in}
+\setlength{\oddsidemargin}{-.25in}
+\setlength{\topmargin}{-.75in}
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{9.5in}
+\newcommand{\due}{September 16th, 2009}
+\newcommand{\HWnum}{4}
+\newcommand{\grad}{\bold\nabla}
+\newcommand{\vecE}{\vec{E}}
+\newcommand{\scrptR}{\vec{\mathfrak{R}}}
+
+\begin{document}
+\input{../title.tex}
+
+\section{Problem \#1}
+To find the charge of the sphere we take the surface integral of the surface charge density $\sigma$ over the surface of a sphere with radius $R$.
+$$\int_S \sigma da = \int_S \sigma_0 \sin^2(\theta)\cos^2(\phi) da$$
+Now we use the limits of integration $da$ in spherical coordinates as $R^2 \sin(\theta)d\theta d\phi$ this gives us
+$$\int_S \sigma da = \int_0^{\pi}\int_0^{2\pi} \sigma_0 \sin^2(\theta)\cos^2(\phi) R^2 \sin(\theta)d\theta d\phi$$
+\begin{equation}
+\int_S \sigma da = \sigma_0 R^2\int_0^{\pi}\int_0^{2\pi}\sin^3(\theta)\cos^2(\phi) d\theta d\phi
+\label{chargeint}
+\end{equation}
+
+Now we can take the integral with respect to $\phi$. We first use the identity $$\cos^2(\phi) = \frac{1}{2}1+\cos(2\phi)$$
+This makes equation \ref{chargeint} become
+$$\int_S \sigma da = \sigma_0 R^2\int_0^{\pi}\frac{1}{2}1+\cos(2\phi)d\phi\int_0^{2\pi}\sin^3(\theta) d\theta$$
+$$\int_S \sigma da = \frac{1}{2}\sigma_0 R^2\left[\phi-\frac{1}{2}\sin(2\phi)\right]_{0}^{\pi}\int_0^{2\pi}\sin^3(\theta) d\theta$$
+$$\int_S \sigma da = \frac{1}{2}\sigma_0 R^2\left[\pi - 0 - (0 - 0)\right]\int_0^{2\pi}\sin^3(\theta) d\theta$$
+\begin{equation}
+\int_S \sigma da = \frac{1}{2}\sigma_0 \pi R^2\int_0^{2\pi}\sin^3(\theta) d\theta
+\label{inttheta}
+\end{equation}
+Now we can take the integral with respect of $\theta$. Here we need the trig identity 
+$$\sin^2(\theta) = 1 - \cos^2(\theta)$$
+Now equation \ref{inttheta} becomes
+$$\int_S \sigma da = \frac{1}{2}\sigma_0 \pi R^2\int_0^{2\pi}(1-\cos^2(\theta))\sin(\theta) d\theta$$
+Now we use a $u$ substitution where $u=\cos(\theta)$ and $du = -\sin(\theta)$ now we have
+$$\int_S \sigma da = \frac{1}{2}\sigma_0 \pi R^2 \left(-2\int_1^{-1}1-u^2du\right)$$
+Note that the limits were changed by using $u(\theta)$ and only go from $0$ to $\pi$ with a factor of 2 taking out to account for the change.
+$$\int_S \sigma da = -\frac{1}{2}\sigma_0 \pi R^2 2\left[u-\frac{u^3}{3}\right]_{1}^{-1}$$
+$$\int_S \sigma da = -\sigma_0 \pi R^2 \left[-1 - \frac{(-1)^3}{3} - \left(1 - \frac{1^3}{3}\right)\right]$$
+$$\int_S \sigma da = -\sigma_0 \pi R^2 \left[-1 + \frac{1}{3} - 1 + \frac{1}{3}\right]$$
+$$\int_S \sigma da = -\sigma_0 \pi R^2 \left[-2 + \frac{2}{3}\right]$$
+$$\int_S \sigma da = -\sigma_0 \pi R^2 \left[-\frac{4}{3}\right]$$
+$$\int_S \sigma da = \frac{4}{3}\sigma_0 \pi R^2 $$
+Now lets check our units. We know that
+$$<\sigma_0> = C m^{-2}; <R> = m$$
+$$<\sigma_0 R^2> = C \cancel{m^{-2}m^2}$$
+$$<\sigma_0 R^2> = C$$
+Good. We were looking for total charge which has the units of Coulombs.
+ 
+So we can see that when $\theta = 0$ the charge is equal to zero. So at the top and bottom of the sphere we have no charge and at the equator($\theta = \dfrac{\pi}{2}$) the charge is only dependent on the $\cos^2(\phi)$ so at $\phi = \dfrac{\pi}{2}$ we have no charge.
+This means that we have no charge from the top to the bottom along the longitudinal where $\phi$ equals $\dfrac{\pi}{2}$ and $\dfrac{3\pi}{2}$. On the equator there where $\phi$ equals $0$ and $\pi$ there is a $\sigma_0$ charge. The charge decreases from this point to the zero longitudinal line by a $\cos^2$. See attached picture for a drawing of the charge distribution 
+
+To find the electric field of this charge distribution we can use Gauss' Law because we already found the charge enclosed as
+$$\frac{4}{3}\sigma_0 \pi R^2$$
+So we can find Gauss' Law as
+$$\oint_S \vec{E}\cdot d\vec{a} = \frac{4}{3}\frac{\sigma_0 \pi R^2}{\epsilon_0}$$
+And we know $\vecE$ in terms of $\sigma$ so we can say
+$$\oint_S \frac{\sigma_0 \sin^2(\theta)\cos^2(\phi)}{\scrptR^2}\hat{\scrptR}\cdot d\vec{a} = \frac{4}{3}\frac{\sigma_0 \pi R^2}{\epsilon_0}$$
+As you can see with out a constant charge distribution the integral becomes very nasty.
+
+\section{Problem \#2}
+\begin{enumerate}[(a)]
+\item We have the electric field
+$$\vecE = c\frac{\vec{r}}{r^2}$$ 
+To find the divergence of $\vecE$ first we need to convert the $\vec{r}$ into a $\hat{r}$. We know that 
+$$\hat{r} = \frac{\vec{r}}{r}$$
+Solving for $\vec{r}$ we find
+$$\vec{r} = \hat{r}r$$
+Now we replace $\vec{r}$ in $\vecE$ to get
+$$\vecE = c\frac{\hat{r}r}{r^2}$$ 
+$$\vecE = c\frac{\hat{r}}{r}$$ 
+Now we can take the divergence of the electric field. 
+$$\grad\cdot\vecE = \grad \cdot c\frac{\hat{r}}{r}$$
+First off we know that the only direction $\vecE$ points is in the $\hat{r}$ direction so we only have to take the partial with respect to $r$ when we take the divergence, because of the dot product. Using the spherical divergence we get
+$$\grad\cdot\vecE = c\frac{1}{r^2}\left(\frac{\partial}{\partial r}r^2\frac{1}{r}\right)$$
+$$\grad\cdot\vecE = c\frac{1}{r^2}\left(\frac{\partial}{\partial r}r\right)$$
+\begin{equation}
+\grad\cdot\vecE = c\frac{1}{r^2}
+\label{divg}
+\end{equation}
+There is not delta function at the origin because the divergence is non-zero at points away from the origin. 
+
+To find the curl of $\vecE$ we are going to need to use the equation of the curl in spherical coordinates. Given by
+$$\grad\times\vecE = \grad\times c\frac{\hat{r}}{r}$$
+
+\begin{equation}
+\grad\times\vecE = \frac{1}{r\sin\theta}\left[\frac{\partial}{\partial\theta}(\sin\theta \ E_{\phi}) - \frac{\partial E_{\theta}}{\partial\phi}\right]\hat{r} + \frac{1}{r}\left[\frac{1}{\sin\theta}\frac{\partial E_{r}}{\partial\phi}  - \frac{\partial}{\partial r}(r E_{\phi})\right]\hat{\theta} +\frac{1}{r}\left[\frac{\partial}{\partial r}(r E_{\theta}) - \frac{\partial E_{r}}{\partial\theta}\right]\hat{\phi}
+\label{sphcurl}
+\end{equation}
+For this electric field we see that there is no $\hat{\phi}$ or $\hat{\theta}$ components so $E_{\phi} = E_{\theta} = 0$ so equation \ref{sphcurl} becomes
+$$\grad\times\vecE = \frac{1}{r\sin\theta}\left[\cancelto{0}{\frac{\partial}{\partial\theta}(\sin\theta \ E_{\phi})} - \cancelto{0}{\frac{\partial E_{\theta}}{\partial\phi}}\right]\hat{r} + \frac{1}{r}\left[\frac{1}{\sin\theta}\frac{\partial E_{r}}{\partial\phi}  - \cancelto{0}{\frac{\partial}{\partial r}(r E_{\phi})}\right]\hat{\theta} +\frac{1}{r}\left[\cancelto{0}{\frac{\partial}{\partial r}(r E_{\theta})} - \frac{\partial E_{r}}{\partial\theta}\right]\hat{\phi}$$
+$$\grad\times\vecE = \frac{1}{r}\left[\frac{1}{\sin\theta}\frac{\partial E_{r}}{\partial\phi}\right]\hat{\theta} +\frac{1}{r}\left[-\frac{\partial E_{r}}{\partial\theta}\right]\hat{\phi}$$
+Now we can also see that there are no $\theta$s or $\phi$s in the $r$ component (and the whole electric field) so the partial derivatives with respect to them are zero too. Now we get 
+$$\grad\times\vecE = \frac{1}{r}\left[\frac{1}{\sin\theta}\cancelto{0}{\frac{\partial E_{r}}{\partial\phi}}\right]\hat{\theta} +\frac{1}{r}\left[\cancelto{0}{-\frac{\partial E_{r}}{\partial\theta}}\right]\hat{\phi}$$
+$$\grad\times\vecE = 0$$
+This is what we expect from an electric field.
+Now if we test this using the formula from Griffiths problem 1.60b 
+\begin{equation}
+\int_V(\grad\times\vecE)d\tau = -\oint_S\vecE\times d\vec{a}
+\label{grif60b}
+\end{equation}
+We found already that the left hand side of equation \ref{grif60b} is zero so we get 
+$$\int_V(\grad\times\vecE)d\tau = 0$$
+And we know that $\vecE$ always points in the $\hat{r}$ direction. And because we are integrating over the surface of a sphere we know that $d\vec{a}$ points normal to the surface of a sphere. And in this case the sphere we are talking about is centered at the origin so the normal vector is always pointing in $\hat{r}$. Now we know that $\vecE$ is parallel to $d\vec{a}$ and the curl of 2 parallel vectors is zero thus giving us
+
+$$-\oint_S\vecE\times d\vec{a} = 0 $$
+So the formula from Griffiths problem 1.60b is true for this case.
+
+\item 
+The units of $c$ have equal the units of $\vecE$ times the units of $r^2$ so that the original equation
+$$\vecE = c\frac{\hat{r}}{r}$$ 
+has true dimensions. So we know 
+$$<\vecE> = kg m s^{-2} C^{-1}; <r> = m$$
+So the units of 
+$$<\vecE r> = kg m s^{-2} C^{-1} m$$
+$$<\vecE r> = kg s^{-2} C^{-1} m^2$$
+And we said that 
+$$<c> = <\vecE r>$$
+So
+$$<c> = kg s^{-2} C^{-1} m^2$$
+
+The charge distribution of this electric field can be found using the divergence and the equation
+$$\grad\cdot\vecE = \frac{\rho}{\epsilon_0}$$
+
+Which we found using equation \ref{divg} rewritten here
+$$\grad\cdot\vecE = c\frac{1}{r^2}$$
+So we can set these two equations equal to each other to find $\rho$ or the charge distribution
+$$\frac{\rho}{\epsilon_0} = c\frac{1}{r^2}$$
+$$\rho= \epsilon_0 c\frac{1}{r^2}$$
+We can double check our units for this problem. We assume that 
+$$<\rho>=C m^{-3} $$
+And we know that 
+$$<c> = kg s^{-2} C^{-1} m^2; <\epsilon_0> = C^2s^2kg^{-1}m^{-3}; <r>=m$$
+$$\left<\epsilon_0 c\frac{1}{r^2}\right> =\frac{kgm^2 C^2s^2}{s^{2} C kgm^{3}m^2}$$
+$$\left<\epsilon_0 c\frac{1}{r^2}\right> =\frac{C}{m^{3}}$$
+$$\left<\epsilon_0 c\frac{1}{r^2}\right> =Cm^{-3}$$
+This is what we assumed, so we know the charge distribution goes over all space but is at its densest at the origin and decreases by a factor of $r^2$ as it moves out.
+\end{enumerate}
+
+\section{Problem \#3}
+The electric field that is not possible is field (i)
+\begin{equation}
+\vecE = c(2x\hat{x} - x\hat{y} + y \hat{z})
+\label{vecI}
+\end{equation}
+To find out why we need to calculate the curl.
+$$\grad\times \vecE = \grad \times c(2x\hat{x} - x\hat{y} + y \hat{z})$$
+$$\grad\times\vecE = c(\grad \times 2x\hat{x} - x\hat{y} + y \hat{z})$$
+$$\grad\times\vecE = c\det\left( \begin{array}{ccc}
+			\hat{x} &\hat{y} &\hat{z}\\
+			\frac{\partial}{\partial x} &\frac{\partial}{\partial y} &\frac{\partial}{\partial z}\\
+			2x &-x &y\\
+			\end{array}\right)$$
+$$\grad\times \vecE = c\left((1-0)\hat{x} - (0-0)\hat{y} + (-1-0)\hat{z}\right)$$
+$$\grad\times \vecE = c\left(\hat{x} + \hat{z}\right)$$
+The curl is not zero! This means that this electric field is not possible, because every electric field is conservative or the integral around a closed path is zero. We can see that for the electric field (ii) is equal to zero like an electric field should be.
+\begin{equation}
+\vecE = c(2x\hat{x} + z\hat{y} + y \hat{z})
+\label{vecII}
+\end{equation}
+$$\grad\times \vecE = \grad \cdot c(2x\hat{x} + z\hat{y} + y \hat{z})$$
+$$\grad\times \vecE = c(\grad \cdot 2x\hat{x} + z\hat{y} + y \hat{z})$$
+$$\grad\times \vecE = c\det\left( \begin{array}{ccc}
+			\hat{x} &\hat{y} &\hat{z}\\
+			\frac{\partial}{\partial x} &\frac{\partial}{\partial y} &\frac{\partial}{\partial z}\\
+			2x &z &y\\
+			\end{array}\right)$$
+$$\grad\times \vecE = c\left((1-1)\hat{x} - (0-0)\hat{y} + (0-0)\hat{z}\right)$$
+$$\grad\times \vecE = 0$$
+Just what we said it was going to do. Now we can find the potential for this field. We can find the potential $V$ by using
+\begin{equation}
+V = -\int \vecE\cdot d\vec{l}
+\label{potfE}
+\end{equation}
+$$V = -\int (c(2x\hat{x} + z\hat{y} + y \hat{z}))\cdot(dx\hat{x}+dy\hat{y}+dz\hat{z})$$
+$$V = -c\int(2xdx + zdy + ydz)$$
+Where we will integrate from the origin $(0,0,0)$ to the point $r_o = (x_o,y_o,z_o)$. Where the we will integrate along the path that is a segment from $0$ to $x_o$ at $y=0$ $z=0$ and then a segment from $0$ to $y_o$ at $x=x_o$ $z=0$ and finally a line from $0$ to $z_o$ at $x=x_o$ $y=y_o$. So the integral looks like
+$$V(0) - V(r_o) = -c\left(\int_0^{x_o}2xdx + \cancelto{0}{\int_0^{y_o}0dy} + \int_0^{z_o}y_odz\right)$$
+$$V(r_o) - V(0) = -c\left(\left[x^2\right]_0^{x_o} + \right[y_o z\left]_0^{z_o}\right)$$
+$$V(r_o) - V(0)= -c\left(x_o^2 + y_o z_o\right)$$
+We can define the potential to be zero at the origin so $V(0) = 0$ and we find that
+$$V(r_o) = - c\left(x_o^2 + y_o z_o\right)$$
+And we see that $r_o$ can be any point so we can write it more generally as
+\begin{equation}
+V(r) = -c\left(x^2 + y z\right)
+\label{poten}
+\end{equation}
+Now we can take the gradient of $V(r)$ to see if it is still the electric field
+$$-\grad V(r) = -\grad(-c\left(x^2 + y z\right))$$
+We can cancel the negatives to yield
+$$-\grad V(r) = c\grad\left(x^2 + y z\right)$$
+$$-\grad V(r) = c\left(\frac{\partial\left(x^2 + y z\right)}{\partial x}\hat{x}+\frac{\partial\left(x^2 + y z\right)}{\partial y}\hat{y}+\frac{\partial\left(x^2 + y z\right)}{\partial z}\hat{z}\right)$$
+$$-\grad V(r) = c\left(2x\hat{x} + z \hat{y}+ y\hat{z}\right)$$
+We see that this is the $\vecE$ so we see that
+$$-\grad V(r) = \vecE$$
+this is what we expect.
+
+\section{Problem \#4}
+\begin{enumerate}[(a)]
+\item
+So for a charged ring we can use Griffiths equation 2.30 written as
+\begin{equation}
+V(\vec{r}) = \frac{1}{4\pi\epsilon_0}\int\frac{\lambda(\vec{r})}{|\scrptR|}dl
+\label{grif230}
+\end{equation}
+Where $\scrptR$ is defined as the difference between the position vectors $\vec{r}$ and $\vec{r'}$ or
+$$\scrptR = \vec{r}-\vec{r'}$$
+Where $\vec{r}$ is the position on the $z$ axis and $\vec{r'}$ is the position on the ring or
+$$\vec{r} = z\hat{z}$$
+$$\vec{r'} = a\cos(\theta)\hat{x}+a\sin(\theta)\hat{y}$$
+So we can see that 
+$$\scrptR = - a\cos(\theta)\hat{x} - a\sin(\theta)\hat{y} + z\hat{z} $$
+And we can see the magnitude of $\scrptR$ is 
+$$|\scrptR| = \sqrt{(-a\cos(\theta))^2 + (-a\sin(\theta))^2 + z^2}$$
+$$|\scrptR| = \sqrt{a^2\cos^2(\theta) + a^2\sin^2(\theta) + z^2}$$
+$$|\scrptR| = \sqrt{a^2(\cancelto{1}{\cos^2(\theta) + \sin^2(\theta)}) + z^2}$$
+$$|\scrptR| = \sqrt{a^2 + z^2}$$
+where $a$ is the radius of the ring. Now equation \ref{grif230} becomes
+$$V(\vec{r}) = \frac{1}{4\pi\epsilon_0}\int\frac{\lambda(\vec{r})}{\sqrt{a^2 + z^2}}dl$$
+And we know $\lambda(\vec{r}) = \lambda$ where its constant and can be pulled out of the integral
+$$V(\vec{r}) = \frac{\lambda}{4\pi\epsilon_0}\int\frac{1}{\sqrt{a^2 + z^2}}dl$$
+So we integrate over the length of the ring which is given my the circumference of the ring or $2\pi a$ so we get
+$$V(\vec{r}) = \frac{\lambda}{4\pi\epsilon_0}\int_0^{2\pi a}\frac{1}{\sqrt{a^2 + z^2}}dl$$
+and we have no $l$ dependence so the integral is easy to solve and we get
+$$V(\vec{r}) = \frac{\lambda}{4\pi\epsilon_0}\frac{2\pi a}{\sqrt{a^2 + z^2}}$$
+$$V(\vec{r}) = \frac{\lambda}{2\epsilon_0}\frac{ a}{\sqrt{a^2 + z^2}}$$
+Lets do a dimensional analysis as a double check. We assume that the units of $V(\vec{r})$ are
+$$<V(\vec{r})> = kg m^2 C^{-1} s^{-1}$$
+And we know that
+$$<\epsilon_0> = C^2 s^2 kg^{-1} m^{-3}; <\lambda> = C m^{-1}; <a> = m; <z>=m$$
+So we can see that
+$$\left<\frac{\lambda}{2\epsilon_0}\frac{ a}{\sqrt{a^2 + z^2}}\right> = \frac{C m^{-1}}{C^2 s^2 kg^{-1} m^{-3}}\frac{m}{\sqrt{m^2}}$$
+$$\left<\frac{\lambda}{2\epsilon_0}\frac{ a}{\sqrt{a^2 + z^2}}\right> = \frac{kg m^2}{C s^2}$$
+$$\left<\frac{\lambda}{2\epsilon_0}\frac{ a}{\sqrt{a^2 + z^2}}\right> = kg m^2 C^{-1} s^{-2}$$
+Just what we expected, so we can say that as $z$ increase to infinity it drops off quickly then gradually approaches zero as it goes to infinity. See attached for a graph of the potential as it varies on $z$.
+\item
+To find the $z$ component of the electric field as the 
+$$-\grad_z V(\vec{r})= \vecE_z = -\frac{\partial V(\vec{r})}{\partial z}\hat{z}$$
+$$\vecE_z = -\frac{\partial}{\partial z}(\frac{\lambda}{2\epsilon_0}\frac{ a}{\sqrt{a^2 + z^2}})\hat{z}$$
+$$\vecE_z = -\left(\frac{\lambda}{2\epsilon_0}\frac{-1}{2}\frac{a}{(a^2 + z^2)^{3/2}}2z\right)\hat{z}$$
+$$\vecE_z = \frac{\lambda}{2\epsilon_0}\frac{az}{(a^2 + z^2)^{3/2}}\hat{z}$$
+We can check our units we know that the units of an electric field is
+$$<\vecE_z> = kg m s^{-2} C^{-1}$$
+And we know that
+$$<\epsilon_0> = C^2 s^2 kg^{-1} m^{-3}; <\lambda> = C m^{-1}; <a> = m; <z>=m$$
+$$\left<\frac{\lambda}{2\epsilon_0}\frac{az}{(a^2 + z^2)^{3/2}}\right> = \frac{C m^{-1}}{C^2 s^2 kg^{-1} m^{-3}}\frac{mm}{(m^2)^{3/2}}$$
+$$\left<\frac{\lambda}{2\epsilon_0}\frac{az}{(a^2 + z^2)^{3/2}}\right> = \frac{1kg}{C s^2 m^{-2}}\frac{1}{m}$$
+$$\left<\frac{\lambda}{2\epsilon_0}\frac{az}{(a^2 + z^2)^{3/2}}\right> = \frac{1kg}{C s^2 m^{-1}}$$
+$$\left<\frac{\lambda}{2\epsilon_0}\frac{az}{(a^2 + z^2)^{3/2}}\right> = kg m C^{-1} s^{-2} $$
+Our units are in agreement, so we can say the $z$ component of of the electric field is
+$$\vecE_z = \frac{\lambda}{2\epsilon_0}\frac{az}{(a^2 + z^2)^{3/2}}\hat{z}$$
+
+
+To find the voltage at the origin we solve
+$$V(\vec{0}) = \frac{\lambda}{2\epsilon_0}\frac{ a}{\sqrt{a^2 + 0^2}}$$
+$$V(\vec{0}) = \frac{\lambda}{2\epsilon_0}\frac{ a}{a}$$
+$$V(\vec{0}) = \frac{\lambda}{2\epsilon_0}$$
+It is constant which means that the electric field at the origin is zero. This is an expected result as there is symmetry around the origin.
+\end{enumerate}
+
+\section{Problem \#5}
+\begin{enumerate}[(a)]
+\item
+This field is different from the field in problem 2 because the coordinates for 
+\begin{equation}
+\vecE = \frac{2\lambda}{4\pi\epsilon_0}\frac{\vec{s}}{s^2}
+\label{prob5}
+\end{equation}
+are in cylindrical coordinates while in problem 2 the coordinates are in spherical. This means that the field points radially out from the $z$ axis in this problem while the electric field in problem 2 points radially out from the origin.
+
+To find the electric field of equation \ref{prob5} we rewrite it using an $\hat{s}$ by doing the replacement 
+$$\hat{s} = \frac{\vec{s}}{s}$$
+$$\hat{s}s = \vec{s}$$
+So equation \ref{prob5} becomes
+$$\vecE = \frac{2\lambda}{4\pi\epsilon_0}\frac{\hat{s}s}{s^2}$$
+$$\vecE = \frac{2\lambda}{4\pi\epsilon_0}\frac{\hat{s}}{s}$$
+Now to find the potential we use equation \ref{potfE} or
+$$V = -\int \vecE\cdot d\vec{l}$$
+$$V = -\int \frac{2\lambda}{4\pi\epsilon_0}\frac{\hat{s}}{s}\cdot (ds\hat{s}+sd\phi\hat{\phi}+dz\hat{z})$$
+$$V = -\int \frac{2\lambda}{4\pi\epsilon_0}\frac{1}{s}ds$$
+$$V(s) - V(1) = -\int_1^s \frac{2\lambda}{4\pi\epsilon_0}\frac{1}{s}ds$$
+$$V(s) - V(1) = -\frac{2\lambda}{4\pi\epsilon_0}\left[\ln(s)\right]_1^s$$
+We can define the potential at $s=1$ to be zero so we get
+$$V(s) = -\frac{2\lambda}{4\pi\epsilon_0}\left[\ln(s) - \cancelto{0}{\ln(1)}\right]$$
+$$V(s) = -\frac{2\lambda}{4\pi\epsilon_0}\ln(s)$$
+Lets check the result by finding the electric field
+$$-\grad V(s) = \vecE = -\grad\left(-\frac{2\lambda}{4\pi\epsilon_0}\ln(s)\right)$$
+$$\vecE = \grad\left(\frac{2\lambda}{4\pi\epsilon_0}\ln(s)\right)$$
+$$\vecE = \left(\frac{\partial}{\partial s}\hat{s} +\frac{1}{s}\frac{\partial}{\partial \phi}\hat{\phi} +\frac{\partial}{\partial z}\hat{z} \right) \left(\frac{2\lambda}{4\pi\epsilon_0}\ln(s)\right)$$
+$$\vecE = \frac{\partial}{\partial s}\frac{2\lambda}{4\pi\epsilon_0}\ln(s)\hat{s} +\cancelto{0}{\frac{1}{s}\frac{\partial}{\partial \phi}\frac{2\lambda}{4\pi\epsilon_0}\ln(s)\hat{\phi}} +\cancelto{0}{\frac{\partial}{\partial z}\frac{2\lambda}{4\pi\epsilon_0}\ln(s)\hat{z}}$$ 
+$$\vecE = \frac{2\lambda}{4\pi\epsilon_0}\frac{\partial\ln(s)}{\partial s}\hat{s}$$
+$$\vecE = \frac{2\lambda}{4\pi\epsilon_0}\frac{\hat{s}}{s}$$
+This is what we were given as $\vecE$ so our potential is accurate.
+\item
+The potential in part (a) is dependent on $\ln(s)$ this causes some difficulty but it is also nice to note that $\ln(1) =0$ so I chose to set the potential to be zero at that point. While any point (with the exception of $s=0$ and $s=\infty$) could be picked to be zero the only difference would be an additive constant.
+$s=1$ is the best choice because the additive constant is zero. For example if we choose $V(3) = 0$ our potential would become
+$$V(s) - V(3) = -\frac{2\lambda}{4\pi\epsilon_0}\left[\ln(s)\right]_3^s$$
+$$V(s) = -\frac{2\lambda}{4\pi\epsilon_0}\left[\ln(s) - \ln(3)\right]$$
+Here the additive constant is $\ln(3)$
+Now for the case where $s=0$ or $s=\infty$ the function $\ln(s)$ "blows up" so our additive constant is undefined for both points so $V(s)$ is not defined, so the usual choices for a zero are not good 
+
+\item
+Lets start by making a few assumptions. Let us assume that the charge carried by the lightning is 5 Coulombs and the lighting has a length of 1000 metres. So the charge density $\lambda$ is
+$$\lambda = \frac{5}{1000}$$
+$$\lambda = 0.005\ C\ m^{-1}$$
+Now let us assume that the distance of your heart is $0.1$ metres. And we are 1000 metres away from the lightning strike. So the potential goes from 1000 metres to 1000.1 metres. With all this information we can find the potential as
+$$V(0.1) = -\frac{2(0.005)}{4\pi\epsilon_0}(\ln(1000)-\ln(1000.1))$$
+$$V(0.1) = -\frac{2(0.005)}{4\pi\epsilon_0}(-0.0001)$$
+$$V(0.1) = 9000\ V$$
+$$V(0.1) = 9\ kV$$
+9000 volts is a lot of voltage. This would kill you if this voltage reached your heart. Luckily for us our bodies are conductors and shield our heart from most of this electric field. This is why we do not die.
+\end{enumerate}
+
+\section{Problem \#6}
+\begin{enumerate}[(a)]
+\item
+To find the electric field of 
+\begin{equation}
+V(\vec{r}) = \frac{q}{4\pi\epsilon_0}\frac{e^{-r/\lambda}}{r}
+\label{prob6}
+\end{equation}
+we need to use the fact
+$$-\grad V(\vec{r}) = \vecE = -\grad\left(\frac{q}{4\pi\epsilon_0}\frac{e^{-r/\lambda}}{r}\right)$$
+$$-\grad V(\vec{r}) = \vecE = -\frac{q}{4\pi\epsilon_0}\grad\left(\frac{e^{-r/\lambda}}{r}\right)$$
+Since $V(\vec{r})$ does not have any dependence on $\theta$ or $\phi$ so the $\partial_{\theta}$ and $\partial_{\phi}$ derivatives are zero and we only have to focus on the partial with respect to $r$. This yields
+$$\vecE = -\frac{q}{4\pi\epsilon_0}\frac{\partial}{\partial r}\left(\frac{e^{-r/\lambda}}{r}\right)\hat{r}$$
+$$\vecE = -\frac{q}{4\pi\epsilon_0}\frac{\partial}{\partial r}\left(e^{-r/\lambda}r^{-1}\right)\hat{r}$$
+$$\vecE = -\frac{q}{4\pi\epsilon_0}\left(\frac{-1}{\lambda}e^{-r/\lambda}r^{-1}+e^{-r/\lambda}(-1)r^{-2}\right)\hat{r}$$
+Factoring out $-e^{-r/\lambda}$
+$$\vecE = \frac{q}{4\pi\epsilon_0}e^{-r/\lambda}\left(\frac{1}{\lambda r}+\frac{1}{r^{2}}\right)\hat{r}$$
+
+Now we can check the dimensions. We assume that
+$$<\vecE> = kg\ m\ s^{-2}\ C^{-1}$$
+and we know that
+$$<\epsilon_0> = C^2\ s^2\ kg^{-1}\ m^{-3}; <\lambda> = m; <r> = m; <q>=C$$
+So we can find that
+$$\left< \frac{q}{4\pi\epsilon_0}e^{-r/\lambda}\left(\frac{1}{\lambda r}+\frac{1}{r^{2}}\right)\right> = \frac{C}{C^2\ s^2\ kg^{-1}\ m^{-3}}e^{m/m}\left(\frac{1}{m^2}+\frac{1}{m^2}\right)$$
+$$\left< \frac{q}{4\pi\epsilon_0}e^{-r/\lambda}\left(\frac{1}{\lambda r}+\frac{1}{r^{2}}\right)\right> = \frac{kg\ m^3}{C\ s^2}\frac{1}{m^2}$$
+$$\left< \frac{q}{4\pi\epsilon_0}e^{-r/\lambda}\left(\frac{1}{\lambda r}+\frac{1}{r^{2}}\right)\right> = \frac{kg\ m}{C\ s^2}$$
+$$\left< \frac{q}{4\pi\epsilon_0}e^{-r/\lambda}\left(\frac{1}{\lambda r}+\frac{1}{r^{2}}\right)\right> = kg\ m\ C^{-1}\ s^{-2}$$
+Good this is in physical agreement. So the electric field of the potential from equation \ref{prob6} is 
+$$\vecE = \frac{q}{4\pi\epsilon_0}e^{-r/\lambda}\left(\frac{1}{\lambda r}+\frac{1}{r^{2}}\right)\hat{r}$$
+
+\item
+We can find the charge distribution using the equation
+$$\grad\cdot\vecE = \frac{\rho(\vec{r})}{\epsilon_0}$$
+$$\frac{\rho(\vec{r})}{\epsilon_0} = \grad\cdot\frac{q}{4\pi\epsilon_0}e^{-r/\lambda}\left(\frac{1}{\lambda r}+\frac{1}{r^{2}}\right)\hat{r}$$
+$$\frac{\rho(\vec{r})}{\epsilon_0} = \frac{q}{4\pi\epsilon_0}\frac{1}{r^2}\frac{\partial}{\partial r}r^2e^{-r/\lambda}\left(\frac{1}{\lambda r}+\frac{1}{r^{2}}\right)$$
+$$\frac{\rho(\vec{r})}{\epsilon_0} = \frac{q}{4\pi\epsilon_0}\frac{1}{r^2}\frac{\partial}{\partial r}e^{-r/\lambda}\left(\frac{r}{\lambda }+1\right)$$
+$$\frac{\rho(\vec{r})}{\epsilon_0} = \frac{q}{4\pi\epsilon_0}\frac{1}{r^2}\left(e^{-r/\lambda}\frac{-1}{\lambda}\left(\frac{r}{\lambda }+1\right) + e^{-r/\lambda}\left(\frac{1}{\lambda}\right)\right)$$
+$$\frac{\rho(\vec{r})}{\epsilon_0} = \frac{q}{4\pi\epsilon_0}\frac{1}{r^2}\left(e^{-r/\lambda}\left(\frac{-r}{\lambda^2}+\frac{-1}{\lambda} + \frac{1}{\lambda}\right)\right)$$
+$$\frac{\rho(\vec{r})}{\epsilon_0} = \frac{q}{4\pi\epsilon_0}\frac{1}{r^2}\left(e^{-r/\lambda}\frac{-r}{\lambda^2}\right)$$
+$$\frac{\rho(\vec{r})}{\epsilon_0} = -\frac{q}{4\pi\epsilon_0}\frac{e^{-r/\lambda}}{r\lambda^2}$$
+We can cancel the $\epsilon_0$ and get $\rho(\vec{r})$ alone
+$$\rho(\vec{r})= -\frac{q}{4\pi}\frac{e^{-r/\lambda}}{r\lambda^2}$$
+
+
+We still have to account for the charge at the center that is being shielded. We can do this by adding a delta function so our new charge distribution becomes
+$$\rho(\vec{r})=q\delta^3(\vec{r}) - \frac{q}{4\pi}\frac{e^{-r/\lambda}}{r\lambda^2}$$
+We can double check the units we know that $$<\rho(\vec{r})> = C\ m^{-3}$$
+and we know that 
+$$<\lambda> = m; <r> = m; <q>=C ;\ <\delta^3(\vec{r})> = m^{-3}$$
+and we can quickly see that
+$$<q\delta^3(\vec{r})> = C\ m^{-3}$$
+$$\left<\frac{q}{4\pi}\frac{e^{-r/\lambda}}{r\lambda^2}\right> = C \frac{e^{m/m}}{m\ m^2}$$
+$$\left<\frac{q}{4\pi}\frac{e^{-r/\lambda}}{r\lambda^2}\right> = C \frac{1}{m^3}$$
+$$\left<\frac{q}{4\pi}\frac{e^{-r/\lambda}}{r\lambda^2}\right> = C\ m^{-3}$$
+
+Good that means we have an actual charge distribution from 
+$$\rho(\vec{r})={q}\delta^3(\vec{r}) - \frac{q}{4\pi}\frac{e^{-r/\lambda}}{r\lambda^2}$$
+
+See attached for a sketch of this charge distribution. You can see that the charge is really high close to the origin, but quickly drops off as you get farther away.
+
+This is called "screened" potential, because there is a charge who's potential gets screened out by the electrons surrounding it. This is much like an hydrogen atom which has a positively charged center that is blocked out by the negatively charged electron cloud. 
+\item
+So if we integrate over all space we should find the net charge
+$$\int_V \rho(\vec{r}) d\tau$$
+$$\int_V \frac{q}{4\pi}\delta^3(\vec{r}) - \frac{q}{4\pi}\frac{e^{-r/\lambda}}{r\lambda^2}d\tau$$
+$$ \int_V q\delta^3(\vec{r})d\tau - \int_0^{\pi}\int_0^{2\pi}\int_0^{\infty}\frac{q}{4\pi}\frac{e^{-r/\lambda}}{r\lambda^2}r^2\sin(\theta)drd\theta d\phi$$
+We can see the integral of the delta function quickly
+$$q- \int_0^{\pi}\int_0^{2\pi}\int_0^{\infty}\frac{q}{4\pi}\frac{e^{-r/\lambda}}{r\lambda^2}r^2\sin(\theta)drd\theta d\phi$$
+We know that 
+$$\int_0^{\pi}\int_0^{2\pi}\sin(\theta)drd\theta d\phi = 4\pi$$
+so we can just take the integral with respect to $r$
+$$q- 4\pi\int_0^{\infty}\frac{q}{4\pi}\frac{e^{-r/\lambda}}{r\lambda^2}r^2dr$$
+$$q- \frac{q4\pi}{4\pi\lambda^2}\int_0^{\infty}r e^{-r/\lambda}dr$$
+We need to use integration by parts to solve this equation so we pick
+$$u = r;\ du=1$$
+$$dv = e^{-r/\lambda};\ v = -\lambda e^{-r/\lambda}$$
+$$q- \frac{q}{\lambda^2}\left(-r\lambda e^{-r/\lambda} - \int_0^{\infty}-\lambda e^{-r/\lambda}dr\right)$$
+$$q- \frac{q}{\lambda^2}\left(-r\lambda e^{-r/\lambda} + \int_0^{\infty}\lambda e^{-r/\lambda}dr\right)$$
+$$q- \frac{q}{\lambda^2}\left[-r\lambda e^{-r/\lambda} - \lambda^2 e^{-r/\lambda}\right]_0^{\infty}$$
+$$q- \frac{q}{\lambda^2}\left[(0-0) - (0 -\lambda^2)\right]$$
+$$q- \frac{q}{\lambda^2}\left[\lambda^2\right]$$
+$$q- q$$
+$$=0$$
+This is what we expected as at very far away the charge is screened out.
+
+
+\end{enumerate}
+
+\end{document}
+

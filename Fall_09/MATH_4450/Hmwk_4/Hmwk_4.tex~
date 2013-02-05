@@ -1,0 +1,129 @@
+\documentclass[11pt]{article}
+
+\usepackage{latexsym}
+\usepackage{amssymb}
+\usepackage{enumerate}
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{ulem}
+\usepackage{cancel}
+
+\setlength{\evensidemargin}{.25in}
+\setlength{\oddsidemargin}{-.25in}
+\setlength{\topmargin}{-.75in}
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{9.5in}
+\newcommand{\due}{September 23rd, 2009}
+\newcommand{\HWnum}{4}
+\newcommand{\CC}{\mathbb{C}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\zbar}{\overline{z}}
+
+\begin{document}
+\input{../title.tex}
+\begin{enumerate}
+\item  2.3.1
+We are trying to show that 
+$$\lim_{\Delta z\rightarrow 0}\frac{f(z_0 + \Delta z) - f(z_0)}{\Delta z}$$
+is equivalent to 
+$$\lim_{z\rightarrow z_0}\frac{f(z) - f(z_0)}{z-z_0}$$
+To show this we need to define $\Delta z$ as
+$$\Delta z = z - z_0$$
+Because $\Delta z$ represents the change between $z$ and $z_0$. So we can see as $\Delta z \rightarrow 0$ $z\rightarrow z_0$ so we see that
+$$\lim_{\Delta z\rightarrow 0}\Delta z = \lim_{z\rightarrow z_0} z - z_0$$
+So now if we replace $\Delta z$ in our original limit we get
+$$\lim_{\Delta z\rightarrow 0}\frac{f(\cancel{z_0} + z - \cancel{z_0}) - f(z_0)}{z-z_0}$$
+now we can change our limit
+$$\lim_{z\rightarrow z_0}\frac{f(z) - f(z_0)}{z-z_0}$$
+
+
+\item  \sout{Formulate a ``the following are equivalent" theorem using 2.4.8, 2.4.10, 2.4.11, 2.4.13, and prove it.} \\
+Put the results of these 4 problems (2.4.8, 2.4.10, 2.4.11, 2.4.13) into the statement of a single Theorem
+
+\end{enumerate}
+
+\subsection*{Problems}
+
+\begin{enumerate}
+\item 2.3:  8, 11, 14, 16
+\begin{enumerate}[(i)]
+\item 8)\\
+
+\item 11)
+\begin{enumerate}[(a)]
+\item
+If the function contains a $\zbar$ then the function is ``inadmissible" because it will allow $$\frac{z+\zbar}{2}$$
+this would allow us to split the real components out of the variable $z$ so
+$$8\zbar +i$$
+is not analytic.
+\item
+For the same reason as part (a) 
+$$\frac{z}{\zbar + 2}$$
+is not analytic.
+\item
+We can see that the function 
+$$\frac{z^3+2z+i}{z-5}$$
+only contains $z$. So we know that the function is admissible so we can evaluate. We see that there is a discontinuity at $z=5$ so we can say that 
+$$\frac{z^3+2z+i}{z-5}$$
+is analytic everywhere but $z=5$.
+\item
+For the function
+$$x^2-y^2 +2xyi$$
+we need to see if the function can be written with $z$ using the fact that $$z=x+iy$$
+we can factor 
+$$x^2-y^2 +2xyi$$
+into
+$$(x+iy)(x+iy)$$
+now we can write in terms of $z$
+$$f(z)=z^2$$
+We see that $f(z)$ is just a polynomial so 
+$$f(z)=z^2$$
+is analytic everywhere.
+
+\item
+For the function 
+$$x^2+y^2+y-2+ix$$
+we will try to write the function in terms of $z$ using $$z=x+iy$$
+Trying to do this is not easy we can factor the squares into
+$$(x+iy)(x-iy)+y-2+ix$$
+Which becomes
+$$z\zbar-2+i(y+ix)$$
+$$z\zbar-2+iy-x)$$
+which still cannot be put into the form of just $z$ and we have a $\zbar$ so 
+$$x^2+y^2+y-2+ix$$
+is not analytic.
+
+\item
+The function
+$$\left(x+\frac{x}{x^2+y^2}\right)+i\left(y-\frac{y}{x^2+y^2}\right$$
+\item
+The function $$|z|^2 +2z$$
+can be written as
+$$z\zbar +2z$$ and since we have a $\zbar$ we know that
+$$|z|^2 +2z$$ is not analytic.
+\item
+The function 
+$$\frac{|z| + z}{2}$$
+as we saw in part (g) $|z|$ can be written with a $\zbar$ so we know that 
+$$\frac{|z| + z}{2}$$
+is not analytic.
+\end{enumerate}
+
+\item 14)
+\item 16)
+\end{enumerate}
+
+\item 2.4: 2, 4, 8, 
+\begin{enumerate}[(i)]
+\item 2)
+\item 4)
+\item 8)
+\end{enumerate}
+
+\item 2.5: 2
+\begin{enumerate}[(i)]
+\item 2)
+\end{enumerate}
+\end{enumerate}
+
+\end{document}

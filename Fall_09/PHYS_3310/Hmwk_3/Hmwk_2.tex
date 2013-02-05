@@ -1,0 +1,544 @@
+\documentclass[11pt]{article}
+
+\usepackage{latexsym}
+\usepackage{amssymb}
+\usepackage{enumerate}
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{cancel}
+\numberwithin{equation}{section}
+
+\setlength{\evensidemargin}{.25in}
+\setlength{\oddsidemargin}{-.25in}
+\setlength{\topmargin}{-.75in}
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{9.5in}
+\newcommand{\due}{September 9th, 2009}
+\newcommand{\HWnum}{3}
+\newcommand{\grad}{\bold\nabla}
+\newcommand{\expmess}{\exp^{\left(\frac{-2r}{a_0}\right)}}
+\begin{document}
+\input{../title.tex}
+
+\section{Problem \#1}
+\begin{enumerate}[(a)]
+\item
+To calculate 
+\begin{equation}
+\int_{-1}^{1} |x-c|^2 \delta(2x) dx
+\label{inta}
+\end{equation}
+we first need to do a $u$ substitution where $u = 2x$ and $du = 2dx$. Replacing $x$ with $u$ we get
+$$\int_{u(-1)}^{u(1)} \frac{1}{2} \left|\frac{u}{2}-c\right|^2 \delta(u) du$$
+Now we can solve the integral using the identity 
+\begin{equation}
+\int_{-\infty}^{\infty} f(x) \delta(x) dx = f(0)
+\label{intdelta}
+\end{equation}
+Now by using equation \ref{intdelta} we find the integral equals 
+$$\int_{u(-1)}^{u(1)} \frac{1}{2} \left|\frac{u}{2}-c\right|^2 \delta(u) du = \frac{1}{2}\left|\frac{0}{2}-c\right|^2 $$
+$$\int_{-1}^{1} \frac{1}{2} \left|\frac{u}{2}-c\right|^2 \delta(u) du = \frac{1}{2}\left|-c\right|^2 $$
+$$\int_{-1}^{1}  \left|x-c\right|^2 \delta(2x) dx = \frac{1}{2}\left|-c\right|^2 $$
+Now by replacing $c=3$ we find
+$$\int_{-1}^{1}  \left|x-c\right|^2 \delta(2x) dx = \frac{1}{2}\left|-3\right|^2 $$
+$$\int_{-1}^{1}  \left|x-c\right|^2 \delta(2x) dx = \frac{1}{2}9 $$
+$$\int_{-1}^{1}  \left|x-c\right|^2 \delta(2x) dx = \frac{9}{2} $$
+\begin{center}
+\fbox{$\frac{9}{2}$}
+\end{center}
+
+\item
+\begin {equation}
+\iiint\limits_V  \left|\vec{r} - \vec{c}\right|^2 \delta^3(2\vec{r})d\tau
+\label{intb}
+\end{equation}
+Again first we do a $u$ substitution where $\vec{u} = 2\vec{r}$ and $du = 2 dr$ (the $dr$ is part of the $d\tau$ term). Our integral becomes 
+$$\iiint\limits_V  \left|\vec{r} - \vec{c}\right|^2 \delta^3(2\vec{r})d\tau = \iiint\limits_V \frac{1}{2} \left|\frac{\vec{u}}{2} - \vec{c}\right|^2 \delta^3(\vec{u})d\tau $$
+now by equation \ref{intdelta} we can find that
+$$\iiint\limits_V  \left|\vec{r} - \vec{c}\right|^2 \delta^3(2\vec{r})d\tau = \frac{1}{2} \left|\frac{\vec{0}}{2} - \vec{c}\right|^2$$
+$$\iiint\limits_V  \left|\vec{r} - \vec{c}\right|^2 \delta^3(2\vec{r})d\tau = \frac{1}{2} \left|-\vec{c}\right|^2$$
+Where $\vec{c} = (3,4,0)$ and 
+$$|\vec{c}| = \sqrt{3^2 + 4^2}$$
+$$|\vec{c}| = \sqrt{25}$$
+$$|\vec{c}| = 5$$
+So equation \ref{intb} becomes (also note that the vector property $|\vec{v}| = |-\vec{v}|$ is used)
+$$\iiint\limits_V  \left|\vec{r} - \vec{c}\right|^2 \delta^3(2\vec{r})d\tau = \frac{1}{2} 5^2$$
+$$\iiint\limits_V  \left|\vec{r} - \vec{c}\right|^2 \delta^3(2\vec{r})d\tau = \frac{25}{2}$$
+\begin{center}
+\fbox{$= \frac{25}{2}$}
+\end{center}
+
+\item
+\begin{equation}
+\int_V (1 + e^{-\vec{r}})(\grad \cdot \frac{\hat{r}}{r^2}) d\tau
+\label{intc}
+\end{equation}
+The first method of solution for equation \ref{intc} uses the identity 
+\begin{equation}
+\grad \cdot \frac{\hat{r}}{r^2} = 4\pi\delta^3(\vec{r})
+\label{grf199}
+\end{equation}
+By combining equations \ref{intc} and \ref{grf199} we get
+$$\int_V (1 + e^{-\vec{r}})(\grad \cdot \frac{\hat{r}}{r^2}) d\tau = \int_V (1 + e^{-\vec{r}})4\pi\delta^3(\vec{r}) d\tau $$
+now by solving the integral using equation \ref{intdelta} we get
+$$\int_V (1 + e^{-\vec{r}})(\grad \cdot \frac{\hat{r}}{r^2}) d\tau = (1 + e^{0})4\pi $$
+$$\int_V (1 + e^{-\vec{r}})(\grad \cdot \frac{\hat{r}}{r^2}) d\tau = (2)4\pi $$
+$$\int_V (1 + e^{-\vec{r}})(\grad \cdot \frac{\hat{r}}{r^2}) d\tau = 8\pi $$
+So by using the delta function we found equation \ref{intc} to equal 
+\begin{center}
+\fbox{$8\pi$}
+\end{center}
+
+Now the second method of solution for equation \ref{intc} uses the product rule of vector calculus 
+$$\grad\cdot(f\vec{A}) = f(\grad\cdot\vec{A})+\vec{A}\cdot(\grad f)$$
+integrated over a volume gives us
+$$\int\grad\cdot(f\vec{A})d\tau = \int f(\grad\cdot\vec{A})d\tau+\int\vec{A}\cdot(\grad f)d\tau$$
+Using the divergence theorem on the left side of the equation we get
+$$\oint(f\vec{A})\cdot d\vec{a} = \int f(\grad\cdot\vec{A})d\tau+\int\vec{A}\cdot(\grad f)d\tau$$
+Rewritten as
+\begin{equation}
+\int_V f(\grad\cdot\vec{A})d\tau =- \int_V\vec{A}\cdot(\grad f)d\tau + \oint_S(f\vec{A})\cdot d\vec{a} 
+\label{commdot}
+\end{equation}
+When equation \ref{commdot} is applied to equation \ref{intc} we get
+$$\int_V (1 + e^{-\vec{r}})(\grad \cdot \frac{\hat{r}}{r^2}) d\tau = -\int_V \grad(1 + e^{-\vec{r}}) \cdot \frac{\hat{r}}{r^2}d\tau + \oint_S(1 + e^{-\vec{r}})\frac{\hat{r}}{r^2} \cdot d\vec{a}$$
+Where the surface integral is over the surface of a sphere of radius $R$ and 
+$$\grad(1 + e^{-\vec{r}}) =\left(\frac{\partial}{\partial r} \hat{r} + \frac{1}{r}\frac{\partial}{\partial \theta} \hat{\theta} + \frac{1}{r\sin{\theta}}\frac{\partial}{\partial \phi} \hat{\phi} \right)(1 + e^{-\vec{r}})$$ 
+$$\grad(1 + e^{-\vec{r}}) =\left(\frac{\partial}{\partial r} \hat{r} + \cancelto{0}{\frac{1}{r}\frac{\partial}{\partial \theta} \hat{\theta}} + \cancelto{0}{\frac{1}{r\sin{\theta}}\frac{\partial}{\partial \phi} \hat{\phi}} \right)(1 + e^{-\vec{r}})$$ 
+$$\grad(1 + e^{-\vec{r}}) =\frac{\partial(1 + e^{-\vec{r}})}{\partial r} \hat{r} $$ 
+$$\grad(1 + e^{-\vec{r}}) =-e^{-r} \hat{r} $$ 
+Now the volume integral component of equation \ref{intc} becomes
+\begin{equation}
+\int_V (-e^{-r} \hat{r})\cdot \frac{\hat{r}}{r^2} d\tau
+\label{cVolInt}
+\end{equation}
+We now have $\hat{r} \cdot \hat{r} = 1$ so equation \ref{cVolInt} becomes
+$$\int_V (-e^{-r} \hat{r})\cdot \frac{\hat{r}}{r^2} d\tau = \int_V (-e^{-r}) \frac{1}{r^2} d\tau$$
+$$\int_V (-e^{-r} \hat{r})\cdot \frac{\hat{r}}{r^2} d\tau = \int_V \frac{-e^{-r}}{r^2} d\tau$$
+We now write the limits of integration as $d\tau = r^2\sin{\theta}drd\theta d\phi$
+$$\int_V (-e^{-r} \hat{r})\cdot \frac{\hat{r}}{r^2} d\tau = \int_V \frac{-e^{-r}}{r^2} r^2\sin{\theta}drd\theta d\phi$$
+$$\int_V (-e^{-r} \hat{r})\cdot \frac{\hat{r}}{r^2} d\tau = \int_{0}^{\pi}\int_{0}^{2\pi}\int_{0}^{R} -e^{-r} \sin{\theta}drd\theta d\phi$$
+The integrals over $\theta$ and $\phi$ are easy and are given by
+$$\int_{0}^{\pi}\int_{0}^{2\pi}\sin{\theta}d\theta d\phi = \pi \int_{0}^{2\pi}\sin{\theta}d\theta$$
+$$\int_{0}^{\pi}\int_{0}^{2\pi}\sin{\theta}d\theta d\phi = \pi (2\left[-\cos{\theta}\right]_{0}^{\pi})$$
+$$\int_{0}^{\pi}\int_{0}^{2\pi}\sin{\theta}d\theta d\phi = \pi (-2[\cos{\pi} - \cos{0}])$$
+$$\int_{0}^{\pi}\int_{0}^{2\pi}\sin{\theta}d\theta d\phi = \pi (-2[-1 - 1])$$
+\begin{equation}
+\int_{0}^{\pi}\int_{0}^{2\pi}\sin{\theta}d\theta d\phi = 4\pi
+\label{4pies}
+\end{equation}
+So equation \ref{cVolInt} is now
+$$\int_V (-e^{-r} \hat{r})\cdot \frac{\hat{r}}{r^2} d\tau = 4\pi\int_{0}^{R} -e^{-r} dr$$
+$$\int_V (-e^{-r} \hat{r})\cdot \frac{\hat{r}}{r^2} d\tau = 4\pi [e^{-r}]_0^R$$
+$$\int_V (-e^{-r} \hat{r})\cdot \frac{\hat{r}}{r^2} d\tau = 4\pi [e^{-R} - e^{0}]$$
+\begin{equation}
+\int_V (-e^{-r} \hat{r})\cdot \frac{\hat{r}}{r^2} d\tau = 4\pi (e^{-R} - 1)
+\label{VolInt}
+\end{equation}
+Replacing equation \ref{VolInt} into \ref{intc} we get
+$$\int_V (1 + e^{-\vec{r}})(\grad \cdot \frac{\hat{r}}{r^2}) d\tau = -4\pi(e^{-R} - 1)  + \oint_S(1 + e^{-\vec{r}})\frac{\hat{r}}{r^2} \cdot d\vec{a}$$
+Now we have to deal with the surface integral component
+
+$$\oint_S(1 + e^{-\vec{r}})\frac{\hat{r}}{r^2} \cdot d\vec{a}$$
+We apply the fact that we are integrating over the surface of a sphere with radius $R$ and we get 
+$$d\vec{a} = R^2sin{\theta}d\theta d\phi \hat{r}$$
+$$\oint_S(1 + e^{-\vec{r}})\frac{\hat{r}}{r^2} \cdot d\vec{a} = \oint_S(1 + e^{-\vec{r}})\frac{\hat{r}}{r^2} \cdot R^2sin{\theta}d\theta d\phi \hat{r}$$
+again we have a situation where $\hat{r} \cdot \hat{r} = 1$ and we get
+$$\oint_S(1 + e^{-\vec{r}})\frac{\hat{r}}{r^2} \cdot d\vec{a} = \oint_S(1 + e^{-\vec{r}})\frac{R^2}{r^2} sin{\theta}d\theta d\phi$$
+And because we are at the surface of the sphere $r=R$. Doing this gives us
+$$\oint_S(1 + e^{-\vec{r}})\frac{\hat{r}}{r^2} \cdot d\vec{a} = \oint_S(1 + e^{-R})\cancelto{1}{\frac{R^2}{R^2}} sin{\theta}d\theta d\phi$$
+Applying equation \ref{4pies} we get ride of the integrals and get
+\begin{equation}
+\oint_S(1 + e^{-\vec{r}})\frac{\hat{r}}{r^2} \cdot d\vec{a} = 4\pi(1 + e^{-R})
+\label{SurInt}
+\end{equation}
+Now we replace equation \ref{SurInt} into equation \ref{intc} and get
+$$\int_V (1 + e^{-\vec{r}})(\grad \cdot \frac{\hat{r}}{r^2}) d\tau = -4\pi(e^{-R} - 1)  + 4\pi(1 + e^{-R})$$
+$$\int_V (1 + e^{-\vec{r}})(\grad \cdot \frac{\hat{r}}{r^2}) d\tau = 4\pi\left(\cancel{-e^{-R}} + 1  + 1 + \cancel{e^{-R}}\right)$$
+$$\int_V (1 + e^{-\vec{r}})(\grad \cdot \frac{\hat{r}}{r^2}) d\tau = 4\pi\left( 1 + 1\right)$$
+$$\int_V (1 + e^{-\vec{r}})(\grad \cdot \frac{\hat{r}}{r^2}) d\tau = 8\pi$$
+Good! This result is in agreement with the solution found by method one.
+\begin{center}
+\fbox{$8\pi$}
+\end{center}
+\end{enumerate}
+
+\section{Problem \#2}
+\begin{enumerate}[(a)]
+\item To begin with lets define position vectors for the two charges
+$$\vec{r}_{3q} = -D\hat{x}$$
+$$\vec{r}_{-q} = D\hat{x}$$
+Now we know at $\vec{r}_{3q}$ and $\vec{r}_{-q}$ there is a charge $3q$ and $-q$ so we need to use $\delta$ functions. For $3q$
+$$3q\delta^3(\vec{r}-\vec{r}_{3q})$$
+and for $-q$
+$$-q\delta^3(\vec{r}-\vec{r}_{-q})$$
+So the charge density for the system ($\rho(\vec{r})$) is given by the sum of the two delta functions
+\begin{center}
+\fbox{$\rho(\vec{r}) = 3q\delta^3(\vec{r}-\vec{r}_{3q}) + (-q)\delta^3(\vec{r} - \vec{r}_{-q})$}
+\end{center}
+
+\item
+In the situation where you have a sphere you automatically know that you are going to have symmetry in spherical coordinates. Now if you think about how you only want charge on the surface of the sphere or we only want charge where the radius is $R$. This is written with a delta function as
+$$\delta(r-R)$$
+The full charge distribution $\rho(\vec{r})$ is the charge on the sphere, $\sigma$, times the delta function or
+\begin{equation}
+\rho(\vec{r}) = \sigma\delta(r-R)
+\label{crgdB}
+\end{equation}
+Please note that this is in polar coordinates.
+
+Checking the dimensions of equation \ref{crgdB} we expect that 
+$$<\rho(\vec{r}> = C m^{-3}$$
+and we find that
+$$<\sigma> = C m^{-2}; <\delta(r-R)> = m^{-1}$$
+$$<\sigma\delta(r-R)> = C m^{-2}m^{-1}$$
+$$<\sigma\delta(r-R)> = C m^{-3}$$
+Our dimensions are in agreement.
+
+Now we can check if the integrated charge comes out correctly
+$$\int_V \rho(\vec{r}) d\tau = \int_{0}^{\pi}\int_{0}^{2\pi}\int_{-\infty}^{\infty} \sigma\delta(r-R)r^2\sin{\theta}d\theta d\phi$$
+Quickly applying equation \ref{4pies} yields 
+$$\int_V \rho(\vec{r}) d\tau = 4\pi\int_{-\infty}^{\infty} \sigma\delta(r-R)r^2dr$$
+now we can integrate using equation \ref{intdelta} and get
+$$\int_V \rho(\vec{r}) d\tau = 4\pi R^2 \sigma$$
+and if we take 
+$$\sigma = \frac{q_{tot}}{\textnormal{area}}$$
+$$\sigma = \frac{q_{tot}}{4\pi R^2}$$
+$$\int_V \rho(\vec{r}) d\tau = 4\pi R^2 \frac{q_{tot}}{4\pi R^2}$$
+$$\int_V \rho(\vec{r}) d\tau = q_{tot}$$
+This is what we expected, the integral over all space of a charge distrubution should return the total charge. So it is safe to say that
+\begin{center}
+\fbox{$\rho(\vec{r}) = \sigma\delta(r-R)$}
+\end{center}
+\item
+The charge distribution of the system 
+\begin{equation}
+\lambda(x) = q_0\delta(x) + 4q_0\delta(x-1)
+\label{linchargdist}
+\end{equation}
+looks like a point charge of charge $q_0$ at the origin ($x=0$) and another point charge of charge $4q_0$ at the point ($x=1$). This system has a total charge of $+5q_0$. Now we can check the units of equation \ref{linchargdist}. First we know that the $4$ is a multiplier that is unitless. Since $\lambda(x)$ is a linear charge density we assume that its units are 
+$$<\lambda(x)> = C m^{-1}$$ 
+The problem assumes that
+$$<q_0> = C$$
+and we know that 
+$$<\delta(x)> = <\delta(x - 1)> = m^{-1}$$
+so we can calculate that the units of $\lambda(x)$ as
+$$<\lambda(x)> = Cm^{-1} + Cm^{-1}$$
+$$<\lambda(x)> = Cm^{-1}$$
+Awesome, we get the same as the assumed units of $\lambda(x)$.
+
+
+\end{enumerate}
+
+\section{Problem \#3}
+\begin{enumerate}[(a)]
+\item 
+We can calculate the divergence by
+$$\grad \cdot \vec{E} = \grad \cdot \frac{2\lambda}{4\pi\epsilon_0}\frac{\hat{s}}{s}$$
+Now we can use the divergence in cylindrical coordinates and because we only have a $\hat{s}$ dependence 
+$$\grad \cdot \vec{v} =  \frac{1}{s} \frac{\partial}{\partial s} s \vec{v}$$
+$$\grad \cdot \vec{E} = \frac{1}{s}\frac{\partial}{\partial s}s \frac{2\lambda}{4\pi\epsilon_0}\frac{1}{s}$$
+$$\grad \cdot \vec{E} = \frac{1}{s}\cancelto{0}{\frac{\partial}{\partial s} \frac{2\lambda}{4\pi\epsilon_0}}$$
+because $\frac{2\lambda}{4\pi\epsilon_0}$ is constant the dirivative is zero. So for $s > 0$ 
+\begin{center}
+\fbox{$\grad \cdot \vec{E} = 0$}
+\end{center}
+
+\item 
+So we know Gauss' Law to be
+\begin{equation}
+\oint_S \vec{E} \cdot d\vec{a} = \frac{q_{enc}}{\epsilon_0}
+\label{gauss}
+\end{equation}
+we can apply equation \ref{gauss} to this system by imagining a Gaussian cylinder of length $L$ and radius $a$ centered on the $z$ axis. If we apply the symmetry of the problem we see that both $\vec{E}$ and $d\vec{a}$ point in the $\hat{s}$ direction, and there is no flux at the caps of the cylinder. This means that the dot product becomes
+$$\oint_S \vec{E} \cdot d\vec{a} = \oint_S E da$$
+The problem states that 
+$$E = \frac{2\lambda}{4\pi \epsilon_0} \frac{1}{s}$$ 
+So now we can see that we have
+$$\oint_S \frac{2\lambda}{4\pi \epsilon_0} \frac{1}{a} da$$ 
+Where $s=a$ for the Gaussian cylinder, and the limits of integration $da$ for a cylinder of radius $a$ is given by
+$$da = ad\phi dz$$
+Now our surface integral becomes
+$$\oint_S \vec{E} \cdot d\vec{a} = \int_{0}^{L}\int_0^{2\pi} \frac{2\lambda}{4\pi \epsilon_0} \frac{1}{a} ad\phi dz$$
+$$\oint_S \vec{E} \cdot d\vec{a} =\int_{0}^{L}\int_0^{2\pi} \frac{2\lambda}{4\pi \epsilon_0} \cancel{\frac{a}{a}} d\phi dz$$
+$$\oint_S \vec{E} \cdot d\vec{a} =\frac{2\lambda}{4\pi \epsilon_0}\int_{0}^{L}\int_0^{2\pi}  d\phi dz$$
+$$\oint_S \vec{E} \cdot d\vec{a} =\frac{2\lambda}{4\pi \epsilon_0}2\pi\int_{0}^{L} dz$$
+$$\oint_S \vec{E} \cdot d\vec{a} =\frac{2\lambda}{4\pi \epsilon_0}2\pi L$$
+$$\oint_S \vec{E} \cdot d\vec{a} =\frac{\cancel{4\pi}\lambda L}{\cancel{4\pi} \epsilon_0}$$
+$$\oint_S \vec{E} \cdot d\vec{a} =\frac{\lambda L}{\epsilon_0}$$
+ 
+We can quickly see that the result can be found by using equation \ref{gauss}. If we look at the term $\frac{q_{enc}}{\epsilon_0}$ We can quickly see that the charge enclosed is the constant linear charge distribution times the length which the problem states is $L$ so we can say
+$$q_{enc} = \lambda L$$
+Which we can quickly see that our flux it 
+$$\oint_S \vec{E} \cdot d\vec{a} =\frac{\lambda L}{\epsilon_0}$$
+This is good because the direct integration gave us the same result as Gauss' Law.
+
+\item 
+We can find that the divergence of $\vec{E}$ can be found using equation \ref{gauss} (Gauss' Law). If we apply the divergence theorem to Gauss' Law we find that
+$$\oint_S \vec{E} \cdot d\vec{a} = \int_V (\grad \cdot \vec{E}) d\tau$$
+We can also write the $q_{enc}$ as a volume integral and charge distribution $\rho(\vec{r})$. This is given as
+$$q_{enc} = \int_V \rho(\vec{r}) d\tau$$
+So now equation \ref{gauss} becomes
+$$\int_V (\grad \cdot \vec{E}) d\tau = \int_V \frac{\rho(\vec{r})}{\epsilon_0} d\tau$$
+Because this is true for any volume, the integrands are equal and we get
+\begin{equation}
+\grad \cdot \vec{E} = \frac{\rho(\vec{r})}{\epsilon_0}
+\label{gaussdiff}
+\end{equation}
+Equation \ref{gaussdiff} tells us that the divergence of $\vec{E}$ is equal to the charge distribution. So the three dimensional charge distribution of a line of charge need two delta functions so that it is zero for all but one point in $s$ and $\phi$. This is written mathematically as
+$$\rho(\vec{r}) = \lambda \delta(s)\delta(\phi)$$
+So using equation \ref{gaussdiff} we find that the divergence is equal to 
+$$\grad \cdot \vec{E} = \frac{\lambda \delta(s)\delta(\phi)}{\epsilon_0}$$
+This is saying that there is no divergence except when $s=0$ and $\phi=0$ or where there is a charge.
+Checking the dimensions of the answer we find that
+$$<\grad> = m^{-1}; <\vec{E}> = kg m C^{-1} s^{-2}; <\lambda> = C m^{-1}; <\delta(s) = \delta(\phi) = m^{-1}; <\epsilon_0> = kg^{-1} m^{-3} C^2 s^2$$
+So we can find that
+$$\left<\grad \cdot \vec{E}\right> = m^{-1} kg m C^{-1} s^{-2}$$
+$$\left<\grad \cdot \vec{E}\right> = kg C^{-1} s^{-2}$$
+$$\left<\frac{\lambda \delta(s)\delta(\phi)}{\epsilon_0}\right> = \frac{Cm^{-1}m^{-1}m^{-1}}{kg^{-1} m^{-3} C^2 s^2} $$
+$$\left<\frac{\lambda \delta(s)\delta(\phi)}{\epsilon_0}\right> = \frac{\cancel{m^{-3}}}{kg^{-1} \cancel{m^{-3}} C s^2} $$
+$$\left<\frac{\lambda \delta(s)\delta(\phi)}{\epsilon_0}\right> = kg C^{-1} s^{-2}$$
+And as we expected our units are in agreement. So it is safe to say that the divergence is 
+$$\grad \cdot \vec{E} = \frac{\lambda \delta(s)\delta(\phi)}{\epsilon_0}$$
+\end{enumerate}
+
+\section{Problem \#4}
+\begin{enumerate}[(a)]
+\item 
+We know that the total charge of the atom is zero, because we have the $+e$ from the proton and the $-e$ from the electron. So if we integrate the charge distribution over all space we should find that it is equal to zero. This is how we will normalize the $\rho_0$
+$$\int_V \rho(\vec{r}) d\tau = 0$$
+Where $\rho(\vec{r})$ is the charge distribution given by
+\begin{equation}
+\rho(\vec{r}) = \rho_0\exp^{\left(\frac{-2r}{a_0}\right)} + e\delta^3(\vec{r})
+\label{chargedist}
+\end{equation}
+$$\int_V \rho_0\exp^{\left(\frac{-2r}{a_0}\right)} + e\delta^3(\vec{r})d\tau = 0$$
+Where $e$ is the fundamental charge. The delta function accounts for the point charge due to the proton at the origin.
+$$\int_V \rho_0\exp^{\left(\frac{-2r}{a_0}\right)}d\tau + \int_Ve\delta^3(\vec{r})d\tau = 0$$
+$$\int_V \rho_0\exp^{\left(\frac{-2r}{a_0}\right)}d\tau + e = 0$$
+$$\int_V \rho_0\exp^{\left(\frac{-2r}{a_0}\right)}d\tau = -e $$
+This is a good result as we expect to get the charge of an electron. Now to take the volume integral.
+
+$$\int_V \rho_0\exp^{\left(\frac{-2r}{a_0}\right)}d\tau = \int_0^{\pi}\int_0^{2\pi}\int_0^{\infty} \rho_0\exp^{\left(\frac{-2r}{a_0}\right)} r^2\sin{\theta}d\theta d\phi $$
+So we can see equation \ref{4pies} and quickly take a $4\pi$ out and get
+$$\int_V \rho_0\exp^{\left(\frac{-2r}{a_0}\right)}d\tau = 4\pi\rho_0\int_0^{\infty} \exp^{\left(\frac{-2r}{a_0}\right)} r^2dr$$
+Now we get to integrate by parts. 
+\begin{equation}
+\int u dv = uv - \int vdu
+\label{intbypart}
+\end{equation}
+So for equation \ref{intbypart} we let
+$$u = r^2; dv = \expmess$$
+$$du = 2r; v = \frac{-a_0}{2}\expmess$$
+Now we can use equation \ref{intbypart} to get
+$$\int_V \exp^{\left(\frac{-2r}{a_0}\right)}d\tau = r^2\frac{-a_0}{2}\expmess + \int_0^{\infty}\frac{a_0}{2}\expmess2r dr$$
+$$\int_V \exp^{\left(\frac{-2r}{a_0}\right)}d\tau = r^2\frac{-a_0}{2}\expmess + \int_0^{\infty}a_0 r\expmess dr$$
+Now we have to use equation \ref{intbypart} again for the new integral. Now we let
+$$u = a_0 r; dv = \expmess$$
+$$du = a_0; v = \frac{-a_0}{2}\expmess$$
+Now we get
+$$\int_V \exp^{\left(\frac{-2r}{a_0}\right)}d\tau = r^2\frac{-a_0}{2}\expmess + a_0r\frac{-a_0}{2}\expmess - \int_0^{\infty}a_0 \frac{-a_0}{2}\expmess dr$$
+$$\int_V \exp^{\left(\frac{-2r}{a_0}\right)}d\tau = r^2\frac{-a_0}{2}\expmess + r\frac{-a_0^2}{2}\expmess + \int_0^{\infty}\frac{a_0^2}{2}\expmess dr$$
+Now we can just integrate like normal. Doing this will give us
+$$\int_V \exp^{\left(\frac{-2r}{a_0}\right)}d\tau = r^2\frac{-a_0}{2}\expmess + r\frac{-a_0^2}{2}\expmess + \frac{-a_0}{2}\frac{a_0^2}{2}\expmess$$
+$$\int_V \exp^{\left(\frac{-2r}{a_0}\right)}d\tau = r^2\frac{-a_0}{2}\expmess + r\frac{-a_0^2}{2}\expmess - \frac{a_0^3}{4}\expmess$$
+$$\int_V \exp^{\left(\frac{-2r}{a_0}\right)}d\tau = \left(\frac{-a_0}{2}\expmess\right)\left(r^2 + a_0 r+ \frac{a_0^2}{2}\right)$$
+Now we can replace the initial integral
+$$-e = 4\pi\rho_0\left[\left(\frac{-a_0}{2}\expmess\right)\left(r^2 + a_0 r+ \frac{a_0^2}{2}\right)\right]_0^{\infty}$$
+We see that the term goes to zero when $r$ goes to $\infty$ so we can just say
+$$-e = 4\pi\rho_0\left[0 - \left(\frac{-a_0}{2}\cancelto{1}{\exp^{\left(\frac{0}{a_0}\right)}}\right)\left(0^2 + a_0 0+ \frac{a_0^2}{2}\right)\right]$$
+$$-e = 4\pi\rho_0\frac{a_0}{2}\frac{a_0^2}{2}$$
+$$-e = 4\pi\rho_0\frac{a_0^3}{4}$$
+$$-e = \pi\rho_0 a_0^3$$
+Now we can solve for $\rho_0$ and get
+\begin{equation}
+\rho_0 = \frac{-e}{a_0^3\pi}
+\label{rho0}
+\end{equation}
+With that out of the way we can now find the electric field due to the atom. To do this we will use Gauss' law or equation \ref{gauss}. If we use a sphere with radius $R$ we can quickly see that $\vec{E}$ points in the same direction as $d\vec{a}$. We can also see that $\vec{E}$ is only dependent on $r$ so at the constant radius of a sphere we know the electric field is constant. This all means the right side of Gauss' law becomes
+$$\oint_S \vec{E} \cdot d\vec{a} = E\oint_S da$$
+and we know that the integral over the $da$ is just the surface area of a sphere so
+$$\oint_S \vec{E} \cdot d\vec{a} = E4\pi R^2$$
+Now for the left side of the equation. We know 
+$$q_{enc} = \int_V \rho(\vec{r}) d\tau$$
+where $\rho(\vec{r})$ is the charge distribution given by equation \ref{chargedist}
+$$\int_V \rho_0\exp^{\left(\frac{-2r}{a_0}\right)} + e\delta^3(\vec{r})d\tau = \int_0^{\pi}\int_0^{2\pi}\int_0^R \rho_0\exp^{\left(\frac{-2r}{a_0}\right)}r^2\sin{\theta}drd\theta d\phi + e$$
+This integral looks familiar. Rather than writing it again we will skip past the integration
+$$\int_V \rho_0\exp^{\left(\frac{-2r}{a_0}\right)} + e\delta^3(\vec{r})d\tau = 4\pi\rho_0\left[\left(\frac{-a_0}{2}\expmess\right)\left(r^2 + a_0 r+ \frac{a_0^2}{2}\right)\right]_0^R+ e$$
+$$= 4\pi\rho_0\left[\left(\frac{-a_0}{2}\exp^{\left(\frac{-2R}{a_0}\right)}\right)\left(R^2 + a_0 R+ \frac{a_0^2}{2}\right) + \frac{a_0}{2}\frac{a_0^2}{2}\right]+ e$$
+$$= 4\pi\rho_0\left[\left(\frac{-a_0}{2}\exp^{\left(\frac{-2R}{a_0}\right)}\right)\left(R^2 + a_0 R+ \frac{a_0^2}{2}\right) + \frac{a_0^3}{4}\right]+ e$$
+Now we recombine the whole of Gauss' law and get
+$$E4\pi R^2 = \frac{4\pi\rho_0}{\epsilon_0}\left[\left(\frac{-a_0}{2}\exp^{\left(\frac{-2R}{a_0}\right)}\right)\left(R^2 + a_0 R+ \frac{a_0^2}{2}\right) + \frac{a_0^3}{4}\right]+ \frac{e}{\epsilon_0}$$
+$$E = \frac{4\pi\rho_0}{4\pi R^2\epsilon_0}\left[\left(\frac{-a_0}{2}\exp^{\left(\frac{-2R}{a_0}\right)}\right)\left(R^2 + a_0 R+ \frac{a_0^2}{2}\right) + \frac{a_0^3}{4}\right]+ \frac{e}{4\pi R^2\epsilon_0}$$
+$$E = \frac{-e}{a_0^3 \pi R^2\epsilon_0}\left[\left(\frac{-a_0}{2}\exp^{\left(\frac{-2R}{a_0}\right)}\right)\left(R^2 + a_0 R+ \frac{a_0^2}{2}\right) + \frac{a_0^3}{4}\right]+ \frac{e}{4\pi R^2\epsilon_0}$$
+Now lets double check our answer with some dimensional analysis. We know that the units of $E$ are $kg m s^{-2} C^{-1}$ and we know 
+$$<e> = C; <R> = m; <a_0> = m; <\epsilon_0> = kg^{-1} m^{-3}C^2s^2$$
+$$\left<\left[\left(\frac{-a_0}{2}\exp^{\left(\frac{-2R}{a_0}\right)}\right)\left(R^2 + a_0 R+ \frac{a_0^2}{2}\right) + \frac{a_0^3}{4}\right]\right> = m^{3}$$
+$$\left<\frac{-e}{a_0^3 \pi R^2\epsilon_0}\right> = \frac{C}{m^3m^2kg^{-1}m^{-3}C^2s^2}$$
+$$\left<\frac{-e}{a_0^3 \pi R^2\epsilon_0}\right> = kg m^{-2} C^{-1} s^{-2}$$
+This term is multiplied by the $m^3$ from the term attached to it so it becomes $kg m C^{-1}s^{-2}$  and we can see that the proton component has units of
+$$\left<\frac{e}{4\pi R^2\epsilon_0}\right> = \frac{C}{m^2kg^{-1} m^{-3}C^2s^2}$$
+$$\left<\frac{e}{4\pi R^2\epsilon_0}\right> = \frac{kg}{m^{-1}Cs^2}$$
+$$\left<\frac{e}{4\pi R^2\epsilon_0}\right> = kg m C^{-1}s^{-2}$$
+This means the units came out correctly and we can say the electric field is given by the equation
+
+$$E = \frac{-e}{a_0^3 \pi R^2\epsilon_0}\left[\left(\frac{-a_0}{2}\exp^{\left(\frac{-2R}{a_0}\right)}\right)\left(R^2 + a_0 R+ \frac{a_0^2}{2}\right) + \frac{a_0^3}{4}\right]+ \frac{e}{4\pi R^2\epsilon_0}$$
+
+Please see attached for a sketch of the electric field.
+\item 
+The nice thing about Gauss' law is that we can use the symmetry of a sphere to our advantage. This saves us from taking a surface integral. The down side is when the charge is not uniformly distributed like it was for the hydrogen atom we still end up having to integrate. This time we had to integrate over the volume to find the charge enclosed. Using Coulomb's law would still make us integrate over the non-uniform charge distribution.
+\end{enumerate}
+
+\section{Problem \#5}
+\begin{enumerate}[(a)]
+\item 
+Lets start by looking at just one sphere of charge. From the problem we know that the radius of the sphere is $R_0$ and the charge density is uniform represented by $\rho$. So if we are looking to find the electric field when we are inside of the sphere we need to use Gauss' law or equation \ref{gauss}. We will use a Gaussian sphere centered at the origin with a radius $a$ where $a < R_0$. We know that the electric field at the surface of the sphere is always parallel to $d\vec{a}$ and, due to a uniform charge density, the electric field is constant on the surface of the sphere. These properties let equation \ref{gauss} become
+$$\oint_S \vec{E} \cdot d\vec{a} = E\oint_S da = \frac{q_{enc}}{\epsilon_0}$$
+And we get the integral of areas over a surface so we get the surface area of the Gaussian sphere or $4\pi a^2$
+\begin{equation}
+E(4\pi a^2)= \frac{q_{enc}}{\epsilon_0}
+\label{blah}
+\end{equation}
+Now we need to find the charge enclosed within our sphere. This is given by
+$$q_{enc} = \int_V \rho d\tau$$
+where $\rho$ is the constant charge distribution, so it can be removed from the integral
+$$q_{enc} = \rho \int_V d\tau$$
+Now the integral over the volume gives us the volume of a sphere which is $\frac{4}{3}\pi a^3$
+So equation \ref{blah} becomes
+$$E(4\pi a^2)= \frac{4\rho \pi a^3}{3\epsilon_0}$$
+Now we can solve for $E$
+$$E =\frac{4\rho \pi a^3}{4 \pi a^2 3\epsilon_0}$$
+\begin{equation}
+E =a\frac{\rho}{3\epsilon_0}
+\label{onesph}
+\end{equation}
+where $a$ is defined by $0\le a<R_0$
+
+Now we can look at the situation with two overlapping spheres. The area of interest is the overlapping area we can see through super-position that 
+$$\vec{E} = a\frac{\rho}{3\epsilon_0}\hat{a} - a'\frac{\rho}{3\epsilon_0}\hat{a'}$$
+where the vector $\hat{a}$ points radially away from the center of the positively charged sphere. The vector $-\hat{a'}$ points toward the center of the negatively charged sphere (note that it points in due to the negative scale). Now we realize that because the two spheres are at the same point in $x$ and $z$ the vector components in those directions cancel out and the vector only points in the $\hat{y}$ direction or from the center of the positive sphere to the center of the negative sphere. We can rewrite $\vec{E}$ as 
+$$\vec{E} = a\frac{\rho}{3\epsilon_0} - a'\frac{\rho}{3\epsilon_0}\hat{y}$$
+Now we relate $a$ to $a'$ because when you are closer to the center of one sphere you are farther from the other. The geometry shows us the $a' = D - a$ where $D$ is the distance between the centers. So now $\vec{E}$ becomes
+$$\vec{E} = a\frac{\rho}{3\epsilon_0} - (D-a)\frac{\rho}{3\epsilon_0}\hat{y}$$
+$$\vec{E} = (a - (D-a))\frac{\rho\hat{y}}{3\epsilon_0}$$
+\begin{equation}
+\vec{E} = (2a - D)\frac{\rho\hat{y}}{3\epsilon_0}
+\label{Efield5}
+\end{equation}
+Now we can check the units of equation \ref{Efield5}. We expect $$<\vec{E}> = kg m s^{-2} C^{-1}$$ and we know that
+$$<2a-D> = m;<\rho>=C m^{-3};<\epsilon_0>=kg^{-1}m^{-3}C^2s^2$$
+And we can calculate
+$$\left<(2a - D)\frac{\rho\hat{y}}{3\epsilon_0}\right> = m\frac{C m^{-3}}{kg^{-1}m^{-3}C^{2}s^2}$$
+$$\left<(2a - D)\frac{\rho\hat{y}}{3\epsilon_0}\right> = m\frac{1}{kg^{-1}Cs^2}$$
+$$\left<(2a - D)\frac{\rho\hat{y}}{3\epsilon_0}\right> = kg m s^{-2}C^{-1}$$
+The units of $\vec{E}$! So we can say that equation \ref{Efield5} is physical.
+
+\item 
+When $D$ becomes small the spheres are almost fully overlapping. The electric field at for most (the overlapping parts) of the sphere will look like equation \ref{Efield5} where
+$$\vec{E} = (2a - \cancel{D})\frac{\rho\hat{y}}{3\epsilon_0}$$
+$$\vec{E} = 2a\frac{\rho\hat{y}}{3\epsilon_0}$$
+so the magnitude of the electric field becomes double that on a single sphere, but it only points in the $\hat{y}$ direction not in the $\hat{s}$. 
+\end{enumerate}
+
+\section{Problem \#6}
+\begin{enumerate}[(a)]
+\item 
+(see attached)
+\item
+For this system we are going to use Gauss' law or equation \ref{gauss}. The Gaussian surface we will use will be a cylinder of radius $a$ and length $L$. The sides of the cylinder have no flux as the $d\vec{a}$ is perpendicular to the $\vec{E}$ so the only area is that of the top and bottom of the cylinder. We also know that $d\vec{a}$ for the caps is parallel to $\vec{E}$. This makes equation \ref{gauss} become
+$$\oint_S \vec{E} \cdot d\vec{a} = E\oint_S da = \frac{q_{enc}}{\epsilon_0}$$
+and we know the surface integral is the area of the two caps or
+$$E(2\pi a^2)= \frac{q_{enc}}{\epsilon_0}$$
+We also know that the $q_{enc}$ is 
+$$q_{enc} = 2\sigma \textnormal{area}$$
+$$q_{enc} = 2\sigma (\pi a^2)$$
+Where $\sigma$ is the charge density and the factor of 2 comes from the fact that there is 2 plates. So we now have
+$$E(2\pi a^2)= \frac{2\sigma (\pi a^2}{\epsilon_0}$$
+$$E= \frac{2\sigma (\pi a^2)}{(2\pi a^2)\epsilon_0}$$
+$$E= \frac{\sigma}{\epsilon_0}$$
+This is for the case where we have a positive $\sigma$ for the case where we have a negative $\sigma$ the electric field has the same magnitude but is opposite mathematically written
+$$E= \frac{-\sigma}{\epsilon_0}$$
+See attached for the graph of the electric field.
+
+\item 
+We found in part (b) that the magnitude of the electric field is $$E = \frac{\sigma}{\epsilon_0}$$ for all space. For the positively charged "slab" the electric field points away from "slab", and for the negatively charged "slab" the electric field points toward the "slab". This means for the space outside of the 2 "slabs" the 2 electric fields cancel. And for the space between the "slabs" the electric fields add. And because they are equal in magnitude the electric field is doubled. So between the "slabs" the field is
+$$E = \frac{2\sigma}{\epsilon_0}$$
+and $$E= 0$$ above the top plate and below the bottom plate.
+The field within the slab is zero though at first glance it would appear that there should be an electric field within each "slab", because of the other charged "slab." This is not the case because the "slabs" are conducting so the charge actually redistributes itself so that there is no net charge inside the conducting "slab".
+\end{enumerate}
+
+\section{Problem \#7}
+\begin{enumerate}[(a)]
+\item
+To find the electric fields at all the points we are going to need to use equation \ref{gauss} (Gauss' Law). We will us cylinders of radius $r$ and length $L$. A Gaussian cylinder allows the fact the electric field is always parallel to the area vector. This allows equation \ref{gauss} to become
+$$\oint_S \vec{E} \cdot d\vec{a} = E\oint_S da = \frac{q_{enc}}{\epsilon_0}$$
+Where the integral of area over the surface of a cylinder is the surface area of the cylinder (note that the caps are not included because no electric field passes through them). 
+\begin{equation}
+E(2\pi r L )= \frac{q_{enc}}{\epsilon_0}
+\label{cyln}
+\end{equation}
+To find $q_{enc}$ when $r<a$ we need to take the integral of the charge distribution over the volume of the cylinder with radius $r$ or
+$$q_{enc} = \int_V \rho d\tau$$
+Where $\rho$ is the constant charge density so
+$$q_{enc} = \rho \int_V d\tau$$
+$$q_{enc} = \rho \pi r^2 L$$
+The volume integral became the volume of the Gaussian cylinder. Replacing into the equation for $E$
+$$E(2\pi r L )= \frac{\rho \pi r^2 L}{\epsilon_0}$$
+$$E = \frac{\rho \pi r^2 L}{2\pi r L\epsilon_0}$$
+$$E = r\frac{\rho}{2\epsilon_0} \{r:r<a\}$$
+Checking the units we assume that
+$$<E> = kg m s^{-2} C^{-1}$$
+and we know that
+$$<r> = m;<\rho>=C m^{-3};<\epsilon_0>=kg^{-1}m^{-3}C^2s^2$$
+so 
+$$\left<r\frac{\rho}{2\epsilon_0}\right> = m\frac{C m^{-3}}{kg^{-1}m^{-3}C^2s^2}$$
+$$\left<r\frac{\rho}{2\epsilon_0}\right> = m\frac{kg}{Cs^2}$$
+$$\left<r\frac{\rho}{2\epsilon_0}\right> = m kg s^{-2} C^{-1}$$
+Good, our units agree
+
+For the case where $a<r<b$ we start with equation \ref{cyln}
+$$E(2\pi r L )= \frac{q_{enc}}{\epsilon_0}$$
+again we have to take the integral of the charge distribution to find the charge enclosed. This integral is just like before but instead of being over $r^2$ we get $a^2$ because now $r>a$. So we get
+$$E(2\pi r L) = \frac{\rho \pi a^2 L}{\epsilon_0}$$
+$$E = \frac{\rho \pi a^2 L}{2\pi r L\epsilon_0}$$
+$$E = \frac{1}{r}\frac{\rho a^2}{2\epsilon_0} \{r:a<r<b\}$$
+now we can check our units we assume
+$$<E> = kg m s^{-2} C^{-1}$$
+and we know that
+$$<a>=<r> = m;<\rho>=C m^{-3};<\epsilon_0>=kg^{-1}m^{-3}C^2s^2$$
+so 
+$$\left<\frac{1}{r}\frac{\rho a^2}{2\epsilon_0}\right> = \frac{1}{m}\frac{C m^{-3} m^2}{kg^{-1}m^{-3}C^2s^2}$$
+$$\left<\frac{1}{r}\frac{\rho a^2}{2\epsilon_0}\right> = \frac{m}{kg^{-1}Cs^2}$$
+$$\left<\frac{1}{r}\frac{\rho a^2}{2\epsilon_0}\right> = m kg s^{-2} C^{-1}$$
+Our units agree again.
+
+Now for the case where $r>b$ we know right away that the electric field is zero because the cable is overall electrically neutral. So if our Gaussian cylinder includes the whole wire the charge enclosed is zero. 
+$$E = 0 \{r:r>b\}$$
+We can write the whole electric field in a piecewise function
+\begin{equation}
+E(r)\left\{
+     \begin{array}{lr}
+       r\frac{\rho}{2\epsilon_0} & : 0<r<a\\
+       \frac{1}{r}\frac{\rho a^2}{2\epsilon_0} & : a<r<b\\
+       0 & : b<r<\infty\\
+     \end{array}
+   \right.
+\label{piecew}
+\end{equation}
+The graph of equation \ref{piecew} is attached
+\item 
+The wire will spark when the electric field for $a<r<b$ is equal to $3\times 10^6$ so we get
+$$3\times 10^6 = \frac{1}{r}\frac{\rho a^2}{2\epsilon_0}$$
+We will estimate that $r=0.005 m$ and $a=0.001 m$ so we get
+$$\frac{(3\times 10^6)(0.005)(8.85\times10^{-12})}{0.001^2} = \rho$$
+Rewrite $\rho$ in terms of $q$
+$$\frac{(3\times 10^6)(0.005)(8.85\times10^{-12})}{a^2} = \frac{q}{\pi a^2 L}$$
+Let $L = 1m$
+$$\pi(3\times 10^6)(0.005)(8.85\times10^{-12}) = q$$
+\begin{center}
+\fbox{$q \approx 0.4 \mu C$}
+\end{center}
+
+\end{enumerate}
+
+\end{document}

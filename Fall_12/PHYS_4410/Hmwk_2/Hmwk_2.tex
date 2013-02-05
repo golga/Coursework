@@ -1,0 +1,91 @@
+\documentclass[11pt]{article}
+\usepackage{latexsym}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{graphicx}
+\usepackage{enumerate}
+\usepackage{amsmath}
+\usepackage{cancel}
+\numberwithin{equation}{section}
+
+\setlength{\evensidemargin}{.25in}
+\setlength{\oddsidemargin}{-.25in}
+\setlength{\topmargin}{-.75in}
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{9.5in}
+\newcommand{\due}{September 19th, 2012}
+\newcommand{\HWnum}{2}
+\input{/home/joey/Documents/Class/Define.tex}
+
+\begin{document}
+\input{../title.tex}
+
+\section{Problem \#1}
+\begin{enumerate}[(a)]
+\item
+A system of two electrons in a spin singlet is represented by
+$$\psi_{00} = \frac{1}{\sqrt{2}}\left(\chi_{+}^{1}\chi_{-}^{2} - \chi_{-}^{1}\chi_{+}^{2}\right)$$
+Note that in general to find the probability of finding a particle in state $a$ we have the operator that acts as the projection
+$$\hat{P}_a = \ket{a}\bra{a}$$
+for measuring the particle in a spin up state the projection operator becomes
+$$\hat{P}_{+}^1 = \chi_+^1(\chi_+^1)^{\dagger}$$
+So we act $\hat{P}_+$ on $\psi_{00}$ to yield
+\begin{align*}
+\hat{P}_+^2\psi_{00} &= \chi_+^1(\chi_+^1)^{\dagger}\frac{1}{\sqrt{2}}\left(\chi_{+}^{1}\chi_{-}^{2} - \chi_{-}^{1}\chi_{+}^{2}\right)\\
+&= \chi_+^1\frac{1}{\sqrt{2}}\left(\cancelto{1}{(\chi_+^1)^{\dagger}\chi_{+}^{1}}\chi_{-}^{2} - \cancelto{0}{(\chi_+^1)^{\dagger}\chi_{-}^{1}}\chi_{+}^{2}\right)\\
+&= \frac{1}{\sqrt{2}}\chi_+^1\chi_{-}^{2}
+\end{align*}
+Now that we have the projected state we can find the probability that the second electron is spin up by finding
+\begin{align*}
+P_+^2 &= |(\chi_{+}^2)^{\dagger}\hat{P}_+^2\psi_{00}|^2\\
+&= |(\chi_{+}^2)^{\dagger}\frac{1}{\sqrt{2}}\chi_+^1\chi_{-}^{2}|^2\\
+&= |\frac{1}{\sqrt{2}}\chi_+^1(\chi_{+}^2)^{\dagger}\chi_{-}^{2}|^2\\
+&= 0
+\end{align*}
+
+\item
+We know that the eigenfunction of $\chi_y^{+}$ is given by
+$$\chi_{y+} = \frac{1}{\sqrt{2}}\left(\chi_{+}+i\chi_{-}\right)$$
+so our projection operator becomes
+\begin{align*}
+\hat{P}_{y+}^1 &= \chi_{y+}^1(\chi_{y+}^1)^{\dagger}\\
+&= \frac{1}{2}(\chi_{+}^1+i\chi_{-}^1)((\chi_{+}^1)^{\dagger}-i(\chi_{-}^1)^{\dagger})
+\end{align*}
+Now we project $\psi_{00}$ onto this state by
+\begin{align*}
+\hat{P}_{y+}^{1}\psi_{00} &= \frac{1}{2}(\chi_{+}^1+i\chi_{-}^1)((\chi_{+}^1)^{\dagger}-i(\chi_{-}^1)^{\dagger})\frac{1}{\sqrt{2}}\left(\chi_{+}^{1}\chi_{-}^{2} - \chi_{-}^{1}\chi_{+}^{2}\right)\\
+&= \frac{1}{2\sqrt{2}}(\chi_{+}^1+i\chi_{-}^1)\left(\chi_{-}^{2} + i\chi_{+}^{2}\right)\\
+&= \frac{1}{2\sqrt{2}}(\chi_{+}^1+i\chi_{-}^1)\left(\chi_{-}^{2} + i\chi_{+}^{2}\right)\\
+\end{align*}
+
+\item
+\end{enumerate}
+
+\section{Problem \#2}
+\begin{enumerate}[(a)]
+\item
+Given that $\mathbf{J}$ is the total angular momentum given by $\mathbf{J} = \mathbf{S}+\mathbf{L}$ we can say that
+\begin{align*}
+J^2 &= S^2 + L^2 + 2\mathbf{S}\cdot\mathbf{L}\\
+&\Downarrow\\
+\mathbf{S}\cdot\mathbf{L} &= \frac{1}{2}(J^2 - S^2 - L^2)
+\end{align*}
+And now we can act on a state $\ket{lsjm}$ to find
+\begin{align*}
+\mathbf{S}\cdot\mathbf{L}\ket{lsjm} &=\frac{1}{2}(J^2 - S^2 - L^2)\ket{lsjm}\\ 
+&=\frac{1}{2}(J^2\ket{lsjm} - S^2\ket{lsjm} - L^2\ket{lsjm})\\ 
+&=\frac{\hbar^2}{2}(j(j+1)-s(s+1)-l(l+1))\ket{lsjm}  
+\end{align*}
+And for $s = 1$ we have
+$$\mathbf{S}\cdot\mathbf{L}\ket{lsjm} =\frac{\hbar^2}{2}(j(j+1)-l(l+1)-2)\ket{lsjm}$$
+so for $J = L - 1$ we have
+
+\item
+\item
+\end{enumerate}
+
+\section{Problem \#3}
+
+\section{Problem \#4}
+
+\end{document}

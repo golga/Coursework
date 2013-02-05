@@ -1,0 +1,196 @@
+\documentclass[11pt]{article}
+
+\usepackage{latexsym}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{enumerate}
+\usepackage{amsmath}
+\usepackage{cancel}
+\numberwithin{equation}{section}
+
+\setlength{\evensidemargin}{.25in}
+\setlength{\oddsidemargin}{-.25in}
+\setlength{\topmargin}{-.75in}
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{9.5in}
+\newcommand{\due}{November 7th, 2012}
+\newcommand{\HWnum}{8}
+\newcommand{\Brf}{B_{\textnormal{rf}}}
+\input{/home/joey/Documents/Class/Define.tex}
+
+\begin{document}
+\input{../title.tex}
+
+\section{Problem \#1}
+\begin{enumerate}[(a)]
+\item
+Given a particle in an one-dimensional box of length $a$ the particle can be represented as the wavefunction
+$$\ket{n} = \sqrt{\frac{2}{a}}\sin\left(\frac{n\pi}{a}x\right)$$
+Now if we add a time-dependent potential 
+$$V_1(x,t) = \lambda\left(x-\frac{a}{2}\right)\sin(\omega t)$$
+in the region $0<x<a$. We can calculate the probability that this particle will transition from the ground state ($n=1$) to the first excited state ($n=2$) by finding the coefficient
+\begin{equation}
+c_f(t) = -\frac{i}{\hbar}\int_{0}^{t}\bra{f}V_1(x,t')\ket{i}e^{i/\hbar(E_f-E_i)t'}dt'
+\label{Cf}
+\end{equation}
+Where the probability of transitioning from state $\ket{i}$ to $\ket{f}$ is given by 
+$$P_{fi} = |c_f|^2$$
+Note we will operate under the assumption that 
+$$\omega\approx \frac{E_f-E_i}{\hbar}$$
+which lets us calculate equation \ref{Cf} as
+\begin{align*}
+c_f(t) &= -\frac{i}{\hbar}\int_{0}^{t}\bra{2}V_1(x,t')\ket{1}e^{i/\hbar(E_f-E_i)t'}dt'\\
+&= -\frac{i}{\hbar}\frac{2}{a}\int_{0}^{t}\sin\left(\frac{2\pi}{a}x\right)\lambda\left(x-\frac{a}{2}\right)\sin(\omega t)\sin\left(\frac{\pi}{a}x\right)e^{i\omega t'}dt'\\
+&= -\frac{i}{\hbar}\frac{2\lambda}{a}\sin\left(\frac{2\pi}{a}x\right)\sin\left(\frac{\pi}{a}x\right)\left(x-\frac{a}{2}\right)\int_{0}^{t}\sin(\omega t)e^{i\omega t'}dt'\\
+&= -\frac{i}{\hbar}\frac{2\lambda}{a}\sin\left(\frac{2\pi}{a}x\right)\sin\left(\frac{\pi}{a}x\right)\left(x-\frac{a}{2}\right)\left(\frac{2i\omega t - e^{2i\omega t}+1}{4\omega}\right)
+\end{align*}
+So now we can calculate the $P_{fi}$ by
+\begin{align*}
+P_{fi} = |c_f|^2 &= c_f^*c_f\\
+&= \frac{4\lambda^2}{\hbar^2a^2}\sin^2\left(\frac{2\pi}{a}x\right)\sin^2\left(\frac{\pi}{a}x\right)\left(x-\frac{a}{2}\right)^2\left(\frac{2i\omega t - e^{2i\omega t}+1}{4\omega}\right)^*\left(\frac{2i\omega t - e^{2i\omega t}+1}{4\omega}\right)\\
+&= \frac{4\lambda^2}{16\hbar^2a^2\omega^2}\sin^2\left(\frac{2\pi}{a}x\right)\sin^2\left(\frac{\pi}{a}x\right)\left(x-\frac{a}{2}\right)^2(-2i\omega t - e^{-2i\omega t}+1)(2i\omega t - e^{2i\omega t}+1)\\
+&= \frac{\lambda^2}{4\hbar^2a^2\omega^2}\sin^2\left(\frac{2\pi}{a}x\right)\sin^2\left(\frac{\pi}{a}x\right)\left(x-\frac{a}{2}\right)^2(-2i\omega t - e^{-2i\omega t}+1)(2i\omega t - e^{2i\omega t}+1)
+\end{align*}
+Where
+\begin{align*}
+(-2i\omega t - e^{-2i\omega t}+1)(2i\omega t - e^{2i\omega t}+1) &= 4\omega^2t^2+ 2i\omega te^{2i\omega t} - \cancel{2i\omega t} - 2i\omega te^{-2i\omega t} + \cancelto{1}{e^{2i\omega t}e^{-2i\omega t}}\\
+&\ \ \ \ \ \ -e^{-2i\omega t} + \cancel{2i\omega t} - e^{2i\omega t} + 1\\
+&= 4\omega^2t^2+ 2i\omega t\left(e^{2i\omega t} - e^{-2i\omega t}\right) - 2\left(\frac{e^{2i\omega t} + e^{-2i\omega t}}{2} + 1\right)\\
+&= 4\omega^2t^2+ 2i\omega t(2i\sin(2\omega t)) - 2\left(\cos(2\omega t) - 1\right)\\
+&= 4\omega^2t^2 - 4\omega t\sin(2\omega t) - 2\left(\cos(2\omega t) - 1\right)
+\end{align*}
+Which yields the result
+$$P_{21} = \frac{\lambda^2}{2\hbar^2a^2\omega^2}\sin^2\left(\frac{2\pi}{a}x\right)\sin^2\left(\frac{\pi}{a}x\right)\left(x-\frac{a}{2}\right)^2 (2\omega^2t^2 - 2\omega t\sin(2\omega t) - \cos(2\omega t) + 1)$$
+note that this is a probability distribution function so we integrate over $x$ from $0$ to $a$ to get
+\begin{align*}
+P(t) &= \frac{\lambda^2}{2\hbar^2a^2\omega^2}(2\omega^2t^2 - 2\omega t\sin(2\omega t) - \cos(2\omega t) + 1)\int_0^a\sin^2\left(\frac{2\pi}{a}x\right)\sin^2\left(\frac{\pi}{a}x\right)\left(x-\frac{a}{2}\right)^2dx \\
+&= \frac{\lambda^2}{2\hbar^2a^2\omega^2}(2\omega^2t^2 - 2\omega t\sin(2\omega t) - \cos(2\omega t) + 1)\left(\frac{a^3(6\pi^2-25)}{288\pi^2}\right)\\
+&= \frac{\lambda^2a}{2\hbar^2\omega^2}\left(\frac{6\pi^2-25}{288\pi^2}\right)(2\omega^2t^2 - 2\omega t\sin(2\omega t) - \cos(2\omega t) + 1)
+\end{align*}
+
+\item
+For the transition where we go from $\ket{i} = \ket{1}$ to $\ket{f} = \ket{3}$ we have the same result from part (a) except for a factor of $3$ in the sine function
+$$P_{31} = \frac{\lambda^2}{2\hbar^2a^2\omega^2}\sin^2\left(\frac{3\pi}{a}x\right)\sin^2\left(\frac{\pi}{a}x\right)\left(x-\frac{a}{2}\right)^2 (2\omega^2t^2 - 2\omega t\sin(2\omega t) - \cos(2\omega t) + 1)$$
+where we calculate
+\begin{align*}
+P(t) &= \frac{\lambda^2}{2\hbar^2a^2\omega^2}(2\omega^2t^2 - 2\omega t\sin(2\omega t) - \cos(2\omega t) + 1)\int_0^a\sin^2\left(\frac{3\pi}{a}x\right)\sin^2\left(\frac{\pi}{a}x\right)\left(x-\frac{a}{2}\right)^2dx \\
+&= \frac{\lambda^2}{2\hbar^2a^2\omega^2}(2\omega^2t^2 - 2\omega t\sin(2\omega t) - \cos(2\omega t) + 1)\left(\frac{a^3(48\pi^2-275)}{2304\pi^2}\right)\\
+&= \frac{\lambda^2a}{2\hbar^2\omega^2}\left(\frac{48\pi^2-275}{2304\pi^2}\right)(2\omega^2t^2 - 2\omega t\sin(2\omega t) - \cos(2\omega t) + 1)
+\end{align*}
+\end{enumerate}
+
+\section{Problem \#2}
+\begin{enumerate}[(a)]
+\item
+Given a spin-1/2 particle with gyromagnetic ration $\gamma$, at rest in a static magnetic field $B_0\hat{z}$ we know it precesses at the \emph{Larmor frequency} $\omega_0 = \gamma B_0$. Now if we add a transverse radio frequency field given by
+$$\mathbf{B}_{\textnormal{rf}} = B_{\textnormal{rf}}(\cos(\omega t)\hat{x} - \sin(\omega t)\hat{y})$$
+which results in a total magnetic field
+$$\mathbf{B} = B_{\textnormal{rf}}\cos(\omega t)\hat{x} - B_{\textnormal{rf}}\sin(\omega t)\hat{y} +B_0\hat{z}$$
+From this can construct the $2\times 2$ Hamiltonian matrix by
+$$H = -\gamma\mathbf{B}\cdot\mathbf{S}$$
+which results in
+$$H = -\gamma(B_xS_x + B_yS_y + B_zS_z)$$
+where we use the \emph{Pauli Spin Matrices}, $\sigma_i$, such that
+$$S_i = \frac{\hbar}{2}\sigma_i$$
+So we have 
+\begin{align*}
+H &= -\gamma\frac{\hbar}{2}(B_x\sigma_x + B_y\sigma_y + B_z\sigma_z)\\
+&= -\gamma\frac{\hbar}{2}\left[
+B_x\left(\begin{array}{cc}
+0  &1\\
+1  &0  \end{array}\right)
++ B_y\left(\begin{array}{cc}
+0  &-i\\
+i  &0  \end{array}\right)
++ B_z\left(\begin{array}{cc}
+1  &0\\
+0  &-1  \end{array}\right)
+\right]\\
+&= -\gamma\frac{\hbar}{2}\left(\begin{array}{cc}
+                         B_z           &B_x - iB_y\\
+                         B_x + iB_y    &-B_z      \\
+                         \end{array}\right)\\
+&= -\gamma\frac{\hbar}{2}\left(\begin{array}{cc}
+                         B_0      &B_{\textnormal{rf}}[\cos(\omega t) - i\sin(\omega t)]\\
+                         B_{\textnormal{rf}}[\cos(\omega t) + i\sin(\omega t)]    &-B_0 \\
+                         \end{array}\right)\\
+&= -\gamma\frac{\hbar}{2}\left(\begin{array}{cc}
+                         B_0      &B_{\textnormal{rf}}e^{-i\omega t}\\
+                         B_{\textnormal{rf}}e^{i\omega t}    &-B_0 \\
+                         \end{array}\right)
+\end{align*}
+
+\item
+So for a state
+$$\chi(t) = \left(\begin{array}{c}a(t)\\b(t)\end{array}\right)$$
+we can find the first time derivative by applying \emph{Schr\"{o}dinger's Equation}
+$$i\hbar\partiald{}{t}\chi(t) = H\chi(t)$$
+which yields
+\begin{align*}
+i\hbar\left(\begin{array}{c}\dot{a}(t)\\\dot{b}(t)\end{array}\right)  &= -\gamma\frac{\hbar}{2}\left(\begin{array}{cc}
+               B_z      &B_{\textnormal{rf}}e^{-i\omega t}\\
+               B_{\textnormal{rf}}e^{i\omega t}    &-B_z \\
+               \end{array}\right)\left(\begin{array}{c}a(t)\\b(t)\end{array}\right)\\
+&\Downarrow\\
+\left(\begin{array}{c}\dot{a}(t)\\\dot{b}(t)\end{array}\right)  &= \gamma\frac{i}{2}\left(\begin{array}{c}
+               B_0a(t) + \Brf e^{i\omega t}b(t)\\
+               \Brf e^{-i\omega t}b(t) - B_0b(t)\\
+               \end{array}\right)\\
+&= \frac{i}{2}\left(\begin{array}{c}
+               \omega_0a(t) + \gamma\Brf e^{i\omega t}b(t)\\
+               \gamma\Brf e^{-i\omega t}a(t) - \omega_0b(t)\\
+               \end{array}\right)
+\end{align*}
+Which yields the system of equations
+\begin{align*}
+\dot{a} &= \frac{i}{2}\left(\Omega e^{i\omega t}b + \omega_0a\right)\\
+\dot{b} &= \frac{i}{2}\left(\Omega e^{-i\omega t}a - \omega_0b\right)
+\end{align*}
+where we define
+$$\Omega\equiv\gamma\Brf$$
+
+\item (Skipped)
+
+\item 
+Given the general form for $a(t)$ and $b(t)$
+\begin{align*}
+a(t) &= \left[a_0\cos(\omega' t/2)+\frac{i}{\omega '}(a_0(\omega_0-\omega)+b_0\Omega)\sin(\omega 't/2)\right]e^{i\omega t/2}\\
+b(t) &= \left[b_0\cos(\omega' t/2)+\frac{i}{\omega '}(b_0(\omega-\omega_0)+a_0\Omega)\sin(\omega 't/2)\right]e^{-i\omega t/2}
+\end{align*}
+where 
+$$\omega'\equiv\sqrt{(\omega-\omega_0)^2+\Omega^2}$$
+we can calculate the probability of a transition from spin up to spin down as a function of time using the fact that
+$$P(t) = |b(t)|^2$$
+which states that the magnitude of $b(t)$ squared is the probability of finding the particle in that state. Where we apply the initial conditions that $a_0 = 1$ and $b_0 = 0$ to get
+\begin{align*}
+b(t) &= \left[\cancelto{0}{b_0\cos(\omega' t/2)}+\frac{i}{\omega '}(\cancelto{0}{b_0(\omega-\omega_0)}+a_0\Omega)\sin(\omega 't/2)\right]e^{-i\omega t/2}\\
+&= \frac{i}{\omega '}\Omega\sin(\omega 't/2)e^{-i\omega t/2}
+\end{align*}
+So $P(t)$ is
+\begin{align*}
+P(t) = |b(t)|^2 &= b^*(t)b(t)\\
+&= \left(\frac{i}{\omega '}\Omega\sin(\omega 't/2)e^{-i\omega t/2}\right)^*\frac{i}{\omega '}\Omega\sin(\omega 't/2)e^{-i\omega t/2}\\
+&= -\frac{i}{\omega '}\Omega\sin(\omega 't/2)\cancel{e^{i\omega t/2}}\frac{i}{\omega '}\Omega\sin(\omega 't/2)\cancel{e^{-i\omega t/2}}\\
+&= \frac{\Omega^2}{(\omega ')^2}\sin^2(\omega 't/2)
+\end{align*}
+Which if we write out $\omega'$ we get
+$$P(t) = \frac{\Omega^2}{(\omega-\omega_0)^2+\Omega^2}\sin^2(\omega 't/2)$$
+
+
+
+\item (Skipped)
+
+\item
+In a \emph{nuclear magnetic resonance} experiment the we can measure the $g$-factor of a proton by applying a static field $B_0=1\unit{T}$ with an rf field of $\Brf=1\times10^{-6}\unit{T}$. Using these values we can calculate the resonant frequency $\omega_0$ where the gyromagnetic ratio is given by
+$$\gamma = \frac{g_pe}{2m_p}$$
+where $g_p$ is given as $g_p = 5.59$ so we can calculate $\omega_0$ by
+\begin{align*}
+\nu_0 = \frac{\omega_0}{2\pi} = \frac{1}{2\pi}\gamma B_0 = \frac{g_pe}{4\pi m_p}B_0 = \frac{(5.59)(1.60\times10^{-19}\unit{C})}{4\pi(1.67\times10^{-27}\unit{kg})}1\unit{T} = 4.26\times10^{7}\unit{Hz}
+\end{align*}
+Note we can check the units
+$$\left\langle\unit{C\ kg^{-1}\ T}\right\rangle = \left\langle\unit{C\ kg^{-1}\ kg\ C^{-1}\ s^{-1}}\right\rangle = \left\langle\unit{s^{-1}}\right\rangle = \left\langle\unit{Hz}\right\rangle$$
+Now from part (d) we see the width of the Lorentzian, $\Delta\omega$ is given by $2\Omega$ which we can calculate as
+$$\Delta\nu = \frac{2\Omega}{2\pi} = \frac{\gamma\Brf}{\pi} = \frac{g_pe}{2\pi m_p}\Brf = \frac{(5.59)(1.60\times10^{-19}\unit{C})}{2\pi(1.67\times10^{-27}\unit{kg})}1\times10^{-6}\unit{T} = 85.2\unit{Hz}$$ 
+\end{enumerate}
+\end{document}
+

@@ -1,0 +1,471 @@
+\documentclass[11pt]{article}
+
+\usepackage{latexsym}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{enumerate}
+\usepackage{amsmath}
+\usepackage{cancel}
+\numberwithin{equation}{section}
+
+\setlength{\evensidemargin}{.25in}
+\setlength{\oddsidemargin}{-.25in}
+\setlength{\topmargin}{-.75in}
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{9.5in}
+\newcommand{\due}{October 21st, 2009}
+\newcommand{\HWnum}{8}
+\newcommand{\grad}{\bold\nabla}
+\newcommand{\vecE}{\vec{E}}
+\newcommand{\scrptR}{\vec{\mathfrak{R}}}
+\newcommand{\kapa}{\frac{1}{4\pi\epsilon_0}}
+\newcommand{\vecP}{\vec{\mathbf{P}}}
+
+\begin{document}
+\input{../title.tex}
+
+\section{Problem \#1}
+\begin{enumerate}[(a)]
+\item
+To calculate the bounded surface charge ($\sigma_b$) of the polarized cylinder with polarization
+$$\vecP = ks\hat{s}$$
+we can use the equation 
+\begin{equation}
+\sigma_b = \vecP\cdot\hat{n}
+\label{sigb}
+\end{equation}
+Where $\hat{n}$ is the normal vector in the case where we have charge on the surface of the cylinder the normal vector points in the $\hat{s}$ direction so we have
+\begin{align*}
+\sigma_b &= \vecP\cdot\hat{n}\\
+&= ka\hat{s}\cdot\hat{s}\\
+&= ka(1)\\
+\sigma_b &= ka
+\end{align*}
+Now for the bounded volume charge density ($\rho_b$) we use
+\begin{equation}
+\rho_b = -\grad\cdot\vecP
+\label{rhob}
+\end{equation}
+So we calculate 
+\begin{align*}
+\rho_b &= -\grad\cdot\vecP\\
+&= -\frac{1}{s}\frac{\partial}{\partial s}s\hat{s}\cdot ks\hat{s}\\
+&= -\frac{1}{s}\frac{\partial}{\partial s}(ks^2)\\
+&= -\frac{1}{s}2ks\\
+\rho_b &= -2k
+\end{align*}
+So we see that $k$ has to have the units of $\rho_b$ or a volume charge density given by $<k> = C\ m^{-3}$. So we can double check our units if we assume that
+$$<\sigma_b> = C\ m^{-2}$$
+And we know that
+$$<k> = C\ m^{-3};\ <a> = m$$
+we can say that
+$$<ka> = C\ m^{-3}\ m$$
+$$<ka> = C\ m^{-2}$$
+Good our units agree so we can say that
+$$\rho_b = -k$$
+$$\sigma_b = ka$$
+where
+$$<k> = C\ m^{-3}$$
+
+\item
+For outside the sphere we can use \emph{Gauss' Law}
+\begin{equation}
+\oint_S \vecE\cdot d\vec{a} = \frac{q_{enc}}{\epsilon_0}
+\label{gauss}
+\end{equation}
+where the charge enclosed of the cylinder is given by 
+\begin{align*}
+q_{enc} &= \sigma_b (2\pi al)+\rho_b (\pi a^2l)\\
+&= ka(2\pi al)-2k(\pi a^2l)\\
+&= k(2\pi a^2l)-2k(\pi a^2l)\\
+q_{enc} &= 0
+\end{align*}
+So we have no net charge enclosed there is no electric field outside of the cylinder or 
+$$\vecE = 0$$
+For inside the cylinder we use equation \ref{gauss} again but this time we only have a charge enclosed due to the bounded volume charge density so
+$$q_{enc} = \rho_b(\pi s^2l)$$
+$$q_{enc} = -2k\pi s^2l$$
+where $s$ is the radius of the Gaussian Cylinder so we calculate
+\begin{align*}
+\oint_S \vecE\cdot d\vec{a} &= \frac{-2k\pi s^2l}{\epsilon_0}\\
+E\oint_Sda &= \frac{-2k\pi s^2l}{\epsilon_0}\\
+E(2\pi sl)&= \frac{-2k\pi s^2l}{\epsilon_0}\\
+E&= \frac{-2k\pi s^2l}{(2\pi sl)\epsilon_0}\\
+\vecE&= -\frac{ks}{\epsilon_0}\hat{s}
+\end{align*}
+So the total electric field is given by
+$$\vecE = \left\{\begin{array}{cc}
+	-\dfrac{ks}{\epsilon_0}\hat{s} 	&(0\le s<a)\\
+\\
+	0 &(a\le s)
+	\end{array}\right.$$
+We can check the dimensions of this electric field if we assume that
+$$<\vecE> = N\ C^{-1}$$
+and we know
+$$<k> = C\ m^{-3};\ <a>=<s>=m;\ <\epsilon_0> = C^2\ N^{-1}\ m^{-2}$$
+So we calculate
+\begin{align*}
+\left<\dfrac{-ks}{\epsilon_0}\right> &= \frac{C\ m^{-3}\ m\ }{C^2\ N^{-1}\ m^{-2}}\\
+&= \frac{m^{-2}}{C N^{-1} m^{-2}}\\
+&= \frac{1}{C N^{-1}}\\
+&= C^{-1} N
+\end{align*}
+Good our units agree.
+
+\item
+To find the displacement field we use the equation
+\begin{equation}
+\vec{D} = \epsilon_0 \vecE+\vecP
+\label{disp}
+\end{equation}
+So for outside the cylinder we know that there is no polarization so $\vecP =0$ or electric field so we can say
+\begin{align*}
+\vec{D} &= \epsilon_0 \vecE+\vecP\\
+&= \epsilon_0 \cancelto{0}{\vecE}+\cancelto{0}{\vecP}\\
+\vec{D} &=0
+\end{align*}
+For inside the cylinder we calculate
+\begin{align*}
+\vec{D} &= \epsilon_0 \vecE+\vecP\\
+&= \epsilon_0 \dfrac{-ks}{\epsilon_0}\hat{s}+ks\hat{s}\\
+&= -ks\hat{s}+ks\hat{s}\\
+\vec{D} &= 0
+\end{align*}
+So we can say the displacement field is zero everywhere or
+$$\vec{D} = 0$$
+So if we calculate Griffiths' equation (4.23)
+$$\oint_S\vec{D}\cdot d\vec{a} = Q_{fenc}$$
+So we know that $\vec{D}$ is uniform and perpendicular along $d\vec{a}$ so we calculate the free charge for the cylinder
+\begin{align*}
+Q_{fenc} &= \oint_S\vec{D}\cdot d\vec{a} \\
+&= D\oint_S\ d{a} \\
+&= 0\oint_S\ d{a} \\
+Q_{fenc} &= 0
+\end{align*}
+So we see that we do not have any free charges. This makes sense because we did not define any in the problem.
+\end{enumerate}
+
+\section{Problem \#2}
+\begin{enumerate}[(a)]
+\item
+We know that the polarization of in the regions where there is a vacuum is zero (or non-existent). So first we find the bounded charges by using equations \ref{sigb} and \ref{rhob}. Where 
+$$\vecP = \frac{k}{s^2}\hat{s}$$
+So we calculate $\sigma_{bout}$ for the surface charge on the outside surface to get
+\begin{align*}
+\sigma_{bout} &= \vecP\cdot\hat{n} \\
+&= \vecP\cdot\hat{s} \\
+&= \frac{k}{a^2}\hat{s}\cdot\hat{s} \\
+&= \frac{k}{a^2}
+\end{align*}
+And for the inside surface. Note that the normal vector points in the opposite direction as the outside surface.
+\begin{align*}
+\sigma_{bin} &= \vecP\cdot\hat{n} \\
+&= \vecP\cdot(-\hat{s}) \\
+&= \frac{k}{b^2}\hat{s}\cdot(-\hat{s}) \\
+&= -\frac{k}{b^2}
+\end{align*}
+No to find $\rho_b$ we calculate
+\begin{align*}
+\rho_b &= -\grad\cdot\vecP \\
+&= -\grad\cdot\frac{k}{s^2}\hat{s} \\
+&= -\frac{1}{s}\frac{\partial}{\partial s}s\hat{s}\cdot\frac{k}{s^2}\hat{s} \\
+&= -\frac{1}{s}\frac{\partial}{\partial s}s\frac{k}{s^2} \\
+&= -\frac{1}{s}\frac{\partial}{\partial s}\frac{k}{s} \\
+&= -\frac{1}{s}\frac{k}{s^2}(-1) \\
+\rho_b &= \frac{k}{s^3} 
+\end{align*}
+So now we can use equation \ref{gauss} to calculate the electric field outside and inside of the hollow cylinder. First we need to say for a Gaussian cylinder inside our charge enclosed is given by
+\begin{align*}
+Q_{enc} &= \int_V\rho_bd\tau + \oint_S\sigma_bda\\
+&= \int_b^s\int_0^{2\pi}\int_0^l\frac{2k}{s^3}sdsd\phi dz - \frac{k}{b}(2\pi l)\\
+&= 2\pi l\int_b^s\frac{k}{s^2}ds - \frac{k}{b}(2\pi l)\\
+&= 2k\pi l\int_b^s\frac{1}{s^2}ds - \frac{k}{b}(2\pi l)
+\end{align*}
+\begin{align*}
+&= 2k\pi l\left(-\frac{1}{s}\right|_b^a - \frac{k}{b}(2\pi l)\\
+&= -2k\pi l\left(\frac{1}{s}-\frac{1}{b}\right) - \frac{k}{b}(2\pi l)\\
+\end{align*}
+So calculating equation \ref{gauss} we get
+\begin{align*}
+\oint_S \vecE\cdot d\vec{a} &= \frac{Q_{enc}}{\epsilon_0}\\
+E\oint_S da &= \left(-2k\pi l\left(\frac{1}{s}-\frac{1}{b}\right) - \frac{k}{b}(2\pi l)\right)\frac{1}{\epsilon_0}\\
+E(2\pi s l) &= \left(-2k\pi l\left(\frac{1}{s}-\frac{1}{b}\right) - \frac{k}{b}(2\pi l)\right)\frac{1}{\epsilon_0}\\
+E &= \left(-2k\pi l\left(\frac{1}{s}-\frac{1}{b}\right) - \frac{k}{b}(2\pi l)\right)\frac{1}{(2\pi s l)\epsilon_0}\\
+E &= \left(-k\left(\frac{1}{s}-\frac{1}{b}\right) - \frac{k}{b}\right)\frac{1}{s\epsilon_0}\\
+E &= \frac{k}{\epsilon_0}\left(\frac{-1}{s^2}+\frac{1}{bs} - \frac{1}{bs}\right)\\
+\vecE &= \frac{k}{\epsilon_0}\left(\frac{-1}{s^2}\right)\hat{s}\\
+\vecE &= \frac{-k}{\epsilon_0s^2}\hat{s}
+\end{align*}
+Now for outside the cylinder we can say that the charge enclosed is
+\begin{align*}
+Q_{enc} &= \int_V\rho_bd\tau + \oint_S\sigma_{bin}da + \oint_S\sigma_{bout}da\\
+&= \int_b^a\int_0^{2\pi}\int_0^l\frac{k}{s^3}sdsd\phi dz - \frac{k}{b^2}(2\pi bl)+\frac{k}{a^2}(2\pi al)\\
+&= \int_b^a\int_0^{2\pi}\int_0^l\frac{k}{s^3}sdsd\phi dz - \frac{k}{b}(2\pi l)+\frac{k}{a}(2\pi l)\\
+&= 2\pi l\int_b^a\frac{k}{s^2}ds - \frac{k}{b}(2\pi l)+\frac{k}{a}(2\pi l)\\
+&= 2k\pi l\int_b^a\frac{1}{s^2}ds - \frac{k}{b}(2\pi l)+\frac{k}{a}(2\pi l)\\
+&= -2k\pi l\left(\frac{1}{s}\right|_b^a - \frac{k}{b}(2\pi l)+\frac{k}{a}(2\pi l)\\
+&= -2k\pi l\left(\frac{1}{a}-\frac{1}{b}\right) - \frac{k}{b}(2\pi l)+\frac{k}{a}(2\pi l)\\
+&= 2\pi l\left(\frac{-k}{a}+\frac{k}{b} - \frac{k}{b}+\frac{k}{a}\right)\\
+&= 0
+\end{align*}
+So we see that we do not have an electric field outside of the cylinder.
+Note that for the empty volume inside of the cylinder we have not charge enclosed so the electric field is zero. This gives us the whole electric field as
+$$\vecE = \left\{\begin{array}{lc}
+		0	&s<b, s>a\\
+	\dfrac{-k}{\epsilon_0s^2}\hat{s}	&b\le s<a
+		\end{array}\right.$$
+
+\item
+Since we have no free charges we see that
+$$\oint\vec{D}\cdot d\vec{a} = Q_f$$
+$Q_f =0$ so we see that $\vec{D} = 0$ everywhere in space. So if we say that
+$$\vec{D} = \epsilon_0 \vecE + \vecP$$
+we see that 
+$$\vecE = -\frac{\vecP}{\epsilon_0}$$
+now from part (a) we see that we 
+$$\vecP = \frac{k}{s^2}\hat{s}$$
+so we can say that the electric field is
+$$\vecE = -\frac{1}{\epsilon_0}\frac{k}{s^2}\hat{s}$$
+$$\vecE = \frac{-k}{\epsilon_0s^2}\hat{s}$$
+This is the result we found in part (a).
+\end{enumerate}
+
+\section{Problem \#3}
+\begin{enumerate}[(a)]
+\item
+See attached for the drawing. 
+
+We see that the electric field at the edge looks somewhat like a dipole. This would make sense because the polarization of the cylinder creates a dipole dominate term. 
+
+\item
+See attached for the drawing. 
+
+The displacement field lines all loop back onto itself. This is due to the fact that there is no free charges. So the net displacement has to sum to zero. This is the situation where the field lines create closed loops.
+\item
+The equation
+$$\vecE^{\Vert}_{above} - \vecE^{\Vert}_{below} = 0$$
+describes the boundary conditions on the cylinder. We see that the electric field is the same magnitude and direction on both surfaces. This is the case where the field originates and terminates in the same way. This is a loop. The boundary conditions of the displacement can be described by
+$$\vec{D}^{\Vert}_{above} - \vec{D}^{\Vert}_{below} = \vecP^{\Vert}_{above}-\vecP^{\Vert}_{below}$$
+This makes the displacement follow the polarization. This is why the displacement lines loop back onto themselves.
+\end{enumerate}
+
+\section{Problem \#4}
+So we define the bounded charge distributions as equations \ref{sigb} and \ref{rhob} or
+$$\sigma_b = \vecP\cdot\hat{n}$$
+$$\rho_b = -\grad\cdot\vecP$$
+Now if we calculate the total charge $Q$ as
+$$Q = \oint_S \sigma_b da +\int_V \rho_b d\tau$$
+replacing with the definitions of $\rho_b$ and $\sigma_b$ we get
+$$Q = \oint_S \vecP\cdot\hat{n}da +\int_V \left(-\grad\cdot\vecP\right) d\tau$$
+Note that $d\vec{a}=\hat{n}da$ by definition so this fact yields
+$$Q = \oint_S \vecP\cdot d\vec{a} -\int_V \grad\cdot\vecP d\tau$$
+Now if we use \emph{divergence theorem}
+$$\int_V \grad\cdot\vec{u}d\tau= \oint_S \vec{u}\cdot d\vec{a}$$
+we get
+\begin{align*}
+Q &= \oint_S \vecP\cdot d\vec{a} -\int_V \grad\cdot\vecP d\tau\\
+Q &= \oint_S \vecP\cdot d\vec{a} -\oint_S \vecP\cdot d\vec{a}\\
+Q &=0
+\end{align*}
+So if the net charge of the dielectric is zero it remains zero.
+\section{Problem \#5}
+\begin{enumerate}[(a)]
+\item
+We assume that an empty sphere is the same as superimposing a sphere of opposite polarization or $\vecP = -k\hat{z}$, because the polarization is uniform we see that $\rho_b = 0$ and we can calculate the bounded surface charge using equation \ref{sigb}
+\begin{align*}
+\sigma_b &= \vecP \cdot\hat{n}\\
+&=k\hat{z}\cdot\hat{r}\\
+&=-k\cos(\theta)
+\end{align*}
+We have calculated before that the potential inside a sphere of charge is
+$$V(r,\theta) = -\frac{k}{3\epsilon_0}r\cos(\theta)$$
+Note that $z=r\cos(\theta)$ so we can say that
+$$V(r,\theta) = -\frac{k}{3\epsilon_0}z$$
+Now we only have to take find the electric field we calculate
+\begin{align*}
+\vecE &= -\grad V\\
+&= -\frac{\partial}{\partial z}\left(-\frac{k}{3\epsilon_0}z\right)\hat{z} \\
+&= \frac{\partial}{\partial z}\left(\frac{k}{3\epsilon_0}z\right)\hat{z} \\
+\vecE &= \frac{k}{3\epsilon_0}\hat{z} 
+\end{align*}
+
+\item
+To find the bounded surface charge density on the surface of the bubble we can say that we have the slabs polarization given by
+$$\vecP = k\hat{z}$$
+and we can use equation \ref{sigb}. Note that the normal vector in this case points into the center of the sphere or $-\hat{r}$ so we calculate
+\begin{align*}
+\sigma_b = \vecP\cdot\hat{n}\\
+= k\hat{z}\cdot(-\hat{r})\\
+= -k(\hat{z}\cdot\hat{r})\\
+= -k(|\hat{z}||\hat{r}|\cos(\theta))\\
+\sigma_b = -k\cos(\theta)
+\end{align*}
+
+\item
+If we assume that an external electric field caused the uniform polarization $\vecP$ we can say that the total electric field is the superposition of the electric field induced and the external electric field or
+$$\vecE = \vecE_{ext} + \frac{k}{3\epsilon_0}\hat{z}$$
+
+\end{enumerate}
+
+\section{Problem \#6}
+\begin{enumerate}[(a)]
+\item
+We can calculate the electric displacement from 
+$$\oint\vec{D}\cdot d\vec{a} = Q_{fenc}$$
+so we can see that for everywhere inside of the capacitor we get.
+\begin{align*}
+\oint\vec{D}\cdot d\vec{a} &= \sigma(\textnormal{area})\\
+D\oint da &= \sigma(\textnormal{area})\\
+D(\textnormal{area}) &= \sigma(\textnormal{area})\\
+\vec{D} &= \sigma\hat{z}
+\end{align*}
+For both regions I and II this points down so the positive $z$ direction is down in the figure. Note that outside the capacitor there is no electric field or polarization, so $\vec{D}$ is zero outside of regions I and II.
+
+To find the electric field in the regions we can calculate
+$$\vec{D} = \epsilon_0\epsilon_r\vecE$$
+We know from the problem that $\epsilon_r = 3$ in region II so we can say that
+$$\vecE = \frac{\sigma}{3\epsilon_0}$$
+and for region I we know that $\epsilon_r =1$ so we can say that
+$$\vecE = \frac{\sigma}{\epsilon_0}$$
+Now for the polarization we can calculate 
+$$\vec{D} = \epsilon_0\vecE + \vecP$$
+for region I we expect that there is no polarization because it is a vacuum. So we calculate
+$$\vec{D} = \epsilon_0\vecE + \vecP$$
+solving for $\vecP$ we get
+$$\vecP = \vec{D} - \epsilon_0\vecE $$
+So we use the values we calculated we get
+\begin{align*}
+\vecP &= \vec{D} - \epsilon_0\vecE \\
+&= \sigma - \epsilon_0\frac{\sigma}{\epsilon_0} \\
+&= \sigma - \sigma \\
+&=0
+\end{align*}
+Now for region II we have
+\begin{align*}
+\vecP &= \vec{D} - \epsilon_0\vecE \\
+&= \sigma - \epsilon_0\frac{\sigma}{3\epsilon_0} \\
+&= \sigma - \frac{\sigma}{3} \\
+\vecP &= \frac{2\sigma}{3}
+\end{align*}
+
+\item
+So to find the bounded charge distributions we need to use the polarization of region II. Note that there are no bounded charges in region I because there is no polarization. 
+$$\vecP = \frac{2\sigma}{3}$$
+Now we can calculate the bounded charges using equation \ref{sigb} and \ref{rhob}. Note the normal vector points in the negative $z$ direction at $a/2$ and the opposite direction at $a$ so we calculate
+\begin{align*}
+\sigma_b &= \vecP\cdot\hat{n}\\
+&= \frac{2\sigma}{3}\hat{z}\cdot(-\hat{z})\\
+\sigma_b &= -\frac{2\sigma}{3}
+\end{align*}
+at the boundary between regions I and II.
+\begin{align*}
+\sigma_b &= \vecP\cdot\hat{n}\\
+&= \frac{2\sigma}{3}\hat{z}\cdot(\hat{z})\\
+\sigma_b &= \frac{2\sigma}{3}
+\end{align*}
+at the bottom of region II.
+\begin{align*}
+\rho_b&=-\grad\cdot\vecP\\
+&=-\grad\cdot(\frac{2\sigma}{3}\hat{z})\\
+&=-\frac{\partial}{\partial z}\hat{z}\cdot(\frac{2\sigma}{3}\hat{z})\\
+&=\frac{\partial}{\partial z}(\frac{2\sigma}{3})\\
+\rho_b &=0
+\end{align*}
+For all of region II. This makes sense since it is a uniform polarization.
+\item
+To calculate the potential we use the equation
+$$V = -\int\vecE\cdot d\vec{l}$$
+So if we calculate 
+\begin{align*}
+V(\infty) - V(0) &= -\int_0^{\infty}\vecE\cdot d\vec{l}\\
+\cancelto{0}{V(\infty)} - V(0) &= -\int_0^{a/2}\frac{\sigma}{\epsilon_0} dz+\int_{a/2}^{a}\frac{\sigma}{3\epsilon_0}dz +\int_a^{\infty}0dz\\
+- V(0) &= -\left(\frac{\sigma}{\epsilon_0}z\right|0^{a/2}+\left(\frac{\sigma}{3\epsilon_0}z\right|_{a/2}^{a}\\
+V(0) &= \frac{\sigma}{\epsilon_0}\left(\frac{a}{2}-0\right)+\frac{\sigma}{3\epsilon_0}\left(a-\frac{a}{2}\right)\\
+V(0) &= \frac{\sigma}{\epsilon_0}\left(\frac{a}{2}\right)+\frac{\sigma}{3\epsilon_0}\left(\frac{a}{2}\right)\\
+V(0) &= \frac{\sigma}{\epsilon_0}\frac{a}{2}+\frac{\sigma}{3\epsilon_0}\frac{a}{2}\\
+V(0) &= \frac{\sigma}{\epsilon_0}\frac{a}{2}\left(1+\frac{1}{3}\right)\\
+V(0) &= \frac{\sigma}{\epsilon_0}\frac{a}{2}\left(\frac{4}{3}\right)\\
+V(0) &= \frac{\sigma}{\epsilon_0}\frac{2a}{3}
+\end{align*}
+We know that without a dielectric the capacitor we have a potential 
+$$V'=\frac{\sigma}{\epsilon_0}a$$
+so we see that the potential was changed by a factor of two thirds. So we can see that out capacitance is given by
+$$C = \frac{Q}{V}$$
+so we can see that without the dielectric our capacitance is
+\begin{align*}
+C &= \frac{Q}{V}\\
+&= \frac{\sigma A\epsilon_0}{\sigma a}\\
+C &= \frac{A\epsilon_0}{a}
+\end{align*}
+now with the dielectric in region II we have
+\begin{align*}
+C &= \frac{Q}{V}\\
+&= \frac{\sigma A 3\epsilon_0}{\sigma 2a}\\
+C &= \frac{3}{2}\frac{A\epsilon_0}{a}
+\end{align*}
+Our capacitance increased by 1 and a half. If we were to fill the whole region with dielectric the capacitance would be doubled from the system in the problem. This makes sense.
+\end{enumerate}
+
+\section{Problem \#7}
+
+We first can calculate the displacement by using 
+$$\oint\vec{D}\cdot d\vec{a} = Q_{fenc}$$
+So for inside the sphere of free charge we know that the free charge is
+$$Q_{fenc} = \rho\frac{4}{3}\pi r^3$$
+So we calculate knowing that $\vec{D}$ is uniform along $d\vec{a}$
+\begin{align*}
+\oint\vec{D}\cdot d\vec{a} &= \rho\frac{4}{3}\pi r^3\\
+D\oint da &= \rho\frac{4}{3}\pi r^3\\
+D(4\pi r^2) &= \rho\frac{4}{3}\pi r^3\\
+D &= \rho\frac{4}{3}\pi r^3\frac{1}{4\pi r^2}\\
+\vec{D} &= \rho\frac{1}{3}r\hat{r}
+\end{align*}
+
+So we know that the electric field is given by the equation
+$$\vec{D} = \epsilon_0\epsilon_r\vecE$$
+we solve for $\vecE$ to get
+$$\vecE=\frac{\vec{D}}{\epsilon_0\epsilon_r}$$
+so replacing the $\vec{D}$ we found yields
+$$\vecE=\frac{\rho r}{3\epsilon_0\epsilon_r}\hat{r}$$
+Now we do the same thing for outside the sphere of free charge to get
+\begin{align*}
+\oint\vec{D}\cdot d\vec{a} &= \rho\frac{4}{3}\pi R^3\\
+D\oint da &= \rho\frac{4}{3}\pi R^3\\
+D(4\pi r^2) &= \rho\frac{4}{3}\pi R^3\\
+D &= \rho\frac{4}{3}\pi R^3\frac{1}{4\pi r^2}\\
+D &= \rho\frac{1}{3}R^3\frac{1}{r^2}\\
+\vec{D} &= \rho\frac{R^3}{3r^2}\hat{r}
+\end{align*}
+Now solving for the electric field we get
+\begin{align*}
+\vecE &=\frac{\vec{D}}{\epsilon_0\epsilon_r}\\
+\vecE &= \rho\frac{R^3}{3\epsilon_0r^2}\hat{r}
+\end{align*}
+Note that we do not have a dielectric constant in this term because we are outside of the sphere. Now that we have the electric field as 
+$$\vecE = \left\{\begin{array}{lc}
+	\dfrac{\rho r}{3\epsilon_0\epsilon_r}\hat{r}	&(0\le r\le R) \\
+\\
+	\rho\dfrac{R^3}{3\epsilon_0r^2}\hat{r}	&(R<r)
+		\end{array}\right.$$
+we can calculate the potential using
+\begin{align*}
+V &= -\int_0^{\infty} \vecE\cdot d\vec{l}\\
+&= -\int_0^{R} \dfrac{\rho r}{3\epsilon_0\epsilon_r}\hat{r}\cdot dr\hat{r} -\int_R^{\infty} \rho\dfrac{R^3}{3\epsilon_0r^2}\hat{r}\cdot dr\hat{r}\\
+&= -\int_0^{R} \dfrac{\rho r}{3\epsilon_0\epsilon_r}dr -\int_R^{\infty} \rho\dfrac{R^3}{3\epsilon_0r^2}dr\\
+&= -\dfrac{\rho}{3\epsilon_0\epsilon_r}\int_0^{R}rdr -\rho\dfrac{R^3}{3\epsilon_0}\int_R^{\infty} r^{-2}dr\\
+&= -\dfrac{\rho}{3\epsilon_0\epsilon_r}\left(\frac{1}{2}r^2\right|_0^{R} -\rho\dfrac{R^3}{3\epsilon_0}\left(-\frac{1}{r}\right|_R^{\infty}\\
+&= -\dfrac{\rho}{6\epsilon_0\epsilon_r}\left(r^2\right|_0^{R} +\rho\dfrac{R^3}{3\epsilon_0}\left(\frac{1}{r}\right|_R^{\infty}\\
+&= -\dfrac{\rho}{6\epsilon_0\epsilon_r}\left(R^2-0^2\right) +\rho\dfrac{R^3}{3\epsilon_0}\left(0-\frac{1}{R}\right)\\
+&= -\dfrac{\rho}{6\epsilon_0\epsilon_r}\left(R^2\right) -\rho\dfrac{R^3}{3\epsilon_0}\left(\frac{1}{R}\right)\\
+&= -\dfrac{\rho R^2}{6\epsilon_0\epsilon_r} -\rho\dfrac{R^3}{3\epsilon_0R}\\
+&= -\dfrac{\rho R^2}{6\epsilon_0\epsilon_r} -\dfrac{\rho R^2}{3\epsilon_0\epsilon_r}
+\end{align*}
+\begin{align*}
+V(\infty) -V(0)&= -\dfrac{\rho R^2}{3\epsilon_0}\left(\frac{1}{2\epsilon_r} + 1\right) \\
+\cancelto{0}{V(\infty)} -V(0)&= -\dfrac{\rho R^2}{3\epsilon_0}\left(\frac{1}{2\epsilon_r} + 1\right) \\
+V(0)&= \dfrac{\rho R^2}{3\epsilon_0}\left(\frac{1}{2\epsilon_r} + 1\right) \\
+\end{align*}
+
+
+\end{document}
+

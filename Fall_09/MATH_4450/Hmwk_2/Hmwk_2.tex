@@ -1,0 +1,191 @@
+\documentclass[11pt]{article}
+
+\usepackage{latexsym}
+\usepackage{amssymb}
+\usepackage{enumerate}
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{cancel}
+
+\setlength{\evensidemargin}{.25in}
+\setlength{\oddsidemargin}{-.25in}
+\setlength{\topmargin}{-.75in}
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{9.5in}
+\newcommand{\due}{September 9th, 2009}
+\newcommand{\HWnum}{2}
+\newcommand{\CC}{\mathbb{C}}
+\newcommand{\ZZ}{\mathbb{Z}}
+
+\begin{document}
+\input{../title.tex}
+\subsection*{Written problems}
+\begin{enumerate}
+\item 1.5.14\\
+Since we are going to have to take a root of $z$ we will start by using the roots of unity.
+$$\left(z^{\frac{1}{n}}\right)^m = \left(\left(z e^{i(0 \pm 2k\pi)}\right)^{\frac{1}{n}}\right)^m \{k = 0, 1, 2, 3... \}$$
+where $e^{i(0 \pm 2k\pi)}$ is equal to one. Now we need to rewrite $z$ as
+$$z = |z| e^{i\theta}$$
+this give us
+$$\left(z^{\frac{1}{n}}\right)^m = \left(\left(|z| e^{i\theta} e^{i(0 \pm 2k\pi)}\right)^{\frac{1}{n}}\right)^m$$
+Now it is possible to combine the exponents.
+$$\left(z^{\frac{1}{n}}\right)^m = \left(\left(|z| e^{i\theta + i(0 \pm 2k\pi)}\right)^{\frac{1}{n}}\right)^m$$
+$$\left(z^{\frac{1}{n}}\right)^m = \left(\left(|z| e^{i(\theta + 0 \pm 2k\pi)}\right)^{\frac{1}{n}}\right)^m$$
+$$\left(z^{\frac{1}{n}}\right)^m = \left(\left(|z| e^{i(\theta \pm 2k\pi)}\right)^{\frac{1}{n}}\right)^m$$
+Because we are dealing with exponentials we can use the identity $$\left(e^{x}\right)^{a} = e^{ax}$$ now we get
+
+$$\left(z^{\frac{1}{n}}\right)^m = \left(|z|^{\frac{1}{n}} e^{i\frac{1}{n}(\theta \pm 2k\pi)}\right)^m$$
+$$\left(z^{\frac{1}{n}}\right)^m = |z|^{\frac{m}{n}} e^{i\frac{m}{n}(\theta \pm 2k\pi)}$$
+If we rewrite the exponent as cosines and sines we get
+$$\left(z^{\frac{1}{n}}\right)^m = |z|^{\frac{m}{n}} \left[\cos{\frac{m}{n}(\theta \pm 2k\pi)} + i\sin{\frac{m}{n}(\theta \pm 2k\pi)}\right]$$
+\begin{equation}
+\left(z^{\frac{1}{n}}\right)^m = \sqrt[n]{|z|^{m}} \left[\cos{\frac{m}{n}(\theta \pm 2k\pi)} + i\sin{\frac{m}{n}(\theta \pm 2k\pi)}\right] \{k = 0, 1, 2, 3 ...\}
+\label{comset}
+\end{equation}
+Now we have found that equation \ref{comset} gives us the common set of numbers for $(z^{1/n})^m$. Now we have to show that $(z^m)^{1/n}$ has the same common set of numbers. Lets start again with
+$$\left(z^m\right)^{\frac{1}{n}} = \left(\left(z e^{i(0 \pm 2k\pi)}\right)^{m}\right)^{\frac{1}{n}} \{k = 0, 1, 2, 3... \}$$
+$$\left(z^{m}\right)^{\frac{1}{n}} = \left(\left(|z| e^{i\theta} e^{i(0 \pm 2k\pi)}\right)^m\right)^{\frac{1}{n}}$$
+$$\left(z^{m}\right)^{\frac{1}{n}} = \left(\left(|z| e^{i\theta + i(0 \pm 2k\pi)}\right)^m\right)^{\frac{1}{n}}$$
+$$\left(z^{m}\right)^{\frac{1}{n}} = \left(\left(|z| e^{i(\theta + 0 \pm 2k\pi)}\right)^m\right)^{\frac{1}{n}}$$
+$$\left(z^{m}\right)^{\frac{1}{n}} = \left(\left(|z| e^{i(\theta \pm 2k\pi)}\right)^m\right)^{\frac{1}{n}}$$
+$$\left(z^{m}\right)^{\frac{1}{n}} = \left(|z| e^{i m (\theta \pm 2k\pi)}\right)^{\frac{1}{n}}$$
+$$\left(z^{m}\right)^{\frac{1}{n}} = |z| e^{i \frac{m}{n} (\theta \pm 2k\pi)}$$
+$$\left(z^m\right)^{\frac{1}{n}} = |z|^{\frac{m}{n}} \left[\cos{\frac{m}{n}(\theta \pm 2k\pi)} + i\sin{\frac{m}{n}(\theta \pm 2k\pi)}\right]$$
+$$\left(z^m\right)^{\frac{1}{n}} = \sqrt[n]{|z|^{m}} \left[\cos{\frac{m}{n}(\theta \pm 2k\pi)} + i\sin{\frac{m}{n}(\theta \pm 2k\pi)}\right] \{k = 0, 1, 2, 3 ...\}$$
+This is the same result as equation \ref{comset}. This means that the set of numbers $(z^{1/n})^m$ is the same as the set of numbers $(z^m)^{1/n}$. The set of numbers is given by equation \ref{comset} which is written as 
+$$z^{m/n} = \sqrt[n]{|z|^{m}} \left[\cos{\frac{m}{n}(\theta \pm 2k\pi)} + i\sin{\frac{m}{n}(\theta \pm 2k\pi)}\right] \{k = 0, 1, 2, 3 ...\}$$
+\item 1.6.24
+\begin{enumerate}
+\item
+The line segment can be parametrized by 
+$$x = at + b$$
+where the starting point of the line segment is at $b$ and the ending point is $a+b$ we see this because $t$ varies between zero and one ($0 \le t\le 1$). So at $t=0$ we get $x=b$ the starting point of the line segment, and at $t=1$ we get $x=a+b$ the ending point of the line segment. This holds true for the parametrization $$y=ct+d$$ except $y$ goes from $d$ to $c+d$. So it makes sense that 
+\begin{equation}
+U(t) := u(at +b, ct +d); \{t:0\le t\le 1\}
+\label{ulinseg}
+\end{equation}
+describes vales of $u$ along a line segment in D.
+\item 
+So if we assume that $U(t)$ is a real-valued function defined in a domain $D$. We can take the time derivative of equation \ref{ulinseg} on the domain $0 \le t \le 1$. We see through chain rule that
+$$\frac{dU}{dt} = \frac{dU}{dx}\frac{dx}{dt}$$
+and for the $y$ part
+$$\frac{dU}{dt} = \frac{dU}{dy}\frac{dy}{dt}$$
+Now we see that $U(t)$ has no $x$ or $y$ dependence so
+$$\frac{dU}{dy} = \frac{dU}{dx} = 0$$
+So we can say that
+$$\frac{dU}{dt} = 0 \{t:0\le t\le1\}$$ which means $u$ is constant for any line segment.
+
+\item
+Due to the assumption that $U(t)$ is in a domain $D$, we know that $D$ is open and connected. The definition of connected states that a series of line segments can be drawn between any two points in $D$. Therefore if $U(t)$ is parametrized by line segments any point within $D$ can be reached by $U(t)$. And because the change over these line segments is zero we can conclude that $U(t)$ is constant for all points in $D$, or $U(t)$ has the same value at any two points in $D$.
+\end{enumerate}
+\end{enumerate}
+
+\subsection*{Problems}
+
+\begin{enumerate}
+\item 1.6: 16, 17, 18, 19
+\begin{enumerate}[(i)]
+\item 16)\\
+If we assume that $S$ is an open set we know that for every point in $S$ there exists a "neighborhood" that satisfies the inequality
+$$|z - z_0| < \rho$$ where $\rho$ is a positive real number.
+This same holds true for all points in $T$. So for the set $S\cup T$ we know that all points included in the set $S\cup T$ are either in $S$ or $T$. And we know that for every point in $S$ or $T$ there exists a "neighborhood" around each point. So we can reason that for every point within $S\cup T$ there exists a "neighborhood" around it. This means that $S\cup T$ is an open set.
+
+\item 17)\\
+If $S$ and $T$ are domains, is $S\cap T$ necessarily a domain?
+
+The intersection of $S$ and $T$ ($S\cap T$) is not necessarily a domain. $S\cap T$ does not have a guarantee that it is connected. So if we do not know if $S\cap T$ is connected; we do not know if $S \cap T$ is a domain or not.
+
+\item 18)\\
+If we know that $S$ and $T$ are domains, then we know that $S$ and $T$ are open and connected. We saw in problem 16 that if $S$ and $T$ are both opens sets then $S\cup T$ is an open set. So the only thing we need to know is whether or not $S\cup T$ is connected. The only way for the set $S \cup T$ to be connected is if $S$ and $T$ share a common point. So we can say that if $S$ and $T$ are both domains that share at least one common point, then $S\cup T$ is also a domain.
+\item 19)\\
+Theorem 1 states that "$u(x,y)$ is a real-valued function defined in the domain $D$." $D$ is defined by
+$$D := \{z : |z| < 1\}\cup\{z:|z| > 2\}$$
+but as you can see that there is no way to draw a line (or a series of line segments) from the set $\{z: |z| < 1\}$ to the set $\{z: |z| > 2\}$ without going out side of either set. This means $D$ is not connected and not a domain. Therefore theorem 1 does not apply.
+\end{enumerate}
+
+\item 1.7:  2, 3, 4
+\begin{enumerate}[(i)]
+
+\item 2)
+	\begin{enumerate}[(a)]
+	\item
+First we can define our complex number as $z = a + ib$ so we find that
+$$\frac{1}{\bar{z}} = \frac{1}{a - ib}$$
+Now we will rationalize the denominator
+$$\frac{1}{\bar{z}} = \frac{1}{a - ib}\frac{a + ib}{a + ib}$$
+$$\frac{1}{\bar{z}} = \frac{a + ib}{a^2 + i^2b^2}$$
+$$\frac{1}{\bar{z}} = \frac{a + ib}{a^2 + b^2}$$
+So we now have $\bar{z}^{-1}$ in the form $a + ib$. Now we can take the stereographic projections of $z$ and $\bar{z}^{-1}$. For $z$ we get
+$$x=ta; y=tb; z=1-t$$
+and we know for the Riemann Sphere that
+$$x^2 + y^2 + z^2 = 1$$
+So we get
+$$(ta)^2 + (tb)^2 + (1-t)^2 = 1$$
+$$t^2a^2 + t^2b^2 + 1 + t^2 -2t = 1$$
+$$(a^2 + b^2 + 1)t^2 -2t +1 = 1$$
+Solving for $t$ gives us
+$$t = 0; t = \frac{2}{a^2+b^2+1}$$
+where $t=0$ is at the point $\infty$ on the Riemann sphere.
+
+We now know the point of $z$ on the Riemann sphere is
+$$x_0 = \frac{2a}{a^2+b^2+1}; y_0 = \frac{2b}{a^2+b^2+1}; z_0 = 1 - \frac{2}{a^2+b^2+1}$$
+Now we look at the stereographic projection for $\bar{z}^{-1}$. We start with
+$$x=t\frac{a}{a^2 + b^2}; y=t\frac{b}{a^2 + b^2}; z=1-t$$
+solving for 
+$$x^2 + y^2 + z^2 = 1$$
+we get
+$$\left(t\frac{a}{a^2 + b^2}\right)^2 + \left(t\frac{b}{a^2 + b^2}\right)^2 + (1-t)^2 = 1$$
+$$t^2\frac{a^2}{(a^2 + b^2)^2} + t^2\frac{b^2}{(a^2 + b^2)^2} + 1 + t^2 - 2t = 1$$
+$$t\left(t\frac{a^2}{(a^2 + b^2)^2} + t\frac{b^2}{(a^2 + b^2)^2} + t - 2\right) = 0$$
+$$t\left(t\left(\frac{a^2}{(a^2 + b^2)^2} + \frac{b^2}{(a^2 + b^2)^2} + 1\right) - 2\right) = 0$$
+$$t\left(t\left(\frac{a^2 +b^2}{(a^2 + b^2)^2} + 1\right) - 2\right) = 0$$
+$$t\left(t\left(\frac{1}{a^2 + b^2} + 1\right) - 2\right) = 0$$
+$$t\left(t\left(\frac{1 + a^2 + b^2}{a^2 + b^2}\right) - 2\right) = 0$$
+$$t=0; t = \frac{2(a^2+b^2)}{1 + a^2 + b^2}$$
+Now we can see the point $z$ projects to the point 
+$$x_0 = \frac{a}{a^2+b^2}\frac{2(a^2+b^2)}{1 + a^2 + b^2}; y_0 =\frac{a}{a^2+b^2} \frac{2(a^2+b^2)}{1 + a^2 + b^2}; z_0 = 1 - \frac{2(a^2+b^2)}{1 + a^2 + b^2}$$
+$$x_0 = \frac{2a}{1 + a^2 + b^2}; y_0 =\frac{2b}{1 + a^2 + b^2}; z_0 = 1 - \frac{2(a^2+b^2)}{1 + a^2 + b^2}$$
+we can see that the $x_0$ and the $y_0$ are the same for both complex numbers the only difference is in $z_0$ for $z$ we can rewrite 
+$$z_0 = 1 - \frac{2}{|z|+1}$$
+$$z_0 = \frac{|z| - 1}{|z|+1}$$
+and for the $\bar{z}^{-1}$ we can write $z_0$ as
+$$z_0' = 1 - \frac{2|z|}{1 + |z|}$$
+$$z_0' = \frac{1 - |z|}{1 + |z|}$$
+This is saying that the $z_0$ component is are the negatives of each other or $$z_0 = -z_0'$$ This is the representation of a reflection over the equatorial plane.
+	\item
+When we have $-\bar{z}^{-1}$ all we have to do is take the negative of the stereographic projection we already took (this means $a=-a$ and $b= -b$). So if we do that we get
+$$x_0 = \frac{-2a}{1 + a^2 + b^2}; y_0 =\frac{-2b}{1 + a^2 + b^2}; z_0 = - \frac{|z| - 1}{|z|+1}$$
+It is obvious that this projection is the same as the projection for $z$ except that all the terms are negative. When this is the case we see that the projections are diametrically opposite from each other.
+	\end{enumerate}
+
+\item 3)\\
+If we think about the shape of the Riemann Sphere with a plane that passes through $Z$, $W$ and the origin. We see that points on opposite side are diametrically opposite, because the plane passes through the origin. So the projection of the point $-\bar{z}^{-1}$ has to be on this plane too (we saw in problem 2 that $-\bar{z}^{-1}$ is diametrically opposite to $z$). That means on the complex plane the points $-\bar{z}^{-1}$, $z$, and $w$ must be on the projected circle on the plane.
+\item 4)\\
+If we were to project the unique circle (or line) onto the Riemann Sphere we would find a great circle that would contain the projections $Z$ and $W$. We saw in problem three that a point diametrically opposite from another point also rests on that great circle. So we know the point diametrically opposite of $W$ has to be on the great circle. This great circle projected to the complex plane gives us the unique circle (or line) that $z$ and $w$ are on. We also know that the projection of the diametrically opposite point from $W$ onto the complex plane is given by $-\bar{w}^{-1}$ (problem 2). We also know that the projection of $-\bar{w}^{-1}$ on the Riemann Sphere is on the great circle so $-\bar{w}^{-1}$ must be on the unique circle (or line).
+\end{enumerate}
+
+\item Consider the two functions $f:\CC\rightarrow \CC$ and $g:\CC\rightarrow \CC$ given by
+\begin{align*} 
+f(z) &=e^{i\pi/3}z\\
+g(z) & = z + 1. 
+\end{align*}
+Describe geometrically what these functions do to the Riemann sphere.
+
+For the function
+$$f(z) =e^{i\pi/3}z$$
+we see that a complex number $z$ would have its $\theta$ rotated by an angle of $\frac{\pi}{3}$. Shown by
+$$\textnormal{let} z = |z|e^{i\theta}$$
+$$f(z) =e^{i\pi/3}z$$
+$$f(z) =e^{i\pi/3}|z|e^{i\theta}$$
+$$f(z) =|z|e^{i(\theta + \pi/3)}$$
+we see that $\theta$ is increased by $\frac{\pi}{3}$. This means that the Riemann sphere will be rotated by the angle $\frac{\pi}{3}$.
+
+
+For the function
+$$g(z)  = z + 1$$
+we see that a complex number is shifted over 1 on the real axis. The effect on the Riemann sphere is that it will be shifter over 1 on the real axis of the complex plane. This means that the center of the Riemann sphere will be at $(1,0)$ rather that $(0,0)$ where it normally is.
+\end{enumerate}
+
+
+\end{document}
+

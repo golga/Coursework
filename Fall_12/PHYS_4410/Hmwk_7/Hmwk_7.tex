@@ -1,0 +1,219 @@
+\documentclass[11pt]{article}
+
+\usepackage{latexsym}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{enumerate}
+\usepackage{amsmath}
+\usepackage{cancel}
+\numberwithin{equation}{section}
+
+\setlength{\evensidemargin}{.25in}
+\setlength{\oddsidemargin}{-.25in}
+\setlength{\topmargin}{-.75in}
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{9.5in}
+\newcommand{\due}{October 31st, 2012}
+\newcommand{\HWnum}{7}
+\input{/home/joey/Documents/Class/Define.tex}
+
+\begin{document}
+\input{../title.tex}
+
+\section{Problem \#1}
+For the Hamiltonian 
+$$\hat{H} = \frac{\hat{p}^2}{2m} + \lambda x^4$$
+we can apply \emph{Variational Principle} to estimate the ground state energy. Variational principle states that the ground state energy has an upper bound that is set by
+\begin{equation}
+E_0 \le \bra{\psi}\hat{H}\ket{\psi}
+\label{VarPrin}
+\end{equation}
+where $\ket{\psi}$ is a trial wavefunction. We can pick $\ket{\psi}$ as a Gaussian of the form
+$$\ket{\psi(\alpha)} = Ne^{-\alpha x^2/2}$$
+where $\alpha$ is the varied parameter and $N$ is the normalization factor which we calculate as
+\begin{align*}
+1 = \int_{-\infty}^{\infty}\inprod{\psi(\alpha)}{\psi(\alpha)} &= N^2\int_{-\infty}^{\infty}e^{-\alpha x^2}\\
+&= N^2\left(\frac{\pi}{\alpha}\right)^{1/2}\\
+&\Downarrow\\
+N &= \left(\frac{\alpha}{\pi}\right)^{1/4}
+\end{align*}
+So now we can set an upper bound on the ground state energy by equation \ref{VarPrin}
+\begin{align*}
+E(\alpha) = \bra{\psi}\hat{H}\ket{\psi} &= \left(\frac{\alpha}{\pi}\right)^{1/2}\int_{-\infty}^{\infty}dxe^{-\alpha x^2/2}\left(-\frac{\hbar^2}{2m}\frac{\partial^2}{\partial x^2} + \lambda x^4\right)e^{-\alpha x^2/2}\\
+&= \left(\frac{\alpha}{\pi}\right)^{1/2}\int_{-\infty}^{\infty}dxe^{-\alpha x^2/2}\left(-\frac{\hbar^2}{2m}\frac{\partial^2}{\partial x^2}e^{-\alpha x^2/2} + \lambda x^4e^{-\alpha x^2/2}\right)\\
+&= \left(\frac{\alpha}{\pi}\right)^{1/2}\int_{-\infty}^{\infty}dxe^{-\alpha x^2/2}\left(\frac{\hbar^2}{2m}\frac{\partial}{\partial x}(\alpha x)e^{-\alpha x^2/2} + \lambda x^4e^{-\alpha x^2/2}\right)\\
+&= \left(\frac{\alpha}{\pi}\right)^{1/2}\int_{-\infty}^{\infty}dxe^{-\alpha x^2/2}\left(\frac{\hbar^2}{2m}\alpha e^{-\alpha x^2/2} - \frac{\hbar^2}{2m}(\alpha x)^2 e^{-\alpha x^2/2} + \lambda x^4e^{-\alpha x^2/2}\right)\\
+&= \left(\frac{\alpha}{\pi}\right)^{1/2}\int_{-\infty}^{\infty}dxe^{-\alpha x^2}\left(\frac{\hbar^2\alpha}{2m} - \frac{\hbar^2\alpha^2}{2m}x^2 + \lambda x^4\right)
+\end{align*}
+Now we have three integrals involving the Gaussian $e^{-\alpha x^2}$. This allows us to use the fact that for even powers of $x$ we have
+\begin{equation} 
+\left(\frac{\alpha}{\pi}\right)^{1/2}\int_{-\infty}^{\infty} x^{2n}e^{-\alpha x^2} = \left(\frac{1}{2\alpha}\right)^{n}(2n-1)!!
+\label{Gauss}
+\end{equation} 
+Note that $n!! = n(n-2)(n-4)...$. Note for $x^2$ we have $n=1$ and for $x^4$ we have $n=2$ so equation \ref{Gauss} yields
+\begin{align*}
+\left(\frac{\alpha}{\pi}\right)^{1/2}\int_{-\infty}^{\infty} x^{2}e^{-\alpha x^2} &= \frac{1}{2\alpha}\\
+\left(\frac{\alpha}{\pi}\right)^{1/2}\int_{-\infty}^{\infty} x^{4}e^{-\alpha x^2} &= \frac{3}{4\alpha^2}
+\end{align*}
+Note the integral with the constant $\hbar^2\alpha/2m$ is just the constant due to normalization. So the integral becomes
+\begin{align*}
+E(\alpha) &= \frac{\hbar^2\alpha}{2m} - \frac{\hbar^2\alpha^2}{2m}\frac{1}{2\alpha} + \lambda\frac{3}{4\alpha^2}\\
+&= \frac{\hbar^2\alpha}{2m} - \frac{\hbar^2\alpha}{4m} + \lambda\frac{3}{4\alpha^2}\\
+&= \frac{\hbar^2}{4m}\alpha + \lambda\frac{3}{4\alpha^2}
+\end{align*}
+Now we just need to find $\alpha_0$ that minimizes $E(\alpha)$ by
+\begin{align*}
+0 = \frac{dE(\alpha)}{d\alpha} &= \frac{\hbar^2}{4m} - \lambda\frac{3}{2\alpha_0^3}\\
+&\Downarrow\\
+\frac{\hbar^2}{4m} &= \lambda\frac{3}{2\alpha_0^3}\\
+&\Downarrow\\
+\alpha_0^3 &= \frac{3\lambda}{2}\frac{4m}{\hbar^2}\\
+\alpha_0 &= \left(\frac{6m\lambda}{\hbar^2}\right)^{1/3}
+\end{align*}
+Now we replace we can find $E(\alpha_0)$ by
+\begin{align*}
+E(\alpha_0) &= \frac{\hbar^2}{4m}\alpha_0 + \lambda\frac{3}{4\alpha_0^2}\\
+&= \frac{\hbar^2}{4m}\left(\frac{6m\lambda}{\hbar^2}\right)^{1/3} + \lambda\frac{3}{4}\left(\frac{6m\lambda}{\hbar^2}\right)^{-2/3}\\
+&= \lambda^{1/3}\left(\frac{3\hbar^4}{32m^2}\right)^{1/3} + \lambda^{1/3}\frac{3}{4}\left(\frac{\hbar^2}{6m}\right)^{2/3}\\
+&= \left(\frac{3}{8}\right)^{1/3}\lambda^{1/3}\left(\frac{\hbar^2}{2m}\right)^{2/3} + \frac{3}{4}\left(\frac{1}{3}\right)^{2/3}\lambda^{1/3}\left(\frac{\hbar^2}{2m}\right)^{2/3}\\
+&= \left[\left(\frac{3}{8}\right)^{1/3} + \frac{3}{4}\left(\frac{1}{3}\right)^{2/3}\right]\lambda^{1/3}\left(\frac{\hbar^2}{2m}\right)^{2/3}\\
+E_0 &\le (1.081)\lambda^{1/3}\left(\frac{\hbar^2}{2m}\right)^{2/3}
+\end{align*}
+Note that this is a accurate upper bound to the actual ground state energy given by
+$$E_0 = (1.060)\lambda^{1/3}\left(\frac{\hbar^2}{2m}\right)^{2/3}$$
+
+\section{Problem \#2}
+The $H^+$ ion problem reduces to the calculation of two integrals. The \emph{direct integral}
+$$D\equiv a\bra{\psi_0(r_1)}\frac{1}{r_2}\ket{\psi_0(r_1)}$$
+and the \emph{exchange integral}
+$$X\equiv a\bra{\psi_0(r_1)}\frac{1}{r_1}\ket{\psi_0(r_2)}$$
+where $\ket{\psi_0(r)}$ is the ground state wavefunction of the hydrogen atom given by
+$$\ket{\psi_0(r)} = \frac{1}{\sqrt{\pi a^3}}e^{-r/a}$$
+Note that the \emph{Law of Cosines} relates $r_1$ with $r_2$ by picking a proton as the origin such that
+\begin{align*}
+r_1 &\rightarrow r\\
+r_2 &\rightarrow |\vec{r}-\vec{R}| = \sqrt{r^2 + R^2 -2rR\cos(\theta)}
+\end{align*}
+Where $R$ is the separation between the two protons. So we can calculate $D$ by
+\begin{align*}
+D\equiv a\bra{\psi_0(r_1)}\frac{1}{r_2}\ket{\psi_0(r_1)} &= a\bra{\psi_0(r_2)}\frac{1}{r_1}\ket{\psi_0(r_2)}\\
+&= \frac{a}{\pi a^3}\int_{0}^{\infty}\int_{0}^{\pi}\int_{0}^{2\pi}e^{-2\sqrt{r^2+R^2-2rR\cos(\theta)}/a}\frac{1}{r}r^2\sin(\theta)drd\theta d\phi\\
+&= \frac{2\pi}{\pi a^2}\int_{0}^{\infty}\int_{0}^{\pi}e^{-2\sqrt{r^2+R^2-2rR\cos(\theta)}/a}r\sin(\theta)drd\theta 
+\end{align*}
+Note we can solve the $\theta$ integral by a substitution where
+\begin{align*}
+u &= \sqrt{r^2+R^2-2rR\cos(\theta)}\\
+du &= \frac{1}{2}(r^2+R^2-2rR\cos(\theta))^{-1/2}2rR\sin(\theta)d\theta\\
+&\Downarrow\\
+\frac{u}{rR}du &= \sin(\theta)d\theta
+\end{align*}
+Note that the bounds of integration become
+\begin{align*}
+u(0) &= \sqrt{r^2+R^2-2rR\cos(0)} =  \sqrt{r^2+R^2-2rR} = \sqrt{(r-R)^2} = |r-R|\\
+u(\pi) &= \sqrt{r^2+R^2-2rR\cos(\pi)} =  \sqrt{r^2+R^2+2rR} = \sqrt{(r+R)^2} = |r+R|
+\end{align*}
+Which gives
+\begin{align*}
+\int_{0}^{\pi}e^{-2\sqrt{r^2+R^2-2rR\cos(\theta)}/a}\sin(\theta)d\theta &= \frac{1}{rR}\int_{u(0)}^{u(\pi)}e^{-2u/a}udu\\
+&= \frac{1}{rR}\int_{|r-R|}^{r+R}e^{-2u/a}udu\\
+&= \frac{1}{rR}\left(-\frac{1}{4}ae^{-2u/a}(a+2u)\right|_{|r-R|}^{r+R}\\
+&= -\frac{a}{2rR}\left(e^{-2(r+R)/a}(a/2+r+R) - e^{-2(r-R)/a}(a/2+r-R)\right)
+\end{align*}
+So now we can solve for $D$
+\begin{align*}
+D &= \frac{2}{a^2}\frac{a}{2R}\int_{0}^{\infty}\left(e^{-2(r+R)/a}(a/2+r+R) - e^{-2|r-R|/a}(a/2+|r-R|)\right)\frac{1}{r}rdr\\
+&= -\frac{1}{aR}\int_{0}^{\infty}\left(e^{-2(r+R)/a}(a/2+r+R) - e^{-2|r-R|/a}(a/2+|r-R|)\right)dr\\
+&= -\frac{1}{aR}\left(e^{-2R/a}\int_{0}^{\infty}e^{-2r/a}(a/2+r+R)dr - \int_{0}^{\infty}e^{-2|r-R|/a}(a/2+|r-R|)dr\right)
+\end{align*}
+Note we can calculate the first integral over all $r$ by
+\begin{align*}
+\int_{0}^{\infty}e^{-2r/a}(a/2+r+R)dr &= \frac{a^2+aR}{2}
+\end{align*}
+But due to the absolute value we must break the bounds for the second term such that
+\begin{align*}
+\int_{0}^{\infty}e^{-2|r-R|/a}(a/2+|r-R|)dr &= \int_{0}^{R}e^{-2(R-r)/a}(a/2+R-r)dr + \int_{R}^{\infty}e^{-2(r-R)/a}(a/2+r-R)dr\\
+&= e^{-2R/a}\int_{0}^{R}e^{2r/a}(a/2+R-r)dr + e^{2R/a}\int_{R}^{\infty}e^{-2r/a}(a/2+r-R)dr\\
+&= e^{-2R/a}\left(\frac{1}{2}a(a(e^{2R/a}-1)-R)\right) + \frac{a^2}{2}\\
+&= \frac{a^2}{2} - \frac{a^2}{2}e^{-2R/a} - \frac{aR}{2}e^{-2R/a} + \frac{a^2}{2}\\
+&= a^2 - \frac{a^2}{2}e^{-2R/a} - \frac{aR}{2}e^{-2R/a}
+\end{align*}
+So brining it all together we get
+\begin{align*}
+D &= -\frac{1}{aR}\left(\frac{a^2}{2}e^{-2R/a} + \frac{aR}{2}e^{-2R/a} - a^2 + \frac{a^2}{2}e^{-2R/a} + \frac{aR}{2}e^{-2R/a}\right)\\
+&= -\frac{a^2}{2aR}e^{-2R/a} - \frac{aR}{2aR}e^{-2R/a} + \frac{a^2}{aR} - \frac{a^2}{2aR}e^{-2R/a} - \frac{aR}{2aR}e^{-2R/a}\\
+&= -\frac{a}{2R}e^{-2R/a} - \frac{1}{2}e^{-2R/a} + \frac{a}{R} - \frac{a}{2R}e^{-2R/a} - \frac{1}{2}e^{-2R/a}\\
+&= \frac{a}{R} - \left(\frac{a}{2R} + \frac{1}{2} + \frac{a}{2R} + \frac{1}{2}\right)e^{-2R/a}\\
+&= \frac{a}{R} - \left(1+ \frac{a}{R} \right)e^{-2R/a}
+\end{align*}
+And now we can calculate $X$ by
+\begin{align*}
+X\equiv a\bra{\psi_0(r_1)}\frac{1}{r_1}\ket{\psi_0(r_2)} &= \frac{a}{\pi a^3}\int_{0}^{\infty}\int_{0}^{\pi}\int_{0}^{2\pi}e^{-r/a}e^{-\sqrt{r^2+R^2-2rR\cos(\theta)}/a}\frac{1}{r}r^2\sin(\theta)drd\theta d\phi\\
+&= \frac{2}{a^2}\int_{0}^{\infty}re^{-r/a}dr\int_{0}^{\pi}e^{-\sqrt{r^2+R^2-2rR\cos(\theta)}/a}\sin(\theta)d\theta\\
+&= \frac{2}{a^2}\int_{0}^{\infty}re^{-r/a}dr\left(-\frac{a}{rR}\left(e^{-(r+R)/a}(a+r+R) - e^{-|r-R|/a}(a+|r-R|)\right)\right)
+\end{align*}
+Note we solved the $\theta$ integral with an extra factor of 2 already. This leaves the $r$ integral
+\begin{align*}
+X &= -\frac{2}{aR}\int_{0}^{\infty}e^{-r/a}\left(e^{-(r+R)/a}(a+r+R) - e^{-|r-R|/a}(a+|r-R|)\right)dr\\
+&= -\frac{2}{aR}\left(e^{-R/a}\int_{0}^{\infty}e^{-2r/a}(a+r+R)dr - \int_{0}^{\infty}e^{-r/a}e^{-|r-R|/a}(a+|r-R|)dr\right)
+\end{align*}
+Again the first integral can be done over all $r$ 
+\begin{align*}
+e^{-R/a}\int_{0}^{\infty}e^{-2r/a}(a+r+R)dr &= \frac{3a^2}{4}e^{-R/a}+\frac{aR}{2}e^{-R/a}
+\end{align*}
+and the second integral is split such that
+\begin{align*}
+\int_{0}^{\infty}e^{-r/a}e^{-|r-R|/a}(a+|r-R|)dr &= \int_{0}^{R}e^{-r/a}e^{-(R-r)/a}(a+R-r)dr + \int_{R}^{\infty}e^{-r/a}e^{-(r-R)/a}(a+r-R)dr\\
+&= e^{-R/a}\int_{0}^{R}e^{-r/a}e^{r/a}(a+R-r)dr + e^{R/a}\int_{R}^{\infty}e^{-r/a}e^{-r/a}(a+r-R)dr\\
+&= e^{-R/a}\int_{0}^{R}(a+R-r)dr + e^{R/a}\int_{R}^{\infty}e^{-2r/a}(a+r-R)dr\\
+&= e^{-R/a}\left(aR+\frac{R^2}{2}\right) + \frac{3a^2}{4}e^{-R/a}\\
+&= e^{-R/a}\left(aR+\frac{R^2}{2}+\frac{3a^2}{4}\right)
+\end{align*}
+Putting it all together yields
+\begin{align*}
+X &= -\frac{2}{aR}\left(\frac{3a^2}{4}e^{-R/a}+\frac{aR}{2}e^{-R/a} - e^{-R/a}\left(aR+\frac{R^2}{2}+\frac{3a^2}{4}\right)\right)\\
+&= -\frac{2}{aR}\left(\frac{3a^2}{4}+\frac{aR}{2} - aR - \frac{R^2}{2} - \frac{3a^2}{4}\right)e^{-R/a}\\
+&= 2\left(-\frac{aR}{2aR} + \frac{aR}{aR} - \frac{R^2}{2aR}\right)e^{-R/a}\\
+&= 2\left(\frac{1}{2} - \frac{R}{2a}\right)e^{-R/a}\\
+&= \left(1 - \frac{R}{a}\right)e^{-R/a}
+\end{align*}
+
+\section{Problem \#3}
+For a time dependent electric field
+$$E(t) = E_0e^{-\gamma t}$$
+which points in the $\hat{z}$ direction we have the time dependent potential
+$$V(r,\theta, t) = E_0e^{-\gamma t}r\cos(\theta)$$
+Using \emph{Time-Dependent Perturbation Theory} we can calculate the coefficient $c_f$ that corresponds to the transition from an initial state $\ket{i}$ to a final state $\ket{f}$ by
+\begin{equation}
+c_f(t) = -\frac{i}{\hbar}\int_{0}^{t}\bra{f}V(\mathbf{r},t')\ket{i}e^{\frac{i}{\hbar}(E_f-E_i)t'}dt'
+\label{Time}
+\end{equation}
+Now we assuming that we are initially in the ground state of hydrogen ($\ket{100}$) and we want to transition to the $2p$ state represented by $\ket{21m}$. Note that there is a degeneracy at this level but we note that the potential goes by $\cos(\theta)$ and the ground state has no $\theta$ dependence. This implies that the final state must be an even function for the matrix element $\bra{f}V\ket{i}$ to be non-zero. The only state that satisfies this requirement is the $\ket{210}$ state as it also goes by $\cos(\theta)$. Note the $\ket{21\pm1}$ states go by $\sin(\theta)$ which is why they go to zero. So we can calculate equation \ref{Time} by
+\begin{align*}
+c_f(t) &= -\frac{i}{\hbar}\int_{0}^{t}\bra{210}E_0r\cos(\theta)e^{-\gamma t'}\ket{100}e^{\frac{i}{\hbar}(E_f-E_i)t'}dt'\\
+&= -E_0\frac{i}{\hbar}\int_{0}^{t}\bra{210}r\cos(\theta)\ket{100}e^{-\gamma t'}e^{\frac{i}{\hbar}(E_f-E_i)t'}dt'
+\end{align*}
+Now we need to calculate
+\begin{align*}
+\bra{210}r\cos(\theta)\ket{100} &= \left(\frac{3}{4\pi}\frac{1}{4\pi}\right)^{1/2}\left(\frac{1}{24a^3}\frac{2}{a^3}\right)^{1/2}a\int_{0}^{\infty}\int_{0}^{\pi}\int_{0}^{2\pi}r^{-r/2a}\cos(\theta)r\cos(\theta)e^{-r/a}r^2\sin(\theta)drd\theta d\phi\\
+&= \frac{2\pi}{8\pi a^2}\int_{0}^{\infty}r^{-r/2a}r^3e^{-r/a}dr\int_{0}^{\pi}\cos^2(\theta)\sin(\theta)d\theta\\
+&= \frac{1}{4a^2}\frac{2}{3}\int_{0}^{\infty}r^{-r/2a}r^3e^{-r/a}dr\\
+&= \frac{1}{6a^2}\frac{96a^4}{(2+a^2)^4} = \frac{16a^2}{(2+a^2)^4}
+\end{align*}
+Now replacing this result in equation \ref{Time} we get
+\begin{align*}
+c_f(t) &= -E_0\frac{i}{\hbar}\frac{16a^2}{(2+a^2)^4}\int_{0}^{t}e^{-\gamma t'}e^{\frac{i}{\hbar}(E_f-E_i)t'}dt'
+\end{align*}
+Now we can calculate the probability of this transition happening by finding $|c_f(t)|^2$ by
+\begin{align*}
+|c_f(t)|^2 &= \left(\frac{E_0}{\hbar}\frac{16a^2}{(2+a^2)^4}\right)^2\int_{0}^{t}e^{-\gamma t'}e^{-\frac{i}{\hbar}(E_f-E_i)t'}e^{-\gamma t'}e^{\frac{i}{\hbar}(E_f-E_i)t'}dt'\\
+&= \left(\frac{E_0}{\hbar}\frac{16a^2}{(2+a^2)^4}\right)^2\int_{0}^{t}e^{-2\gamma t'}dt'\\
+&= -\left(\frac{E_0}{\hbar}\frac{16a^2}{(2+a^2)^4}\right)^2\frac{e^{-2\gamma t} -1}{2\gamma}
+\end{align*}
+Now we can take $t\rightarrow\infty$ and find that
+\begin{align*}
+\lim_{t\rightarrow\infty}|c_f(t)|^2 &= \lim_{t\rightarrow\infty} -\left(\frac{E_0}{\hbar}\frac{16a^2}{(2+a^2)^4}\right)^2\frac{\cancelto{0}{e^{-2\gamma t}} -1}{2\gamma}\\
+&= \left(\frac{E_0}{\hbar}\frac{16a^2}{(2+a^2)^4}\right)^2\frac{1}{2\gamma}
+\end{align*}
+
+\end{document}
+

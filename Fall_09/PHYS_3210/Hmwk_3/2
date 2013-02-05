@@ -1,0 +1,109 @@
+\documentclass[11pt]{article}
+
+\usepackage{latexsym}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{enumerate}
+\usepackage{amsmath}
+\usepackage{cancel}
+\numberwithin{equation}{section}
+
+\setlength{\evensidemargin}{.25in}
+\setlength{\oddsidemargin}{-.25in}
+\setlength{\topmargin}{-.75in}
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{9.5in}
+\newcommand{\due}{September 16th, 2009}
+\newcommand{\HWnum}{3}
+
+\begin{document}
+\input{../title.tex}
+
+\section{Problem \#1}
+\begin{enumerate}[(a)]
+\item
+The angular momentum is conserved, because if you look at the system you see that it can be rotated by any angle and the system does not change. This means that the angular momentum is conserved due to the angular symmetry of the system. The same holds true for linear momentum. The system can be translated in the $x$ and $y$ direction and nothing changes. So due to the linear symmetry of the system the linear momentum is conserved. We can also see that there is no time dependence of the system. As there is no time dependent force on the system. This means that the energy of the system is conserved as well. This is due the time symmetry of the system.
+\item
+To find the Lagrangean 
+\begin{equation}
+L = T - U
+\label{lagran}
+\end{equation}
+we need to find the kinetic and potential energy. To find the energies we first need to define vectors of position $\vec{r}_1$ and $\vec{r}_2$, these point from the origin to the position of the masses. So
+$$\vec{r}_1 = x_1\hat{x}+y_1\hat{y}$$
+$$\vec{r}_2 = x_2\hat{x}+y_2\hat{y}$$
+where $x_1$ and $x_2$ are the $x$ positions of their respective masses and $y_1$ and $y_2$ are the $y$ positions. Now we can write the kinetic energy as
+$$T = \frac{1}{2}m_1\dot{r_1}^2+ \frac{1}{2}m_2\dot{r_2}^2$$
+Now we know that the only potential is from the spring so we can say that 
+$$U = \frac{1}{2}k\left(b-|\vec{r_2} - \vec{r_1}|\right)$$
+Where $b$ is the equilibrium length of the spring and $k$ is the spring constant. Here we take the magnitude of the difference between the positions of the two masses. This quantity minus the equilibrium length $b$ is the displacement of the spring from equilibrium.
+So we can now write equation \ref{lagran} as
+$$L = \frac{1}{2}m_1\dot{r_1}^2+ \frac{1}{2}m_2\dot{r_2}^2 - \frac{1}{2}k\left(b-|\vec{r_2} - \vec{r_1}|\right)$$
+We can also look at this so that our reference point is the center of mass of the system. We define the position of the center of mass as
+$$\vec{R} = \frac{m_1\vec{r_1} +m_2\vec{r_2}}{m_1+m_2}$$
+We can define that this point be at the origin of the system so
+$$0 = \frac{m_1\vec{r_1} +m_2\vec{r_2}}{m_1+m_2}$$
+$$0 = m_1\vec{r_1} + m_2\vec{r_2}$$
+$$m_1\vec{r_1} = - m_2\vec{r_2}$$
+\begin{equation}
+\vec{r_1} = - \frac{m_2\vec{r_2}}{m_1}
+\label{r1}
+\end{equation}
+Now we can define the generalized coordinate $\vec{r}$ as the difference in the position vectors $\vec{r_1}$ and $\vec{r_2}$ or
+
+\begin{equation}
+\vec{r} = \vec{r_1} - \vec{r_2}
+\label{r}
+\end{equation}
+Now we can combine equation \ref{r1} and \ref{r} to get
+$$\vec{r} = - \frac{m_2\vec{r_2}}{m_1} - \vec{r_2}$$
+$$\vec{r} = - \frac{m_2\vec{r_2}}{m_1} - \frac{m_1\vec{r_2}}{m_1}$$
+$$\vec{r} =  \frac{-m_2\vec{r_2} - m_1\vec{r_2}}{m_1}$$
+$$\vec{r} =  -\frac{m_2 + m_1}{m_1}\vec{r_2}$$
+Solving for $r_2$ we get 
+$$\vec{r_2} =  -\frac{m_2 + m_1}{m_1}\vec{r}$$
+
+We repeat the process for $r_1$ and get 
+\begin{equation}
+\vec{r_2} = - \frac{m_1\vec{r_1}}{m_2}
+\label{r2}
+\end{equation}
+Combining equation \ref{r2} and \ref{r} to get
+$$\vec{r} = \vec{r_1} - - \frac{m_1\vec{r_1}}{m_2}$$
+
+
+Now we need to solve for $\vec{r_1}$ and $\vec{r_2}$
+
+ 
+$$\vec{r_1}= \frac{\vec{R}(m_1+m_2)-m_2\vec{r_2}}{m_1}$$
+$$\vec{r_2}= \frac{\vec{R}(m_1+m_2)-m_1\vec{r_1}}{m_2}$$
+And now we can take the time derivative to yield
+$$\dot{\vec{r_1}}= \frac{\dot{\vec{R}}(m_1+m_2)-m_2\dot{\vec{r_2}}}{m_1}$$
+$$\dot{\vec{r_2}}= \frac{\dot{\vec{R}}(m_1+m_2)-m_1\dot{\vec{r_1}}}{m_2}$$
+Now we can replace $\vec{r_1}$ and $\vec{r_2}$ in the kinetic energy and get
+$$T = \frac{1}{2}m_1\left(\frac{\dot{\vec{R}}(m_1+m_2)-m_2\dot{\vec{r_2}}}{m_1}\right)^2+ \frac{1}{2}m_2\left(\frac{\vec{R}(m_1+m_2)-m_1\vec{r_1}}{m_2}\right)^2$$
+$$T = \frac{1}{2}m_1\left(\frac{\dot{\vec{R}}(m_1+m_2)-m_2\dot{\vec{r_2}}}{m_1}\right)^2+ \frac{1}{2}m_2\left(\frac{\dot{\vec{R}}(m_1+m_2)-m_1\dot{\vec{r_1}}}{m_2}\right)^2$$
+\begin{align*}
+T = &\frac{1}{2}m_1\left(\frac{\dot{R}^2(m_1+m_2)^2+m_2^2\dot{r_2}^2 - 2R(m_1+m_2)m_2\dot{r_2}}{m_1^2}\right)\\
+&+\frac{1}{2}m_2\left(\frac{\dot{R}^2(m_1+m_2)^2+m_1^2\dot{r_1}^2 - 2R(m_1+m_2)m_1\dot{r_1}}{m_2^2}\right)
+\end{align*}
+\begin{align*}
+T = &\frac{1}{2}\left(\frac{\dot{R}^2(m_1+m_2)^2+m_2^2\dot{r_2}^2 - 2R(m_1+m_2)m_2\dot{r_2}}{m_1}
++\frac{\dot{R}^2(m_1+m_2)^2+m_1^2\dot{r_1}^2 - 2R(m_1+m_2)m_1\dot{r_1}}{m_2}\right)
+\end{align*}
+
+ 
+\item
+\item
+\end{enumerate}
+
+\section{Problem \#2}
+
+\section{Problem \#3}
+\begin{enumerate}[(a)]
+\item
+\item
+\end{enumerate}
+
+\end{document}
+

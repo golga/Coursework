@@ -1,0 +1,189 @@
+\documentclass[11pt]{article}
+
+\usepackage{latexsym}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{enumerate}
+\usepackage{amsmath}
+\usepackage{cancel}
+
+\setlength{\evensidemargin}{.25in}
+\setlength{\oddsidemargin}{-.25in}
+\setlength{\topmargin}{-.75in}
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{9.5in}
+\newcommand{\due}{September 25th, 2009}
+\newcommand{\HWnum}{4}
+\newcommand{\Let}{\textnormal{Let }}
+
+\begin{document}
+\input{../title.tex}
+\section*{Chapter 3}
+\begin{enumerate}
+\item Problem 13\\
+$\Let E_i$ be the event that the $i$th had has exactly one ace.
+So due to the multiplication rule we know
+$$P(E_1E_2E_3E_4) = P(E_1)P(E_2|E_1)P(E_3|E_1E_2)(E_4|E_1E_2E_3)$$
+So lets start by finding $P(E_1)$ which is the probability of the 1st hand getting exactly one ace. We know that the total possible ways to deal out 52 card into a hand of 13 is given by $52\choose13$
+So that is the total number of cases. For the number of ``good" cases (When the hand only has one ace). We know that we have to have one of the 4 aces or $4\choose1$. And from the remaining 48 non aces we pick our 12 remaining cards. So the total number of good cases if given by
+$${4\choose1}{48\choose12}$$
+So the probability of $E_1$ is
+$$P(E_1) = \frac{{4\choose1}{48\choose12}}{{52\choose13}}$$
+Now for $P(E_2|E_1)$ we know that the 1st hand got 1 ace and 12 non ace cards. So for the 2nd hand we have 39 remaining cards and we are picking 13 this is out total number of cases. For the number of good cases we are picking 1 ace from the 3 left. And 12 from the 36 non aces left so the probability is
+$$P(E_2|E_1) = \frac{{3\choose1}{36\choose12}}{{39\choose13}}$$
+For $P(E_3|E_1E_2)$ we are picking 13 of the remaining 26 cards. For the case where we have exactly one ace we are picking 1 ace from the remaining 2 aces and we have 24 non-aces to pick our remaining 12 cards. So
+$$P(E_3|E_1E_2) = \frac{{2\choose1}{24\choose12}}{{26\choose13}}$$
+For $P(E_4|E_1E_2E_3)$ we can quickly tell that it is 1 (if everyone else has an ace then we know the remaining 13 cards has the last ace). But lets check this assertion. We are picking 13 cards from the remaining 13 cards. And we are picking 1 ace out of the possible 1 ace. And we are taking 12 cards from the remaining 12 non aces. So
+$$P(E_4|E_1E_2E_3) = \frac{{1\choose1}{12\choose12}}{{13\choose13}} =1$$
+So the total probability given by
+$$P(E_1E_2E_3E_4) = P(E_1)P(E_2|E_1)P(E_3|E_1E_2)(E_4|E_1E_2E_3)$$
+is calculated as
+$$P(E_1E_2E_3E_4)= \frac{{4\choose1}{48\choose12}}{{52\choose13}}\frac{{3\choose1}{36\choose12}}{{39\choose13}}\frac{{2\choose1}{24\choose12}}{{26\choose13}}\frac{{1\choose1}{12\choose12}}{{13\choose13}}$$
+$$P(E_1E_2E_3E_4)= (.4388)(.4623)(.52)(1)$$
+\begin{center}
+\fbox{$P(E_1E_2E_3E_4)= .11$}
+\end{center}
+
+\item Problem 14\\
+\Let $B_i$ be drawing the $i$th ball as black and $W_i$ is drawing the $i$th ball as white.begin{enumerate}
+\begin{enumerate}
+\item
+So we are trying to find $P(B_1B_2W_3W_4)$ We know that we can use the multiplication rule.
+$$P(B_1B_2W_3W_4)=P(B_1)P(B_2|B_1)P(W_3|B_1B_2)P(W_4|B_1B_2W_3)$$
+the first ball as black ($B_1$) we have the stating 7 black balls out of a 12 total balls. So
+$$P(B_1) = \frac{7}{12}$$
+Now to find $P(B_2|B_1)$ we know that we drew a black ball before so we added 2 black to the original situation. So we are picking 9 black balls out of a 14 total balls, or
+$$P(B_2|B_1) = \frac{9}{14}$$
+Now for $P(W_3|B_1B_2)$ we know we drew black in the situation after we already drew a black ball so we added 2 more black to the urn. So we have 5 white balls to pick from a 16 total balls or
+$$P(W_3|B_1B_2) =\frac{5}{16}$$
+
+For $P(W_4|B_1B_2W_3)$ we added 2 white balls to the urn to the situation above. So we have 7 white balls in a total of 18 balls or
+$$P(W_4|B_1B_2W_3) =\frac{7}{18}$$
+So the total probability of all these happening is given by 
+$$P(B_1B_2W_3W_4)=P(B_1)P(B_2|B_1)P(W_3|B_1B_2)P(W_4|B_1B_2W_3)$$
+$$P(B_1B_2W_3W_4)=\frac{7}{12}\frac{9}{14}\frac{5}{16}\frac{7}{18}$$
+$$P(B_1B_2W_3W_4)=\frac{2205}{48384}$$
+\begin{center}
+\fbox{$P(B_1B_2W_3W_4)= \dfrac{35}{768}$}
+\end{center}
+\item
+For this problem we are trying to find the probability that of the first 4 balls picked we picked exactly 2 black. We know that no matter what we pick we will end up with 18 total balls and the total number of possibilities will still be $12*14*16*18=48384$ and no matter the order if we pick exactly 2 black balls we will have $7*9$ different ways to choose black. The same holds for white. This means that the order we pick the balls does not effect the probability so we just have $4\choose2$ ways to have the part (a) occur. So the total probability is given by 
+$${4\choose2}P(B_1B_2W_3W_4)$$
+$${4\choose2}\frac{35}{768}$$
+\begin{center}
+\fbox{$= \dfrac{210}{768}$}
+\end{center}
+\end{enumerate}
+
+\item Problem 15\\
+Let $E$ be the case where a women has an ectopic pregnancy. And $S$ be the event that the women is a smoker. So from the problem we know that
+$$P(E|S) = \frac{1}{2}P(E|S^c)$$
+and that 
+$$P(S) = .32$$
+So if we are trying to find the probability that a women is a smoker given that she has an ectopic pregnancy or
+$$P(S|E)$$
+We know from the multiplication rule that
+$$P(S|E) = \frac{P(SE)}{P(E)}$$
+And we can say that 
+$$E =ES \cup ES^c$$
+Where this is a disjoint union so 
+$$P(E) = P(ES) +P(ES^c)$$
+Now from the multiplication rule we can say
+$$P(E) = P(E|S)P(S) +P(E|S^c)P(S^c)$$
+And we know from the problem that
+$$P(E) = P(E|S)P(S) +\frac{1}{2}P(E|S)P(S^c)$$
+We can also rewrite $P(SE)$ using the multiplication rule to give us
+$$P(SE) = P(E|S)P(S)$$
+So now we can see that
+$$P(S|E) = \frac{P(E|S)P(S)}{P(E|S)P(S) +\frac{1}{2}P(E|S)P(S^c)}$$
+Now we can cancel out the $P(E|S)$ to yield
+$$P(S|E) = \frac{P(S)}{P(S) +\frac{1}{2}P(S^c)}$$
+And we know that $P(S^c) = 1-P(S)$ so
+$$P(S|E) = \frac{P(S)}{P(S) +\frac{1}{2}(1-P(S))}$$
+$$P(S|E) = \frac{.32}{.32 +\frac{1}{2}(1-.32)}$$
+
+\begin{center}
+\fbox{$P(S|E) = .48$}
+\end{center}
+
+\item Problem 23
+\begin{enumerate}
+\item
+Let $W_i$ be the event that we selected a white ball from urn $i$, and $R$ is the event that we selected a red ball from urn I. So we are trying to find $P(W_{II})$ where 
+$$P(W_{II}) = P(W_{II}W_I) + P(W_{II}R)$$
+Using the multiplication rule we can say that
+$$P(W_{II}) = P(W_{II}|W_I)P(W_I) + P(W_{II}|R)P(R)$$
+And we know all these from the problem as
+$$P(W_{II}) = \frac{2}{3}\frac{2}{6} +\frac{1}{3}\frac{4}{6}$$ 
+$$P(W_{II}) = \frac{4}{18} +\frac{4}{18}$$ 
+$$P(W_{II}) = \frac{8}{18}$$ 
+\begin{center}
+\fbox{$P(W_{II}) = \dfrac{4}{9}$}
+\end{center}
+
+\item
+Finding the probability that we transfered a white ball given that we drew a white ball from Urn II or 
+$$P(W_I|W_{II}) = \frac{P(W_IW_{II})}{P(W_{II})}$$
+We can find $P(W_IW_{II})$ by using the multiplication rule or
+$$P(W_IW_{II}) = P(W_{II}|W_I)P(W_I)$$ 
+We know, from the problem, that this is
+$$P(W_IW_{II}) = \frac{2}{3}\frac{2}{6}$$
+And we know $P(W_{II})$ from part (a) so we get
+$$P(W_IW_{II}) = \frac{\dfrac{2}{3}\dfrac{2}{6}}{\dfrac{4}{9}}$$
+$$P(W_IW_{II}) = \frac{\dfrac{4}{18}}{\dfrac{4}{9}}$$
+\begin{center}
+\fbox{$P(W_IW_{II}) = \dfrac{1}{2}$}
+\end{center}
+\end{enumerate}
+\item Problem 26\\
+Let $B$ be the event that the person is color blind, $M$ be the event that the person picked is a man and $W$ is she is a women. So we are trying to find 
+$$P(M|B) = \frac{P(MB)}{P(B)}$$
+We know that $$P(B) = P(B|M)P(M) + P(B|W)P(W)$$
+under the assumption that $M^c = W$. And using the multiplication rule we can say
+$$P(MB) = P(B|M)P(M)$$
+So we know
+$$P(M|B) = \frac{P(B|M)P(M)}{P(B|M)P(M) + P(B|W)P(W)}$$
+Now if we assume that there are equal numbers of men and women we can say that
+$$P(M)=P(W)=.5$$ 
+Now the probability becomes
+$$P(M|B) = \frac{(.05)(.5)}{(.05)(.5) + (.0025)(.5)}$$
+\begin{center}
+\fbox{$P(M|B) = .95$}
+\end{center}
+Now if we assume that there is twice as men as women we get $P(M) = .67$ and $P(W) = .33$ we get
+$$P(M|B) = \frac{(.05)(.67)}{(.05)(.67) + (.0025)(.33)}$$
+\begin{center}
+\fbox{$P(M|B) = .98$}
+\end{center}
+
+\item Problem 31\\
+Let $C$ be the event that the doctor calls and $E$ is the event that the tumor is cancerous so $$\alpha = P(E)$$ and $$\beta = P(E|C^c)$$ 
+\begin{enumerate}
+\item
+We expect that $\beta$ will be smaller than $\alpha$
+\item
+$$\beta = P(E|C^c)$$
+$$\beta = \frac{P(EC^c)}{P(C^c)}$$
+Using the multiplication rule we find
+$$P(EC^c) = P(C^c|E)P(E)$$
+We know that if she has cancer then she will not get a call so
+$$P(C^c|E)=1$$
+Therefore
+$$P(EC^c) = \alpha$$
+So we can see that if the doctor doesn't call the coin landed on heads and she does not have cancer or the coin landed on tails. So
+$$P(C^c) = P(HE^c \cup T)$$
+Where $H$ is the coin landed on heads and $T$ is the coin landed on tails.
+And since they are mutually exclusive we get
+$$P(C^c) = P(HE^c)+P(T)$$
+We also know that the event that the coin lands on heads is independent of  whether or not the tumor is cancerous so
+$$P(C^c) = P(H)P(E^c)+P(T)$$
+$$P(C^c) = P(H)P(E^c)+P(T)$$
+$$P(C^c) = P(H)\alpha^c+P(T)$$
+So now we can say that
+$$\beta = \frac{\alpha}{P(H)\alpha^c+P(T)}$$
+$$\beta = \frac{\alpha}{(.5)(1-\alpha)+(.5)}$$
+\end{enumerate}
+
+\end{enumerate}
+\end{document}
+

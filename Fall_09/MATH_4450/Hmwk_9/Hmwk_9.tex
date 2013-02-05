@@ -1,0 +1,86 @@
+\documentclass[11pt]{article}
+
+\usepackage{latexsym}
+\usepackage{amssymb}
+\usepackage{enumerate}
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{ulem}
+\usepackage{cancel}
+
+\setlength{\evensidemargin}{.25in}
+\setlength{\oddsidemargin}{-.25in}
+\setlength{\topmargin}{-.75in}
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{9.5in}
+\newcommand{\due}{November 4th, 2009}
+\newcommand{\HWnum}{9}
+\newcommand{\CC}{\mathbb{C}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\zbar}{\overline{z}}
+\newcommand{\Let}{\textnormal{Let }}
+\newcommand{\Arg}{\textnormal{arg}}
+
+\begin{document}
+\input{../title.tex}
+\subsection*{Written Problems}
+\begin{enumerate}
+\item Suppose that $f:\CC\rightarrow \CC$ is continuous on a contour $\Gamma\subseteq \CC$.  Show that if 
+$$H(z)=\int_\Gamma \frac{f(w)dw}{(w-z)^2},$$
+then 
+$$H'(z)=2\int_\Gamma \frac{f(w)dw}{(w-z)^3}.$$
+\item Prove the generalized Cauchy integral formula by induction on $n$.  In particular, show that if we assume that 
+$$f^{(n-1)}(z)=\frac{(n-1)!}{2\pi i}\int_\Gamma \frac{f(w)dw}{(w-z)^{n}},$$
+then 
+$$f^{(n)}(z)=\frac{n!}{2\pi i}\int_\Gamma \frac{f(w)dw}{(w-z)^{n+1}}.$$
+Hint: Write
+$$\frac{\int_\Gamma \frac{f(w)dw}{(w-z)^{n}}-\int_\Gamma \frac{f(w)dw}{(w-a)^{n}}}{z-a}=\frac{\int_\Gamma \frac{f(w)dw}{(w-z)^{n-1}(w-a)}-\int_\Gamma \frac{f(w)dw}{(w-a)^{n}}}{z-a}+\int_\Gamma \frac{f(w)dw}{(w-z)^{n}(w-a)}.$$
+For the first term, define a function $h(w)=f(w)/(w-a)$, and use induction.  For the last term prove that 
+$$\lim_{z\rightarrow a} \int_\Gamma \frac{f(w)dw}{(w-z)^{n}(w-a)}=\int_\Gamma \frac{f(w)dw}{(w-a)^{n+1}}.$$
+\end{enumerate}
+
+\subsection*{Problems}
+
+
+\begin{enumerate}
+\item 4.5: 6, 8, 13, 14
+\begin{enumerate}[(i)]
+\item 5)\\
+\item 8)\\
+\item 13)\\
+\item 14)\\
+\end{enumerate}
+
+\item 4.6:  5, 7
+\begin{enumerate}[(i)]
+\item 5)\\
+\newtheorem{theo4.65}{Theorem}
+\begin{theo4.65}
+Let $f$ be entire and suppose that Re$f(z)\le M$ for all $z$. Then $f$ must be a constant function
+\end{theo4.65}
+\begin{proof}
+Assume that $f$ takes the form
+$$f(z(x,y)) = u(x,y)+iv(x,y)$$
+and we raise $f$ to an exponent or $e^f$ we see that
+$$e^f = e^ue^{iv}.$$
+We can see that the magnitude of this function is
+$$|e^f| = |e^ue^{iv}| = |e^u|.$$
+We assumed that the real part of $f$ is bounded by $M$. So it follows that $|e^u|\le M$. Therefore
+$$|e^f|\le M$$
+now we see that $e^f$ is bounded so we know from \emph{Liouville's Theorem} that
+$e^f$ is constant, because $e$ is constant we can infer that $f$ is a constant function.
+\end{proof}
+
+\item 7)\\
+\newtheorem{theo4.67}{Theorem}
+\begin{theo4.67}
+Suppose that $f$ is entire and that $|f(z)|\le|z|^2$ for all sufficiently large values of $|z|$, say $|z|>r_0$. Then $f$ must be a polynomial of degree at most 2.
+\end{theo4.67}
+\begin{proof}
+
+\end{proof}
+\end{enumerate}
+\end{enumerate}
+
+\end{document}
+

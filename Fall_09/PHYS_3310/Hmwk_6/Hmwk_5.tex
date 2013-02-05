@@ -1,0 +1,485 @@
+\documentclass[11pt]{article}
+
+\usepackage{latexsym}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{enumerate}
+\usepackage{amsmath}
+\usepackage{cancel}
+\numberwithin{equation}{section}
+
+\setlength{\evensidemargin}{.25in}
+\setlength{\oddsidemargin}{-.25in}
+\setlength{\topmargin}{-.75in}
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{9.5in}
+\newcommand{\due}{October 7th, 2009}
+\newcommand{\HWnum}{6}
+\newcommand{\grad}{\bold\nabla}
+\newcommand{\vecE}{\vec{E}}
+\newcommand{\scrptR}{\vec{\mathfrak{R}}}
+
+\begin{document}
+\input{../title.tex}
+
+\section{Problem \#1}
+So if we start with \emph{Green's Identity}
+\begin{equation}
+\int_V[T\grad^2 U + (\grad T)\cdot(\grad U)]d\tau= \oint_S (T\grad U)\cdot d\vec{a}
+\label{greens}
+\end{equation}
+And if we define a potential $V_3$ as
+$$V_3 = V_1-V_2$$
+Where $V_1$ and $V_2$ satisfy \emph{Laplace's Equation}
+$$\grad^2 V_1 = 0$$
+$$\grad^2 V_2 = 0$$
+Now if use equation \ref{greens} with $T$ and $U$ replaced with $V_3$ we get
+$$\int_V[V_3\grad^2 V_3 + (\grad V_3)\cdot(\grad V_3)]d\tau= \oint_S (V_3\grad V_3)\cdot d\vec{a}$$
+Now we know that the electric field due to $V_3$ is given by $$\vecE_3 = -\grad V_3$$
+so we now have
+$$\int_V[V_3\grad^2 V_3 + (-\vecE_3)\cdot(-\vecE_3)]d\tau= \oint_S (V_3\grad V_3)\cdot d\vec{a}$$
+$$\int_V[V_3\grad^2 V_3 + E_3^2]d\tau= \oint_S (V_3\grad V_3)\cdot d\vec{a}$$
+If we split the integral up and rewrite the $\grad^2$ we get
+$$\int_V \grad\cdot (V_3\grad V_3)d\tau + \int_VE_3^2d\tau= \oint_S (V_3\grad V_3)\cdot d\vec{a}$$
+Now we can apply the \emph{Divergence Theorem}
+\begin{equation}
+\int_V (\grad\cdot\vec{v})d\tau = \oint_S \vec{v}\cdot d\vec{a}
+\label{divtheo}
+\end{equation}
+So using equation \ref{divtheo} where $\vec{v}$ is $V_3\grad V_3$ we get 
+$$\oint_S(V_3\grad V_3)\cdot d\vec{a} + \int_VE_3^2d\tau= \oint_S (V_3\grad V_3)\cdot d\vec{a}$$
+Now we can see that the surface integrals cancel and we are left with 
+$$\int_VE_3^2d\tau= 0$$
+and since $E_3^2$ is always positive we know that 
+$$E_3 = 0$$
+everywhere inside of this volume. Now we know that 
+$$\vecE_3 = \vecE_1-\vecE_2$$
+from the fact that $V_3= V_1-V_2$ and if we take the negative gradient of $V_3$ we get
+$$-\grad V_3 = -\grad(V_1-V_2)$$
+$$ \vecE_3 = -\grad(V_1-V_2)$$
+Because $\grad$ is a linear operator we can distribute
+$$ \vecE_3 = (-\grad V_1) - (-\grad V_2)$$
+$$ \vecE_3 = \vecE_1-\vecE_2$$
+And we know that $\vecE=0$ so
+$$0 = \vecE_1-\vecE_2$$
+$$ \vecE_1=\vecE_2$$
+Therefore $V_1$ and $V_2$ are the same, and there is only one unique solution to \emph{Laplace's Equation}.
+
+\section{Problem \#2}
+\begin{enumerate}[(i)]
+\item
+We need to use the \emph{Law of Cosines}
+$$c^2 = a^2+b^2-2ab\cos(\theta)$$
+to rewrite 
+\begin{equation}
+V(\vec{r}) = \frac{1}{4\pi\epsilon_0}\left(\frac{q}{|\scrptR|}+\frac{q'}{|\scrptR'|}\right)
+\label{pot2}
+\end{equation}
+We can see from the attached drawing that
+$$|\scrptR|=\sqrt{a^2+r^2-2ar\cos(\theta)}$$
+$$|\scrptR'|=\sqrt{b^2+r^2-2br\cos(\theta)}$$
+Where $b=\dfrac{R^2}{a}$ (note that $R$ is the radius of the sphere).
+$$|\scrptR'|=\sqrt{\left(\frac{R^2}{a}\right)^2+r^2-2\frac{R^2}{a}r\cos{\theta}}$$
+So we can see that equation \ref{pot2} becomes 
+$$V(\vec{r}) = \frac{1}{4\pi\epsilon_0}\left(\frac{q}{\sqrt{a^2+r^2-2ar\cos(\theta)}}+\frac{q'}{\sqrt{\left(\dfrac{R^2}{a}\right)^2+r^2-2\dfrac{R^2}{a}r\cos{\theta}}}\right)$$
+Where we know from Griffiths equation 3.15
+$$q'=-\frac{R}{a}q$$
+so
+$$V(\vec{r}) = \frac{1}{4\pi\epsilon_0}\left(\frac{q}{\sqrt{a^2+r^2-2ar\cos(\theta)}}-\frac{\dfrac{R}{a}q}{\sqrt{\left(\dfrac{R^2}{a}\right)^2+r^2-2\dfrac{R^2}{a}r\cos{\theta}}}\right)$$
+$$V(\vec{r}) = \frac{1}{4\pi\epsilon_0}\left(\frac{q}{\sqrt{a^2+r^2-2ar\cos(\theta)}}-\frac{q}{\dfrac{a}{R}\sqrt{\left(\dfrac{R^2}{a}\right)^2+r^2-2\dfrac{R^2}{a}r\cos(\theta)}}\right)$$
+$$V(\vec{r}) = \frac{1}{4\pi\epsilon_0}\left(\frac{q}{\sqrt{a^2+r^2-2ar\cos(\theta)}}-\frac{q}{\sqrt{\dfrac{a^2}{R^2}\left(\dfrac{R^2}{a}\right)^2+\dfrac{a^2}{R^2}r^2-2\dfrac{a^2}{R^2}\dfrac{R^2}{a}r\cos{\theta}}}\right)$$
+$$V(\vec{r}) = \frac{1}{4\pi\epsilon_0}\left(\frac{q}{\sqrt{a^2+r^2-2ar\cos(\theta)}}-\frac{q}{\sqrt{R^2+\left(\dfrac{ar}{R}\right)^2-2ar\cos{\theta}}}\right)$$
+
+\item
+We can use
+$$\sigma= -\epsilon_0\frac{\partial V}{\partial n}$$ 
+to find the surface charge distribution $\sigma$. Where $\partial n$ is the partial derivative in the normal direction. In this case the direction that is normal is $r$ so we get 
+$$\sigma= -\epsilon_0\frac{\partial V}{\partial r}$$ 
+$$\sigma= -\epsilon_0\frac{\partial}{\partial r}\frac{1}{4\pi\epsilon_0}\left(\frac{q}{\sqrt{a^2+r^2-2ar\cos(\theta)}}-\frac{q}{\sqrt{R^2+\left(\dfrac{ar}{R}\right)^2-2ar\cos{\theta}}}\right)$$
+$$\sigma= -\frac{q}{4\pi}\frac{\partial}{\partial r}\left(\frac{1}{\sqrt{a^2+r^2-2ar\cos(\theta)}}-\frac{1}{\sqrt{R^2+\left(\dfrac{ar}{R}\right)^2-2ar\cos{\theta}}}\right)$$
+$$\sigma= -\frac{q}{4\pi}\frac{\partial}{\partial r}\left(\left({a^2+r^2-2ar\cos(\theta)}\right)^{-1/2}-\left(R^2+\left(\dfrac{ar}{R}\right)^2-2ar\cos{\theta}\right)^{-1/2}\right)$$
+$$\sigma= -\frac{q}{4\pi}\left(\frac{-1}{2}\dfrac{2r-2a\cos(\theta)}{\left(a^2+r^2-2ar\cos(\theta)\right)^{3/2}}-\frac{-1}{2}\dfrac{\dfrac{2a^2r}{R^2} - 2a\cos(\theta)}{\left(R^2+\left(\dfrac{ar}{R}\right)^2-2ar\cos{\theta}\right)^{3/2}}\right)$$
+$$\sigma= \frac{q}{8\pi}\left(\dfrac{2r-2a\cos(\theta)}{\left(a^2+r^2-2ar\cos(\theta)\right)^{3/2}}-\dfrac{\dfrac{2a^2r}{R^2} - 2a\cos(\theta)}{\left(R^2+\left(\dfrac{ar}{R}\right)^2-2ar\cos{\theta}\right)^{3/2}}\right)$$
+If we check the units we assume that $<\sigma> = C\ m^{-2}$ and we know that 
+$$<r>=<a>=<R>=m;\ <q>=C$$
+So we can say the units of the left hand side are
+$$C\ \frac{m-m}{(m^2+m^2+m^2)^{3/2}}-\frac{m-m}{(m^2+m^2+m^2)^{3/2}}$$
+$$C\ \frac{m}{(m^2)^{3/2}}-\frac{m}{(m^2)^{3/2}}$$
+$$C\ \frac{m}{m^3}-\frac{m}{m^3}$$
+$$C\ \frac{1}{m^2}-\frac{1}{m^2}$$
+$$C\ m^{-2}$$
+Good our units agree.
+\end{enumerate}
+
+\section{Problem \#3}
+\begin{enumerate}[(i)]
+\item
+Lets assume that $V(x,y,z)$ can be written in the form
+$$V(x,y,z) = X(x)Y(y)Z(z)$$
+Where $X$ is a function of only $x$, $Y$ is only a function of $y$ and $Z$ is only a function of $z$. So if we apply \emph{Laplace's Equation} to the potential
+\begin{equation}
+\grad^2V(x,y,z)=0
+\label{lapace}
+\end{equation}
+Where $\grad^2$ (in Cartesian coordinates) is given  by
+$$\grad^2 = \frac{\partial^2}{\partial x^2}+\frac{\partial^2}{\partial y^2}+\frac{\partial^2}{\partial z^2}$$
+So we can say
+$$\grad^2V(x,y,z) =0= \left(\frac{\partial^2}{\partial x^2}+\frac{\partial^2}{\partial y^2}+\frac{\partial^2}{\partial z^2}\right)X(x)Y(y)Z(z)$$
+$$\grad^2V(x,y,z) =0= \frac{\partial^2}{\partial x^2}X(x)Y(y)Z(z)+\frac{\partial^2}{\partial y^2}X(x)Y(y)Z(z)+\frac{\partial^2}{\partial z^2}X(x)Y(y)Z(z)$$
+We can see that because $Y(y)$ does not have $x$ dependence it can be pulled out of the partial derivative. This holds yields
+$$\grad^2V(x,y,z) =0= Y(y)Z(z)\frac{\partial^2X(x)}{\partial x^2}+X(x)Z(z)\frac{\partial^2Y(y)}{\partial y^2}+X(x)Y(y)\frac{\partial^2Z(z)}{\partial z^2}$$
+Now if we divide by $V(x,y,z)$ note that the second order partial derivative has been written with primes as a short hand
+$$\frac{0}{X(x)Y(y)Z(z)}= \frac{Y(y)Z(z)X''(x)}{X(x)Y(y)Z(z)}+\frac{X(x)Z(z)Y''(y)}{X(x)Y(y)Z(z)}+\frac{X(x)Y(y)Z''(z)}{X(x)Y(y)Z(z)}$$
+We cancel the like terms
+$$0= \frac{X''(x)}{X(x)}+\frac{Y''(y)}{Y(y)}+\frac{Z''(z)}{Z(z)}$$
+We can see that because we are constant in $z$ that $Z(z)$ is constant and $Z''(z)=0$ so
+$$0= \frac{X''(x)}{X(x)}+\frac{Y''(y)}{Y(y)}+\cancelto{0}{\frac{Z''(z)}{Z(z)}}$$
+$$0= \frac{X''(x)}{X(x)}+\frac{Y''(y)}{Y(y)}$$
+And we also can see that two functions that only depend on $x$ and $y$ must be constant if their sum is equal to zero. So we can say that
+$$0= C_1+C_2$$
+Where $C_1$ and $C_2$ are constants and
+$$C_1 = \frac{X''(x)}{X(x)}$$
+$$C_2 = \frac{Y''(y)}{Y(y)}$$
+So now we have 2 ordinary differential equations. We also can see that $C_1=-C_2$ so if we define a new constant $k^2=C_1$ so this yields
+$$X''(x)= k^2X(x)$$
+$$Y''(y)= -k^2Y(y)$$
+Note that we picked the $y$ component to have the negative constant because we assume that that will give us a sinusoidal function and we can see from the problem that $y$ varies from zero to zero. So to solve these differential equations we can guess that the solution is $X(x)=e^{rx}$ so $X''(x)=r^2e^{rx}$ so we get
+$$r^2e^{rx}=k^2e^{rx}$$
+$$r^2=k^2$$
+$$r=k$$
+So we can say the general solution for $X(x)$ is 
+$$X(x) = Ae^{kx}+Be^{-kx}$$
+Now if we pick the same guess for $Y(y)$ we get
+$$r^2e^{ry}=-k^2e^{ry}$$
+$$r^2=-k^2$$
+$$r=ik$$
+Where $i$ is the imaginary number $i=\sqrt{-1}$. So our general solution is 
+$$Y(y) = Ce^{iky}+De^{-iky}$$
+Using \emph{Euler's equation}
+$$e^{i\theta} = \cos{\theta}+i\sin{\theta}$$ 
+we get
+$$Y(y) = C(\cos(ky)+i\sin(ky))+D(\cos(-ky)+i\sin(-ky))$$
+Because cosine is an even function we know that
+$$\cos(-ky)=\cos(ky)$$
+and because sine is an odd function we know that
+$$\sin(-ky)=-\sin(ky)$$
+So this fact gives us
+$$Y(y) = C(\cos(ky)+i\sin(ky))+D(\cos(ky)-i\sin(ky))$$
+$$Y(y) = C\cos(ky)+Ci\sin(ky))+D\cos(ky)-Di\sin(ky)$$
+$$Y(y) = C\cos(ky)+D\cos(ky)+Ci\sin(ky))-Di\sin(ky)$$
+$$Y(y) = (C+D)\cos(ky)+i(C-D)(\sin(ky))$$
+We can redefine our constants as $C=C+D$ and $D=i(C-D)$. Note that we can absorb the $i$ into the constant $D$. We could also have just picked a constant that would cancel the $i$ later when we set our boundary conditions we know that this is possible because we need to have real answers at the end. So
+$$Y(y) = C\cos(ky)+D\sin(ky)$$
+So we can write $V(x,y)$ as
+$$V(x,y)=\left(Ae^{kx}+Be^{-kx}\right)\left(C\cos(ky)+D\sin(ky)\right)$$
+Now we can apply the boundary conditions 
+\begin{enumerate}
+\item $V(x,0)=0$
+\item $V(x,a)=0$
+\item $\dfrac{\partial V(0,y)}{\partial x}=0$
+\item $V(a,y)=V_0$
+\end{enumerate}
+So for boundary condition (a) we get
+$$V(x,0)=0=\left(Ae^{kx}+Be^{-kx}\right)\left(C\cos(k0)+D\sin(k0)\right)$$
+$$V(x,0)=0=\left(Ae^{kx}+Be^{-kx}\right)C$$
+And we see that $C=0$ so
+$$V(x,y)=\left(Ae^{kx}+Be^{-kx}\right)\sin(ky)$$
+Note that we absorbed $D$ into both $A$ and $B$ for simplicity. For the boundary condition (b) we get
+$$V(x,a)=0=\left(Ae^{kx}+Be^{-kx}\right)\sin(ka)$$
+We see that
+$$V(x,a)=0=\sin(ka)$$
+$$\arcsin(0)=ka$$
+$$n\pi=ka$$
+$$k_n=\frac{n\pi}{a}$$
+Where $n=1,2,3...$, so we know have 
+$$V(x,y)=\left(Ae^{k_nx}+Be^{-k_nx}\right)\sin(k_ny)$$
+Now for boundary condition (c) we need to find the first partial with respect to $x$
+$$\frac{\partial}{\partial x}V(x,y) = \frac{\partial}{\partial x}\left(Ae^{k_nx}+Be^{-k_nx}\right)\sin(k_ny)$$
+$$\frac{\partial}{\partial x}V(x,y) = k_n\left(Ae^{k_nx}-Be^{-k_nx}\right)\sin(k_ny)$$
+If we evaluate the boundary condition
+$$\frac{\partial}{\partial x}V(0,y) =0= k_n\left(Ae^{k_n0}-Be^{-k_n0}\right)\sin(k_ny)$$
+$$\frac{\partial}{\partial x}V(0,y) =0= k_n\left(A-B\right)\sin(k_ny)$$
+Because we know that $\sin(k_ny)$ and $k_n$ are not zero we get 
+$$\frac{\partial}{\partial x}V(0,y) =0= A-B$$
+So we can see that $A=B$ and we can rewrite $V(x,y)$ as
+$$V(x,y)=A\left(e^{k_nx}+e^{-k_nx}\right)\sin(k_ny)$$
+But this is only for a specific $n$ so we actually have`
+$$V_n(x,y)=A_n\left(e^{k_nx}+e^{-k_nx}\right)\sin(k_ny)$$
+Where 
+$$V(x,y) = \sum_{n=1}^{\infty} V_n(x,y)$$
+So 
+$$V(x,y) = \sum_{n=1}^{\infty} A_n\left(e^{k_nx}+e^{-k_nx}\right)\sin(k_ny)$$
+Now to apply the last boundary condition we need to use the fact that 
+\begin{equation}
+\int_0^a\sin(k_ny)\sin(k_{n'}y)dy = \left\{ \begin{array}{rcc}
+					0 &\mbox{for} &n\neq n' \\
+					\dfrac{a}{2} &\mbox{for} &n=n'
+					\end{array}\right.
+\label{Fouri}
+\end{equation}
+This is Fourier's trick that uses the orthogonality of $\sin$ so if we apply it to our last boundary condition
+$$V(a,y)= V_0 = \sum_{n=1}^{\infty} A_n\left(e^{k_na}+e^{-k_na}\right)\sin(k_ny)$$
+$$\int_0^aV_0\sin(k_{n'}y)dy = \sum_{n=1}^{\infty} \int_0^aA_n\left(e^{k_na}+e^{-k_na}\right)\sin(k_ny)\sin(k_{n'}y)dy$$
+$$\int_0^aV_0\sin(k_{n'}y)dy = \sum_{n=1}^{\infty} A_n\left(e^{k_na}+e^{-k_na}\right)\int_0^a\sin(k_ny)\sin(k_{n'}y)dy$$
+Note that the integral was pulled in the sum. This could go either way the sum of an integral is the same as the integral of a sum. We see that from equation \ref{Fouri} the sum is zero for all $n$ but $n'$ this effectively isolates $n'$ from the sum so 
+$$\int_0^aV_0\sin(k_{n'}y)dy = A_{n'}\left(e^{k_{n'}a}+e^{-k_{n'}a}\right)\frac{a}{2}$$
+Now we can integrate the right hand side to get
+$$\left.-V_0\cos(k_{n}y)\frac{a}{n\pi}\right]_0^a = A_{n}\left(e^{k_{n}a}+e^{-k_{n}a}\right)\frac{a}{2}$$
+$$-V_0\frac{a}{n\pi}(\cos(n\pi)-1) = A_{n}\left(e^{k_{n}a}+e^{-k_{n}a}\right)\frac{a}{2}$$
+So if we solve for $A_n$ we get 
+$$A_n= -V_0\frac{a}{n\pi}\frac{2}{a}\left(e^{k_{n}a}+e^{-k_{n}a}\right)^{-1}(\cos(n\pi)-1)$$
+$$A_n= -V_0\frac{2}{n\pi}\left(e^{k_{n}a}+e^{-k_{n}a}\right)^{-1}(\cos(n\pi)-1)$$
+Now if we use $k_n = \dfrac{n\pi}{a}$ we get
+$$A_n= -V_0\frac{2}{n\pi}\left(e^{n\pi}+e^{-n\pi}\right)^{-1}(\cos(n\pi)-1)$$
+$$A_n= -\frac{2V_0}{n\pi\left(e^{n\pi}+e^{-n\pi}\right)}(\cos(n\pi)-1)$$
+So we can see for $n=2,4,6...$ we get
+$$A_n= -\frac{2V_0}{n\pi\left(e^{n\pi}+e^{-n\pi}\right)}(1-1)$$
+$$A_n= 0$$
+And for $n=1,3,5...$ we get
+$$A_n= -\frac{2V_0}{n\pi\left(e^{n\pi}+e^{-n\pi}\right)}(-1-1)$$
+$$A_n= -\frac{2V_0}{n\pi\left(e^{n\pi}+e^{-n\pi}\right)}(-2)$$
+$$A_n= \frac{4V_0}{n\pi\left(e^{n\pi}+e^{-n\pi}\right)}$$
+So we know know out last constant so we can say that
+$$V(x,y) = \sum_{n=1,3,5...}^{\infty}\frac{4V_0}{n\pi\left(e^{n\pi}+e^{-n\pi}\right)}\left(e^{k_nx}+e^{-k_nx}\right)\sin(k_ny)$$
+Where
+$$k_n = \frac{n\pi}{a}$$
+
+\item
+The left wall is constant with respect to $x$, but it could potentially be any function of $y$ and still satisfy $$\frac{\partial V}{\partial x} = 0$$ This surface is not a conductor because a conductor has a constant potential across it and this plate does necessarily fulfill that condition.
+
+See attached for the sketch of the electric field and the equipotential contours inside the pipe.
+
+\item
+To find the charge density at $y=0$ or along the bottom plate of the pipe we need to use the identity
+$$\sigma= -\epsilon_0\frac{\partial V}{\partial n}$$ 
+where $n$ is the normal direction. In this case it the normal direction is $y$ so
+$$\sigma= -\epsilon_0\frac{\partial V(x,0)}{\partial y}$$ 
+$$\sigma= -\epsilon_0\frac{\partial }{\partial y}\sum_{n=1,3,5...}^{\infty}\frac{4V_0}{n\pi\left(e^{n\pi}+e^{-n\pi}\right)}\left(e^{k_nx}+e^{-k_nx}\right)\sin(k_ny)$$
+$$\sigma= -\epsilon_0\sum_{n=1,3,5...}^{\infty}\frac{4V_0}{n\pi\left(e^{n\pi}+e^{-n\pi}\right)}\left(e^{k_nx}+e^{-k_nx}\right)\frac{\partial }{\partial y}\sin(k_ny)$$
+$$\sigma= -\epsilon_0\sum_{n=1,3,5...}^{\infty}\frac{4V_0}{n\pi\left(e^{n\pi}+e^{-n\pi}\right)}\left(e^{k_nx}+e^{-k_nx}\right)\cos(k_ny)k_n$$
+So we can evaluate at the point $V(x,0)$
+$$\sigma= -\epsilon_0\sum_{n=1,3,5...}^{\infty}\frac{4V_0}{n\pi\left(e^{n\pi}+e^{-n\pi}\right)}\left(e^{k_nx}+e^{-k_nx}\right)\cos(k_n0)k_n$$
+$$\sigma= -\epsilon_0\sum_{n=1,3,5...}^{\infty}\frac{4V_0}{n\pi\left(e^{n\pi}+e^{-n\pi}\right)}\left(e^{k_nx}+e^{-k_nx}\right)(1)k_n$$
+$$\sigma= -\epsilon_0\sum_{n=1,3,5...}^{\infty}\frac{n\pi}{a}\frac{4V_0}{n\pi\left(e^{n\pi}+e^{-n\pi}\right)}\left(e^{k_nx}+e^{-k_nx}\right)$$
+$$\sigma= \sum_{n=1,3,5...}^{\infty}\frac{-4V_0\epsilon_0}{a\left(e^{n\pi}+e^{-n\pi}\right)}\left(e^{k_nx}+e^{-k_nx}\right)$$
+Now we can check our units we assume that $<\sigma> = C\ m^{-2}$ and we know that
+$$<k_n> = m^{-1};\ <x>=<a>=m;\ <\epsilon_0>=C^2\ N^{-1}\ m^{-2};\ <V_0> = N\ m\ C^{-1}$$
+As a quick check we see that
+$$\left<e^{k_nx}+e^{-k_nx}\right> = e^{m^{-1}\ m} + e^{m^{-1}\ m}$$
+therefore this term has no units
+$$\left<\frac{-4V_0\epsilon_0}{a\left(e^{n\pi}+e^{-n\pi}\right)}\right>=\frac{N\ m\ C^{-1}\ C^2\ N^{-1}\ m^{-2}}{m}$$
+$$\left<\frac{-4V_0\epsilon_0}{a\left(e^{n\pi}+e^{-n\pi}\right)}\right>=\frac{C\ m^{-1}}{m}$$
+$$\left<\frac{-4V_0\epsilon_0}{a\left(e^{n\pi}+e^{-n\pi}\right)}\right>=C\ m^{-2}$$
+Good our units agree.
+
+\end{enumerate}
+
+\section{Problem \#4}
+To see the rigorous work through the separation of variables see problem 3 for this problem we will start with
+$$\grad^2V(x,y,z) = 0 = \frac{X''(x)}{X(x)}+\frac{Y''(y)}{Y(y)}+\frac{Z''(z)}{Z(z)}$$
+So we can say that
+$${X''(x)}=C_1 {X(x)}$$
+$${Y''(y)}=C_2{Y(y)}$$
+$${Z''(z)}=C_3{Z(z)}$$
+Where $C_1+C_2+C_3=0$. Again we see that we have 2 ($y$ and $z$) components that go from zero to zero, so we have to say that $C_2 = -k^2$ and $C_3 = -l^2$. So from the fact that $C_1 = -C_2-C_3$ we get $C_1= k^2+l^2$ so we can say that.
+$$X(x) = Ae^{\sqrt{k^2+l^2}x}+Be^{-\sqrt{k^2+l^2}x}$$
+$$Y(y) = C\cos(ky)+D\sin(ky)$$
+$$Z(z) = E\cos(lz)+F\sin(lz)$$
+So we can say that $V(x,y,z)$ is
+$$V(x,y,z) = \left(Ae^{\sqrt{k^2+l^2}x}+Be^{-\sqrt{k^2+l^2}x}\right) \left(C\cos(ky)+D\sin(ky)\right) \left(E\cos(lz)+F\sin(lz)\right)$$
+Again to see the rigorous solutions to these differential equation see problem 3. Now we can apply our boundary conditions
+\begin{enumerate}[(a)]
+\item $V(x,0,z) = 0$
+\item $V(x,y,0) = 0$
+\item $V(x,a,z) = 0$
+\item $V(x,y,a) = 0$
+\item $V(a/2,y,z) = V_0$
+\item $V(-a/2,y,z) = V_0$
+\end{enumerate}
+So for (a) we get
+$$V(x,0,z)=0= \left(Ae^{\sqrt{k^2+l^2}x}+Be^{-\sqrt{k^2+l^2}x}\right) \left(C\cos(k0)+D\sin(k0)\right) \left(E\cos(lz)+F\sin(lz)\right)$$
+$$0= \left(Ae^{\sqrt{k^2+l^2}x}+Be^{-\sqrt{k^2+l^2}x}\right) \left(C\right) \left(E\cos(lz)+F\sin(lz)\right)$$
+We see that for this to be true $C=0$ so $V$ becomes 
+$$V(x,y,z) = \left(Ae^{\sqrt{k^2+l^2}x}+Be^{-\sqrt{k^2+l^2}x}\right) \left(D\sin(ky)\right) \left(E\cos(lz)+F\sin(lz)\right)$$
+For (b) we get
+$$V(x,y,0) = 0 = \left(Ae^{\sqrt{k^2+l^2}x}+Be^{-\sqrt{k^2+l^2}x}\right) \left(D\sin(ky)\right) \left(E\cos(l0)+F\sin(l0)\right)$$
+$$V(x,y,0) = 0 = \left(Ae^{\sqrt{k^2+l^2}x}+Be^{-\sqrt{k^2+l^2}x}\right) \left(D\sin(ky)\right) \left(E\right)$$
+So we see that $E=0$ so $V$ becomes
+$$V(x,y,z) = \left(Ae^{\sqrt{k^2+l^2}x}+Be^{-\sqrt{k^2+l^2}x}\right)D\sin(ky)F\sin(lz)$$
+We can combine $D$ and $F$ into $A$ and $B$ to yield
+$$V(x,y,z) = \left(Ae^{\sqrt{k^2+l^2}x}+Be^{-\sqrt{k^2+l^2}x}\right)\sin(ky)\sin(lz)$$
+Now if we use (c) we get 
+$$V(x,a,z) = 0 = \left(Ae^{\sqrt{k^2+l^2}x}+Be^{-\sqrt{k^2+l^2}x}\right)\sin(ka)\sin(lz)$$
+Now we see that the only term that can be zero is
+$$0=\sin(ka)$$
+That means 
+$$k_n = \frac{n\pi}{a}$$
+for the boundary condition (d) we see
+$$V(x,y,a) = 0 = \left(Ae^{\sqrt{k^2+l^2}x}+Be^{-\sqrt{k^2+l^2}x}\right)\sin(k_ny)\sin(la)$$
+Again the only term that can be zero is
+$$0=\sin(la)$$
+So 
+$$l_m = \frac{m\pi}{a}$$
+Now our $V$ is 
+$$V_{n,m}(x,y,z) = \left(Ae^{\sqrt{k_n^2+l_m^2}x}+Be^{-\sqrt{k_n^2+l_m^2}x}\right)\sin(k_ny)\sin(l_mz)$$
+And our full function of $V$ is given by a double sum
+$$V(x,y,z) = \sum_{n=1}^{\infty}\sum_{m=1}^{\infty}\left(Ae^{\sqrt{k_n^2+l_m^2}x}+Be^{-\sqrt{k_n^2+l_m^2}x}\right)\sin(k_ny)\sin(l_mz)$$
+Factoring our the common $\pi$ in the exponents 
+$$V(x,y,z) = \sum_{n=1}^{\infty}\sum_{m=1}^{\infty}\left(Ae^{\sqrt{(n\pi/a)^2+(m\pi/a)^2}x}+Be^{-\sqrt{(n\pi/a)^2+(m\pi/a)^2}x}\right)\sin(k_ny)\sin(l_mz)$$
+$$V(x,y,z) = \sum_{n=1}^{\infty}\sum_{m=1}^{\infty}\left(Ae^{\pi\sqrt{(n/a)^2+(m/a)^2}x}+Be^{-\pi\sqrt{(n/a)^2+(m/a)^2}x}\right)\sin(k_ny)\sin(l_mz)$$
+Now to fit our last two boundary conditions, For (e) we get
+$$V(a/2,y,z) = V_0 = \sum_{n=1}^{\infty}\sum_{m=1}^{\infty}\left(Ae^{\pi\sqrt{(n/a)^2+(m/a)^2}a/2}+Be^{-\pi\sqrt{(n/a)^2+(m/a)^2}a/2}\right)\sin(k_ny)\sin(l_mz)$$
+$$V_0 = \sum_{n=1}^{\infty}\sum_{m=1}^{\infty}\left(Ae^{\pi\sqrt{(a/2)^2(n/a)^2+(a/2)^2(m/a)^2}}+Be^{-\pi\sqrt{(a/2)^2(n/a)^2+(a/2)^2(m/a)^2}}\right)\sin(k_ny)\sin(l_mz)$$
+$$V_0 = \sum_{n=1}^{\infty}\sum_{m=1}^{\infty}\left(A_{n,m}e^{\pi\sqrt{(n/2)^2+(m/2)^2}}+B_{n.m}e^{-\pi\sqrt{(n/2)^2+(m/2)^2}}\right)\sin(k_ny)\sin(l_mz)$$
+and for (f) we get
+$$V(-a/2,y,z) = V_0 = \sum_{n=1}^{\infty}\sum_{m=1}^{\infty}\left(Ae^{\pi\sqrt{(n/a)^2+(m/a)^2}(-a/2)}+Be^{-\pi\sqrt{(n/a)^2+(m/a)^2}(-a/2)}\right)\sin(k_ny)\sin(l_mz)$$
+$$V_0 = \sum_{n=1}^{\infty}\sum_{m=1}^{\infty}\left(Ae^{-\pi\sqrt{(a/2)^2(n/a)^2+(a/2)^2(m/a)^2}}+Be^{\pi\sqrt{(a/2)^2(n/a)^2+(a/2)^2(m/a)^2}}\right)\sin(k_ny)\sin(l_mz)$$
+$$V_0 = \sum_{n=1}^{\infty}\sum_{m=1}^{\infty}\left(A_{n,m}e^{-\pi\sqrt{(n/2)^2+(m/2)^2}}+B_{n,m}e^{\pi\sqrt{(n/2)^2+(m/2)^2}}\right)\sin(k_ny)\sin(l_mz)$$
+We see that these equal the same constant but only differ in a flipped exponent sign so we can infer that
+$$A_{n,m}e^{-\pi\sqrt{(n/2)^2+(m/2)^2}}+B_{n,m}e^{\pi\sqrt{(n/2)^2+(m/2)^2}}=A_{n,m}e^{\pi\sqrt{(n/2)^2+(m/2)^2}}+B_{n,m}e^{-\pi\sqrt{(n/2)^2+(m/2)^2}}$$
+$$A_{n,m}e^{-\pi\sqrt{(n/2)^2+(m/2)^2}}-A_{n,m}e^{\pi\sqrt{(n/2)^2+(m/2)^2}}=B_{n,m}e^{-\pi\sqrt{(n/2)^2+(m/2)^2}}-B_{n,m}e^{\pi\sqrt{(n/2)^2+(m/2)^2}}$$
+$$A_{n,m}\left(e^{-\pi\sqrt{(n/2)^2+(m/2)^2}}-e^{\pi\sqrt{(n/2)^2+(m/2)^2}}\right)=B_{n,m}\left(e^{-\pi\sqrt{(n/2)^2+(m/2)^2}}-e^{\pi\sqrt{(n/2)^2+(m/2)^2}}\right)$$
+$$A_{n,m}= B_{n,m}$$
+This means we can rewrite our function with just one constant factored out to give us
+$$V(x,y,z) = \sum_{n=1}^{\infty}\sum_{m=1}^{\infty}A_{n,m}\left(e^{\sqrt{k_n^2+l_m^2}x}+e^{-\sqrt{k_n^2+l_m^2}x}\right)\sin(k_ny)\sin(l_mz)$$
+
+Now if we use equation \ref{Fouri} we can find the constant $A_{n,m}$. So
+$$\sum_{n=1}^{\infty}\sum_{m=1}^{\infty}A_{m,n}\left(e^{\pi\sqrt{(n/2)^2+(m/2)^2}}+e^{-\pi\sqrt{(n/2)^2+(m/2)^2}}\right)\int_0^a\sin(k_ny)\sin(k_{n'}y)dy\int_0^a\sin(l_mz)\sin(l_{m'}z)$$
+$$V_0 \int_0^a\sin(k_{n}y)dy\int_0^a\sin(l_{m'}y)dz= \sum_{m=1}^{\infty}A_{n,m}\left(e^{\pi\sqrt{(n/2)^2+(m/2)^2}}+e^{-\pi\sqrt{(n/2)^2+(m/2)^2}}\right)\frac{a}{2}\int_0^a\sin(l_mz)\sin(l_{m'}z)$$
+$$V_0 \int_0^a\sin(k_{n}y)dy\int_0^a\sin(l_{m}y)dz= A_{n,m}\left(e^{\pi\sqrt{(n/2)^2+(m/2)^2}}+e^{-\pi\sqrt{(n/2)^2+(m/2)^2}}\right)\frac{a^2}{4}$$
+Now if we solve the right hand side we get
+$$V_0 \left.\frac{a}{n\pi}\cos(k_ny)\right]_0^a\left.\frac{a}{m\pi}\cos(l_my)\right]_0^a= A_{n,m}\left(e^{\pi\sqrt{(n/2)^2+(m/2)^2}}+e^{-\pi\sqrt{(n/2)^2+(m/2)^2}}\right)\frac{a^2}{4}$$
+Note that the negatives from the cosines canceled with each other.
+$$\frac{V_0a^2}{nm\pi^2}\left(\cos(n\pi)-1\right)\left(\cos(m\pi)-1\right)= A_{n,m}\left(e^{\pi\sqrt{(n/2)^2+(m/2)^2}}+e^{-\pi\sqrt{(n/2)^2+(m/2)^2}}\right)\frac{a^2}{4}$$
+Now if we solve for $A_{n,m}$ we get
+$$\frac{4V_0}{nm\pi^2}\left(\cos(n\pi)-1\right)\left(\cos(m\pi)-1\right)= A_{n,m}\left(e^{\pi\sqrt{(n/2)^2+(m/2)^2}}+e^{-\pi\sqrt{(n/2)^2+(m/2)^2}}\right)$$
+$$A_{n,m}=\frac{4V_0}{nm\pi^2}\left(\cos(n\pi)-1\right)\left(\cos(m\pi)-1\right) \left(e^{\pi\sqrt{(n/2)^2+(m/2)^2}}+e^{-\pi\sqrt{(n/2)^2+(m/2)^2}}\right)^{-1}$$
+We see that for $n=2,4,6...$ or $m=2,4,6...$ $\cos-1$ becomes zero so the whole term is zero. And for $n=1,3,5...$ or  $m=1,3,5$ the $\cos-1$ becomes $-2$ so
+$$A_{n,m}=\frac{4V_0}{nm\pi^2}(-2)(-2)\left(e^{\pi\sqrt{(n/2)^2+(m/2)^2}}+e^{-\pi\sqrt{(n/2)^2+(m/2)^2}}\right)^{-1}$$
+$$A_{n,m}=\frac{16V_0}{nm\pi^2\left(e^{\pi\sqrt{(n/2)^2+(m/2)^2}}+e^{-\pi\sqrt{(n/2)^2+(m/2)^2}}\right)}$$
+So our full solution for $V(x,y,z)$ is 
+$$\sum_{n=1,3,5...}^{\infty}\sum_{m=1,3,5...}^{\infty}\frac{16V_0}{nm\pi^2\left(e^{\pi\sqrt{(n/2)^2+(m/2)^2}}+e^{-\pi\sqrt{(n/2)^2+(m/2)^2}}\right)}\left(e^{\sqrt{k_n^2+l_m^2}x}+e^{-\sqrt{k_n^2+l_m^2}x}\right)\sin(k_ny)\sin(l_mz)$$
+where $k_n=\dfrac{n\pi}{a}$ and $l_m=\dfrac{m\pi}{a}$
+
+We can see that at the center of the cube or $V(0,a/2,a/2)$ we get 
+$$\sum_{n=1,3,5...}^{\infty}\sum_{m=1,3,5...}^{\infty}\frac{16V_0}{nm\pi^2\left(e^{\pi\sqrt{(n/2)^2+(m/2)^2}}+e^{-\pi\sqrt{(n/2)^2+(m/2)^2}}\right)}\left(e^{\sqrt{k_n^2+l_m^2}0}+e^{-\sqrt{k_n^2+l_m^2}0}\right)\sin(k_na/2)\sin(l_ma/2)$$
+$$\sum_{n=1,3,5...}^{\infty}\sum_{m=1,3,5...}^{\infty}\frac{16V_0}{nm\pi^2\left(e^{\pi\sqrt{(n/2)^2+(m/2)^2}}+e^{-\pi\sqrt{(n/2)^2+(m/2)^2}}\right)}(2)\sin(\frac{n\pi}{a} a/2)\sin(\frac{m\pi}{a} a/2)$$
+$$\sum_{n=1,3,5...}^{\infty}\sum_{m=1,3,5...}^{\infty}\frac{32V_0}{nm\pi^2\left(e^{\pi\sqrt{(n/2)^2+(m/2)^2}}+e^{-\pi\sqrt{(n/2)^2+(m/2)^2}}\right)}\sin(\frac{n\pi}{2})\sin(\frac{m\pi}{2})$$
+We can see that the sines will never be zero, because the indexes are always odd. So $V$ is not zero at the center of the cube and neither is $E$.
+
+\section{Problem \#5}
+\begin{enumerate}[(i)]
+\item
+So if we start by saying that
+$$V(r,\theta,\phi) = R(r)\Theta(\theta)\Phi(\phi)$$
+We are going to solve \emph{Laplace's Equation} with spherical coordinates 
+$$\grad^2V(r.\theta,\phi) = 0$$
+where $\grad^2$ in spherical coordinates is given by
+$$\grad^2 = \frac{1}{r^2}\frac{\partial}{\partial r}\left(r^2\frac{\partial}{\partial r}\right) + \frac{1}{r^2\sin(\theta)}\frac{\partial}{\partial \theta}\left(\sin(\theta)\frac{\partial}{\partial \theta}\right) + \frac{1}{r^2\sin^2(\theta)}\frac{\partial}{\partial r}\frac{\partial^2}{\partial \phi^2}$$
+So to solve \emph{Laplace's Equation} we first can assume that $V$ has no dependence on $\phi$ so that the problem is reduced to 2 dimensions.
+$$\grad^2V(r,\theta) = \frac{1}{r^2}\frac{\partial}{\partial r}\left(r^2\frac{\partial V(r,\theta)}{\partial r}\right) + \frac{1}{r^2\sin(\theta)}\frac{\partial}{\partial \theta}\left(\sin(\theta)\frac{\partial V(r,\theta)}{\partial \theta}\right) = 0$$ 
+$$\frac{1}{r^2}\frac{\partial}{\partial r}\left(r^2\frac{\partial }{\partial r}R(r)\Theta(\theta)\right) + \frac{1}{r^2\sin(\theta)}\frac{\partial}{\partial \theta}\left(\sin(\theta)\frac{\partial}{\partial \theta}R(r)\Theta(\theta)\right) = 0$$ 
+$$\Theta(\theta)\frac{1}{r^2}\frac{\partial}{\partial r}\left(r^2\frac{\partial }{\partial r}R(r)\right) + R(r)\frac{1}{r^2\sin(\theta)}\frac{\partial}{\partial \theta}\left(\sin(\theta)\frac{\partial}{\partial \theta}\Theta(\theta)\right) = 0$$ 
+Now if we divide by $V(r,\theta)$ we get 
+$$\frac{\Theta(\theta)}{R(r)\Theta(\theta)}\frac{1}{r^2}\frac{\partial}{\partial r}\left(r^2\frac{\partial }{\partial r}R(r)\right) + \frac{R(r)}{R(r)\Theta(\theta)}\frac{1}{r^2\sin(\theta)}\frac{\partial}{\partial \theta}\left(\sin(\theta)\frac{\partial}{\partial \theta}\Theta(\theta)\right) = 0$$ 
+$$\frac{1}{R(r)}\frac{1}{r^2}\frac{\partial}{\partial r}\left(r^2\frac{\partial }{\partial r}R(r)\right) + \frac{1}{\Theta(\theta)}\frac{1}{r^2\sin(\theta)}\frac{\partial}{\partial \theta}\left(\sin(\theta)\frac{\partial}{\partial \theta}\Theta(\theta)\right) = 0$$ 
+We can cancel the $\frac{1}{r^2}$ from both terms
+$$\frac{1}{R(r)}\frac{\partial}{\partial r}\left(r^2\frac{\partial }{\partial r}R(r)\right) + \frac{1}{\Theta(\theta)}\frac{1}{\sin(\theta)}\frac{\partial}{\partial \theta}\left(\sin(\theta)\frac{\partial}{\partial \theta}\Theta(\theta)\right) = 0$$ 
+Now we have 2 terms that only depend on one variable. These also sum to zero so we know that they are constant so we can say
+$$\frac{\partial}{\partial r}\left(r^2\frac{\partial }{\partial r}R(r)\right) = C_1 R(r)$$
+$$\frac{\partial}{\partial \theta}\left(\sin(\theta)\frac{\partial}{\partial \theta}\Theta(\theta)\right) = C_2\sin(\theta)\Theta(\theta)$$ 
+We assume that $C_1 = l(l+1)$ where $l\in\mathbb{Z}$. This also implies that $C_2 = -l(l+1)$ due to the fact that $C_1+C_2=0$ from the solution of \emph{Laplace's Equation}. So
+$$\frac{\partial}{\partial r}\left(r^2\frac{\partial }{\partial r}R(r)\right) = l(l+1)R(r)$$
+$$\frac{\partial}{\partial \theta}\left(\sin(\theta)\frac{\partial}{\partial \theta}\Theta(\theta)\right) =-l(l+1)\sin(\theta)\Theta(\theta)$$ 
+Where the general solutions to these differential equation are
+$$R(r) = Ar^l+\frac{B}{r^{l+1}}$$
+$$\Theta(\theta) = P_l(\cos\theta)$$
+Where $P_l$ are the \emph{Legendre polynomials} which are given by
+$$P_l(x) = \frac{1}{2^ll!}\left(\frac{d}{dx}\right)^l(x^2-1)^l$$
+So we can say that
+\begin{align*}
+&P_0(\cos\theta) = 1\\
+&P_1(\cos\theta) = \cos\theta \\
+&P_2(\cos\theta) =  \frac{3}{2}\cos^2\theta-\frac{1}{2}\\ 
+\end{align*}
+So we know that $V$ is given by
+$$V_l(r,\theta) = \left(Ar^l+\frac{B}{r^{l+1}}\right)P_l(\cos\theta)$$
+$$V(r,\theta) = \sum_{l=0}^{\infty}\left(A_lr^l+\frac{B_l}{r^{l+1}}\right)P_l(\cos\theta)$$
+
+So we can apply the boundary conditions
+\begin{enumerate}
+\item $V(r\rightarrow\infty, \theta)=0$
+\item$V(R,\theta) = V_0\cos(2\theta)$
+\end{enumerate}
+Now for inside the sphere we can see that $B_l$ needs to be zero for all $l$ otherwise the potential at the center will by undefined so we see that
+$$V(r,\theta) = \sum_{l=0}^{\infty}A_lr^lP_l(\cos\theta)$$
+So if we apply boundary condition (b) we can say
+$$V(R,\theta) =V_0\cos(2\theta) =  \sum_{l=0}^{\infty}A_lR^lP_l(\cos\theta)$$
+We can use the identity that $$\cos(2\theta) = 2\cos^2(\theta)-1$$
+So if we look at that identity we see that we can just use $l=0$ and $l=2$ to make that function so we do not need to use the infinite sum.
+$$V(R,\theta) =V_0\cos(2\theta) =  A_0R^0P_0(\cos\theta)+A_2R^2P_2(\cos\theta)$$
+$$V(R,\theta) =V_0\cos(2\theta) =  A_0+A_2R^2\left(\frac{3}{2}\cos^2\theta-\frac{1}{2}\right)$$
+So if we apply the identity we get
+$$V(R,\theta) =V_0(2\cos^2(\theta)-1)=  A_0+A_2R^2\left(\frac{3}{2}\cos^2\theta-\frac{1}{2}\right)$$
+So we need to pick a $A_0$ and $A_2$ such that we get the left hand side. So lets get a factor of 2 in front of the $\cos^2(\theta)$ so lets pick 
+$$A_2 = \frac{4V_0}{3R^2}$$
+Note the $V_0$ is to account for the $V_0$ on the right hand side.
+$$V(R,\theta) =V_0(2\cos^2(\theta)-1)=  A_0+\frac{4}{3R^2}R^2\left(\frac{3}{2}\cos^2\theta-\frac{1}{2}\right)$$
+$$V(R,\theta) =V_0(2\cos^2(\theta)-1)=  A_0+\frac{4V_0}{3}\left(\frac{3}{2}\cos^2\theta-\frac{1}{2}\right)$$
+$$V(R,\theta) =V_0(2\cos^2(\theta)-1)=  A_0+V_0\left(\frac{4}{2}\cos^2\theta-\frac{2}{3}\right)$$
+$$V(R,\theta) =V_0(2\cos^2(\theta)-1)=  A_0+V_0\left(2\cos^2\theta-\frac{2}{3}\right)$$
+Now we can pick $A_0$ as $\frac{-1}{3}V_0$ so we get
+$$V(R,\theta) =V_0(2\cos^2(\theta)-1)=  -\frac{1}{3}V_0+V_0\left(2\cos^2\theta-\frac{2}{3}\right)$$
+$$V(R,\theta) =V_0(2\cos^2(\theta)-1)=  V_0\left(-\frac{1}{3}+2\cos^2\theta-\frac{2}{3}\right)$$
+$$V(R,\theta) =V_0(2\cos^2(\theta)-1)=  V_0\left(2\cos^2\theta-1\right)$$
+Good we our final value of $V$ is 
+$$V(r,\theta) = -\frac{V_0}{3} + \frac{4V_0}{3R^2}r^2P_2(\cos\theta)\ \mbox{for}\ r<R$$
+
+
+Now for outside the sphere we have the boundary condition (a)
+$$V(r\rightarrow\infty,\theta)=0 = \sum_{l=0}^{\infty}\left(A_lr^l+\frac{B_l}{r^{l+1}}\right)P_l(\cos\theta)$$
+We see that $A_l$ has to equal zero or else our potential cannot go to zero so
+$$V(r,\theta) = \sum_{l=0}^{\infty}\frac{B_l}{r^{l+1}}P_l(\cos\theta)$$
+Now we can apply boundary condition (b) to yield
+$$V(R,\theta) = V_0\cos(2\theta)= \sum_{l=0}^{\infty}\frac{B_l}{R^{l+1}}P_l(\cos\theta)$$
+Like before we can use the trig identity to convert the left hand side
+$$V(R,\theta) = V_0(2\cos^2(\theta)-1)= \sum_{l=0}^{\infty}\frac{B_l}{R^{l+1}}P_l(\cos\theta)$$
+And again we will only need to use $l=0$ and $l=2$ and not the infinite sum.
+$$V(R,\theta) = V_0(2\cos^2(\theta)-1)= \frac{B_0}{R^{0+1}}P_0(\cos\theta)+\frac{B_2}{R^{2+1}}P_2(\cos\theta)$$
+$$V(R,\theta) = V_0(2\cos^2(\theta)-1)= \frac{B_0}{R}+\frac{B_2}{R^{3}}\left(\frac{3}{2}\cos^2(\theta) - \frac{1}{2}\right)$$
+We can pick $B_2$ to be
+$$B_2 = \frac{4V_0R^3}{3}$$
+this gives us
+$$V(R,\theta) = V_0(2\cos^2(\theta)-1)= \frac{B_0}{R}+\frac{4V_0R^3}{3}\frac{1}{R^{3}}\left(\frac{3}{2}\cos^2(\theta) - \frac{1}{2}\right)$$
+$$V(R,\theta) = V_0(2\cos^2(\theta)-1)= \frac{B_0}{R}+\frac{4V_0}{3}\left(\frac{3}{2}\cos^2(\theta) - \frac{1}{2}\right)$$
+$$V(R,\theta) = V_0(2\cos^2(\theta)-1)= \frac{B_0}{R}+V_0\left(\frac{4}{3}\frac{3}{2}\cos^2(\theta) - \frac{4}{3}\frac{1}{2}\right)$$
+$$V(R,\theta) = V_0(2\cos^2(\theta)-1)= \frac{B_0}{R}+V_0\left(2\cos^2(\theta) - \frac{2}{3}\right)$$
+Now we can pick $B_0$ to be
+$$B_0 = \frac{-V_0R}{3}$$
+This yields
+$$V(R,\theta) = V_0(2\cos^2(\theta)-1)= \frac{-V_0R}{3}\frac{1}{R}+V_0\left(2\cos^2(\theta) - \frac{2}{3}\right)$$
+$$V(R,\theta) = V_0(2\cos^2(\theta)-1)= V_0\frac{-1}{3}+V_0\left(2\cos^2(\theta) - \frac{2}{3}\right)$$
+Factoring out the $V_0$
+$$V(R,\theta) = V_0(2\cos^2(\theta)-1)= V_0\left(\frac{-1}{3}+2\cos^2(\theta) - \frac{2}{3}\right)$$
+$$V(R,\theta) = V_0(2\cos^2(\theta)-1)= V_0\left(2\cos^2(\theta) - 1\right)$$
+Good we picked a $B_0$ and $B_2$ so we can say that the potential outside of the sphere is 
+$$V(r,\theta) = \frac{-V_0R}{3r}+\frac{4V_0R^3}{3r^3}P_2(\cos\theta)\ \mbox{for}\ R<r$$
+
+\item
+$$V(r,\theta) = -\frac{V_0}{3} + \frac{4V_0}{3R^2}r^2P_2(\cos\theta)\ \mbox{for}\ r<R$$
+$$V(r,\theta) = \frac{-V_0R}{3r}+\frac{4V_0R^3}{3r^3}P_2(\cos\theta)\ \mbox{for}\ R<r$$
+So to find the charge distribution we need to use
+$$\sigma = -\epsilon_0\frac{\partial V(r,\theta)}{\partial n}$$
+we evaluate this at $r=R$ and we take the derivative with respect to $r$ because that is the normal direction on the surface of the sphere so
+$$\sigma = -\epsilon_0\frac{\partial V(R,\theta)}{\partial r}$$
+$$\sigma = -\epsilon_0\frac{\partial}{\partial r}\left(-\frac{V_0}{3} + \frac{4V_0}{3R^2}r^2P_2(\cos\theta)\right)$$
+$$\sigma = -\epsilon_0\left(\frac{4V_0}{3R^2}(2r)P_2(\cos\theta)\right)$$
+Evaluate at $r=R$
+$$\sigma = -\epsilon_0\left(\frac{8V_0}{3R^2}RP_2(\cos\theta)\right)$$
+$$\sigma(\theta) = \frac{-8V_0\epsilon_0}{3R}P_2(\cos\theta)$$
+
+\end{enumerate}
+
+
+\end{document}
+

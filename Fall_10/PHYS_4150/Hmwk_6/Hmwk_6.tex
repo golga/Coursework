@@ -1,0 +1,162 @@
+\documentclass[11pt]{article}
+
+\usepackage{latexsym}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{enumerate}
+\usepackage{amsmath}
+\usepackage{cancel}
+\numberwithin{equation}{section}
+
+\setlength{\evensidemargin}{.25in}
+\setlength{\oddsidemargin}{-.25in}
+\setlength{\topmargin}{-.75in}
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{9.5in}
+\newcommand{\due}{October 7th, 2010}
+\newcommand{\HWnum}{6}
+\newcommand{\grad}{\bold\nabla}
+\newcommand{\vecE}{\vec{E}}
+\newcommand{\scrptR}{\vec{\mathfrak{R}}}
+\newcommand{\kapa}{\frac{1}{4\pi\epsilon_0}}
+\newcommand{\emf}{\mathcal{E}}
+\newcommand{\unit}[1]{\ensuremath{\, \mathrm{#1}}}
+
+
+\begin{document}
+\input{../title.tex}
+
+\section{Problem \#1}
+First we find need to find the magnetic field due to a infinitely long wire carrying a steady current $I$ by using \emph{Amp\'{e}re's Law}
+$$\oint \vec{B}\cdot d\vec{l} = \mu_0 I_{enc}$$
+where in this case $I_{enc} = I$ and the Amp\'{e}rian loop is centered on the wire with radius $r$. So $\vec{B}$ is parallel to $d\vec{l}$. So we find the magnetic field to be
+\begin{align*}
+\oint \vec{B}\cdot d\vec{l} &= \mu_0 I_{enc}\\
+B\oint dl &= \mu_0 I\\
+B(2\pi r) &= \mu_0 I\\
+&\Downarrow\\
+\vec{B} &= \frac{\mu_0 I}{2\pi}\frac{1}{r}\hat{\theta}
+\end{align*}
+So we can now find the magnetic tension which is given by
+$$T_m = \frac{1}{\mu_0}(\vec{B}\cdot\grad)\vec{B}$$
+Using the relation from Appendix A (Chen Page 354) 
+\begin{align*}
+(\vec{A}\cdot\grad)\vec{B} = &\hat{r}\left(A_r\frac{\partial B_r}{\partial r} + A_{\theta}\frac{1}{r}\frac{\partial B_r}{\partial\theta} + A_z\frac{\partial B_r}{\partial z} - \frac{1}{r}A_{\theta} B_{\theta}\right)\\
++ &\hat{\theta}\left(A_r\frac{\partial B_{\theta}}{\partial r} + A_{\theta}\frac{1}{r}\frac{\partial B_{\theta}}{\partial\theta} + A_z\frac{\partial B_{\theta}}{\partial z} + \frac{1}{r} A_{\theta}B_{r}\right)\\
++ &\hat{z}\left(A_r\frac{\partial B_z}{\partial r}+A_{\theta}\frac{\partial B_z}{\partial \theta}+A_z\frac{\partial B_z}{\partial z}\right)
+\end{align*}
+Note that for this magnetic field we see that $A = B = B_{\theta}$ that is there is only a component in the $\hat{\theta}$ direction. So this equation becomes
+$$(\vec{B}\cdot\grad)\vec{B} = \hat{r}\left(-\frac{1}{r}(B_{\theta})^2\right) 
++ \hat{\theta}\left(B_{\theta}\frac{1}{r}\frac{\partial B_{\theta}}{\partial\theta}\right)$$
+Now given that we found that
+$$\vec{B} = \frac{\mu_0 I}{2\pi}\frac{1}{r}\hat{\theta}$$
+We see that 
+$$\frac{\partial B_{\theta}}{\partial \theta} = 0$$ so we see that the magnetic tension is
+\begin{align*}
+T_m &= \frac{1}{\mu_0}(\vec{B}\cdot\grad)\vec{B}\\
+&= -\frac{1}{\mu_0}\hat{r}\left(\frac{1}{r}(B_{\theta})^2\right)\\
+&= -\frac{1}{\mu_0}\frac{1}{r}\left(\frac{\mu_0 I}{2\pi}\frac{1}{r}\right)^2\hat{r}\\
+&= -\frac{\mu_0I^2}{4\pi^2}\frac{1}{r^3} \hat{r}
+\end{align*}
+At a distance $r=R$ then 
+$$T_m = -\frac{\mu_0I^2}{4\pi^2}\frac{1}{R^3} \hat{r}$$
+Now we can find the magnetic pressure gradient force by
+$$F_{Pm} = -\grad P_m$$
+where the magnetic pressure is given by
+$$P_m = \frac{1}{2\mu_0}B^2$$
+So we already found or magnetic field so we can find $P_m$ by
+\begin{align*}
+P_m &= \frac{1}{2\mu_0}B^2\\
+&= \frac{1}{2\mu_0}\left(\frac{\mu_0 I}{2\pi}\frac{1}{r}\right)^2\\
+&= \frac{\mu_0I^2}{8\pi^2}\frac{1}{r^2}
+\end{align*}
+So we can calculate the magnetic pressure gradient force by
+\begin{align*}
+F_{Pm} &= -\grad P_m\\
+&= -\grad \frac{\mu_0I^2}{8\pi^2}\frac{1}{r^2}\\
+&= -\frac{\mu_0I^2}{8\pi^2}\frac{\partial}{\partial r}\frac{1}{r^2}\hat{r}\\
+&= -\frac{\mu_0I^2}{8\pi^2}\left(-\frac{2}{r^3}\right)\hat{r}\\
+&= \frac{\mu_0I^2}{4\pi^2}\frac{1}{r^3}\hat{r}
+\end{align*}
+And for $r=R$ we see that $F_{Pm}$ is
+$$\vec{F}_{Pm} = \frac{\mu_0I^2}{4\pi^2}\frac{1}{R^3}\hat{r}$$
+We see that $T_m$ is equal and opposite of $F_{Pm}$ or
+$$T_m = - F_{Pm}$$ 
+so there is no net force at $r=R$ due to the magnetic pressure and magnetic tension.
+
+\section{Problem \#2}
+To calculate the distance from the earth that the magnetosphere will still block the incoming solar wind, where we assume that the magnetosphere behaves as
+$$B = C\frac{1}{r^3}$$
+where $C$ is a constant of proportionality. We can find the value as $C$ by the given information that a $r = 1\unit{Earth\ Radii}$ the magnetic field is $B=3\times10^{-5}\unit{T}$. We can now calculate $C$ by
+\begin{align*}
+B &= C\frac{1}{r^3}\\
+&\Downarrow\\
+C &= Br^3\\
+&= (3\times10^{-5}\unit{T})(1\unit{Earth\ Radii})^3\\
+&= 3\times10^{-5}\unit{T\ Earth\ Radii^3}
+\end{align*}
+Note that $C = 8\times10^{15}\unit{T\ m^3}$. We can now calculate the magnetic pressure that this magnetic field induces by 
+\begin{align*}
+P_m &= \frac{1}{2\mu_0}B^2\\
+&= \frac{1}{2\mu_0}\left(C\frac{1}{r^3}\right)^2\\
+&= \frac{C^2}{2\mu_0}\frac{1}{r^6}
+\end{align*}
+Now we can find the force that is due to the magnetic pressure gradient
+\begin{align*}
+F_{Pm} &= -\grad P_m\\
+&= -\grad \frac{C^2}{2\mu_0}\frac{1}{r^6}\\
+&= -\frac{C^2}{2\mu_0}\frac{\partial}{\partial r} \frac{1}{r^6}\\
+&= -\frac{C^2}{2\mu_0}\left(\frac{-6}{r^7}\right)\\
+&= \frac{3C^2}{\mu_0}\frac{1}{r^7}\\
+\end{align*}
+. Now we just need to find the point at which the force from the magnetic pressure gradient equals the ram pressure of the solar wind which we can calculate by 
+$$P_R = \frac{1}{2}m_eNv^2$$
+where $N$ is the molecule density given as $N = 1\times10^{7}\unit{m^{-3}}$ and $v$ is the velocity of the solar wind given as $v = 4\times10^{2}\unit{km/s}$ or $6\times10^{-2}\unit{Earth\ Radii/s}$. So now we can find $r_0$ the point where $P_R = F_{Pm}$
+\begin{align*}
+P_R &= F_{Pm}\\
+\frac{1}{2}m_eNv^2 &= \frac{3C^2}{\mu_0}\frac{1}{r_0^7}\\
+&\Downarrow\\
+r_0^7 &= \frac{6C^2}{\mu_0m_eNv^2}\\
+r_0 &= \left(\frac{6C^2}{\mu_0m_eNv^2}\right)^{1/7}\\
+&= \left(\frac{6(8\times10^{15}\unit{T\ m^3})^2}{(1.3\times10^{-6}\unit{m\ kg\ s^{-2}\ A^{-2}})(9.1\times10^{-31}\unit{kg})(1\times10^{7}\unit{m^{-3}})(4\times10^{5}\unit{m\ s^{-1}})^2}\right)^{1/7}\\
+&= 1.5\times10^{7}\unit{m} \approx 2\unit{Earth\ Radii}
+\end{align*}
+
+
+
+\section{Problem \#3}
+\begin{enumerate}[(a)]
+\item 
+Since the star collapsed rapidly enough we can assume flux freezing. This implies that the magnetic flux at the surface of the star is the same before and after collapse. So if we find the initial flux by saying
+$$\Phi_B = \vec{B}\cdot\vec{A}$$
+Now if we assume that the magnetic field points radially away from the surface of the star we can just say that the dot product becomes a normal product between the surface area of the star $A$ and the magnetic field $B$. Where $A$ is given by the surface area of a sphere so 
+$$A = 4\pi r^2$$
+where initially $r = R_* =1.0\times10^{6}\unit{km}$ and the initial magnetic field is $B_* = 100\unit{G}$. So we can calculate the flux as
+\begin{align*}
+\Phi_B = \vec{B}\cdot\vec{A} &= B(4\pi R_*^2)\\
+&= 100\unit{G}(4\pi(1.0\times10^{6}\unit{km})^2)\\
+&=1.3\times10^{15}\unit{G\ km^2}
+\end{align*}
+Now after the star collapsed we have $r = 10\unit{km}$ so we can find the resulting magnetic field by solving our flux equation for $B$ to get
+\begin{align*}
+B &= \frac{\Phi_B}{A}\\
+&= \frac{\Phi_B}{4\pi r^2}\\
+&= \frac{1.3\times10^{15}\unit{G\ km^2}}{4\pi (10\unit{km})^2}\\
+&= 1.0\times10^{12}\unit{G}
+\end{align*}
+
+\item
+The cyclotron frequency of an electron is given by
+$$\omega_c = \frac{eB}{m_e}$$
+where $e$ is the magnitude of the charge of an electron and $m_e$ is the mass of an electron so we can calculate $\omega_c$ by
+\begin{align*}
+\omega_c &= \frac{eB}{m_e}\\
+&= \frac{(1.60\times10^{-19}\unit{C})(1.0\times10^{12}\unit{G})}{9.11\times10^{-31}\unit{kg}}\\
+&= \frac{(1.60\times10^{-19}\unit{C})(1.0\times10^{8}\unit{T})}{9.11\times10^{-31}\unit{kg}}\\
+&= 1.8\times10^{19}\unit{Hz}
+\end{align*}
+
+\end{enumerate}
+
+\end{document}
+

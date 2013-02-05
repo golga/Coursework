@@ -1,0 +1,242 @@
+\documentclass[11pt]{article}
+
+\usepackage{latexsym}
+\usepackage{amssymb}
+\usepackage{enumerate}
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{ulem}
+\usepackage{cancel}
+
+\setlength{\evensidemargin}{.25in}
+\setlength{\oddsidemargin}{-.25in}
+\setlength{\topmargin}{-.75in}
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{9.5in}
+\newcommand{\due}{September 16th, 2009}
+\newcommand{\HWnum}{3}
+\newcommand{\CC}{\mathbb{C}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\Arg}{\textnormal{Arg}}
+\newcommand{\Let}{\textnormal{Let }}
+
+\begin{document}
+\input{../title.tex}
+\subsection*{Written problems}
+\begin{enumerate}
+\item  2.1.12\\
+To show that $$f(z) = az +b$$ is a composition of a magnification, a rotation and a translation we first can find the magnification and rotation components. We do this by writing $a$ as $$a= r_a e^{i\theta_a}$$
+and if we write $z$ as 
+$$z= r_z e^{i\theta_z}$$
+We can show that $az$ looks like
+$$az= r_a e^{i\theta_a}r_z e^{i\theta_z}$$
+$$az= r_a r_z e^{i\theta_a}e^{i\theta_z}$$
+$$az= r_ar_z e^{i(\theta_a+\theta_z)}$$
+Now it is clear that the magnification (or reduction depending of the values) comes from the term $r_ar_z$ where $z$ is getting scaled by $r_a$, and the rotation comes from the term $e^{i(\theta_a+\theta_z)}$
+where $z$ is getting rotated by $\theta_a$. 
+
+Now if we redefine $az$ as
+$$az = a_1 + ib_1$$
+Where $a_1$ and $b_1$ are dependent upon the magnification terms $r_a$ and $r_z$ as well as the rotational terms $\theta_a$ and $\theta_z$. Now we can write $b$ in the same form
+$$b= a_2 + i b_2$$
+now we can see that 
+$$f(z) = a_1 +ib_1 +a_2 +ib_2$$
+$$f(z) = a_1 +a_2 +ib_1 +ib_2$$
+$$f(z) = a_1 +a_2 +i(b_1 +b_2)$$
+So we can see now that the rotated and magnified term is translated by $a_2$ along the real axis and $b_2$ along the imaginary axis. This means that $f(z)$ is a composition of a magnification, rotation and translation.
+
+In the case of a line the line will only be stretched, rotated and translated. None of these can make a line into something else. The same goes for a circle if you rotate and translate a circle it is still a circle, and if you scale the circle it just becomes a larger circle.
+
+
+\item  2.2.8\\
+We are going to use \emph{Definition 2} to prove that $$\lim_{z\rightarrow 1+i}(6z - 4) = 2 + 6i$$
+So we first need to see that \emph{Definition 2} states "Let $f$ be a function defined in some neighborhood of $z_0$, with the possible exception of the point $z_0$ itself. We say that the limit of $f(z_0)$ as $z$ approaches $z_0$ is the number $w_0$ and we write
+$$\lim_{z\rightarrow z_0} f(z) = w_0$$
+if for any $\epsilon > 0$ there exists a positive number $\delta$ such that 
+$$|f(z) - w_0|<\epsilon\ \textnormal{whenever}\ 0<|z -z_0| < \delta$$
+So for this problem we can quickly see that $z_0 = 1 +i$ and $w_0 = 2 +6i$. So 
+$$\textnormal{Let} \epsilon > 0$$
+and we want 
+$$\delta > 0$$
+such that
+$$|z - (i+i)|< \delta \Rightarrow |(6z-4)-(2+6i)| < \epsilon$$
+$$|(6z - 4)-(2+6i)|= |6z -6 -2i|$$
+Now we express this term in terms of $|z - (1+i)|$
+$$|(6z - 4)-(2+6i)|= |6z -6 -6i + 4i|$$
+$$|(6z - 4)-(2+6i)|= |6(z -1 -i) + 4i|$$
+$$|(6z - 4)-(2+6i)|= |6(z -(1+i)) + 4i|$$
+So we can see that from the triangle inequality that 
+$$|(6z - 4)-(2+6i)|= |6(z -(1+i)) + 4i| \le 6|(z -(1+i))| + 4$$
+So now can pick some $\delta$ so that we end up with an $\epsilon$. To do this we pick
+$$\delta = \frac{\epsilon - 4}{6}$$
+This gives us
+$$6|(z -(1+i))| + 4 < 6\frac{\epsilon - 4}{6} +4 = \epsilon$$
+
+\end{enumerate}
+
+\subsection*{Problems}
+
+\begin{enumerate}
+\item 2.1: 6, 16
+\begin{enumerate}[(i)]
+
+\item 6)
+\begin{enumerate}[(a)]
+\item The \emph{Joukowski mapping} is defined by
+$$w = J(z) = \frac{1}{2}\left(z + \frac{1}{z}\right)$$
+Show that $$J(z) = J(\frac{1}{z})$$
+$$J\left(\frac{1}{z}\right) = \frac{1}{2}\left(\frac{1}{z} + \frac{1}{\frac{1}{z}}\right)$$
+$$J\left(\frac{1}{z}\right) = \frac{1}{2}\left(\frac{1}{z} + z\right)$$
+$$J\left(\frac{1}{z}\right) = \frac{1}{2}\left(z+\frac{1}{z}\right) = J(z)$$
+$$J\left(\frac{1}{z}\right) = J(z)$$
+
+\item
+For the unit circle $|z| = 1$ we can look at the case where $z = a+ib$. 
+$$J(a+ib) = \frac{1}{2}\left(a+ib + \frac{1}{a+ib}\right)$$
+$$J(a+ib) = \frac{1}{2}\left(a+ib + \frac{1}{a+ib}\frac{a-ib}{a-ib}\right)$$
+$$J(a+ib) = \frac{1}{2}\left(a+ib + \frac{a-ib}{a^2-i^2b^2}\right)$$
+$$J(a+ib) = \frac{1}{2}\left(a+ib + \frac{a-ib}{a^2+b^2}\right)$$
+Where $a^2+b^2 = |z| = 1$ 
+$$J(a+ib) = \frac{1}{2}\left(a+ib + a-ib\right)$$
+$$J(a+ib) = \frac{1}{2}\left(2a\right)$$
+$$J(a+ib) = a$$
+Because we are mapping the unit circle we can see that $a$ varies $-1 \le a \le 1$. So with the elimination of $b$ the unit circle $|z|=1$ maps onto the real interval $[-1,1]$
+
+\item 
+For
+$$\frac{u^2}{\left[\frac{1}{2}\left(r+\frac{1}{r}\right)\right]^2}+\frac{v^2}{\left[\frac{1}{2}\left(r-\frac{1}{r}\right)\right]^2} = 1$$
+we can pick 
+$$u = \frac{1}{\sqrt{8}}\left(r+\frac{1}{r}\right)$$
+and
+$$v = \frac{1}{\sqrt{8}}\left(r-\frac{1}{r}\right)$$
+This $u$ and $v$ satisfy the equality.
+\end{enumerate}
+
+\item 16)\\
+So we first can define 
+$$x_1 = \frac{2 \textnormal{Re}(z)}{|z|^2 +1},\ x_2=\frac{2 \textnormal{Im}(z)}{|z|^2 +1},\ x_3 = \frac{|z|^2 -1}{|z|^2 +1}$$
+and we have 
+$$w = \frac{1-iz}{z-i}$$
+So we need to find
+$$\hat{x_1} = \frac{2 \textnormal{Re}(w)}{|w|^2 +1},\ \hat{x_2}=\frac{2 \textnormal{Im}(w)}{|w|^2 +1},\ \hat{x_3} = \frac{|w|^2 -1}{|w|^2 +1}$$
+First we can find $|w|^2$ by the fact
+$$|w|^2 = w\overline{w} = \frac{1-iz}{z-i}\frac{1+i\overline{z}}{\overline{z}+i}$$
+$$|w|^2 = \frac{1-i^2z\overline{z} -iz+i\overline{z}}{z\overline{z}-i^2+iz-i\overline{z}}$$
+$$|w|^2 = \frac{1+|z|^2 +i(\overline{z}-z)}{|z|^2+1+i(z-\overline{z})}$$
+$$|w|^2 = \frac{1+|z|^2 +i(-2i\textnormal{Im}(z))}{|z|^2+1+i(2i\textnormal{Im}(z))}$$
+$$|w|^2 = \frac{1+|z|^2 -2i^2\textnormal{Im}(z)}{|z|^2+1+2i^2\textnormal{Im}(z)}$$
+$$|w|^2 = \frac{1+|z|^2 +2\textnormal{Im}(z)}{1+|z|^2-2\textnormal{Im}(z)}$$
+Now we can find 
+$$\textnormal{Re}(w) = \frac{1+\textnormal{Im}(z)}{\textnormal{Re}(z)}$$
+$$\textnormal{Im}(w) = \frac{-\textnormal{Re}(z)}{\textnormal{Im}(z)-1}$$
+Now to find the points on the Reimann sphere
+
+$$\hat{x_1} = \frac{2 \textnormal{Re}(w)}{|w|^2 +1}$$
+$$\hat{x_1} = 2 \frac{1+\textnormal{Im}(z)}{\textnormal{Re}(z)}\left(\frac{1+|z|^2-2\textnormal{Im}(z)}{1+|z|^2 +2\textnormal{Im}(z)} + 1\right)$$
+$$\hat{x_1} = 2 \frac{1+\textnormal{Im}(z)}{\textnormal{Re}(z)}\left(\frac{1+|z|^2-2\textnormal{Im}(z)}{1+|z|^2 +2\textnormal{Im}(z)} + \frac{1+|z|^2 +2\textnormal{Im}(z)}{1+|z|^2 +2\textnormal{Im}(z)}\right)$$
+$$\hat{x_1} = 2 \frac{1+\textnormal{Im}(z)}{\textnormal{Re}(z)}\left(\frac{1+|z|^2-2\textnormal{Im}(z)+1+|z|^2 +2\textnormal{Im}(z)}{1+|z|^2 +2\textnormal{Im}(z)}\right)$$
+$$\hat{x_1} = 2 \frac{1+\textnormal{Im}(z)}{\textnormal{Re}(z)}\left(\frac{2+2|z|^2}{1+|z|^2 +2\textnormal{Im}(z)}\right)$$
+
+The mapping 
+$$w = \frac{1-iz}{z-i}$$
+is a rotation of the Riemann sphere by $\pi$ in the $\hat{x_3}$ direction
+
+\end{enumerate}
+
+\item 2.2: 6, 12, 13, 18, 20
+\begin{enumerate}[(i)]
+\item 6)\\
+We are trying to show that $$\lim_{n\rightarrow \infty} z_0^n = 0$$
+when $|z_0| < 1$. So lets suppose $\epsilon > 0$ and let $$z_0^n = |z_0|^n e^{ni\theta}$$
+We want a N such that 
+$$|z_0^n| < \epsilon$$
+If we take the log of both sides we get
+$$|\log(z_0^n)| < \log(\epsilon)$$
+We can pull the $n$ out due to log properties
+$$|n||\log(z_0)| < \log(\epsilon)$$
+Now if we divide by $\log(z_0)$ we have to flip the inequality if $\log(z_0) < 0$ which it is if $0 < z_0<1$ so this gives us 
+$$|n|> \frac{\log(\epsilon)}{\log(z_0)}$$
+This is saying that there exists a $N$ greater than $n$ for any given positive $\epsilon$. Therefore the limit exists. Now if $z_0 > 1$ then the $\log(z_0) > 0$ and if this is the case the inequality does not change and we get 
+$$|n|< \frac{\log(\epsilon)}{\log(z_0)}$$
+This means that $N \ngtr n$ for any given positive $\epsilon$ so the limit does not exist.
+\item 12)\\
+$$\textnormal{Let} z = x_0$$ where $x_0$ is a point on the nonpositive real axis. So we can approach $x_0$ from both the real and imaginary axis this is represented by
+$$\lim_{a\rightarrow 0} \Arg(a+x_0)$$
+and
+$$\lim_{b\rightarrow 0} \Arg(ib+x_0)$$
+Now we need to calculate these limits
+$$\lim{a\rightarrow 0} \Arg(a+x_0) = \lim{a\rightarrow 0} \arctan\left(\frac{0}{a+x_0}\right)$$
+$$\lim{a\rightarrow 0} \Arg(a+x_0) = 0$$
+$$\lim{b\rightarrow 0} \Arg(ib+x_0) = \lim{b\rightarrow 0} \arctan\left(\frac{x_0}{b}\right)$$
+$$\lim{b\rightarrow 0} \Arg(ib+x_0) = \frac{\pi}{2}$$
+The limits are not the same therefore the function $\Arg(z)$ is discontinuous for all $x_0$ or all points on the nonpositive real axis.
+
+\item 13)\\
+For the function $f(z)$ defined
+$$f(z) = \left\{\begin{array}{lr}
+		\dfrac{2z}{z+1} &\textnormal{if}\ z\ne 0,\\
+		1 &\textnormal{if}\ z= 0.\\
+		\end{array}\right.$$
+we can see that there is a finite limit for all $z$ except at $z=-1$ there the limit is infinite. $z$ at $-1$ is a discontinuity the other discontinuity is at $z=0$ this is comes from the piecewise function. The discontinuity at $0$ is removable we can see that 
+$$\lim_{z\rightarrow 0} \frac{2z}{z+1} = 0$$ but $$f(0) = 1$$ this is where the discontinuity arises from, but this discontinuity is removable if we say that $$f(0) = 0$$
+
+\item 18)\\
+$$\Let f(z) = u(x,y) + iv(x,y),\ z_0=x_0+iy_0,\ \textnormal{and } w_0 = u_0 +iv_0$$
+We are trying to prove that
+$$\lim_{z\rightarrow z_0} = w_0$$
+if, and only if
+$$\lim_{\substack{x\rightarrow x_0\\y\rightarrow y_0}} u(x,y) = u_0\ \textnormal{and } \lim_{\substack{x\rightarrow x_0\\y\rightarrow y_0}} v(x,y) = v_0$$
+We can first show that 
+$$\lim_{z\rightarrow z_0}\overline{f(z)} = \overline{w_0}$$
+we can see that
+$$\overline{f(z)} = u(x,y)-iv(x,y)$$
+and that as $z\rightarrow z_0$, $x=x_0$ and $y=y_0$ this is given by the assumption 
+$$z_0 = x_0 +iy_0$$
+so if we rewrite the limit as
+$$\lim_{\substack{x\rightarrow x_0\\y\rightarrow y_0}} u(x,y)-iv(x,y) = u_0-iv_0$$
+Now if this is true we also know that it is true for 
+$$\lim_{z\rightarrow z_0}{f(z)} = {w_0}$$
+So we can say that 
+$$\lim_{\substack{x\rightarrow x_0\\y\rightarrow y_0}} u(x,y)+iv(x,y) = u_0+iv_0$$
+and now we can find
+$$\lim_{z\rightarrow z_0}\overline{f(z)}+f(z)$$
+we know that from Theorem 1 we can say
+$$\lim_{z\rightarrow z_0}\overline{f(z)}+f(z) = \overline{w_0} +w_0$$
+If we write this in terms of $u$ and $v$ we get
+$$\lim_{\substack{x\rightarrow x_0\\y\rightarrow y_0}} u(x,y)-iv(x,y) + u(x,y)+iv(x,y) = u_0+iv_0+u_0-iv_0$$
+$$\lim_{\substack{x\rightarrow x_0\\y\rightarrow y_0}} u(x,y) + u(x,y) = u_0+u_0$$
+$$\lim_{\substack{x\rightarrow x_0\\y\rightarrow y_0}}2u(x,y) =2u_0$$
+$$\lim_{\substack{x\rightarrow x_0\\y\rightarrow y_0}}u(x,y) =u_0$$
+Now we can do the same thing for
+$$\lim_{z\rightarrow z_0}\overline{f(z)}-f(z) = \overline{w_0} -w_0$$
+in terms of $u$ and $v$
+$$\lim_{\substack{x\rightarrow x_0\\y\rightarrow y_0}} u(x,y)-iv(x,y) - (u(x,y)+iv(x,y)) = u_0+iv_0-(u_0-iv_0)$$
+$$\lim_{\substack{x\rightarrow x_0\\y\rightarrow y_0}} -iv(x,y) - iv(x,y) = -iv_0-iv_0$$
+$$\lim_{\substack{x\rightarrow x_0\\y\rightarrow y_0}} -2iv(x,y) = -2iv_0$$
+$$\lim_{\substack{x\rightarrow x_0\\y\rightarrow y_0}} v(x,y) = v_0$$
+
+\item 20)\\
+$$\Let f(z) = e^z,\ z=x+iy,\ \textnormal{and }z_0 = x_0 +iy_0$$
+So we can see that 
+$$\lim_{z\rightarrow z_0} z = \lim_{\substack{x\rightarrow x_0\\y\rightarrow y_0}} x+iy$$
+So we can write $f(z)$ as
+$$f(z) = e^z = e^{x+iy} = e^{x}e^{iy}$$
+Now if we take the limit we see that
+$$\lim_{z\rightarrow z_0} e^z = \lim_{\substack{x\rightarrow x_0\\y\rightarrow y_0}} e^x e^{iy}$$
+Now we can split the function by saying
+$$\Let u(x) = e^x,\ \textnormal{and } v(y) = e^{iy}$$
+so we can see that
+$$f(z) = u(x)v(y)$$
+so when we take the limit we can say that
+$$\lim_{z\rightarrow z_0} f(z) = \lim_{\substack{x\rightarrow x_0\\y\rightarrow y_0}} u(x)v(y)$$
+Now by Theorem 2 if we find that $u(x)$ and $v(y)$ are continuous then $f(z)$ is continuous. So
+$$\lim_{x\rightarrow x_0} u(x) = \lim_{x\rightarrow x_0} e^x =e^{x_0} = u(x_0)$$
+Therefore $u(x)$ is continuous. Now
+$$\lim_{y\rightarrow y_0} v(y) = \lim_{y\rightarrow y_0} e^{iy} =e^{iy_0} = u(y_0)$$
+Now we can see that $f(z)$ is continuous, or $e^z$ is continuous.
+ 
+\end{enumerate}
+\end{enumerate}
+
+\end{document}
+

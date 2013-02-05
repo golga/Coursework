@@ -1,0 +1,132 @@
+\documentclass[11pt]{article}
+
+\usepackage{latexsym}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{enumerate}
+\usepackage{amsmath}
+\usepackage{cancel}
+\numberwithin{equation}{section}
+
+\setlength{\evensidemargin}{.25in}
+\setlength{\oddsidemargin}{-.25in}
+\setlength{\topmargin}{-.75in}
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{9.5in}
+\newcommand{\due}{September 26th, 2010}
+\newcommand{\HWnum}{3}
+\newcommand{\grad}{\bold\nabla}
+\newcommand{\vecE}{\vec{E}}
+\newcommand{\scrptR}{\vec{\mathfrak{R}}}
+\newcommand{\kapa}{\frac{1}{4\pi\epsilon_0}}
+\newcommand{\emf}{\mathcal{E}}
+\newcommand{\unit}[1]{\ensuremath{\, \mathrm{#1}}}
+
+\begin{document}
+\input{../title.tex}
+
+\section{Problem \#1}
+To find the distance from the sun to the \emph{Heliospheric Termination Shock} we first need to assume that the density of the solar wind drops off as $r^{-2}$. So we can say that
+\begin{equation}
+rho(r) = c\frac{1}{r^2}
+\label{test}
+\end{equation}
+Where $c$ is a constant of proportionality with units of $\textnormal{AU}^2\ \textnormal{cm}^{-3}$ and $r$ is the distance from the sun. We can find $c$ by using the fact that for $r=1\ \textnormal{Au}$ the density of the solar wind is $8\ \textnormal{cm}^{-3}$.
+\begin{align*}
+c &= \rho r^2\\
+&= (8)(1)^2 = 8\unit{AU^2\ cm^{-3}} 
+\end{align*}
+
+Now we need to find the density of the solar wind at the termination shock. To do this we use the fact that the \emph{ram pressure} is equal to the total pressure of the ISM. We know that the ram pressure is given by
+$$P_{ram} = \rho v^2$$
+and the pressure of the ISM is
+$$P_{ISM} = 4\times10^{-13}\unit{Pa}$$
+so we can find the density, $\rho$, when $P_{ram}=P_{ISM}$ assuming that the solar wind is moving at a velocity of $400\unit{km\ s^{-1}}$. So
+\begin{align*}
+P_{ISM} &= P_{ram}\\
+P_{ISM} &= \rho v^2\\
+&\Downarrow\\
+\rho &= \frac{P_{ISM}}{v^2}\\
+&= \frac{4\times10^{-13}\unit{Pa}}{(400000\unit{m\ s^{-1}})^2}\\
+&= 2.5\times10^{-24}\unit{m^{-3}} = 2.5\times10^{-30}\unit{cm^{-3}} 
+\end{align*}
+Now if by using this density in equation \ref{test} we can find the distance to the termination shock
+\begin{align*}
+\rho &= c\frac{1}{r^2}\\
+&\Downarrow\\
+r &= \sqrt{\frac{c}{\rho}}\\
+&= \sqrt{\frac{8\unit{AU^2\ \cancel{cm^{-3}}}}{2.5\times10^{-30}\unit{\cancel{cm^{-3}}}}}\\
+&= \sqrt{3.2\times10^{30}\unit{AU^2}}\\
+&= 1.7\times10^{15}\unit{AU}
+\end{align*}
+
+
+\section{Problem \#2}
+\begin{enumerate}[(a)]
+\item
+If we assume that the energy that the nebula gains is from the energy lost when the pulsar slows down rotationally. We know that every year the period of rotation for the pulsar increases by $1.0\times10^{-8}\unit{s}$. The amount of rotational energy the pulsar loses due to the increase in its period can be found using
+$$E_{rot} = \frac{I\Omega^2}{2}$$
+where $I$ is the moment of inertia given by
+$$I = \frac{2}{5}MR^2$$
+and the mass of the pulsar is $M=2.8\times10^{30}\unit{kg}$ and the radius of the pulsar is $R=10\unit{km}$. With these values we can find $I$ from
+\begin{align*}
+I &= \frac{2}{5}MR^2\\
+&= \frac{2}{5}(2.8\times10^{30})(10000)^2\\
+&= 1.12\times10^{38}\unit{kg\ m^2}
+\end{align*}
+Note that $\Omega$ is the angular rotation rate and is related to the period $P$ by
+$$\Omega = \frac{2\pi}{P}$$
+We can now find the amount of energy that the pulsar loses in a year by using the fact that the pulsar's period increases by $1.0\times10^{-8}\unit{s}$ so the angular frequency $\Omega$ is
+\begin{align*}
+\Omega &= \frac{2\pi}{1\times10^{-8}}\\
+&= 6.28\times10^{8}\unit{s^{-1}}
+\end{align*}
+Now we can find the energy loss by
+\begin{align*}
+E_{rot} &= \frac{I\Omega^2}{2}\\
+&= \frac{(1.12\times10^{38})(6.28\times10^8)^2}{2}\\
+&= 2.21\times10^{55}\unit{J}
+\end{align*}
+This value is the energy gained by the nebula in one years time so the power or luminosity is given by
+\begin{align*}
+W &= \frac{E_{rot}}{1\unit{year}}\\
+&= \frac{2.21\times10^{55}}{31556926\unit{s}}\\
+&= 7\times10^{47}\unit{W}
+\end{align*}
+
+\item
+We know that in one sec of time the nebula gains $7\times10^{47}\unit{J}$. Now if we assume that the energy gained is through relativistic electrons and positrons. Now given that the electrons and positrons have an initial energy given by
+$$\epsilon = \gamma m_ec^2$$ 
+where the Lorentz Factor is $\gamma = 10^4$. So the energy for a single electron or positron is 
+\begin{align*}
+\epsilon &= \gamma m_ec^2\\ 
+&= 10^4(9.11\times10^{-31})(3\times10^{8})^2\\ 
+&= 8.2\times10^{-10}\unit{J}
+\end{align*}
+So in one second the pulsar emits 
+\begin{align*}
+N &= \frac{7\times10^{47}}{ 8.2\times10^{-10}}\\
+&= 5.6\times10^{56}
+\end{align*}
+\end{enumerate}
+
+\section{Problem \#3}
+Given the fact that the super massive black hole accretes $1\ M_{\odot}/\textnormal{year}$ where $M_{\odot} = 2\times10^{30}\unit{kg}$ or the mass of the sun. And that a fraction $\eta=0.10$ of the mass that accretes is converted into radiation through
+$E = mc^2$
+So the total energy emitted in a year is given by
+\begin{align*}
+E &= mc^2\\
+&= \eta M_{\odot}c^2\\
+&= (0.10)(2\times10^{30})(3\times10^{8})^2\\
+&= 1.8\times10^{36}\unit{J}
+\end{align*}
+If we divide out the year time to get energy per unit time or power we get
+\begin{align*}
+P &= \frac{E}{T}\\
+&= \frac{1.8\times10^{36}\unit{J}}{31556926\unit{s}}\\
+&= 5.7\times10^{28}\unit{W}
+\end{align*}
+Now the galaxy that surrounds this black hole has $10^{12}$ stars each shining at $L_{\odot} = 4\times10^{26}\unit{W}$ so all the stars of the galaxy have a combined luminosity of $P' = 4\times10^{38}\unit{W}$. This is many orders greater than the radiation emitted from the black hole.
+
+\end{document}
+

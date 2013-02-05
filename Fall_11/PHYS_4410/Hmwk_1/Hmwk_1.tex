@@ -1,0 +1,199 @@
+\documentclass[11pt]{article}
+
+\usepackage{latexsym}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{enumerate}
+\usepackage{amsmath}
+\usepackage{cancel}
+\numberwithin{equation}{section}
+
+\setlength{\evensidemargin}{.25in}
+\setlength{\oddsidemargin}{-.25in}
+\setlength{\topmargin}{-.75in}
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{9.5in}
+\newcommand{\due}{September 1st, 2011}
+\newcommand{\HWnum}{1}
+\newcommand{\grad}{\bold\nabla}
+\newcommand{\vecE}{\vec{E}}
+\newcommand{\scrptR}{\vec{\mathfrak{R}}}
+\newcommand{\kapa}{\frac{1}{4\pi\epsilon_0}}
+\newcommand{\emf}{\mathcal{E}}
+
+\begin{document}
+\input{../title.tex}
+
+\section{Problem \#1}
+\begin{enumerate}[(a)]
+\item
+Given the rotation matrices from classical physics
+\begin{equation}\label{Rotx}
+R_x(\alpha) = \left(\begin{array}{ccc}
+                    1    &0               &0    \\
+                    0    &\cos(\alpha)    &-\sin(\alpha) \\
+                    0    &\sin(\alpha)    &\cos(\alpha) 
+                    \end{array}\right)
+\end{equation}
+\begin{equation}\label{Roty}
+R_y(\alpha) = \left(\begin{array}{ccc}
+                    \cos(\alpha)    &0    &\sin(\alpha) \\
+                    0                &1    &0            \\
+                    -\sin(\alpha)    &0   &\cos(\alpha) 
+                    \end{array}\right)
+\end{equation}
+\begin{equation}\label{Rotz}
+R_z(\alpha) = \left(\begin{array}{ccc}
+                    \cos(\alpha)    &-\sin(\alpha)    &0  \\
+                    \sin(\alpha)    &\cos(\alpha)    &0  \\
+                    0               &0               &1  
+                    \end{array}\right)
+\end{equation}
+we can show that rotations about different axis don't commute by showing
+$$R_x(\alpha)R_y(\alpha) \ne R_y(\alpha)R_x(\alpha)$$
+First we compute $R_x(\alpha)R_y(\alpha)$ by
+\begin{align*}
+R_x(\alpha)R_y(\alpha) &= 
+\left(\begin{array}{ccc}
+      1    &0               &0    \\
+      0    &\cos(\alpha)    &-\sin(\alpha) \\
+      0    &\sin(\alpha)    &\cos(\alpha) 
+      \end{array}\right)
+\left(\begin{array}{ccc}
+      \cos(\alpha)    &0    &\sin(\alpha) \\
+      0                &1    &0            \\
+      -\sin(\alpha)    &0   &\cos(\alpha) 
+      \end{array}\right)\\ 
+&= \left(\begin{array}{ccc}
+      \cos(\alpha)                &0               &\sin(\alpha) \\
+      \sin^2(\alpha)             &\cos(\alpha)    &-\sin(\alpha)\cos(\alpha) \\
+      -\sin(\alpha)\cos(\alpha)   &\sin(\alpha)    &\cos^2(\alpha) 
+      \end{array}\right)\\ 
+\end{align*}
+Next we find $R_y(\alpha)R_x(\alpha)$
+\begin{align*}
+R_y(\alpha)R_x(\alpha) &= 
+\left(\begin{array}{ccc}
+      \cos(\alpha)    &0    &\sin(\alpha) \\
+      0                &1    &0            \\
+      -\sin(\alpha)    &0   &\cos(\alpha) 
+      \end{array}\right)
+\left(\begin{array}{ccc}
+      1    &0               &0    \\
+      0    &\cos(\alpha)    &-\sin(\alpha) \\
+      0    &\sin(\alpha)    &\cos(\alpha) 
+      \end{array}\right)\\ 
+&= \left(\begin{array}{ccc}
+      \cos(\alpha)    &\sin^2(\alpha)  &\sin(\alpha)\cos(\alpha) \\
+      0               &\cos(\alpha)    &-\sin(\alpha)  \\
+      -\sin(\alpha)    &\sin(\alpha)\cos(\alpha)   &\cos^2(\alpha) 
+      \end{array}\right)
+\end{align*}
+And we can quickly see that
+$$\left(\begin{array}{ccc}
+      \cos(\alpha)                &0               &\sin(\alpha) \\
+      \sin^2(\alpha)             &\cos(\alpha)    &-\sin(\alpha)\cos(\alpha) \\
+      -\sin(\alpha)\cos(\alpha)   &\sin(\alpha)    &\cos^2(\alpha) 
+      \end{array}\right)\\ 
+\ne \left(\begin{array}{ccc}
+      \cos(\alpha)    &\sin^2(\alpha)  &\sin(\alpha)\cos(\alpha) \\
+      0               &\cos(\alpha)    &-\sin(\alpha)  \\
+      -\sin(\alpha)    &\sin(\alpha)\cos(\alpha)   &\cos^2(\alpha) 
+      \end{array}\right)$$
+Therefore
+$$R_x(\alpha)R_y(\alpha) \ne R_y(\alpha)R_x(\alpha)$$
+
+Now we can show for an infinitesimal angle $\delta$ the relation
+$$R_x(\delta)R_y(\delta) - R_y(\delta)R_x(\delta) = R_z(\delta^2) - 1$$
+up to order of $\delta^2$. Using the matrices we already calculated we see that
+\begin{align*}
+R_x(\delta)R_y(\delta) - R_y(\delta)R_x(\delta) &= 
+\left(\begin{array}{ccc}
+      \cos(\delta)                &0               &\sin(\delta) \\
+      \sin^2(\delta)             &\cos(\delta)    &-\sin(\delta)\cos(\delta) \\
+      -\sin(\delta)\cos(\delta)   &\sin(\delta)    &\cos^2(\delta) 
+      \end{array}\right)\\ 
+&\ \ \ \ - \left(\begin{array}{ccc}
+      \cos(\delta)    &\sin^2(\delta)  &\sin(\delta)\cos(\delta) \\
+      0               &\cos(\delta)    &-\sin(\delta)  \\
+      -\sin(\delta)    &\sin(\delta)\cos(\delta)   &\cos^2(\delta) 
+      \end{array}\right)\\
+&= \left(\begin{array}{ccc}
+      0                &-\sin^2(\delta)  &\sin(\delta) - \sin(\delta)\cos(\delta) \\
+      \sin^2(\delta)             &0    &-\sin(\delta)\cos(\delta) + \sin(\delta)\\
+      -\sin(\delta)\cos(\delta)+\sin(\delta)   &\sin(\delta)-\sin(\delta)\cos(\delta)    &0 
+      \end{array}\right)
+\end{align*}
+Now if we use the small angle approximations 
+\begin{align*}
+\sin(\delta) &\approx \delta\\
+\cos(\delta) &\approx 1 + \frac{\delta^2}{2}
+\end{align*}
+note that we only keep order of $\delta^2$. Now the commutation relation becomes
+\begin{align*}
+R_x(\delta)R_y(\delta) - R_y(\delta)R_x(\delta) &= \left(\begin{array}{ccc}
+      0                &-\delta^2  &\delta(1-1+\delta^2/2) \\
+      \delta^2             &0    &\delta(1-1+\delta^2/2)\\
+      \delta(1-1+\delta^2/2)   &\delta(1-1+\delta^2/2)    &0 
+      \end{array}\right)\\
+&= \left(\begin{array}{ccc}
+      0                &-\delta^2     &\delta^3/2 \\
+      \delta^2         &0             &\delta^3/2\\
+      \delta^3/2       &\delta^3/2    &0 
+      \end{array}\right)\\
+&= \left(\begin{array}{ccc}
+      0                &-\delta^2     &0 \\
+      \delta^2         &0             &0\\
+      0       &0    &0 
+      \end{array}\right)
+\end{align*}
+Again we neglected terms of order $\delta^3$ or higher. Now we approximate $R_z(\delta) - 1$ of order $\delta^2$ we find
+\begin{align*}
+R_z(\delta^2) - 1 &= \left(\begin{array}{ccc}
+		    \cos(\delta^2)    &-\sin(\delta^2)    &0  \\
+		    \sin(\delta^2)    &\cos(\delta^2)    &0  \\
+		    0               &0               &1  
+		    \end{array}\right) - \left(\begin{array}{ccc}
+		    1               &0   &0  \\
+		    0    &1    &0  \\
+		    0               &0               &1  
+		    \end{array}\right) \\
+&= \left(\begin{array}{ccc}
+    1-\delta^4/2 -1    &-\delta^2    &0  \\
+    \delta^2    &1-\delta^4/2-1    &0  \\
+    0               &0               &1-1  
+    \end{array}\right) \\
+&= \left(\begin{array}{ccc}
+    -\delta^4/2     &-\delta^2    &0  \\
+    \delta^2    &-\delta^4/2    &0  \\
+    0               &0               &0
+    \end{array}\right) \\
+&= \left(\begin{array}{ccc}
+    0     &-\delta^2    &0  \\
+    \delta^2    &0    &0  \\
+    0               &0               &0
+    \end{array}\right)
+\end{align*}
+So we can see that 
+$$R_x(\delta)R_y(\delta) - R_y(\delta)R_x(\delta) = R_z(\delta^2) - 1$$
+for small angle $\delta$.
+
+\item
+
+
+\item
+\item
+\item
+\item
+\end{enumerate}
+
+\section{Problem \#2}
+
+\section{Problem \#3}
+\begin{enumerate}[(a)]
+\item
+\item
+\end{enumerate}
+
+\end{document}
+

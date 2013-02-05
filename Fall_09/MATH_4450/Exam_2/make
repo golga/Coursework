@@ -1,0 +1,3 @@
+latex Exam_2.tex
+latex Exam_2.tex
+dvips Exam_2.dvi

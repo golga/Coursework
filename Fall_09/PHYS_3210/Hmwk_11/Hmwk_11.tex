@@ -1,0 +1,200 @@
+\documentclass[11pt]{article}
+
+\usepackage{latexsym}
+\usepackage{amssymb}
+\usepackage{enumerate}
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{cancel}
+\numberwithin{equation}{section}
+
+\setlength{\evensidemargin}{.25in}
+\setlength{\oddsidemargin}{-.25in}
+\setlength{\topmargin}{-.75in}
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{9.5in}
+\newcommand{\due}{December 9th, 2009}
+\newcommand{\HWnum}{11}
+
+\begin{document}
+\input{../title.tex}
+
+\section{Problem \#1}
+\begin{enumerate}[(a)]
+\item
+To show that
+$$\hat{e}_j\times\hat{e}_k = \epsilon_{ijk}\hat{e}_i$$
+We use the definition of the cross product 
+$$(\vec{a}\times\vec{b})_i = \epsilon_{ijk}a_jb_k$$
+So it follows that
+$$\left(\hat{e}_j\times\hat{e}_k\right)_i = \epsilon_{ijk}(\hat{e}_j)_j(\hat{e}_k)_k$$
+Now if we use the identity
+$$(\hat{e}_i)_j = \delta_{ij}$$
+we get
+\begin{align*}
+\left(\hat{e}_j\times\hat{e}_k\right)_i &= \epsilon_{ijk}\cancelto{1}{\delta_{jj}\delta_{kk}}\\
+&= \epsilon_{ijk}
+\end{align*}
+Now if we calculate
+\begin{align*}
+\left(\epsilon_{ijk}\hat{e}_i\right)_i &= \left(\epsilon_{ijk}\hat{e}_i\right)_i\\ 
+&= \epsilon_{ijk}\left(\hat{e}_i\right)_i\\ 
+&= \epsilon_{ijk}\cancelto{1}{\delta_{ii}}\\
+&= \epsilon_{ijk}
+\end{align*}
+So we see that both sides equal and
+$$\hat{e}_j\times\hat{e}_k = \epsilon_{ijk}\hat{e}_i$$
+holds true.
+
+\item
+To show that 
+$$\epsilon_{ijk}\hat{e}_j\times\hat{e}_k = 2\hat{e}_i$$ 
+we use the result from part (a) or
+$$\hat{e}_j\times\hat{e}_k = \epsilon_{ijk}\hat{e}_i$$
+So
+$$\epsilon_{ijk}\hat{e}_j\times\hat{e}_k = \epsilon_{ijk}\epsilon_{ilm}\hat{e}_i$$
+Now if we use the identity 
+$$\epsilon_{ijk}\epsilon_{ljk} = 2\delta_{il}$$
+We get
+\begin{align*}
+\epsilon_{ijk}\hat{e}_j\times\hat{e}_k &= \epsilon_{ijk}\epsilon_{ljk}\hat{e}_l\\
+&= 2\delta_{il}\hat{e}_l
+\end{align*}
+Now we see $i=l$ for all non zero terms. So we are left with
+$$\epsilon_{ijk}\hat{e}_j\times\hat{e}_k = 2\hat{e}_i$$
+
+\item
+To show 
+$$\epsilon_{ijk}\hat{e}_j\hat{e}_k = 0$$
+we can say that
+\begin{align*}
+\epsilon_{ijk}\hat{e}_j\hat{e}_k &= \epsilon_{ijk}(\hat{e}_j)_l(\hat{e}_k)_l\\
+&= \epsilon_{ijk}\delta_{jl}\delta_{kl}
+\end{align*}
+Now we see that for the term $\delta_{jl}\delta_{kl}$ to be non-zero $j=k$, but if this is the case then the $\epsilon_{ijk}$ term is zero. So the only solution is 
+$$\epsilon_{ijk}\hat{e}_j\hat{e}_k = 0$$
+
+\end{enumerate}
+
+\section{Problem \#2}
+If we take the Lagrangian of a particle in a non-inertial rotating reference frame as
+$$L = \frac{1}{2}m\vec{v}^2+m\vec{v}\left(\vec{\omega}\times\vec{r}\right)+\frac{1}{2}m\left(\vec{\omega}\times\vec{r}\right)^2-m\vec{W}\vec{r}-U(\vec{r})$$
+and we use the fact that $\vec{v} = \dot{\vec{r}}$ we see
+$$L = \frac{1}{2}m\dot{\vec{r}}^2+m\dot{\vec{r}}\left(\vec{\omega}\times\vec{r}\right)+\frac{1}{2}m\left(\vec{\omega}\times\vec{r}\right)^2-m\vec{W}\vec{r}-U(\vec{r})$$
+Now if we use index notation we can see that the Lagrangian becomes
+$$L = \frac{1}{2}m\dot{r_i}^2+m\dot{r_i}\left(\vec{\omega}\times\vec{r}\right)_i+\frac{1}{2}m\left(\vec{\omega}\times\vec{r}\right)_i^2-mW_ir_i-U(r_i)$$
+Now if we use the definition of a cross-product
+\begin{equation}
+(\vec{a}\times\vec{b})_i = \epsilon_{ijk}a_jb_k
+\label{crossprod}
+\end{equation}
+We see that the Lagrangian becomes
+\begin{align*}
+L &= \frac{1}{2}m\dot{r_i}^2+m\dot{r_i}\epsilon_{ijk}\omega_jr_k+\frac{1}{2}m\left(\vec{\omega}\times\vec{r}\right)_i\left(\vec{\omega}\times\vec{r}\right)_i-mW_ir_i-U(r_i)\\
+ &= \frac{1}{2}m\dot{r_i}^2+m\dot{r_i}\epsilon_{ijk}\omega_jr_k+\frac{1}{2}m(\epsilon_{ijk}\omega_jr_k)(\epsilon_{ilm}\omega_lr_m)-mW_ir_i-U(r_i)\\
+ &= \frac{1}{2}m\dot{r_i}^2+m\dot{r_i}\epsilon_{ijk}\omega_jr_k+\frac{1}{2}m\epsilon_{ijk}\epsilon_{ilm}\omega_j\omega_lr_kr_m-mW_ir_i-U(r_i)
+\end{align*}
+Now we can apply \emph{Euler's Equations}
+\begin{equation}
+\frac{d}{dt}\frac{\partial L}{\partial \dot{x}} = \frac{\partial L}{\partial x} 
+\label{eulereq}
+\end{equation}
+So we can calculate the equations of motion for the $r_1$ component this gives us
+\begin{align*}
+\frac{d}{dt}\frac{\partial L}{\partial \dot{r}_1} &= \frac{d}{dt}\left(m\dot{r_1}+m\epsilon_{1jk}\omega_jr_k\right)\\
+&= m\ddot{r_1}+m\epsilon_{1jk}\omega_j\dot{r}_k\\
+&= m\ddot{r_1}+m\left(\vec{\omega}\times\dot{\vec{r}}\right)_1
+\end{align*}
+and
+\begin{align*}
+\frac{\partial L}{\partial r_1} &= m\dot{r_i}\epsilon_{ij1}\omega_j + \frac{1}{2}m\epsilon_{ij1}\epsilon_{ilm}\omega_j\omega_lr_m + \frac{1}{2}m\epsilon_{ijk}\epsilon_{il1}\omega_j\omega_lr_k - mW_1 -\frac{\partial U(r_1)}{\partial r_1}\\
+&= m\left(\dot{\vec{r}}\times\vec{\omega}\right)_1 + \frac{1}{2}m\epsilon_{ij1}\epsilon_{ilm}\omega_j\omega_lr_m + \frac{1}{2}m\epsilon_{ijk}\epsilon_{il1}\omega_j\omega_lr_k - mW_1 -\frac{\partial U(r_1)}{\partial r_1}\\
+&= -m\left(\vec{\omega}\times\dot{\vec{r}}\right)_1 + \frac{1}{2}m\epsilon_{ij1}\epsilon_{ilm}\omega_j\omega_lr_m + \frac{1}{2}m\epsilon_{ijk}\epsilon_{il1}\omega_j\omega_lr_k - mW_1 -\frac{\partial U(r_1)}{\partial r_1}
+\end{align*}
+Now if we look at just the center term we can use tensor math to evaluate. We replace $k=m$ in the second summation to get
+\begin{align*}
+\frac{1}{2}m\epsilon_{ij1}\epsilon_{ilm}\omega_j\omega_lr_m + \frac{1}{2}m\epsilon_{ijk}\epsilon_{il1}\omega_j\omega_lr_k &= \frac{1}{2}m\epsilon_{ij1}\epsilon_{ilm}\omega_j\omega_lr_m + \frac{1}{2}m\epsilon_{ijm}\epsilon_{il1}\omega_j\omega_lr_m \\
+\end{align*}
+Now we can swap the indices $j$ and $l$ to get
+\begin{align*}
+&= \frac{1}{2}m\epsilon_{ij1}\epsilon_{ilm}\omega_j\omega_lr_m + \frac{1}{2}m\epsilon_{ilm}\epsilon_{ij1}\omega_l\omega_jr_m \\
+&= m\epsilon_{ij1}\epsilon_{ilm}\omega_j\omega_lr_m \\
+&= m\epsilon_{ij1}\epsilon_{ilm}\omega_j\omega_lr_m \\
+&= m\epsilon_{ij1}\omega_j(\epsilon_{ilm}\omega_lr_m) \\
+&= m\epsilon_{ij1}\omega_j(\vec{\omega}\times\vec{r})_i \\
+&= m((\vec{\omega}\times\vec{r})\times\vec{\omega})_1 \\
+&= -m\left(\vec{\omega}\times(\vec{\omega}\times\vec{r})\right)_1 
+\end{align*}
+So now the equation of motion for $r_1$ becomes
+\begin{align*}
+m\ddot{r_1}+m\left(\vec{\omega}\times\dot{\vec{r}}\right)_1 &= -m\left(\vec{\omega}\times\dot{\vec{r}}\right)_1  -m\left(\vec{\omega}\times(\vec{\omega}\times\vec{r})\right)_1 - mW_1 -\frac{\partial U(r_1)}{\partial r_1}\\
+m\ddot{r_1} &= -2m\left(\vec{\omega}\times\dot{\vec{r}}\right)_1  -m\left(\vec{\omega}\times(\vec{\omega}\times\vec{r})\right)_1 - mW_1 -\frac{\partial U(r_1)}{\partial r_1}
+\end{align*}
+If we note the relation 
+$$\vec{F}_1 = -\frac{\partial U(r_1)}{\partial r_1}$$
+We see that the equation of motion becomes 
+$$m\ddot{r_1} = \vec{F}_1 - 2m\left(\vec{\omega}\times\dot{\vec{r}}\right)_1  -m\left(\vec{\omega}\times(\vec{\omega}\times\vec{r})\right)_1 - mW_1$$
+Now if we take this equation of motion in vector form we get
+$$m\ddot{\vec{r}} = \vec{F} - 2m\vec{\omega}\times\dot{\vec{r}}  -m\vec{\omega}\times(\vec{\omega}\times\vec{r}) - m\vec{W}$$
+Where 
+$$-2m\vec{\omega}\times\dot{\vec{r}}$$
+is the Coriolis force and
+$$-m\vec{\omega}\times(\vec{\omega}\times\vec{r})$$
+is the centrifugal force. Also note that $\vec{F}$ is the force due to the potential and $-m\vec{W}$ is the force on the center of mass in the fixed frame.
+
+\section{Problem \#3}
+For a cylinder of radius $d$ rolling without slipping on the inside of a cylinder that has radius $R$. We see that there is only one degree of freedom. The rotation of the cylinder which is dependent on motion in the $\theta$ direction. All other movement of the cylinder is constrained. To find the Lagrangian of this system we use 
+\begin{equation}
+L = T-U
+\label{lagran}
+\end{equation}
+Where $U$ is the potential energy given by
+$$U = mgR(1-\cos\theta)$$
+and $T$ is the potential energy given by
+$$T = \frac{1}{2}m(R\dot{\theta})^2+\frac{1}{2}\dot{\vec{\phi}}\vec{\vec{I}}\dot{\vec{\phi}}$$
+Now we can see that the cylinder only rotates along the length of the cylinder so if we see that the moment of inertia for a cylinder is
+$$\vec{\vec{I}} = \left(\begin{array}{ccc}
+		\dfrac{1}{2}md^2	&0	&0\\
+		0			&\dfrac{1}{12}m(3d^2+h^2)	&0\\			
+		0			&0	&\dfrac{1}{12}m(3d^2+h^2)
+		\end{array}\right)$$			
+the rotational kinetic energy can be given by
+\begin{align*}
+T_{rot} &= \frac{1}{2}\dot{\vec{\phi}}\vec{\vec{I}}\dot{\vec{\phi}}\\
+&= \frac{1}{2}\dot{\vec{\phi}}I_1\dot{\phi_1}\\
+&= \frac{1}{2}I_1\dot{\phi}_1^2\\
+&= \frac{1}{2}\frac{1}{2}md^2\dot{\phi}_1^2\\
+&= \frac{1}{4}md^2\dot{\phi}^2
+\end{align*}
+Note that $\dot{\phi}_1$ is the only component of $\dot{\phi}$ so we just call $\dot{\phi}_1$ $\dot{\phi}$. Now we see that the tangential velocity of the insidide cylinder is the same as the tangential velocity due to $\dot{\theta}$ so we can say
+\begin{align*}
+R\dot{\theta} &=   d\dot{\phi}\\
+\dot{\theta} &=   \frac{d}{R}\dot{\phi}
+\end{align*}
+This implies that
+$$\theta = \frac{d}{R}\phi$$
+So the Lagrangian becomes 
+\begin{align*}
+L &= \frac{1}{2}m(R\frac{d}{R}\dot{\phi})^2 + \frac{1}{4}md^2\dot{\phi}^2 - mgR(1-\cos(d/R\phi))\\
+ &= \frac{1}{2}md^2\dot{\phi}^2 + \frac{1}{4}md^2\dot{\phi}^2 - mgR(1-\cos(d/R\phi))\\
+ &= \frac{3}{4}md^2\dot{\phi}^2 - mgR\left(1-\cos\left(\frac{d}{R}\phi\right)\right)
+\end{align*}
+So now we can apply \emph{Eular's equations}. We calculate 
+\begin{align*}
+\frac{d}{dt}\frac{\partial L}{\partial \dot{\phi}} &= \frac{d}{dt}\frac{3}{2}md^2\dot{\phi}\\
+&= \frac{3}{2}md^2\ddot{\phi}
+\end{align*}
+And
+\begin{align*}
+\frac{\partial L}{\partial \phi} &= -mgR\dot{\phi}\sin\left(\frac{d}{R}\phi\right)\frac{d}{R}\\
+\frac{\partial L}{\partial \phi} &= -mgd\dot{\phi}\sin\left(\frac{d}{R}\phi\right)
+\end{align*}
+So our equation of motion becomes
+\begin{align*}
+\frac{3}{2}md^2\ddot{\phi}  &= -mgd\sin\left(\frac{d}{R}\phi\right) \\
+\frac{3}{2}d\ddot{\phi} &= -g\sin\left(\frac{d}{R}\phi\right) \\
+\ddot{\phi} &= -\frac{2g}{3d}\sin\left(\frac{d}{R}\phi\right) 
+\end{align*}
+
+\end{document}
+

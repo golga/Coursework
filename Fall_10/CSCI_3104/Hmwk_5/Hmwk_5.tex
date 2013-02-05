@@ -1,0 +1,74 @@
+\documentclass[11pt]{article}
+
+\usepackage{latexsym}
+\usepackage{moreverb}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{enumerate}
+\usepackage{amsmath}
+\usepackage{cancel}
+\numberwithin{equation}{section}
+
+\setlength{\evensidemargin}{.25in}
+\setlength{\oddsidemargin}{-.25in}
+\setlength{\topmargin}{-.75in}
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{9.5in}
+\newcommand{\due}{October 13th, 2010}
+\newcommand{\HWnum}{5}
+\newcommand{\grad}{\bold\nabla}
+\newcommand{\vecE}{\vec{E}}
+\newcommand{\scrptR}{\vec{\mathfrak{R}}}
+\newcommand{\kapa}{\frac{1}{4\pi\epsilon_0}}
+\newcommand{\emf}{\mathcal{E}}
+
+\begin{document}
+\input{../title.tex}
+
+\section{Problem \#1}
+\begin{enumerate}[(a)]
+\item
+To model the pouring water problem we can use a directed graph. Note that we use a directed graph because not every pour is reversible since we only pour until the container is full. Where each node is the current state of each of the containers and each edge points to the next possible state that we can get to from the current node with one pour. For example we would have the first node represent the 7-pint and 4-pint containers full and the 10-pint container empty. This node would point to two nodes: 4-pint full 7-pint empty and 10-pint with 7-pints and 7-pint full 4-pint empty and 10-pint with 4-pints in it (see attached for a visual representation of the first few steps of this graph). Then once the graph is made we just need to see if there is a path from the starting node to the node where there is 2-pints in either the 7-pint or the 4-pint container.
+
+\item
+We can find if the path exists by running our \emph{Depth-First Search} algorithm and seeing is the component number of a node with the result we want is the same as the component number of our starting node.
+\end{enumerate}
+
+\section{Problem \#2}
+The algorithm to find if a directed graph has a odd-length cycle is as follows
+\begin{verbatimtab}[4]
+OddCycle(G) //Input is a Directed Graph G
+
+	dfs(G) //Run Depth-First Search on graph G
+
+	for each edge (v,u) in E
+		if pre[v] < pre[u] < post[u] < post[v] \\check if there is a back edge
+			then return (pre[v] - pre[u] is even) \\if there is an even 
+											   		\\difference between the 
+													\\prenumbers return true
+\end{verbatimtab}
+Note that the Depth-First Search is the longest step and runs in $O(|V|+|E|)$ the other steps run in constant time. The correctness of the algorithm is given because once we find a back edge we check that there is an even number of steps between the nodes before the back edge so including the back edge there is an odd number of edges.
+
+\section{Problem \#3}
+The algorithm to test if a DAG $G$ contains a directed path that touches every vertex exactly once.
+\begin{verbatimtab}[4]
+OneDirectPath(G)
+	Input: Directed Acyclic Graph G
+
+	run dfs(G)
+	for all v in V
+		list post[v] in decreasing order \\Lineraize the DAG G
+	
+	run dfs(G) with a different starting node
+	for all v in V
+		list post[v] in decreasing order \\Lineraize the DAG G with the new post numbers 
+
+	If the Linearized list are the same 
+		Then return true
+\end{verbatimtab}
+This Algorithm just runs Depth-First Search twice so the algorithm still will run in constant ($O(|V|+|E|)$) time. The algorithm is correct due to the fact that if the DAG contains a \emph{directed path that touches every vertex exactly once} then the linearized path through the DAG is unique. Therefore if you linearize the DAG twice with a different starting node for your DFS and the result is the same for both linearizations the graph $G$ has a directed path that passes through every node exactly once.
+
+\section{Problem \#4}
+
+\end{document}
+

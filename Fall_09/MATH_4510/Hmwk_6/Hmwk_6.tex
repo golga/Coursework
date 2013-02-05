@@ -1,0 +1,177 @@
+\documentclass[11pt]{article}
+
+\usepackage{latexsym}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{enumerate}
+\usepackage{amsmath}
+\usepackage{cancel}
+
+\setlength{\evensidemargin}{.25in}
+\setlength{\oddsidemargin}{-.25in}
+\setlength{\topmargin}{-.75in}
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{9.5in}
+\newcommand{\due}{October 9th, 2009}
+\newcommand{\HWnum}{6}
+\newcommand{\Var}{\textnormal{Var}}
+\newcommand{\dsum} {\displaystyle\sum}
+
+\begin{document}
+\input{../title.tex}
+\section{Chapter 4}
+\begin{enumerate}
+\item Problem 30
+\begin{enumerate}[(a)]
+\item
+We can calculate the expectation using
+$$E[X] = \sum_{n=1}^{\infty} x_nP(x_i)$$
+where $x_n$ is the amount of money that you win. You win $2^n$ dollars, where $n$ is the number of flips it took to get your first tails. And we know that the probability of having a tail land on the $n$th flip is given by
+$$P(x_n)=\frac{1}{2^n}$$
+Because it would require $n-1$ heads in a row. So we can say the expectation is
+$$E[X] = \sum_{n=1}^{\infty} 2^n\frac{1}{2^n}$$
+$$E[X] = \sum_{n=1}^{\infty}1$$
+$$E[X] = \infty$$
+So if the expectation is $\infty$, but that is a misleading number because if you were to only play once for a million dollars it would be unlikely that you would get heads enough times in a row on you first try to break even.
+\item If you got to play until you got lucky and made enough to be positive then it would be worth it.
+
+\end{enumerate}
+\item Problem 33\\
+So if we let $n$ be the number of papers that the paperboy buys. And let $X$ be the number of papers he sells. And let $Y$ be the demand for papers. So we can say that if the demand is greater than the number of papers the paperboy has ($Y\ge n$) we can say that $$X = n$$ 
+For the case where the demand does not exceed the number of papers the paperboy has we have
+$$X=Y$$
+Since we know that $Y$ is given by a binomial random variable we can say that
+$$P(X=i) = \left\{\begin{array}{lc}
+		&P(Y=i) = \dbinom{10}{i}\left(\dfrac{1}{3}\right)^i\left(\dfrac{2}{3}\right)^{10-i}\ \mbox{for } i<n\\
+		&P(Y\ge n)= \dsum_{j=n}^{10}\dbinom{10}{j}\left(\dfrac{1}{3}\right)^j\left(\dfrac{2}{3}\right)^{10-j}\ \mbox{for } i=n\\
+		\end{array}\right.$$
+And we know that his profit is given by $0.15X-0.10n$ So if we calculate the expectation of his profit we get
+$$E[0.15X-0.10n]=0.15E[X]-0.10n$$
+Where $E[X]$ can be calculated as
+$$E[X] = \sum_{i=0}^{n-1} \dbinom{10}{i}\left(\dfrac{1}{3}\right)^i\left(\dfrac{2}{3}\right)^{10-i} + \sum_{j=n}^{10} \dbinom{10}{j}\left(\dfrac{1}{3}\right)^j\left(\dfrac{2}{3}\right)^{10-j}$$
+We can see that 3 yields the greatest profit.
+
+\item Problem 38
+\begin{enumerate}[(a)]
+\item
+Assuming that 
+$E[X] = 1$
+We can calculate 
+$$E[(2+X)^2]$$
+First we distribute the square
+$$E[(2+X)^2]=E[X^2+4X+4]$$
+Now we can use the property of expectation values
+$$E[aX+b] = aE[X]+b$$
+to distribute the function
+$$E[(2+X)^2]=E[X^2]+4E[X]+4$$
+So we know that $E[X]=1$ so
+$$E[(2+X)^2]=E[X^2]+4+4$$
+$$E[(2+X)^2]=E[X^2]+8$$
+Now we can add and subtract a $(E[X])^2$
+$$E[(2+X)^2]=(E[X^2]-(E[X])^2)+E[X]^2+8$$
+We know from the definition of variance 
+$$\Var(X) = E[X^2]-(E[X])^2$$
+and we know from the problem that 
+$$\Var(X) = 5$$
+so we get
+$$E[(2+X)^2]=\Var(X)+E[X]^2+8$$
+$$E[(2+X)^2]=5+1^2+8$$
+$$E[(2+X)^2]=14$$
+\item
+Assuming that
+$$E[X] = 1$$
+$$\Var(X) = 5$$
+We can calculate 
+$$\Var(4+3X)$$
+We can use the property of $\Var$
+$$\Var(aX+b) = a^2\Var(X)$$
+So this identity yields
+$$\Var(4+3X)=3^2\Var(X)$$
+$$\Var(4+3X)=3^2(5)$$
+$$\Var(4+3X)=45$$
+
+\end{enumerate}
+\item Problem 40\\
+On a multiple-choice exam with 3 possible answers for each of the 5 questions. Let $X$ denote the number of correct answers a student got just by guessing. We wee that $X$ is represented by a binomial random variable where $n=5$ and $p=\frac{1}{3}$. 
+So the probability is given by
+$$P(X=i) = {n\choose i}p^i(1-p)^{n-i}$$
+Where $i$ is the number of successful guesses. So to find the probability that $X\ge4$ we set $i=4$ and $i=5$
+$$P(X\ge4) = {5\choose 4}\left(\frac{1}{3}\right)^4\left(1-\frac{1}{3}\right)^{5-4}+{5\choose 5}\left(\frac{1}{3}\right)^5\left(1-\frac{1}{3}\right)^{5-5}$$
+$$P(X\ge4) = 5\left(\frac{1}{3}\right)^4\left(\frac{2}{3}\right)+1\left(\frac{1}{3}\right)^5\left(\frac{2}{3}\right)^{0}$$
+$$P(X\ge4) = 5\frac{2}{3^5}+\frac{1}{3^5}$$
+$$P(X\ge4) = \frac{10}{243}+\frac{1}{243}$$
+$$P(X\ge4) = \frac{11}{243}$$
+
+\item Problem 51
+\begin{enumerate}[(a)]
+\item
+If we let $X$ be the number of typographical errors on a page of a certain magazine. We see that we have a \emph{Poisson} distribution which is given by
+$$P(X=i) = e^{-\lambda}\frac{\lambda^i}{i!}$$
+Where $\lambda$ is expected number of typographical errors given as $\lambda =0.2$. We can calculate the probability that the next page has zero errors or $i=0$
+$$P(X=0) = e^{-\lambda}\frac{\lambda^0}{0!}$$
+$$P(X=0) = e^{-\lambda}1$$
+$$P(X=0) = e^{-0.2}$$
+\item
+Now for when $X\ge2$ we know that having more than 2 errors is the same as not having less that 1 error or
+$$P(X\ge2) = 1 - P(X\le1)$$
+Where $P(X\le1)=P(X=0)+P(X=1)$
+So we can calculate
+$$P(X\ge2) = 1 - (P(X=0)+P(X=1))$$
+$$P(X=0)+P(X=1) = e^{-\lambda}\frac{\lambda^0}{0!} + e^{-\lambda}\frac{\lambda^1}{1!}$$
+$$P(X=0)+P(X=1) = e^{-\lambda}+ e^{-\lambda}\lambda$$
+$$P(X=0)+P(X=1) = (1+\lambda)e^{-\lambda}$$
+Where $\lambda = 0.2$ so 
+$$P(X\ge2) = 1 - (1+\lambda)e^{-\lambda}$$
+$$P(X\ge2) = 1 - (1+0.2)e^{-0.2}$$
+$$P(X\ge2) = 1 - 1.2e^{-0.2}$$
+\end{enumerate} 
+
+\item Problem 52
+\begin{enumerate}[(a)]
+\item
+If we let $X$ be the number of plane crashes in a month we see that we have a \emph{Poisson} distribution. With $\lambda$ being the expected number of crashes in a month or $\lambda = 3.5$. So
+$$P(X=i) = e^{-\lambda}\frac{\lambda^i}{i!}$$
+Now for 2 crashes next month we have $i=2$ or
+$$P(X=i) = e^{-\lambda}\frac{\lambda^2}{2!}$$
+$$P(X=i) = e^{-3.5}\frac{(3.5)^2}{2}$$
+$$P(X=i) = 0.0049$$
+\item
+Now for the case where we have at most 1 crash we have to sum the possibility that we have no crashes $i=0$ and we have one crash $i=1$
+$$P(X\le1)=P(X=0)+P(X=1)= e^{-\lambda}\frac{\lambda^0}{0!}+e^{-\lambda}\frac{\lambda^1}{1!}$$
+$$P(X=0)+P(X=1)= e^{-3.5}(1)+e^{-3.5}\frac{3.5}{1}$$
+$$P(X=0)+P(X=1)= 0.136$$
+\end{enumerate}
+
+\item Problem 57
+\begin{enumerate}[(a)]
+\item
+Let $X$ be the number of accidents occurring on a highway each day. Where $X$'s distribution is given by
+$$P(X=i) = e^{-\lambda}\frac{\lambda^i}{i!}$$
+Where $\lambda$ is given to equal $3$. So to find the probability that 3 or more accidents occur in a day we calculate $X\ge3$. We know this is the probability that we don't have less than 2 accidents or
+$$P(X\ge3) = 1- P(X\le2)$$
+We can calculate $P(X\le2)$ by saying
+$$P(X\le2) = P(X=0)+P(X=1)+P(X=2)$$
+$$P(X\le2) = e^{-\lambda}\frac{\lambda^0}{0!} + e^{-\lambda}\frac{\lambda^1}{1!} + e^{-\lambda}\frac{\lambda^2}{2!}$$
+$$P(X\le2) = e^{-\lambda}\left(\frac{\lambda^0}{0!} + \frac{\lambda^1}{1!} + \frac{\lambda^2}{2!}\right)$$
+$$P(X\le2) = e^{-\lambda}\left(1 + \lambda + \frac{\lambda^2}{2}\right)$$
+$$P(X\le2) = e^{-3}\left(1 + 3 + \frac{3^2}{2}\right)$$
+$$P(X\le2) = e^{-3}\left(\frac{17}{2}\right)$$
+Now we calculate
+$$P(X\ge3) = 1 - e^{-3}\left(\frac{17}{2}\right)$$
+$$P(X\ge3) \approx 0.5768$$
+\item
+If we assume that we already had 1 crash today we can say that having more than three crashes can be represented by
+$$P(X\ge3) = 1- (P(X=1)+P(X=2))$$
+So 
+$$P(X=1)+P(X=2) = e^{-\lambda}\frac{\lambda^1}{1!} + e^{-\lambda}\frac{\lambda^2}{2!}$$
+$$P(X=1)+P(X=2) = e^{-\lambda}\left(\lambda^1+\frac{\lambda^2}{2}\right)$$
+$$P(X=1)+P(X=2) = e^{-3}\left(3+\frac{3^2}{2}\right)$$
+$$P(X=1)+P(X=2) = e^{-3}\left(\frac{15}{2}\right)$$
+Now we calculate 
+$$P(X\ge3) = 1- e^{-3}\left(\frac{15}{2}\right)$$
+$$P(X\ge3) \approx 0.6266$$
+\end{enumerate}
+
+\end{enumerate}
+\end{document}
+

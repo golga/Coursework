@@ -1,0 +1,156 @@
+\documentclass[11pt]{article}
+
+\usepackage{latexsym}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{enumerate}
+\usepackage{amsmath}
+\usepackage{cancel}
+\numberwithin{equation}{section}
+
+\setlength{\evensidemargin}{.25in}
+\setlength{\oddsidemargin}{-.25in}
+\setlength{\topmargin}{-.75in}
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{9.5in}
+\newcommand{\due}{October 10th, 2012}
+\newcommand{\HWnum}{4}
+\input{/home/joey/Documents/Class/Define.tex}
+
+\begin{document}
+\input{../title.tex}
+
+\section{Problem \#1}
+\begin{enumerate}[(a)]
+\item
+If we operate under the first order approximation such that individual electrons occupy one-particle hydrogenic states ($nlm$). This coupled with the fact that electrons are fermions and must obey the \emph{Pauli Exclusion Principle} we can write the electron configurations for all the elements up to neon.
+
+For hydrogen and helium we have the lowest energy level $n=1$ which results in $l=0$. So for this orbital we can have 2 electrons, one of each spin. So the electron configuration is
+\begin{align*}
+\textnormal{H} &: (1s)\\
+\textnormal{He} &: (1s)^2
+\end{align*}
+Now for the next elements we must move to the next energy level $n=2$. At this level we have $l=1,0$. Again for the $l=0$ level we can hold 2 electrons which corresponds to the next two elements
+\begin{align*}
+\textnormal{Li} &: (1s)^2(2s)\\
+\textnormal{Be} &: (1s)^2(2s)^2
+\end{align*}
+Now for the $n=2$ $l=1$ we are allowed three different $m$ states given by $m=1,0,-1$ so we are allowed a total of six electrons in this level when we account for spin. Therefore in this level we can get all the electrons we need to get up to neon
+\begin{align*}
+\textnormal{B} &: (1s)^2(2s)^2(2p)\\
+\textnormal{C} &: (1s)^2(2s)^2(2p)^2\\
+\textnormal{N} &: (1s)^2(2s)^2(2p)^3\\
+\textnormal{O} &: (1s)^2(2s)^2(2p)^4\\
+\textnormal{F} &: (1s)^2(2s)^2(2p)^5\\
+\textnormal{Ne} &: (1s)^2(2s)^2(2p)^6
+\end{align*}
+
+\item
+The total angular momenta for the elements we covered in part (a) follows from the $l$ state. For the first four elements (H, He, Li, and Be) the orbital angular momentum is $l=0$ due to the fact that every electron is in a $s$ sub-shell. So the total angular momentum is just the total spin, which for an even number of electrons is $S=0$ and for an odd number of electrons is $S=1/2$. So we have
+\begin{align*}
+\textnormal{H} &:\ ^2S_{1/2}\\
+\textnormal{He} &:\ ^1S_{0}\\
+\textnormal{Li} &:\ ^2S_{1/2}\\
+\textnormal{Be} &:\ ^1S_{0}
+\end{align*}
+Note the $S$ denotes the orbital angular momentum $l=0$. Now for the next elements the total angular momentum becomes more complicated. For Boron the total spin of the valance electron is $S=1/2$ and the orbital angular momentum is $l=1$. These angular momentum can combine to yield $J = 1/2,3/2$. This results in
+\begin{align*}
+\textnormal{B} &:\ ^2P_{3/2},\ ^2P_{1/2}
+\end{align*}
+For carbon again we have $l=1$ but this time we have two electrons in with this angular momentum each with the possible value $m = 1,0,-1$. Therefore the addition of these angular momenta results in a possible $L=2,1,0$ and again the total spin of two electrons can be $S=1,0$. This results in the possible total angular momenta given by
+\begin{align*}
+\textnormal{C} &:\ ^1S_{0},\ ^3S_{1},\ ^1P_{1},\ ^3P_{2,1,0},\ ^1D_{2},\ ^3D_{3,2,1}
+\end{align*}
+For nitrogen we still have $l=1$ now with three electrons. This implies that the total orbital angular momentum is $L = 3,2,1,0$. And with three electrons we can have a possible total spin of $S = 3/2, 1/2$. So the possible total angular momenta is given by
+\begin{align*}
+\textnormal{N} &:\ ^2S_{1/2},\ ^4S_{3/2},\ ^2P_{3/2,1/2},\ ^4P_{5/2,3/2,1/2},\ ^2D_{5/2,3/2},\ ^4D_{7/2,5/2,3/2,1/2},\ ^2F_{7/2,5/2},\ ^4F_{9/2,7/2,5/2,3/2}
+\end{align*}
+\end{enumerate}
+
+\section{Problem \#2}
+\begin{enumerate}[(a)]
+\item
+According the \emph{Hund's first rule} the state withe the highest total spin has the lowest energy. This implies that the $^1S$ helium has higher total energy than the $^3S$ helium.
+
+\item
+Due to \emph{Hund's first rule} the ground state of carbon has a maximal spin which for two electrons is $S=1$. This is a symmetric state. So wen we apply \emph{Hund's second rule} we need to pick the highest total orbital angular momentum consistent with overall antisymmetrization. Due to the fact that the spin is symmetric the orbital must be antisymmetric which is the $L=1$ state. This implies that the carbon atom is in the $^3P$ state.
+
+\item
+As we found in problem \#1 Boron can have two different total angular momenta $^2P_{3/2},\ ^2P_{1/2}$. To determine which is the ground state we must apply \emph{Hund's third rule} which states that if a subshell is no more than half filled then the lowest energy level has $J=|L-S|$ this implies that the ground state of Boron is
+$$^2P_{1/2}$$
+
+\item
+We can also find the ground state of carbon by applying all three Hund's rules. By taking maximal spin we can eliminate 
+$$\cancel{^1S_{0}},\ ^3S_{1},\ \cancel{^1P_{1}},\ ^3P_{2,1,0},\ \cancel{^1D_{2}},\ ^3D_{3,2,1}$$
+which leaves us with 
+$$^3S_{1},\ ^3P_{2,1,0},\ ^3D_{3,2,1}$$
+now we apply \emph{Hund's second rule} we find that the highest orbital angular momentum that preserves the antisymmetrization is
+$$^3P_{2,1,0}$$
+now we have a subshell that is less than half filled so we want $J=|L-S|$ which yields the ground state
+$$^3P_{0}$$
+For Nitrogen we again want a maximal spin which in this case is $S=3/2$ so we are left with the states
+$$^4S_{3/2},\  ^4P_{5/2,3/2,1/2},\ ^4D_{7/2,5/2,3/2,1/2},\ ^4F_{9/2,7/2,5/2,3/2}$$
+and now we can note that for $S=3/2$ we have a symmetric spin state. Therefore we need to find a antisymmetric orbital state. This implies that each possible $m=1,0,-1$ state must be occupied, by Pauli exclusion. So that yields the total orbital angular momentum $L = 1 + 0 - 1 = 0$ which results in the $S$ orbital angular momentum leaving 
+$$^4S_{3/2}$$
+as the ground state of Nitrogen.
+\end{enumerate}
+
+\section{Problem \#3}
+Given an infinite potential well of width $L$ with a perturbation added to it in the form of the potential 
+$$V(x) = V_0(x/L)$$
+we have the Hamiltonian $\hat{H} = \hat{H}_0 + \hat{H}_1$ where $\hat{H}_1$ is the perturbation given. We can calculate the shift in energy to the $n$th state by using
+\begin{equation}
+E_n^{(1)} = \bra{n_0}\hat{H}_1\ket{n_0}
+\label{E1Pert}
+\end{equation}
+where $\ket{n_0}$ is the eigenstates of the unperturbed Hamiltonian known to be
+$$\ket{n_0} = \sqrt{\frac{2}{L}}\sin\left(\frac{n\pi}{L}x\right)$$
+with the corresponding energy
+$$E_n^{(0)} = \frac{\hbar^2n^2\pi^2}{2mL^2}$$
+So we apply equation \ref{E1Pert} to get
+\begin{align*}
+E_n^{(1)} &= \bra{n_0}\hat{H}_1\ket{n_0}\\
+&= \frac{V_0}{L}\frac{2}{L}\int_{0}^{L}x\sin^2\left(\frac{n\pi}{L}x\right)dx\\
+&= \frac{2V_0}{L^2}\int_{0}^{L}x\sin^2\left(\frac{n\pi}{L}x\right)dx\\
+&= \frac{2V_0}{L^2}\left(\frac{x^2}{4} - \frac{x\sin\left(\frac{2n\pi}{L}x\right)}{4n\pi/L} - \frac{\cos\left(\frac{2n\pi}{L}x\right)}{8(n\pi/L)^2}\right|_{0}^{L}\\
+&= \frac{2V_0}{L^2}\left(\frac{L^2}{4} - \frac{L\sin\left(\frac{2n\pi}{L}L\right)}{4n\pi/L} - \frac{\cos\left(\frac{2n\pi}{L}L\right)}{8(n\pi/L)^2}
+- \frac{0^2}{4} + \frac{0\sin\left(\frac{2n\pi}{L}0\right)}{4n\pi/L} + \frac{\cos\left(\frac{2n\pi}{L}0\right)}{8(n\pi/L)^2}\right)\\
+&= \frac{2V_0}{L^2}\left(\frac{L^2}{4} - \frac{L\cancelto{0}{\sin\left(2n\pi\right)}}{4n\pi/L} - \frac{\cancelto{1}{\cos\left(2n\pi\right)}}{8(n\pi/L)^2} + \frac{L^2}{8(n\pi)^2}\right)\\
+&= \frac{2V_0}{L^2}\left(\frac{L^2}{4} - \frac{L^2}{8(n\pi)^2} + \frac{L^2}{8(n\pi)^2}\right)\\
+&= \frac{V_0}{2}
+\end{align*}
+Note we used an integral table to find
+$$\int x\sin^2(ax) = \frac{x^2}{4} - \frac{x\sin(2ax)}{4a} - \frac{\cos(2ax)}{8a^2}$$
+We see that by adding this perturbation we shifted every energy level up by a factor of $V_0/2$
+
+\section{Problem \#4}
+For an infinite square well of width $b$ with the perturbation 
+$$\hat{H}_1 = \epsilon\sin\left(\frac{\pi}{b}x\right)$$
+we can apply equation \ref{E1Pert} with 
+$$\ket{n_0} = \sqrt{\frac{2}{b}}\sin\left(\frac{n\pi}{b}x\right)$$
+to calculate the shift in energy to first order in $\epsilon$. Note we used mathematica to calculate the integral.
+\begin{align*}
+E_n^{(1)} &= \bra{n_0}\hat{H}_1\ket{n_0}\\
+&= \frac{2\epsilon}{b}\int_{0}^{b}\sin\left(\frac{\pi}{b}x\right)\sin^2\left(\frac{n\pi}{b}x\right)dx\\
+&= -\frac{2\epsilon}{b}\left(\frac{b\left[(8n^2-2)\cos\left(\frac{\pi}{b}x\right)+(2n+1)\cos\left(\frac{\pi(2n-1)}{b}x\right)+(1-2n)\cos\left(\frac{\pi(2n+1)}{b}x\right)\right]}{4\pi(4n^2-1)}\right|_{0}^{b}\\
+&= -\frac{2\epsilon}{4\pi(4n^2-1)}\left((8n^2-2)\cos\left(\pi\right)+(2n+1)\cos\left(\pi(2n-1)\right)+(1-2n)\cos\left(\pi(2n+1)\right)\right.\\
+& \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \left.-(8n^2-2)-(2n+1)-(1-2n)\right)\\
+&= -\frac{2\epsilon}{4\pi(4n^2-1)}\left(-(8n^2-2) + (2n+1)\cos\left(\pi(2n-1)\right)+(1-2n)\cos\left(\pi(2n+1)\right) - 8n^2\right)\\
+&= -\frac{2\epsilon}{4\pi(4n^2-1)}\left(-16n^2+2 + (2n+1)\cos\left(\pi(2n-1)\right)+(1-2n)\cos\left(\pi(2n+1)\right)\right)
+\end{align*}
+Note the value for $\cos(\pi(2n\pm1))$ depends of if $n$ is even or odd. For $n$ even we have $\cos(\pi(2n\pm1)) = -1$ which yields
+\begin{align*}
+E_{n\rightarrow\textnormal{even}}^{(1)} &= -\frac{2\epsilon}{4\pi(4n^2-1)}\left(-16n^2+2 - 2n - 1 - 1 + 2n\right)\\
+&= -\frac{2\epsilon}{4\pi(4n^2-1)}\left(-16n^2\right)\\
+&= \frac{8\epsilon n^2}{\pi(4n^2-1)}
+\end{align*}
+And for $n$ odd we have $\cos(\pi(2n\pm1)) = 1$ which yields
+\begin{align*}
+E_{n\rightarrow\textnormal{odd}}^{(1)} &= -\frac{2\epsilon}{4\pi(4n^2-1)}\left(-16n^2+2 + 2n + 1 + 1 - 2n\right)\\
+&= -\frac{2\epsilon}{4\pi(4n^2-1)}\left(-16n^2+4\right)\\
+&= \frac{2\epsilon(16n^2-4)}{4\pi(4n^2-1)}\\
+&= \frac{2\epsilon(4n^2-1)}{\pi(4n^2-1)}\\
+&= \frac{2\epsilon}{\pi}
+\end{align*}
+\end{document}
+

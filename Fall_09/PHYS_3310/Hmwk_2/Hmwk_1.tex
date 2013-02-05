@@ -1,0 +1,292 @@
+\documentclass[11pt]{article}
+
+\usepackage{latexsym}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{cancel}
+\numberwithin{equation}{section}
+
+\setlength{\evensidemargin}{.25in}
+\setlength{\oddsidemargin}{-.25in}
+\setlength{\topmargin}{-.75in}
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{9.5in}
+\newcommand{\due}{September $2^{nd}$, 2009}
+\newcommand{\HWnum}{2}
+
+\newcommand{\grad}{\bold\nabla}
+\newcommand{\vc}{\vec{c}}
+\newcommand{\partx}{\frac{\partial T}{\partial x}}
+\newcommand{\party}{\frac{\partial T}{\partial y}}
+\newcommand{\partz}{\frac{\partial T}{\partial z}}
+\begin{document}
+\input{../title.tex}
+
+\section{Problem \#1}
+From Griffiths Problem 1.60
+\subsection{part (a)}
+First let us define a vector $\vec{v} = \vec{c}T$ where $\vec{c}$ is a constant vector. We are trying to prove the equation
+\begin{equation}
+\int_V \grad T d\tau = \oint_S T d\vec{a}
+\label{divthr}
+\end{equation}
+so we plug $\vec{v}$ into left side of equation \ref{divthr} and get
+
+$$\int_V (\grad \cdot \vec{v}) d\tau = \int_V \grad \cdot (\vc T) d\tau$$
+Through the chain rule properties of $\grad$ we get
+$$\int_V (\grad \cdot \vec{v}) d\tau = \int_V T(\grad \cdot \vc) + \vc \cdot(\grad T) d\tau$$
+and since $\vc$ is constant the term $\grad \cdot \vc = 0$. This leaves us with
+$$\int_V (\grad \cdot \vec{v}) d\tau = \int_V \vc \cdot(\grad T) d\tau$$
+Expanded out this term becomes
+$$\int_V (\grad \cdot \vec{v}) d\tau = \int_V \vc \cdot\left(\partx \hat{x} + \party \hat{y} + \partz \hat{z}\right) d\tau$$
+Because the $\vc$ is constant the dot product becomes scaler multiplication
+$$\int_V (\grad \cdot \vec{v}) d\tau = c \int_V \left(\partx + \party + \partz\right) dx dy dz$$
+Please note the change from $d\tau$ to $dxdydz$. This allows us to cancel the $dx$, $dy$, and $dz$ in each term this changes our volume intergral into a surface integral writen as
+$$\int_V (\grad \cdot \vec{v}) d\tau = c \oint_S T dydz + Tdxdz + Tdxdy$$
+Where $dydz+dxdz+dxdy$ becomes $d\vec{a}$ to give us
+$$\int_V (\grad \cdot \vec{v}) d\tau = c \oint_S T d\vec{a}$$
+Now when we divide by the c $\vec{v}$ becomes $T$ and we get equation \ref{divthr} or
+\begin{center}
+\fbox{$\int_V \grad T d\tau = \oint_S T d\vec{a}$}
+\end{center}
+
+\subsection{part (d)}
+For this problem we were told to assume that
+\begin{equation}
+\oint_S (T \grad U) d\vec{a} = \int_V T\grad^2U + (\grad T) \cdot (\grad U) d\tau
+\label{partc}
+\end{equation}
+is true without proof. We will use equation \ref{partc} to prove that
+\begin{equation}
+\int_V T\grad^2U - U\grad^2T d\tau = \oint_S T\grad U - U\grad T d\vec{a}
+\label{partd}
+\end{equation}
+is true.
+First lets split the integral on the right side of equation \ref{partd}.
+$$\int_V T\grad^2U - U\grad^2T d\tau = \oint_S T\grad U d\vec{a} -\oint_S U\grad T d\vec{a}$$
+We see that the right side looks a lot like equation \ref{partc}. So we replace equation \ref{partc} into equation \ref{partd}.
+$$\oint_S T\grad U d\vec{a} -\oint_S U\grad T d\vec{a} = \int_V T\grad^2U + (\grad T) \cdot (\grad U) d\tau - \int_V U\grad^2T + (\grad U) \cdot (\grad T) d\tau$$
+We can combine the integrals to get
+$$\oint_S T\grad U d\vec{a} -\oint_S U\grad T d\vec{a} = \int_V T\grad^2U + (\grad T) \cdot (\grad U) -  U\grad^2T - (\grad U) \cdot (\grad T) d\tau$$
+The dot product is comunitive so we can cancel those terms to get
+$$\oint_S T\grad U d\vec{a} -\oint_S U\grad T d\vec{a} = \int_V T\grad^2U -  U\grad^2T d\tau$$
+Once we recombine the integrals on the left side we get equation \ref{partd}.
+\begin{center}
+\fbox{$\oint_S T\grad U - U\grad T d\vec{a} = \int_V T\grad^2U -  U\grad^2T d\tau$}
+\end{center}
+\section{Problem \#2}
+The important thing to first realize when doing this problem is that the force due to the electric field is equal and opposite. This is Newton's third law of motion. The effect of this is that the $\theta$s are equal. This makes the problem significantly easier. We also know that the system is in equilibrium this gives us the fact that
+\begin{equation}
+\tan{\theta} = \frac{F_E}{F_g} 
+\label{tan} 
+\end{equation} 
+where $F_E$ is the force due to the electric field and $F_g$ is the force due to gravity. We also know that gravity is
+\begin{equation}
+F_g = mg 
+\label{grav} 
+\end{equation} 
+due to Newtonian mechanics.
+
+Now all that we need to do to find $\tan{\theta}$ is find $F_E$, which is given by Coulomb's Law.
+\begin{equation}
+F_E = \frac{1}{4\pi\epsilon_o}\frac{q_1q_2}{r^2}
+\label{coul} 
+\end{equation} 
+where $r^2$ is the square of the distance between the two charges $q_1$ and $q_2$. We know the length of the string to be $l$ and the angle $\theta$ so we can find that 
+$$\frac{1}{2}r = l\sin{\theta}$$
+$$r = 2l\sin{\theta}$$
+\begin{equation}
+r^2 = 4l^2\sin^2{\theta}
+\label{rsq}
+\end{equation}
+We also know the value of the charge of $q_1$ to be $+2q$ and the charge of $q_2$ is $+q$. With these values and equation \ref{rsq} we can fill in equation \ref{coul} as
+
+$$F_E = \frac{1}{4\pi\epsilon_o}\frac{(2q)(q)}{4l^2\sin^2{\theta}}$$
+\begin{equation}
+F_E = \frac{1}{8\pi\epsilon_o}\frac{q^2}{l^2\sin^2{\theta}}
+\label{FE}
+\end{equation}
+Now with equations \ref{grav} and \ref{FE} we can find equation \ref{tan}.
+$$\tan{\theta} =\frac{1}{8\pi\epsilon_o}\frac{q^2}{l^2\sin^2{\theta}}\frac{1}{mg}$$ 
+$$\sin^2{\theta}\tan{\theta} =\frac{q^2}{8\pi\epsilon_o mg l^2}$$ 
+This does not look very nice, but we can use the approximations
+$$\sin{\theta} \approx \theta$$
+$$\tan{\theta} \approx \theta$$
+for $\theta$ is small. With these approximations we get
+$$\theta^2\theta =\frac{q^2}{8\pi\epsilon_o mg l^2}$$ 
+$$\theta^3 =\frac{q^2}{8\pi\epsilon_o mg l^2}$$ 
+
+\begin{equation}
+\theta =\left(\frac{q^2}{8\pi\epsilon_o mg l^2}\right)^{\frac{1}{3}}
+\label{theta}
+\end{equation}
+
+We can check the dimensions of $\theta$ as a check to our answer. $\theta$ is an angle and should be unitless. So lets define the units of the constants in the left hand of equation \ref{theta}.
+$$<q> = C; <\epsilon_o> = C^2N^{-1}m^{-2}; <m> = kg; <g> = m s^{-2}; <l> = m$$
+$$\left<\frac{q^2}{8\pi\epsilon_o mg l^2}\right> = \frac{\cancel{C^2}}{\cancel{C^2}N^{-1}\cancel{m^{-2}}kgms^{-2}\cancel{m^2}}$$ 
+$$\left<\frac{q^2}{8\pi\epsilon_o mg l^2}\right> = \frac{N}{kgms^{-2}}$$
+and we know that a newton ($N$) is $kgms{-2}$ so the units cancel fully as we expect. And we can say the answer for $\theta$ is equation \ref{theta} or
+\begin{center}
+\fbox{$\theta =\left(\frac{q^2}{8\pi\epsilon_o mg l^2}\right)^{\frac{1}{3}}$}
+\end{center}
+
+\section{Problem \#3}
+\subsection{part (a)}
+The drawing is attached
+\subsection{part (b)}
+So we know that due to the law of superposition we can see that the total electric field at the point is the sum of the electric field from both charges. Mathematically written as
+\begin{equation}
+E_{tot} = E_{3q} + E_{-q}
+\label{Etot}
+\end{equation}
+So we know can write the components of equation \ref{Etot} using Coulomb's Law, but first we need to know the distance $R$ between the point and the charges which is the length of the vector $\vec{R}$. We define $\vec{R}$ as the difference between the position vector of charge $+3q$ and the point in space. So the $\vec{R}$s for this system are
+$$\vec{R}_{+3q} = D\hat{x} + y\hat{y}$$
+$$\vec{R}_{-q} = -D\hat{x} + y\hat{y}$$
+Conveniently the magnitude of both these vectors is the same. This is given by
+$$R^2 = D^2 + y^2$$
+So now using Coulomb's Law we get
+$$\vec{E_{tot}} = \frac{1}{4\pi\epsilon_o}\left(\frac{3q\vec{R}_{+3q}}{(D^2 + y^2)^{3/2}} + \frac{\vec{R}_{-q}-q}{(D^2 + y^2)^{3/2}}\right)$$
+$$E_{tot} = \frac{1}{4\pi\epsilon_o}\left(\frac{3q-q}{(D^2 + y^2)^{3/2}}(3\vec{R}_{+3q}-\vec{R}_{-q})\right)$$
+and if we just look vector sum
+$$3\vec{R}_{+3q}-\vec{R}_{-q} = (3D + D)\hat{x} + (3y - y)\hat{y}$$
+$$3\vec{R}_{+3q}-\vec{R}_{-q} = 4D\hat{x} + 2y\hat{y}$$
+and for just the $\hat{y}$ component we find the electric field to be
+\begin{equation}
+\vec{E} = \frac{1}{4\pi\epsilon_o}\left(\frac{2y\hat{y}}{(D^2 + y^2)^{3/2}})\right)
+\label{EfdY}
+\end{equation}
+So we can modify equation \ref{EfdY} by dividing out a $y^2$ to get
+$$\vec{E} = \frac{1}{4\pi\epsilon_o}\left(\frac{2y\hat{y}}{y^3(1 +\frac{D^2}{y^2})^{3/2}})\right)$$
+$$\vec{E} = \frac{1}{4\pi\epsilon_o}\left(\frac{2\hat{y}}{y^2(1 +\frac{D^2}{y^2})^{3/2}})\right)$$
+So now we have a term $(1 + \frac{D^2}{y^2})^{-3/2}$ which can be written in general terms
+\begin{equation}
+f(\epsilon) = (1 + \epsilon)^n
+\label{epsl}
+\end{equation}
+Now lets approximate equation \ref{epsl} using a Taylor series
+$$(1 + \epsilon)^n = f(0) + f'(0)\epsilon + \frac{1}{2!}f''(0)\epsilon^2 + \frac{1}{3!}f^{(3)}(0)\epsilon^3 + \frac{1}{4!}f^{(4)}(0)\epsilon^4 + ...$$
+\begin{equation}
+(1 + \epsilon)^n = 1 + n\epsilon + \frac{1}{2!}n(n-1)\epsilon^2 + \frac{1}{3!}n(n-1)(n-2)\epsilon^3 + \frac{1}{4!}n(n-1)(n-2)(n-3)\epsilon^4 
+\label{4apporx}
+\end{equation}
+we see that this series becomes a converging geometric series when $\epsilon < 1$ this is only the case when $y > D$. So the series only converges for values of $y$ where $y > D$. Therefore this is only an accurate approximation if $y > D$.
+
+
+\section{Problem \#4}
+\subsection{part (a)}
+Before we look at the system with a disk of charge, lets look at the simpler system of a ring of charge.
+For this system lets assume the point we are looking at the $\vec{E}$-field is at $(0,0,z)$ and the ring sits at $z = 0$. We know that any given point on the ring is $(x', y', 0)$. So we can define two position vectors for these points as
+$$\vec{r} = z\hat{z}$$ 
+$$\vec{r'} = x'\hat{x}+y'\hat{y}$$
+Now we can define a vector $\vec{\xi}$ that is the difference between $\vec{r}$ and $\vec{r'}$ or
+\begin{equation}
+\vec{\xi} = \vec{r} - \vec{r'}
+\label{srptR}
+\end{equation}
+$$\vec{\xi} = (0 - x')\hat{x} + (0 - y')\hat{y} + z\hat{z}$$
+where the vector $\vec{\xi}$ points in the direction of the electric field and has a magnitude that is the distance between the two points. Because of the circular symmetry of the problem we should convert to polar notation.
+$$x' = s'\cos{\theta'}$$
+$$y' = s'\sin{\theta'}$$
+Now $\vec{\xi}$ is
+$$\vec{\xi} = s'\cos{\theta'} \hat{x} - s'\sin{\theta'} \hat{y} + z\hat{z}$$
+Now with $\vec{\xi}$ we can calculate the electric field from a charged ring using Coulomb's law
+\begin{equation}
+\vec{E} = \frac{1}{4\pi\epsilon_o}\int \frac{\lambda\vec{\xi}}{\xi^3}
+\label{Ering}
+\end{equation}
+Where $\lambda$ is the constant charge density and the magnitude of the vector $\xi$ is given by
+$$\xi^2 = s'^2\cos^2{\theta'} + s'^2\sin^2{\theta'} + z^2$$
+$$\xi^2 = s'^2(\cancelto{1}{\cos^2{\theta'} + \sin^2{\theta'}}) + z^2$$
+$$\xi^2 = s'^2 + z^2$$
+$$\xi = (s'^2 + z^2)^{1/2}$$
+Also we know that the symmetry of the ring makes it so that all the $\hat{x}$ and $\hat{y}$ components cancel. Leaving only the $\hat{z}$ component. With these two facts we can write equation \ref{Ering} as
+$$\vec{E} = \frac{\lambda}{4\pi\epsilon_o}\int_0^{2\pi} \frac{z\hat{z}}{(s'^2 + z^2)^{3/2}} d\theta$$
+The integral is from $0$ to $2\pi$ because we sum around the ring. Since there is no actual $\theta$ dependence a $2\pi$ comes out of the integral and we get
+$$\vec{E} = \frac{\lambda}{2\epsilon_o} \frac{z\hat{z}}{(s'^2 + z^2)^{3/2}}$$
+This is the electric field from a ring. Now we need to sum (integrate) $s'$ from $0$ to $R_o$. Where $R_o$ is the radius of the disc. 
+\begin{equation}
+\vec{E} = \frac{z}{2\epsilon_o}\int_0^{R_o} \frac{\lambda s'ds'}{(s'^2 + z^2)^{3/2}} \hat{z}
+\label{Edisc}
+\end{equation}
+We can solve equation \ref{Edisc} with a simple $u$ substitution
+$$u = s'^2 + z^2$$
+$$du = 2s'ds$$
+Equation \ref{Edisc} becomes
+$$\vec{E} = \frac{z}{2\epsilon_o}\int_{u(0)}^{u(R_o)} \frac{\lambda du}{2(u)^{3/2}} \hat{z}$$
+Note that the integration converted the charge density from $\lambda$ to $\sigma$ with the most important difference being that $<\lambda> = C m^{-1}$ and $<\sigma> = C m^{-2}$
+$$\vec{E} = \left[\frac{\sigma z}{4\epsilon_o} \frac{-2}{(u)^{1/2}} \hat{z}\right]_{u(0)}^{u(R_o)}$$
+$$\vec{E} = \left[\frac{\sigma z}{2\epsilon_o} \frac{1}{(s'^2 + z^2)^{1/2}} \hat{z}\right]^{0}_{R_o}$$
+$$\vec{E} = \frac{\sigma z}{2\epsilon_o}\left(\frac{1}{(0^2 + z^2)^{1/2}} - \frac{1}{(R_o^2 + z^2)^{1/2}} \right)\hat{z}$$
+$$\vec{E} = \frac{\sigma z}{2\epsilon_o}\left(\frac{1}{z} - \frac{1}{(R_o^2 + z^2)^{1/2}} \right)\hat{z}$$
+\begin{equation}
+\vec{E} = \frac{\sigma }{2\epsilon_o}\left(1 - \frac{z}{(R_o^2 + z^2)^{1/2}} \right)\hat{z}
+\label{Esoln}
+\end{equation}
+Now we can check to see if the units match up. We know that $<\vec{E}> = N C^{-1}$ and we know that
+$$<\sigma> = C m^{-2}; <\epsilon_o> = C^2 N^{-1}m^{-2}; <z> = m; <R_o> = m$$
+$$\left<\frac{\sigma}{\epsilon_0}\right> = (C m^{-2})(C^{-2}Nm^2)$$
+$$\left<\frac{\sigma}{\epsilon_0}\right> = C^{-1}N$$
+This is the answer we are looking for. It is important to note that the term containing the $z$ and the $R_o$ is unitless. So the answer to part (a) is equation \ref{Esoln} or
+\begin{center}
+\fbox{$\vec{E} = \frac{\sigma }{2\epsilon_o}\left(1 - \frac{z}{(R_o^2 + z^2)^{1/2}} \right)\hat{z}$}
+\end{center}
+\subsection{part (b)}
+For the case where $z >> R_o$ or the point is very far away we need to rewrite equation \ref{Esoln} as
+$$\vec{E} = \frac{\sigma }{2\epsilon_o}\left(1 - \frac{z}{(z^2(\frac{R_o^2}{z^2} + \frac{z^2}{z^2}))^{1/2}} \right)\hat{z}$$
+$$\vec{E} = \frac{\sigma }{2\epsilon_o}\left(1 - \frac{z}{z(\frac{R_o^2}{z^2} + 1)^{1/2}} \right)\hat{z}$$
+$$\vec{E} = \frac{\sigma }{2\epsilon_o}\left(1 - \frac{1}{(\frac{R_o^2}{z^2} + 1)^{1/2}} \right)\hat{z}$$
+So for $z >> R_o$ we can see the term $\frac{R_o^2}{z^2}$ goes to zero and equation \ref{Esoln} becomes
+$$\vec{E} = \frac{\sigma }{2\epsilon_o}\cancelto{0}{(1 - 1)}\hat{z}$$
+$$\vec{E} = 0 $$
+This makes sense because when the electric field gets very far away the field goes to zero.
+
+Now for the case where $z << R_o$ or the point is very close to the charged disc. We rewrite equation \ref{Esoln} as
+$$\vec{E} = \frac{\sigma }{2\epsilon_o}\left(1 - \frac{z}{(R_o^2(\frac{R_o^2}{R_o^2} + \frac{z^2}{R_o^2}))^{1/2}} \right)\hat{z}$$
+$$\vec{E} = \frac{\sigma }{2\epsilon_o}\left(1 - \frac{z}{R_o(1 + \frac{z^2}{R_o^2})^{1/2}} \right)\hat{z}$$
+For $z << R_o$ we see the term $\frac{z^2}{R_o^2}$ go to zero and yield
+$$\vec{E} = \frac{\sigma }{2\epsilon_o}\left(1 - \frac{z}{R_o} \right)\hat{z}$$
+Here we see another $\frac{z}{R_o}$ again we assume that it goes to zero for the case $z << E_o$ and we get
+$$\vec{E} = \frac{\sigma }{2\epsilon_o}\left(1 - \cancelto{0}{\frac{z}{R_o}} \right)\hat{z}$$
+$$\vec{E} = \frac{\sigma }{2\epsilon_o}\hat{z}$$
+This is a constant electric field which is the expected result for an infinite plane of charge. This is exactly how the electric field behaves when it is really close to the disc.
+
+\section{Problem \#5}
+\subsection{part (a)}
+We can start by defining a vector $\vec{\xi}$ like we did in equation \ref{srptR} but this time we can think about it in a different way. We know that a sphere is symmetrical in 3 dimensions. So no matter where the point is we can think of it at $(0,0,z)$. We also know that the only component of the electric field that matters is the $\hat{z}$. Knowing this we can quickly define 
+$$\vec{\xi}_z = z - R\cos{\theta}$$
+Now rather than dealing with $\phi$s we can define the magnitude of $\vec{\xi}$ using the law of cosines ($c^2 = a^2 + b^2 - 2ab\cos{\theta}$). We assume that the position vector to the surface of the sphere ($r'$) and the position vector to the point ($r$) are $a$ and $b$. This gives us
+$$\xi^2 = r^2 + r'^2 - 2 r r' \cos{theta}$$
+Where $\theta$ is the angle between $r$ and $r'$. We also can assume that $r = z$ and $r' = R$ where $R$ is the constant radius of the sphere. Now we have
+$$\xi^2 = z^2 + R^2 - 2 z R  \cos{theta}$$
+Now we can use Coulomb's Law 
+$$\vec{E} = \frac{1}{4\pi\epsilon_o}\int \frac{\sigma\vec{\xi}}{\xi^3}$$
+$$\vec{E} = \frac{\sigma}{4\pi\epsilon_o}\int_{0}^{2\pi} \frac{z - R\cos{\theta}}{(z^2 + R^2 - 2 z R  \cos{theta})^{3/2}} R^2 \sin{\theta} d\theta$$
+$$\vec{E} = \frac{\sigma}{2\pi\epsilon_o}\int_{0}^{\pi} \frac{z - R\cos{\theta}}{(z^2 + R^2 - 2 z R  \cos{theta})^{3/2}} R^2 \sin{\theta} d\theta$$
+The term $R^2\sin{\theta}$ comes from integrating in spherical coordinates. We can remove the trig in this equation with a $u$ substitution
+$$u = -\cos{\theta}$$
+$$du = \sin{\theta}d\theta$$
+The integral of $u$ looks like
+$$\vec{E} = \frac{\sigma R^2}{2\pi\epsilon_o}\int_{-\cos{0}}^{-\cos{\pi}} \frac{z + Ru}{(z^2 + R^2 + 2 z R u)^{3/2}} du$$
+$$\vec{E} = \frac{\sigma R^2}{2\pi\epsilon_o}\int_{-1}^{1} \frac{z + Ru}{(z^2 + R^2 + 2 z R u)^{3/2}} du$$
+This integral is still really difficult so I used Mathematica to integrate it. Attached is the print out from Mathematica.
+\begin{equation}
+\vec{E} = \frac{\sigma R^2}{2\pi\epsilon_o}\left(\frac{R + z}{z^2\sqrt{R+z}} - \frac{R -z}{z^2\sqrt{z - R}}\right) \hat{z}
+\label{Esph}
+\end{equation}
+
+
+\subsection{part (b)}
+For outside the sphere the electric field should act like it originated from a point charge located at the center of the sphere. The point charge has the same charge as the total charge of the sphere. This is due to the spherical symmetry of the system. Also another result of the spherical symmetry is that inside of the sphere there is no electric field. It gets canceled out. Equation \ref{Esph} relates this intuition for the term $\sqrt{z - R}$ blows up for $z < R$.
+\subsection{part (c)}
+First we need to solve equation \ref{Esph} for $\sigma$ we will do a rough estimate of
+$$\sigma = \frac{2\pi\epsilon_oE}{R^2}$$
+$$q = \frac{2\pi\epsilon_oE}{R^2} 4\pi R^2$$
+we assume that the electric field will have to be $3 \times 10^6$ and the radius of a balloon is about $.2 m$ this gives us
+$$q = 8(3.14159)^2(8.85\times10^{-12})(3\times10^6)$$
+\begin{center}
+\fbox{$q \approx 2 mC$}
+\end{center}
+
+\end{document}
+

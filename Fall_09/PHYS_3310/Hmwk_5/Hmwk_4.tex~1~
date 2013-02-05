@@ -1,0 +1,311 @@
+\documentclass[11pt]{article}
+
+\usepackage{latexsym}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{enumerate}
+\usepackage{amsmath}
+\usepackage{cancel}
+\numberwithin{equation}{section}
+
+\setlength{\evensidemargin}{.25in}
+\setlength{\oddsidemargin}{-.25in}
+\setlength{\topmargin}{-.75in}
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{9.5in}
+\newcommand{\due}{September 23rd, 2009}
+\newcommand{\HWnum}{5}
+\newcommand{\grad}{\bold\nabla}
+\newcommand{\vecE}{\vec{E}}
+\newcommand{\scrptR}{\vec{\mathfrak{R}}}
+
+\begin{document}
+\input{../title.tex}
+
+\section{Problem \#1}
+We can say that the amount of work to assemble four point charges in a box with side as is
+\begin{equation}
+W_{sys} = \frac{1}{2}\frac{1}{4\pi\epsilon_0}\sum_{i=1}^4\sum_{\substack{j=1\\i\neq j}}^4\frac{q_iq_j}{|\scrptR_{ij}|}
+\label{worksys}
+\end{equation}
+Because every charge is the same as $+q$ we know that every term in the double sum has a $q^2$ so we can factor that out
+$$W_{sys} = \frac{1}{2}\frac{q^2}{4\pi\epsilon_0}\sum_{i=1}^4\sum_{\substack{j=1\\i\neq j}}^4\frac{1}{|\scrptR_{ij}|}$$
+\begin{align*}
+W_{sys} = \frac{q^2}{8\pi\epsilon_0}&\left(\frac{1}{|\scrptR_{12}|} + \frac{1}{|\scrptR_{13}|} + \frac{1}{|\scrptR_{14}|} + \frac{1}{|\scrptR_{21}|} + \frac{1}{|\scrptR_{23}|} + \frac{1}{|\scrptR_{24}|}\right. \\
+&\left. + \frac{1}{|\scrptR_{31}|} + \frac{1}{|\scrptR_{32}|} + \frac{1}{|\scrptR_{34}|} + \frac{1}{|\scrptR_{41}|} + \frac{1}{|\scrptR_{42}|} + \frac{1}{|\scrptR_{43}|}\right)
+\end{align*}
+We see that for the sides of the box $|\scrptR_{ij}| = a$ for $ij = 1,2;\ 1,3;\ 2,4;\ 3,4$ (this is true for the reverse or $ji$ as well). The diagonals of the square are found with the Pythagorean theorem, so $|\scrptR_{ij} = \sqrt{2}a$ for $ij = 1,4;\ 2,3$. So these give us
+$$W_{sys} = \frac{q^2}{8\pi\epsilon_0}\left(\frac{1}{a} + \frac{1}{a} + \frac{1}{\sqrt{2}a} + \frac{1}{a} + \frac{1}{\sqrt{2}a} + \frac{1}{a} + \frac{1}{a} + \frac{1}{\sqrt{2}a} + \frac{1}{a} + \frac{1}{\sqrt{2}a} + \frac{1}{a} + \frac{1}{a}\right)$$ 
+$$W_{sys} = \frac{q^2}{8\pi\epsilon_0}\left(\frac{8}{a} + \frac{4}{\sqrt{2}a}\right)$$
+$$W_{sys} = \frac{q^2}{8\pi\epsilon_0}\left(\frac{8}{a} + \frac{4\sqrt{2}}{2a}\right)$$
+$$W_{sys} = \frac{q^2}{8\pi\epsilon_0}\left(\frac{8}{a} + \frac{2\sqrt{2}}{a}\right)$$
+$$W_{sys} = \frac{q^2}{8\pi\epsilon_0}\frac{8+2\sqrt{2}}{a}$$
+$$W_{sys} = \frac{q^2}{4a\pi\epsilon_0}(4+\sqrt{2})$$
+Now if we bring another charge of $-4q$ into this system we can calculate the work needed to do this by
+$$W_5 = \frac{1}{2}\frac{1}{4\pi\epsilon_0}\sum_{i=1}^4\frac{-4qq_i}{|\scrptR_{5i}|}$$
+But we can see because we are putting the charge in the center of the square the distance from each of the points is the same and given as 
+$$|\scrptR_{5i}| = \frac{\sqrt{2}a}{2}$$
+And we know that $q_i = q$ for all $i$ so we get
+$$W_5 = \frac{1}{2}\frac{1}{4\pi\epsilon_0}\frac{-4q^2}{\frac{\sqrt{2}a}{2}}\sum_{i=1}^4$$
+$$W_5 = \frac{1}{2}\frac{1}{4\pi\epsilon_0}\frac{-8q^2}{\sqrt{2}a}(4)$$
+$$W_5 = \frac{1}{2}\frac{1}{4\pi\epsilon_0}\frac{-8q^2}{\sqrt{2}a}(4)$$
+$$W_5 = \frac{1}{2}\frac{1}{\pi\epsilon_0}\frac{-8\sqrt{2}q^2}{2a}$$
+$$W_5 = \frac{-2\sqrt{2}q^2}{a\pi\epsilon_0}$$
+
+
+\section{Problem \#2}
+\begin{enumerate}[(a)]
+\item
+\begin{enumerate}[(i)]
+\item
+To find the total energy of a charged sphere we need can use 
+\begin{equation}
+W = \frac{\epsilon_0}{2} \int_{\textnormal{all space}} E^2 d\tau
+\label{energyE2}
+\end{equation}
+We integrate equation \ref{energyE2} over all space to eliminate the contribution to the total energy from the potential. Now we see to find the total work of the system we need to find the electric field. There are two cases of the electric field the first is when we are inside the sphere of charge. To solve this we use Gauss' Law
+\begin{equation}
+\oint \vecE\cdot d\vec{a} = \frac{q_{enc}}{\epsilon_0}
+\label{gauss}
+\end{equation}
+To solve this we use a Gaussian sphere that has a radius smaller than the radius of the sphere. This surface allows us to see that the $\vecE$ is parallel to $d\vec{a}$ and constant on the surface of the sphere so we get
+$$\vecE\oint d\vec{a} = \frac{q_{enc}}{\epsilon_0}$$
+$$\vecE(4\pi r^2) = \frac{q_{enc}}{\epsilon_0}$$
+Where $r$ is the radius of the Gaussian sphere. To find $q_enc$ we define the charge distribution as
+$$\rho = \frac{q}{4/3 \pi R^3}$$
+where $q$ is the total charge of the sphere and $R$ is the radius of the sphere. So we see that $q_{enc}$ is $\rho$ times the volume of the Gaussian sphere. This gives us
+$$\vecE(4\pi r^2) = \frac{\rho(4/3\pi r^3)}{\epsilon_0}$$
+$$\vecE= \frac{\rho(4\pi r^3)}{3\epsilon_0}(4\pi r^2) $$
+$$\vecE= \frac{\rho}{3\epsilon_0}r$$
+Now when we replace $\rho$ for the what we defined it as we get
+$$\vecE= \frac{\frac{q}{4/3 \pi R^3}}{3\epsilon_0}r$$
+$$\vecE= \frac{q}{3(4/3 \pi R^3)\epsilon_0}r$$
+\begin{equation}
+\vecE= \frac{q}{4\pi R^3\epsilon_0}r
+\label{Ein}
+\end{equation}
+For $0<r<R$, for the case where $r>R$ we take a Gaussian sphere that has a radius larger that the sphere of charge so we begin with equation \ref{gauss} with the same properties of symmetry so we get 
+$$\vecE\oint d\vec{a} = \frac{q_{enc}}{\epsilon_0}$$
+$$\vecE(4\pi r^2) = \frac{q_{enc}}{\epsilon_0}$$
+Where $r$ is the radius of the Gaussian sphere. Here since we contain the whole sphere we know the $q_{enc}$ is the total charge of the sphere $q$, so
+$$\vecE(4\pi r^2) = \frac{q}{\epsilon_0}$$
+\begin{equation}
+\vecE= \frac{q}{4\pi\epsilon_0}\frac{1}{r^2}
+\label{Eout}
+\end{equation}
+So now that we have the electric field over all space we can use equation \ref{energyE2}, but we need to split the integral over the two different electric fields so we get (using spherical coordinates)
+$$W=\frac{\epsilon_0}{2}\int_0^{\pi}\int_0^{2\pi}\int_0^{R}E^2r^2\sin{\theta}drd\theta d\phi +\int_0^{\pi}\int_0^{2\pi}\int_R^{\infty}E^2r^2\sin{\theta}drd\theta d\phi $$
+$$W=\frac{\epsilon_0}{2}\int_0^{\pi}\int_0^{2\pi}\int_0^{R}\left(\frac{q}{4\pi R^3\epsilon_0}r\right)^2r^2\sin{\theta}drd\theta d\phi +\int_0^{\pi}\int_0^{2\pi}\int_R^{\infty}\left(\frac{q}{4\pi\epsilon_0}\frac{1}{r^2}\right)^2r^2\sin{\theta}drd\theta d\phi $$
+$$W=\frac{\epsilon_0}{2}\int_0^{\pi}\int_0^{2\pi}\int_0^{R}\left(\frac{q}{4\pi R^3\epsilon_0}\right)^2r^2r^2\sin{\theta}drd\theta d\phi +\int_0^{\pi}\int_0^{2\pi}\int_R^{\infty}\left(\frac{q}{4\pi\epsilon_0}\right)^2\frac{1}{r^4}r^2\sin{\theta}drd\theta d\phi $$
+$$W=\frac{\epsilon_0}{2}\int_0^{\pi}\int_0^{2\pi}\int_0^{R}\left(\frac{q}{4\pi R^3\epsilon_0}\right)^2r^4\sin{\theta}drd\theta d\phi +\int_0^{\pi}\int_0^{2\pi}\int_R^{\infty}\left(\frac{q}{4\pi\epsilon_0}\right)^2\frac{1}{r^2}\sin{\theta}drd\theta d\phi $$
+We can see that there is no $\theta$ or $\phi$ so we can factor out a $4\pi$ from the integrals
+$$W=\frac{\epsilon_0}{2}4\pi\int_0^{R}\left(\frac{q}{4\pi R^3\epsilon_0}\right)^2r^4dr +4\pi\int_R^{\infty}\left(\frac{q}{4\pi\epsilon_0}\right)^2\frac{1}{r^2}dr $$
+$$W=\frac{\epsilon_0}{2}4\pi\left(\frac{q}{4\pi\epsilon_0}\right)^2\left(\int_0^{R}\frac{1}{R^6}r^4dr +\int_R^{\infty}\frac{1}{r^2}dr\right) $$
+$$W=\frac{q^2}{8\pi\epsilon_0}\left(\frac{1}{R^6}\int_0^{R}r^4dr +\int_R^{\infty}\frac{1}{r^2}dr\right) $$
+$$W=\frac{q^2}{8\pi\epsilon_0}\left(\frac{1}{R^6}\left[\frac{1}{5}r^5\right]_0^R-\left[\frac{1}{r}\right]_R^{\infty}\right) $$
+$$W=\frac{q^2}{8\pi\epsilon_0}\left(\frac{1}{5R^6}\left[(R^5 - 0^5)\right]-\left[0 - \frac{1}{R}\right]\right) $$
+$$W=\frac{q^2}{8\pi\epsilon_0}\left(\frac{R^5}{5R^6} + \frac{1}{R}\right) $$
+$$W=\frac{q^2}{8\pi\epsilon_0}\left(\frac{1}{5R} + \frac{1}{R}\right) $$
+$$W=\frac{q^2}{8\pi\epsilon_0}\left(\frac{1}{5R} + \frac{5}{5R}\right) $$
+$$W=\frac{q^2}{8\pi\epsilon_0}\left(\frac{6}{5R}\right) $$
+$$W=\frac{3q^2}{20 R\pi\epsilon_0}$$
+Now lets check the dimensions of our answer. We assume that $$<W> = kg\ m^2\ s^{-2}$$
+And we know that
+$$<R>=m;\ <q>=C;\ <\epsilon_0> = C^2\ s^2\ kg^{-1}\ m^{-3}$$
+So we calculate that
+
+$$\left<\frac{3q^2}{20 R\pi\epsilon_0}\right> = \frac{C^2}{m\ C^2\ s^2\ kg^{-1}\ m^{-3}} $$
+$$\left<\frac{3q^2}{20 R\pi\epsilon_0}\right>= \frac{kg\ m^3}{m\ s^2\ } $$
+$$\left<\frac{3q^2}{20 R\pi\epsilon_0}\right>= \frac{kg\ m^2}{ s^2\ } $$
+$$\left<\frac{3q^2}{20 R\pi\epsilon_0}\right>= kg\ m^2 s^{-2}$$
+
+Good our units agree.
+\item
+To find the energy using 
+\begin{equation}
+W = \frac{1}{2}\int\rho Vd\tau
+\label{PotEn}
+\end{equation}
+we need to find the potential from equation \ref{Ein} using
+$$V = -\int \vecE\cdot\ d\vec{l}$$
+Luckily both electric fields point in the same direction as $d\vec{l}$ so we get
+$$V = -\int Edl$$
+We only need to integrate equation \ref{PotEn} up to the surface of the sphere so we do not need to find the potential due to the electric field outside of the sphere (though this will play a role in the calculation of the potential inside the sphere). So we integrate from $r$ to $\infty$
+$$V = -\int_r^{\infty}Edr$$
+Now we have to deal with the fact that the electric field changes changes inside the sphere to outside the sphere so we can the electric field 
+$$V(\infty) - V(r) = -\int_r^{R}\left(\frac{q}{4\pi R^3\epsilon_0}r\right)dr - \int_R^{\infty}\left(\frac{q}{4\pi\epsilon_0}\frac{1}{r^2}\right)dr$$
+$$V(\infty) - V(r) = -\int_r^{R}\left(\frac{q}{4\pi R^3\epsilon_0}r\right)dr - \int_R^{\infty}\left(\frac{q}{4\pi\epsilon_0}\frac{1}{r^2}\right)dr$$
+$$V(\infty) - V(r) =\left(\frac{q}{4\pi\epsilon_0}\right) \left(-\int_r^{R}\left(\frac{1}{R^3}r\right)dr - \int_R^{\infty}\left(\frac{1}{r^2}\right)dr\right)$$
+$$V(\infty) - V(r) =\left(\frac{q}{4\pi\epsilon_0}\right) \left(-\frac{1}{R^3}\left[\frac{1}{2}r^2\right]_r^{R} - \left[\frac{-1}{r}\right]_R^{\infty}\right)$$
+$$V(\infty) - V(r) =\left(\frac{q}{4\pi\epsilon_0}\right) \left(-\frac{1}{2R^3}\left[R^2-r^2\right] + \left[0-\frac{1}{R}\right]\right)$$
+$$V(\infty) - V(r) =\left(\frac{q}{4\pi\epsilon_0}\right) \left(-\frac{R^2}{2R^3}+\frac{r^2}{2R^3} -\frac{1}{R}\right)$$
+$$V(\infty) - V(r) =\left(\frac{q}{4\pi\epsilon_0}\right) \left(-\frac{R^2}{2R^3}+\frac{r^2}{2R^3} -\frac{2R^2}{2R^3}\right)$$
+$$V(\infty) - V(r) =\left(\frac{q}{4\pi\epsilon_0}\right) \left(\frac{-R^2+r^2 -2R^2}{2R^3}\right)$$
+$$V(\infty) - V(r) =\left(\frac{q}{4\pi\epsilon_0}\right) \left(\frac{-3R^2+r^2}{2R^3}\right)$$
+$$V(\infty) - V(r) =\left(\frac{q}{4\pi\epsilon_0}\right) \left(\frac{-3R^2}{2R^3}+\frac{r^2}{2R^3}\right)$$
+$$V(\infty) - V(r) =\left(\frac{q}{4\pi\epsilon_0}\right) \left(\frac{-3}{2R}+\frac{r^2}{2R^3}\right)$$
+$$V(\infty) - V(r) =\left(\frac{q}{4\pi\epsilon_0}\right) \frac{1}{2R}\left(-3+\frac{r^2}{R^2}\right)$$
+And we define the potential at infinity to be zero so we get
+$$-V(r) =\left(\frac{q}{4\pi\epsilon_0}\right) \frac{1}{2R}\left(-3+\frac{r^2}{R^2}\right)$$
+$$V(r) =-\left(\frac{q}{4\pi\epsilon_0}\right) \frac{1}{2R}\left(-3+\frac{r^2}{R^2}\right)$$
+$$V(r) =\left(\frac{q}{4\pi\epsilon_0}\right) \frac{1}{2R}\left(3-\frac{r^2}{R^2}\right)$$
+$$V(r) =\frac{q}{4\pi\epsilon_0} \frac{1}{2R}\left(3-\frac{r^2}{R^2}\right)$$
+
+%Now for outside the charged sphere we calculate
+%$$V = -\int_R^{\infty}\frac{q}{4\pi\epsilon_0}\frac{1}{r^2}dr$$
+%$$V(\infty) - V(R) = -\frac{q}{4\pi\epsilon_0}\left[\frac{-1}{r}\right]_R^{\infty}$$
+%$$V(\infty) - V(R) = \frac{q}{4\pi\epsilon_0}\left[0-\frac{1}{R}\right]$$
+%$$V(\infty) - V(R) = -\frac{q}{4\pi\epsilon_0}\frac{1}{R}$$
+%We can define $V$ at infinity as zero and we get
+%$$- V(R) = -\frac{q}{4\pi\epsilon_0}\frac{1}{R}$$
+%$$V(r) = \frac{q}{4\pi\epsilon_0}\frac{1}{r}$$
+
+Now we can use equation \ref{PotEn}
+$$W = \frac{1}{2}\int\rho Vd\tau$$
+When we found the electric field we defined $\rho$ to be
+$$\rho = \frac{q}{4/3\pi R^3}$$
+so now equation \ref{PotEn} becomes
+$$W = \frac{1}{2}\frac{q}{4/3\pi R^3}\int Vd \tau$$
+Now writing $V$ out 
+$$W = \frac{1}{2}\frac{q}{4/3\pi R^3}\int_0^{\pi}\int_0^{2\pi}\int_0^{R}\frac{q}{4\pi\epsilon_0} \frac{1}{2R}\left(3-\frac{r^2}{R^2}\right)r^2\sin{\theta}drd\theta d\phi$$
+Again we can factor out the $4\pi$ from the fact that we do not have $\theta$ or $\phi$ dependence.
+$$W = \frac{1}{2}\frac{3q}{4\pi R^3}4\pi\int_0^{R}\frac{q}{4\pi\epsilon_0} \frac{1}{2R}\left(3-\frac{r^2}{R^2}\right)r^2dr$$
+$$W = \frac{1}{2}\frac{3q}{R^3}\frac{q}{4\pi\epsilon_0}\frac{1}{2R}\int_0^{R}\left(3-\frac{r^2}{R^2}\right)r^2dr$$
+$$W = \frac{1}{2}\frac{3q}{2R^4}\frac{q}{4\pi\epsilon_0}\int_0^{R}\left(3r^2-\frac{r^4}{R^2}\right)dr$$
+$$W = \frac{1}{2}\frac{3q}{2R^4}\frac{q}{4\pi\epsilon_0}\left[r^3-\frac{r^5}{5R^2}\right]_0^R$$
+$$W = \frac{1}{2}\frac{3q}{2R^4}\frac{q}{4\pi\epsilon_0}\left[R^3-\frac{R^5}{5R^2} - 0\right]$$
+$$W = \frac{1}{2}\frac{3q}{2R^4}\frac{q}{4\pi\epsilon_0}\left[R^3-\frac{R^3}{5} \right]$$
+$$W = \frac{1}{2}\frac{3q}{2R^4}\frac{q}{4\pi\epsilon_0}\frac{4R^3}{5}$$
+$$W = \frac{1}{4\pi\epsilon_0}\frac{3q^2}{\cancel{4R^3}R}\frac{\cancel{4R^3}}{5}$$
+$$W = \frac{3q^2}{20\pi\epsilon_0R}$$
+Hurray! This agrees with part (i).
+
+\end{enumerate}
+\item
+\begin{enumerate}[(i)]
+\item
+We look up the charge of an electron $e$ as $-1.6\time10^{-19}\ C$ and the mass of an electron as $m_e$ as $9.11\time10^{-31}\ kg$. If we solve $$E=m_ec^2$$ using the value we looked up we get
+$$E= (9.11\time10^{-31})(3\times10^8)^2$$ 
+$$E= 8.2\times10^{-14}\ J$$
+So if this is the rest energy of an electron we can calculate the needed $R$ to have this much energy (note a small change from the variable W to E for energy).
+$$E = \frac{3q^2}{20\pi\epsilon_0R}$$
+$$R = \frac{3q^2}{20\pi\epsilon_0E}$$
+Now replacing the values we looked and calculated up we get
+$$R = \frac{3(-1.6\time10^{-19})^2}{20\pi\epsilon_0(8.2\times10^{-14})}$$
+$$R = 1.68\times10^{-15}\ m$$
+\item
+Assuming that we are looking at the $\textnormal{U}^238$ isotope of uranium we can calculate the radius using
+
+We can find the radius of a nucleus as
+$$R = (1.2\times10^{-15})A^{1/3}$$
+Where $A$ is the number of nucleons, we can calculate $R$ as
+Now we can calculate the amount of electro static energy 
+$$W = \frac{3q^2}{20\pi\epsilon_0R}$$
+Where $q$ is the total charge of the nucleus or the number of protons $Z$ times the fundamental charge $1.6\time10^{-19}\ C$.
+So plugging in the numbers we get
+$$W = \frac{3(Z(1.6\time10^{-19}))^2}{20\pi\epsilon_0(1.2\times10^{-15} A^{1/3})}$$
+$$W = \frac{3(1.6\time10^{-19})^2}{20\pi\epsilon_0(1.2\times10^{-15})}\frac{Z^2}{A^{1/3}}$$
+$$W = \frac{7.68\times10^{-38}}{6.68\times10^{-25}}\frac{Z^2}{A^{1/3}}$$
+$$W = 1.15\times10^{-13}\frac{Z^2}{A^{1/3}}\ J$$
+Converting to electron volts we get
+$$\frac{1.15\times10^{-13}\ \cancel{J}}{1}\frac{\cancel{eV}}{1.6\times10^{-19}\ \cancel{J}}\frac{ MeV}{1000000\ \cancel{eV}}$$
+$$ = 0.72\ MeV$$
+$$W = 0.72\frac{Z^2}{A^{1/3}}\ MeV$$
+Assuming that we are looking at the $\textnormal{U}^235$ isotope of uranium we can calculate the energy using $Z=92$ and $A=235$
+$$W_U=0.72\frac{92^2}{235^{1/3}}$$
+$$W_U=988\ MeV$$
+For the 2 smaller nuclei we can assume that $Z=46$ and $A=117$
+$$2W'_U = 2*0.72\frac{46^2}{117^{1/3}}$$
+$$2W'_U = 623\ MeV$$
+We can see the change is
+$$W_U - 2W'_U = 998 - 623$$
+$$W_U - 2W'_U = 365\ MeV$$
+This is quite a bit more that what is expected. As the measured release of energy is $200\ MeV$.
+
+\end{enumerate}
+\end{enumerate}
+
+\section{Problem \#3}
+\begin{enumerate}[(a)]
+\item
+The metal sphere will have the charge distribute on the surface evenly, because there can be no electric field inside of a conductor. So the total charge on the surface over the surface area will give us the charge distribution. 
+$$\sigma_R = \frac{q}{4\pi R^2}$$
+The metal sphere inside the outer shell will pull the negative charges to balance out the $+q$ charge from the sphere. This means that the total charge on the inside surface (at radius $a$) is $-q$. We can also see that this is the case because a Gaussian sphere with the radius inside the outer shell will have no electric field. This means the charge enclosed must be zero, and we know we have a $+q$ charge from inside sphere so there must be a $-q$ to cancel it out. So we know that the charge density is the total charge over the surface area or
+$$\sigma_a = \frac{-q}{4\pi a^2}$$
+Now on the outside surface (at radius $b$) there is a left over $+q$ charge from the moving of the $-q$ to the inside surface. Remember that the shell is neutral. Again the charge distribution is given by the total charge over the surface area or
+$$\sigma_b = \frac{q}{4\pi b^2}$$
+
+\item
+So we can calculate the potential from
+$$V = -\int_0^{\infty} \vecE \cdot d\vec{l}$$
+Because the electric field points radially away and we integrate over a line that points radially we can say
+$$V = -\int_0^{\infty} E dr$$
+Now we need to split the integral up, because we have different electric fields at different points
+$$V(\infty) - V(r) = -\int_r^{R} 0 dr - \int_R^{a} \frac{1}{4\pi \epsilon_0}\frac{q}{r^2}dr - \int_a^b 0 dr - \int_b^{\infty} \frac{1}{4\pi \epsilon_0}\frac{q}{r^2}dr$$
+$$V(\infty) - V(r) = - \int_R^{a} \frac{q}{4\pi \epsilon_0}\frac{1}{r^2}dr - \int_b^{\infty} \frac{q}{4\pi \epsilon_0}\frac{1}{r^2}dr$$
+$$V(\infty) - V(r) = \frac{q}{4\pi \epsilon_0} \left(- \left[\frac{-1}{r}\right]_R^a - \left[\frac{-1}{r}\right]_b^{\infty}\right)$$
+$$V(\infty) - V(r) = \frac{q}{4\pi \epsilon_0} \left(\left[\frac{1}{a}-\frac{1}{R} \right] + \left[0-\frac{1}{b}\right]\right)$$
+$$V(\infty) - V(r) = \frac{q}{4\pi \epsilon_0} \left(\frac{1}{a}-\frac{1}{R} -\frac{1}{b}\right)$$
+Now at infinity we say that the potential is zero so we get
+$$- V(r) = \frac{q}{4\pi \epsilon_0} \left(\frac{1}{a}-\frac{1}{R} -\frac{1}{b}\right)$$
+$$V(r) = -\frac{q}{4\pi \epsilon_0} \left(\frac{1}{a}-\frac{1}{R} -\frac{1}{b}\right)$$
+$$V(r) = \frac{q}{4\pi \epsilon_0} \left(-\frac{1}{a}+\frac{1}{R} +\frac{1}{b}\right)$$
+We can check the units of the answer we assume that $$<V(r)> = kg\ m^2\ C^{-1}\ s^{-2}$$
+And we know that 
+$$<R>=<b>=<a>=m;\ <q>=C;\ <\epsilon_0> = C^2\ s^2\ kg^{-1}\ m^{-3}$$
+So we can calculate 
+$$\left<\frac{q}{4\pi \epsilon_0} \left(-\frac{1}{a}+\frac{1}{R} +\frac{1}{b}\right)\right> = \frac{C}{C^2\ s^2\ kg^{-1}\ m^{-3}}\frac{1}{m}$$
+$$\left<\frac{q}{4\pi \epsilon_0} \left(-\frac{1}{a}+\frac{1}{R} +\frac{1}{b}\right)\right> = \frac{kg\ m^3}{C\ s^2}\frac{1}{m}$$
+$$\left<\frac{q}{4\pi \epsilon_0} \left(-\frac{1}{a}+\frac{1}{R} +\frac{1}{b}\right)\right> = \frac{kg\ m^2}{C\ s^2}$$
+$$\left<\frac{q}{4\pi \epsilon_0} \left(-\frac{1}{a}+\frac{1}{R} +\frac{1}{b}\right)\right> = kg\ m^2\ C^{-1}\ s^{-2}$$
+Good our units agree.
+\item
+This makes it so there is no electric field from the surface of the shell. Since there is no charge on the surface of the shell now there must be no electric field. So the charge distribution at $b$ becomes
+$\sigma_b = 0$
+Assuming that the shell has time to fully discharge. Now the potential can be recalculated using this fact we can just skip to the point where we split the integral 
+$$V(\infty) - V(r) = -\int_r^{R} 0 dr - \int_R^{a} \frac{1}{4\pi \epsilon_0}\frac{q}{r^2}dr - \int_a^b 0 dr - \int_b^{\infty} 0dr$$
+We see that the range from $b$ to $\infty$ is now zero. Now we solve for the potential to get
+$$V(\infty) - V(r) =  -\int_R^{a} \frac{1}{4\pi \epsilon_0}\frac{q}{r^2}dr$$
+$$V(\infty) - V(r) =  -\frac{q}{4\pi \epsilon_0}\left[\frac{-1}{r}\right]_R^a $$
+$$V(\infty) - V(r) =  \frac{q}{4\pi \epsilon_0}\left[\frac{1}{a}-\frac{1}{R}\right]$$
+With the potential at infinity as zero we get
+$$ - V(r) =  \frac{q}{4\pi \epsilon_0}\left[\frac{1}{a}-\frac{1}{R}\right]$$
+$$  V(r) =  -\frac{q}{4\pi \epsilon_0}\left[\frac{1}{a}-\frac{1}{R}\right]$$
+$$  V(r) =  \frac{q}{4\pi \epsilon_0}\left[-\frac{1}{a}+\frac{1}{R}\right]$$
+\end{enumerate}
+
+\section{Problem \#4}
+\begin{enumerate}[(a)]
+\item
+The charge $q_a$ will pull and equal amount of negative charge to the surface of the cavity to balance out the charge. This keeps the electric field inside the sphere at zero. Now the charge distribution is
+$$\sigma_a = \frac{-q_a}{4\pi a^2}$$
+The same thing happens for the other cavity, but this time the charge that is pulled in is a $-q_b$ so we can give the charge distribution as
+$$\sigma_b = \frac{-q_b}{4\pi b^2}$$
+Now on the outside surface has the positive charge that is left over from the pulling of $-q_a$ and $-q_b$ to the inside surfaces. So the total charge on the surface (at radius $R$) is $q_b + q_a$ this happens, because the net charge on the sphere is zero and that has to stay the same (we did not add or remove any charge). So the charge distribution is
+$$\sigma_R = \frac{q_a+q_b}{4\pi R^2}$$
+
+\item
+The electric field one the outside of the sphere is only affected by the charge on the surface of the sphere. The charges inside do not have a direct contribution to the outside, because they are shielded by the conductor. Because the object is a sphere, the electric field acts like a point charge with charge $q_a+q_b$.
+$$\vecE = \frac{1}{4\pi \epsilon_0}\frac{q_a+q_b}{r^2}\hat{r}$$
+
+\item
+The electric field in the cavities is just due to the point charges in each cavity. Just like before the conductor shields the cavities from any outside electric fields. So the electric fields are due to a point charge and look like
+$$\vecE_a = \frac{1}{4\pi \epsilon_0}\frac{q_a}{r^2}\hat{r}$$
+$$\vecE_b = \frac{1}{4\pi \epsilon_0}\frac{q_b}{r^2}\hat{r}$$
+
+\item
+As we said before the conductor shields the cavities from the outside, because there is no electric field within the conductor itself. So the net force on $q_a$and $a_b$ is zero.
+
+\item
+The only values that would change is the charge distribution on R ($\sigma_R$), because the charges will move to balance out this new charge on the outside. Also the electric field on the outside will change, because the new charge will contribute a new component to the new field, and because the charge distribution is now different (and non uniform). Everything inside the conductor will remain the same because they are shielded from the outside.
+
+\item
+If $q_a$ was moved to be off center in its cavity the only thing that would change is the charge distribution of cavity $a$. There would be a strong pull on the charges on the side it was closer. So the charge distribution will not be uniform. But the same amount of charge will still be pulled to the cavities surface. Everything else will remain the same because everything is shielded from the change.
+\end{enumerate}
+
+\section{Problem \#5}
+\begin{enumerate}[(a)]
+\item
+\end{enumerate}
+
+\end{document}

@@ -1,0 +1,187 @@
+\documentclass[11pt]{article}
+
+\usepackage{latexsym}
+\usepackage{amssymb}
+\usepackage{enumerate}
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{ulem}
+\usepackage{cancel}
+
+\setlength{\evensidemargin}{.25in}
+\setlength{\oddsidemargin}{-.25in}
+\setlength{\topmargin}{-.75in}
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{9.5in}
+\newcommand{\due}{November 20th, 2009}
+\newcommand{\CC}{\mathbb{C}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\zbar}{\overline{z}}
+\newcommand{\Let}{\textnormal{Let }}
+\newcommand{\Arg}{\textnormal{arg}}
+\newcommand{\Log}{\textnormal{Log}}
+
+\begin{document}
+\input{title.tex}
+I know and accept the University of Colorado at Boulder honor code.
+\linebreak
+\linebreak
+\linebreak
+Joe Becker
+
+\begin{enumerate}
+\item  
+\begin{enumerate}
+\item  
+To calculate 
+$$\int_{\Gamma}\zbar dz$$
+where $\Gamma$ is given by the smooth curves $\Gamma = \gamma_1+\gamma_2$. We parametrize the smooth curve $\gamma_1$ as
+$$z_1(t) = 3e^{it},\ (0\le t\le\pi),$$
+and $\gamma_2$ as
+$$z_2(t) = -3(1-t)+3t,\ (0\le t\le1).$$
+So we can split the integral into the separate smooth curves as
+$$\int_{\Gamma}\zbar dz = \int_{\gamma_1}\overline{z_1(t)}z_1'(t) dt + \int_{\gamma_2}\overline{z_2(t)}z_2'(t) dt$$
+Where 
+$$z_1'(t) = 3ie^{it}$$
+and
+$$z_2'(t) = 6$$
+So
+\begin{align*}
+\int_{\Gamma}\zbar dz &= \int_{\gamma_1}\overline{z_1(t)}z_1'(t) dt + \int_{\gamma_2}\overline{z_2(t)}z_2'(t) dt\\
+&= \int_0^{\pi}\overline{3e^{it}}3ie^{it}dt + \int_0^{1}\overline{3(1-t)+3t}6dt\\
+&= 9i\int_0^{\pi}e^{-it}e^{it}dt + 18\int_0^1(1-t+t)dt\\
+&= 9i\int_0^{\pi}e^{-it+it}dt + 18\int_0^1dt\\
+&= 9i\int_0^{\pi}e^0dt + 18\int_0^1dt\\
+&= 9i\int_0^{\pi}dt + 18\int_0^1dt\\
+&= 9it|_0^{\pi} + 18t|_0^1dt\\
+&= 9i(\pi-0) + 18(1-0)\\
+&= 9i\pi + 18
+\end{align*}
+
+\item  
+To calculate 
+$$\int_{\Gamma}\frac{z^{1/3}dz}{z^3-(4+i)z^2+4(1+i)z-4i}$$
+we can factor the integrand so we get
+$$\int_{\Gamma}\frac{z^{1/3}dz}{(z-i)(z-2)^2}$$
+Now if we continuously deform $\Gamma$ into two circles $C_1$ and $C_2$. Where $C_1$ is centered at $z=2$ going anti-clockwise and $C_2$ is centered around $z=i$ going clockwise and a line that goes back and forth between $C_1$ and $C_2$. We see that the integral across the line cancels out so we are left with
+$$\int_{\Gamma}\frac{z^{1/3}dz}{(z-i)(z-2)^2} = \int_{C_1}\frac{z^{1/3}dz}{(z-i)(z-2)^2} - \int_{C_2}\frac{z^{1/3}dz}{(z-i)(z-2)^2}$$
+Note that we subtract the integral around $C_2$ because we are traveling along the negative direction. So for the $C_1$ integral we can say that 
+$$f(z) = \frac{z^{1/3}}{z-i}$$
+We see that we get
+$$\int_{C_1}\frac{z^{1/3}dz}{(z-i)(z-2)^2} = \int_{C_1}\frac{f(z)dz}{(z-2)^2}$$ 
+Since $f(z)$ is analytic in $C_1$ we can use the \emph{Cauchy Integral Formula} or
+$$f^{(n)}(z) = \frac{n!}{2\pi i}\int_{\Gamma}\frac{f(w)dw}{(w-z)^{n+1}}$$
+So we can say that
+$$\int_{C_1}\frac{f(z)dz}{(z-2)^2} = f'(2)\frac{2\pi i}{2!}$$
+Computing $f'(2)$ yields
+\begin{align*}
+f'(z) &= \frac{d}{dz}\frac{z^{1/3}}{z-i}\\
+&= \frac{d}{dz}z^{1/3}(z-i)^{-1}\\
+&= \frac{1}{3}z^{-2/3}(z-i)^{-1} - z^{1/3}(z-i)^{-2}\\
+&= \frac{1}{3z^{2/3}(z-i)} - \frac{z^{1/3}}{(z-i)^{2}}
+\end{align*}
+Evaluated at $z=2$ 
+\begin{align*}
+f'(2) = \frac{1}{3(2)^{2/3}(2-i)} - \frac{2^{1/3}}{(2-i)^{2}}
+\end{align*}
+So 
+$$\int_{C_1}\frac{f(z)dz}{(z-2)^2} = \pi i\left(\frac{1}{3(2)^{2/3}(2-i)} - \frac{2^{1/3}}{(2-i)^{2}}\right)$$
+Now for $C_2$ if we say that 
+$$f(z) = \frac{z^{1/3}}{(z-2)^2}$$
+Now the integral over $C_2$ becomes 
+$$\int_{C_2}\frac{z^{1/3}dz}{(z-i)(z-2)^2} = \int_{C_2}\frac{f(z)dz}{z-i} $$
+We see that $f(z)$ is analytic in $C_2$ so we use the \emph{Cauchy Integral Formula} again this time it is of the form
+$$f(z_0) = \frac{1}{2\pi i}\int_{\Gamma}\frac{f(z)}{z-z_0}dz$$
+So it follows that
+$$\int_{C_2}\frac{z^{1/3}dz}{(z-i)(z-2)^2} = 2\pi if(i)$$
+where
+\begin{align*}
+f(i) &= \frac{i^{1/3}}{(i-2)^2}\\
+\end{align*}
+So 
+$$\int_{C_2}\frac{z^{1/3}dz}{(z-i)(z-2)^2} = \frac{2\pi i^{4/3}}{(i-2)^2}$$
+Now we know the integral over all of $\Gamma$ as
+\begin{align*}
+\int_{\Gamma}\frac{z^{1/3}dz}{(z-i)(z-2)^2} &= \int_{C_1}\frac{z^{1/3}dz}{(z-i)(z-2)^2} - \int_{C_2}\frac{z^{1/3}dz}{(z-i)(z-2)^2}\\
+&= \pi i\left(\frac{1}{3(2)^{2/3}(2-i)} - \frac{2^{1/3}}{(2-i)^{2}}\right)- \frac{2\pi i^{4/3}}{(i-2)^2}
+\end{align*}
+
+\end{enumerate}
+
+\item  
+\begin{enumerate}
+\item  
+If $\lim_{n\rightarrow\infty}a_n = 0$ then we can say that sequence 
+$$a_0,a_0+a_1,a_0+a_1+a_2,...$$
+converges to a finite complex number $A$. Therefore we know by definition the series $\sum_{n\ge0}a_n$ converges to a complex number $A$. So the statement: \textit{If $\lim_{n\rightarrow\infty}a_n=0$, then the series $\sum_{n\ge0}a_n converges$} is true.
+
+\item  
+The statement: \textit{If $f:\CC\rightarrow\CC$ is entire and $|f(z)|>1$ for all $z\in\CC$, then $f$ is constant} is false. Suppose 
+$$f(z) = z^4+2$$
+this $f$ is entire and not constant, but $|f(z)|>1$ still holds true.
+\end{enumerate}
+
+\item  
+\begin{enumerate}
+\item  
+The function $f:\CC\rightarrow\CC$ given by
+$$f(z) = \frac{1}{(z+i)^3}$$
+is analytic in $\{z\in\CC\ |\ 0<|z+i|<2\}$ with a pole of order 3 at $-i$.
+
+\item  
+We know that polynomials are entire so we want to find a line that goes through both points (a polynomial of order 1). So we guess that $f(z) = az+z_0$ where 
+\begin{align*}
+a &= \frac{2i-(-i)}{i-(-1)}\\
+&= \frac{3i}{i+1}
+\end{align*}
+Now if we find $z_0$ as
+\begin{align*}
+-i &= \frac{3i}{i+1}(-1)+z_0\\
+z_0 &= -i + \frac{3i}{i+1}\\
+z_0 &= \frac{-i(i+1)+3i}{i+1}\\
+z_0 &= \frac{1-i+3i}{i+1}\\
+z_0 &= \frac{2i+1}{i+1}
+\end{align*}
+So the function $f:\CC\rightarrow\CC$ given by
+$$f(z) = \frac{3iz+2i+1}{i+1}$$
+is entire with $f(i) = 2i$ and $f(-1) = -i$.
+
+\item  
+If a power series $p(z)$ to converges in
+$$D = \{z\in\CC\ |\ |z+2|<2\}$$
+it implies that there exists an analytic function that the series converges to such that the coefficients $a_j$ are given by
+$$a_j = \frac{f^{(j)}(z_0)}{j!}$$
+Therefore for all $a\in D$ there exists no $p(z)$ such that $p(z)\in \log(a)$. Because no branch cut of $\log(a)$ will keep the entire domain $D$ analytic.
+
+\item  
+No sequence of functions $\{f_n(z)\}_{n\ge1}$ continuous in a set $S$ can converge to a function $f(z)$ on all of $S$ except at one point $a$, such that $f(z)$ is not continuous at $a$. Due to  
+\newtheorem{lema}{Lemma}
+\begin{lema}
+Let $f_n$ be a sequence of functions continuous on a set $T\subset \CC$ and converging uniformly to $f$ on $T$. Then $f$ is also continuous on $T$.
+\end{lema}
+\end{enumerate}
+
+\item  
+If we define a region $S$ as a square including the boundary. Where the squares bottom left corner is at the origin. We can say that the product of the distance from each of the corners can be described by the function $f:\CC\rightarrow\CC$ where
+$$f(z) = z(z-a)(z-ia)(z-a(1+i))$$ 
+where $a\in\RR$ is the length of a side of the square. We see that this function is a polynomial and this implies that $f$ is analytic. Note that the corners of the square are zeros of $f$. The fact that $f$ is analytic means that we can apply
+\newtheorem{theo}{Thorem}
+\begin{theo}
+A function analytic in a bounded domain and continuous up to and including its boundary attains its maximum modulus on the boundary.
+\end{theo}
+ So we can see that $f$ must obtain its maximum modulus on the sides of the square. So knowing this we can look at one side and see that product of the distance between the two end points of the side (which are the corners of the square) is the half way point. So we conclude that the mid point $a/2$ of each of the four sides yields a maximum for $f$.
+
+\item  
+If we apply the \emph{Cauchy Integral Formula} 
+$$f^{(n)}(z) = \frac{n!}{2\pi i}\int_{\Gamma}\frac{f(w)dw}{(w-z)^{n+1}}$$
+we see that
+$$\int_{\Gamma}\frac{f(w)dw}{(w-a)^{n+1}} = \frac{2\pi if^{(n)}(a)}{n!}.$$
+Assuming that $f$ is analytic in $\Gamma$. Then the inequality becomes
+$$\left|\frac{2\pi if^{(n)}(a)}{n!}\right| \le \frac{n+1}{n^2+1}$$
+if we pull the constants to the other side we get
+$$\left|f^{(n)}(a)\right| \le \frac{n!(n+1)}{2\pi(n^2+1)}.$$
+So we can see that for all $a\in\textnormal{int}(\Gamma)$ $f$ and all the derivatives of $f$ are bounded, assuming that $f$ is analytic in $\Gamma$.
+\end{enumerate}
+\end{document}
+

@@ -1,0 +1,102 @@
+\documentclass[11pt]{article}
+
+\usepackage{latexsym}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{cancel}
+\numberwithin{equation}{section}
+
+\setlength{\evensidemargin}{.25in}
+\setlength{\oddsidemargin}{-.25in}
+\setlength{\topmargin}{-.75in}
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{9.5in}
+\newcommand{\due}{September $2^{nd}$, 2009}
+\newcommand{\HWnum}{1}
+
+\begin{document}
+\input{../title.tex}
+\subsection*{Written problems}
+I ran out of time to tex all the homework all the questions from the book are attached.
+\subsection*{Problems}
+
+\begin{enumerate}
+\item Express the following in the forms $a+ib$, $\left[\begin{array}{@{}c@{}} a\\ b\end{array}\right]$, $re^{i\theta}$ and $\left[\begin{array}{cc} r\cos\theta & r\sin\theta\\ -r\sin\theta & r\cos\theta\end{array}\right]$.
+\begin{enumerate}
+\item $\frac{1}{(1+i)}$\\[.5cm]
+$\frac{1}{(1+i)} = \frac{1}{1+i}\frac{1+i}{1+i}$
+$= \frac{1+i}{(1+i)(1+i)}$
+$= \frac{1+i}{(1^2+i^2+2i)}$
+$= \frac{1+i}{(1+(-1)+2i)}$
+$= \frac{1+i}{2i}$
+$= \frac{1}{2i} + \frac{i}{2i}$
+$= \frac{1}{2i}\frac{i}{i} + \frac{1}{2}$
+$= \frac{i}{2i^2} + \frac{1}{2}$
+$= \frac{i}{-2} + \frac{1}{2}$
+So we know $a = \frac{1}{2}$ and $b = \frac{-1}{2}$. 
+
+Finding $r$ and $\theta$\\
+$r = \sqrt{a^2 + b^2} = \sqrt{\frac{1}{4}+\frac{1}{4}} = \frac{1}{\sqrt{2}} = \frac{\sqrt{2}}{2}$\\
+$\tan{\theta} = \frac{b}{a} = \frac{-1 (2)}{2 (1)} = -1$\\
+$\theta = \frac{3\pi}{4}$\\
+$a+ib = \frac{1}{2} - i\frac{-1}{2}$
+$\left[\begin{array}{@{}c@{}} a\\ b\end{array}\right] = \left[\begin{array}{@{}c@{}} 1/2\\ -1/2\end{array}\right]$
+$re^{i\theta} = \frac{\sqrt{2}}{2}e^{i\frac{3\pi}{4}}$
+$\left[\begin{array}{cc} \frac{\sqrt{2}}{2}\cos\frac{3\pi}{4}& \frac{\sqrt{2}}{2}\sin\frac{3\pi}{4}\\ -\frac{\sqrt{2}}{2}\sin\frac{3\pi}{4}& \frac{\sqrt{2}}{2}\cos\frac{3\pi}{4}\end{array}\right]$
+
+
+\item $\left(\frac{2+i}{6i-(1-2i)}\right)^2$\\[.5cm]
+$\left(\frac{2+i}{6i-(1-2i)}\right)^2 = \frac{2+i}{6i-(1-2i)}\frac{2+i}{6i-(1-2i)}$
+$=\frac{4 + i^2 + 4i}{1+8^2i^2-28i}$
+$=\frac{3 + 4i}{-63 - 16i}$
+$=\frac{3 + 4i}{-63 - 16i}\frac{-63 - 16i}{-63 - 16i}$
+$=\frac{-567 + 48i - 252i +64i^2}{63^2 - 16^2i^2}$
+$=\frac{-631 - 204i}{4225}$\\
+$a = \frac{-631}{4225}$ $b = \frac{-204}{4225}$\\
+$r = 0.0246$ $\theta = 0.312$\\
+$a+ib = \frac{-631}{4225} - i\frac{204}{4225}$
+$\left[\begin{array}{@{}c@{}} a\\ b\end{array}\right] = \left[\begin{array}{@{}c@{}} \frac{-631}{4225}\\\frac{-204}{4225}\end{array}\right]$
+$re^{i\theta} = 0.0246e^{i0.312}$
+$\left[\begin{array}{cc} 0.0246 \cos 0.312& 0.0246 \sin 0.312 \\ -0.0246 \sin 0.312 & 0.0246 \cos 0.312\end{array}\right]$
+
+\item $e^{e^i}$\\[.5cm]
+$e^{e^i} = e^{ie}$\\
+$r = 1$ $\theta = e$
+$a = r\cos{\theta} = \cos{e} = -0.911$\\
+$a = r\sin{\theta} = \sin{e} = 0.411$\\
+$a+ib = -0.911 + i0.411$
+$\left[\begin{array}{@{}c@{}} a\\ b\end{array}\right] = \left[\begin{array}{@{}c@{}} -0.911\\0.411\end{array}\right]$
+$re^{i\theta} = 1e^{ie}$
+$\left[\begin{array}{cc} \cos e&  \sin e \\  \sin e & \cos e\end{array}\right]$
+
+\item $\frac{e^{i\theta}-e^{-i\theta}}{i(e^{i\theta}+e^{-i\theta})}$\\[.5cm]
+$\frac{e^{i\theta}-e^{-i\theta}}{i(e^{i\theta}+e^{-i\theta})} = \frac{\cos\theta + i\sin\theta - (\cos{-\theta} + i\sin{-\theta})}{i(\cos\theta + i\sin\theta + \cos{-\theta} + i\sin{-\theta})}$
+$= \frac{\cos\theta + i\sin\theta - (\cos{\theta} - i\sin{\theta})}{i(\cos\theta + i\sin\theta + \cos{\theta} - i\sin{\theta})}$
+$= \frac{ 2i\sin\theta}{2i\cos\theta}$
+$= \tan\theta$\\
+$a=\tan{\theta}$ $b = 0$\\
+$r = \tan{\theta}$ $\theta = 0$\\
+
+
+$a+ib = \tan\theta + i0$
+$\left[\begin{array}{@{}c@{}} a\\ b\end{array}\right] = \left[\begin{array}{@{}c@{}} \tan\theta\\0\end{array}\right]$
+$re^{i\theta} = \tan\theta e^{i0}$
+$\left[\begin{array}{cc} \tan\theta\cos0&  \tan\theta\sin0 \\  \tan\theta\sin0 & \tan\theta\cos0 \end{array}\right]$
+\end{enumerate}
+\item Completely factor $z^4-16$.\\[.5cm]
+$z^4 = 16$\\
+$z^4 = 16 e^{0i}$\\
+$z = (16 e^{0i})^{1/4}$\\
+$z = 2 e^{0i} = 2 e^{2/4\pi i} = 2 e^{4/4\pi i} =2 e^{6/4\pi i}$\\
+$z = 2  = 2 i = -2 = -2i$\\
+\item 1.2:  8, 17\\
+(see attached)
+\item 1.3: 4, 8, 17\\
+(see attached)
+\item  1.4: 7, 11\\
+(see attached)
+\end{enumerate}
+
+\end{document}
+

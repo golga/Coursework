@@ -1,0 +1,338 @@
+\documentclass[11pt]{article}
+
+\usepackage{latexsym}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{enumerate}
+\usepackage{amsmath}
+\usepackage{cancel}
+\numberwithin{equation}{section}
+
+\setlength{\evensidemargin}{.25in}
+\setlength{\oddsidemargin}{-.25in}
+\setlength{\topmargin}{-.75in}
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{9.5in}
+\newcommand{\due}{September 16th, 2009}
+\newcommand{\HWnum}{3}
+
+\begin{document}
+\input{../title.tex}
+
+\section{Problem \#1}
+\begin{enumerate}[(a)]
+\item
+The angular momentum is conserved, because if you look at the system you see that it can be rotated by any angle and the system does not change. This means that the angular momentum is conserved due to the angular symmetry of the system. The same holds true for linear momentum. The system can be translated in the $x$ and $y$ direction and nothing changes. So due to the linear symmetry of the system the linear momentum is conserved. We can also see that there is no time dependence of the system. As there is no time dependent force on the system. This means that the energy of the system is conserved as well. This is due the time symmetry of the system.
+\item
+To find the Lagrangian 
+\begin{equation}
+L = T - U
+\label{lagran}
+\end{equation}
+we need to find the kinetic and potential energy. To find the energies we first need to define vectors of position $\vec{r}_1$ and $\vec{r}_2$, these point from the origin to the position of the masses. So
+$$\vec{r}_1 = x_1\hat{x}+y_1\hat{y}$$
+$$\vec{r}_2 = x_2\hat{x}+y_2\hat{y}$$
+where $x_1$ and $x_2$ are the $x$ positions of their respective masses and $y_1$ and $y_2$ are the $y$ positions. Now we can write the kinetic energy as
+$$T = \frac{1}{2}m_1\dot{r_1}^2+ \frac{1}{2}m_2\dot{r_2}^2$$
+Now we know that the only potential is from the spring so we can say that 
+$$U = \frac{1}{2}k\left(b-|\vec{r_1} - \vec{r_2}|\right)^2$$
+Where $b$ is the equilibrium length of the spring and $k$ is the spring constant. Here we take the magnitude of the difference between the positions of the two masses. This quantity minus the equilibrium length $b$ is the displacement of the spring from equilibrium.
+So we can now write equation \ref{lagran} as
+$$L = \frac{1}{2}m_1\dot{r_1}^2+ \frac{1}{2}m_2\dot{r_2}^2 - \frac{1}{2}k\left(b-|\vec{r_1} - \vec{r_2}|\right)^2$$
+We can also look at this so that our reference point is the center of mass of the system. We define the position of the center of mass as
+$$\vec{R} = \frac{m_1\vec{r_1} +m_2\vec{r_2}}{m_1+m_2}$$
+We can define that this point be at the origin of the system so
+$$0 = \frac{m_1\vec{r_1} +m_2\vec{r_2}}{m_1+m_2}$$
+$$0 = m_1\vec{r_1} + m_2\vec{r_2}$$
+$$m_1\vec{r_1} = - m_2\vec{r_2}$$
+\begin{equation}
+\vec{r_1} = - \frac{m_2\vec{r_2}}{m_1}
+\label{r1}
+\end{equation}
+Now we can define the generalized coordinate $\vec{r}$ as the difference in the position vectors $\vec{r_1}$ and $\vec{r_2}$ or
+
+\begin{equation}
+\vec{r} = \vec{r_1} - \vec{r_2}
+\label{r}
+\end{equation}
+Now we can combine equation \ref{r1} and \ref{r} to get
+$$\vec{r} = - \frac{m_2\vec{r_2}}{m_1} - \vec{r_2}$$
+$$\vec{r} = - \frac{m_2\vec{r_2}}{m_1} - \frac{m_1\vec{r_2}}{m_1}$$
+$$\vec{r} =  \frac{-m_2\vec{r_2} - m_1\vec{r_2}}{m_1}$$
+$$\vec{r} =  -\frac{m_2 + m_1}{m_1}\vec{r_2}$$
+Solving for $r_2$ we get 
+$$\vec{r_2} =  -\frac{m_1}{m_2 + m_1}\vec{r}$$
+$$\dot{\vec{r_2}} =  -\frac{m_1}{m_2 + m_1}\dot{\vec{r}}$$
+
+We repeat the process for $r_1$ and get 
+\begin{equation}
+\vec{r_2} = - \frac{m_1\vec{r_1}}{m_2}
+\label{r2}
+\end{equation}
+Combining equation \ref{r2} and \ref{r} to get
+$$\vec{r} = \vec{r_1} -\left( - \frac{m_1\vec{r_1}}{m_2}\right)$$
+$$\vec{r} = \vec{r_1} + \frac{m_1\vec{r_1}}{m_2}$$
+$$\vec{r} = \vec{r_1}\frac{m_2+m_1}{m_2}$$
+$$\vec{r_1} = \frac{m_2}{m_2+m_1}\vec{r}$$
+$$\dot\vec{r_1} = \frac{m_2}{m_2+m_1}\dot{\vec{r}}$$
+
+Now we can write the $\vec{r_1}$ and $\vec{r_2}$ in terms of $\vec{r}$ in our Lagrangian
+$$L = \frac{1}{2}m_1\left(\frac{m_2}{m_2+m_1}\dot{\vec{r}}\right)^2+ \frac{1}{2}m_2\left(-\frac{m_1}{m_2 + m_1}\dot{\vec{r}}\right)^2 - \frac{1}{2}k\left(b-r\right)^2$$
+$$L = \frac{1}{2}\left(\frac{m_1m_2^2}{(m_2+m_1)^2}\dot{\vec{r}}^2\right)+ \frac{1}{2}\left(\frac{m_2m_1^2}{(m_2 + m_1)^2}\dot{\vec{r}}^2\right) - \frac{1}{2}k\left(b-r\right)^2$$
+$$L = \frac{1}{2}\frac{m_1m_2}{m_2+m_1} \left(\dot{\vec{r}}^2\frac{m_2}{m_2 + m_1}+\dot{\vec{r}}^2\frac{m_1}{m_2 + m_1}\right) - \frac{1}{2}k\left(b-r\right)^2$$
+$$L = \frac{1}{2}\frac{m_1m_2}{m_2+m_1} \dot{\vec{r}}^2\left(\frac{m_2+m_1}{m_2 + m_1}\right) - \frac{1}{2}k\left(b-r\right)^2$$
+$$L = \frac{1}{2}\frac{m_1m_2}{m_2+m_1} \dot{\vec{r}}^2 - \frac{1}{2}k\left(b-r\right)^2$$
+We can define the term reduced mass $\mu$ as
+$$\mu \equiv \frac{m_1m_2}{m_2+m_1}$$
+and get
+$$L = \frac{1}{2}\mu \dot{\vec{r}}^2 - \frac{1}{2}k\left(b-r\right)^2$$
+But this does not account for the motion of the center of mass. We difined it to be located at the origin but the center of mass can move with constant velocity. 
+So we make the Lagrangian of the center of mass to be
+$$L_R = \frac{1}{2}(m_1+m_2)\dot{\vec{R}}^2$$
+Note that there center of mass does not move through any potential.
+Now we can define
+$$L = L_R + L_r$$ 
+where
+$$L_r = \frac{1}{2}\mu \dot{\vec{r}}^2 - \frac{1}{2}k\left(b-r\right)^2$$
+Because both Lagrangian has its own generalized coordinate it is easier to deal with them separately, but written as a whole we have
+$$L= \frac{1}{2}(m_1+m_2)\dot{\vec{R}}^2 + \frac{1}{2}\mu \dot{\vec{r}}^2 - \frac{1}{2}k\left(b-r\right)^2$$
+We can check the units. We assume that 
+$$<L> = kg\ m^2\ s^{-2}$$
+and we know that
+$$<m_1> = <m_2> = <\mu> = kg;\ <\dot{\vec{R}}>= <\dot{\vec{r}}> = m\ s^{-1};\ <r> = <b> = m;\ <k> = kg\ s^{-2}$$
+So we can find that 
+$$\left<(m_1+m_2)\dot{\vec{R}}^2\right> = kg\ m^2\ s^{-2}$$
+$$\left<\mu \dot{\vec{r}}^2\right>=kg\ m^2\ s^{-2}$$
+$$\left<k\left(b-r\right)^2\right> = kg\ s^{-2}\ m^2$$
+Good all our units are in agreement.
+\item
+To find the Hamiltonian of the system we need to find the generalized momenta $p_R$ by the definition
+$$p_R = \frac{\partial L}{\partial \dot{\vec{R}}}$$
+$$p_R = \frac{\partial }{\partial \dot{\vec{R}}}\left(\frac{1}{2}(m_1+m_2)\dot{\vec{R}}^2\right)$$
+note that the only component that has $\dot{\vec{R}}$ dependence is $L_R$
+$$p_R = \frac{2}{2}(m_1+m_2)\dot{\vec{R}}$$
+$$p_R = (m_1+m_2)\dot{\vec{R}}$$
+Solving for $\dot{\vec{R}}$ we get
+\begin{equation}
+\dot{\vec{R}} = \frac{p_R}{m_1+m_2}
+\label{pR}
+\end{equation}
+
+Now for the generalized momenta $p_r$
+$$p_r = \frac{\partial L}{\partial \dot{\vec{r}}}$$
+$$p_r = \frac{\partial }{\partial \dot{\vec{r}}}\left(\frac{1}{2}\mu \dot{\vec{r}}^2 - \frac{1}{2}k\left(b-r\right)^2\right)$$
+$$p_r = \frac{2}{2}\mu \dot{\vec{r}}$$
+$$p_r = \mu \dot{\vec{r}}$$
+Solving for $\dot{\vec{r}}$ we get
+
+\begin{equation}
+\dot{\vec{r}}= \frac{p_r}{\mu}
+\label{pr}
+\end{equation}
+
+Now we can find the Hamiltonian by
+$$H = p_R\dot{R} + p_r\dot{r} - L$$
+Replacing what we found for $p_R$ and $p_r$ gives us
+$$H = p_R\frac{p_R}{m_1+m_2} + p_r\frac{p_r}{\mu} - L$$
+$$H = \frac{p_R^2}{m_1+m_2} + \frac{p_r^2}{\mu} - L$$
+We need to rewrite $L$ in terms of equations \ref{pR} and \ref{pr}. This gives us
+$$L= \frac{1}{2}(m_1+m_2)\left(\frac{p_R}{m_1+m_2}\right)^2 + \frac{1}{2}\mu \left(\frac{p_r}{\mu}\right)^2 - \frac{1}{2}k\left(b-r\right)^2$$
+$$L= \frac{1}{2}\frac{p_R^2}{m_1+m_2} + \frac{1}{2} \frac{p_r^2}{\mu} - \frac{1}{2}k\left(b-r\right)^2$$
+
+So now we can find $H$ as 
+$$H = \frac{p_R^2}{m_1+m_2} + \frac{p_r^2}{\mu}  - \frac{1}{2}\frac{p_R^2}{m_1+m_2} - \frac{1}{2} \frac{p_r^2}{\mu} + \frac{1}{2}k\left(b-r\right)^2$$
+$$H = \frac{p_R^2}{m_1+m_2}   - \frac{1}{2}\frac{p_R^2}{m_1+m_2} + \frac{p_r^2}{\mu}- \frac{1}{2} \frac{p_r^2}{\mu} + \frac{1}{2}k\left(b-r\right)^2$$
+$$H = \frac{1}{2}\frac{p_R^2}{m_1+m_2} + \frac{1}{2} \frac{p_r^2}{\mu} + \frac{1}{2}k\left(b-r\right)^2$$
+
+\item
+So if we write the Lagrangian of the relative motion ($L_r$) using polar coordinates we get
+$$L_r = \frac{1}{2}\mu\left(\dot{r}^2 + r^2\dot{\theta}^2\right) - \frac{1}{2}k\left(b-r\right)^2$$
+Now we don't have vectors to deal with. And we know that this has a cyclic coordinate in $\theta$ so we can see that
+$$\frac{d}{dt}\frac{\partial L_r}{\partial \dot{\theta}} = \cancelto{0}{\frac{\partial L}{\partial {\theta}}}$$
+$$\frac{d}{dt}\frac{\partial L_r}{\partial \dot{\theta}} = 0$$
+We know if the time derivative is equal to zero then the term being acted on is a constant. Here we will define the constant as $l$ for the conservation of angular momentum 
+$$\frac{\partial L_r}{\partial \dot{\theta}} = l$$
+$$\frac{\partial}{\partial \dot{\theta}}\frac{1}{2}\mu\left(\dot{r}^2 + r^2\dot{\theta}^2\right) - \frac{1}{2}k\left(b-r\right)^2 = l$$
+$$\mu r^2\dot{\theta} = l$$
+Solving for $\dot{\theta}$ we get
+$$\dot{\theta} = \frac{l}{\mu r^2}$$
+Now we create a Hamiltonian for the relative motion. First we need to find the generalized momenta $p_r$ which is defined as
+$$p_r = \frac{\partial L_r}{\partial r}$$
+$$p_r = \frac{\partial}{\partial r}\left(\frac{1}{2}\mu\left(\dot{r}^2 + r^2\dot{\theta}^2\right) - \frac{1}{2}k\left(b-r\right)^2\right)$$
+$$p_r = \mu \dot{r}$$
+Solving for $\dot{r}$ we get
+$$ \dot{r}= \frac{p_r}{\mu} $$
+Now we can create the Hamiltonian
+$$H =p_r\dot{r}+ p_{\theta} \dot{\theta} - L_r$$
+Note that we already found $p_{\theta}$ and it is a constant $l$. Now if we replace the found values for $\dot{r}$ and $\dot{\theta}$ we get
+$$H = p_r\frac{p_r}{\mu} + l\frac{l}{\mu r^2} - L_r$$
+$$H = \frac{p_r^2}{\mu} + \frac{l^2}{\mu r^2} - L_r$$
+
+Now we can replace the generalized coordinates as generalized momenta in the Lagrangian to get
+$$L_r = \frac{1}{2}\mu\left(\left(\frac{p_r}{\mu}\right)^2 + r^2\left(\frac{l}{\mu r^2}\right)^2\right) - \frac{1}{2}k\left(b-r\right)^2$$
+$$L_r = \frac{1}{2}\mu\frac{p_r^2}{\mu^2} + \frac{1}{2}\mu r^2\frac{l^2}{(\mu r^2)^2} - \frac{1}{2}k\left(b-r\right)^2$$
+$$L_r = \frac{1}{2}\frac{p_r^2}{\mu} + \frac{1}{2} \frac{l^2}{\mu r^2} - \frac{1}{2}k\left(b-r\right)^2$$
+Now we can finish calculated the Hamiltonian to get 
+$$H = \frac{p_r^2}{\mu} + \frac{l^2}{\mu r^2} - \frac{1}{2}\frac{p_r^2}{\mu} - \frac{1}{2} \frac{l^2}{\mu r^2} + \frac{1}{2}k\left(b-r\right)^2$$
+$$H = \frac{p_r^2}{\mu} - \frac{1}{2}\frac{p_r^2}{\mu}+ \frac{l^2}{\mu r^2}  - \frac{1}{2} \frac{l^2}{\mu r^2} + \frac{1}{2}k\left(b-r\right)^2$$
+$$H = \frac{p_r^2}{2\mu}+ \frac{l^2}{2\mu r^2} + \frac{1}{2}k\left(b-r\right)^2$$
+Now we can see that we have a Hamiltonian just with respect to $r$ with the kinetic energy simply represented as $T = \dfrac{p_r^2}{2\mu}$ with the effective potential being
+$$U_{eff} = \frac{l^2}{2\mu r^2} + \frac{1}{2}k\left(b-r\right)^2$$
+See attached for a sketch of $U_{eff}$. We can see by looking at the sketch that for all $r$ there exists a stable equilibrium, because the whole effective potential is concave up.
+ 
+\end{enumerate}
+
+\section{Problem \#2}
+So we can start by writing the Lagrangian of the system as
+$$L= T - U$$
+We can find the kinetic energy as
+$$T = \frac{1}{2}m(\dot{r}^2 + r^2\dot{\theta}^2 +\dot{z}^2)$$
+in cylindrical coordinates, but we know that $z$ is dependent of the half angle of the cone by the term $z=r\cot(\alpha)$ so we get
+$$T = \frac{1}{2}m(\dot{r}^2 + r^2\dot{\theta}^2 +\dot{r}^2\cot^2(\alpha))$$
+$$T = \frac{1}{2}m(\dot{r}^2(1+\cot^2(\alpha)) + r^2\dot{\theta}^2)$$
+Using the trig identity $1+\cot^2 = \csc^2$ we get
+$$T = \frac{1}{2}m(\dot{r}^2\csc^2(\alpha) + r^2\dot{\theta}^2)$$
+And we know the only potential is due to gravity and the height of the mass is dependent on the angle of the cone. This is written as
+$$U = mgr\cot(\alpha)$$
+where $\alpha$ is the half angle of the cone. So our Lagrangian is 
+$$L = \frac{1}{2}m(\dot{r}^2\csc^2(\alpha) + r^2\dot{\theta}^2) - mgr\cot(\alpha)$$
+We can see that we have a cyclic coordinate in $\theta$ this means that
+$$\frac{d}{dt}\frac{\partial L}{\partial \dot{\theta}} = \cancelto{0}{\frac{\partial L}{\partial {\theta}}}$$
+$$\frac{d}{dt}\frac{\partial L}{\partial \dot{\theta}} = 0$$
+We know if the time derivative is equal to zero then the term being acted on is a constant. Here we will define the constant as $l$ for the conservation of angular momentum 
+$$\frac{\partial L}{\partial \dot{\theta}} = l$$
+$$\frac{\partial }{\partial \dot{\theta}} \frac{1}{2}m(\dot{r}^2\csc^2(\alpha)  + r^2\dot{\theta}^2) - mgr\cot(\alpha)= l$$
+$$\frac{2}{2}mr^2\dot{\theta} = l$$
+$$mr^2\dot{\theta} = l$$
+Now we can solve for $\dot{\theta}$ and get
+$$\dot{\theta} = \frac{l}{mr^2}$$
+We also the generalized momenta $p_{\theta}$ as $l$ in this process. Now if we find the generalized momenta $p_r$
+$$p_r = \frac{\partial L}{\partial \dot{r}} = m\dot{r}\csc^2(\alpha)$$
+solving for $\dot{r}$ we get
+$$\dot{r}= \frac{p_r}{m\csc^2(\alpha)}$$
+
+Now if we can find the Hamiltonian as
+$$H = p_r\dot{r} + p_{\theta}\dot{\theta} - L$$
+Now we replace the $\dot{r}$ and $\dot{\theta}$ in our Hamiltonian to get
+$$H = p_r \frac{p_r}{m\csc^2(\alpha)}+ l\frac{l}{mr^2} - L$$
+$$H = \frac{p_r^2}{m\csc^2(\alpha)}+ \frac{l^2}{mr^2} - L$$
+
+Now we can right the Lagrangian in our generalized momenta to get
+$$L = \frac{1}{2}m\left(\left(\frac{p_r}{m\csc^2(\alpha)}\right)^2\csc^2(\alpha)  + r^2\left(\frac{l}{mr^2}\right)^2\right) - mgr\cot(\alpha)$$
+$$L = \frac{1}{2}m\left(\frac{p_r^2}{(m\csc^2(\alpha))^2}\csc^2(\alpha)  + r^2\frac{l^2}{(mr^2)^2}\right) - mgr\cot(\alpha)$$
+$$L = \frac{1}{2}\cancel{m\csc^2(\alpha)}\frac{p_r^2}{(m\csc^2(\alpha))^{\cancel{2}}}  + \frac{1}{2}\cancel{mr^2}\frac{l^2}{(mr^2)^{\cancel{2}}} - mgr\cot(\alpha)$$
+$$L = \frac{1}{2} \frac{p_r^2}{m\csc^2(\alpha)} + \frac{l^2}{2mr^2} - mgr\cot(\alpha)$$
+Now we can find the full term for the Hamiltonian as 
+$$H = \frac{p_r^2}{m\csc^2(\alpha)}+ \frac{l^2}{mr^2} - \frac{1}{2} \frac{p_r^2}{m\csc^2(\alpha)} - \frac{l^2}{2mr^2} + mgr\cot(\alpha)$$
+$$H = \frac{p_r^2}{m\csc^2(\alpha)} - \frac{1}{2} \frac{p_r^2}{m\csc^2(\alpha)}+ \frac{l^2}{mr^2} - \frac{l^2}{2mr^2} + mgr\cot(\alpha)$$
+$$H = \frac{p_r^2}{2m\csc^2(\alpha)} + \frac{l^2}{2mr^2} + mgr\cot(\alpha)$$
+Now we can see that the Hamiltonian only has a dependence on $p_r$ and the kinetic energy is given by $T = \dfrac{p_r^2}{2m\csc^2(\alpha)}$ So the rest of the Hamiltonian must be the effective potential written as
+$$U_{eff} = \frac{l^2}{2mr^2}+ mgr\cot(\alpha)$$
+
+Now to find the turning points of the effective potential we need to find where the Hamiltonian equals the total energy $E$ and where $\dot{r}$ is zero or $p_r = 0$ 
+$$H = E = \cancelto{0}{\frac{p_r^2}{2m\csc^2(\alpha)}} + \frac{l^2}{2mr^2} + mgr\cot(\alpha)$$
+$$E =  \frac{l^2}{2mr^2} + mgr\cot(\alpha)$$
+$$0 =  \frac{l^2}{2mr^2} + mgr\cot(\alpha) - E$$
+Now we can remove the $r^2$ from the denominator
+$$0 =  r^2\frac{l^2}{2mr^2} + r^2mgr\cot(\alpha) - r^2E$$
+$$0 =  \frac{l^2}{2m} + mgr^3\cot(\alpha) - Er^2$$
+So we can see from the graph of the effective potential (see attached). There are only two points at $E$ this means that there must only be 2 physical roots for this equation.
+As we can see with the graph of the effective potential the motion is always contained, because the function of the effective potential is concave up. This containment is between two planes.
+
+\section{Problem \#3}
+\begin{enumerate}[(a)]
+\item
+we can write the Lagrangian as
+$$L = T-U$$
+Since we are dealing with a satellite we can say that the kinetic energy is
+$$T = \frac{1}{2}\mu(\dot{r}^2 + r^2\dot{\theta}^2)$$
+and the potential is
+$$U= -\frac{k\mu}{r}$$
+where $k$ is a combination of the gravitational constant $G$ and the mass of the earth. This value is constant. So our Lagrangian is
+
+$$L = \frac{1}{2}\mu(\dot{r}^2 + r^2\dot{\theta}^2) + \frac{k\mu}{r}$$
+To take account for the drag force we first need to find Euler's equation or the equations of motion
+$$\frac{d}{dt}\frac{\partial L}{\partial \dot{r}} = \frac{\partial L}{\partial r}$$
+$$\frac{d}{dt}\frac{\partial L}{\partial \dot{r}} = \frac{d}{dt}(\mu\dot{r})$$
+$$\frac{d}{dt}\frac{\partial L}{\partial \dot{r}} = \mu\ddot{r}$$
+$$\frac{\partial L}{\partial r} = \mu r\dot{\theta}^2 + -\frac{k\mu}{r^2}$$
+$$\frac{\partial L}{\partial r} = \mu r\dot{\theta}^2  - \frac{k\mu}{r^2}$$
+\begin{equation}
+\mu\ddot{r}= \mu r\dot{\theta}^2 - \frac{k\mu}{r^2}
+\label{KagR}
+\end{equation}
+Now for the $\theta$ dependence
+$$\frac{d}{dt}\frac{\partial L}{\partial \dot{\theta}} = \frac{\partial L}{\partial \theta}$$
+$$\frac{d}{dt}\frac{\partial L}{\partial \dot{\theta}} = \frac{d}{dt}(\mu r^2 \dot{\theta})$$
+$$\frac{d}{dt}\frac{\partial L}{\partial \dot{\theta}} = \mu (r^2 \ddot{\theta}+2r\dot{r}\dot{\theta})$$
+$$\frac{\partial L}{\partial \theta} = 0$$
+\begin{equation}
+\mu (r^2 \ddot{\theta}+2r\dot{r}\dot{\theta})=0
+\label{KagTH}
+\end{equation}
+Equations \ref{KagR} and \ref{KagTH} and the equations that are effected by the drag force given by
+$$F^{dr} = -\alpha \vec{v}$$
+When we write it in polar notation we get
+$$F^{dr} = -\alpha (\dot{r}\hat{r} + r\dot{\theta}\hat{\theta})$$
+So we have the two components of the drag force as
+$$F^{dr}_r = -\alpha\dot{r}\hat{r}$$
+$$F^{dr}_{\theta} = -\alpha r\dot{\theta}\hat{\theta}$$
+now we can add the  $F^{dr}_r$ to equation \ref{KagR} to yield
+$$\mu\ddot{r}= \mu r\dot{\theta}^2 - \frac{k\mu}{r^2} - \alpha\dot{r}$$
+
+And for the $\theta$ component we add $F^{dr}_{\theta}$ to equation \ref{KagTH} to get
+$$\mu (r^2 \ddot{\theta}+2r\dot{r}\dot{\theta})= -\alpha r\dot{\theta}$$
+So if we assume that the orbit is circular we can assume that 
+$$a = \frac{v^2}{r}$$
+holds true. Where $v$ is the tangential velocity. We can rewrite the equation in our generalized coordinates
+$$\ddot{r} = \frac{r^2\dot{\theta}^2}{r}$$
+$$\ddot{r} = {r\dot{\theta}^2}$$
+Now if we replace this into the equation of motion we found we get
+$$\mu r\dot{\theta}^2 = \mu r\dot{\theta}^2 - \frac{k\mu}{r^2} - \alpha\dot{r}$$
+$$\mu r\dot{\theta}^2 - \mu r\dot{\theta}^2 = -\frac{k\mu}{r^2} - \alpha\dot{r}$$
+$$0 =-\frac{k\mu}{r^2} - \alpha\dot{r}$$
+$$-\frac{k\mu}{r^2} = \alpha\dot{r}$$
+$$ \dot{r} =-\frac{k\mu}{\alpha r^2} $$
+$$ \frac{dr}{dt}=-\frac{k\mu}{\alpha r^2} $$
+No we can separate the variables 
+$$ r^2 dr =-\frac{k\mu}{\alpha}dt $$
+$$ \int r^2 dr =-\int \frac{k\mu}{\alpha}dt $$
+$$ \frac{1}{3}r^3  = -\frac{k\mu}{\alpha}t $$
+$$ r(t)  =  \sqrt[3]{-\frac{3k\mu}{\alpha}t}$$
+We can check the units of this to make sure it is physical. We assume 
+$$<r(t)> = m$$
+and we know that
+$$<k>=<GM> = m^3\ kg^{-1}\ s^{-2}\ kg= m^3\ s^{-2}$$ 
+$$<m> =  kg;\ <t> = s; <\alpha> = kg\ s^{-1}$$
+Note that we find that the dimensions of $\alpha$ are defined from the drag force equation.
+$$ \left<\sqrt[3]{-\frac{3k\mu}{\alpha}t}\right> = \sqrt[3]{\frac{m^3\ s^{-2}\ kg}{kg\ s^{-1}}s}$$
+$$ \left<\sqrt[3]{-\frac{3k\mu}{\alpha}t}\right> = \sqrt[3]{\frac{m^3\ \cancel{s^{-2}}}{ \cancel{s^{-1}}}\cancel{s}}$$
+$$ \left<\sqrt[3]{-\frac{3k\mu}{\alpha}t}\right> = \sqrt[3]{m^3}$$
+$$ \left<\sqrt[3]{-\frac{3k\mu}{\alpha}t}\right> = m$$
+Good this is what we expected
+
+We can find $v(t)$ by taking the first time derivative of $r(t)$
+$$ r'(t) = v(t) =  \frac{d}{dt}\left(\sqrt[3]{-\frac{3k\mu}{\alpha}} t^{1/3}\right)$$
+$$v(t) = \sqrt[3]{\frac{3k\mu}{\alpha}}\frac{d}{dt}\left( t^{1/3}\right)$$
+$$v(t) = \sqrt[3]{\frac{3k\mu}{\alpha}}\frac{1}{3}t^{-2/3}$$
+$$v(t) = \sqrt[3]{\frac{Gk\mu}{9\alpha}}t^{-2/3}$$
+$$v(t) = \sqrt[3]{\frac{Gk\mu}{9\alpha t^2}}$$
+Now lets check the dimensions, we assume that
+$$<v(t)> = m\ s^{-1}$$
+and we know that
+$$<k> = m^3\ s^{-2};\ <m> = kg;\ <t> = s; <\alpha> = kg\ s^{-1}$$
+$$\left<\sqrt[3]{-\frac{k\mu}{9\alpha t^2}}\right> = \sqrt[3]{\frac{m^3\  s^{-2}\  kg}{kg\ s^{-1}\ s^2}}$$
+$$\left<\sqrt[3]{-\frac{k\mu}{9\alpha t^2}}\right> = \sqrt[3]{\frac{m^3}{s^{1}\ s^2}}$$
+$$\left<\sqrt[3]{-\frac{k\mu}{9\alpha t^2}}\right> = \sqrt[3]{\frac{m^3}{s^3}}$$
+$$\left<\sqrt[3]{-\frac{k\mu}{9\alpha t^2}}\right> = m\ s^{-1}$$
+Good our units are in agreement. So we can say we found $r(t)$ and $v(t)$ to be
+$$ r(t)  =  \sqrt[3]{\frac{3k\mu t}{\alpha}}$$
+$$v(t) = \sqrt[3]{\frac{k\mu}{9\alpha t^2}}$$
+\item
+See the Mathematica sheet attached. 
+%Though in all honesty I don't really know what this numerical solution is. And there was no numbers for initial conditions and the constants so it was difficult for me to solve it numerically in a way that I could understand what the physical situation is.
+
+\end{enumerate}
+
+\end{document}
+

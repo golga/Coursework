@@ -1,0 +1,51 @@
+\documentclass[11pt]{article}
+
+\usepackage{latexsym}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{enumerate}
+\usepackage{amsmath}
+\usepackage{cancel}
+\numberwithin{equation}{section}
+
+\setlength{\evensidemargin}{.25in}
+\setlength{\oddsidemargin}{-.25in}
+\setlength{\topmargin}{-.75in}
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{9.5in}
+\newcommand{\due}{September 26th, 2012}
+\newcommand{\HWnum}{3}
+\input{/home/joey/Documents/Class/Define.tex}
+
+\begin{document}
+\input{../title.tex}
+
+\section{Problem \#1}
+For two non-interacting electrons in an infinite square potential with a width $a$ we first note that the steady-state eigenfunctions are given as
+$$\psi_n(x) = \sqrt{\frac{2}{a}}\sin(k_n x)$$
+with a quantized energy
+$$E_n = \frac{\hbar^2k_n^2}{2m_e}$$
+where $k_n = n\pi/a$. So for two non-interacting electrons of the same spin we have to construct a wave function that is symmetric in swapping particles and states. This results in the state
+$$\psi_{nm}(x_1,x_2) = A[\psi_n(x_1)\psi_m(x_2) - \psi_n(x_2)\psi_m(x_1)]$$
+where the subtraction follows from the fact that electrons are fermions and $x_1$ and $x_2$ represent the position of each electron. Note that for $\psi_{nm}(x_1,x_2)\ne0$ the condition $n\ne m$ must be true for the quantum numbers. This implies that the electrons cannot occupy the same state. So for the ground state we have $n=1$ and $m=2$ so the ground state yields
+$$\psi_{12}(x_1,x_2) = \frac{\sqrt{2}}{a}\left[\psi_1(x_1)\psi_2(x_2) - \psi_1(x_2)\psi_2(x_1)\right]$$
+Note the factor $\sqrt{2}/a$ follows from the normalization constraint.
+
+\section{Problem \#2}
+By combining the angular momentums $S = 1/2$ and $L = 3$ we can see that the allowed values for $S$ and $L$ are
+\begin{align*}
+s &= \frac{1}{2}, -\frac{1}{2}\\
+l &= 3,2,1,0
+\end{align*}
+the total spectroscopic states are
+\begin{align*}
+^2F_{7/2}, ^0F_{5/2}, ^2D_{5/2}, ^0D_{3/2}, ^2P_{3/2}, ^0P_{1/2}, ^2S_{1/2}, ^0S_{1/2}
+\end{align*}
+
+
+\section{Problem \#3}
+
+\section{Problem \#4}
+
+\end{document}
+

@@ -1,0 +1,251 @@
+\documentclass[11pt]{article}
+
+\usepackage{latexsym}
+\usepackage{amssymb}
+\usepackage{enumerate}
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{ulem}
+\usepackage{cancel}
+\setlength{\evensidemargin}{.25in}
+\setlength{\oddsidemargin}{-.25in}
+\setlength{\topmargin}{-.75in}
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{9.5in}
+\newcommand{\due}{October 14th, 2009}
+\newcommand{\HWnum}{6}
+\newcommand{\CC}{\mathbb{C}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\zbar}{\overline{z}}
+\newcommand{\Let}{\textnormal{Let }}
+\newcommand{\Arg}{\textnormal{Arg}}
+\newcommand{\Log}{\textnormal{Log}}
+
+\begin{document}
+\input{../title.tex}
+\subsection*{Written Problems}
+\begin{enumerate}
+
+\item 3.3: 14
+\newtheorem{Theo1}{Theorem}
+\begin{Theo1}
+There exists no function $F(z)$ analytic in the annulus $D:1<|z|<2$ such that $F'(z) = 1/z$ for all $z$ in $D$.
+\end{Theo1}
+\begin{proof}
+Let us assume that $F(z)$ exists and for $z\in D$ we can say that
+\begin{align*}
+\frac{1}{z} &= F'(z)\\
+	&=\lim_{z\rightarrow z_0} \frac{F(z)-F(z_0)}{z-z_0}		
+\end{align*}
+We see that the only function that $F(z)$ can be is 
+$$F(z) = \log(z) + c$$
+where $c$ is a constant. We see that for any branch we pick of $\log(z)$ we cannot be analytic in the annulus $D:1<|z|<2$, because we know that the discontinuities of the $\Log$ function have to go to infinity at some point. This implies that for some point in $D$ we have a line of discontinuity that crosses through the annulus. Restating this statement we can say that the discontinuities of $\Log$ cannot cross itself or be unique for any given radius, therefore the function $F(z)$ cannot be analytic in all of $D$.
+\end{proof}
+
+\item 3.5: 16\\
+\textit{For $c^z = e^{z\log(c)}$, show that by selecting a particular value of $\log(c)$ we obtain a branch of $c^z$ that is entire. Find the derivative of such a branch.}
+If we take the principle branch of $\log$ we get
+$$c^z = e^{z\Log(c)}$$
+We assume that $c$ is a constant and therefore we can see that $\Log(c)$ is constant as well. This means
+$$c^z = e^{az}$$
+Where $a=\Log(c)$ and is constant. We can now see that we just have an exponential for the principle branch of $c^z$. We know that the exponential function is entire. This means we can calculate the derivative
+\begin{align*}
+\frac{d}{dz}c^z &= \frac{d}{dz}\left(e^{z\Log(c)}\right)\\
+&= e^{z\Log(c)}\left(\frac{d}{dz}z\Log(c)\right)\\
+&= \Log(c)e^{z\Log(c)}\\
+&= \Log(c)e^{\Log(c^z)}\\
+\frac{d}{dz}c^z &= \Log(c)c^z\\
+\end{align*}
+Note that we can in principle pick any branch of $\log$ so long as the constant is analytic in the branch we pick this holds true.
+\end{enumerate}
+
+\subsection*{Problems}
+
+\begin{enumerate}
+\item 3.1: 19
+\begin{enumerate}[(i)]
+\item 19)\\
+\newtheorem{theo19a}{Theorem}
+\begin{theo19a}
+If all the zeros of a polynomial $p(z)$ lie in the upper half-plane, then the same is true for the zeros of $p'(z)$
+\end{theo19a}
+\begin{proof}
+We can assume that the $p'(z)$ exists and the ration between $p(z)$ and $p'(z)$ is
+$$\frac{p'(z)}{p(z)} = \frac{d_1}{z-z_1}+\frac{d_2}{z-z_2}+...+\frac{d_r}{z-z_r}$$
+where $z_1,z_2,...,z_r$ are the zeros of the polynomial $p(z)$. Now if we assume that all the zeros of $p(z)$ lie in the upper half-plane or $\Im (z_r)>0$. We see that if we write $p'(z)/p(z)$ as
+$$\frac{p'(z)}{p(z)} = \frac{d_1(z-z_1)}{(z-z_1)^2}+\frac{d_2(z-z_2)}{(z-z_2)^2}+...+\frac{d_r(z-z_r)}{(z-z_r)^2}$$
+we can see that the zeros of $p'(z)/p(z)$ are $z_1,z_2,...,z_r$ and we know that they are lie in the upper half-plane. Therefore the zeros of $p'(z)$ all lie in the upper half-plane if the zeros of $p(z)$ lie in the upper half-plane.
+\end{proof}
+
+\end{enumerate}
+\item 3.3: 4, 12, 19
+\begin{enumerate}[(i)]
+\item 4)\\
+\newtheorem{theo19}{Theorem}
+\begin{theo19}
+$\Log (e^z) = z$ if and only if $-\pi<\Im(z)\le\pi$
+\end{theo19}
+\begin{proof}
+Let us assume that $z$ takes the form $a+ib$. We can say that
+\begin{align*}
+\Log e^z&=\Log(e^{a+ib})\\
+&=\Log(e^{a}e^{ib})
+\end{align*}
+Using the definition of $\Log(z)$
+$$\Log(z) \equiv \Log|z| + i\Arg(z)$$
+we can say
+\begin{align*}
+\Log(e^{a}e^{ib})	&=\Log|e^ae^{ib}| + i\Arg(e^ae^{ib}) \\
+					&=\Log|e^a|+\Log|e^{ib}| +i[\Arg(e^a)+\Arg(e^{ib})]\\
+					&=a+\Log|e^{ib}|+i\Arg(e^a)+i\Arg(e^{ib})
+\end{align*}
+Because $e^a$ is real valued we know that $\Arg(e^a)=0$ 
+\begin{align*}
+a+\Log|e^{ib}|+i\Arg(e^a)+i\Arg(e^{ib}) &= a+\Log|e^{ib}| +\cancelto{0}{i\Arg(e^a)}+i\Arg(e^{ib})\\
+			 &= a+\Log|e^{ib}| +i\Arg(e^{ib})
+\end{align*}
+We can say that $e^{ib}$ is in the form $re^{i\theta}$ we see that $r=1$ therefore we know that $|e^{ib}| = 1$. We can also see the $\theta = b$ it follows that $\Arg(e^{ib}) = b$ for $-\pi<b\le\pi$ (the principle branch of $\Arg$)
+\begin{align*}
+a+\Log|e^{ib}| +i\Arg(e^{ib}) &= a+\Log(1) +i\Arg(e^{ib})\\
+	&=a+i\Arg(e^{ib})\\
+	&=a+ib \mbox{ for } -\pi<b\le\pi\\
+\Log (e^z)&=z \mbox{ for } -\pi<\Im(z)\le\pi
+\end{align*}
+\end{proof}
+
+\item 12)\\
+\textit{Find a branch of $\log(z^2+1)$ that is analytic at $z=0$ and takes the value $2\pi i$ there.}
+We see that because $z^2+1$ will not equal zero at $z=0$ we know that any branch of $\log$ will be analytic when $z=0$ so we want a branch that includes $2\pi$ in the interval. So we pick the interval $(\pi,3\pi]$. Finding the value when $z=0$ yields
+\begin{align*}
+\Log_{\pi}(0^2+1) &= \Log_{\pi}(1)\\
+&= \Log_{\pi}(1e^{i2\pi})\\
+&=\Log|1|+i\Arg_{\pi}(e^{i2\pi})\\
+&=\cancelto{0}{\Log|1|}+i\Arg_{\pi}(e^{i2\pi})\\
+&=i\Arg_{\pi}(e^{i2\pi})\\
+&=2\pi i
+\end{align*}
+
+\item 19)\\
+\textit{Construct a branch of $\log z$ that is analytic in the domain $D$ consisting of all points in the plane except those lying on the half-parabola $\{x+iy\ :\ x\ge 0,y=\sqrt{x}\}$}
+
+So to make a line of discontinuity that lies on the half-parabola $\{x+iy\ :\ x\ge 0,y=\sqrt{x}\}$ we need to find an angle ($\theta(r)$) when you have a given $r$ on the half-parabola, this angle will be the branch angle of $\Arg$. So for any given $r$ that goes from the origin to the half-parabola we can say that the angle $r$ makes is given by
+$$\tan(\theta) = \frac{y}{x}$$
+$$\tan(\theta) = \frac{\sqrt{x}}{x}$$
+$$\theta = \arctan\left(\frac{\sqrt{x}}{x}\right)$$
+So we pick our branch of $\arg$ as
+$$\arctan\left(\frac{\sqrt{x}}{x}\right) < \theta < \arctan\left(\frac{\sqrt{x}}{x}\right)+2\pi$$
+
+\end{enumerate}
+\item 3.5:  4, 6, 15 
+\begin{enumerate}[(i)]
+\item 4)\\
+\textit{Is 1 raised to any power always equal to 1?}
+
+First let us say that
+$$z=1= 1e^{i0}$$
+So if we apply an arbitrary complex power $\alpha$ to $z$ we get
+\begin{align*}
+z^{\alpha} &= \left(1e^{i0}\right)^{\alpha}\\
+ &= 1^{\alpha}e^{\alpha\Log(e^{i0})}
+\end{align*}
+We can calculate $\Log(e^{i0})$ (using the principle value of $\Log$) as
+\begin{align*}
+\Log(e^{i0}) &= \Log|e^{i0}| + i\Arg(e^{i0})\\
+ &= \Log|1| + i\Arg(e^{i0})\\
+ &= i\Arg(e^{i0})\\
+ &= i0\\
+ &= 0
+\end{align*}
+So we can say that 
+\begin{align*}
+1^{\alpha}e^{\alpha\Log(e^{i0})} &= 1^{\alpha}e^{\alpha0}\\
+&= 1^{\alpha}\cancelto{1}{e^{0}}\\
+&= 1^{\alpha}\\
+&= 1
+\end{align*}
+Therefore we can see that for any complex power $\alpha$ 
+$$1^{\alpha} = 1$$
+\item 6)\\
+\textit{Let $\alpha$ and $\beta$ be complex constants and let $z\ne 0$. Show that the following identities hold when each power function is given by its principal branch.}
+\begin{enumerate}[(a)]
+\item 
+\newtheorem{theo6a}{Theorem}
+\begin{theo6a}
+$z^{-\alpha}= \dfrac{1}{z^{\alpha}}$
+\end{theo6a}
+\begin{proof}
+By the definition of exponents we know that
+$$z^{-\alpha} = e^{-\alpha\Log(z)} $$
+We can use the $\Log$ identity $n\Log(z)=\Log(z^n)$ to yield
+\begin{align*}
+e^{-\alpha\Log(z)}&= e^{\alpha\Log(z^{-1})} \\
+ &= e^{\alpha\Log(1/z)} \\
+ &= e^{\Log\left(\dfrac{1}{z}\right)^{\alpha}} \\
+ &= e^{\Log\left(\dfrac{1^{\alpha}}{z^{\alpha}}\right)}\\
+ &= e^{\Log\left(\dfrac{1}{z^{\alpha}}\right)}\\
+z^{\alpha} &= \frac{1}{z^{\alpha}}
+\end{align*}
+\end{proof}
+
+\item
+\newtheorem{theo6b}{Theorem}
+\begin{theo6b}
+$z^{\alpha}z^{\beta}= z^{\alpha+\beta}$
+\end{theo6b}
+\begin{proof}
+\begin{align*}
+z^{\alpha}z^{\beta} &= e^{\alpha\Log(z)}e^{\beta\Log(z)}\\
+ &= e^{\alpha\Log(z)+\beta\Log(z)}\\
+ &= e^{\Log(z)(\alpha+\beta)}\\
+ &= e^{(\alpha+\beta)\Log(z)}\\
+ &= e^{\Log(z^{(\alpha+\beta)})}\\
+z^{\alpha}z^{\beta} &= z^{\alpha+\beta}
+\end{align*}
+\end{proof}
+
+\item
+\newtheorem{theo6c}{Theorem}
+\begin{theo6c}
+$\frac{z^{\alpha}}{z^{\beta}}= z^{\alpha-\beta}$
+\end{theo6c}
+\begin{proof}
+\begin{align*}
+\frac{z^{\alpha}}{z^{\beta}} &= \frac{e^{\alpha\Log(z)}}{e^{\beta\Log(z)}}\\
+&= {e^{\alpha\Log(z)}}{e^{-\beta\Log(z)}}\\
+&= {e^{\alpha\Log(z)-\beta\Log(z)}}\\
+&= {e^{\Log(z)(\alpha-\beta)}}\\
+&= {e^{(\alpha-\beta)\Log(z)}}\\
+&= {e^{\Log(z^{(\alpha-\beta)})}}\\
+\frac{z^{\alpha}}{z^{\beta}} &= z^{\alpha-\beta}
+\end{align*}
+\end{proof}
+\end{enumerate}
+
+\item 15)\\
+\textit{Find a branch of each of the following multiple-valued functions that is analytic in the given domain:}
+\begin{enumerate}[(a)]
+\item\textit{$(z^2-1)^{1/2}$ in the unit disk, $|z| < 1$.}
+
+So we can say that 
+$$(z^2-1)^{1/2} = e^{(1/2)\log(z^2-1)}$$
+we see that we need to pick a branch of $\log$ that is analytic when $|z|<1$. We see that for $z^2-1$ in the negative real is a cut. So we need to make it such that when $z<1$ we are not in the negative reals. So we can see that $1-z^2$ satisfies this so if we say 
+$$(z^2-1)^{1/2} = e^{(1/2)\log(-1(-1)(z^2-1))}$$
+$$(z^2-1)^{1/2} = e^{(1/2)\log(-1(1-z^2))}$$
+$$(z^2-1)^{1/2} = -e^{(1/2)\log(1-z^2)}$$
+
+\item\textit{$(4+z^2)^{1/2}$ in the complex plane slit along the imaginary axis from $-2i$ to $2i$.}
+So we have
+$$(4+z^2)^{1/2} = e^{(1/2)\log(4+z^2)}$$
+We need to make $4+z^2$ not in the negative reals when $-2i<z<2i$ so we can say that 
+$$(4+z^2)^{1/2} = e^{(1/2)\log((z^2/z^2)(4+z^2))}$$
+$$(4+z^2)^{1/2} = e^{(1/2)\log((z^2)(4/z^2+1))}$$
+$$(4+z^2)^{1/2} = z^2e^{(1/2)\log((4/z^2+1))}$$
+\item\textit{$(z^4-1)^{1/2}$ in the exterior of the unit circle, $|z|>1$.}
+\item\textit{$(z^3-1)^{1/2}$ in the exterior of the unit circle, $|z|>1$.}
+\end{enumerate}
+\end{enumerate}
+\end{enumerate}
+
+
+\end{document}
+

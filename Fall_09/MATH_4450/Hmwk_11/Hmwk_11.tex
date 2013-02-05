@@ -1,0 +1,247 @@
+\documentclass[11pt]{article}
+
+\usepackage{latexsym}
+\usepackage{amssymb}
+\usepackage{enumerate}
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{ulem}
+\usepackage{cancel}
+
+\setlength{\evensidemargin}{.25in}
+\setlength{\oddsidemargin}{-.25in}
+\setlength{\topmargin}{-.75in}
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{9.5in}
+\newcommand{\due}{November 18th, 2009}
+\newcommand{\HWnum}{11}
+\newcommand{\CC}{\mathbb{C}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\zbar}{\overline{z}}
+\newcommand{\Let}{\textnormal{Let }}
+\newcommand{\Arg}{\textnormal{arg}}
+\newcommand{\Log}{\textnormal{Log}}
+
+\begin{document}
+\input{../title.tex}
+\subsection*{Written Problems}
+\begin{enumerate}
+\item 5.3: 11 \\
+\textit{Let $\sum_{k=0}^{\infty}a_kz^k$ and $\sum_{k=0}^{\infty}b_kz^k$ be two power series have a positive radius of convergence.}
+\begin{enumerate}
+\item \textit{Show that if $\sum_{k=0}^{\infty}a_kz^k = \sum_{k=0}^{\infty}b_kz^k$ in some circular neighborhood of the origin, then $a_k=b_k$ for all $k$.}
+
+So if we assume that 
+$$\sum_{k=0}^{\infty}a_kz^k = \sum_{k=0}^{\infty}b_kz^k$$
+in some circular neighborhood of the origin. We can say that 
+$$\sum_{k=0}^{\infty}a_kz^k - \sum_{k=0}^{\infty}b_kz^k = 0$$
+If we group the sums and factor the $z^k$ we get
+$$\sum_{k=0}^{\infty}(a_k-b_k)z^k  = 0$$
+If we assume that $z$ is non zero then we know that
+$$\sum_{k=0}^{\infty}(a_k-b_k)  = 0$$
+So it follows that $a_k=b_k$ for all $k$.
+
+\item \textit{Show, more generally, that if $\sum_{k=0}^{\infty}a_kx^k = \sum_{k=0}^{\infty}b_kx^k$ for all real $x$ in some open interval containing the origin, then $a_k = b_k$ for all $k$}
+
+We see in part (a) that this holds true for a cirular neigborhood around the origin. This region contains the real axis and in turn all real $x$ in some open interval containing the origin. So it follows that $a_k=b_k$ in the interval for all $k$.
+
+\end{enumerate}
+
+\item 5.6: 10 \\
+\newtheorem{theo56}{Theorem}
+\begin{theo56}
+If the function $f(z)$ is analytic in a domain $D$ and has zeros at the distinct points $z_1,z_2,...,z_n$ of respective orders $m_1,m_2,...,m_n$, then there exists a function $g(z)$ analytic in $D$ such that 
+$$f(z) = (z-z_1)^{m_1}(z-z_2)^{m_2}...(z-z_n)^{m_n}g(z)$$
+\end{theo56}
+\begin{proof}
+If we apply \emph{Theorem 16} which states: \textit{Let $f$ be analytic at $z_0$. Then $f$ has a zero of order $m$ at $z_0$ if and only if $f$ can be written as $$f(z) = (z-z_0)^mg(z)$$ where $g$ is analytic and $z_0$ and $g(z_0)\ne 0$.}
+So we after applying \emph{Theorem 16} to $f(z)$ for the zero at $z_1$ we get
+$$f(z) = (z-z_1)^{m_1}g_1(z)$$
+We know that $g_1(z)$ is analytic and it also contains a zero at $z_2$ so we can say $g_1(z) = (z-z_2)^{m_2}g_2(z)$, which makes $f(z)$ become
+$$f(z) = (z-z_1)^{m_1}(z-z_2)^{m_2}g_2(z)$$
+we see that we can continue to apply \emph{Theorem 16} until we get to the nth zero at which point we get
+$$f(z) = (z-z_1)^{m_1}(z-z_2)^{m_2}...(z-z_n)^{m_n}g(z)$$
+Where $g(z)$ is analytic and $g(z_n)\ne 0$.
+\end{proof}
+\end{enumerate}
+
+\subsection*{Problems}
+
+\begin{enumerate}
+\item 5.2: 16\\
+If we do a Taylor expansion of $p(z)$ around the point $z=1$ we can see that
+$$p(1) = a_0+a_11+a_21^2+...$$
+Which we can write as
+$$p(1) = \sum_{n=0}^{\infty}a_n$$
+Now the first derivative of $p(z)$ is 
+$$p'(z) = a_1+2a_2z+3a_3z^2+...$$
+Now if we evaluate this at $z=1$ we get
+$$p'(1) = \sum_{n=0}^{\infty}na_n$$
+and for the next derivative at $z=1$ we get
+$$p''(1) = \sum_{n=0}^{\infty}n(n-1)a_n$$
+We can see that the general form for the jth derivative is 
+$$p^{(j)}(1) = \sum_{n=0}^{\infty}\frac{n!}{(n-j)!}a_n$$
+now we have the coefficients of $p_n(z)$ where
+$$c_k = \frac{p^{(k)}(1)}{k!}$$
+so it follows that $p_n(z)$ is
+$$p_n(z) = \sum_{n=0}^{\infty}a_n + \frac{1}{2!}\sum_{n=0}^{\infty}na_n(z-1) + \frac{1}{3!}\sum_{n=0}^{\infty}n(n-1)a_n(z-1)^3 + ...$$
+or 
+$$p_n(z) = \sum_{k=0}^{\infty}\sum_{n=0}^{\infty}\frac{n!}{(n-k)!}a_n\frac{(z-1)^k}{k!}$$
+
+\item 5.3: 4, 14
+\begin{enumerate}[(i)]
+\item 4)\\
+For a power series to converge at $z = 2+3i$ we see that the series would have to converge inside a disk of radius $R=\sqrt{13}$. So we know every disk inside of $R$ converges, but we want the power series to diverge at $z=3-i$ but this is at $R' = \sqrt{10}$ which is inside of the disk of convergence. Therefore there does not exist a power series that converges at $z = 2+3i$ and diverges at $z=3-i$.
+
+\item 14)\\
+If we assume that
+$$\frac{d^2 f}{dz^2}+f=0$$
+we can see that 
+$$\frac{d^2 f}{dz^2}=-f$$
+and if we take the derivative of both side we see
+$$\frac{d^3 f}{dz^3}=-\frac{d f}{dz}$$
+Now because we assume that $f$ is analytic at $z=0$ we can write out the \emph{Taylor series} around zero using the given initial conditions $f(0)=0$ and $f'(0)=1$. We immediately see that whenever $n$ is even we have a zero. So
+$$f(z) = z-\frac{1}{3!}z^3+\frac{1}{5!}z^5+...$$
+or
+$$f(z) = \sum_{n=1,3,5...}\frac{(-1)^{n+1}}{n!}z^n$$
+Which we know to be $\sin(z)$ so we can say
+$$f(z) = \sin(z)$$
+
+\end{enumerate}
+\item 5.5: 6, 10, 13
+\begin{enumerate}[(i)]
+\item 6)\\
+To find the \emph{Laurent series} for $z^2\cos(1/3z)$, we can start with the \emph{Taylor series} for $\cos(w)$ where $w=1/3z$. Note that we can use the \emph{Taylor series} because this function is analytic in $|z|>0$.
+$$\cos(w) = 1 - \frac{w^2}{2!} + \frac{w^4}{4!}+...$$
+so if we replace $w$ with $1/3z$ we get 
+$$\cos(1/3z) = 1 - \left(\frac{1}{3z}\right)^2\frac{1}{2!} + \left(\frac{1}{3z}\right)^4\frac{1}{4!}+...$$
+Now if we multiply by the $z^2$ we get
+\begin{align*}
+z^2\cos(1/3z) &= z^2 - \left(\frac{1}{3z}\right)^2\frac{z^2}{2!} + \left(\frac{1}{3z}\right)^4\frac{z^2}{4!}+...\\
+&= z^2 - \frac{1}{3^2z^2}\frac{z^2}{2!} + \frac{1}{3^4z^4}\frac{z^2}{4!}+...\\
+&= z^2 - \frac{1}{3^2}\frac{1}{2!} + \frac{1}{3^4z^2}\frac{1}{4!}+...
+\end{align*}
+We can see that the \emph{Laurent series} can be written as
+$$z^2\cos\left(1/3z\right) = \sum_{n=0}^{\infty}\frac{(-1)^n}{3^{2n}(2n)!}\frac{1}{z^{2n-2}}$$
+
+\item 10)\\
+To find the \emph{Laurent series} expansion of
+$$f(z) = \exp\left[\frac{\lambda}{2}\left(z-\frac{1}{z}\right)\right]$$
+we can use the integral formula:
+$$a_j = \frac{1}{2\pi i}\oint_{C}\frac{f(w)}{(w-z)^{j+1}}dw$$
+where we choose the point $z=0$ and $C$ is $C:|z|=1$ so we get
+$$a_j = \frac{1}{2\pi i}\oint_{|z|=1}\frac{\exp\left[\frac{\lambda}{2}\left(w-\frac{1}{w}\right)\right]}{w^{j+1}}dw$$
+Now if we parametrize $C$ with $w = e^{i\theta}$ where $\theta$ goes from $0$ to $2\pi$ and $dw = ie^{i\theta}d\theta$. We get
+\begin{align*}
+a_j &= \frac{1}{2\pi i}\int_0^{2\pi}\frac{\exp\left[\frac{\lambda}{2}\left(e^{i\theta} - e^{-i\theta}\right)\right]}{e^{(j+1)i\theta}}ie^{i\theta}d\theta\\
+&= \frac{1}{2\pi}\int_0^{2\pi}\frac{\exp\left[\frac{\lambda}{2}\left(e^{i\theta} - e^{-i\theta}\right)\right]}{e^{(j+1)i\theta}e^{-i\theta}}d\theta\\
+&= \frac{1}{2\pi}\int_0^{2\pi}\frac{\exp\left[\frac{\lambda}{2}\left(e^{i\theta} - e^{-i\theta}\right)\right]}{e^{ji\theta}}d\theta\\
+&= \frac{1}{2\pi}\int_0^{2\pi}\exp\left[\frac{\lambda}{2}\left(e^{i\theta} - e^{-i\theta}\right) - ji\theta\right]d\theta
+\end{align*}
+We can see that 
+$$e^{i\theta}-e^{-i\theta} = 2i\sin(\theta)$$
+so the integral becomes
+\begin{align*}
+a_j &= \frac{1}{2\pi}\int_0^{2\pi}\exp\left[\frac{\lambda}{2}2i\sin(\theta) - ji\theta\right]d\theta\\
+&= \frac{1}{2\pi}\int_0^{2\pi}\exp\left[\lambda i\sin(\theta) - ji\theta\right]d\theta\\
+&= \frac{1}{2\pi}\int_0^{2\pi}\exp\left[i(\lambda\sin(\theta) - j\theta)\right]d\theta
+\end{align*}
+We can now apply \emph{Eular's equation} to get
+$$a_j = \frac{1}{2\pi}\int_0^{2\pi}\cos\left(\lambda\sin(\theta) - j\theta\right)d\theta + \frac{i}{2\pi}\int_0^{2\pi}\sin\left(\lambda\sin(\theta) - j\theta\right)d\theta$$
+Now we can see that the integral of the sine term is zero because the function is analytic in $C$
+\begin{align*}
+a_j &= \frac{1}{2\pi}\int_0^{2\pi}\cos\left(\lambda\sin(\theta) - j\theta\right)d\theta + \cancelto{0}{\frac{i}{2\pi}\int_0^{2\pi}\sin\left(\lambda\sin(\theta) - j\theta\right)d\theta}\\
+&= \frac{1}{2\pi}\int_0^{2\pi}\cos\left(-(\lambda\sin(\theta) - j\theta)\right)d\theta\\
+a_j &= \frac{1}{2\pi}\int_0^{2\pi}\cos\left(j\theta -\lambda\sin(\theta)\right)d\theta\\
+\end{align*}
+Now we see that $a_j$ is the same as $J_K(\lambda)$ so 
+$$J_K(\lambda) =  \frac{1}{2\pi}\int_0^{2\pi}\cos\left(k\theta -\lambda\sin(\theta)\right)d\theta$$
+
+\item 13)\\
+For an analytic function $f(z)$ on the annulus $A_{r,R}$ where 
+$$A_{r,R} = \{z\in\CC\ |\ r<|z-z_0|<R\}$$
+we can find the upper bound of the positive coefficients $a_j$ of the \emph{Laurent expansion} by finding the bound of the integral 
+$$a_j = \frac{1}{2\pi i}\oint_{A_{r,R}}\frac{f(w)}{(w-z)^{j+1}}dw$$
+Which we know as 
+$$\frac{1}{2\pi i}\oint_{A_{r,R}}\frac{f(w)}{(w-z)^{j+1}}dw \le \frac{1}{2\pi}l(A_{r,R})\max_{z\in A_{r,R}}\left|\frac{f(w)}{(w-z)^{j+1}}\right|$$
+We know that the length of the annulus $A_{r,R}$ is $2\pi R$ and that the function $f(z)$ is bounded by $M$ so we get
+\begin{align*}
+|a_j| &\le \frac{1}{2\pi}l(A_{r,R})\max_{z\in A_{r,R}}\left|\frac{f(w)}{(w-z)^{j+1}}\right|\\
+&\le \frac{1}{2\pi}2\pi R\frac{|f(w)|}{|w-z|^{j+1}}\\
+&\le R\frac{M}{R^{j+1}}\\
+|a_j| &\le \frac{M}{R^j}
+\end{align*}
+for the negative coefficients we get
+$$a_{-j} = \frac{1}{2\pi i}\oint_{A_{r,R}}\frac{f(w)}{(w-z)^{-j+1}}dw$$
+so we can find the upper bound as
+\begin{align*}
+|a_{-j}| &\le \frac{1}{2\pi}l(A_{r,R})\max_{z\in A_{r,R}}\left|\frac{f(w)}{(w-z)^{-j+1}}\right|\\
+&\le \frac{1}{2\pi}2\pi r \frac{|f(w)|}{|w-z|^{-j+1}}\\
+&\le  r \frac{M}{r^{-j+1}}\\
+&\le  \frac{M}{r^{-j}}\\
+|a_{-j}| &\le  {M}{r^{j}}
+\end{align*}
+
+
+\end{enumerate}
+\item 5.6: 2, 5 
+\begin{enumerate}[(i)]
+\item 2)\\
+We know that the poles of 
+$$f(z) = \frac{1}{\left(2\cos z-2+z^2\right)^2}$$
+are the zeros of $1/f(z)$ where
+$$\frac{1}{f(z)} = (2\cos z-2+z^2)^2$$
+So to find the order of the pole at $z=0$ we expand the cosine term to yield
+\begin{align*}
+\frac{1}{f(z)} &= \left[2\left(1-\frac{z^2}{2!}+\frac{z^4}{4!}+...\right)-2+z^2\right]^2\\
+&= \left[\left(2-\frac{2z^2}{2!}+\frac{2z^4}{4!}+...\right)-2+z^2\right]^2\\
+&= \left[-z^2+\frac{2z^4}{4!}+...+z^2\right]^2\\
+&= \left[\frac{2z^4}{4!}-\frac{2z^6}{6!}+...\right]^2
+\end{align*}
+So we see that the leading term goes by $z^8$, so we see that $1/f(z)$ has a zero of order 8 for $z=0$. Therefore we can conclude that $f(z)$ has a pole of order 8 for $z=0$.
+
+\item 5)
+\begin{enumerate}[(a)]
+\item
+For example if we say that
+$$f(z) = \frac{z}{z-z_0}$$
+and
+$$g(z) = \frac{-z_0}{z-z_0}$$\
+Note both $f(z)$ and $g(z)$ have a pole at $z_0$, but if we calculate $f+g$ we see
+\begin{align*}
+f(z)+g(z) &= \frac{z}{z-z_0}-\frac{z_0}{z-z_0}\\
+&= \frac{z-z_0}{z-z_0}\\
+&=1
+\end{align*}
+which does not have any poles so the statement: \textit{If $f$ and $g$ have a pole at $z_0$, then $f+g$ has a pole at $z_0$} is false.
+
+\item
+
+
+\item
+The statement: \textit{If $f(z)$ has a pole of order $m$ at $z=0$, then $f(z^2)$ has a pole of order $2m$ at $z=0$} is true. This is becuase it will take twice as many derivatives to remove the pole. So if it takes $m$ derivatives to remove the pole of $f(z)$ then it will take $2m$ derivatives to remove the pole of $f(z^2)$
+
+\item
+Let $f(z) = (z-z_0)^{-1}$ and 
+$$g(z) = \frac{z-z_0}{h(z)}$$
+where $h(z)$ has an essential sigularity at $z_0$ we can see that the product of $f$ and $g$ will remove the pole at $z_0$ so the statement: \textit{If $f$ has a pole at $z_0$ and $g$ has an essential singularity at $z_0$, then the product $fg$ has a pole at $z_0$} is false.
+We can see that the statement:
+
+\item
+Let
+$$f(z) = (z-z_0)^mh(z)$$
+and 
+$$g(z) = \frac{k(z)}{(z-z_0)^n}$$
+we see that the product of the two functions is
+\begin{align*}
+f(z)g(z) &= \frac{k(z)}{(z-z_0)^n}(z-z_0)^mh(z)\\
+f(z)g(z) &= k(z)h(z)(z-z_0)^{m-n}\\
+\end{align*}
+Assuming that $n\le m$ we see that the pole has been removed. So the statement: \textit{If $f$ has a zero of order $m$ at $z_0$ and $g$ has a pole of order $n, n\le m$, at $z_0$, then the product of $fg$ has a removable singularity at $z_0$} is true.
+\end{enumerate}
+
+\end{enumerate}
+\end{enumerate}
+
+\end{document}
+

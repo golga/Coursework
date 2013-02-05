@@ -1,0 +1,386 @@
+\documentclass[11pt]{article}
+
+\usepackage{latexsym}
+\usepackage{amssymb}
+\usepackage{enumerate}
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{ulem}
+\usepackage{cancel}
+
+\setlength{\evensidemargin}{.25in}
+\setlength{\oddsidemargin}{-.25in}
+\setlength{\topmargin}{-.75in}
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{9.5in}
+\newcommand{\due}{September 23rd, 2009}
+\newcommand{\HWnum}{4}
+\newcommand{\CC}{\mathbb{C}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\zbar}{\overline{z}}
+\newcommand{\Let}{\textnormal{Let }}
+\newcommand{\Arg}{\textnormal{arg}}
+
+\begin{document}
+\input{../title.tex}
+\subsection*{Written Problems}
+\begin{enumerate}
+\item  2.3.1
+We are trying to show that 
+$$\lim_{\Delta z\rightarrow 0}\frac{f(z_0 + \Delta z) - f(z_0)}{\Delta z}$$
+is equivalent to 
+$$\lim_{z\rightarrow z_0}\frac{f(z) - f(z_0)}{z-z_0}$$
+To show this we need to define $\Delta z$ as
+$$\Delta z = z - z_0$$
+Because $\Delta z$ represents the change between $z$ and $z_0$. So we can see as $\Delta z \rightarrow 0$ $z\rightarrow z_0$ so we see that
+$$\lim_{\Delta z\rightarrow 0}\Delta z = \lim_{z\rightarrow z_0} z - z_0$$
+So now if we replace $\Delta z$ in our original limit we get
+$$\lim_{\Delta z\rightarrow 0}\frac{f(\cancel{z_0} + z - \cancel{z_0}) - f(z_0)}{z-z_0}$$
+now we can change our limit
+$$\lim_{z\rightarrow z_0}\frac{f(z) - f(z_0)}{z-z_0}$$
+
+
+\item  \sout{Formulate a ``the following are equivalent" theorem using 2.4.8, 2.4.10, 2.4.11, 2.4.13, and prove it.} \\
+Put the results of these 4 problems (2.4.8, 2.4.10, 2.4.11, 2.4.13) into the statement of a single Theorem\\
+We are trying to show that if $f(z)$ is analytic in a domain $D$ and any of these following conditions are true
+\begin{equation}
+\textnormal{Re}\ f(z)\ \textnormal{or } \textnormal{Im}\ f(z)\ \textnormal{is constant}
+\label{Pos1}
+\end{equation}
+
+\begin{equation}
+|f(z)| \textnormal{ is analytic in the domain } D
+\label{Pos2}
+\end{equation}
+
+\begin{equation}
+f(z) \textnormal{ is real-valued in domain } D
+\label{Pos3}
+\end{equation}
+
+\begin{equation}
+\overline{f(z)} \textnormal{ is analytic in domain D }
+\label{Pos4}
+\end{equation}
+then $f(z)$ is constant in $D$. 
+
+So to show \ref{Pos1} we first know that if $\textnormal{Re}f(z)$ is constant we know that
+$$u(x,y) = c$$
+where $c$ is a constant. This means the partials of $u$ become
+$$\frac{\partial u}{\partial x}=0$$
+$$\frac{\partial u}{\partial y}=0$$
+
+Because $f(z)$ is analytic in $D$ we know that the \emph{Cauchy-Riemann Equations} 
+$$\frac{\partial u}{\partial x}=\frac{\partial v}{\partial y}$$
+and 
+$$\frac{\partial u}{\partial y}=-\frac{\partial v}{\partial x}$$
+are true for all points in $D$. This implies 
+$$\frac{\partial v}{\partial x}=0$$
+$$\frac{\partial v}{\partial y}=0$$
+Note as a side effect we found that if $\textnormal{Re}f(z)$ is constant then $\textnormal{Im}f(z)$ has to be constant too. We can find $f'(z)$ using
+$$f'(z) = \frac{\partial u}{\partial x} + i\frac{\partial v}{\partial x}$$
+$$f'(z) = 0$$
+Therefore according to \emph{Theorem 6} $f(z)$ must be constant on the domain $D$.
+
+For \ref{Pos2} we assume that $|f(z)|$ is analytic in $D$. If we assume that $f(z)=u(x,y) + iv(x,y)$ then we can infer that 
+$$|f(z)| = \sqrt{u(x,y)^2 + v(x,y)^2}$$
+So if we write this in the form $u_1(x,y)+iv_1(x,y)$ we see that for $|f(z)|$ 
+$$u_1(x,y) =\sqrt{u(x,y)^2 + v(x,y)^2}$$
+and the $v_1$ (imaginary part) component is zero and 
+That means the partials with respect to $v_1$ are
+$$\frac{\partial v_1}{\partial x}=0$$
+$$\frac{\partial v_1}{\partial y}=0$$
+Now we take into account that $|f(z)|$ is analytic thus the \emph{Cauchy-Riemann Equations} are true. This implies that 
+$$\frac{\partial u_1}{\partial x}=0$$
+$$\frac{\partial u_1}{\partial y}=0$$
+Now we can see that $|f(z)|$ is constant, this implies that $f(z)$ is constant as well.
+
+For \ref{Pos3} we assume that $f(z)$ is real valued. This implies that $v(x,y)=0$ when $f(z)$ is defined in the form $u(x,y) + iv(x,y)$. Therefore we see that the partials of $v$ are
+$$\frac{\partial v}{\partial x}=0$$
+$$\frac{\partial v}{\partial y}=0$$
+Because we also know that $f(z)$ is analytic on $D$ we can also say that the \emph{Cauchy-Riemann Equations}
+$$\frac{\partial u}{\partial x}=\frac{\partial v}{\partial y}$$
+and 
+$$\frac{\partial u}{\partial y}=-\frac{\partial v}{\partial x}$$
+are true on $D$. This implies that
+$$\frac{\partial u}{\partial x}=0$$
+$$\frac{\partial u}{\partial y}=0$$
+So now we can find $f'(z)$ using
+$$f'(z) = \frac{\partial u}{\partial x} + i\frac{\partial v}{\partial x}$$
+$$f'(z) = 0$$
+Therefore according to \emph{Theorem 6} $f(z)$ must be constant on the domain $D$.
+
+For \ref{Pos3} we assume that $f(z)$ is real valued. This implies that $v(x,y)=0$ when $f(z)$ is defined in the form $u(x,y) + iv(x,y)$. Therefore we see that the partials of $v$ are
+$$\frac{\partial v}{\partial x}=0$$
+$$\frac{\partial v}{\partial y}=0$$
+Because we also know that $f(z)$ is analytic on $D$ we can also say that the \emph{Cauchy-Riemann Equations}
+$$\frac{\partial u}{\partial x}=\frac{\partial v}{\partial y}$$
+and 
+$$\frac{\partial u}{\partial y}=-\frac{\partial v}{\partial x}$$
+are true on $D$. This implies that
+$$\frac{\partial u}{\partial x}=0$$
+$$\frac{\partial u}{\partial y}=0$$
+So now we can find $f'(z)$ using
+$$f'(z) = \frac{\partial u}{\partial x} + i\frac{\partial v}{\partial x}$$
+$$f'(z) = 0$$
+Therefore according to \emph{Theorem 6} $f(z)$ must be constant on the domain $D$.
+
+For \ref{Pos4} we assumed that $\overline{f(z)}$ is analytic on the domain $D$. 
+If we assume that 
+$$f(z) = u(x,y) +iv(x,y)$$
+we can see that 
+$$\overline{f(z)} = u(x,y) -iv(x,y)$$
+It is our assumption that $\overline{f(z)}$ is analytic. So we know the \emph{Cauchy-Riemann Equations} are true. So for $\overline{f(z)}$ we find
+$$\frac{\partial u}{\partial x}=\frac{\partial (-v)}{\partial y}$$
+$$\frac{\partial u}{\partial x}=-\frac{\partial v}{\partial y}$$
+
+$$\frac{\partial u}{\partial y}=-\frac{\partial (-v)}{\partial x}$$
+$$\frac{\partial u}{\partial y}=\frac{\partial v}{\partial x}$$
+
+And we know that $f(z)$ is analytic on $D$ so can find that the \emph{Cauchy-Riemann Equations}
+$$\frac{\partial u}{\partial x}=\frac{\partial v}{\partial y}$$
+$$\frac{\partial u}{\partial y}=-\frac{\partial v}{\partial x}$$
+are true for $f(z)$ on $D$. So if both functions are analytic then both sets of \emph{Cauchy-Riemann Equations} have to be true. This yields 
+$$-\frac{\partial v}{\partial y}=\frac{\partial u}{\partial x}=\frac{\partial u}{\partial x}=\frac{\partial v}{\partial y}$$
+$$-\frac{\partial v}{\partial y}=\frac{\partial v}{\partial y}$$
+And
+$$\frac{\partial v}{\partial x}=\frac{\partial u}{\partial y}=\frac{\partial u}{\partial y}=-\frac{\partial v}{\partial x}$$
+$$\frac{\partial v}{\partial x}=-\frac{\partial v}{\partial x}$$
+The fact that 
+$$\frac{\partial v}{\partial x}=-\frac{\partial v}{\partial x}$$
+$$-\frac{\partial v}{\partial y}=\frac{\partial v}{\partial y}$$
+implies that the only value for the partials of $v$ are
+$$\frac{\partial v}{\partial y}=0$$
+$$\frac{\partial v}{\partial x}=0$$
+And from the \emph{Cauchy-Riemann Equations} we see that 
+$$\frac{\partial u}{\partial y}=0$$
+$$\frac{\partial u}{\partial x}=0$$
+So now we can find $f'(z)$ using
+$$f'(z) = \frac{\partial u}{\partial x} + i\frac{\partial v}{\partial x}$$
+$$f'(z) = 0$$
+Therefore according to \emph{Theorem 6} $f(z)$ must be constant on the domain $D$.
+
+\end{enumerate}
+
+\subsection*{Problems}
+
+\begin{enumerate}
+\item 2.3:  8, 11, 14, 16
+\begin{enumerate}[(i)]
+\item 8)\\
+For the expression
+$$\lim_{z\rightarrow z_0}\frac{|f(z)-f(z_0)|}{|z-z_0|} = |f'(z_0)|$$
+we can move the magnitude to be
+$$\lim_{z\rightarrow z_0}\frac{|f(z)-f(z_0)|}{|z-z_0|} = \left|\lim_{z\rightarrow z_0}\frac{f(z)-f(z_0)}{z-z_0}\right|$$
+Now it is obvious that 
+$$\lim_{z\rightarrow z_0}\frac{|f(z)-f(z_0)|}{|z-z_0|} = |f'(z_0)|$$
+
+For
+$$\lim_{z\rightarrow z_0} \Arg[f(z) - f(z_0)] -\Arg[z -z_0]$$
+we know that $\arg z$ represents the ratio between the real and imaginary components of $z$. This means we can write
+$$\Arg[f(z) - f(z_0)] -\Arg[z-z_0]= \frac{v(x,y) - v_0(x_0,y_0)}{u(x,y) - u_0(x_0,y_0)} -\frac{x -x_0}{y-y_0}$$
+\item 11)
+\begin{enumerate}[(a)]
+\item
+If the function contains a $\zbar$ then the function is ``inadmissible" because it will allow $$\frac{z+\zbar}{2}$$
+this would allow us to split the real components out of the variable $z$ so
+$$8\zbar +i$$
+is not analytic.
+\item
+For the same reason as part (a) 
+$$\frac{z}{\zbar + 2}$$
+is not analytic.
+\item
+We can see that the function 
+$$\frac{z^3+2z+i}{z-5}$$
+only contains $z$. So we know that the function is admissible so we can evaluate. We see that there is a discontinuity at $z=5$ so we can say that 
+$$\frac{z^3+2z+i}{z-5}$$
+is analytic everywhere but $z=5$.
+\item
+For the function
+$$x^2-y^2 +2xyi$$
+we need to see if the function can be written with $z$ using the fact that $$z=x+iy$$
+we can factor 
+$$x^2-y^2 +2xyi$$
+into
+$$(x+iy)(x+iy)$$
+now we can write in terms of $z$
+$$f(z)=z^2$$
+We see that $f(z)$ is just a polynomial so 
+$$f(z)=z^2$$
+is analytic everywhere.
+
+\item
+For the function 
+$$x^2+y^2+y-2+ix$$
+we will try to write the function in terms of $z$ using $$z=x+iy$$
+Trying to do this is not easy we can factor the squares into
+$$(x+iy)(x-iy)+y-2+ix$$
+Which becomes
+$$z\zbar-2+i(y+ix)$$
+$$z\zbar-2+iy-x$$
+which still cannot be put into the form of just $z$ and we have a $\zbar$ so 
+$$x^2+y^2+y-2+ix$$
+is not analytic.
+
+\item
+For the function
+$$\left(x+\frac{x}{x^2+y^2}\right)+i\left(y-\frac{y}{x^2+y^2}\right)$$
+we will write it in terms of $z$ using the identity $z = x+iy$
+We can see that the denominator is 
+$$\left(x+\frac{x}{z\zbar}\right)+i\left(y-\frac{y}{z\zbar}\right)$$
+from 
+$$x^2+y^2 = |z|^2 = z\zbar$$
+Now we can use the relations 
+$$x=\frac{z+\zbar}{2}$$
+$$y=\frac{z-\zbar}{2i}$$
+This gives us 
+$$\left(\frac{z+\zbar}{2}+\frac{z+\zbar}{2}\frac{1}{z\zbar}\right)+i\left(\frac{z-\zbar}{2i}-\frac{z-\zbar}{2i}\frac{1}{z\zbar}\right)$$
+$$\left(\frac{z+\zbar}{2}+\frac{z+\zbar}{2z\zbar}\right)+\left(\frac{z-\zbar}{2}-\frac{z-\zbar}{2z\zbar}\right)$$
+$$\left(\frac{(z+\zbar)z\zbar}{2z\zbar}+\frac{z+\zbar}{2z\zbar}\right)+\left(\frac{(z-\zbar)z\zbar}{2z\zbar}-\frac{z-\zbar}{2z\zbar}\right)$$
+$$\left(\frac{(z+\zbar)z\zbar + z+\zbar + (z-\zbar)z\zbar-z+\zbar}{2z\zbar}\right)$$
+$$\left(\frac{(z+\zbar)z\zbar +2\zbar + (z-\zbar)z\zbar}{2z\zbar}\right)$$
+$$\left(\frac{z\zbar(z+\zbar+z-\zbar) +2\zbar}{2z\zbar}\right)$$
+$$\left(\frac{z\cancel{\zbar}(2z) +2\cancel{\zbar}}{2z\cancel{\zbar}}\right)$$
+$$\left(\frac{z(2z) +2}{2z}\right)$$
+$$\left(\frac{z^2 +1}{z}\right)$$
+So now we have found $f(z)$ and we can see that there is one discontinuity at $z=0$ so we can say 
+$$\left(x+\frac{x}{x^2+y^2}\right)+i\left(y-\frac{y}{x^2+y^2}\right)$$
+is analytic everywhere but $z=0$
+
+\item
+The function $$|z|^2 +2z$$
+can be written as
+$$z\zbar +2z$$ and since we have a $\zbar$ we know that
+$$|z|^2 +2z$$ is not analytic.
+\item
+The function 
+$$\frac{|z| + z}{2}$$
+as we saw in part (g) $|z|$ can be written with a $\zbar$ so we know that 
+$$\frac{|z| + z}{2}$$
+is not analytic.
+\end{enumerate}
+
+\item 14)\\
+We are trying to prove \emph{L'H\^opital's rule} or
+$$\lim_{z\rightarrow z_0} \frac{f(z)}{g(z)}= \frac{f'(z_0)}{g'(z_0)}$$
+To do this we will rewrite $f$ and $g$ as
+$$f(z) = \frac{f(z) - f(z_0)}{z-z0}$$
+$$g(z) = \frac{g(z) - g(z_0)}{z-z0}$$
+Now can see that through the \emph{Mean Value Theorem} we get
+$$f(z) = \frac{f(z) - f(z_0)}{z-z0} = f'(c)\ \{c: z\le c\le z_0\}$$
+$$g(z) = \frac{g(z) - g(z_0)}{z-z0} = g'(c)\ \{c: z\le c\le z_0\}$$
+So we can say that
+$$\frac{f(z)}{g(z)}= \frac{f'(c)}{g'(c)}$$
+Now we have to look at what happens to $c$ as $z\rightarrow z_0$
+$$\lim_{z\rightarrow z_0} z\le c\le z_0 = z_0\le c\le z_0$$
+Therefore
+$$c=z_0$$
+as $z \rightarrow z_0$, so we can say
+$$\lim_{z\rightarrow z_0} \frac{f(z)}{g(z)}= \lim_{z\rightarrow z_0}\frac{f'(c)}{g'(c)}$$
+Taking the limit yields
+$$\lim_{z\rightarrow z_0} \frac{f(z)}{g(z)}= \frac{f'(z_0)}{g'(z_0)}$$
+
+\item 16)\\
+$$\Let f(z) = z^3 +1,\ \textnormal{and } \Let z_1 = \frac{-1+\sqrt{3}i}{2},\ z_2 = \frac{-1-\sqrt{3}i}{2}$$
+We are trying to show that there is no point $w$ on the line segment from $z_1$ to $z_2$ such that
+$$f(z_2)-f(z_1) = f'(w)(z_2-z_1)$$
+We can find $w$ by solving
+$$\left(\frac{-1-\sqrt{3}i}{2}\right)^3 +1 - \left(\frac{-1+\sqrt{3}i}{2}\right)^3 - 1 = f'(w)\left(\frac{-1-\sqrt{3}i}{2}-\frac{-1+\sqrt{3}i}{2}\right)$$
+$$\frac{(-1-\sqrt{3}i)^3  - (-1+\sqrt{3}i)^3}{8} = f'(w)\left(\frac{-1-\sqrt{3}i+1-\sqrt{3}i}{2}\right)$$
+$$\frac{(-1-\sqrt{3}i)^2(-1-\sqrt{3}i)  - (-1+\sqrt{3}i)^2(-1+\sqrt{3}i)}{8} = f'(w)\left(\frac{-1-\sqrt{3}i+1-\sqrt{3}i}{2}\right)$$
+$$ \frac{(2(-1+\sqrt{3}i))(-1-\sqrt{3}i)  - (-2(1+\sqrt{3}i))(-1+\sqrt{3}i)}{8}= f'(w)\left(\frac{-2\sqrt{3}i}{2}\right)$$
+$$\frac{(-1+\sqrt{3}i)(-1-\sqrt{3}i)  +(1+\sqrt{3}i)(-1+\sqrt{3}i)}{4}= f'(w)\left(-\sqrt{3}i\right)$$
+$$\frac{1-3i^2  +-1+3i^2}{4}= f'(w)\left(-\sqrt{3}i\right)$$
+$$\frac{0}{4}= f'(w)\left(-\sqrt{3}i\right)$$
+So we get that
+$$f'(w)=0$$
+and we find that $$f'(w) = 3w^2$$
+So $w=0$, now we need to find if this is on the line that is make by $z_1$ and $z_2$. We see that the real part of both functions is $\dfrac{-1}{2}$.
+So we can quickly tell that the line made by $z_1$ and $z_2$ is a line that intersects the real axis at $\dfrac{-1}{2}$ and runs parallel to the imaginary axis (so for all imaginary part of $z$). We can see that $w=0$ does not sit on this line.
+\end{enumerate}
+
+\item 2.4: 2, 4, 8, 
+\begin{enumerate}[(i)]
+\item 2)\\
+To test the analyticity of the function 
+$$h(z) = x^3 +3xy^2-3x+i(y^3+3x^2y-3y)$$
+we can split the function into
+$$u(x,y) = x^3 +3xy^2-3x$$
+$$v(x,y) =y^3+3x^2y-3y$$
+So now we can apply the \emph{Cauchy-Riemann equations} by taking the partials
+$$\frac{\partial u}{\partial x}=3x^2+3y^2-3$$
+$$\frac{\partial v}{\partial y}=3y^2+3x^2-3$$
+$$\frac{\partial u}{\partial y}=6xy$$
+$$\frac{\partial v}{\partial x}=6xy$$
+We see that
+$$\frac{\partial u}{\partial x}=\frac{\partial v}{\partial y}$$
+but 
+$$\frac{\partial u}{\partial y}\ne-\frac{\partial v}{\partial x}$$
+Except when $x=0$ or $y=0$. This means that the \emph{Cauchy-Riemann equations} do not hold true for all $x$ and $y$. So the function $h(z)$ is not analytic, but it is differentiable at $x=0$ and $y=0$, or on the coordinate axis.
+
+\item 4)\\
+Let
+$$f(z) = \left\{ \begin{array}{lr}
+		\dfrac{x^{4/3}y^{5/3}+ix^{5/3}y^{4/3}}{x^2+y^2} &\textnormal{if } z\ne 0,\\
+		0 &\textnormal{if } z =0\\
+		 \end{array}\right.$$
+If we test the \emph{Cauchy-Riemann equations} at $z=0$ we find that 
+$$u(x,y) = v(x,y) = 0$$
+And if we calculate the partials we get
+$$\frac{\partial u}{\partial x}=\frac{\partial v}{\partial y}=\frac{\partial u}{\partial y}=\frac{\partial v}{\partial x}=0$$
+We see that
+$$\frac{\partial u}{\partial x}=\frac{\partial v}{\partial y}$$
+and 
+$$\frac{\partial u}{\partial y}=-\frac{\partial v}{\partial x}$$
+so the \emph{Cauchy-Riemann equations} are true at $z=0$. But if we take the difference quotient 
+$$\lim_{\Delta z\rightarrow 0}\frac{f(\Delta z)}{\Delta z}$$
+Where $\Delta z = (x_0 - x) +i(y_0-y)$
+Approaching along the real axis we can say that the imaginary part is 0
+And we take the limit as $x\rightarrow x_0$ and $y\rightarrow y_0$.
+So we can take the limit
+$$\lim_{\substack{x\rightarrow x_0\\y\rightarrow y_0}}\dfrac{(x_0-x)^{4/3}(y_0-y)^{5/3}}{(x_0-x)^2+(y_0-y)^2}$$
+We see that this limit is not defined. Now if we approach on the line $x=y$ we get
+$$\lim_{x\rightarrow x_0}\dfrac{x^{4/3}x^{5/3}+ix^{5/3}x^{4/3}}{x^2+x^2}$$
+$$\lim_{x\rightarrow x_0}\dfrac{x^{9/3}+ix^{9/3}}{2x^2}$$
+Factoring out an $x^2$ we get
+$$\lim_{x\rightarrow x_0}\dfrac{(x_0-x)^{6/3}+i(x_0-x)^{6/3}}{2}$$
+And we can see the limit is zero. This means the $f(z)$ is not differential at this point.
+
+
+\item 8)\\
+Assuming that $f$ is an analytic function on a domain $D$ and $\textnormal{Re}f(z)$ or $\textnormal{Im}f(z)$ is constant in $D$. We are trying to show that $f(z)$ is constant in $D$. 
+Because $f(z)$ is analytic in $D$ we know that
+$$\frac{\partial u}{\partial x}=\frac{\partial v}{\partial y}$$
+and 
+$$\frac{\partial u}{\partial y}=-\frac{\partial v}{\partial x}$$
+holds true for all points in $D$. Also if $\textnormal{Re}f(z)$ is constant we know that 
+$$u(x,y) = c$$
+where $c$ is a constant. This means the partials of $u$ become
+$$\frac{\partial u}{\partial x}=0$$
+$$\frac{\partial u}{\partial y}=0$$
+And because of the \emph{Cauchy-Riemann Equations} we know that 
+$$\frac{\partial v}{\partial x}=0$$
+$$\frac{\partial v}{\partial y}=0$$
+Note as a side effect we found that if $\textnormal{Re}f(z)$ is constant then $\textnormal{Im}f(z)$ has to be constant too. We can find $f'(z)$ using
+$$f'(z) = \frac{\partial u}{\partial x} + i\frac{\partial v}{\partial x}$$
+$$f'(z) = 0$$
+Therefore according to \emph{Theorem 6} $f(z)$ must be constant on the domain $D$.
+\end{enumerate}
+
+\item 2.5: 2
+\begin{enumerate}[(i)]
+\item 2)
+To find the most general harmonic polynomial of the form $ax^2+bxy+cy^2$ we first need to find for what $a$, $b$, and $c$ 
+$$\frac{\partial^2u}{\partial x^2}+\frac{\partial^2u}{\partial y^2}=0$$
+Where $u=ax^2+bxy+cy^2$ so we can find
+$$\frac{\partial^2u}{\partial x^2} = 2a$$
+$$\frac{\partial^2u}{\partial y^2}= 2c$$
+So
+$$2a+2c=0$$
+We see that $u$ is harmonic when $$a=-c$$holds true and $b$ can be arbitrary so the most general harmonic polynomial can be written as
+$$-cx^2+bxy+cy^2$$
+\end{enumerate}
+\end{enumerate}
+
+\end{document}
