@@ -1,0 +1,394 @@
+\documentclass[11pt]{article}
+\usepackage{latexsym}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{graphicx}
+\usepackage{enumerate}
+\usepackage{amsmath}
+\usepackage{cancel}
+\numberwithin{equation}{section}
+
+\setlength{\evensidemargin}{.25in}
+\setlength{\oddsidemargin}{-.25in}
+\setlength{\topmargin}{-.75in}
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{9.5in}
+\newcommand{\due}{February 7th, 2012}
+\newcommand{\HWnum}{2}
+\input{/home/joey/Documents/Class/Define.tex}
+
+\begin{document}
+\input{../title.tex}
+
+\section{Problem \#1}
+Given the potential
+$$V(x) = \left\{\begin{array}{cc}
+                V_0,	&\textnormal{if } 0<x<a/2\\
+                0,	&\textnormal{if } a/2<x<a\\
+                \infty,	&\textnormal{otherwise} 
+                 \end{array}\right.$$
+we can use the WKB approximation to find the allowed energies. First we assume that the energy of the particle is higher than $V_0$. Using this assumption we can invoke the WKB wavefunction
+\begin{equation}
+\psi(x) = \frac{1}{\sqrt{p(x)}}\left[C_{+}e^{i/\hbar\int_{0}^{x}p(x')dx'} + C_{-}e^{-i/\hbar\int_{0}^{x}p(x')dx'}\right]
+\label{WKB}
+\end{equation}
+Note that $p(x)$ is related to the potential $V(x)$ by
+$$p(x) = \sqrt{2m(E-V(x))}$$
+so with our given potential we have 
+$$p(x) = \left\{\begin{array}{cc}
+                \sqrt{2m(E-V_0)}, &\textnormal{if } 0<x<a/2\\
+                \sqrt{2mE},       &\textnormal{if } a/2<x<a\\
+                \infty,           &\textnormal{otherwise} 
+                \end{array}\right.$$
+Note that the fact that $p(x)$ goes to infinity outside of the box implies that the wave function from equation \ref{WKB} goes to zero. Therefore $\psi(x=a) = \psi(x=0) = 0$ neglecting the trivial case where the wave function is zero, the only solution to these boundary conditions is if
+$$\frac{1}{\hbar}\int_{0}^{a}p(x')dx' = n\pi$$
+Where $n=1,2,3,...$ so by solving the integral we find
+\begin{align*}
+n\pi = \frac{1}{\hbar}\int_{0}^{a}p(x')dx' &= \frac{1}{\hbar}\int_{0}^{a/2}\sqrt{2m(E-V_0)}dx'+\int_{a/2}^{a}\sqrt{2mE}dx'  \\
+&= \frac{1}{\hbar}\left.\sqrt{2m(E-V_0)}x\right|_{0}^{a/2}+\frac{1}{\hbar}\left.\sqrt{2mE}x\right|_{a/2}^{a}  \\
+&= \frac{\sqrt{2m(E-V_0)}a}{2\hbar}+\frac{\sqrt{2mE}}{\hbar}\left(a-\frac{a}{2}\right)\\
+&= \frac{(\sqrt{2m(E-V_0)} + \sqrt{2mE})a}{2\hbar}\\
+&\Downarrow\\
+\frac{2n\pi\hbar}{\sqrt{2m}a} &= \sqrt{E-V_0} + \sqrt{E}\\
+\left(\frac{2n\pi\hbar}{\sqrt{2m}a}\right)^2 &= \left(\sqrt{E-V_0} + \sqrt{E}\right)^2\\
+\left(\frac{4n^2\pi^2\hbar^2}{2ma^2}\right)^2 &= E-V_0 + E + 2\sqrt{E(E-V_0)}\\
+\frac{4n^2\pi^2\hbar^2}{2ma^2} - 2E + V_0 &= 2\sqrt{E(E-V_0)}\\
+\left(\frac{4n^2\pi^2\hbar^2}{2ma^2} - 2E + V_0\right)^2 &= 4E(E-V_0)
+\end{align*}
+Note that we can see the $E_n$ from a infinite square well so we can define
+$$E_n^0 \equiv \frac{n^2\pi^2\hbar^2}{2ma^2}$$
+as the energy form a infinite square well with no shelf. So we have
+\begin{align*}
+\left(4E_n^0 - 2E + V_0\right)^2 &= 4E(E-V_0)\\
+16(E_n^0)^2 + 4E^2 + V_0^2 -16E_n^0E + 8E_n^0V_0 - 4EV_0 &= 4E^2-4EV_0\\
+&\Downarrow\\
+16(E_n^0)^2 + V_0^2 + 8E_n^0V_0 &=  \cancel{4E^2-4E^2} + \cancel{4EV_0  - 4EV_0} + 16E_n^0E\\
+16(E_n^0)^2 + V_0^2 + 8E_n^0V_0 &= 16E_n^0E\\
+&\Downarrow\\
+E_n &= \frac{16(E_n^0)^2 + V_0^2 + 8E_n^0V_0}{16E_n^0}\\
+&= E_n^0 + \frac{V_0^2}{16E_n^0} + \frac{V_0}{2}
+\end{align*}
+Note that if we assume that the ground state energy of the infinite square well is much larger than the shelf potential, or $E_1^0 >> V_0$. This implies that for all $n$, $E_n^0>>V_0$ due to the fact that $E_n^0 = n^2E_1^0$. Using this approximation we can assume the middle term is negligible and we get
+$$E_n = E_n^0 + \frac{V_0}{2}$$
+or the energy levels are increased by half of the shelf potential. This makes sense as the shelf was half of the well.
+
+\section{Problem \#2}
+\begin{enumerate}[(a)]
+\item
+Starting with the \emph{free particle wave function}
+\begin{equation}
+\psi(x) = e^{if(x)/\hbar}
+\label{freepart}
+\end{equation}
+where $f(x)$ is a complex function, thus allowing us no loss of generality. We take the \emph{Schr\"{o}dinger's Equation}
+$$-\frac{\hbar^2}{2m}\frac{d^2\psi}{dx^2} + V(x)\psi = E\psi$$
+and using the fact that
+$$p(x) = \sqrt{2m(E-V(x))}$$
+we can see that 
+\begin{align*}
+-\frac{\hbar^2}{2m}\frac{d^2\psi}{dx^2} + V(x)\psi &= E\psi\\
+&\Downarrow\\
+\frac{d^2\psi}{dx^2} &= -\frac{2m(E-V(x))}{\hbar^2}\psi\\
+&\Downarrow\\
+\frac{d^2\psi}{dx^2} &= -\frac{p(x)^2}{\hbar^2}\psi
+\end{align*}
+Now if we plug in equation \ref{freepart} we can see that
+\begin{align*}
+\frac{d^2\psi}{dx^2} &= \frac{d^2}{dx^2}e^{if(x)/\hbar}\\
+&= \frac{d}{dx}\left(\frac{if'(x)}{\hbar}e^{if(x)/\hbar}\right)\\
+&= \frac{i}{\hbar}\left(f''(x)e^{if(x)/\hbar} + f'(x)\frac{if'(x)}{\hbar}e^{if(x)/\hbar}\right)\\
+&= \frac{if''(x)}{\hbar}e^{if(x)/\hbar} - \frac{(f'(x))^2}{\hbar^2}e^{if(x)/\hbar}
+\end{align*}
+Now if we plug this back in to the \emph{Scr\"{o}dinger's Equation} we see that
+\begin{align*}
+\frac{if''(x)}{\hbar}e^{if(x)/\hbar} - \frac{(f'(x))^2}{\hbar^2}e^{if(x)/\hbar} &= -\frac{p(x)^2}{\hbar^2}e^{if(x)/\hbar} \\
+&\Downarrow\\
+\frac{if''(x)}{\hbar} - \frac{(f'(x))^2}{\hbar^2} + \frac{p(x)^2}{\hbar^2} &= 0\\
+i\hbar f''(x) - f'(x)^2 + p(x)^2 &= 0
+\end{align*}
+
+\item
+Now we approximate $f(x)$ as a power series in $\hbar$ so
+$$f(x) = f_0(x) + \hbar f_1(x) + \hbar^2 f_2(x) + ... + \hbar^n f_n(x)$$
+Note that $\hbar$ is proportional to the wavelength of the particle $\lambda$ this implies that as $\hbar\rightarrow 0$ the wavelength $\lambda\rightarrow 0$ so we can safely say that the wavelength is not varying very fast compared to its length. So plugging in the power series and neglecting terms of order $\hbar^0$ or greater we get 
+\begin{align*}
+\frac{if_0''(x)}{\hbar} - \frac{(f'(x))^2}{\hbar^2} + \frac{p(x)^2}{\hbar^2} &= 0\\
+&\Downarrow\\
+\frac{i(f_0''(x)+\cancel{\hbar f_1''(x)}))}{\hbar} - \frac{\left(f_0'(x)+\hbar f_1'(x)\right)^2}{\hbar^2} + \frac{p(x)^2}{\hbar^2} + \scrO(\hbar^0) &= 0\\
+\frac{if_0''(x)}{\hbar} - \frac{f_0'(x)^2+\cancel{\hbar^2 f_1'(x)^2} + 2\hbar f_0'(x)f_1'(x)}{\hbar^2} + \frac{p(x)^2}{\hbar^2} + \scrO(\hbar^0) &= 0\\
+&\Downarrow\\
+\frac{p(x)^2-f_0'(x)^2}{\hbar^2} +\frac{if_0''(x) - 2f_0'(x)f_1'(x)}{\hbar}  + \scrO(\hbar^0) &= 0
+\end{align*}
+Now we solve the simple approximation and neglect terms of $\scrO(\hbar^{-1})$ which yields
+$$\frac{p(x)^2-f_0'(x)^2}{\hbar^2}  + \scrO(\hbar^{-1}) = 0$$
+This implies that
+$$p(x)^2 = f_0'(x)^2$$
+Now if we allow for the next order of $\hbar$ but keep the condition we just established we get
+\begin{align*}
+\cancelto{0}{\frac{p(x)^2-f_0'(x)^2}{\hbar^2}} +\frac{if_0''(x) - 2f_0'(x)f_1'(x)}{\hbar}  + \scrO(\hbar^0) &= 0\\
+\frac{if_0''(x) - 2f_0'(x)f_1'(x)}{\hbar}  + \scrO(\hbar^0) &= 0\\
+&\Downarrow\\
+if_0''(x) &= 2f_0'(x)f_1'(x)
+\end{align*}
+
+\item
+Using the results from part (b) we can solve for $f_0(x)$ and $f_1(x)$. First we use 
+$$p(x)^2 = f_0'(x)^2$$
+to solve for $f_0(x)$ by integration
+\begin{align*}
+f_0'(x) &= \pm p(x)\\
+&\Downarrow\\
+f_0(x) &= \pm\int_{0}^{x} p(x')dx'
+\end{align*}
+Now we use
+$$if_0''(x) = 2f_0'(x)f_1'(x)$$
+to solve for $f_1(x)$ 
+\begin{align*}
+-2if_1'(x) &= \frac{f_0''(x)}{f_0'(x)} \\
+-2i\int f_1'(x)dx &= \int\frac{1}{f_0'(x)}df_0'(x) \\
+&\Downarrow\\
+-2if_1(x) + C &= \ln(f_0'(x))\\
+f_1(x) &= -\frac{1}{2i}\ln(f_0'(x)) - C/2i\\
+&= i\ln\left(f_0'(x)\right)^{1/2} + C'\\
+&= i\ln\left(p(x)\right)^{1/2} + C'
+\end{align*}
+Note that we just absorbed all the constants into $C'$. Recall that
+$$f(x) = f_0(x) + \hbar f_1(x) + \hbar^2 f_2(x) + ... + \hbar^n f_n(x)$$
+so up to first order in $\hbar$ we have
+$$f(x) =  \pm\int_{0}^{x} p(x')dx' + i\hbar\ln\left(p(x)\right)^{1/2} + C'+ \scrO(\hbar^2)$$
+Now if we replace $f(x)$ in equation \ref{freepart} we find
+\begin{align*}
+\psi(x) &= e^{if(x)/\hbar}\\
+&= \exp\left[i/\hbar\left(\pm\int_{0}^{x} p(x')dx' + i\hbar\ln\left(p(x)\right)^{1/2} + C'\right)\right]\\
+&= \exp\left[\pm i/\hbar\int_{0}^{x} p(x')dx' - \ln\left(p(x)\right)^{1/2} + C'\right]\\
+&\Downarrow\\
+&= e^{C'}e^{\ln\left(p(x)\right)^{-1/2}}e^{\pm i/\hbar\int_{0}^{x} p(x')dx'}\\
+&= \frac{C}{\sqrt{p(x)}}e^{\pm i/\hbar\int_{0}^{x} p(x')dx'}
+\end{align*}
+Note by taking an approximation of order $\hbar$ we found the formula for WKB approximations.
+\end{enumerate}
+
+\section{Problem \#3}
+\begin{enumerate}[(a)]
+\item
+Figure \ref{waveplot} is a visual representation of the wave function for the given potential
+\begin{equation}
+V(x) = \left\{\begin{array}{cc}
+                \infty         & x<0\\
+                \epsilon x     & 0<x<d\\
+                0              & d<x
+                \end{array}\right.
+\label{Pot3}
+\end{equation}
+\begin{figure}
+\centering
+\includegraphics[width=1.0\textwidth]{waveplot.eps}
+\caption{A visual representation of the wave function and potential defined by \ref{Pot3}}
+\label{waveplot}
+\end{figure}
+The wave function starts as periodic with an increasing wavelength as the potential increases, thus making the momentum decrease, and once it reaches the classically forbidden region the wave function exponentially decays. Then once tunneled the wave function returns to a periodic function that has constant wavelength and shorter amplitude than before. Note that the $y$-axes is unlabeled in figure \ref{waveplot} due to the fact that the energy level and potential are not the same as the wave function. The two functions are overlaid to enhance visualization. 
+
+\item
+The classic turning points occur when $E=V(x)$ or in the case of the infinite wall at $x=0$ when $V(x) > E$. So we see that the first turning point is at $x=0$ when the potential goes to infinity. The other turning point falls in the region where $V(x) = \epsilon x$ so we solve
+$$E = \epsilon x \Rightarrow x = \frac{E}{\epsilon}$$
+So the two turning point are
+\begin{align*}
+x_{c1} &= 0\\
+x_{c2} &= \frac{E}{\epsilon}
+\end{align*}
+
+\item
+To find the functional form of the wave function we can use the WKB approximation and use the formula
+$$\psi(x) = \frac{C}{\sqrt{p(x)}}e^{\pm\frac{i}{\hbar}\int^{x}p(x')dx'}$$
+Note that in the region where $V(x)\rightarrow\infty$ the wave function is zero. So for the classically allowed region where $x_{c1}<x<x_{c2}$ or $0<x<E/\epsilon$ we find that
+\begin{align*}
+\frac{1}{\hbar}\int^xp(x')dx' &= \frac{1}{\hbar}\int^{x}dx'\sqrt{2m(E - \epsilon x')}\\
+&= \frac{1}{\hbar}\int^{x}dx'\sqrt{2m(E - \epsilon x')}
+\end{align*}
+Let $u = 2m(E - \epsilon x)$ and $du = -2m\epsilon$ so we have
+\begin{align*}
+\frac{1}{\hbar}\int^{x}dx'\sqrt{2m(E - \epsilon x')} &= -\frac{1}{2m\epsilon\hbar}\int^{u(x)}du\sqrt{u(x')}\\
+&= -\frac{1}{2m\epsilon\hbar}\frac{2}{3}u(x)^{3/2}\\
+&= -\frac{1}{3m\epsilon\hbar}\left(2m(E - \epsilon x)\right)^{3/2}
+\end{align*}
+So for $0<x<E/\epsilon$ we have the wave function
+$$\psi(x) = \frac{1}{(2m(E - \epsilon x'))^{1/4}}\left(Ae^{i\left(2m(E - \epsilon x)\right)^{3/2}/3m\epsilon\hbar} + Be^{-i\left(2m(E - \epsilon x)\right)^{3/2}/3m\epsilon\hbar}\right)$$
+And for the other classical region where $d<x$ we know that the potential is zero so we just have a free particle. Note that we restrict the wave function so that there are only right traveling waves. So the right traveling free particle looks like
+$$\psi(x) = Fe^{i\sqrt{2mE/\hbar^2} x}$$
+Now for the classically forbidden region where $E<V(x)$ or $E/\epsilon<x<d$ we use the WKB approximation where
+$$\psi(x) = \frac{C}{\sqrt{|p(x)|}}e^{\pm\frac{1}{\hbar}\int^{x}|p(x')|dx'}$$
+note that in these cases $p(x)$ is imaginary. So we find
+$$\frac{1}{\hbar}\int^{x}|p(x')|dx' = \frac{1}{\hbar}\int^{x}dx'\sqrt{2m(\epsilon x' - E)}$$
+Note we assume we are in a region where we can apply the WKB approximation so we assume that $\epsilon x >> E$ in this region so we say
+\begin{align*}
+\frac{1}{\hbar}\int^{x}|p(x')|dx' &= \frac{1}{\hbar}\int^{x}dx'\sqrt{2m\epsilon x'}\\
+&= \frac{\sqrt{2m\epsilon}}{\hbar}\int^{x}dx'\sqrt{x'}\\
+&= \frac{\sqrt{2m\epsilon}}{\hbar}\frac{2}{3}x^{3/2}\\
+&= \frac{2\sqrt{2m\epsilon}}{3\hbar}x^{3/2}
+\end{align*}
+So our wave function in this region becomes
+$$\psi(x) = \left(\frac{3\hbar}{2\sqrt{2m\epsilon}}x^{-3/2}\right)^{1/2}\left(Ce^{\frac{2\sqrt{2m\epsilon}}{3\hbar}x^{3/2}} + De^{\frac{-2\sqrt{2m\epsilon}}{3\hbar}x^{3/2}}\right)$$
+Note we can define a characteristic length
+$$x_0 \equiv \left(\frac{\hbar^2}{2m\epsilon}\right)^{1/3}$$
+so we can write
+$$\psi(x) = \sqrt{\frac{3}{2}}\left(\frac{x_0}{x}\right)^{3/4}\left(Ce^{2/3(x/x_0)^{3/2}} + De^{-2/3(x/x_0)^{3/2}}\right)$$
+So the total wave function is
+$$\psi(x) = \left\{\begin{array}{cl}
+                   0,                            &x<0\\
+\\
+                   \dfrac{1}{(2m(E - \epsilon x'))^{1/4}}\left(Ae^{i\left(2m(E - \epsilon x)\right)^{3/2}/3m\epsilon\hbar} + Be^{-i\left(2m(E - \epsilon x)\right)^{3/2}/3m\epsilon\hbar}\right),               &0<x<E/\epsilon\\
+\\
+            \sqrt{\dfrac{3}{2}}\left(\dfrac{x_0}{x}\right)^{3/4}\left(Ce^{2/3(x/x_0)^{3/2}} + De^{-2/3(x/x_0)^{3/2}}\right),  &E/\epsilon<x<d\\
+\\
+                   Fe^{i\sqrt{2mE/\hbar^2} x},  &d<x
+                   \end{array}\right.$$
+
+\item
+We can find the probability that the particle will tunnel out of the potential barrier by finding
+\begin{align*}
+T = \frac{|F|^2}{|A|^2} &= e^{-\frac{2}{\hbar}\int_{E/\epsilon}^{d}|p(x)|dx}\\
+\end{align*}
+Where we calculate 
+\begin{align*}
+\frac{2}{\hbar}\int_{E/\epsilon}^{d}|p(x)|dx &= \frac{2}{\hbar}\int_{E/\epsilon}^{d}\sqrt{2m(\epsilon x - E)}dx \\
+&= \frac{2}{\hbar}\frac{1}{2m\epsilon}\frac{2}{3}\left(\frac{}{}(2m(\epsilon x - E))^{3/2}\right|_{E/\epsilon}^{d} \\
+&= \frac{1}{6m\epsilon\hbar}\left((2m(\epsilon d - E))^{3/2}-\cancelto{0}{\left(2m(\epsilon \frac{E}{\epsilon} - E)\right)^{3/2}}\right) \\
+&= \frac{(2m(\epsilon d - E))^{3/2}}{6m\epsilon\hbar}
+\end{align*}
+Note this quantity should be unit-less (it's a probability) so we check that the top has units of
+$$\left\langle(2m(\epsilon d - E))^{3/2}\right\rangle = \left\langle \left(kg^2\frac{m^2}{s^2}\right)^{3/2}\right\rangle = \left\langle kg^3\frac{m^3}{s^3}\right\rangle $$
+and
+$$\left\langle 6m\epsilon\hbar\right\rangle = \left\langle kg\frac{J}{m}\frac{kgm^2}{s}\right\rangle = \left\langle kg\frac{kgm}{s^2}\frac{kgm^2}{s}\right\rangle = \left\langle \frac{kg^3m^3}{s^3}\right\rangle $$
+So our units agree.
+\end{enumerate}
+
+\section{Problem \#4}
+\begin{enumerate}[(a)]
+\item
+For a square well of depth $V_0$ we can find the spectrum by
+\begin{align*}
+n\pi\hbar = \int_0^ap(x)dx &= \sqrt{2m(E-V_0)}a\\
+&\Downarrow\\
+E_n &= \frac{n\pi^2\hbar^2}{2ma^2} + V_0
+\end{align*}
+Under the assumption that $V_0 >> \hbar^2/ma^2$ (a very tall well wall) we can say that the ground state energy $E_1$ measured from the bottom of the well is just that of the infinite square well of width $a$, or
+$$E_1 = \frac{\pi^2\hbar^2}{2ma^2}$$
+
+\item
+Using the WKB assumptions figure \ref{wavePlot2} is a sketch of the wave function for a square well with a perturbation $H' = -e\epsilon x$ of an electron in an electric field.
+\begin{figure}
+\centering
+\includegraphics[width=1.0\textwidth]{waveplot2.eps}
+\caption{A visual representation of the wave function for an atomic ground state electron in an electric field.}
+\label{wavePlot2}
+\end{figure}
+Note that inside the well the electron is in the ground state and past the tunneling region the electrons wavelength gets shorter.
+
+\item
+To find the asymptotic form of the wave function in the three regions we can start inside the well (atom) which we estimate with a constant flat bottom. Note we defined $E_1$ from the bottom of the well so we can say that
+\begin{align*}
+\frac{1}{\hbar}\int^{x}p(x')dx' &= \frac{1}{\hbar}\int^{x}dx'\sqrt{2mE_1} \\ 
+&= \frac{1}{\hbar}\sqrt{2mE_1}x 
+\end{align*}
+so we can say the wave function in the region $-a<x<0$ is
+$$\psi(x) = Ae^{i/\hbar\sqrt{2mE_1}x} + Be^{-i/\hbar\sqrt{2mE_1}x}$$
+and in the classically forbidden region we first find the classical turning points the first is trivially at $x_{c1} = 0$ the second is where the energy is equal to the potential, but recall that $E_1$ is from the bottom of the well so we need to find 
+$$-V_0 + E_1 = -e\epsilon x_{c2} \Rightarrow x_{c2} = \frac{V_0 - E_1}{e\epsilon}$$
+so for the region $0<x<x_{c2}$ we find that 
+\begin{align*}
+\frac{1}{\hbar}\int^{x}dx'|p(x')| &= \frac{1}{\hbar}\int^{x}dx'\sqrt{2m(E_1-V_0+e\epsilon x')} \\ 
+&= \frac{1}{\hbar}\int^{x}dx'\sqrt{2m(e\epsilon x' - V_0 + E_1)} \\ 
+&= -\frac{1}{\hbar}\int^{x}dx'\sqrt{2me\epsilon\left(x' - \frac{V_0 - E_1}{e\epsilon}\right)} \\ 
+&= -\frac{\sqrt{2me\epsilon}}{\hbar}\int^{x}dx'\sqrt{x' - x_{c2}}\\
+&= -\frac{\sqrt{2me\epsilon}}{\hbar}\frac{2}{3}(x - x_{c2})^{3/2}
+\end{align*}
+So in the tunneling region we have
+$$\psi(x) = \frac{1}{(2m(x'-x_{c2}))^{1/4}}\left(Ce^{2\sqrt{2me\epsilon}/3\hbar(x - x_{c2})^{3/2}} + De^{-2\sqrt{2me\epsilon}/3\hbar(x - x_{c2})^{3/2}}\right)$$
+and finally for the region where the electron as escaped we use 
+\begin{align*}
+\frac{1}{\hbar}\int^xdx'p(x') &= \frac{1}{\hbar}\int^xdx'\sqrt{2m(E-V(x'))} \\
+&= \frac{1}{\hbar}\int^xdx'\sqrt{2m(V_0-E_1+e\epsilon x')} \\
+&= \frac{\sqrt{2me\epsilon}}{\hbar}\int^xdx'\sqrt{x_{c2} + x'} \\
+&= \frac{2\sqrt{2me\epsilon}}{3\hbar}(x_{c2} + x)^{3/2}
+\end{align*}
+So the wave function becomes
+$$\psi(x) = \frac{F}{(2me\epsilon(x+x_{c2}))^{1/4}}e^{i2\sqrt{2me\epsilon}/3\hbar(x_{c2} + x)^{3/2}}$$
+Note we do not want waves entering from the right.
+
+\item
+We can calculate the tunneling rate expression 
+$$p \approx \omega_0e^{-\gamma}$$
+where $\omega_0$ is an approximation of the frequency the electron hits the barrier. We can find this by
+\begin{align*}
+\omega_0 = \frac{v}{a} &= \frac{p}{ma}\\
+&= \frac{\sqrt{2m(E-V)}}{ma}\\
+&= \frac{\sqrt{2mE_1}}{ma}
+\end{align*}
+Now we know that the $\gamma$ factor can be finding the decrease in the exponential decay region
+\begin{align*}
+\gamma &= \frac{2}{\hbar}\int_{0}^{x_{c2}}|p(x)|dx\\
+&= \frac{2}{\hbar}\int_{0}^{x_{c2}}dx\sqrt{2m(E-V(x))}\\
+&= \frac{2}{\hbar}\int_{0}^{x_{c2}}dx\sqrt{2m(E_1 - V_0 + e\epsilon x)}\\
+&= \frac{2\sqrt{2me\epsilon}}{\hbar}\int_{0}^{x_{c2}}dx\sqrt{x-x_{c2}}\\
+&= \frac{2\sqrt{2me\epsilon}}{\hbar}\left(\frac{}{}(x-x_{c2})^{3/2}\right|_{0}^{x_{c2}}\\
+&= \frac{2\sqrt{2me\epsilon}}{\hbar}\left(\frac{}{}(x_{c2}-x_{c2})^{3/2}-(0 - x_{c2})^{3/2}\right)\\
+&= \frac{2\sqrt{2me\epsilon}}{\hbar}x_{c2}^{3/2}\\
+&= \frac{2\sqrt{2me\epsilon}}{\hbar}\left(\frac{V_0-E_1}{e\epsilon}\right)^{3/2}
+\end{align*}
+Note $\gamma$ is a unitless quantity. So we can say that
+$$p\approx \frac{\sqrt{2mE_1}}{ma}\exp\left[-\frac{2\sqrt{2me\epsilon}}{\hbar}\left(\frac{V_0-E_1}{e\epsilon}\right)^{3/2}\right]$$
+
+\item
+The time it would take for the electron to escape goes as
+$$\tau \approx \frac{1}{p}$$
+where for standard values $V_0 = 20\unit{eV}$, $a=1\unit{\AA}$ and the electric field $\epsilon = 10^7\unit{V\ m^{-1}}$ and the mass and charge of the electron. Note that we use $a$ to get $E_1 = 6.02\times10^{-18}\unit{J}$ we calculate $p$ as
+\begin{align*}
+\tau &= \left(\frac{\sqrt{2m_eE_1}}{m_ea}\exp\left[-\frac{2\sqrt{2m_ee\epsilon}}{\hbar}\left(\frac{V_0-E_1}{e\epsilon}\right)^{3/2}\right]\right)^{-1}\\
+&= \frac{1}{3.64\times10^{16}\unit{s^{-1}}}\exp\left[(7.55\times10^{4})\right]\\
+&\approx 10^{32772}\unit{s} 
+\end{align*}
+\end{enumerate}
+
+\section{Problem \#5}
+For the three dimensional attractive short ranged potential with angular momentum $l$ we have the effective potential
+$$V(r) = V_0(r) + \frac{\hbar^2l(l+1)}{2mr^2}$$
+and energy $E$ we can calculate the decay rate using the assumption that in the low energy limit the centrifugal term dominates
+\begin{align*}
+\gamma &= \frac{2}{\hbar}\int_{r_{c1}}^{r_{c2}}dr\sqrt{2m\left(\frac{\hbar^2l(l+1)}{2mr^2} - E\right)}\\
+&= \frac{2}{\hbar}\int_{r_{c1}}^{r_{c2}}dr\sqrt{\hbar^2l(l+1)\left(\frac{1}{r^2} - \frac{2mE}{\hbar^2l(l+1)}\right)}\\
+&= 2\sqrt{l(l+1)}\int_{r_{c1}}^{r_{c2}}dr\sqrt{\left(\frac{1}{r^2} - \frac{2mE}{\hbar^2l(l+1)}\right)}\\
+&= 2\sqrt{l(l+1)}\int_{r_{c1}}^{r_{c2}}dr\sqrt{\left(\frac{1}{r^2} - \frac{1}{r_{c2}^2}\right)}\\
+&= 2\sqrt{l(l+1)}\int_{r_{c1}}^{r_{c2}}\frac{1}{r}\sqrt{\frac{r^2}{r_{c2}^2} - 1}dr\\
+\end{align*}
+Note we find $r_{c2}$ by
+$$E = \frac{\hbar^2l(l+1)}{2mr_{c2}^2} \Rightarrow r_{c2}^2 = \frac{\hbar^2l(l+1)}{2mE}$$
+and we are still in the magnitude of the momentum so we can flip the subtraction for no cost. Now we let 
+so now we integrate. Note that we set $r_{c1} = 0$ for convenience due to the fact that $r_{c1}<<r_{c2}$
+\begin{align*}
+\gamma &= 2\sqrt{l(l+1)}\int_{0}^{r_{c2}}\frac{1}{r}\sqrt{\frac{r^2}{r_{c2}^2} - 1}dr
+\end{align*}
+
+\section{Problem \#6}
+For an alpha particle that has energy $E$ the second turning point with the Coulomb repulsion is found by
+$$\frac{1}{4\pi\epsilon_0}\frac{2Ze^2}{r_{c2}} = E \rightarrow r_{c2} = \frac{1}{4\pi\epsilon_0}\frac{2Ze^2}{E}$$
+so we can find the decay rate and thus the probability of an alpha decay occurring by
+\begin{align*}
+\gamma &= \frac{1}{\hbar}\int_{r_{c1}}^{r_{c2}}\sqrt{2m\left(\frac{1}{4\pi\epsilon_0}\frac{2Ze^2}{r} - E\right)}dr\\
+&= \frac{\sqrt{2mE}}{\hbar}\int_{r_{c1}}^{r_{c2}}\sqrt{\frac{r_{c2}}{r}-1}dr
+\end{align*}
+Note we let $r=r_{c2}\sin^2(u)$ which yields
+\begin{align*}
+\gamma &= \frac{\sqrt{2mE}}{\hbar}\left[r_{c2}\left(\frac{\pi}{2}-\sin^{-1}\sqrt{\frac{r_{c1}}{r_{c2}}}\right) - \sqrt{r_{c1}(r_{c2}-r_{c1})}\right]
+\end{align*}
+Now we use the fact that we assume $r_{c1} << r_{c2}$ which allows us to say
+\begin{align*}
+\gamma &= \frac{\sqrt{2mE}}{\hbar}\left[\frac{\pi}{2}r_{c2}-2\sqrt{r_{c1}r_{c2}}\right]\\
+&= K_1\frac{Z}{\sqrt{E}} - K_2\sqrt{Zr_{c1}}
+\end{align*}
+Where
+\begin{align*}
+K_1 &= \left(\frac{e^2}{4\pi\epsilon_0}\right)\frac{\pi\sqrt{2m}}{\hbar}\\
+K_2 &= \left(\frac{e^2}{4\pi\epsilon_0}\right)^{1/2}\frac{4\sqrt{m}}{\hbar}
+\end{align*}
+\end{document}
+

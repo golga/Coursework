@@ -1,0 +1,268 @@
+\documentclass[11pt]{article}
+
+\usepackage{latexsym}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{enumerate}
+\usepackage{amsmath}
+\usepackage{cancel}
+\numberwithin{equation}{section}
+
+\setlength{\evensidemargin}{.25in}
+\setlength{\oddsidemargin}{-.25in}
+\setlength{\topmargin}{-.75in}
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{9.5in}
+\newcommand{\due}{January 28th, 2011}
+\newcommand{\HWnum}{2}
+\input{/home/joey/Documents/Class/Define.tex}
+
+\begin{document}
+\input{../title.tex}
+
+\section{Problem \#1 (1.28)}
+To find the time it takes a $600\unit{W}$ microwave oven to boil water we first need to find the amount of energy it takes to raise the temperature of water from room temperature to $100\unit{^{\circ}C}$. To find this we will use the \emph{Equipartition equation}
+\begin{equation}
+U = N\frac{f}{2}k_bT
+\label{equipart}
+\end{equation}
+Where we assume that the water has 6 degrees of freedom (3 for translation and 3 for rotation). We can find the number of water molecules but first we assume that the volume of the water is $250\unit{mL}$ or $250\unit{g}$. Now we know the molecular mass of water is $18.0\unit{g\ mol^{-1}}$. So now we can find the number of molecules of water we have by
+\begin{align*}
+N &= 250\unit{g}\frac{1\unit{mol}}{18.0\unit{g}}\frac{6.02\times10^{23}\unit{molecules}}{1\unit{mol}}\\
+&= 8.36\times10^{24}
+\end{align*}
+So now we can find the change in energy $\Delta U$ 
+\begin{align*}
+\Delta U &= N\frac{f}{2}k_b\Delta T\\
+&= (8.36\times10^{24})\frac{6}{2}(1.38\times10^{-23}\unit{J\ K^{-1}})(373\unit{K} - 300\unit{K})\\
+&= 2.53\times10^{4}\unit{J}
+\end{align*}
+So now we know the amount of energy it requires to raise the temperature of the water to $375\unit{K}$. Note that we are neglecting the latent heat to boil the water, and we assume that all the energy goes to raising the temperature and non is lost. So we know that the microwave outputs $600\unit{J}$ per second so we can find the time it takes by
+$$t = \frac{\Delta U}{P} = \frac{2.53\times10^{4}\unit{J}}{600\unit{W}} = 4.22\times10^{1}\unit{s}$$
+
+\section{Problem \#2 (1.34)}
+\begin{enumerate}[(a)]
+\item
+\begin{enumerate}[(i)]
+\item Process $A$\\
+To find the work of the process $AB$ we use the equation
+\begin{equation}
+W = -\int_{V_i}^{V_f}P(V)dV
+\label{Work}
+\end{equation}
+So equation \ref{Work} yields
+$$W =-\int_{V_1}^{V_1}P(V)dV = 0$$
+note that the volume does not change so the is no work being done. Now we can find the change in energy by using equation \ref{equipart} and the \emph{Ideal Gass Law}
+\begin{equation}
+PV = Nk_BT
+\label{Ideal}
+\end{equation}
+Note that in this process $V$ remains constant so the change in pressure is proportional to the change in temperature in equation \ref{Ideal}. So
+\begin{align*}
+V\Delta P &= Nk_B \Delta T\\
+&\Downarrow\\
+\Delta T &= \frac{V\Delta P}{Nk_B}\\
+&= \frac{V_1(P_2-P_1)}{Nk_B}
+\end{align*}
+So now equation \ref{equipart} gives us the change in energy
+\begin{align*}
+\Delta U &= N\frac{f}{2}k_b\Delta T\\
+&= N\frac{5}{2}k_b\frac{V_1(P_2-P_1)}{Nk_B}\\
+&= \frac{5}{2}V_1(P_2-P_1)
+\end{align*}
+Note that we have a diatomic gas with out vibrational degrees of freedom hence $f=5$. Now by \emph{The First Law of Thermodynamics} 
+\begin{equation}
+\Delta U = Q + W
+\label{First}
+\end{equation}
+So by equation \ref{First} we can find the heat as
+$$Q = \frac{5}{2}V_1(P_2-P_1)$$
+Note that $W=0$ so $\Delta U=Q$
+\item Process $B$ \\
+Now we can find the work by equation \ref{Work}
+\begin{align*}
+W &= -\int_{V_i}^{V_f}P(V)dV\\
+&= -\int_{V_1}^{V_2}P_2dV\\
+&= -P_2(V_2 -V_1)
+\end{align*}
+And the change in temperature by equation \ref{Ideal} note that in this case pressure is constant and volume is changing so the change in temperature is proportional to the change in volume. So
+\begin{align*}
+\Delta T &= \frac{P\Delta V}{Nk_B}\\
+&= \frac{P_2(V_2-V_1)}{Nk_B}
+\end{align*}
+So now the change in energy by equation \ref{equipart} is
+\begin{align*}
+\Delta U &= N\frac{5}{2}k_b\Delta T\\
+&= N\frac{5}{2}k_b\frac{P_2(V_2-V_1)}{Nk_B}\\
+&= \frac{5}{2}P_2(V_2-V_1)
+\end{align*}
+Now we can find the heat by equation \ref{First}
+\begin{align*}
+\Delta U &= Q+W\\
+&\Downarrow\\
+Q &= \Delta U - W\\
+&= \frac{5}{2}P_2(V_2-V_1) - (-P_2(V_2 -V_1))\\
+&= \frac{7}{2}P_2(V_2-V_1)
+\end{align*}
+
+\item Process $C$ \\
+Finding work by equation \ref{Work}
+\begin{align*}
+W &= -\int_{V_i}^{V_f}P(V)dV\\
+&= -\int_{V_2}^{V_2}P(V)dV = 0
+\end{align*}
+And we can find the temperature change by equation \ref{Ideal} 
+\begin{align*}
+\Delta T &= \frac{V\Delta P}{Nk_B}\\
+&= \frac{V_1(P_1-P_2)}{Nk_B}\\
+&= -\frac{V_1(P_2-P_1)}{Nk_B}
+\end{align*}
+And the change in energy by equation \ref{equipart}
+\begin{align*}
+\Delta U &= N\frac{5}{2}k_b\Delta T\\
+&= -N\frac{5}{2}k_b\frac{V_1(P_2-P_1)}{Nk_B}\\
+&= -\frac{5}{2}V_1(P_2-P_1)
+\end{align*}
+And because there was no work being done the heat is
+$$Q = -\frac{5}{2}V_1(P_2-P_1)$$
+
+\item Process $D$ \\
+The work for process $D$ given by equation \ref{Work} is
+\begin{align*}
+W &= -\int_{V_2}^{V_1}P(V)dV\\
+&= -(V_1-V_2)P_1\\
+&= P_1(V_2-V_1)
+\end{align*}
+And by equation \ref{Ideal} we see that the change in temperature is
+\begin{align*}
+\Delta T &= \frac{P\Delta V}{Nk_B}\\
+&= \frac{P_1(V_1-V_2)}{Nk_B}\\
+&= -\frac{P_1(V_2-V_1)}{Nk_B}
+\end{align*}
+So by equation \ref{equipart} the change in energy is
+\begin{align*}
+\Delta U &= N\frac{5}{2}k_b\Delta T\\
+&= -N\frac{5}{2}k_b\frac{P_1(V_2-V_1)}{Nk_B}\\
+&= -\frac{5}{2}P_1(V_2-V_1)
+\end{align*}
+So by equation \ref{First} the heat is
+\begin{align*}
+Q &= \Delta U - W\\
+&= -\frac{5}{2}P_1(V_2-V_1) - P_1(V_2-V_1)\\
+&= -\frac{7}{2}P_1(V_2-V_1)
+\end{align*}
+\end{enumerate}
+
+\item
+So we can see that for process $A$ we are adding heat to the system while keeping the volume fixed (doing no work on the system). For process $B$ we are adding heat to the system and the system is doing work on the surroundings by expanding. For process $C$ we are removing heat from the system (to lower the pressure) and we keep the volume fixed so there is no change in work. For process $D$ we are doing work on the system and to keep the pressure fixed we are also removing heat from the system.
+
+\item
+The net work done on the system is just the sum total of the work for each individual process.
+\begin{align*}
+W_{tot} &= W_A+W_B+W_C+W_D\\
+&= 0 + -P_2(V_2-V_1) + 0 + P_1(V_2-V_1)\\
+&= (V_2-V_1)(P_1-P_2)\\
+&= -(V_2-V_1)(P_2-P_1)
+\end{align*}
+The same follows for the heat 
+\begin{align*}
+Q_{tot} &= Q_A+Q_B+Q_C+Q_D\\
+&= \frac{5}{2}V_1(P_2-P_1) + \frac{7}{2}P_2(V_2 - V_1) + \left(-\frac{5}{2}V_1(P_2-P_1)\right) + \left(-\frac{7}{2}P_1(V_2-V_1)\right)\\
+&=  \frac{7}{2}P_2(V_2 - V_1)  - \frac{7}{2}P_1(V_2-V_1)\\
+&=  \frac{7}{2}(V_2 - V_1)(P_2-P_1)
+\end{align*}
+So the total energy is given by equation \ref{First}
+\begin{align*}
+\Delta U_{tot} &= Q_{tot} + W_{tot}\\
+&= \frac{7}{2}(V_2 - V_1)(P_2-P_1) -(V_2-V_1)(P_2-P_1)\\
+&= \frac{5}{2}(V_2 - V_1)(P_2-P_1)
+\end{align*}
+This is the expected result. We had a net gain in energy in the system. Note that the area between each curve on the graph is a positive quantity so we had a net gain in energy due to the added heat to keep pressures at a constant.
+\end{enumerate}
+
+\section{Problem \#3 (1.36)}
+\begin{enumerate}[(a)]
+\item
+The bike tire initially contains $1\unit{L}$ of air with a pressure of $1.01\times10^{5}\unit{Pa}$. We know that in an adiabatic compression that
+\begin{equation}
+V^{\gamma}P=C
+\label{adai}
+\end{equation}
+Where $C$ is a constant where
+$$\gamma = \frac{f+2}{f}$$
+We can calculate $C$ as
+$$C = (1\unit{L})^{7/5}(1.01\times10^{5}\unit{Pa}) = 1.01\times10^{5}\unit{L^{7/5}\ Pa}$$
+So knowing this we can find the new volume when the pressure is increased to $7.07\times10^{5}\unit{Pa}$
+\begin{align*}
+P'V^{7/5} &= C\\
+&\Downarrow\\
+V &= \left(\frac{C}{P}\right)^{5/7}\\
+&= \left(\frac{1.01\times10^{5}\unit{L^{7/5}\ Pa}}{7.07\times10^{5}\unit{Pa}}\right)^{5/7}\\
+&= 0.249\unit{L}
+\end{align*}
+
+\item
+To find the work done we use equation \ref{Work} where we use equation \ref{adai} to get pressure as a function of volume. Note that we calculated the constant $C$ in part (a).
+\begin{align*}
+W &= -\int_{V_i}^{V_f}P(V)dV\\
+&= -\int_{V_i}^{V_f}\frac{C}{V^{\gamma}}dV\\
+&= -\int_{V_i}^{V_f}\frac{C}{V^{7/5}}dV\\
+&= -\left(\frac{5}{2}\frac{C}{V^{2/5}}\right|_{V_i}^{V_f}\\
+&= \frac{5}{2}C\left(\frac{1}{V_f^{2/5}} - \frac{1}{V_i^{2/5}}\right)\\
+&= \frac{5}{2}(1.01\times10^{5}\unit{L^{7/5}\ Pa})\left(\frac{1}{(0.249\unit{L})^{2/5}} - \frac{1}{(1\unit{L})^{2/5}}\right)\\
+&= \frac{5}{2}(1.01\times10^{5}\unit{L^{7/5}\ Pa})\left(1.74\unit{L^{-2/5}} - 1\unit{L^{-2/5}}\right)\\
+&= \frac{5}{2}(1.01\times10^{5}\unit{L^{7/5}\ Pa})\left(0.74\unit{L^{-2/5}}\right)\\
+&= 1.88\times10^{5}\unit{L^{5/5}\ Pa} = 1.88\times10^{2}\unit{m^{3}\ Pa} = 1.88\times10^{2}\unit{J}
+\end{align*}
+
+\item
+For parts (a) and (b) we assumed that the temperature was constant but we were in an adiabatic compression so using
+$$V_fT_f^{f/2} = V_iT_i^{f/2}$$
+we can find the temperature after compression where we have $5$ degrees of freedom so 
+\begin{align*}
+V_fT_f^{f/2} &= V_iT_i^{f/2}\\
+&\Downarrow\\
+T_f &= \left(\frac{V_iT_i^{f/2}}{V_f}\right)^{2/f}\\
+&= \left(\frac{(1\unit{L})(300\unit{K})^{5/2}}{0.14\unit{L}}\right)^{2/5}\\
+&= \left(\frac{1.55\times10^{6}\unit{L\ K^{5/2}}}{0.249\unit{L}}\right)^{2/5}\\
+&= 5.21\times10^{2}\unit{K}
+\end{align*}
+Note that this is high for a real world number but in the real world heat would be lost to the system.
+\end{enumerate}
+
+\section{Problem \#4 (1.38)}
+Bubble $A$ goes through an adiabatic expansion while bubble $B$ goes through and isothermal expansion. Both bubbles go through the same pressure change as they rise to the surface so bubble $B$'s volume will change by \emph{the Ideal Gas Law} (equation \ref{Ideal}) so for bubble $B$ the final volume is given by
+$$V_f = \frac{Nk_BT}{P_f}$$
+Where as for Bubble $A$ the volume will change as equation \ref{adai} so the final volume is given by
+$$V_f = \left(\frac{V_i^{\gamma}P_i}{P_f}\right)^{1/\gamma}$$
+So we see that for bubble $A$ the volume goes by $P_f^{-1/\gamma}$ and for Bubble $B$ the volume goes by $P_f^{-1}$. Now we assume that $\gamma>0$ so we can conclude that bubble $B$ will have the greater volume.
+
+\section{Problem \#5 (1.41)}
+\begin{enumerate}[(a)]
+\item
+When we place a piece of metal that is $100\unit{^\circ C}$ into the cup of water at $20\unit{^\circ C}$ once they reach thermal equilibrium both the water and the metal are at $24\unit{^\circ C}$. Using this information we can find the heat gained by the water if we assume that the heat capacity of water is $1\unit{cal\ K^{-1}}$. We use the definition of heat capacity
+$$C\equiv \frac{Q}{\Delta T}$$
+So for our system we solve for $Q$ and see that
+\begin{align*}
+Q &= C\Delta T\\
+&= (1\unit{cal\ K^{-1}})(4\unit{K}) = 4\unit{cal}
+\end{align*}
+So the water gained 4 calories of heat.
+
+\item
+We know that the heat gained by the water came from the metal so by the conservation of energy we know that the metal lost 4 calories of heat.
+
+\item
+We can calculate the heat capacity of the metal by using the fact that it's change in temperature is $\Delta T = -76.0\unit{K}$ and that its heat loss was $Q=-4$ so
+$$C = \frac{Q}{\Delta T} = \frac{-4\unit{cal}}{-76.0\unit{K}} = 5.26\times10^{-2}\unit{cal\ K^{-1}}$$
+
+\item
+Given that specific heat $c$ is heat capacity per unit mass we can find $c$ given that the mass of the metal is $100\unit{g}$
+\begin{align*}
+c &= \frac{C}{m}\\
+&= \frac{5.26\times10^{-2}\unit{cal\ K^{-1}}}{100\unit{g}}\\
+&= 5.26\times10^{-4}\unit{cal\ K^{-1}\ g^{-1}}
+\end{align*}
+\end{enumerate}
+\end{document}
+

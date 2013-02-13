@@ -1,0 +1,128 @@
+\documentclass[11pt]{article}
+
+\usepackage{latexsym}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{enumerate}
+\usepackage{amsmath}
+\usepackage{cancel}
+\numberwithin{equation}{section}
+
+\setlength{\evensidemargin}{.25in}
+\setlength{\oddsidemargin}{-.25in}
+\setlength{\topmargin}{-.75in}
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{9.5in}
+\newcommand{\due}{March 3rd, 2011}
+\newcommand{\HWnum}{7}
+\input{/home/joey/Documents/Class/Define.tex}
+
+\begin{document}
+\input{../title.tex}
+
+\section{Problem \#1}
+We see that is we assume that sodium metal is an ionic crystal $R^{+}R^{-}$ where the ionization energy of sodium is given by
+$$\textnormal{Na}+5.17\unit{eV}\rightarrow \textnormal{Na}^{+}+e^{-}$$
+and the electron affinity is given by
+$$\textnormal{Na}+e^{-}\rightarrow \textnormal{Na}^{-}+0.78\unit{eV}$$
+Now we need to find the \emph{Madelung energy} so that we can find the Cohesive energy of the lattice. To do this we use the equation 
+\begin{equation}
+\label{Madelung}
+U = \alpha\frac{1}{4\pi\epsilon_0}\frac{q^2}{R}
+\end{equation}
+Note that this is a coulomb potential with a scale factor $\alpha$. Where $\alpha$ is the \emph{Madelung constant} which for the NaCl crystal structure is $\alpha = 1.75$. Since the sodium ions both gained and lost a single electron we can say that $q$ is the fundamental charge $e = 1.60\times10^{-19}\unit{C}$. Now we just need to find the interatomic spacing of the sodium ions to do this we look up that the lattice parameter of sodium is $a=4.225\unit{\AA}$. Now we need to us the fact that the sodium lattice is a body-centered cubic so the length between atoms is given by $\frac{\sqrt{3}a}{2}$. So we can say that 
+$$R = \frac{\sqrt{3}a}{2} = \frac{\sqrt{3}(4.225\unit{\AA})}{2} = 3.66\unit{\AA} = 3.66\times10^{-10}\unit{m}$$
+So we can calculate the Madelung energy as by equation \ref{Madelung}
+$$U = \alpha\frac{1}{4\pi\epsilon_0}\frac{q^2}{R} =  -(1.75)\frac{1}{4\pi\epsilon_0}\frac{(1.60\times10^{-19}\unit{C})^2}{3.66\times10^{-10}\unit{m}} = -1.10\times10^{-18}\unit{J} = -6.87\unit{eV}$$ 
+So it takes $6.87\unit{eV}$ to get the two sodium ions next to each other in the lattice. We combine this fact with the fact that it takes $0.78\unit{eV}$ to get the $\textnormal{Na}^{-}$ and we get $5.17\unit{eV}$ from the ionization of sodium. So for this lattice the cohesive energy is $5.17\unit{eV}-0.78\unit{eV}-6.87\unit{eV} = -2.48\unit{eV}$. So per sodium ion the cohesive energy is $1.24\unit{eV}$ if we compare this to the observed value of $1.113\unit{eV}$ we see that this model is not correct and that there is another source of energy.
+
+\section{Problem \#2}
+To find the cohesive energy of barium oxide we first need to calculate the Madelung energy using equation \ref{Madelung}. Where we assume that the lattice is a NaCl structure so $\alpha=1.75$ and that the interatomic spacing is $R = 2.76\unit{\AA}$. First for the hypothetical crystal $\textnormal{Ba}^{+}\textnormal{O}^{-}$ we note that the magnitude of the charge is $e$ the fundamental charge. So equation \ref{Madelung} yields
+$$U =  \alpha\frac{1}{4\pi\epsilon_0}\frac{q^2}{R} = -(1.75)\frac{1}{4\pi\epsilon_0}\frac{(1.60\times10^{-19}\unit{C})^2}{2.76\times10^{-10}\unit{m}} = -1.46\times10^{-18}\unit{J} = -9.11\unit{eV}$$
+Now given that the first ionization potential of Ba is
+$$\textnormal{Ba}+5.19\unit{eV}\rightarrow \textnormal{Ba}^{+}+e^{-}$$
+and the first electron affinity of neutral oxygen 
+$$\textnormal{O}+e^{-}\rightarrow \textnormal{O}^{-}+1.5\unit{eV}$$
+So we can say that the cohesive energy is $5.19\unit{eV}-9.11\unit{eV}-1.5\unit{eV} = -5.42\unit{eV}$
+So it requires $5.42\unit{eV}$ to bring the barium oxide crystal together. Now for the hypothetical crystal $\textnormal{Ba}^{++}\textnormal{O}^{--}$ we find the Madelung energy noting that the charge is now $2e$. So equation \ref{Madelung} gives
+$$U =  \alpha\frac{1}{4\pi\epsilon_0}\frac{q^2}{R} = -(1.75)\frac{1}{4\pi\epsilon_0}\frac{(3.20\times10^{-19}\unit{C})^2}{2.76\times10^{-10}\unit{m}} = -5.84\times10^{-18}\unit{J} = -36.5\unit{eV}$$
+Note that we assumed the same atomic spacing in this lattice. Now we need the second ionization potential of Ba which is
+$$\textnormal{Ba}+5.19\unit{eV}\rightarrow \textnormal{Ba}^{+}+e^{-}+9.96\unit{eV}\rightarrow \textnormal{Ba}^{++}+2e^{-}$$
+Note that we need to go through both ionization potentials so we can say
+$$\textnormal{Ba}+15.15\unit{eV}\rightarrow \textnormal{Ba}^{++}+2e^{-}$$
+And for the second electron affinity of oxygen we have
+$$\textnormal{O}+e^{-}\rightarrow \textnormal{O}^{-}+1.5\unit{eV}+e^{-}\rightarrow\textnormal{O}^{--}-9.0\unit{eV}$$
+Note that it takes energy for this process to happen so we can say that
+$$\textnormal{O}+2e^{-}+7.5\unit{eV}\rightarrow \textnormal{O}^{--}$$
+So the cohesive energy of this crystal is $15.15\unit{eV}+7.5\unit{eV}-36.5\unit{eV} = -13.85\unit{eV}$. So we see that it takes more energy to form the $\textnormal{Ba}^{++}\textnormal{O}^{--}$ crystal. This implies that the $\textnormal{Ba}^{+}\textnormal{O}^{-}$ crystal is more likely.
+
+\section{Problem \#3}
+\begin{enumerate}[(a)]
+\item
+We know for a spring the potential energy is given by 
+$$U_{spring} = \frac{1}{2}C(\Delta u)^2$$
+where $C$ is the spring constant and $\Delta u$ is the displacement from equilibrium. Now for a monatomic linear lattice we know that each atom is part of a coupled oscillator. So the displacement is due to both the displacement of the atom and the displacement of the neighboring atom. Mathematically this is saying $\Delta u = u_s - u_{s+1}$ where $s$ is the index representing which atom and $u_s$ is the displacement of the $s$ atom from equilibrium. Note that we take a difference to account for the fact that if the displacements are in the same direction the total displacement is smaller than if they were in opposite directions. So we can say that
+$$U_{spring} = \frac{1}{2}C(u_s-u_{s+1})^2$$
+Now we assume that the system has no other potential energy so the only energy we need to account for is the kinetic which we say
+$$T = \frac{1}{2}Mv^2$$
+where $v$ is the velocity of the atom. We know the displacement $u_s$ so we can easily see that 
+$$v = \frac{du_s}{dt}$$
+so it follows that
+$$T = \frac{1}{2}M\left(\frac{du_s}{dt}\right)^2$$
+So we can say that the total energy of the $s$ atom is
+$$E_s = \frac{1}{2}M\left(\frac{du_s}{dt}\right)^2 + \frac{1}{2}C(u_s-u_{s+1})^2$$
+Now we sum over all the atoms in the linear lattice to get that
+$$E = \frac{1}{2}M\sum_{s}\left(\frac{du_s}{dt}\right)^2 + \frac{1}{2}C\sum_{s}(u_s-u_{s+1})^2$$
+Note we assumed that $M$ the mass of the atom and the spring constant $C$ are the same for all the atoms in the lattice.
+
+\item
+Given the longitudinal wave
+$$u_s = u\cos(\omega t - sKa)$$
+we can see that
+$$\frac{du_s}{dt} = u\omega\sin(\omega t - sKa)$$
+Now if we take find the time average of the kinetic energy as
+\begin{align*}
+\langle T\rangle &= \frac{1}{2}M\left\langle\left(\frac{du_s}{dt}\right)^2\right\rangle\\
+&= \frac{1}{2}M\left\langle\left(u\omega\sin(\omega t - sKa)\right)^2\right\rangle\\
+&= \frac{1}{2}Mu^2\omega^2\left\langle\sin^2(\omega t - sKa)\right\rangle
+\end{align*}
+Now we use the fact that the time average of sine squared is 
+$$\left\langle\sin^2\right\rangle = \frac{1}{2}$$
+Note this is also true for cosine 
+$$\left\langle\cos^2\right\rangle = \frac{1}{2}$$
+So we can say that the time averaged kinetic energy is
+$$\langle T\rangle= \frac{1}{4}Mu^2\omega^2$$
+Now we need to take the time average of the spring potential but first we find $u_s-u_{s+1}$ using the identity
+$$\cos(a-b) = \cos(a)\cos(b)+\sin(a)\sin(b)$$
+So we can see that
+\begin{align*}
+u_s - u_{s+1} &= u\cos(\omega t - sKa) - u\cos(\omega t - (s+1)Ka)\\
+&= u\cos(\omega t - sKa) - u\cos(\omega t - sKa - Ka)\\
+&= u\cos(\omega t - sKa) - u\left(\cos(\omega t - sKa)\cos(Ka) + \sin(\omega t - sKa)\sin(Ka)\right)\\
+&= u\cos(\omega t - sKa) - u\cos(\omega t - sKa)\cos(Ka) - u\sin(\omega t - sKa)\sin(Ka)\\
+&= u\cos(\omega t - sKa)(1 - \cos(Ka)) - u\sin(\omega t - sKa)\sin(Ka)
+\end{align*}
+Now if we take the square of this difference we get
+\begin{align*}
+(u_s-u_{s+1})^2 &= \left(u\cos(\omega t - sKa)(1 - \cos(Ka)) - u\sin(\omega t - sKa)\sin(Ka)\right)^2\\
+&= u^2\left(\cos^2(\omega t - sKa)(1 - \cos(Ka))^2 + \sin^2(\omega t - sKa)\sin^2(Ka)\right.\\
+& \ \ \ \ \ \left.-2\sin(\omega t - sKa)\sin(Ka)\cos(\omega t - sKa)(1 - \cos(Ka))\right)
+\end{align*}
+Now if we take the time average of this we get noting that
+$$\langle\sin\cos\rangle = 0$$
+So
+\begin{align*}
+\left\langle(u_s-u_{s+1})^2\right\rangle &= u^2\left(\frac{1}{2}(1 - \cos(Ka))^2 + \frac{1}{2}\sin^2(Ka)\right)\\
+&= \frac{1}{2}u^2\left((1 - \cos(Ka))^2 + \sin^2(Ka)\right)\\
+&= \frac{1}{2}u^2\left(1 - 2\cos(Ka) + \cos^2(Ka) + \sin^2(Ka)\right)\\
+&= \frac{1}{2}u^2\left(2 - 2\cos(Ka)\right)\\
+&= u^2\left(1 - \cos(Ka)\right)
+\end{align*}
+So the time averaged energy is given by
+$$\langle E\rangle = \frac{1}{4}Mu^2\omega^2 + \frac{1}{2}Cu^2\left(1 - \cos(Ka)\right) = \frac{1}{2}M\omega^2u^2$$
+\end{enumerate}
+
+\section{Problem \#4}
+See attached for the drawing of the normal modes.
+\end{document}
+

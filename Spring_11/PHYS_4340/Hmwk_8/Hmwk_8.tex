@@ -1,0 +1,142 @@
+\documentclass[11pt]{article}
+
+\usepackage{latexsym}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{enumerate}
+\usepackage{amsmath}
+\usepackage{cancel}
+\numberwithin{equation}{section}
+
+\setlength{\evensidemargin}{.25in}
+\setlength{\oddsidemargin}{-.25in}
+\setlength{\topmargin}{-.75in}
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{9.5in}
+\newcommand{\due}{March 10th, 2011}
+\newcommand{\HWnum}{8}
+\input{/home/joey/Documents/Class/Define.tex}
+
+\begin{document}
+\input{../title.tex}
+
+\section{Problem \#1}
+If we take the wavelength of the sound wave to be very long we can expand the displacement as a function of position $s+\lambda n$ where $n$ is the number of atoms away from the $s$ atom and $\lambda$ is the wavelength. So we Taylor expand around $s$ and evaluate at the point $s+\lambda n$
+\begin{align*}
+u(s+\lambda n) &= u(s) + \frac{du(s)}{dx}(s+\lambda n - s) + \frac{1}{2}\frac{d^2u(s)}{dx^2}(s+\lambda n - s)^2 + ...\\
+&= u(s) + \frac{du(s)}{dx}(\lambda n) + \frac{1}{2}\frac{d^2u(s)}{dx^2}(\lambda n)^2 + ...
+\end{align*}
+Now we can see that for each of the $u$'s we have note that we only take up to the second order terms
+\begin{align*}
+u_{s+1} = u(s+\lambda) &= u(s) + \frac{du(s)}{dx}\lambda + \frac{1}{2}\frac{d^2u(s)}{dx^2}\lambda^2 \\
+u_{s-1} = u(s-\lambda) &= u(s) + \frac{du(s)}{dx}(-\lambda) + \frac{1}{2}\frac{d^2u(s)}{dx^2}(-\lambda)^2 \\
+u_s &= u(s)
+\end{align*}
+So if we plug these back into the equation of motion we get
+\begin{align*}
+M\frac{d^2u}{dt^2} &= C\left(u_{s+1} + u_{s-1} - 2u_s\right)\\
+&= C\left(u(s) + \cancel{\frac{du(s)}{dx}\lambda} + \frac{1}{2}\frac{d^2u(s)}{dx^2}\lambda^2 + u(s) + \cancel{\frac{du(s)}{dx}(-\lambda)} + \frac{1}{2}\frac{d^2u(s)}{dx^2}(-\lambda)^2 - 2u(s)\right)\\
+&= C\left(2u(s) + \frac{1}{2}\frac{d^2u(s)}{dx^2}\lambda^2 + u(s) + \frac{1}{2}\frac{d^2u(s)}{dx^2}\lambda^2 - 2u(s)\right)\\
+&= C\left(\frac{d^2u}{dx^2}\lambda^2\right) \\
+&\Downarrow\\
+\frac{d^2u}{dt^2} &= \frac{C\lambda^2}{M}\frac{d^2u}{dx^2}
+\end{align*}
+Note that the velocity of the phonon is given by
+$$ v^2 = \frac{C\lambda^2}{M}$$
+so we have
+$$\frac{d^2u}{dt^2} = v^2\frac{d^2u}{dx^2}$$
+
+\section{Problem \#2}
+We know that for the equations of motion for a basis of two unlike atoms is
+\begin{align*}
+M_1\frac{d^2u_s}{dt^2} &= C(v_s+v_{s-1}-2u_s)\\
+M_2\frac{d^2v_s}{dt^2} &= C(u_{s+1}+u_{s}-2v_s)
+\end{align*}
+if we guess that the solutions are of the form
+\begin{align*}
+u_s &= ue^{isKa}e^{-i\omega t}\\
+v_s &= ve^{isKa}e^{-i\omega t}
+\end{align*}
+where $u$ and $v$ are the amplitudes of the waves. If we substitute these equations into each other we find that
+\begin{align*}
+-\omega^2 M_1u &= Cv\left(1+e^{-iKa}\right) - 2Cu\\
+-\omega^2 M_2v &= Cu\left(1+e^{iKa}\right) - 2Cv
+\end{align*}
+We note that the amplitudes $u$ and $v$ are dependent on each other through these equations. But if take the wavenumber to be $K_{max} = \pi/a$ we see that the first equation becomes
+\begin{align*}
+-\omega^2 M_1u &= Cv\left(1+e^{-i\frac{\pi}{a}a}\right) - 2Cu\\
+&= Cv\left(1+e^{-i\pi}\right) - 2Cu\\
+&= \cancelto{0}{Cv\left(1+(-1)\right)} - 2Cu\\
+\omega^2 M_1u &= 2Cu
+\end{align*}
+Similarly for the $v$ amplitude we have
+\begin{align*}
+-\omega^2 M_2v &= Cu\left(1+e^{i\frac{\pi}{a}a}\right) - 2Cv\\
+&= Cu\left(1+e^{i\pi}\right) - 2Cv\\
+&= \cancelto{0}{Cu\left(1+(-1)\right)} - 2Cv\\
+\omega^2 M_2v &= 2Cv
+\end{align*}
+So we have two equations in this limit
+\begin{align*}
+\omega^2 M_1u &= 2Cu\\
+\omega^2 M_2v &= 2Cv
+\end{align*}
+We see that in this limit where $K_{max} = \pi/a$ we have the amplitudes independent of each other.
+
+\section{Problem \#3}
+For a two atom basis where the atoms have the same mass but the force constant $C$ varies alternately between nearest-neighbor atoms we have the equations of motion 
+\begin{align*}
+M\frac{d^2u_s}{dt^2} &= C_1(v_s - u_s) + C_2(v_{s-1} - u_s)\\
+M\frac{d^2u_s}{dt^2} &= C_1(u_s - v_s) + C_2(u_{s+1} - v_s)
+\end{align*}
+Where $C_2 = 10C_1$ so we can combine to get
+\begin{align*}
+M\frac{d^2u_s}{dt^2} &= C(v_s + 10v_{s-1} - 11u_s)\\
+M\frac{d^2u_s}{dt^2} &= C(u_{s} + 10u_{s+1} - 11v_s)
+\end{align*}
+Note we replaced $C_1$ with $C$ as we reduced to just one force constant. Now if we have to solutions 
+\begin{align*}
+u_s &= ue^{isKa}e^{-i\omega t}\\
+v_s &= ve^{isKa}e^{-i\omega t}
+\end{align*}
+we can replace these into the equations of motion. For the $u_s$ equation we have
+\begin{align*}
+M\frac{d^2u_s}{dt^2} &= C(v_s + 10v_{s-1} - 11u_s)\\
+&\Downarrow\\
+M\left(ue^{isKa}e^{-i\omega t}(-i\omega)^2\right) &= C(ve^{isKa}e^{-i\omega t} + 10ve^{i(s-1)Ka}e^{-i\omega t} - 11ue^{isKa}e^{-i\omega t})\\
+-M\omega^2\left(u\cancel{e^{isKa}e^{-i\omega t}}\right) &= C(v\cancel{e^{isKa}e^{-i\omega t}} + 10v\cancel{e^{isKa}e^{-i\omega t}}e^{-iKa} - 11u\cancel{e^{isKa}e^{-i\omega t}})\\
+-M\omega^2u &= C(v + 10ve^{-iKa} - 11u)\\
+&\Downarrow\\
+\omega^2 &= \frac{C}{Mu}(11u -v - 10ve^{-iKa})\\
+\omega(K) &= \sqrt{\frac{11C}{M} -\frac{Cv}{Mu}\left(1 - 10e^{-iKa}\right)}
+\end{align*}
+and for the $v_s$ equation we have
+\begin{align*}
+M\frac{d^2u_s}{dt^2} &= C(u_{s} + 10u_{s+1} - 11v_s)
+&\Downarrow\\
+M\left(ve^{isKa}e^{-i\omega t}(-i\omega)^2\right) &= C(ue^{isKa}e^{-i\omega t} + 10ue^{i(s+1)Ka}e^{-i\omega t} - 11ve^{isKa}e^{-i\omega t})\\
+-M\omega^2\left(v\cancel{e^{isKa}e^{-i\omega t}}\right) &= C(u\cancel{e^{isKa}e^{-i\omega t}} + 10u\cancel{e^{isKa}e^{-i\omega t}}e^{iKa} - 11v\cancel{e^{isKa}e^{-i\omega t}})\\
+-M\omega^2v &= C(u + 10ue^{iKa} - 11v)\\
+&\Downarrow\\
+\omega^2 &= \frac{C}{Mv}(11v - u - 10ue^{iKa})\\
+\omega(K) &= \sqrt{\frac{11C}{M} - \frac{Cu}{Mv}\left(1 - 10e^{iKa}\right)}
+\end{align*}
+So our two dispersion relations are
+\begin{align*}
+\omega(K) &= \sqrt{\frac{11C}{M} -\frac{Cv}{Mu}\left(1 - 10e^{-iKa}\right)}\\
+\omega(K) &= \sqrt{\frac{11C}{M} - \frac{Cu}{Mv}\left(1 - 10e^{iKa}\right)}
+\end{align*}
+So for $K=0$ we have
+$$\omega(K=0) = \sqrt{\frac{11C}{M}}$$
+and for $K=\pi/a$ we have
+\begin{align*}
+\omega(K=\pi/a) &= \sqrt{\frac{11C}{M} -\frac{Cv}{Mu}\left(1 - 10e^{-i\frac{\pi}{a}a}\right)}\\
+&= \sqrt{\frac{11C}{M} -\frac{Cv}{Mu}\left(1 - 10e^{-i\pi}\right)}\\
+&= \sqrt{\frac{11C}{M} -\frac{Cv}{Mu}\left(11\right)}\\
+&= \sqrt{\frac{11C}{M}\left(1-\frac{v}{u}\right)}
+\end{align*}
+And similarly we have
+$$\omega(K=\pi/a)  = \sqrt{\frac{11C}{M}\left(1-\frac{u}{v}\right)}$$
+See attached for the drawings of these dispersion relations. 
+\end{document}
+

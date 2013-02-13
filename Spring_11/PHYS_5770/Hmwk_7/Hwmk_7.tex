@@ -1,0 +1,413 @@
+\documentclass[11pt]{article}
+
+\usepackage{latexsym}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{enumerate}
+\usepackage{amsmath}
+\usepackage{cancel}
+\numberwithin{equation}{section}
+
+\setlength{\evensidemargin}{.25in}
+\setlength{\oddsidemargin}{-.25in}
+\setlength{\topmargin}{-.75in}
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{9.5in}
+\newcommand{\due}{April 5th, 2011}
+\newcommand{\HWnum}{7}
+\input{/home/joey/Documents/Class/Define.tex}
+
+\begin{document}
+\input{../title.tex}
+
+\section{Problem \HWnum.1}
+\begin{enumerate}[(a)]
+\item
+For a massive particle moving in the radial direction with the instantaneous velocity $v = dr/dt$. We can find the components of the four-velocity $U^{\mu}$ by using the normalization condition 
+$$g_{\mu\nu}U^{\mu}U^{\nu} = -1$$
+where we take the $\theta$ and $\phi$ components to be constant. Note that the $\mu=r$ component is given by chain rule so that
+$$\frac{dr}{d\tau} = \frac{dr}{dt}\frac{dt}{d\tau} = vU^{t}$$
+So the normalization becomes 
+\begin{align*}
+g_{\mu\nu}U^{\mu}U^{\nu} &= -1\\
+&\Downarrow\\
+-(1+2\Phi)\left(\frac{dt}{d\tau}\right)^2 + (1+2\Phi)^{-1}\left(\frac{dr}{d\tau}\right)^2 &= -1 \\
+-(1+2\Phi)\left(\frac{dt}{d\tau}\right)^2 + (1+2\Phi)^{-1}\left(\frac{dr}{dt}\frac{dt}{d\tau}\right)^2 &= -1 \\
+-(1+2\Phi)\left(\frac{dt}{d\tau}\right)^2 + (1+2\Phi)^{-1}\left(v\frac{dt}{d\tau}\right)^2 &= -1 \\
+\left(-(1+2\Phi) + (1+2\Phi)^{-1}v^2\right)\left(\frac{dt}{d\tau}\right)^2 &= -1 \\
+&\Downarrow\\
+\frac{dt}{d\tau} &= U^{t} = \frac{1}{\sqrt{(1+2\Phi) - v^2(1+2\Phi)^{-1}}}
+\end{align*}
+And from our definition of $dr/d\tau$ using chain rule we have
+$$U^{r} = \frac{v}{\sqrt{(1+2\Phi) - v^2(1+2\Phi)^{-1}}}$$
+
+\item
+For a stationary observer we can find its four-velocity $U^{\mu}_{\scrO}$ by taking $U^{\mu}$ that we found in part (a) and take the limit as $v\rightarrow 0$ which gives us 
+$$U^{t}_{\scrO} = \frac{1}{\sqrt{(1+2\Phi)}}$$
+Now we can find the kinetic energy as seen by the observer by using
+$$E_{kin} = -g_{\mu\nu}p^{\mu}U^{\nu}_{\scrO}$$
+where $p^{\mu}$ is the four-momentum given by $p^{\mu} = mU^{\mu}$. Note that $U^{\mu}_{\scrO}$ is only nonzero for $\mu=t$ so it picks out the $t$ component. So
+\begin{align*}
+E_{kin} &= -g_{\mu\nu}p^{\mu}U^{\nu}_{\scrO}\\
+&= -g_{tt}mU^{t}U^{t}_{\scrO}\\
+&= (1+2\Phi)m\left(\frac{1}{\sqrt{(1+2\Phi) - v^2(1+2\Phi)^{-1}}}\right)\frac{1}{\sqrt{(1+2\Phi)}}\\
+&= \frac{m(1+2\Phi)}{\sqrt{(1+2\Phi)^2 - v^2}}
+\end{align*}
+Now if we want to approximate the kinetic energy we want to do some algebra to make the approximation easier
+\begin{align*}
+E_{kin} &= \frac{m(1+2\Phi)}{\sqrt{(1+2\Phi)^2 - v^2}}\\
+&= \frac{m(1+2\Phi)}{(1+2\Phi)\sqrt{1 - \frac{v^2}{(1+2\Phi)^2}}}\\
+&= \frac{m}{\sqrt{1 - \frac{v^2}{(1+2\Phi)^2}}}
+\end{align*}
+Now we assume that $v<<1$ and $\Phi<<1$ so we can use a binomial approximation 
+\begin{equation}
+(1+x)^{\alpha} \approx 1+\alpha x
+\label{bio}
+\end{equation}
+So we can approximate that
+$$\frac{v^2}{(1+2\Phi)^2} \approx v^2(1-4\Phi)$$
+Now we assume that this term is still small so we can approximate that
+\begin{align*}
+E_{kin} &\approx \frac{m}{\sqrt{1 - v^2(1-4\Phi)}} \\
+&\approx m\left(1 + \frac{1}{2}v^2(1-4\Phi)\right)\\ 
+&\approx m + \frac{1}{2}mv^2-2mv^2\Phi\\
+&\approx m + \frac{1}{2}mv^2
+\end{align*}
+Note that we neglected the $v^2\Phi$ term. This approximation yields two nonrelativistic terms the first is the rest mass energy and the second is the classical kinetic energy.
+
+\item
+We can calculate the conserved energy by using the equation
+\begin{equation}
+E = - g_{\mu\nu}p^{\mu}K^{\nu}
+\label{EnCon}
+\end{equation}
+where $K^{\mu}$ is the timelike killing vector given by
+$$K^{\mu} = (1,0,0,0)$$
+so again we the only nonzero component is for the $\mu=\nu=t$ so we have
+\begin{align*}
+E &= - g_{\mu\nu}p^{\mu}K^{\nu}\\
+&= - g_{tt}mU^{t}K^{t}\\
+&= (1+2\Phi)m\left(\frac{1}{\sqrt{(1+2\Phi) - v^2(1+2\Phi)^{-1}}}\right)\\
+&= \frac{m(1+2\Phi)}{\sqrt{(1+2\Phi) - v^2(1+2\Phi)^{-1}}}\\
+&= \frac{m(1+2\Phi)}{\sqrt{1+2\Phi}\sqrt{1 - v^2(1+2\Phi)^{-2}}}\\
+&= \frac{m\sqrt{1+2\Phi}}{\sqrt{1 - v^2(1+2\Phi)^{-2}}}
+\end{align*}
+Again we can use the binomial approximation given by equation \ref{bio} to say that 
+$$\sqrt{1+2\Phi} \approx 1+\Phi$$
+and
+$$(1+2\Phi)^{-2} \approx 1-4\Phi$$
+So this yields 
+$$E \approx \frac{m(1+\Phi)}{\sqrt{1 - v^2(1-4\Phi)}}$$
+So now we use the binomial approximation on the $v^2(1-4\Phi)$ term. Note that we neglect the $v^2\Phi$ terms.
+\begin{align*}
+E &\approx \frac{m(1+\Phi)}{\sqrt{1 - v^2(1-4\Phi)}}\\
+&\approx m(1+\Phi)\left(1 + \frac{1}{2}v^2(1-4\Phi)\right)\\
+&\approx (m+m\Phi)\left(1 + \frac{1}{2}v^2-2v^2\Phi\right)\\
+&\approx (m+m\Phi)\left(1 + \frac{1}{2}v^2\right)\\
+&\approx m + \frac{1}{2}mv^2 + m\Phi - \cancel{\frac{1}{2}mv^2\Phi}\\
+&\approx m + \frac{1}{2}mv^2 + m\Phi 
+\end{align*}
+We see that this approximation is the same as the result we found in part (b) where $m$ is the rest mass energy and $1/2mv^2$ is the kinetic energy. The new term $m\Phi$ is the gravitational potential. This makes sense since this energy is the total energy so we need to include the potential term.
+\end{enumerate}
+
+\section{Problem \HWnum.2}
+\begin{enumerate}[(a)]
+\item
+For the \emph{Schwartzschild Solution} we find the effective potential
+\begin{equation}
+V(r) = -\frac{GM}{r} + \frac{L^2}{2r^2} - \frac{GML^2}{r^3}
+\label{EffPot}
+\end{equation}
+Now we can define the variable $x$ as
+$$x\equiv \frac{GMr}{L^2}$$
+which if we solve for $r$ we get
+$$r = \frac{xL^2}{GM}$$
+Under this change in variable the effective potential given by equation \ref{EffPot} becomes
+\begin{align*}
+V(r) &= -\frac{GM}{r} + \frac{L^2}{2r^2} - \frac{GML^2}{r^3}\\
+&\Downarrow\\
+V(x) &= -GM\frac{GM}{xL^2} + \frac{L^2}{2}\left(\frac{GM}{xL^2}\right)^2 - GML^2\left(\frac{GM}{xL^2}\right)^3\\
+&= -\frac{(GM)^2}{xL^2} + \frac{(GM)^2}{2x^2L^2} - \frac{(GM)^4}{x^3L^4}
+\end{align*}
+Now we define a constant $l$ as
+$$l\equiv \frac{L}{GM}$$
+the effective potential becomes
+\begin{align*}
+V(x) &= -\frac{(GM)^2}{xL^2} + \frac{(GM)^2}{2x^2L^2} - \frac{(GM)^4}{x^3L^4}\\
+&\Downarrow\\
+V(x) &= -\frac{1}{l^2x} + \frac{1}{2l^2x^2} - \frac{1}{l^4x^3}
+\end{align*}
+Now if we bring the $l^2$ to the left hand side we have
+$$l^2V(x) = -\frac{1}{x} + \frac{1}{2x^2} - \frac{1}{l^2x^3}$$
+We see that $l$ represents the ratio of the angular momentum $L$ to half of the Schwarzschild radius $R_s = 2GM$. We can see that $R_s$ is like the classical idea of the \emph{impact parameter}. Classically as the impact parameter goes to zero the particle goes directly to the center. Note as $l\rightarrow\infty$ we find that the $x^{-3}$ term goes to zero and we end up in the Newtonian limit. This is because as $l$ goes to infinity the Scwarzschild radius goes to zero. 
+
+\item
+We can find the circular orbits of the potential from part (a) by taking the derivative of $V(x)$ with respect to $x$
+\begin{align*}
+l^2V'(x) &= \frac{1}{x^2} - \frac{1}{x^3} + \frac{3}{l^2x^4}
+\end{align*}
+Now we find the $x$ for $V'(x)=0$ so
+\begin{align*}
+l^2V'(x) &= 0\\
+&\Downarrow\\
+0 &= \frac{1}{x^2} - \frac{1}{x^3} + \frac{3}{l^2x^4}\\
+0 &= x^4\left(\frac{1}{x^2} - \frac{1}{x^3} + \frac{3}{l^2x^4}\right)\\
+0 &= x^2 - x + \frac{3}{l^2}
+\end{align*}
+Note that we can multiply by $x^4$ since the right hand side is equal to zero. Now we can find $x$ by the quadratic formula
+\begin{equation}
+x = \frac{-b \pm \sqrt{b^2-4ac}}{2a}
+\label{Quad}
+\end{equation}
+where $a$, $b$, and $c$ are the coefficients of the quadratic. So equation \ref{Quad} yields
+\begin{align*}
+x &= \frac{-(-1) \pm \sqrt{1 - 4(1)(3/l^2)}}{2(1)}\\
+&= \frac{1 \pm \sqrt{1 - 12l^{-2}}}{2}
+\end{align*}
+Now we can change back from our defined variables $x$ and $l$ to get 
+\begin{align*}
+x &= \frac{1 \pm \sqrt{1 - 12l^{-2}}}{2}\\
+&\Downarrow\\
+\frac{GMr}{L^2} &= \frac{1 \pm \sqrt{1 - 12\frac{(GM)^2}{L^2}}}{2}\\
+&\Downarrow\\
+r &= \frac{L^2}{2GM}\frac{1 \pm \sqrt{1 - 12\frac{(GM)^2}{L^2}}}{2}\\
+&= \frac{1}{2GM}\left(L^2 \pm L^2\sqrt{1 - 12\frac{(GM)^2}{L^2}}\right)\\
+&= \frac{1}{2GM}\left(L^2 \pm \sqrt{L^4 - 12L^4\frac{(GM)^2}{L^2}}\right)\\
+r_c &= \frac{1}{2GM}\left(L^2 \pm \sqrt{L^4 - 12(GML)^2}\right)
+\end{align*}
+
+\item
+We can look at the two limits of $l$ for the solution we found in part (b) 
+$$x = \frac{1 \pm \sqrt{1 - 12l^{-2}}}{2}$$
+we see for large $l$ the $12l^{-2}$ term under the radical becomes negligible. This implies that
+\begin{align*}
+x &\approx  \frac{1 \pm \sqrt{1}}{2}\\
+&\approx  \frac{1 \pm 1}{2}
+\end{align*}
+So we see that the only stable orbit for large $l$ is when $x=1$ the other is the origin and being at the origin is not an orbit. So $r$ is given by the definition of $x$ 
+\begin{align*}
+x \equiv \frac{GMr}{L^2} &= 1\\
+&\Downarrow\\
+r_c &= \frac{L^2}{GM}
+\end{align*}
+This is the classical limit for large angular momentum. Now for small $l$ we see that the solution for $x$
+$$x = \frac{1 \pm \sqrt{1 - 12l^{-2}}}{2}$$
+becomes imaginary for values of $l<\sqrt{12}$ so we assume that the smallest $l$ can be is $\sqrt{12}$. Note that this point is where the two values for $x$ become the same so we see that
+\begin{align*}
+x &= \frac{1 \pm \sqrt{1 - 12(\sqrt{12})^{-2}}}{2}\\
+&= \frac{1 \pm \sqrt{1 - 1}}{2} = \frac{1}{2}
+\end{align*}
+So by the definition of $x$ we have
+$$r_c = \frac{L^2}{2GM}$$
+but we recall that we let $l = \sqrt{12}$. This implies by the definition of $l$ that
+\begin{align*}
+\frac{L}{GM} &= \sqrt{12}\\
+&\Downarrow\\
+L &= \sqrt{12}GM
+\end{align*}
+So by replacing $L$ with this term we get
+\begin{align*}
+r_c &= \frac{L^2}{2GM}\\
+&= \frac{(\sqrt{12}GM)^2}{2GM}\\
+&= \frac{12(GM)^2}{2GM}\\
+&= 6GM
+\end{align*}
+So for $L = \sqrt{12}GM$ the two circular orbits converged at the radius $r_c = 6GM$.
+\end{enumerate}
+
+\section{Problem \HWnum.3}
+\begin{enumerate}[(a)]
+\item
+Given Einstein's equations with a non-zero cosmological constant
+\begin{equation}
+R_{\mu\nu} - \frac{1}{2}g_{\mu\nu}R + \Lambda g_{\mu\nu} = 0
+\label{Cosmo}
+\end{equation}
+where $\Lambda$ is the cosmological constant and $g_{\mu\nu}$ is the metric, $R$ is the Ricci scalar, and $R_{\mu\nu}$ is the Ricci tensor. We can contract this equation with the inverse metric $g^{\mu\nu}$ to get
+$$ g^{\mu\nu}R_{\mu\nu} - \frac{1}{2}g^{\mu\nu}g_{\mu\nu}R + \Lambda g^{\mu\nu}g_{\mu\nu} = 0$$
+We know that when we contract the tensor with its inverse we always have
+$$g^{\mu\nu}g_{\mu\nu} = 4$$
+and we know that the Ricci scalar comes from the Ricci Tensor by
+$$R = R^{\mu}_{\ \mu} = g^{\mu\nu}R_{\mu\nu}$$
+so we see that the first term is just $R$ so we have
+\begin{align*}
+g^{\mu\nu}R_{\mu\nu} - \frac{1}{2}g^{\mu\nu}g_{\mu\nu}R &+ \Lambda g^{\mu\nu}g_{\mu\nu} = 0\\
+&\Downarrow\\
+R - \frac{1}{2}4R + \Lambda 4 &= 0\\
+R - 2R + \Lambda 4 &= 0\\
+-R + 4\Lambda  &= 0\\
+&\Downarrow\\
+R &= 4\Lambda 
+\end{align*}
+Now if we use this relation with equation \ref{Cosmo} we get
+\begin{align*}
+R_{\mu\nu} - \frac{1}{2}g_{\mu\nu}R + \Lambda g_{\mu\nu} &= 0\\
+&\Downarrow\\
+R_{\mu\nu} - \frac{1}{2}g_{\mu\nu}(4\Lambda) + \Lambda g_{\mu\nu} &= 0\\
+R_{\mu\nu} - 2\Lambda g_{\mu\nu} + \Lambda g_{\mu\nu} &= 0\\
+R_{\mu\nu} - \Lambda g_{\mu\nu} &= 0\\
+&\Downarrow\\
+R_{\mu\nu} &= \Lambda g_{\mu\nu} 
+\end{align*}
+
+\item
+We take a time-independent ansatz for the metric as
+\begin{equation}
+ds^2 = -e^{2\alpha(r)}dt^2 + e^{2\beta(r)}dr^2 + r^2d\Omega^2
+\label{ansatz}
+\end{equation}
+where $d\Omega$ is defined as the spherically symmetric solid angle given as
+$$d\Omega^2 \equiv d\theta^2 + \sin(\theta)d\phi^2$$
+Now we can find solutions for $\alpha(r)$ and $\beta(r)$ by using the relation we found in part (a)
+\begin{equation}
+R_{\mu\nu} = \Lambda g_{\mu\nu}
+\label{parta}
+\end{equation}
+We are given the non-zero components of the Ricci Tensor as
+\begin{align*}
+R_{tt} &= e^{2(\alpha-\beta)}\left(\alpha''+(\alpha')^2-\alpha'\beta'+\frac{2\alpha'}{r}\right)\\
+R_{rr} &= -\alpha''-(\alpha')^2 + \alpha'\beta'+\frac{2\beta'}{r}\\
+R_{\theta\theta} &= e^{-2\beta}\left(r(\beta'-\alpha')-1\right)+1\\
+R_{\phi\phi} &= \sin(\theta)R_{\theta\theta}
+\end{align*}
+Note that primes denote derivatives with respect to $r$. We can see that $R_{tt}$ and $R_{rr}$ are equal and opposite except for the scaling factor so we can take the difference by
+\begin{align*}
+e^{2(\beta-\alpha)}R_{tt} + R_{rr} &= \cancelto{1}{e^{2(\beta-\alpha)}e^{2(\alpha-\beta)}}\left(\alpha''+(\alpha')^2-\alpha'\beta'+\frac{2\alpha'}{r}\right)  -\alpha''-(\alpha')^2 + \alpha'\beta'+\frac{2\beta'}{r}\\
+&= \alpha''+(\alpha')^2-\alpha'\beta'+\frac{2\alpha'}{r}  -\alpha''-(\alpha')^2 + \alpha'\beta'+\frac{2\beta'}{r}\\
+&= \frac{2\alpha'}{r}   + \frac{2\beta'}{r} = \frac{2}{r}(\alpha'+\beta')
+\end{align*}
+Now we can use equation \ref{parta} to find that
+\begin{align*}
+e^{2(\beta-\alpha)}R_{tt} + R_{rr} &= e^{2(\beta-\alpha)}\Lambda g_{tt} + \Lambda g_{rr}\\
+&= \Lambda\left(e^{2(\beta-\alpha)}\left(-e^{2\alpha}\right) + e^{2\beta}\right)\\
+&= \Lambda\left(-e^{2(\beta-\alpha)+2\alpha} + e^{2\beta}\right)\\
+&= \Lambda\left(-e^{2\beta} + e^{2\beta}\right) = 0
+\end{align*}
+So we can combine these two results to find that
+\begin{align*}
+\frac{2}{r}(\alpha'+\beta') &= 0\\
+&\Downarrow\\
+\alpha' &= -\beta'
+\end{align*}
+So by integration we can find that 
+$$\alpha(r) = -\beta(r) + C$$
+where $C$ is a constant of integration. We see that the metric is independent of time therefore we can rescale time such that the constant $C$ is zero so we have
+$$\alpha(r) = -\beta(r) $$
+Now we can take the $R_{\theta\theta}$ component and replace the $\beta$ with the $\alpha$ using the relation we found
+\begin{align*}
+R_{\theta\theta} &= e^{-2\beta}\left(r(\beta'-\alpha')-1\right)+1\\
+&= e^{2\alpha}\left(r(-\alpha'-\alpha')-1\right)+1\\
+&= e^{2\alpha}\left(-2r\alpha'-1\right)+1\\
+&= -e^{2\alpha}\left(2r\alpha' + 1\right)+1\\
+&= -\partial_r\left(re^{2\alpha}\right)+1
+\end{align*}
+Note that we used the reverse of the chain rule to condense the term into a single differential. So now we can use equation \ref{parta} to find that
+\begin{align*}
+R_{\theta\theta} &= \Lambda g_{\theta\theta}\\
+&\Downarrow\\
+-\partial_r\left(re^{2\alpha}\right)+1 &= \Lambda r^2\\
+-\partial_r\left(re^{2\alpha}\right) &= \Lambda r^2 - 1\\
+\partial_r\left(re^{2\alpha}\right) &= -\Lambda r^2 + 1\\
+&\Downarrow\\
+re^{2\alpha} &= -\frac{\Lambda}{3}r^3 + r + R_s\\
+e^{2\alpha} &= -\frac{\Lambda}{3}r^2 + 1 + \frac{R_s}{r}
+\end{align*}
+And we can say that
+$$e^{-2\beta} = e^{2\alpha} = -\frac{\Lambda}{3}r^2 + 1 +\frac{R_s}{r}$$
+Note that $R_s$ is a constant of integration and to get the Schwartzschild metric we set it to $R_s = -2GM$. So our metric become
+$$g_{\mu\nu} = -\left(-\frac{\Lambda}{3}r^2 + 1 - \frac{2GM}{r}\right)dt^2 + \left(-\frac{\Lambda}{3}r^2 + 1 - \frac{2GM}{r}\right)^{-1}dr^2 + r^2d\Omega^2$$
+Note that as $\Lambda\rightarrow 0$ we get the Schwartzschild limit.
+
+\item
+We can find the conserved energy by 
+\begin{equation}
+E = -K_{\mu}\frac{dx^{\mu}}{d\lambda}
+\label{ConEn}
+\end{equation}
+Where $K_{\mu}$ is the Killing vector with its index lowered given by
+$$K_{\mu} = g_{\mu\nu}K^{\nu}$$
+ The Killing vector that is associated with the conservation of energy is the timelike Killing vector 
+$$K^{\mu} = (1,0,0,0)$$
+so we see that in equation \ref{ConEn} the $t$ component is picked out so
+\begin{align*}
+E &= -K_{\mu}\frac{dx^{\mu}}{d\lambda}\\
+&= -g_{\mu\nu}K^{\nu}\frac{dx^{\mu}}{d\lambda}\\
+&= -g_{\mu t}K^{t}\frac{dx^{\mu}}{d\lambda}\\
+&= -g_{tt}K^{t}\frac{dt}{d\lambda}\\
+&= \left(-\frac{\Lambda}{3}r^2 + 1 - \frac{2GM}{r}\right)\frac{dt}{d\lambda}
+\end{align*}
+For the angular momentum we have the conserved quantity
+\begin{equation}
+L = R_{\mu}\frac{dx^{\mu}}{d\lambda}
+\label{AngMon}
+\end{equation}
+Where $R_{\mu}$ is the Killing vector given by
+$$R_{\mu} = g_{\mu\nu}R^{\nu}$$
+where
+$$R^{\mu} = (0,0,0,1)$$
+note that this picks out the $\phi$ component. So equation \ref{AngMon} yields
+\begin{align*}
+L &= R_{\mu}\frac{dx^{\mu}}{d\lambda}\\
+&= g_{\mu\nu}R^{\nu}\frac{dx^{\mu}}{d\lambda}\\
+&= g_{\phi\phi}R^{\phi}\frac{d\phi}{d\lambda}\\
+&= r^2\sin^2(\theta)\frac{d\phi}{d\lambda}
+\end{align*}
+Note that we can take the angle $\theta$ to be any arbitrary angle so we take $\theta = \frac{\pi}{2}$. So this makes the angular momentum become
+$$L = r^2\frac{d\phi}{d\lambda}$$
+
+\item
+To find the radial geodesic equation $r(\lambda)$ by using 
+$$-g_{\mu\nu}\frac{dx^{\mu}}{d\lambda}\frac{dx^{\nu}}{d\lambda} = 1$$ 
+Note that we already take $\theta = \frac{\pi}{2}$ and the $g_{\mu\nu}$ is zero for $\mu\ne\nu$ so we have
+\begin{align*}
+g_{tt}\left(\frac{dt}{d\lambda}\right)^2 + g_{rr}\left(\frac{dr}{d\lambda}\right)^2 + g_{\phi\phi}\left(\frac{d\phi}{d\lambda}\right)^2 &= -1\\
+-\left(-\frac{\Lambda}{3}r^2 + 1 - \frac{2GM}{r}\right)\left(\frac{dt}{d\lambda}\right)^2 +  \left(-\frac{\Lambda}{3}r^2 + 1 - \frac{2GM}{r}\right)^{-1}\left(\frac{dr}{d\lambda}\right)^2 + r^2\left(\frac{d\phi}{d\lambda}\right)^2 &= -1
+\end{align*}
+Now we can multiply by $g_{tt}$ to cancel out the term in front of the $r$ component. 
+$$-\left(-\frac{\Lambda}{3}r^2 + 1 - \frac{2GM}{r}\right)^2\left(\frac{dt}{d\lambda}\right)^2 +  \left(\frac{dr}{d\lambda}\right)^2 + \left(-\frac{\Lambda}{3}r^2 + 1 - \frac{2GM}{r}\right)\left(r^2\left(\frac{d\phi}{d\lambda}\right)^2 + 1\right) = 0$$
+Now we see that we have relations to the conserved angular momentum and energy by
+\begin{align*}
+E^2 &= \left(-\frac{\Lambda}{3}r^2 + 1 - \frac{2GM}{r}\right)^2\left(\frac{dt}{d\lambda}\right)^2\\
+\frac{L^2}{r^2} &= r^2\left(\frac{d\phi}{d\lambda}\right)^2
+\end{align*}
+So we have
+$$-E^2 + \left(\frac{dr}{d\lambda}\right)^2 + \left(-\frac{\Lambda}{3}r^2 + 1 - \frac{2GM}{r}\right)\left(\frac{L^2}{r^2} + 1\right) = 0$$
+Now we want to write this in the form 
+$$\frac{1}{2}\left(\frac{dr}{d\lambda}\right)^2 + V(r) = \emf$$
+so we move $E$ to the right hand side and multiply by one half to get
+\begin{align*}
+-E^2 + \left(\frac{dr}{d\lambda}\right)^2 + \left(-\frac{\Lambda}{3}r^2 + 1 - \frac{2GM}{r}\right)\left(\frac{L^2}{r^2} + 1\right) &= 0\\
+&\Downarrow\\
+\frac{1}{2}\left(\frac{dr}{d\lambda}\right)^2 + \frac{1}{2}\left(-\frac{\Lambda}{3}r^2 + 1 - \frac{2GM}{r}\right)\left(\frac{L^2}{r^2} + 1\right) &= \frac{1}{2}E^2\\
+\frac{1}{2}\left(\frac{dr}{d\lambda}\right)^2 + \frac{1}{2}\left(-\frac{\Lambda}{3}r^2 + 1 - \frac{2GM}{r}-\frac{\Lambda L^2}{3} + \frac{L^2}{r^2} - \frac{2GML^2}{r^3}\right) &= \frac{1}{2}E^2\\
+\frac{1}{2}\left(\frac{dr}{d\lambda}\right)^2 + \frac{1}{2} - \frac{\Lambda L^2}{6}  - \frac{\Lambda}{6}r^2 - \frac{GM}{r} + \frac{L^2}{2r^2} - \frac{GML^2}{r^3} &= \frac{1}{2}E^2
+\end{align*}
+We see that in this form we have
+$$\emf = \frac{1}{2}E^2$$
+and
+$$V(r) =  \frac{1}{2} - \frac{\Lambda L^2}{6}  - \frac{\Lambda}{6}r^2 - \frac{GM}{r} + \frac{L^2}{2r^2} - \frac{GML^2}{r^3}$$
+We see that we have the typical effective potential for the Schwarzschild solution but in this case we have an extra two terms dependent on the cosmological constant.
+
+\item
+We see by the effective potential we found in part (d) that the cosmological constant dominates the motion for large $r$. So the potential term for large $r$ is
+$$V(r) = -\frac{\Lambda}{6}r^2$$
+Now we can see the force associated with this potential by using the relation
+$$F = -\frac{dV}{dr}$$
+so this potential gives the force
+$$F = \frac{\Lambda}{3}r$$
+So for a positive cosmological constant we have a repulsive force and for a negative cosmological constant we have an attractive force.
+
+\item
+We can think of the cosmological constant as a perfect fluid where we think that $\Lambda$ is proportional to the energy density $\rho$. We say that
+$$-p = \rho = \frac{\Lambda}{8\pi G}$$
+Note that we flipped the negative sign then what was given in the problem. We can see that if $\Lambda>0$ we have that $\rho>0$ this implies that
+$$\rho+3p = -2\rho<0$$
+this implies that gravity is a repulsive force. This is in agreement with what we found in part (e). And for $\Lambda<0$ we have $\rho<0$ which implies that
+$$\rho+3p = -2\rho>0$$
+this implies that gravity is an attractive force. Again this agrees with the result we found in part (e).
+
+
+\end{enumerate}
+
+\end{document}
+

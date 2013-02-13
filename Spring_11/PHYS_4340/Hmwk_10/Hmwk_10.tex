@@ -1,0 +1,117 @@
+\documentclass[11pt]{article}
+
+\usepackage{latexsym}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{enumerate}
+\usepackage{amsmath}
+\usepackage{cancel}
+\numberwithin{equation}{section}
+
+\setlength{\evensidemargin}{.25in}
+\setlength{\oddsidemargin}{-.25in}
+\setlength{\topmargin}{-.75in}
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{9.5in}
+\newcommand{\due}{April 7th, 2011}
+\newcommand{\HWnum}{10}
+\input{/home/joey/Documents/Class/Define.tex}
+
+\begin{document}
+\input{../title.tex}
+
+\section{Problem \#1}
+\begin{enumerate}[(a)]
+\item
+We can find the \emph{donor ionization energy} of indium antimonide by
+\begin{equation}
+E_d = \frac{e^4m}{2\epsilon^2\hbar^2}
+\label{IonEn}
+\end{equation}
+where in CGS units we have
+$$E_d = \frac{e^4m}{2\epsilon^2\hbar^2} = \left(\frac{13.6}{\epsilon^2}\frac{m^*}{m}\right)\unit{eV}$$
+Note that $m^*$ is the effective mass given as $m^* = 0.015m$ and $\epsilon$ is the dielectric constant given as $\epsilon=18$. So we can calculate $E_d$ for indium antimonide as
+\begin{align*}
+E_d = \frac{e^4m}{2\epsilon^2\hbar^2} &= \left(\frac{13.6}{\epsilon^2}\frac{m^*}{m}\right)\unit{eV}\\
+&= \left(\frac{13.6}{(18)^2}\frac{0.015m}{m}\right)\unit{eV}\\
+&= 6.29\times10^{-4}\unit{eV}
+\end{align*}
+
+\item
+We can find the Bohr radius of the donor by
+\begin{equation}
+a_d = \frac{\epsilon\hbar^2}{m^*e^2}  
+\label{Bohr}
+\end{equation}
+which in CGS units we can say that
+$$a_d = \frac{\epsilon\hbar^2}{m^*e^2} = \left(\frac{0.53\epsilon}{m^*/m}\right)\unit{\AA}$$
+where we use the same $m^*$ and $\epsilon$ from part (a). So we calculate
+\begin{align*}
+a_d = \frac{\epsilon\hbar^2}{m^*e^2} &= \left(\frac{0.53\epsilon}{m^*/m}\right)\unit{\AA}\\
+&= \left(\frac{0.53(18)}{0.015}\right)\unit{\AA}\\
+&= 6.35\times10^{2}\unit{\AA}
+\end{align*}
+
+\item
+If we assume that the Bohr radius of the donor $a_d$ we found in part (a) forms a sphere of radius $a_d$ we find its volume to be
+\begin{align*}
+V &= \frac{4}{3}\pi a_d^3\\
+&= \frac{4}{3}\pi (635\unit{\AA})^3\\
+&= 1.08\times10^{9}\unit{\AA^3} = 1.08\times10^{-15}\unit{cm^3}
+\end{align*}
+So if this is the volume occupied by the doped atom, we will have overlap when the concentration of atoms $n$ is equal to the inverse of this volume. So
+\begin{align*}
+n = \frac{1}{V} &= \frac{1}{1.08\times10^{-15}\unit{cm^3}}\\
+&= 9.27\times10^{14}\unit{cm^{-3}}
+\end{align*}
+So we need a donor concentration of $9.27\times10^{14}$ donors per $\unit{cm^{3}}$.
+\end{enumerate}
+
+\section{Problem \#2}
+\begin{enumerate}[(a)]
+\item
+For a semiconductor with $N_d = 10^{13}$ donors/cm$^{3}$ with an ionization energy $E_d = 1\unit{meV}$ and an effective mass of $m^*=0.01m$ we can estimate the concentration of conduction electrons $n$ at $4\unit{K}$ by
+\begin{equation}
+n \approx (n_0N_d)^{1/2}\exp(-E_d/2k_BT)
+\label{EleCon}
+\end{equation}
+Where $n_0$ is defined as
+$$n_0 \equiv 2\left(\frac{m^*k_BT}{2\pi\hbar^2}\right)^{3/2}$$
+which for this semiconductor we calculate as
+\begin{align*}
+n_0 &\equiv 2\left(\frac{m^*k_BT}{2\pi\hbar^2}\right)^{3/2}\\
+&= 2\left(\frac{(0.01)(9.11\times10^{-31}\unit{kg})(1.38\times10^{-23}\unit{J\ K^{-1}})(4\unit{K})}{2\pi(1.05\times10^{-34}\unit{J\ s})^2}\right)^{3/2}\\
+&= 2\left(\frac{5.03\times10^{-55}\unit{J\ kg}}{6.92\times10^{-68}\unit{J^2\ s^2}}\right)^{3/2}\\
+&= 3.92\times10^{19}\unit{m^{-3}} = 3.92\times10^{13}\unit{cm^{-3}}
+\end{align*}
+Note that we used the mass of an electron to find the effective mass. Now we can calculate equation \ref{EleCon}
+\begin{align*}
+n &\approx (n_0N_d)^{1/2}\exp(-E_d/2k_BT)\\
+&= ((3.92\times10^{13}\unit{cm^{-3}})(10^{13}\unit{cm^{-3}}))^{1/2}\exp(-(1.60\times10^{-22}\unit{J})/2(1.38\times10^{-23}\unit{J\ K^{-1}})(4\unit{K}))\\
+&= (1.98\times10^{13}\unit{cm^{-3}})(2.34\times10^{-1})\\
+&= 4.65\times10^{12}\unit{cm^{-3}}
+\end{align*}
+
+\item
+We can use the value for $n$ we calculated in part (a) to find the \emph{Hall coefficient} by the equation
+\begin{equation}
+R_H = -\frac{1}{nec}
+\label{Hall}
+\end{equation}
+Note that this equation is given in CGS units in SI units we have
+$$R_H = -\frac{1}{ne}$$
+where $e$ is the elementary charge given as $e = 1.60\times10^{-19}\unit{C}$. So we calculate $R_H$ as
+\begin{align*}
+R_H = -\frac{1}{ne} &= -\frac{1}{(4.65\times10^{12}\unit{cm^{-3}})(1.60\times10^{-19}\unit{C})} = -1.34\times10^{6}\unit{cm^3\ C^{-1}}
+\end{align*}
+Note we can calculate this in CGS units where $c=3.00\times10^{10}\unit{cm\ s^{-1}}$ and $e = 4.80\times10^{-10}\unit{esu}$. Note the CGS unit for charge is the esu which is defined as $\unit{g^{1/2}\ cm^{3/2}\ s^{-1}}$. So equation \ref{Hall} yields
+$$R_H = -\frac{1}{(4.65\times10^{12}\unit{cm^{-3}})(4.80\times10^{-10}\unit{esu})(3.00\times10^{10}\unit{cm\ s^{-1}})} = 1.49\times10^{-14}\unit{cm^{1/2}\ g^{-1/2}\ s^2}$$
+\end{enumerate}
+
+\section{Problem \#3}
+See attached for the plots of the Band structures for Si, Ge, and GaAs.
+
+
+
+\end{document}
+

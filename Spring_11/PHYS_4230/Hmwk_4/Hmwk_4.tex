@@ -1,0 +1,141 @@
+\documentclass[11pt]{article}
+
+\usepackage{latexsym}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{enumerate}
+\usepackage{amsmath}
+\usepackage{cancel}
+\numberwithin{equation}{section}
+
+\setlength{\evensidemargin}{.25in}
+\setlength{\oddsidemargin}{-.25in}
+\setlength{\topmargin}{-.75in}
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{9.5in}
+\newcommand{\due}{February 11th, 2011}
+\newcommand{\HWnum}{4}
+\input{/home/joey/Documents/Class/Define.tex}
+
+\begin{document}
+\input{../title.tex}
+
+\section{Problem \#1 (2.26)}
+For a single atom of monoatomic gas in a two-dimensional universe we can say that the number of distinct state in the system (multiplicity) is given by
+$$\Omega_1 = \frac{AA_p}{h^2}$$
+where $A$ is the area that the gas occupies in real space and $A_p$ is the area of the allowed momentum space. Note that $A_p$ is the circumference of the circle that is made by the equation
+$$p_x^2+p_y^2 = 2mU$$
+Note that we are neglecting fluctuations in $U$. If we were to account for fluctuation the circumference would be an area. We see that the radius of this circle in momentum space is given by $\sqrt{2mU}$. Now if we expand to $N$ molecules the multiplicity becomes
+$$\Omega_N = \frac{1}{N!}\frac{A^N}{h^{2N}}A_p$$
+But we need to be able to calculate $A_p$ to do this we use the equation 
+$$\textnormal{"area"} = \frac{2\pi^{d/2}}{\left(\frac{d}{2}-1\right)!}r^{d-1}$$
+We note that in the case of a two-dimensional universe $d=2N$ for the two degrees of freedom. So it follows that 
+\begin{align*}
+A_p &= \frac{2\pi^{2N/2}}{\left(\frac{2N}{2}-1\right)!}(\sqrt{2mU})^{2N-1}\\
+&= \frac{2\pi^{N}}{\left(N-1\right)!}(2mU)^{(2N-1)/2}\\
+&\approx \frac{2\pi^{N}}{N!}(2mU)^{N}
+\end{align*}
+Note the approximation is for large $N$. So we can say the multiplicity is given by 
+$$\Omega_N = \frac{1}{N!}\frac{A^N}{h^{2N}}\frac{2\pi^{N}}{N!}(2mU)^{N}$$
+
+\section{Problem \#2 (2.27)}
+For the situation where all the molecules are in the left most $99\%$ of the volume and the right most $1\%$ is empty we can say that this is the multiplicity of having the same number of molecules in $99\%$ of the volume. So by taking the equation 
+$$\Omega(U,V,N) = f(N)V^NU^{3N/2}$$
+we can find the multiplicity for $V\rightarrow(0.99)V$ we see that the new multiplicity, $\Omega'$ will be given by
+$$\Omega'(U,V,N) = f(N)(0.99V)^NU^{3N/2} = (0.99)^N\Omega(U,V,N)$$
+So the original multiplicity is reduced by $(0.99)^N$ so the probability of finding the system in this state is given by
+$$P = \frac{\Omega'}{\Omega} = (0.99)^N$$
+For $N=100$ the probability is $0.37$, for $N=10000$ the probability is $2.2\times10^{-44}$ and for $N=10^{23}$ the probability is so incredibly small it might as well be impossible. So we can see that for a small number of molecules this system is not that unreasonable, but for typical numbers of molecules even having only one percent of the volume empty is next to impossible.
+
+\section{Problem \#3 (2.28)}
+The number of ways to arrange a 52 playing card deck is given by $52!$ because there are 52 ways to pick the first card and for all those ways there are another 51 ways to pick the second card. This logic follows for the rest of the cards and the result is $52!$. Now if we take the situation where we shuffle a brand new (i.e. all the cards are in order). We see the entropy of the deck at the start is given by $S = k_b\ln(\Omega)$ but in this case $\Omega = 1$ because the cards are in order so initially the entropy is zero. Now after we shuffle we say that all the states are now accessible so $\Omega' = 52!$. So the entropy is now
+$$S = \ln(52!) = 1.56\times10^{2}$$
+or in SI units 
+$$S = k_B\ln(52!) = 2.10\times10^{-21}\unit{J\ K^{-1}}$$
+note that this does represent an increase in entropy, and this value is as high as molecules in a gas where $N~10^{23}$.
+
+\section{Problem \#4 (2.33)}
+Given the \emph{Sackur-Tetrode} equation for an ideal gas
+\begin{equation}
+S = Nk_B\left[\ln\left(\frac{V}{N}\left(\frac{4\pi mU}{3Nh^2}\right)^{3/2}\right)+\frac{5}{2}\right]
+\label{Sack}
+\end{equation}
+we can calculate the entropy of a mol of argon gas at room temperature and one atmosphere of pressure. Note that the volume of a mol of an ideal gas at room temperature and one atmosphere is $22.4\unit{L}$ or $0.0224\unit{m^3}$. We also know that the mass of an argon atom is $6.63\times10^{-26}\unit{kg}$ and the energy of the system by the \emph{Equipartition Theory} is
+$$U = N\frac{f}{2}k_BT =  N\frac{3}{2}k_BT $$
+note that we only have 3 degrees of freedom in this case. So using equation \ref{Sack} we can calculate the entropy 
+\begin{align*}
+S &= Nk_B\left[\ln\left(\frac{V}{N}\left(\frac{4\pi m(N\frac{3}{2}k_BT)}{3Nh^2}\right)^{3/2}\right)+\frac{5}{2}\right]\\
+S &= Nk_B\left[\ln\left(\frac{V}{N}\left(\frac{4\pi mk_BT}{2h^2}\right)^{3/2}\right)+\frac{5}{2}\right]\\
+&= (6.02\times10^{23})(1.38\times10^{-23}\unit{J\ K^{-1}})\left[\ln\left(\frac{0.0224\unit{m^3}}{6.02\times10^{23}}\left(\frac{4\pi (6.63\times10^{-26}\unit{kg})k_B(300\unit{K})}{3(6.63\times10^{-34}\unit{J\ s})^2}\right)^{3/2}\right)+\frac{5}{2}\right]\\
+&= 8.31\unit{J\ K^{-1}}\left[\ln\left(\frac{0.0224\unit{m^3}}{6.02\times10^{23}}\left(\frac{3.45\times10^{-45}\unit{J\ kg}}{1.32\times10^{-66}\unit{J^2\ s^2}}\right)^{3/2}\right)+\frac{5}{2}\right]\\
+&= 8.31\unit{J\ K^{-1}}\left[\ln\left((3.72\times10^{-26}\unit{m^3})\left(2.62\times10^{21}\unit{kg\ J^{-1}\ s^{-2}}\right)^{3/2}\right)+\frac{5}{2}\right]\\
+&= 8.31\unit{J\ K^{-1}}\left[\ln\left(5.00\times10^{6}\right)+\frac{5}{2}\right]\\
+&= 8.31\unit{J\ K^{-1}}\left(1.79\times10^{1}\right)\\
+&= 1.49\times10^{2}\unit{J\ K^{-1}}
+\end{align*}
+This entropy is greater than a mol of helium gas under the same conditions due to the fact that argon has a greater mass.
+
+\section{Problem \#5 (2.34)}
+We know that for a quasistatic isothermal expansion the change in entropy is given by 
+\begin{equation}
+\Delta S = \frac{Q}{T}
+\label{Quasi}
+\end{equation}
+but for the case where we have free expansion we know that there is no heat gained or lost. Therefore equation \ref{Quasi} implies that $\Delta S = 0$. But we know that the change in entropy is related to the change in volume by
+\begin{equation}
+\Delta S = Nk_B\ln\left(\frac{V_f}{V_i}\right)
+\label{Free}
+\end{equation}
+Now we know that in the case of free expansion $V_f>V_i$ and more importantly $V_f\ne V_i$. This fact and equation \ref{Free} implies that $\Delta S > 0$ but not equal to zero. This means we can't apply equation \ref{Quasi} to the free expansion case.
+
+\section{Problem \#6 (2.36)}
+We know that in general entropy is given by
+$$S = Nk_B\ln(\Omega(V,U,N...))$$
+but if we assume that the logarithm is never large we can neglect it and estimate the entropy of large systems by saying
+$$S\approx Nk_B$$
+Say for a book (composed of $1\unit{kg}$ of carbon) where the number of carbon atoms in the book is given by
+$$N = 1000\unit{g}\frac{1\unit{mol}}{12\unit{g}}\frac{6.02\times10^{23}\unit{atoms}}{1\unit{mol}} = 5.02\times10^{25}$$
+So the entropy of the book is
+$$S = Nk_B = (5.02\times10^{25})(1.38\times10^{-23}\unit{J\ K^{-1}}) = 6.93\times10^{2}\unit{J\ K^{-1}}$$
+For the moose (composed of $400\unit{kg}$ of water) we find the number of water molecules as
+$$N = 400000\unit{g}\frac{1\unit{mol}}{18\unit{g}}\frac{6.02\times10^{23}\unit{atoms}}{1\unit{mol}} = 1.34\times10^{28}$$
+So the entropy of the moose is
+$$S = Nk_B = (1.34\times10^{28})(1.38\times10^{-23}\unit{J\ K^{-1}}) = 1.85\times10^{5}\unit{J\ K^{-1}}$$
+And for the sun that is composed of $2\times10^{30}\unit{kg}$ of ionized hydrogen. Note that we assume that the mass of ionized hydrogen is just the mass of a proton given as $1.67\times10^{-27}\unit{kg}$ so the number of ionized hydrogen atoms is 
+$$N = \frac{2\times10^{30}\unit{kg}}{1.67\times10^{-27}\unit{kg}} = 1.20\times10^{57}$$ 
+So the entropy of the sun is about
+$$S = Nk_B = (1.20\times10^{57})(1.38\times10^{-23}\unit{J\ K^{-1}}) = 1.65\times10^{34}\unit{J\ K^{-1}}$$
+
+\section{Problem \#7 (2.37)}
+If we have $N$ total molecules and $x$ is the fraction of these that are of type $B$ we can say that the change entropy of molecules $A$ is given by
+$$\Delta S_A = N_Ak_B\ln\left(\frac{V_f}{V_i}\right)$$
+Note that $N_A$ is given by $N_A = (1-x)N$ and if we assume that the number of molecules have an initial volume of $V_i = (1-x)V_f$ it follows that
+\begin{align*}
+\Delta S_A &= N(1-x)k_B\ln\left(\frac{V_f}{(1-x)V_f}\right)\\
+&= N(1-x)k_B\ln\left((1-x)^{-1}\right)\\
+&= -N(1-x)k_B\ln\left(1-x\right)
+\end{align*}
+Now for the $B$ molecules we can follow the same process where $N_B = Nx$ and $V_i = xV_f$ so
+\begin{align*}
+\Delta S_B &= Nxk_B\ln\left(\frac{V_f}{xV_f}\right)\\
+&= Nxk_B\ln\left(x^{-1}\right)\\
+&= -Nxk_B\ln\left(x\right)
+\end{align*}
+So the total change in entropy is just the sum of the two changes so it follows that
+\begin{align*}
+\Delta S_{tot} &= \Delta S_A + \Delta S_B\\
+&= -N(1-x)k_B\ln\left(1-x\right) -Nxk_B\ln\left(x\right)\\
+&= -Nk_B\left[(1-x)\ln\left(1-x\right) + x\ln\left(x\right)\right]
+\end{align*}
+Note that for equal parts $A$ and $B$ we have $x=`1/2$ so the change in entropy is 
+\begin{align*}
+\Delta S_{tot} &= -Nk_B\left[(1-1/2)\ln\left(1-1/2\right) + 1/2\ln\left(1/2\right)\right]\\
+&= -Nk_B\left[\frac{1}{2}\ln\left(\frac{1}{2}\right) + \frac{1}{2}\ln\left(\frac{1}{2}\right)\right]\\
+&= -Nk_B\frac{1}{2}\left[\ln\left(\frac{1}{2}\frac{1}{2}\right)\right]\\
+&= -Nk_B\frac{1}{2}\ln\left(\frac{1}{4}\right)\\
+&= Nk_B\ln\left(\frac{1}{4}\right)^{-1/2}\\
+&= Nk_B\ln\left(4\right) =  Nk_B\ln\left(2^2\right) =  2Nk_B\ln\left(2\right) 
+\end{align*}
+This is the result that was found in the book.
+\end{document}
+

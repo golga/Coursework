@@ -1,0 +1,318 @@
+\documentclass[11pt]{article}
+
+\usepackage{latexsym}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{enumerate}
+\usepackage{amsmath}
+\usepackage{cancel}
+\numberwithin{equation}{section}
+
+\setlength{\evensidemargin}{.25in}
+\setlength{\oddsidemargin}{-.25in}
+\setlength{\topmargin}{-.75in}
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{9.5in}
+\newcommand{\due}{April 19th, 2011}
+\newcommand{\HWnum}{8}
+\input{/home/joey/Documents/Class/Define.tex}
+
+\begin{document}
+\input{../title.tex}
+
+\section{Problem \HWnum.1}
+\begin{enumerate}[(a)]
+\item
+For a massive particle that has fallen inside the event horizon, $r<2GM$, using the normalization condition on the four-velocity 
+$$g_{\mu\nu}U^{\mu}U^{\nu} = -1$$
+we can find the minimum amount the radial component decreases by using the \emph{Schwarzschild Metric} given by
+$$ds^2 = -\left(1-\frac{2GM}{r}\right)dt^2 + \left(1-\frac{2GM}{r}\right)^{-1}dr^2 + r^2d\Omega^2$$
+which yields
+$$ -\left(1-\frac{2GM}{r}\right)\left(\frac{dt}{d\tau}\right)^2 + \left(1-\frac{2GM}{r}\right)^{-1}\left(\frac{dr}{d\tau}\right)^2 + r^2\left(\frac{d\theta}{d\tau}\right)^2 + r^2\sin^2(\theta)\left(\frac{d\phi}{d\tau}\right)^2 = -1$$
+so we can say that
+$$\left(\frac{dt}{d\tau}\right)^2 = \left(\frac{dt}{d\tau}\right)^2 = \left(\frac{dt}{d\tau}\right)^2 = 0$$
+because we can pick any trajectory. Note that this works for the time component because inside the event horizon time becomes spacelike. So we see this trajectory minimizes the quantity $(dr/d\tau)^2$ since the summation is equal to a constant. This implies that
+$$\left(1-\frac{2GM}{r}\right)^{-1}\left(\frac{dr}{d\tau}\right)^2 \ge -1$$
+So if we solve for $dr/d\tau$ we find that
+\begin{align*}
+\left(1-\frac{2GM}{r}\right)^{-1}\left(\frac{dr}{d\tau}\right)^2 &\ge -1\\
+&\Downarrow\\
+\left(\frac{dr}{d\tau}\right)^2 &\ge -\left(1-\frac{2GM}{r}\right)\\
+\left|\frac{dr}{d\tau}\right| &\ge \sqrt{\frac{2GM}{r}-1}
+\end{align*}
+
+\item
+To find the maximum lifetime of a particle traveling from the event horizon, $r=2GM$, to the singularity, $r=0$, we use the result from part (a). And we use the fact that the particle change in its radial direction is $\Delta r = 2GM/c^2$ note that for this problem we restored the non-unity value for $c$. Now to find the maximum lifetime to travel this distance we want the minimum velocity in the radial direction which we found in part (a). So we can say by separation of variables that
+\begin{align*}
+d\tau = \left(\frac{2GM}{r}-1\right)^{-1/2}dr
+\end{align*}
+So we integrate to find $\tau$
+$$\tau = -\int_{2GM/c^2}^{0}\left(\frac{2GM}{r}-1\right)^{-1/2}dr$$
+and by using Mathematica we found that
+$$\tau = \frac{GM\pi}{c^3}$$
+note that factor of $c^3$ is added so that we have dimensions of time. So for a black hole measured in solar masses $M_{\odot} = 1.99\times10^{30}\unit{kg}$ we have $M = nM_{\odot}$ where $n$ is the number of solar masses. So we calculate $\tau$ as
+$$\frac{\tau}{n} = \frac{GM_{\odot}\pi}{c^3} = \frac{(6.67\times10^{-11}\unit{m^{3}\ kg^{-1}\ s^{-2}})(1.99\times10^{30}\unit{kg})\pi}{(3.00\times10^{8}\unit{m\ s^{-1}})^{3}} = 1.54\times10^{-5}\unit{s}$$
+So it the lifetime of the particle is $15.4\unit{\mu s}$ per solar mass of the black hole.
+
+\item
+So if we take the geodesic that maximizes the lifetime of the particle we know from part (b) that
+$$\frac{dr}{d\tau} = \sqrt{\frac{2GM}{r}-1}$$
+We see that the energy on a geodesic of a massive particle is
+$$E = \frac{1}{2}\left(\frac{dr}{d\tau}\right)^2 + V(r)$$
+where
+$$V(r) = \frac{1}{2} - \frac{GM}{r} + \frac{L^2}{2r^2} - \frac{GML^2}{r^3}$$
+Note that we assumed in part (a) that this path has no angular momentum $d\theta/d\tau = d\phi/d\tau = 0$ so we see that if we plug in the expression for $dr/d\tau$ we find that
+\begin{align*}
+E &= \frac{1}{2}\left(\frac{dr}{d\tau}\right)^2 + \frac{1}{2} - \frac{GM}{r} + \cancelto{0}{\frac{L^2}{2r^2} - \frac{GML^2}{r^3}}\\
+&= \frac{1}{2}\left(\frac{2GM}{r}-1\right) + \frac{1}{2} - \frac{GM}{r} \\
+&= \frac{2GM}{r} - 1 + \frac{1}{2} - \frac{GM}{r} \\
+&= 0
+\end{align*}
+So when we maximize the proper time we have the conserved energy $E\rightarrow 0$
+\end{enumerate}
+
+\section{Problem \HWnum.2}
+\begin{enumerate}[(a)]
+\item
+We know that the conserved quantity that is associated with the timelike killing vector 
+$$K^{\mu} = (1,0,0,0)$$
+is the energy 
+$$E = -K_{\mu}\frac{dx^{\mu}}{d\tau}$$
+where we lower the index so that
+$$K_{\mu} = g_{\mu\nu}K^{\nu}$$
+given that the \emph{Reissner-Nordstrom} metric is
+$$ds^2 = -\Delta(r)dt^2 + \Delta(r)^{-1}dr^2+r^2d\Omega^2$$
+where
+$$\Delta(r) = 1 - \frac{2GM}{r} + \frac{GQ^2}{r^2}$$
+So we can find the conservation of energy by
+\begin{align*}
+E &= -K_{\mu}\frac{dx^{\mu}}{d\tau}\\
+&= -g_{\mu\nu}K^{\nu}\frac{dx^{\mu}}{d\tau}\\
+&= -g_{tt}K^{t}\frac{dt}{d\tau}\\
+&= \Delta(r)\frac{dt}{d\tau}
+\end{align*}
+
+\item
+We recall that the electromagnetic field strength tensor is written as
+$$F_{\mu\nu}\equiv\partial_{\mu}A_{\nu} - \partial_{\nu}A_{\mu} = \grad_{\mu}A_{\nu} - \grad_{\nu}A_{\mu}$$
+where the potential $A_{\mu}$ is given as
+$$A_{t} = -\frac{Q}{r}$$
+if we plug this in we see that
+\begin{align*}
+F_{rt} &= \partial_{r}A_{t} - \cancelto{0}{\partial_{t}A_{r}}\\
+&= -\partial_{r}\frac{Q}{r} \\
+&= \frac{Q}{r^2}
+\end{align*}
+and that
+\begin{align*}
+F_{tr} &= \cancelto{0}{\partial_{t}A_{r}} - \partial_{r}A_{t}\\
+&= \partial_{r}\frac{Q}{r}\\
+&= -\frac{Q}{r^2}
+\end{align*}
+Note this agrees with the given fact that
+$$F_{rt} = -F_{tr} = \frac{Q}{r^2}$$
+now we can show that 
+$$K^{\mu}\grad_{\mu}A_{\nu} - A^{\mu}\grad_{\mu}K_{\nu} = 0$$
+where $K^{\mu}$ is the timelike killing vector given by
+$$K^{\mu} = (1,0,0,0)$$
+where
+$$A^{\mu} = g^{\mu\nu}K_{\nu}$$
+and
+$$K_{\mu} = g_{\mu\nu}K^{\nu}$$
+so if we find that we have
+\begin{align*}
+K^{\mu}\grad_{\mu}A_{\nu} - A^{\mu}\grad_{\mu}K_{\nu} &= K^{\mu}\partial_{\mu}A_{\nu} - K^{\mu}\Gamma^{\lambda}_{\mu\nu}A_{\lambda} - A^{\mu}\partial_{\mu}K_{\nu} + A^{\mu}\Gamma^{\lambda}_{\mu\nu}K_{\lambda}\\
+&= K^{\mu}\partial_{\mu}A_{\nu} - K^{\mu}\Gamma^{\lambda}_{\mu\nu}A_{\lambda} - g^{\mu\alpha}A_{\alpha}\partial_{\mu}g_{\lambda\beta}K^{\beta} + g^{\mu\alpha}A_{\alpha}\Gamma^{\lambda}_{\mu\nu}g_{\lambda\beta}K^{\beta}
+\end{align*}
+Now we see that every index except for $\nu$ has to be the $t$ component so that the value is non-zero. This implies that
+\begin{align*}
+K^{\mu}\grad_{\mu}A_{\nu} - A^{\mu}\grad_{\mu}K_{\nu} &= K^{t}\partial_{t}A_{t} - K^{t}\Gamma^{t}_{t\nu}A_{t} - g^{tt}A_{t}\partial_{t}g_{tt}K^{t} + g^{tt}A_{t}\Gamma^{t}_{t\nu}g_{tt}K^{t}
+\end{align*}
+Now we see that $A_t$ and $g^{tt}A_t$ do not depend on $t$ so we have
+\begin{align*}
+K^{\mu}\grad_{\mu}A_{\nu} - A^{\mu}\grad_{\mu}K_{\nu} &= K^{t}\cancelto{0}{\partial_{t}A_{t}} - K^{t}\Gamma^{t}_{t\nu}A_{t} - g^{tt}A_{t}\cancelto{0}{\partial_{t}g_{tt}K^{t}} + g^{tt}A_{t}\Gamma^{t}_{t\nu}g_{tt}K^{t}\\
+&= - K^{t}\Gamma^{t}_{t\nu}A_{t} + g^{tt}A_{t}\Gamma^{t}_{t\nu}g_{tt}K^{t}\\
+&= - K^{t}\Gamma^{t}_{t\nu}A_{t} + \cancelto{1}{g^{tt}g_{tt}}A_{t}\Gamma^{t}_{t\nu}K^{t}\\
+&= - K^{t}\Gamma^{t}_{t\nu}A_{t} + A_{t}\Gamma^{t}_{t\nu}K^{t}\\
+&= - K^{t}\Gamma^{t}_{t\nu}A_{t} + K^{t}\Gamma^{t}_{t\nu}A_{t} = 0
+\end{align*}
+
+\item
+Given the equation
+$$\frac{\partial^2x^{\mu}}{\partial\tau^2} + \Gamma^{\mu}_{\nu\rho}\frac{\partial x^{\nu}}{\partial\tau}\frac{\partial x^{\rho}}{\partial \tau} = \frac{e}{m}F^{\mu}_{\ \nu}\frac{dx^{\nu}}{d\tau}$$
+we can rewrite the equation in terms of the four-momentum
+$$p^{\mu}\equiv m\frac{dx^{\mu}}{d\tau}$$
+so that
+\begin{align*}
+\frac{\partial}{\partial\tau}\frac{p^{\mu}}{m} + \Gamma^{\mu}_{\nu\rho}\frac{p^{\nu}}{m}\frac{p^{\rho}}{m} &= \frac{e}{m^2}F^{\mu}_{\ \nu}p^{\nu}\\
+&\Downarrow\\
+\frac{\partial}{\partial\tau}p^{\mu} + \frac{1}{m}\Gamma^{\mu}_{\nu\rho}p^{\nu}p^{\rho} &= \frac{e}{m}F^{\mu}_{\ \nu}p^{\nu}
+\end{align*}
+Now we can use the fact that
+$$\frac{d}{d\tau} = \frac{dx^{\mu}}{d\tau}\partial_{\mu}$$
+to show that
+\begin{align*}
+\frac{\partial}{\partial\tau}p^{\mu} + \frac{1}{m}\Gamma^{\mu}_{\nu\rho}p^{\nu}p^{\rho} &= \frac{e}{m}F^{\mu}_{\ \nu}p^{\nu}\\
+&\Downarrow\\
+\frac{dx^{\nu}}{d\tau}\partial_{\nu}p^{\mu} + \frac{1}{m}\Gamma^{\mu}_{\nu\rho}p^{\nu}p^{\rho} &= \frac{e}{m}F^{\mu}_{\ \nu}p^{\nu}\\
+\frac{p^{\nu}}{m}\partial_{\nu}p^{\mu} + \frac{1}{m}\Gamma^{\mu}_{\nu\rho}p^{\nu}p^{\rho} &= \frac{e}{m}F^{\mu}_{\ \nu}p^{\nu}\\
+p^{\nu}\partial_{\nu}p^{\mu} + \Gamma^{\mu}_{\nu\rho}p^{\nu}p^{\rho} &= eF^{\mu}_{\ \nu}p^{\nu}\\
+&\Downarrow\\
+p^{\nu}\grad_{\nu}p^{\mu} &= eF^{\mu}_{\ \nu}p^{\nu}
+\end{align*}
+We can use this result on the expression 
+$$p^{\mu}\grad_{\mu}(K_{\nu}p^{\nu})$$
+by using chain rule
+\begin{align*}
+p^{\mu}\grad_{\mu}(K_{\nu}p^{\nu}) &= p^{\mu}p^{\nu}\cancelto{0}{\grad_{\mu}K_{\nu}} + p^{\mu}K_{\nu}\grad_{\mu}p^{\nu}\\
+&=  K_{\nu}p^{\mu}\grad_{\mu}p^{\nu}
+\end{align*}
+So we use the result we derived to say that
+\begin{align*}
+p^{\mu}\grad_{\mu}(K_{\nu}p^{\nu}) &=   K_{\nu}p^{\mu}\grad_{\mu}p^{\nu}\\
+&=   eK_{\nu}F^{\nu}_{\ \mu}p^{\mu}
+\end{align*}
+
+\item
+We can take the result from part (c) noting that 
+$$F^{\nu}_{\ \mu} = g^{\nu\lambda}F_{\lambda\mu} = g^{\nu\lambda}(\grad_{\lambda}A_{\mu} - \grad_{\mu}A_{\lambda})$$
+which yields
+\begin{align*}
+eK_{\nu}F^{\nu}_{\ \mu}p^{\mu} &=   eK_{\nu}g^{\nu\lambda}(\grad_{\lambda}A_{\mu} - \grad_{\mu}A_{\lambda})p^{\mu}
+\end{align*}
+But we use the fact that 
+$$k_{\nu} = g_{\nu\sigma}k^{\sigma}$$
+we have that
+\begin{align*}
+eK_{\nu}F^{\nu}_{\ \mu}p^{\mu} &=   eg^{\nu\lambda}g_{\nu\sigma}K^{\sigma}(\grad_{\lambda}A_{\mu} - \grad_{\mu}A_{\lambda})p^{\mu}\\
+&=   e\delta_{\lambda}^{\sigma}(K^{\sigma}\grad_{\lambda}A_{\mu} - K^{\sigma}\grad_{\mu}A_{\lambda})p^{\mu}
+\end{align*}
+Note that the contraction of the metric with its inverse is the delta symbol. This implies that $\lambda=\sigma$. So
+\begin{align*}
+eK_{\nu}F^{\nu}_{\ \mu}p^{\mu} &=   e\delta_{\lambda}^{\sigma}(K^{\sigma}\grad_{\lambda}A_{\mu} - K^{\sigma}\grad_{\mu}A_{\lambda})p^{\mu}\\
+&=  e(K^{\lambda}\grad_{\lambda}A_{\mu} - K^{\lambda}\grad_{\mu}A_{\lambda})p^{\mu}
+\end{align*}
+Now we can use the result from part (b) 
+$$K^{\mu}\grad_{\mu}A_{\nu} - A^{\mu}\grad_{\mu}K_{\nu} = 0$$
+to show that
+\begin{align*}
+eK_{\nu}F^{\nu}_{\ \mu}p^{\mu} &=  e(A^{\lambda}\grad_{\lambda}K_{\mu} - K^{\lambda}\grad_{\mu}A_{\lambda})p^{\mu}
+\end{align*}
+Now we can use killing's equation 
+$$\grad_{(\mu}K_{\nu)} = 0$$
+which implies that
+$$\grad_{\lambda}K_{\mu} = -\grad_{\mu}K_{\lambda}$$
+so we have
+\begin{align*}
+eK_{\nu}F^{\nu}_{\ \mu}p^{\mu} &=  e(-A^{\lambda}\grad_{\mu}K_{\lambda} - K^{\lambda}\grad_{\mu}A_{\lambda})p^{\mu}\\
+&=  -e(A^{\lambda}\grad_{\mu}K_{\lambda} + K^{\lambda}\grad_{\mu}A_{\lambda})p^{\mu}\\
+&=  -e\grad_{\mu}(A_{\lambda}K^{\lambda})p^{\mu}\\
+&=  -p^{\mu}\grad_{\mu}(eA_{\lambda}K^{\lambda})
+\end{align*}
+So we can go back and say that
+\begin{align*}
+p^{\mu}\grad_{\mu}(K_{\nu}p^{\nu}) &= -p^{\mu}\grad_{\mu}(eA_{\lambda}K^{\lambda})\\
+&\Downarrow\\
+p^{\mu}\grad_{\mu}(K_{\nu}p^{\nu}+eA_{\lambda}K^{\lambda}) &= 0
+\end{align*}
+Now we see that this is in the form of Killing's equation where we have a conserved quantity given by
+$$K_{\nu}p^{\nu}+eA_{\lambda}K^{\lambda} = \textnormal{const}$$
+So we can find this conserved quantity by noting that the only non-zero component of the killing vector is for $\mu=t$ so
+\begin{align*}
+K_{\nu}p^{\nu}+eA_{\lambda}K^{\lambda} &= g_{\nu\sigma}K^{\sigma}p^{\nu} + eA_{\lambda}K^{\lambda}\\
+&= g_{tt}K^{t}p^{t} + eA_{t}K^{t}\\
+&= -\left(1-\frac{2GM}{r} + \frac{GQ^2}{r^2}\right)m\frac{dt}{d\tau} - \frac{eQ}{r}
+\end{align*}
+Note we absorb the negative into the constant that we will call $E$ so 
+$$E =  m\left(1-\frac{2GM}{r} + \frac{GQ^2}{r^2}\right)\frac{dt}{d\tau} + \frac{eQ}{r}$$
+\end{enumerate}
+ 
+\section{Problem \HWnum.3}
+\begin{enumerate}[(a)]
+\item
+We can find the area of the outer horizon $r=r_+$ by 
+$$A = \int d\theta d\phi \sqrt{g_2}$$
+where $\sqrt{g_2}$ is the square root of the determinate of 2 metric where $r$ and $t$ are held constant. Found to be
+$$\sqrt{g_2} = r_+^2\sin(\theta)$$
+so the surface area is 
+\begin{align*}
+A &= \int d\theta d\phi \sqrt{g_2}\\
+&= r_+^2\int_{0}^{2\pi}\int_{0}^{\pi} \sin(\theta)d\theta d\phi\\
+&= 2\pi r_+^2\int_{0}^{\pi} \sin(\theta)d\theta \\
+&= 4\pi r_+^2
+\end{align*}
+Where
+$$r_+ = GM + \sqrt{G^2M^2-GQ^2}$$
+so the area of the other horizon is
+$$A = 4\pi\left(GM + \sqrt{G^2M^2-GQ^2}\right)^2 = 4\pi\left(2G^2M^2 - GQ^2 + GM\sqrt{G^2M^2-GQ^2}\right)$$
+
+\item
+We can vary the mass and the charge of the black hole so that $M\rightarrow M+\delta M$ and $Q\rightarrow Q+\delta Q$. We can vary the area and take the first order approximation to find
+\begin{align*}
+\cancel{A}+\delta A &= 4\pi\left(2G^2(M+\delta M)^2 - G(Q+\delta Q)^2 + G(M+\delta M)\sqrt{G^2(M+\delta M)^2-G(Q+\delta Q)^2}\right)\\
+\delta A &= 4\pi\left(2G^2(M^2 + (\delta M)^2 + 2M(\delta M)) - G(Q^2+(\delta Q)^2+2Q(\delta Q))\right.\\
+&\ \ \ \ \ \left. + G(M+\delta M)\sqrt{G^2(M+\delta M)^2-G(Q+\delta Q)^2}\right)\\
+&= 4\pi\left(4G^2M(\delta M) - 2GQ(\delta Q) + G(\delta M)\sqrt{G^2(M+\delta M)^2-G(Q+\delta Q)^2}\right)
+\end{align*}
+We see that the term with the radical is already first order with respect to the variations. So we expand the radical and only take the zeroth order terms to get
+\begin{align*}
+\sqrt{G^2(M+\delta M)^2-G(Q+\delta Q)^2} &= \sqrt{G^2M^2-GQ^2}
+\end{align*}
+So to a first order approximation we have
+$$\delta A= 8\pi G\left(\left(2GM  + \frac{1}{2}\sqrt{G^2M^2-GQ^2}\right)(\delta M)- Q(\delta Q)\right)$$
+Now if we use the area theorem that states $\delta A\ge 0$ we can say that
+\begin{align*}
+\left(2GM  + \frac{1}{2}\sqrt{G^2M^2-GQ^2}\right)(\delta M)- Q(\delta Q) &\ge 0\\
+&\Downarrow\\
+\left(2GM  + \frac{1}{2}\sqrt{G^2M^2-GQ^2}\right)(\delta M) &\ge Q(\delta Q)
+\end{align*}
+
+\item
+If we assume that the first law of thermodynamics for this black hole is 
+$$\delta M = \frac{\kappa}{8\pi G}\delta A + \textnormal{work term}$$
+where we can see that the work term is related to the change in the black hole's charge $\delta Q$. We can use the expression for $\delta A$ we found in part (b) to say that
+\begin{align*}
+\delta A &= 8\pi G\left(\left(2GM  + \frac{1}{2}\sqrt{G^2M^2-GQ^2}\right)(\delta M)- Q(\delta Q)\right)\\ 
+&\Downarrow\\
+\left(2GM  + \frac{1}{2}\sqrt{G^2M^2-GQ^2}\right)(\delta M) &= \frac{\delta A}{8\pi G}  + Q(\delta Q) \\
+&\Downarrow\\
+(\delta M) = &\frac{\left(2GM  + \frac{1}{2}\sqrt{G^2M^2-GQ^2}\right)^{-1}}{8\pi G}(\delta A)  + \frac{Q}{\left(2GM  + \frac{1}{2}\sqrt{G^2M^2-GQ^2}\right)}(\delta Q)
+\end{align*}
+So we see that the work term is
+$$\frac{Q}{\left(2GM  + \frac{1}{2}\sqrt{G^2M^2-GQ^2}\right)}(\delta Q)$$
+and that $\kappa$ is 
+$$\kappa = \left(2GM  + \frac{1}{2}\sqrt{G^2M^2-GQ^2}\right)^{-1}$$ 
+Note that the work term has the ratio of the surface gravity $\kappa$ to the charge of the black hole. This implies that the work done by changing the charge of the black hole is dependent on the initial charge of the black hole as well as the gravity that it produces.
+
+\item
+We found in problem 2 that the energy of a charged black hole is given by
+$$E =  m\left(1-\frac{2GM}{r} + \frac{GQ^2}{r^2}\right)\frac{dt}{d\tau} + \frac{eQ}{r}$$
+So we enforce the condition $E<0$ for the \emph{Penrose process} to find that
+$$-m\left(1-\frac{2GM}{r} + \frac{GQ^2}{r^2}\right)\frac{dt}{d\tau} > \frac{eQ}{r}$$
+but we can see that the requirement that the object is moving forwards in time at the outer horizon given as
+$$K_{\mu}p^{\mu}<0$$
+can be rewritten as
+\begin{align*}
+K_{\mu}p^{\mu} &= g_{\mu\sigma}K^{\sigma}p^{\mu}\\
+&= -m\Delta(r)\frac{dt}{d\tau}\\
+&= -m\left(1-\frac{2GM}{r} + \frac{GQ^2}{r^2}\right)\frac{dt}{d\tau}
+\end{align*}
+We see that this is the same term as we found in our energy condition. Also note that $\Delta(r)$ at the outer horizon is zero so we have that 
+$$\frac{eQ}{r_+} < 0$$
+this implies that the product of the charge of the object and the charge of the black hole has to be negative. This means for a Penrose process we need the object to be of opposite charge of the black hole.
+
+
+\item
+The inequality from part (d) implies that that $\delta Q < 0$ and we know that the energy condition $E<0$ implies that $\delta M <0$. Taking these two inequalities we see that the inequality we found in part (b) 
+$$\left(2GM  + \frac{1}{2}\sqrt{G^2M^2-GQ^2}\right)(\delta M) \ge Q(\delta Q)$$
+rewriting for the magnitude of the changes we have
+\begin{align*}
+-\left(2GM  + \frac{1}{2}\sqrt{G^2M^2-GQ^2}\right)|\delta M| &\ge -Q|\delta Q|\\
+&\Downarrow\\
+\left(2GM  + \frac{1}{2}\sqrt{G^2M^2-GQ^2}\right)|\delta M| &\le Q|\delta Q|
+\end{align*}
+implies that to produce a Penrose process the loss in the charge has to be greater than the loss in the mass.
+\end{enumerate}
+
+\end{document}
+

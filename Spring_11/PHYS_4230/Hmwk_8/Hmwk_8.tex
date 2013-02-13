@@ -1,0 +1,165 @@
+\documentclass[11pt]{article}
+
+\usepackage{latexsym}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{enumerate}
+\usepackage{amsmath}
+\usepackage{cancel}
+\numberwithin{equation}{section}
+
+\setlength{\evensidemargin}{.25in}
+\setlength{\oddsidemargin}{-.25in}
+\setlength{\topmargin}{-.75in}
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{9.5in}
+\newcommand{\due}{March 18th, 2011}
+\newcommand{\HWnum}{8}
+\input{/home/joey/Documents/Class/Define.tex}
+
+\begin{document}
+\input{../title.tex}
+
+\section{Problem 5.1}
+For one mole of argon at room temperature and one atmosphere of pressure we can calculate the energy using the equipartition theorem 
+\begin{equation}
+U = \frac{f}{2}Nk_BT 
+\label{equipart}
+\end{equation}
+where for argon we have $f=3$ degrees of freedom so the energy is
+\begin{align*}
+U &= \frac{f}{2}Nk_BT \\
+&= \frac{3}{2}(6.022\times10^{23})(1.38\times10^{-23}\unit{J\ K^{-1}})(300\unit{K}) \\
+&= 3.74\times10^{3}\unit{J}
+\end{align*}
+Now we know the entropy of an ideal gas is given by
+\begin{equation}
+S = Nk_B\left[\ln\left(\frac{V}{N}\left(\frac{4\pi mU}{3Nh^2}\right)^{3/2}\right)+\frac{5}{2}\right]
+\label{Sank}
+\end{equation}
+But we want the volume in terms of the pressure so by the ideal gas law we know that
+$$V = \frac{Nk_BT}{P}$$
+so equation \ref{Sank} gives
+\begin{align*}
+S &= Nk_B\left[\ln\left(\frac{Nk_BT}{NP}\left(\frac{4\pi mU}{3Nh^2}\right)^{3/2}\right)+\frac{5}{2}\right]\\
+&= Nk_B\left[\ln\left(\frac{k_BT}{P}\left(\frac{4\pi mU}{3Nh^2}\right)^{3/2}\right)+\frac{5}{2}\right]\\
+&= Nk_B\left[\ln\left(\frac{(1.38\times10^{-23}\unit{J\ K^{-1}})(300\unit{K})}{1.01\times10^{5}\unit{Pa}}\left(\frac{4\pi (6.63\times10^{-26}\unit{kg})(3.74\times10^{3}\unit{J})}{3(6.022\times10^{23})(6.62\times10^{-34}\unit{J\ s})^2}\right)^{3/2}\right)+\frac{5}{2}\right]\\
+&= (6.022\times10^{23})(1.38\times10^{-23}\unit{J\ K^{-1}})\left[\ln\left((4.10\times10^{-26}\unit{m^3})(2.47\times10^{32}\unit{m^{-3}})\right)+\frac{5}{2}\right]\\
+&= (6.022\times10^{23})(1.38\times10^{-23}\unit{J\ K^{-1}})(1.86\times10^{1})\\
+&= 1.54\times10^{2}\unit{J\ K^{-1}}
+\end{align*}
+Now we can find the enthalpy by
+$$H \equiv U + PV$$
+again we use the ideal gas law to relate volume and pressure so
+\begin{align*}
+H &= U + P\frac{Nk_BT}{P}\\
+&= U + Nk_BT\\
+&= (3.74\times10^{3}\unit{J}) + (6.022\times10^{23})(1.38\times10^{-23}\unit{J\ K^{-1}})(300\unit{K})\\
+&= (3.74\times10^{3}\unit{J}) + (6.022\times10^{23})(1.38\times10^{-23}\unit{J\ K^{-1}})(300\unit{K})\\
+&= 6.23\times10^{3}\unit{J}
+\end{align*}
+We can calculate the \emph{Helmholtz Free Energy} by
+\begin{equation}
+F\equiv U - TS
+\label{Helm}
+\end{equation}
+which for our argon is
+\begin{align*}
+F &= U - TS\\
+&=  (3.74\times10^{3}\unit{J})- (300\unit{K})(1.54\times10^{2}\unit{J\ K^{-1}})\\
+&=  (3.74\times10^{3}\unit{J})- (300\unit{K})(1.54\times10^{2}\unit{J\ K^{-1}})\\
+&= -4.25\times10^4\unit{J}
+\end{align*}
+And we can find the \emph{Gibbs Free Energy} by
+\begin{equation}
+G\equiv U - TS + PV
+\label{Helm}
+\end{equation}
+Which for this argon is
+\begin{align*}
+G &= U - TS + Nk_BT\\
+&=  (3.74\times10^{3}\unit{J})- (300\unit{K})(1.54\times10^{2}\unit{J\ K^{-1}}) + (6.022\times10^{23})(1.38\times10^{-23}\unit{J\ K^{-1}})(300\unit{K})\\
+&= -4.00\times10^{4}\unit{J}
+\end{align*}
+
+\section{Problem 5.2}
+The production of ammonia from nitrogen and hydrogen given by
+$$\textnormal{N}_2 + 3\textnormal{H}_2 \rightarrow 2\textnormal{NH}_3$$
+at $298\unit{K}$ and $1\unit{bar}$ has the values $\Delta H = -46.11\unit{kJ}$ and $S = 192.45\unit{J\ K^{-1}}$. We can find $\Delta G$ by
+$$\Delta G = \Delta H - T\Delta S$$
+so we need to find the change in entropy. We look up that H$_2$ has the entropy of $130.68\unit{J\ K^{-1}}$ and N$_2$ has $S = 191.62\unit{J\ K^{-1}}$ so the total change in entropy is 
+$$\Delta S = 2(192.45\unit{J\ K^{-1}}) - 191.62\unit{J\ K^{-1}} - 3(130.68\unit{J\ K^{-1}}) = -198.76\unit{J\ K^{-1}}$$
+Note that this is the entropy of creation for two ammonia molecules, so for just one we have $\Delta S = -99.4\unit{J\ K^{-1}}$. So we can calculate $\Delta G$ by
+\begin{align*}
+\Delta G &= \Delta H - T\Delta S\\
+&= -4.611\times10^{4}\unit{J} - (298\unit{K})(-99.4\unit{J\ K^{-1}})\\
+&= -1.65\times10^{4}\unit{J}
+\end{align*}
+Note this is in agreement with the value in the back of the book.
+
+\section{Problem 5.5}
+\begin{enumerate}[(a)]
+\item
+For a fuel cell that uses the reaction
+$$\textnormal{CH}_4+2\textnormal{O}_2\rightarrow2\textnormal{H}_2\textnormal{O}+\textnormal{CO}_2$$
+note we assume that this reaction takes place at room temperature and at one atmosphere of pressure. We can find the change in the Gibbs Free Energy by taking the $\Delta G$ of the final products and subtracting the initial $\Delta G$
+\begin{align*}
+\Delta G_{tot} &= \Delta G_{f} - \Delta G_{i}\\
+&= \left[\frac{}{}2(\Delta G_{H20}) + \Delta G_{CO2}\right] - \left[\frac{}{}\Delta G_{CH4} + 2(\Delta G_{O2})\right]\\
+&= \left[\frac{}{}2(-228.57\unit{kJ}) -394.36\unit{kJ}\right] - \left[\frac{}{}-50.72\unit{kJ} + 2(0\unit{kJ})\right]\\
+&= -8.01\times10^{5}\unit{J}
+\end{align*}
+Note that we assume that we have gaseous water. Now the Helmholtz free energy follows the same way
+\begin{align*}
+\Delta H_{tot} &= \Delta H_{f} - \Delta H_{i}\\
+&= \left[\frac{}{}2(\Delta H_{H20}) + \Delta H_{CO2}\right] - \left[\frac{}{}\Delta H_{CH4} + 2(\Delta H_{O2})\right]\\
+&= \left[\frac{}{}2(-241.82\unit{kJ}) - 393.51\unit{kJ}\right] - \left[\frac{}{}-74.81\unit{kJ} + 2(0\unit{kJ})\right]\\
+&= -8.02\times10^{5}\unit{J}
+\end{align*}
+
+\item
+We know that $\Delta G_{tot}$ represents the minimum other work required to make this reaction go. This implies that the electrical work we can get out of the cell is the same as $\Delta G_{tot}$ or $8.01\times10^{5}\unit{J}$ for a mole of methane.
+
+\item
+We know that $\Delta G$ is given by
+$$\Delta G = \Delta H - T\Delta S$$
+where we note that $T\Delta S$ is the heat produced by the system so if we just subtract off the $\Delta H$ term we will find the heat produced for a mole of methane.
+\begin{align*}
+Q &= \Delta G - \Delta H\\
+&= -8.01\times10^{5}\unit{J} - (-8.02\times10^{5}\unit{J})\\
+&= 1.00\times10^{3}\unit{J}
+\end{align*}
+
+\item
+Given that the steps of reaction are
+\begin{align*}
+\textnormal{at - electrode:}& \ \textnormal{CH}_4+2\textnormal{H}_2\textnormal{O}\rightarrow\textnormal{CO}_2+8\textnormal{H}^++8\textnormal{e}^-\\
+\textnormal{at + electrode:}& \ 2\textnormal{O}_2 + 8\textnormal{H}^+ + 8\textnormal{e}^- \rightarrow\textnormal{H}_2\textnormal{O}
+\end{align*}
+\end{enumerate}
+So we see that for each reaction we have 8 electrons moving between the electrodes. This implies that the energy per electron is 
+$$\frac{8.01\times10^{5}\unit{J}}{8(6.022\times10^{23})} = 1.66\times10^{-19}\unit{J} = 1.04\unit{eV}$$
+and we know that an electron volt is the voltage required to give an electron that much energy so the total voltage is just the same number or $1.04\unit{V}$
+
+\section{Problem 5.9}
+See attached for the graph.
+
+\section{Problem 5.10}
+We know that the change in the Gibb's Free Energy goes by
+$$dG = -SdT-VdP+\mu dN$$
+now if we assume that we stay at constant pressure and number of molecules we have
+$$dG = -SdT$$
+So if we raise the temperature of the water by $\Delta T =5\unit{K}$ where the entropy of one mole of water is $S = 69.91\unit{J\ K^{-1}}$ the change in $G$ is
+$$\Delta G = -S\Delta T = -(69.91\unit{J\ K^{-1}})(5\unit{K}) = -3.50\times10^{2}\unit{J}$$
+now if we wanted to keep $G$ the same when we raise the temperature (while keeping $N$ constant) we need to increase the pressure so that $V\Delta P$ is the same as $-S\Delta T$ so
+\begin{align*}
+\Delta G = 0 &= -S\Delta T + V\Delta P\\
+&\Downarrow\\
+\Delta P &= \frac{S\Delta T}{V}\\ 
+&= \frac{(69.91\unit{J\ K^{-1}})(5\unit{K})}{1.8068\times10^{-5}\unit{m^3}}\\ 
+&= 1.93\times10^{6}\unit{Pa}
+\end{align*}
+
+
+\end{document}
+

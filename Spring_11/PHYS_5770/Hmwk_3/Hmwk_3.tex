@@ -1,0 +1,631 @@
+\documentclass[11pt]{article}
+
+\usepackage{latexsym}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{enumerate}
+\usepackage{amsmath}
+\usepackage{cancel}
+\numberwithin{equation}{section}
+
+\setlength{\evensidemargin}{.25in}
+\setlength{\oddsidemargin}{-.25in}
+\setlength{\topmargin}{-.75in}
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{9.5in}
+\newcommand{\due}{February 15th, 2011}
+\newcommand{\HWnum}{3}
+\input{/home/joey/Documents/Class/Define.tex}
+
+\begin{document}
+\input{../title.tex}
+
+\section{Problem 3.1}
+\begin{enumerate}[(a)]
+\item
+Given the energy momentum tensor for electric and magnetic fields
+$$T^{\mu\nu} = F^{\mu\lambda}F^{\nu}_{\ \lambda} - \frac{1}{4}\eta^{\mu\nu}F^{\lambda\sigma}F_{\lambda\sigma}$$
+where $F_{\mu\nu}$ is the \emph{Field Strength Tensor} given by
+$$F_{\mu\nu} = \left(\begin{array}{cccc}
+		0 &-E_1 &-E_2 &-E_3\\
+		E_1 &0 &B_3 &-B_2\\
+		E_2 &-B_3 &0 &B_1\\
+		E_3 &B_2 &-B_1 &0
+		\end{array}\right)$$
+To show that 
+$$\partial_{\mu}T^{\mu\nu} = 0$$
+we use the given energy momentum tensor expression 
+\begin{align*}
+\partial_{\mu}T^{\mu\nu} &= \partial_{\mu}\left(F^{\mu\lambda}F^{\nu}_{\ \lambda}\right) - \partial_{\mu}\left(\frac{1}{4}\eta^{\mu\nu}F^{\lambda\sigma}F_{\lambda\sigma}\right)\\
+&= \partial_{\mu}\left(F^{\mu\lambda}F^{\nu}_{\ \lambda}\right) - \partial_{\mu}\left(\frac{1}{4}\eta^{\mu\nu}F^{\lambda\sigma}F_{\lambda\sigma}\right)\\
+&= F^{\nu}_{\ \lambda}\partial_{\mu}F^{\mu\lambda} + F^{\mu\lambda}\partial_{\mu}F^{\nu}_{\ \lambda} - \frac{1}{4}F^{\lambda\sigma}F_{\lambda\sigma}\partial_{\mu}\eta^{\mu\nu}- \frac{1}{4}\eta^{\mu\nu}F_{\lambda\sigma}\partial_{\mu}F^{\lambda\sigma} - \frac{1}{4}\eta^{\mu\nu}F^{\lambda\sigma}\partial_{\mu}F_{\lambda\sigma}
+\end{align*}
+Now we can use the maxwell's equation
+$$\partial_{\mu}F^{\mu\nu} = J^{\nu}$$
+but we are assuming there is no charge so we can say that 
+$$\partial_{\mu}F^{\mu\nu} = 0$$
+also note that 
+$$\partial_{\mu}\eta^{\mu\nu} = 0$$
+so it follows that
+\begin{align*}
+\partial_{\mu}T^{\mu\nu} &= \cancelto{0}{F^{\nu}_{\ \lambda}\partial_{\mu}F^{\mu\lambda}} + F^{\mu\lambda}\partial_{\mu}F^{\nu}_{\ \lambda} - \cancelto{0}{\frac{1}{4}F^{\lambda\sigma}F_{\lambda\sigma}\partial_{\mu}\eta^{\mu\nu}} - \frac{1}{4}\eta^{\mu\nu}F_{\lambda\sigma}\partial_{\mu}F^{\lambda\sigma} - \frac{1}{4}\eta^{\mu\nu}F^{\lambda\sigma}\partial_{\mu}F_{\lambda\sigma}\\
+&= F^{\mu\lambda}\partial_{\mu}F^{\nu}_{\ \lambda} -  \frac{1}{4}\eta^{\mu\nu}F_{\lambda\sigma}\partial_{\mu}F^{\lambda\sigma} - \frac{1}{4}\eta^{\mu\nu}F^{\lambda\sigma}\partial_{\mu}F_{\lambda\sigma}
+\end{align*}
+Now if we use the fact that we can raise the both the indices of $F_{\lambda\sigma}$ if we lower both indices of $F^{\lambda\sigma}$ to state that
+$$F_{\lambda\sigma}\partial_{\mu}F^{\lambda\sigma} = F^{\lambda\sigma}\partial_{\mu}F_{\lambda\sigma}$$
+using this we can say that
+$$\partial_{\mu}T^{\mu\nu} = F^{\mu\lambda}\partial_{\mu}F^{\nu}_{\ \lambda} - \frac{1}{2}\eta^{\mu\nu}F^{\lambda\sigma}\partial_{\mu}F_{\lambda\sigma}$$
+Now if we use the other Maxwell's equation
+$$\partial_{\mu}F_{\lambda\sigma} + \partial_{\lambda}F_{\sigma\mu} + \partial_{\sigma}F_{\mu\lambda} =0 $$
+Now we see that we can solve $\partial_{\mu}F_{\lambda\sigma}$ so that
+$$\partial_{\mu}F_{\lambda\sigma} =  -\partial_{\lambda}F_{\sigma\mu} - \partial_{\sigma}F_{\mu\lambda}$$
+So it follows that 
+\begin{align*}
+\partial_{\mu}T^{\mu\nu} &= F^{\mu\lambda}\partial_{\mu}F^{\nu}_{\ \lambda} - \frac{1}{2}\eta^{\mu\nu}F^{\lambda\sigma}\left(-\partial_{\lambda}F_{\sigma\mu} - \partial_{\sigma}F_{\mu\lambda}\right)\\
+&= F^{\mu\lambda}\partial_{\mu}F^{\nu}_{\ \lambda} + \frac{1}{2}\eta^{\mu\nu}F^{\lambda\sigma}\partial_{\lambda}F_{\sigma\mu} + \frac{1}{2}\eta^{\mu\nu}F^{\lambda\sigma}\partial_{\sigma}F_{\mu\lambda}\\
+&= F^{\mu\lambda}\partial_{\mu}F^{\nu}_{\ \lambda} + \frac{1}{2}\eta^{\mu\nu}F^{\lambda\sigma}\partial_{\lambda}F_{\sigma\mu} + \frac{1}{2}\eta^{\mu\nu}F^{\lambda\sigma}\partial_{\sigma}F_{\mu\lambda}
+\end{align*}
+Now if we rename the dummy indices of the last term so that $\lambda\rightarrow\sigma$ and $\sigma\rightarrow\lambda$, note that this does not change the expression at all we just changed the name of the indices
+\begin{align*}
+\partial_{\mu}T^{\mu\nu} &= F^{\mu\lambda}\partial_{\mu}F^{\nu}_{\ \lambda} + \frac{1}{2}\eta^{\mu\nu}F^{\lambda\sigma}\partial_{\lambda}F_{\sigma\mu} + \frac{1}{2}\eta^{\mu\nu}F^{\sigma\lambda}\partial_{\lambda}F_{\mu\sigma}
+\end{align*}
+Now if we apply the fact that the field strength tensor is asymmetric or
+$$F^{\lambda\sigma} = -F^{\sigma\lambda}$$
+we can say that
+\begin{align*}
+\partial_{\mu}T^{\mu\nu} &= F^{\mu\lambda}\partial_{\mu}F^{\nu}_{\ \lambda} + \frac{1}{2}\eta^{\mu\nu}F^{\lambda\sigma}\partial_{\lambda}F_{\sigma\mu} + \frac{1}{2}\eta^{\mu\nu}F^{\sigma\lambda}\partial_{\lambda}F_{\mu\sigma}\\
+&= F^{\mu\lambda}\partial_{\mu}F^{\nu}_{\ \lambda} + \frac{1}{2}\eta^{\mu\nu}F^{\lambda\sigma}\partial_{\lambda}F_{\sigma\mu} - \frac{1}{2}\eta^{\mu\nu}F^{\lambda\sigma}\partial_{\lambda}F_{\mu\sigma}\\
+&= F^{\mu\lambda}\partial_{\mu}F^{\nu}_{\ \lambda} + \frac{1}{2}\eta^{\mu\nu}F^{\lambda\sigma}\partial_{\lambda}F_{\sigma\mu} + \frac{1}{2}\eta^{\mu\nu}F^{\lambda\sigma}\partial_{\lambda}F_{\sigma\mu}\\
+&= F^{\mu\lambda}\partial_{\mu}F^{\nu}_{\ \lambda} + \eta^{\mu\nu}F^{\lambda\sigma}\partial_{\lambda}F_{\sigma\mu} 
+\end{align*}
+Now we see can use the fact that
+$$F^{\nu}_{\ \lambda} = \eta^{\nu\sigma}F_{\sigma\lambda}$$
+Note that the derivative of the metric is zero so we can pull it out of the derivative so
+\begin{align*}
+\partial_{\mu}T^{\mu\nu} &= F^{\mu\lambda}\partial_{\mu}F^{\nu}_{\ \lambda} + \eta^{\mu\nu}F^{\lambda\sigma}\partial_{\lambda}F_{\sigma\mu} \\
+&= \eta^{\nu\sigma}F^{\mu\lambda}\partial_{\mu}F_{\sigma\lambda} + \eta^{\mu\nu}F^{\lambda\sigma}\partial_{\lambda}F_{\sigma\mu} 
+\end{align*}
+Again we need to rename dummy indices so that $\mu\rightarrow\sigma$, $\lambda\rightarrow\mu$, and $\sigma\rightarrow\lambda$.
+\begin{align*}
+\partial_{\mu}T^{\mu\nu} &= \eta^{\nu\sigma}F^{\mu\lambda}\partial_{\mu}F_{\sigma\lambda} + \eta^{\mu\nu}F^{\lambda\sigma}\partial_{\lambda}F_{\sigma\mu} \\
+&= \eta^{\nu\sigma}F^{\mu\lambda}\partial_{\mu}F_{\sigma\lambda} + \eta^{\sigma\nu}F^{\mu\lambda}\partial_{\mu}F_{\lambda\sigma} \\
+&= \eta^{\nu\sigma}F^{\mu\lambda}\partial_{\mu}F_{\sigma\lambda} - \eta^{\nu\sigma}F^{\mu\lambda}\partial_{\mu}F_{\sigma\lambda} = 0
+\end{align*}
+Note that we used the fact that the metric $\eta^{\mu\sigma}$ is symmetric and that the Field Strength Tensor is asymmetric.
+
+\item
+We can see that the \emph{Lorentz Scalar} which is given by $F^{\sigma\lambda}F_{\sigma\lambda}$ is a scalar product of two Field Strength Tensors. Note that we can see that the indices are in the same order. So we take the product of the same component of each tensor and take the sum. Note that we need to raise the two indices of $F_{\sigma\lambda}$ before finding the inner product. So we say that
+\begin{align*}
+F^{\mu\nu} = \eta^{\mu\sigma}\eta^{\lambda\nu}F_{\sigma\lambda} &= \eta^{\mu\sigma}F_{\sigma\lambda}\eta^{\lambda\nu}\\
+&= \left(\begin{array}{cccc}
+		-1 &0 &0 &0\\
+		0 &1 &0 &0\\
+		0 &0 &1 &0\\
+		0 &0 &0 &1
+		\end{array}\right)
+		\left(\begin{array}{cccc}
+		0 &-E_1 &-E_2 &-E_3\\
+		E_1 &0 &B_3 &-B_2\\
+		E_2 &-B_3 &0 &B_1\\
+		E_3 &B_2 &-B_1 &0
+		\end{array}\right)
+		\left(\begin{array}{cccc}
+		-1 &0 &0 &0\\
+		0 &1 &0 &0\\
+		0 &0 &1 &0\\
+		0 &0 &0 &1
+		\end{array}\right)\\
+&= 		\left(\begin{array}{cccc}
+		0 &E_1 &E_2 &E_3\\
+		E_1 &0 &B_3 &-B_2\\
+		E_2 &-B_3 &0 &B_1\\
+		E_3 &B_2 &-B_1 &0
+		\end{array}\right)
+		\left(\begin{array}{cccc}
+		-1 &0 &0 &0\\
+		0 &1 &0 &0\\
+		0 &0 &1 &0\\
+		0 &0 &0 &1
+		\end{array}\right)\\
+&= 		\left(\begin{array}{cccc}
+		0 &E_1 &E_2 &E_3\\
+		-E_1 &0 &B_3 &-B_2\\
+		-E_2 &-B_3 &0 &B_1\\
+		-E_3 &B_2 &-B_1 &0
+		\end{array}\right)
+\end{align*}
+Now we can find the Lorentz Scalar by calculating $F^{\sigma\lambda}F_{\sigma\lambda}$. Note that we are not using matrix multiplication we are summing over the product of the components of the two tensors. So
+\begin{align*}
+F^{\sigma\lambda}F_{\sigma\lambda} &= 0^2 + E_1(-E_1) + E_2(-E_2) + E_3(-E_3) + (-E_1)E_1 + 0^2 + B_3(B_3) + (-B_2)(-B_2)\\
+	&\ \ \ \  + (-E_2)E_2 + (-B_3)(-B_3) + 0^2 + B_1(B_1) + (-E_3)E_3 + B_2(B_2) + (-B_1)(-B_1) + 0^2\\
+&= 2\left(-E_1^2-E_2^2-E_3^2+B_1^2+B_2^2+B_3^2\right)\\
+&= 2\left(B^iB_i-E^iE_i\right) = 2\left(B^2-E^2\right)
+\end{align*}
+
+\item
+To find the $00$ component of $T^{\mu\nu}$ we say that
+\begin{align*}
+T^{00} &= F^{0\lambda}F^{0}_{\ \lambda} - \frac{1}{4}\eta^{00}F^{\lambda\sigma}F_{\lambda\sigma}
+\end{align*}
+Note that $F^{\mu}_{\ \nu}$ is given by
+\begin{align*}
+F^{\mu}_{\ \nu} &= \eta^{\mu\sigma}F_{\sigma\nu} \\
+&= \left(\begin{array}{cccc}
+		-1 &0 &0 &0\\
+		0 &1 &0 &0\\
+		0 &0 &1 &0\\
+		0 &0 &0 &1
+		\end{array}\right)
+		\left(\begin{array}{cccc}
+		0 &-E_1 &-E_2 &-E_3\\
+		E_1 &0 &B_3 &-B_2\\
+		E_2 &-B_3 &0 &B_1\\
+		E_3 &B_2 &-B_1 &0
+		\end{array}\right)
+\end{align*}
+So we can say that
+$$F^{\mu}_{\ \nu} = 		\left(\begin{array}{cccc}
+		0 &E_1 &E_2 &E_3\\
+		E_1 &0 &B_3 &-B_2\\
+		E_2 &-B_3 &0 &B_1\\
+		E_3 &B_2 &-B_1 &0
+		\end{array}\right)$$
+So we can find the expression of the value of the component $F^{0\lambda}F^{0}_{\ \lambda}$ by noting that we sum over the product of the columns of the zeroth row of $F^{\mu}_{\ \nu}$ with the columns of the zeroth row of $F_{\mu\nu}$. So it follows that
+\begin{align*}
+F^{0\lambda}F^{0}_{\ \lambda} &= 0^2 + E_1(E_1)+ E_2(E_2)+ E_3(E_3) = E^iE_i
+\end{align*}
+So using the fact that $\eta^{00} = -1$ and the result from part (b) we can say that
+\begin{align*}
+T^{00} &= F^{0\lambda}F^{0}_{\ \lambda} - \frac{1}{4}\eta^{00}F^{\lambda\sigma}F_{\lambda\sigma}\\
+&= E^iE_i + \frac{1}{4}2\left(B^iB_i-E^iE_i\right)\\
+&= \frac{1}{2}E^iE_i + \frac{1}{2}B^iB_i
+\end{align*}
+Note that this is the same as the conventional expression of the energy density of electric and magnetic fields
+$$U = \frac{\epsilon_0}{2}\vec{E}^2 + \frac{1}{2\mu_0}\vec{B}^2$$
+Note that we took $c=1$ which implies that $\mu_0=\epsilon_0=1$ by the relation
+$$c^2 = \frac{1}{\epsilon_0\mu_0}$$
+Therefore in these units we have
+$$U = \frac{1}{2}\vec{E}^2 + \frac{1}{2}\vec{B}^2$$
+which is what we found for $T^{00}$.
+
+\item
+To find $T^{i0}$ we note that we only need to find the components of $F^{i\lambda}F^{0}_{\ \lambda}$ due to the fact that $\eta^{i0} = 0$ for all $i\ne0$ which we assume (note the Latin index). So we can say that
+\begin{align*}
+F^{i\lambda}F^{0}_{\ \lambda} &= \left(\begin{array}{c}
+				-E_1(0) + 0(E_1) + B_3(E_2) - B_2(E_3)\\
+				-E_2(0) - B_3(E_1) + 0(E_2) + B_1(E_3)\\
+				-E_3(0) + B_2(E_1) - B_1(E_2) + 0(E_3)
+				\end{array}\right)\\
+&=				 \left(\begin{array}{c}
+				 B_3E_2 - B_2E_3\\
+				-B_3E_1 + B_1E_3\\
+				 B_2E_1 - B_1E_2
+				\end{array}\right)\\
+&=				 \left(\begin{array}{c}
+				 E_2B_3 - E_3B_2\\
+				 E_3B_1 - E_1B_3\\
+				 E_1B_2 - E_2B_1
+				\end{array}\right)\\
+&= \levi^{i}_{\ jk}E^jB^k
+\end{align*}
+Note that this is the cross product between $\vec{E}$ and $\vec{B}$ so we can say that 
+$$T^{i0} = \levi^{i}_{\ jk}E^{j}B^k = \vec{B}\times\vec{E}$$
+note that in these units this is the same as the \emph{Poynting Vector}
+$$\vec{S} = \frac{1}{\mu_0}\vec{E}\times\vec{B}$$
+\end{enumerate}
+
+\section{Problem 3.2}
+\begin{enumerate}[(a)]
+\item
+The energy and momentum tensor of a perfect fluid is given by
+$$T^{\mu\nu} = \left(\begin{array}{cccc}
+		\rho	&0	&0	&0\\
+		0	&p	&0	&0\\
+		0	&0	&p	&0\\
+		0	&0	&0	&p\\
+		\end{array}\right)$$
+where $\rho$ is the energy density and $p$ is the pressure. Now if we take the 4-velocity defined as
+$$U^{\mu} = \left(\begin{array}{c}
+		\gamma\\
+		\gamma v^1\\
+		\gamma v^2\\
+		\gamma v^3
+	\end{array}\right)$$
+We can see that the tensor represented by $U^{\mu}U^{\nu}$ is 
+$$U^{\mu}U^{\nu} = \left(\begin{array}{cccc}
+	\gamma^2	&\gamma^2v^1 	&\gamma^2v^2	&\gamma^2v^3\\
+	\gamma^2v^1	&\gamma^2(v^1)^2&\gamma^2v^1v^2	&\gamma^2v^1v^3\\
+	\gamma^2v^2	&\gamma^2v^1v_2	&\gamma^2(v^2)^2&\gamma^2v^2v^3\\
+	\gamma^2v^3	&\gamma^2v^1v_3	&\gamma^2v^3v^2	&\gamma^2(v^3)^2\\
+			\end{array}\right)$$
+But if we assume that we are in the rest frame we can say that $v^i = 0$ and that $\gamma=1$. This reduces the tensor to be zero expect for $U^0U^0 = 1$. Using this fact we can see that the expression
+\begin{equation}
+T^{\mu\nu} = (\rho+p)U^{\mu}U^{\nu} + p\eta^{\mu\nu}
+\label{FluidTensor}
+\end{equation}
+in the rest frame becomes
+\begin{align*}
+T^{\mu\nu} &= (\rho+p)U^{\mu}U^{\nu} + p\eta^{\mu\nu}\\
+&= (\rho+p)\left(\begin{array}{cccc}
+		1 &0 &0 &0\\ 
+		0 &0 &0 &0\\ 
+		0 &0 &0 &0\\ 
+		0 &0 &0 &0
+		\end{array}\right)
++ p\left(\begin{array}{cccc}
+		-1 &0 &0 &0\\ 
+		0 &1 &0 &0\\ 
+		0 &0 &1 &0\\ 
+		0 &0 &0 &1
+		\end{array}\right)\\
+&= \left(\begin{array}{cccc}
+		\rho+p &0 &0 &0\\ 
+		0 &0 &0 &0\\ 
+		0 &0 &0 &0\\ 
+		0 &0 &0 &0
+		\end{array}\right)
++ \left(\begin{array}{cccc}
+		-p &0 &0 &0\\ 
+		0 &p &0 &0\\ 
+		0 &0 &p &0\\ 
+		0 &0 &0 &p
+		\end{array}\right)\\
+&= \left(\begin{array}{cccc}
+		\rho &0 &0 &0\\ 
+		0 &p &0 &0\\ 
+		0 &0 &p &0\\ 
+		0 &0 &0 &p
+		\end{array}\right)
+\end{align*}
+So we see that in the fluid's rest frame the energy-momentum tensor reduced to what we were given. Note that this expression for the energy-momentum tensor is only true in the rest frame.
+
+\item
+If we assume the conservation of energy and momentum we can say that
+$$\partial_{\mu}T^{\mu\nu} = 0$$
+note that this is true in any reference frame. Now for the case where the fluid has a velocity $v$ but it is still in the non-relativistic limit where $v<<1$. So by using equation \ref{FluidTensor} we can find the $\nu=0$ component of $\partial_{\mu}T^{\mu\nu}$ 
+\begin{align*}  
+\partial_{\mu}T^{\mu0} &= \partial_{\mu}(\rho+p)U^{\mu}U^{0} + \partial_{\mu}p\eta^{\mu0}\\
+&= \partial_{\mu}(\rho+p)\gamma U^{\mu} - \partial_{0}p
+\end{align*}
+Note that in the non-relativistic limit $\gamma = 1$ so we can say that
+\begin{align*}  
+\partial_{\mu}T^{\mu0} &= \partial_{\mu}(\rho+p)\gamma U^{\mu} - \partial_{0}p\\
+&= \partial_{0}(\rho+p) + \partial_{i}(\rho+p)v^i - \partial_{0}p \\
+&= \partial_{0}\rho + \partial_{i}(\rho+p) v^i
+\end{align*}
+Now if we assume that $p<<\rho$ we can say that 
+\begin{align*}
+\partial_{\mu}T^{\mu0} &= \partial_{0}\rho + \partial_{i}(\rho+p) v^i\\
+&= \partial_{0}\rho + \partial_{i}\rho\left(1+\cancelto{0}{\frac{p}{\rho}}\right) v^i\\
+&= \partial_{0}\rho + \partial_{i}(\rho v^i) 
+\end{align*}
+We can write this in vector form as
+$$\partial_t\rho + \grad\cdot(\rho\vec{v}) = 0$$
+Note that this is the continuity equation for the energy density.
+
+\item
+Now if we want to calculate the spacial components of $\partial_{\mu}T^{\mu\nu}$ we can say (note that we are using the same assumptions as before)
+\begin{align*}  
+\partial_{\mu}T^{\mu i} &= \partial_{\mu}(\rho+p)U^{\mu}U^{i} + \partial_{\mu}p\eta^{\mu i}\\
+ &= \partial_{0}(\rho+p)v^{i} + \partial_{j}(\rho+p)U^{j}v^{i}  + \partial_{i}p\\
+ &= \partial_{0}(\rho)v_{i} + \partial_{j}(\rho v^{j})v_{i}  + \partial_{i}p\\
+ &= \rho\left(\partial_{0} + \partial_{j}v^{j}\right)v_{i}  + \partial_{i}p
+\end{align*}  
+We can write this in vector form as
+$$\rho\left(\partial_t + \vec{v}\cdot\grad\right)\vec{v} + \grad(p) = 0$$
+This is \emph{Euler's Equation for Fluid Dynamics} it relates the force to the pressure gradient $\grad(p)$ as well as states the conservation of mass.
+\end{enumerate}
+
+\section{Problem 3.3}
+\begin{enumerate}[(a)]
+\item
+To find the coordinate transformation matrix $(X^{-1})^{i}_{\ j'}$ which we define as 
+$$(X^{-1})^{i}_{\ j'}\equiv\frac{\partial x^i}{\partial x^{j'}}$$ 
+Now we know that the spherical coordinates are given by
+\begin{align*}
+x &= r\sin(\theta)\cos(\phi)\\
+y &= r\sin(\theta)\sin(\phi)\\
+z &= r\cos(\theta)
+\end{align*}
+Note that in the index notation we have
+$$\left(\begin{array}{c}
+x^1\\ x^2\\ x^3\\
+	\end{array}\right) = \left(\begin{array}{c}
+				x\\ y\\ z\\
+				\end{array}\right)$$ 
+and
+$$\left(\begin{array}{c}
+x^{1'}\\ x^{2'}\\ x^{3'}\\
+	\end{array}\right) = \left(\begin{array}{c}
+				r\\ \theta\\ \phi\\
+				\end{array}\right)$$ 
+So it follows that
+\begin{align*}
+(X^{-1})^{i}_{\ j'} &= \frac{\partial x^i}{\partial x^{j'}}\\ 
+&= \left(\begin{array}{ccc}
+	\dfrac{\partial x^1}{\partial x^{1'}}	&\dfrac{\partial x^1}{\partial x^{2'}}	&\dfrac{\partial x^1}{\partial x^{3'}}\\
+	\dfrac{\partial x^2}{\partial x^{1'}}	&\dfrac{\partial x^2}{\partial x^{2'}}	&\dfrac{\partial x^2}{\partial x^{3'}}\\
+	\dfrac{\partial x^3}{\partial x^{1'}}	&\dfrac{\partial x^3}{\partial x^{2'}}	&\dfrac{\partial x^3}{\partial x^{3'}}
+	\end{array}\right)\\
+&= \left(\begin{array}{ccc}
+	\dfrac{\partial x}{\partial r}	&\dfrac{\partial x}{\partial \theta}	&\dfrac{\partial x}{\partial \phi}\\
+	\dfrac{\partial y}{\partial r}	&\dfrac{\partial y}{\partial \theta}	&\dfrac{\partial y}{\partial \phi}\\
+	\dfrac{\partial z}{\partial r}	&\dfrac{\partial z}{\partial \theta}	&\dfrac{\partial z}{\partial \phi}
+	\end{array}\right)\\
+&= \left(\begin{array}{ccc}
+	\sin(\theta)\cos(\phi)	&r\cos(\theta)\cos(\phi)	&-r\sin(\theta)\sin(\phi)\\
+	\sin(\theta)\sin(\phi)	&r\cos(\theta)\sin(\phi)	&r\sin(\theta)\cos(\phi)\\	
+	\cos(\theta)		&-r\sin(\theta)			&0
+	\end{array}\right)
+\end{align*}
+
+\item
+We can calculate the metric in these coordinates we can say that
+$$g_{i'j'} = (X^{-1})^{k}_{\ i'}(X^{-1})^{l}_{\ j'}g_{kl}$$
+where $g_{kl}$ is the metric in Cartesian coordinates given by
+$$g_{kl} = \left(\begin{array}{ccc}
+		1	&0	&0\\
+		0	&1	&0\\
+		0	&0	&1\\
+		\end{array}\right)$$
+Note that this is the identity matrix. We found $(X^{-1})^{i}_{\ j'}$ in part (a) so we can calculate $g_{i'j'}$ by
+\begin{align*}
+g_{i'j'} &= (X^{-1})^{k}_{\ i'}(X^{-1})^{l}_{\ j'}g_{kl}\\
+&= (X^{-1})^{k}_{\ i'}g_{kl}(X^{-1})^{l}_{\ j'}\\
+&= (X^{-1})^{\ k}_{i'}g_{kl}(X^{-1})^{l}_{\ j'}\\
+&= (X^{-1})^{\ k}_{i'}(X^{-1})_{k j'}\\
+&= \left(\begin{array}{ccc}
+\scriptstyle{\sin(\theta)\cos(\phi)}
+	&\scriptstyle{r\cos(\theta)\cos(\phi)}	
+	&\scriptstyle{-r\sin(\theta)\sin(\phi)}\\
+\scriptstyle{ \sin(\theta)\sin(\phi)}	
+	&\scriptstyle{r\cos(\theta)\sin(\phi)}
+	&\scriptstyle{r\sin(\theta)\cos(\phi)}\\	
+\scriptstyle{\cos(\theta)}
+	&\scriptstyle{-r\sin(\theta)}
+	&\scriptstyle{0}
+	\end{array}\right)^T
+\left(\begin{array}{ccc}
+\scriptstyle{\sin(\theta)\cos(\phi)}	
+	&\scriptstyle{r\cos(\theta)\cos(\phi)}
+	&\scriptstyle{-r\sin(\theta)\sin(\phi)}\\
+\scriptstyle{\sin(\theta)\sin(\phi)}
+	&\scriptstyle{r\cos(\theta)\sin(\phi)}
+	&\scriptstyle{r\sin(\theta)\cos(\phi)}\\	
+\scriptstyle{\cos(\theta)}
+	&\scriptstyle{-r\sin(\theta)}
+	&\scriptstyle{0}
+	\end{array}\right)\\
+&= \left(\begin{array}{ccc}
+\scriptstyle{\sin(\theta)\cos(\phi)}
+	&\scriptstyle{ \sin(\theta)\sin(\phi)}	
+	&\scriptstyle{\cos(\theta)}\\
+\scriptstyle{r\cos(\theta)\cos(\phi)}	
+	&\scriptstyle{r\cos(\theta)\sin(\phi)}
+	&\scriptstyle{-r\sin(\theta)}\\
+\scriptstyle{-r\sin(\theta)\sin(\phi)}
+	&\scriptstyle{r\sin(\theta)\cos(\phi)}	
+	&\scriptstyle{0}
+	\end{array}\right)
+\left(\begin{array}{ccc}
+\scriptstyle{\sin(\theta)\cos(\phi)}	
+	&\scriptstyle{r\cos(\theta)\cos(\phi)}
+	&\scriptstyle{-r\sin(\theta)\sin(\phi)}\\
+\scriptstyle{\sin(\theta)\sin(\phi)}
+	&\scriptstyle{r\cos(\theta)\sin(\phi)}
+	&\scriptstyle{r\sin(\theta)\cos(\phi)}\\	
+\scriptstyle{\cos(\theta)}
+	&\scriptstyle{-r\sin(\theta)}
+	&\scriptstyle{0}
+	\end{array}\right)\\
+&= \left(\begin{array}{ccc}
+	1	&0	&0\\
+	0	&r^2	&0\\
+	0	&0	&r^2\sin^2(\theta)
+	\end{array}\right)
+\end{align*}
+
+\item
+We can find the metric in spherical coordinates again by using the line element
+$$ds^2 = dx^2+dy^2+dz^2$$
+Where we can calculate say that by chain rule
+$$dx = \sin(\theta)\cos(\phi)dr+r\cos(\theta)\cos(\phi)d\theta - r\sin(\theta)\sin(\phi)d\phi$$
+so it follows that the square of this is
+\begin{align*}
+dx^2 &= \sin^2(\theta)\cos^2(\phi)dr^2 + r^2\cos^2(\theta)\cos^2(\phi)d\theta^2 + r^2\sin^2(\theta)\sin^2(\phi)d\phi^2 \\
+&\ \ \ + 2r\sin(\theta)\cos(\theta)\cos^2(\phi)drd\theta - 2r\sin^2(\theta)\cos(\phi)\sin(\phi)drd\phi - 2r^2\sin(\theta)\cos(\theta)\sin(\phi)\cos(\phi)d\theta d\phi
+\end{align*}
+So the same follows for $dy$ 
+$$dy = \sin(\theta)\sin(\phi)dr+r\cos(\theta)\sin(\phi)d\theta + r\sin(\theta)\cos(\phi)d\phi$$
+so we can say that
+\begin{align*}
+dy^2 &= \sin^2(\theta)\sin^2(\phi)dr^2 + r^2\cos^2(\theta)\sin^2(\phi)d\theta^2 + r^2\sin^2(\theta)\cos^2(\phi)d\phi^2 \\
+&\ \ \ + 2r\sin(\theta)\cos(\theta)\sin^2(\phi)drd\theta + 2r\sin^2(\theta)\cos(\phi)\sin(\phi)drd\phi + 2r^2\sin(\theta)\cos(\theta)\sin(\phi)\cos(\phi)d\theta d\phi
+\end{align*}
+And for 
+$$dz = \cos(\theta)dr - r\sin(\theta)d\theta$$
+we have
+$$dz^2 = \cos^2(\theta)dr^2 + r^2\sin^2(\theta)d\theta^2 - 2r\sin(\theta)\cos(\theta)drd\theta$$
+So now we can calculate $ds^2$ by
+\begin{align*}
+ds^2 &= dx^2 + dy^2 + dz^2\\
+&= \sin^2(\theta)\cos^2(\phi)dr^2 + r^2\cos^2(\theta)\cos^2(\phi)d\theta^2 + r^2\sin^2(\theta)\sin^2(\phi)d\phi^2 \\
+&\ \ \ + 2r\sin(\theta)\cos(\theta)\cos^2(\phi)drd\theta - 2r\sin^2(\theta)\cos(\phi)\sin(\phi)drd\phi - 2r^2\sin(\theta)\cos(\theta)\sin(\phi)\cos(\phi)d\theta d\phi\\
+&\ \ \ +\sin^2(\theta)\sin^2(\phi)dr^2 + r^2\cos^2(\theta)\sin^2(\phi)d\theta^2 + r^2\sin^2(\theta)\cos^2(\phi)d\phi^2 \\
+&\ \ \ + 2r\sin(\theta)\cos(\theta)\sin^2(\phi)drd\theta + 2r\sin^2(\theta)\cos(\phi)\sin(\phi)drd\phi + 2r^2\sin(\theta)\cos(\theta)\sin(\phi)\cos(\phi)d\theta d\phi\\
+&\ \ \ +\cos^2(\theta)dr^2 + r^2\sin^2(\theta)d\theta^2 - 2r\sin(\theta)\cos(\theta)drd\theta\\
+&= \sin^2(\theta)\cos^2(\phi)dr^2 + r^2\cos^2(\theta)\cos^2(\phi)d\theta^2 + r^2\sin^2(\theta)\sin^2(\phi)d\phi^2 \\
+&\ \ \ + 2r\sin(\theta)\cos(\theta)\cos^2(\phi)drd\theta  + 2r\sin(\theta)\cos(\theta)\sin^2(\phi)drd\theta - 2r\sin(\theta)\cos(\theta)drd\theta\\
+&\ \ \ +\sin^2(\theta)\sin^2(\phi)dr^2 + r^2\cos^2(\theta)\sin^2(\phi)d\theta^2 + r^2\sin^2(\theta)\cos^2(\phi)d\phi^2 \\
+&\ \ \ +\cos^2(\theta)dr^2 + r^2\sin^2(\theta)d\theta^2 \\
+&= \sin^2(\theta)\cos^2(\phi)dr^2 + r^2\cos^2(\theta)\cos^2(\phi)d\theta^2 + r^2\sin^2(\theta)\sin^2(\phi)d\phi^2 \\
+&\ \ \ +\sin^2(\theta)\sin^2(\phi)dr^2 + r^2\cos^2(\theta)\sin^2(\phi)d\theta^2 + r^2\sin^2(\theta)\cos^2(\phi)d\phi^2 \\
+&\ \ \ +\cos^2(\theta)dr^2 + r^2\sin^2(\theta)d\theta^2 \\
+&= \sin^2(\theta)dr^2 +\cos^2(\theta)dr^2+ r^2\cos^2(\theta)d\theta^2  + r^2\sin^2(\theta)d\theta^2 + r^2\sin^2(\theta)d\phi^2 \\
+&= dr^2 + r^2d\theta^2  + r^2\sin^2(\theta)d\phi^2 
+\end{align*}
+Note that if we write $ds^2$ using index notation 
+$$ds^2 = g_{i'j'}dx^{i'}dx^{j'}$$
+we see that we only have non zero components for when $i'=j'$ which implies that $g_{i'j'}$ is a diagonal matrix where to components are given by the coefficients so it follows that
+$$g_{i'j'} =  \left(\begin{array}{ccc}
+	1	&0	&0\\
+	0	&r^2	&0\\
+	0	&0	&r^2\sin^2(\theta)
+	\end{array}\right)$$
+which is the result from part (b).
+
+\item
+Given the fact that in Cartesian coordinates the integration measure is
+$$\sqrt{g}d^3x = dxdydz$$
+where $\sqrt{g}$ is the square root of the determinate of the metric $g_{ij}$. So we can calculate $\sqrt{g_{i'j'}}$ by
+\begin{align*}
+\sqrt{g_{i'j'}} &= \sqrt{\det\left(\begin{array}{ccc}
+				1	&0	&0\\
+				0	&r^2	&0\\
+				0	&0	&r^2\sin^2(\theta)
+				\end{array}\right)}\\
+&= \sqrt{1(r^2)(r^2\sin^2(\theta)}\\
+&= r^2\sin(\theta)
+\end{align*}
+So the integration measure in spherical coordinates is given by
+$$r^2\sin(\theta)drd\theta d\phi$$
+\end{enumerate}
+
+\section{Problem 3.4}
+\begin{enumerate}[(a)]
+\item
+The identity 
+$$\grad\cdot(\grad\times\vec{A}) = 0$$
+can be proven by using index notation. So we write the divergence of the curl of $\vec{A}$ as
+$$\partial_i\left(\levi^{ij}_{\ \ k}\partial_jA^k\right)$$
+Now since we are in index notation we can say that
+$$\partial_i\left(\levi^{ij}_{\ \ k}\partial_jA^k\right) = \levi^{ij}_{\ \ k}\partial_i\partial_jA^k$$
+Now we note that the expression $\partial_i\partial_j$ represents a tensor which we can call $T_{ij}$. We can write this tensor as
+$$T_{ij} = \left(\begin{array}{ccc}
+		\partial_1\partial_1	&\partial_1\partial_2	&\partial_1\partial_3\\
+		\partial_1\partial_2	&\partial_2\partial_2	&\partial_2\partial_3\\
+		\partial_1\partial_3	&\partial_2\partial_3	&\partial_3\partial_3
+	\end{array}\right)$$
+Note that $T_{ij}$ is a symmetric tensor and that $\levi^{ij}_{\ \ k}$ is an anti-symmetric tensor. So we know that the product of a symmetric tensor and a anti-symmetric tensor is zero, so it follows that
+$$\levi^{ij}_{\ \ k}T_{ij} = \levi^{ij}_{\ \ k}\partial_i\partial_j = 0$$
+So using this fact we can say that
+$$\partial_i\left(\levi^{ij}_{\ \ k}\partial_jA^k\right) = 0$$
+Using this same logic it is easy to see that the identity 
+$$\grad\times\grad(\phi) = 0$$
+is true. So in index notation we can say that
+$$\levi^{ij}_{\ \ k}\partial_{j}\partial_k\phi$$
+As we saw above $\partial_j\partial_k$ is a symmetric tensor so $\levi^{ij}_{\ \ k}\partial_j\partial_k = 0$. So it follows that
+$$\levi^{ij}_{\ \ k}\partial_{j}\partial_k\phi = 0$$
+
+\item
+We will use index notation to show that
+$$\grad\cdot(\phi\vec{A}) = \phi(\grad\cdot\vec{A}) + \vec{A}\cdot(\grad\phi)$$
+So we can see that in index notation 
+$$\grad\cdot(\phi\vec{A}) = \partial_i\phi A^i$$
+Now we need to apply product rule so
+\begin{align*}
+\partial_i\phi A^i &= A^i\partial_i\phi + \phi\partial_iA^i\\
+&= \vec{A}\cdot(\grad\phi) + \phi(\grad\cdot\vec{A}) 
+\end{align*}
+And for the identity 
+$$\grad\times(\phi\vec{A}) = \phi(\grad\times\vec{A}) - \vec{A}\times(\grad\phi)$$
+We can write this in index notation to say that
+$$(\grad\times(\phi\vec{A}))_i = \levi^{ij}_{\ \ k}\partial_j\phi A^k$$
+Again we apply product rule of derivation to get
+\begin{align*}
+\left(\grad\times(\phi\vec{A})\right)_i &= \levi^{ij}_{\ \ k}\partial_j\phi A^k\\
+&= \levi^{ij}_{\ \ k}\left(\phi\partial_j A^k + A^k\partial_j\phi \right)\\
+&= \phi\levi^{ij}_{\ \ k}\partial_j A^k + \levi^{ij}_{\ \ k}A^k\partial_j\phi \\
+&= \phi\levi^{ij}_{\ \ k}\partial_j A^k - \levi^{ik}_{\ \ j}A_k\partial^j\phi \\
+&= \left(\phi(\grad\times\vec{A}) - \vec{A}\times(\grad\phi)\right)_i
+\end{align*}
+
+\item
+We can prove the identity 
+$$\levi^{ijm}\levi_{kl}^{\ \ m} = \delta_{ik}\delta_{jl} - \delta_{ij}\delta_{jk}$$
+We first use the fact that
+$$\levi_{ijk}\levi_{lmn} = \det\left(\begin{array}{ccc}
+		\delta_{il}	&\delta_{im}	&\delta_{in}\\
+		\delta_{jl}	&\delta_{jm}	&\delta_{jn}\\
+		\delta_{kl}	&\delta_{km}	&\delta_{kn}\\
+			\end{array}\right)$$
+We can calculate the determinate to see that
+$$\levi_{ijk}\levi_{lmn} = \delta_{il}\left(\delta_{jm}\delta_{kn} - \delta_{jn}\delta_{km}\right) + \delta_{im}\left(\delta_{jn}\delta_{kl} - \delta_{jl}\delta_{kn}\right) +\delta_{in}\left(\delta_{jl}\delta_{km} - \delta_{jm}\delta_{kl}\right)$$
+Now if we take the case where we contract against a single index or $k=n$. So it follows that
+$$\levi_{ijk}\levi_{lmk} = \delta_{il}\left(\delta_{jm}\delta_{kk} - \delta_{jk}\delta_{km}\right) + \delta_{im}\left(\delta_{jk}\delta_{kl} - \delta_{jl}\delta_{kk}\right) +\delta_{ik}\left(\delta_{jl}\delta_{km} - \delta_{jm}\delta_{kl}\right)$$
+Now we can reason that the other four indices cannot be equal to $k$ and we also want to keep the right hand side of the equation to be non zero so we take $i=l$ and $j=m$ so we can say that
+$$\levi_{ijk}\levi_{lmk} = \delta_{ii}\left(\delta_{jj}\delta_{kk} - \delta_{jk}\delta_{kj}\right) + \delta_{ij}\left(\delta_{jk}\delta_{ki} - \delta_{ji}\delta_{kk}\right) +\delta_{ik}\left(\delta_{ji}\delta_{kj} - \delta_{jj}\delta_{ki}\right)$$
+So we can see all the terms that drop out to zero so that
+$$\levi^{ijm}\levi_{kl}^{\ \ m} = \delta_{ik}\delta_{jl} - \delta_{ij}\delta_{jk}$$
+
+
+\item
+We can prove the triple product identity 
+$$\vec{A}\cdot\left(\vec{B}\times\vec{C}\right) = \vec{B}\cdot\left(\vec{C}\times\vec{A}\right) = \vec{C}\cdot\left(\vec{A}\times\vec{B}\right)$$
+by using index notation we see that 
+\begin{align*}
+\vec{A}\cdot\left(\vec{B}\times\vec{C}\right) &= A_i\left(\levi^{ij}_{\ \ k}B_jC^k\right)\\
+&= B_j\left(\levi^{ij}_{\ \ k}A_iC^k\right)\\
+&= B_i\left(\levi^{ki}_{\ \ j}A_kC^j\right)
+\end{align*}
+Note that we renamed the dummy indices such that $i\rightarrow k$, $j\rightarrow i$, and $k\rightarrow j$. Now we reorder the indices of the $\levi$ so that we have $\levi^{ij}_{\ \ k}$. Note that this takes two swaps this implies that the permutation of the indices remains the same. So it follows that
+$$\levi^{ki}_{\ \ j} = \levi^{ij}_{\ \ k}$$
+\begin{align*}
+\vec{A}\cdot\left(\vec{B}\times\vec{C}\right) &= B_i\left(\levi^{ki}_{\ \ j}A_kC^j\right)\\
+&= B_i\left(\levi^{ij}_{\ \ k}C_jA^k\right)\\
+&= \vec{B}\cdot\left(\vec{C}\times\vec{A}\right) 
+\end{align*}
+The same follows for the last expression of the identity
+\begin{align*}
+\vec{A}\cdot\left(\vec{B}\times\vec{C}\right) &= A_i\left(\levi^{ij}_{\ \ k}B_jC^k\right)\\
+&= C^k\left(\levi^{ij}_{\ \ k}A_iB_j\right)\\
+&= C_i\left(\levi^{jk}_{\ \ i}A_jB^k\right)\\
+&= C_i\left(\levi^{ij}_{\ \ k}A_jB^k\right)\\
+&= \vec{C}\cdot\left(\vec{A}\times\vec{B}\right) 
+\end{align*}
+Now to prove the identity using index notation
+$$\vec{A}\times(\vec{B}\times\vec{C}) = \vec{B}\left(\vec{A}\cdot\vec{C}\right) - \vec{C}\left(\vec{A}\cdot\vec{B}\right)$$
+we again use index notation to say that
+\begin{align*}
+\left[\vec{A}\times(\vec{B}\times\vec{C})\right]_i &= \levi^{ij}_{\ \ k}A_j\left(\levi^{kl}_{\ \ m}B_lC^m\right)\\
+&= \levi^{ij}_{\ \ k}\levi^{kl}_{\ \ m}A_jB_lC^m\\
+&= \levi_{ijk}\levi^{lm}_{\ \ k}A_jB_lC^m
+\end{align*}
+Now we can use the identity from part (c) to say that
+\begin{align*}
+\left[\vec{A}\times(\vec{B}\times\vec{C})\right]_i &= \levi_{ijk}\levi^{lm}_{\ \ k}A_jB_lC^m\\
+&= \left(\delta_{il}\delta_{jm} - \delta_{im}\delta_{jl}\right)A_jB_lC^m\\
+&= \delta_{il}\delta_{jm}A_jB_lC^m - \delta_{im}\delta_{jl}A_jB_lC^m
+\end{align*}
+Note that $i$ is the free index and that in the first term we see that for all non-zero terms $j=m$ and $i=l$. For the second term the same reasoning implies that $i=m$ and $j=l$ so it follows that
+\begin{align*}
+\left[\vec{A}\times(\vec{B}\times\vec{C})\right]_i  &= \delta_{il}\delta_{jm}A_jB_lC^m - \delta_{im}\delta_{jl}A_jB_lC^m\\
+&= B_iA_jC^j - C_iA_jB^j = \vec{B}\left(\vec{A}\cdot\vec{C}\right) - \vec{C}\left(\vec{A}\cdot\vec{A}\right)
+\end{align*}
+
+\item
+We can prove the double-curl formula 
+$$\grad\times\left(\grad\times\vec{A}\right) = \grad\left(\grad\cdot\vec{A}\right) - \grad^2\vec{A}$$
+again by using index notation so that
+\begin{align*}
+\left[\grad\times\left(\grad\times\vec{A}\right)\right]_i &= \levi^{ij}_{\ \ k}\partial_j\left(\levi^{kl}_{\ \ m}\partial_lA^m\right)\\
+&= \levi^{ij}_{\ \ k}\levi^{lm}_{\ \ k}\partial_j\partial_lA^m
+\end{align*}
+Again we use the identity from part (c) to say
+\begin{align*}
+\left[\grad\times\left(\grad\times\vec{A}\right)\right]_i &= \levi^{ij}_{\ \ k}\levi^{lm}_{\ \ k}\partial_j\partial_lA^m\\
+&= \left(\delta_{il}\delta_{jm} - \delta_{im}\delta_{jl}\right)\partial_j\partial_lA^m\\
+&= \delta_{il}\delta_{jm}\partial_j\partial_lA^m - \delta_{im}\delta_{jl}\partial_j\partial_lA^m
+\end{align*}
+Again we see that the \emph{Kronecker delta} symbols force the indices such that $i=l$ and $j=m$ for the first term and $i=m$ and $j=l$ for the second term. So it follows that
+\begin{align*}
+\left[\grad\times\left(\grad\times\vec{A}\right)\right]_i &= \delta_{il}\delta_{jm}\partial_j\partial_lA^m - \delta_{im}\delta_{jl}\partial_j\partial_lA^m\\
+&= \partial_j\partial_iA^j - \partial_j\partial^jA^i\\
+&= \partial_i\partial_jA^j - \partial_j\partial^jA^i = \grad\left(\grad\cdot\vec{A}\right) - \grad^2\vec{A}
+\end{align*}
+
+
+\end{enumerate}
+
+\end{document}
+

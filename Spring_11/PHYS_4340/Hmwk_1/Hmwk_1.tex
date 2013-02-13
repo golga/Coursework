@@ -1,0 +1,207 @@
+\documentclass[11pt]{article}
+
+\usepackage{latexsym}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{enumerate}
+\usepackage{amsmath}
+\usepackage{cancel}
+\numberwithin{equation}{section}
+
+\setlength{\evensidemargin}{.25in}
+\setlength{\oddsidemargin}{-.25in}
+\setlength{\topmargin}{-.75in}
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{9.5in}
+\newcommand{\due}{January 20th, 2011}
+\newcommand{\HWnum}{1}
+\input{/home/joey/Documents/Class/Define.tex}
+
+\begin{document}
+\input{../title.tex}
+
+\section{Problem \#1}
+To find the drift velocity $<v>$ we first need to assume that it is under the influence of an electric field. Note that if there is no electric field the drift velocity will average out over all of the electrons and equal zero. So we know the force on the electron due to an electric field $E$ is
+$$\vec{F} = -e\vec{E}$$
+where $e$ is the charge of an electron. Note that the negative is due to the negative charge of the electron. Now by \emph{Newton's Second Law} we see that
+$$<\vec{a}> = \frac{-e\vec{E}}{m}$$
+Now that we have a term for the acceleration we can find velocity by 
+$$<\vec{v}> = \vec{a}t$$
+where $t$ is the amount of time the electron is accelerated. Now in the \emph{Drude Model} the average time before a collision is the relaxation time $\tau$. So we assume that $\tau$ is the time the electron is accelerated. So we see that the drift velocity is given by
+\begin{equation}
+<\vec{v}> = -\frac{e\vec{E}}{m}\tau
+\label{Drift}
+\end{equation}
+Note that the average velocity is in the direction of the electric field. So using the given values $|\vec{E}| = 2500\unit{V\ cm^{-1}}$ and $\tau = 2\times10^{-14}\unit{s}$ we can calculate $<v>$ using equation \ref{Drift}.
+\begin{align*}
+<\vec{v}> &= -\frac{eE}{m_e}\tau\hat{E}\\
+&= -\frac{(1.6\times10^{-19}\unit{C})(250000\unit{V\ m^{-1}})}{9.1\times10^{-31}\unit{kg}}2\times10^{-14}\unit{s}\\
+&= -8.8\times10^{2}\unit{J\ s\ m^{-1}\ kg^{-1}}\hat{E} = -880\unit{m\ s^{-1}}\hat{E}
+\end{align*}
+Note that $\hat{E}$ is the unit vector in the direction of the electric field and that the electron moves in the opposite direction but along the electric field.
+
+\section{Problem \#2}
+To find the carrier density we need to find an expression for the \emph{Hall Coefficient}, but first start with the equation of motion
+$$m\left(\frac{d\vec{v}}{dt} + \frac{\vec{v}}{\tau}\right) = -e[\vec{E}+\vec{v}\times\vec{H}]$$
+we can then split this into it's components. We will only focus on the $y$ direction
+$$m\left(\frac{dv_y}{dt}+\frac{v_y}{\tau}\right) = -e\left[E_y-H_0v_x\right]$$
+now we will implement the assumption that the system is in a steady state. This implies that the velocity will not change with time so
+$$v_y = \frac{-e\tau}{m}E_y +\frac{eH_0}{m}\tau v_x$$
+The other consequence of the system being at a steady state is that the current in the $y$ direction due to the Hall effect as reached equilibrium with the build up of charge. This means that $v_y = 0$. So we get that
+\begin{align*}
+\frac{e\tau}{m}E_y &= \frac{eH_0}{m}\tau v_x\\
+&\Downarrow\\
+E_y &= H_0 v_x\\
+ &= H_0 \frac{-j_x}{ne}
+\end{align*}
+Note that we used the relation for current density
+$$\vec{j} = -ne\vec{v}$$
+So now we have the \emph{Hall Coefficient} $R_H$ as
+$$R_H = -\frac{1}{ne}$$
+but more importantly if we solve for $n$, the carrier density, we find that
+$$n = -\frac{H_0j_x}{eE_y}$$
+Now we can use the parameters of the problem to find the values we need. We are given $H_0 = 0.2\unit{T}$ and that there is a current in the $x$ direction of $I=1\times10^{-3}\unit{A}$. If we assume that the points 2 and 3 are a length $l$ apart and we are given that the bar is $w=50\times10^{-9}\unit{m}$ thick we can find the current density $j_x$ by
+\begin{align*}
+j_x &= \frac{I}{lw}\\
+&= \frac{1\times10^{-3}\unit{A}}{l(50\times10^{-9}\unit{m})}\\
+&= \frac{20000}{l}\unit{A\ m^{-2}}
+\end{align*}
+Now we know that there is a voltage difference between points 2 and 3 of $V_1 = 100\times10^{-6}\unit{V}$ and that the difference is over a length $l$ so we can say that
+$$E_y = \frac{0.0001}{l}\unit{V\ m^{-1}}$$
+Now we can find a value for $n$ by
+\begin{align*}
+n &= -\frac{H_0j_x}{eE_y}\\
+&= -\frac{0.2\unit{T}}{1.6\times10^{-19}\unit{C}}\left(\frac{20000}{l}\unit{A\ m^{-2}}\right)\left(\frac{l}{0.0001}\unit{V^{-1}\ m}\right)\\
+&= -1.2\times10^{18}\unit{T\ C^{-1}}\left(200000000\unit{A\ V^{-1}\ m^{-1}}\right)\\
+&= -2.4\times10^{26}\unit{A\ s\ C^{-1}\ m^{-3}} = -2.4\times10^{26}\unit{m^{-3}}
+\end{align*}
+Now we can find the scattering rate $\tau$ by using \emph{Ohm's Law} 
+$$\vec{j} = \sigma\vec{E}$$
+between points 1 and 2. Note that the conductivity $\sigma$ is given by
+$$\sigma = \frac{ne^2\tau}{m}$$
+we found $n$ above and we can calculate $\vec{j}$ by the given information of the problem. Recall that $I = 1\times10^{-3}\unit{A}$ and that $w = 50\times10^{-9}\unit{m}$ and the distance between points 1 and 2 is $d = 2\times10^{-3}\unit{m}$ so we can find $j$ as
+\begin{align*}
+j &= \frac{I}{wd}\\
+&= \frac{1\times10^{-3}\unit{A}}{(50\times10^{-9}\unit{m})(2\times10^{-3}\unit{m})}\\
+&= 1.0\times10^{7}\unit{A\ m^{-2}}
+\end{align*}
+And we can find the electric field using the fact that there is a voltage difference of $V_2 = 10\times10^{-3}\unit{V}$ over the distance $d$ so
+\begin{align*}
+E &= \frac{V_2}{d}\\
+&= \frac{10\times10^{-3}\unit{V}}{2\times10^{-3}\unit{m}}\\
+&= 5\unit{V\ m^{-1}}
+\end{align*}
+So now if we solve \emph{Ohm's Law} for $\tau$ we get
+\begin{align*}
+j &= \left(\frac{ne^2\tau}{m}\right) E\\
+&\Downarrow\\
+\tau &= \frac{jm}{ne^2E}\\
+&= \frac{(1.0\times10^{7}\unit{A\ m^{-2}})(9.1\times10^{-31}\unit{kg})}{(2.4\times10^{26}\unit{m^{-3}})(1.6\times10^{-19}\unit{C})^2(5\unit{V\ m^{-1})}}\\
+&= 4.7\times10^{-32}\unit{A\ kg\ m^2\ V^{-1}\ C^{-2}}\\ 
+&= 4.7\times10^{-32}\unit{kg\ m^{2}\ s^{-1}\ J^{-1}} = 4.7\times10^{-32}\unit{s}
+\end{align*}
+
+\section{Problem \#3}
+\begin{enumerate}[(a)]
+\item
+For a time-dependent electric field
+$$\vec{E}(t) = \real\left(\vec{E}(\omega)e^{-i\omega t}\right)$$
+we first start with the equation of motion
+\begin{equation}
+m\left(\frac{d\vec{v}}{dt} + \frac{\vec{v}}{\tau}\right) = -e\vec{E}
+\label{motion}
+\end{equation}
+Now if we assume that the solution for $\vec{v}(t)$ looks like
+$$\vec{v}(t) = \real\left(\vec{v}(\omega)e^{-i\omega t}\right)$$
+we can substitute the complex form for $\vec{E}$ and $\vec{v}$ into equation \ref{motion} to yield
+\begin{align*}
+m\left(\frac{d\vec{v}}{dt} + \frac{\vec{v}}{\tau}\right) &= -e\vec{E}\\
+m\left(\frac{d}{dt}\vec{v}(\omega)e^{-i\omega t} + \frac{\vec{v}(\omega)e^{-i\omega t}}{\tau}\right) &= -e\vec{E}(\omega)e^{-i\omega t}\\
+m\left(-i\omega\vec{v}(\omega)\cancel{e^{-i\omega t}} + \frac{\vec{v}(\omega)\cancel{e^{-i\omega t}}}{\tau}\right) &= -e\vec{E}(\omega)\cancel{e^{-i\omega t}}\\
+m\left(-i\omega\vec{v}(\omega) + \frac{\vec{v}(\omega)}{\tau}\right) &= -e\vec{E}(\omega)\\
+m\vec{v}(\omega)\left(-i\omega + \frac{1}{\tau}\right) &= -e\vec{E}(\omega)\\
+&\Downarrow\\
+\vec{v}(\omega) &= \frac{-e\vec{E}(\omega)}{m(1/\tau-i\omega)}
+\end{align*}
+Now we can use the relation
+\begin{equation}
+\vec{j}(\omega) = -ne\vec{v}(\omega)
+\label{currden}
+\end{equation}
+to relate the current density $\vec{j}(\omega)$ to the electrical field $\vec{E}(\omega)$ by the relation we found using equation \ref{motion}. So equation \ref{currden} becomes
+\begin{align*}
+\vec{j}(\omega) &= -ne\vec{v}(\omega)\\
+&= -ne\frac{-e\vec{E}(\omega)}{m(1/\tau-i\omega)}\\
+&= \frac{ne^2}{m(1/\tau-i\omega)}\vec{E}(\omega)\\
+&= \frac{ne^2}{m}\frac{\tau}{(1-i\omega\tau)}\vec{E}(\omega)\\
+\vec{j}(\omega) &= \frac{\sigma_0}{(1-i\omega\tau)}\vec{E}(\omega)
+\end{align*}
+where 
+$$\sigma_0 \equiv \frac{ne^2\tau}{m}$$
+Now we note that this equation is in the same form as \emph{Ohm's Law}
+$$\vec{j}(\omega) = \sigma(\omega)\vec{E}(\omega)$$
+where the AC conductivity is given by
+$$\sigma(\omega) = \frac{\sigma_0}{1-i\omega\tau}$$
+note that in the limit where $\omega\rightarrow 0$ we see that
+$$\sigma(\omega\rightarrow 0) = \sigma_0$$
+this is the exact same conductivity as the DC case.
+
+\item
+To find the complex dielectric constant we first need to start with \emph{Maxwell's equations}
+\begin{align}
+\label{max1}
+\grad\cdot\vec{E} &= 0\\
+\label{max2}
+\grad\cdot\vec{H} &= 0\\
+\label{max3}
+\grad\times\vec{E} &= -\frac{1}{c}\frac{\partial \vec{H}}{\partial t}\\
+\label{max4}
+\grad\times\vec{H} &= \frac{4\pi}{c}\vec{j}+\frac{1}{c}\frac{\partial\vec{E}}{\partial t}
+\end{align}
+And we find that
+$$\grad\times\grad\times\vec{E} = \grad(\grad\cdot\vec{E}) - (\grad\cdot\grad)\vec{E}$$
+Now by equation \ref{max1} we see that
+$$\grad\times\grad\times\vec{E} = -\grad^2\vec{E}$$
+Now we need to take account the curl of equation \ref{max3} by noting that
+\begin{align*}
+-\grad^2\vec{E} &= \grad\times\left(-\frac{1}{c}\frac{\partial \vec{H}}{\partial t}\right)\\
+&= \grad\times\left(\frac{i\omega}{c}\vec{H}\right)\\
+&= \frac{i\omega}{c}\grad\times\vec{H}
+\end{align*}
+Note that we used the assumption that the magnetic field has a time dependence that goes by
+$$\vec{H}(t) = \vec{H_0}(\omega)e^{-i\omega t}$$
+so that the first time derivative looks like
+$$\frac{d}{dt}\vec{H}(t) = -i\omega\vec{H_0}(\omega)e^{-i\omega t} = -i\omega \vec{H}(t)$$
+Next we can use equation \ref{max4} to get the curl of $\vec{H}$ note that $\vec{j}$ is non zero since we are no longer in free space. So
+\begin{align*}
+-\grad^2\vec{E} &= \frac{i\omega}{c}\grad\times\vec{H}\\
+&= \frac{i\omega}{c}\left(\frac{4\pi}{c}\vec{j}+\frac{1}{c}\frac{\partial\vec{E}}{\partial t}\right)\\
+&= \frac{i\omega}{c}\left(\frac{4\pi\sigma}{c}\vec{E}+\frac{1}{c}\frac{\partial\vec{E}}{\partial t}\right)\\
+&= \frac{i\omega}{c}\left(\frac{4\pi\sigma}{c}\vec{E} - \frac{i\omega}{c}\vec{E}\right)\\
+&= \frac{i\omega}{c}\frac{i\omega}{i\omega}\left(\frac{4\pi\sigma}{c}\vec{E} - \frac{i\omega}{c}\vec{E}\right)\\
+&= -\frac{\omega^2}{c}\left(\frac{4\pi\sigma}{ic\omega}\vec{E} - \frac{i\omega}{ic\omega}\vec{E}\right)\\
+&= \frac{\omega^2}{c^2}\left(-\frac{4\pi\sigma}{i\omega}\vec{E} + \vec{E}\right)\\
+&= \frac{\omega^2}{c^2}\left(\frac{4\pi i\sigma}{\omega}+ 1\right)\vec{E}\\
+&= \frac{\omega^2}{c^2}\epsilon(\omega)\vec{E} 
+\end{align*}
+Where the dielectric constant $\epsilon(\omega)$ is 
+$$\epsilon(\omega) \equiv \frac{4\pi i\sigma}{\omega}+ 1$$
+Now as we have found in part (a) $\sigma$ varies with $\omega$ so if we include the term
+$$\sigma(\omega) = \frac{\sigma_0}{1-i\omega\tau}$$
+we get
+$$\epsilon(\omega) = \frac{4\pi i}{\omega}\frac{\sigma_0}{1-i\omega\tau}+ 1$$
+now for large frequencies such that $\omega\tau >> 1$ we can make a first order approximation. Note that $\tau$ is on the order of $10^{-14}\unit{s}$ so this approximation only holds for frequencies such that $\omega>10^{16}\unit{Hz}$. This corresponds to ultraviolet light typically.
+\begin{align*}
+\epsilon(\omega) &= \frac{4\pi i}{\omega}\frac{-\sigma_0}{i\omega\tau}+ 1\\
+&= 1 - \frac{4\pi}{\omega}\frac{\sigma_0}{\omega\tau}\\
+&= 1 - \frac{4\pi\sigma_0}{\tau}\frac{1}{\omega^2}\\
+&= 1 - \frac{\omega_p^2}{\omega^2}
+\end{align*}
+where $\omega_p$ is the plasma frequency is 
+$$\omega_p^2 = \frac{4\pi\sigma_0}{\tau} = \frac{4\pi ne^2}{m}$$
+Note that for a metal when $\omega<\omega_p$ $\epsilon(\omega)$ becomes negative and the solution for the wave equation becomes an exponential decay. Therefore light can not be transmitted through the metal. In this realm light is reflected off of metal, this is why we see metal as reflective. And for frequencies for $\omega>\omega_p$ we see that $\epsilon(\omega)$ becomes positive and the solution to the wave equation becomes sines and cosines. This implies that the wave just continues along its path through the metal. In other words the metal becomes transparent.
+\end{enumerate}
+
+
+\end{document}
+

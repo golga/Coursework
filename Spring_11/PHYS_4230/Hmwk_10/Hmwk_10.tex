@@ -1,0 +1,69 @@
+\documentclass[11pt]{article}
+
+\usepackage{latexsym}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{enumerate}
+\usepackage{amsmath}
+\usepackage{cancel}
+\numberwithin{equation}{section}
+
+\setlength{\evensidemargin}{.25in}
+\setlength{\oddsidemargin}{-.25in}
+\setlength{\topmargin}{-.75in}
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{9.5in}
+\newcommand{\due}{April 15th, 2011}
+\newcommand{\HWnum}{10}
+\input{/home/joey/Documents/Class/Define.tex}
+
+\begin{document}
+\input{../title.tex}
+
+\section{Problem 6.12}
+Given that a molecule of cyanogen (CN) has a first excited state energy of $4.7\times10^{-4}\unit{eV}$ from the ground state with 3 degenerate states at this energy level. And that for every 10 molecules found at ground state there are 3 molecules at the first excited energy level we can say that
+$$\frac{P(s_2)}{P(s_1)} = \frac{3}{10}$$
+we can find the temperature this system is held at by using the \emph{Boltzmann Distribution}
+$$\frac{P(s_2)}{P(s_1)} = e^{-[E(s_2)-E(s_1)]/k_BT}$$
+by solving for $T$
+\begin{align*}
+\frac{P(s_2)}{P(s_1)} = \frac{3}{10} &= e^{-[E(s_2)-E(s_1)]/k_BT}\\
+&\Downarrow\\
+\frac{E(s_1)-E(s_2)}{k_BT} &= \ln\left(\frac{3}{10}\right)\\
+&\Downarrow\\
+T &= \frac{E(s_1)-E(s_2)}{k_B\ln(3/10)}\\
+&= \frac{-4.7\times10^{-4}\unit{eV}}{(1.38\times10^{-23}\unit{J\ K^{-1}})(-1.20)}\\
+&= \frac{-7.53\times10^{-23}\unit{J}}{(1.38\times10^{-23}\unit{J\ K^{-1}})(-1.20)}\\
+&= 4.52\unit{K}
+\end{align*}
+
+
+\section{Problem 6.13}
+
+\section{Problem 6.17}
+\begin{enumerate}[(a)]
+\item
+\item
+\item
+\item
+\end{enumerate}
+
+\section{Problem 6.18}
+\section{Problem 6.20}
+\begin{enumerate}[(a)]
+\item
+\item
+\item
+\item
+\item
+\end{enumerate}
+
+\section{Problem 6.39}
+\begin{enumerate}[(a)]
+\item
+\item
+\item
+\end{enumerate}
+
+\end{document}
+

@@ -1,0 +1,153 @@
+\documentclass[11pt]{article}
+
+\usepackage{latexsym}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{enumerate}
+\usepackage{amsmath}
+\usepackage{cancel}
+\numberwithin{equation}{section}
+
+\setlength{\evensidemargin}{.25in}
+\setlength{\oddsidemargin}{-.25in}
+\setlength{\topmargin}{-.75in}
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{9.5in}
+\newcommand{\due}{March 4th, 2011}
+\newcommand{\HWnum}{6}
+\input{/home/joey/Documents/Class/Define.tex}
+
+\begin{document}
+\input{../title.tex}
+
+\section{Problem 3.28}
+For a liter of air at room temperature and atmospheric pressure that is heated so it expands to twice its original volume. We can find the change in temperature using the \emph{Ideal Gas Law}
+\begin{equation}
+PV = nk_BT
+\label{Ideal}
+\end{equation}
+we see that the ratio of initial to final velocity is
+$$\frac{V_i}{V_f} = \frac{nk_BT_i}{P}\frac{P}{nk_BT_f} = \frac{T_i}{T_f}$$
+Note we use the assumption that we are at constant pressure. So now we can use the fact that the final volume is double the initial volume of $V_f = 2V_i$ so we can see that
+$$\frac{V_i}{V_f} = \frac{V_i}{2V_i} = \frac{1}{2} = \frac{T_i}{T_f}$$
+this implies that $T_f = 2T_i$ so we doubled the temperature to double the volume. Now we can calculate the increase in entropy using
+$$(\Delta S)_P = \int_{T_i}^{T_f}\frac{C_P}{T}dT$$
+Where $C_P$ is the heat capacity of the air which we can calculate from the specific heat of air $c=1.012\unit{J\ g^{-1}\ K^{-1}}$. Note that we can find the mass of a liter of air assuming that we it has the molecular weight of nitrogen given as $28\unit{g\ mol^{-1}}$. So we calculate
+$$m = 1\unit{L}\frac{1\unit{mol}}{22.7\unit{L}}\frac{28\unit{g}}{1\unit{mol}} = 1.23\unit{g}$$
+So the heat capacity of the air is
+$$C_p = mc = (1.23\unit{g})(1.012\unit{J\ g^{-1}\ K^{-1}}) = 1.25\unit{J\ K^{-1}}$$ 
+Now we can calculate the change in entropy by
+\begin{align*}
+(\Delta S)_P &= \int_{T_i}^{T_f}\frac{C_P}{T}dT\\
+&= \left.C_P\ln(T)\right|_{T_i}^{T_f}\\
+&= C_P\left(\ln(T_f)-\ln(T_i)\right)\\
+&= C_P\ln\left(\frac{T_f}{T_i}\right)\\
+&= C_P\ln\left(\frac{2T_i}{T_i}\right)\\
+&= C_P\ln(2) = (1.25\unit{J\ K^{-1}})\ln(2) = 0.866\unit{J\ K^{-1}}
+\end{align*}
+
+\section{Problem 3.29}
+See attached for the graph.
+
+\section{Problem 3.32}
+\begin{enumerate}[(a)]
+\item
+The work done on this system can be found by finding the net force on the piston. We exert a force of $2000\unit{N}$ and the gas with a pressure of $10^{5}\unit{N\ m^{-2}}$ exerts a force on the $0.01\unit{m^{2}}$ piston given by
+$$F = PA = (10^{5}\unit{N\ m^{-2}})(0.01\unit{m^{2}}) = 1000\unit{N}$$
+So the net force is given by the difference of the two forces which is $1000\unit{N}$. Now we pushed the piston in by $\Delta x = 1.0\times10^{-3}\unit{m}$ so the total work is
+$$W = F\Delta x = (1000\unit{N})(1.0\times10^{-3}\unit{m}) = 1.0\unit{J}$$
+
+\item
+Since we compress the gas \emph{very suddenly} we can take this to mean that the gas was compressed quickly. Therefore the process is an adiabatic process. This implies that $Q=0$.
+
+\item
+By the first law of thermodynamics 
+$$dU = Q + W$$
+we can see that the energy of the gas changed by $dU = W$. Note $Q=0$ for this process. So the gas gained $1.0\unit{J}$ in energy.
+
+\item
+Given the thermodynamic identity
+$$dU = TdS - PdV$$
+we can solve for the change in entropy to get
+$$dS = \frac{1}{T}dU + \frac{P}{T}dV$$
+we know that $dV = (0.01\unit{m^{2}})(0.001\unit{m}) = 1.0\times10^{-5}\unit{m^3}$. And we assume that this change happens such that temperature and pressure remain constant so $T=300\unit{K}$ and $P=10^5\unit{N\ m^{-2}}$ so we can calculate $dS$ by 
+\begin{align*}
+dS &= \frac{1}{T}dU + \frac{P}{T}dV\\
+&= \frac{1}{300\unit{K}}(1\unit{J}) + \frac{10^{5}\unit{N\ m^{-2}}}{300\unit{K}}(1.0\times10^{-5}\unit{m^3}) = 1.11\times10^{-5}\unit{J\ K^{-1}}
+\end{align*}
+\end{enumerate}
+
+\section{Problem 3.36}
+\begin{enumerate}[(a)]
+\item
+Given the multiplicity for an Einstein solid when $N>>1$ and $q>>1$ as
+$$\Omega(N,q) = \left(\frac{q+N}{N}\right)^q\left(\frac{q+N}{N}\right)^{N}$$
+we can see that the entropy is given by
+\begin{align*}
+S &= k_B\ln(\Omega(N,q))\\
+&= k_B\ln\left(\left(\frac{q+N}{q}\right)^q\left(\frac{q+N}{N}\right)^{N}\right)\\
+&= k_Bq\ln\left(\frac{q+N}{q}\right) + k_BN\ln\left(\frac{q+N}{N}\right)\\
+\end{align*}
+Now we can find the chemical potential from
+\begin{align*}
+\mu &= -T\left(\partiald{S}{N}\right)_{S,V}\\
+&= -Tk_B\partiald{}{N}\left(q\ln\left(\frac{q+N}{q}\right) + N\ln\left(\frac{q+N}{N}\right)\right)\\
+&= -Tk_B\left(q\frac{q}{q+N}\frac{1}{q} + \ln\left(\frac{q+N}{N}\right) + N\frac{N}{q+N}\frac{N-(q+N)}{N^2}\right)\\
+&= -Tk_B\left(\frac{q}{q+N} + \ln\left(\frac{q+N}{N}\right) - \frac{q}{q+N}\right)\\
+&= -Tk_B\ln\left(\frac{q+N}{N}\right)
+\end{align*}
+
+\item
+In the limit where $N>>q$ we see that the chemical potential becomes
+$$\mu = -Tk_B\ln\left(1+\frac{q}{N}\right)\approx -Tk_B\ln(1) = 0$$
+so the chemical potential doesn't change when we add another particle carrying no energy. This makes sense since there is already a large number of particles. For the limit where $q>>N$ we get
+$$\mu \approx -Tk_B\ln(q)$$
+So adding a particle with no energy doesn't change $\mu$ because the high amount of energy in the system already dominates.
+\end{enumerate}
+
+\section{Problem 3.37}
+\begin{enumerate}[(a)]
+\item
+Given that the entropy of a monatomic ideal gas is
+$$S = Nk_B\left[\ln\left(\frac{V}{N}\left(\frac{4\pi mU}{3Nh^2}\right)^{3/2}\right)+\frac{5}{2}\right]$$
+we can find the chemical potential 
+\begin{align*}
+\mu &= -T\left(\partiald{S}{N}\right)_{S,V}\\
+&= -Tk_B\partiald{}{N}\left[N\ln\left(\frac{V}{N}\left(\frac{4\pi mU}{3Nh^2}\right)^{3/2}\right)+N\frac{5}{2}\right]\\
+&= -Tk_B\left[\ln\left(\frac{V}{N}\left(\frac{4\pi mU}{3Nh^2}\right)^{3/2}\right)+ \frac{5}{2} + N\partiald{}{N}\left(\ln\left(\frac{V}{N}\right) + \frac{3}{2}\ln\left(\frac{4\pi mU}{3Nh^2}\right)\right) \right]\\
+&= -Tk_B\left[\ln\left(\frac{V}{N}\left(\frac{4\pi mU}{3Nh^2}\right)^{3/2}\right)+ \frac{5}{2} + N\left(\frac{N}{V}\frac{-V}{N^2} + \frac{3}{2}\left(\frac{3Nh^2}{4\pi mU}\right)\frac{4\pi mU}{3h^2}\frac{-1}{N^2}\right) \right]\\
+&= -Tk_B\left[\ln\left(\frac{V}{N}\left(\frac{4\pi mU}{3Nh^2}\right)^{3/2}\right)+ \frac{5}{2} + N\left(\frac{-1}{N} - \frac{3}{2}\frac{1}{N}\right) \right]\\
+&= -Tk_B\left[\ln\left(\frac{V}{N}\left(\frac{4\pi mU}{3Nh^2}\right)^{3/2}\right)+ \frac{5}{2} -\frac{5}{2}\right]\\
+&= -Tk_B\ln\left(\frac{V}{N}\left(\frac{4\pi mU}{3Nh^2}\right)^{3/2}\right)
+\end{align*}
+Note that the energy for this entropy is the entropy from the kinetic energy given by the equipartition theory
+$$U = N\frac{f}{2}k_BT$$
+Where $f=3$ for a monatomic gas. So we see that $\mu$ for this becomes
+$$\mu = -Tk_B\ln\left(\frac{V}{N}\left(\frac{2\pi mk_BT}{h^2}\right)^{3/2}\right)$$
+Now if we say the potential energy for $N$ atoms is 
+$$U' = Nmgz$$
+we can see that the chemical potential comes from
+$$\mu = \left(\partiald{U}{N}\right)_{S,V}$$
+so it is easy to see that
+$$\mu' = mgz$$
+so the total chemical potential is the sum of the two terms so we can say that 
+$$\mu = -Tk_B\ln\left(\frac{V}{N}\left(\frac{2\pi mk_BT}{h^2}\right)^{3/2}\right) + mgz$$
+
+\item
+Since we are at diffusive equilibrium we can see that $\mu(0) = \mu(z)$
+so it follows that
+\begin{align*}
+-Tk_B\ln\left(\frac{V}{N(0)}\left(\frac{2\pi mk_BT}{h^2}\right)^{3/2}\right) + mg(0) &= -Tk_B\ln\left(\frac{V}{N(z)}\left(\frac{2\pi mk_BT}{h^2}\right)^{3/2}\right) + mgz\\
+\end{align*}
+So we can solve for $N(z)$ by
+\begin{align*}
+-Tk_B\ln\left(\frac{V}{N(0)}\left(\frac{2\pi mk_BT}{h^2}\right)^{3/2}\right) + Tk_B\ln\left(\frac{V}{N(z)}\left(\frac{2\pi mk_BT}{h^2}\right)^{3/2}\right) &= mgz\\
+-Tk_B\left[\ln\left(\frac{V}{N(0)}\left(\frac{2\pi mk_BT}{h^2}\right)^{3/2}\right) - \ln\left(\frac{V}{N(z)}\left(\frac{2\pi mk_BT}{h^2}\right)^{3/2}\right)\right] &= mgz\\
+-Tk_B\left[\ln\left(\frac{V}{N(0)}\left(\frac{2\pi mk_BT}{h^2}\right)^{3/2}\frac{N(z)}{V}\left(\frac{2\pi mk_BT}{h^2}\right)^{-3/2}\right)\right] &= mgz\\
+-Tk_B\ln\left(\frac{N(z)}{N(0)}\right) &= mgz\\
+\ln\left(\frac{N(z)}{N(0)}\right) &= -\frac{mgz}{k_BT}\\
+&\Downarrow\\
+N(z) &= N(0)e^{-mgz/k_BT}
+\end{align*}
+\end{enumerate}
+\end{document}

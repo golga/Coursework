@@ -1,0 +1,179 @@
+\documentclass[11pt]{article}
+
+\usepackage{latexsym}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{enumerate}
+\usepackage{amsmath}
+\usepackage{cancel}
+\numberwithin{equation}{section}
+
+\setlength{\evensidemargin}{.25in}
+\setlength{\oddsidemargin}{-.25in}
+\setlength{\topmargin}{-.75in}
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{9.5in}
+\newcommand{\due}{February 10th, 2011}
+\newcommand{\HWnum}{4}
+\input{/home/joey/Documents/Class/Define.tex}
+
+\begin{document}
+\input{../title.tex}
+
+\section{Problem \#1}
+\begin{enumerate}[(a)]
+\item
+For a plane $hkl$ in a crystal lattice we can see that the plane intersects the axis of the crystal cell at the points $\vec{b_1}/h$, $\vec{b_2}/k$, and $\vec{b_3}/l$. So we can say that the vector from the point $\vec{b_1}/h$ to the point $\vec{b_2}/k$ given by 
+$$\vec{A} = \frac{\vec{b_1}}{h} - \frac{\vec{b_2}}{k}$$
+and the vector from the point $\vec{b_2}/k$ to the point $\vec{b_3}/l$ given by 
+$$\vec{B} = \frac{\vec{b_2}}{k} - \frac{\vec{b_3}}{l}$$
+Now by showing that these vectors are perpendicular to the reciprocal lattice vector 
+$$\vec{G} = h\vec{b_1}+k\vec{b_2}+l\vec{b_3}$$
+we show that $\vec{G}$ is perpendicular to the plane $(hkl)$. So we can see that
+\begin{align*}
+\vec{A}\cdot\vec{G} &= \left(\frac{\vec{b_1}}{h} - \frac{\vec{b_2}}{k}\right)\cdot \left(h\vec{b_1}+k\vec{b_2}+l\vec{b_3}\right)\\
+\vec{A}\cdot\vec{G} &= \frac{\vec{b_1}}{h}h\vec{b_1} - \frac{\vec{b_2}}{k}k\vec{b_2}+l\vec{b_3}(0)\\
+&= 1 - 1 = 0
+\end{align*}
+and
+\begin{align*}
+\vec{B}\cdot\vec{G} &= \left(\frac{\vec{b_2}}{k} - \frac{\vec{b_3}}{l}\right)\cdot \left(h\vec{b_1}+k\vec{b_2}+l\vec{b_3}\right)\\
+&= h\vec{b_1}(0) + \frac{\vec{b_2}}{k}k\vec{b_2} - \frac{\vec{b_3}}{l}l\vec{b_3}\\
+&= 1 - 1 = 0
+\end{align*}
+Therefore the reciprocal lattice vector is perpendicular to the plane $(hkl)$.
+
+\item
+To find the distance between two parallel planes we want to find the length of the unit normal vector along the point $\vec{b_1}/h$. From part (a) we know that $\vec{G}$ is normal to the plane so we can say the unit normal vector is
+$$\hat{n} = \frac{\vec{G}}{|\vec{G}|}$$
+So now we can find $d(hkl)$ by calculating $\hat{n}\cdot\vec{a_1}/h$. So
+\begin{align*}
+d(hkl) &= \hat{n}\cdot\frac{\vec{a_1}}{h}\\
+&= \frac{\vec{G}}{|\vec{G}|}\cdot\frac{\vec{a_1}}{h}\\
+&= \frac{2\pi}{|\vec{G}|}
+\end{align*}
+
+\item
+Given that for a simple cubic lattice the primitive reciprocal lattice vectors are
+\begin{align*}
+\vec{b_1} &= \frac{2\pi}{a}h\hat{x}\\
+\vec{b_2} &= \frac{2\pi}{a}k\hat{y}\\
+\vec{b_3} &= \frac{2\pi}{a}l\hat{z}
+\end{align*}
+We can see that the distance squared is given by part (b)
+\begin{align*}
+d^2 &= \frac{(2\pi)^2}{|\vec{G}|^2}\\
+&= (2\pi)^2\frac{a^2}{(2\pi)^2}\frac{1}{h^2+k^2+l^2}\\
+&= \frac{a^2}{h^2+k^2+l^2}
+\end{align*}
+\end{enumerate}
+
+\section{Problem \#2}
+\begin{enumerate}[(a)]
+\item
+Given the primitive translation vectors of the hexagonal space lattice 
+\begin{align}
+\vec{a_1} &= (3^{1/2}a/2)\hat{x} + (a/2)\hat{y}\\
+\vec{a_2} &= -(3^{1/2}a/2)\hat{x} + (a/2)\hat{y}\\
+\vec{a_3} &= c\hat{z}
+\end{align}
+We can find the volume of the primitive cell by
+$$\vec{a_1}\cdot(\vec{a_2}\times\vec{a_3})$$
+So we can find the cross product as
+\begin{align*}
+\vec{a_2}\times\vec{a_3} &= \det\left(\begin{array}{ccc}
+			\hat{x}		&\hat{y}	&\hat{z}\\
+			-(3^{1/2}a/2) 	&a/2		&0\\
+			0		&0		&c
+				\end{array}\right)\\
+&= ac/2\hat{x} + c(3^{1/2}a/2)\hat{y}
+\end{align*}
+So we can calculate 
+\begin{align*}
+\vec{a_1}\cdot(\vec{a_2}\times\vec{a_3}) &= ((3^{1/2}a/2)\hat{x} + (a/2)\hat{y})\cdot(ac/2\hat{x} + c(3^{1/2}a/2)\hat{y})\\
+&= \frac{3^{1/2}a}{2}\frac{ac}{2} + \frac{a}{2}\frac{c(3^{1/2}a)}{2}\\
+&= \frac{3^{1/2}a^2c}{4} + \frac{3^{1/2}a^2c}{4}\\
+&= \frac{3^{1/2}a^2c}{2}
+\end{align*}
+
+\item
+We can find the primitive translations of the reciprocal lattice by the definition 
+$$\vec{b_1} = 2\pi\frac{\vec{a_2}\times\vec{a_3}}{\vec{a_1}\cdot(\vec{a_2}\times\vec{a_3})}$$
+Note that we found each part in the previous part so it follows that 
+\begin{align*}
+\vec{b_1} &= 2\pi\frac{\vec{a_2}\times\vec{a_3}}{\vec{a_1}\cdot(\vec{a_2}\times\vec{a_3})}\\
+&= 2\pi\frac{ac/2\hat{x} + c(3^{1/2}a/2)\hat{y}}{3^{1/2}a^2c/2}\\
+&= \frac{2\pi}{3^{1/2}a}\hat{x} + \frac{2\pi}{a}\hat{y}
+\end{align*}
+Now to find 
+$$\vec{b_2} = 2\pi\frac{\vec{a_3}\times\vec{a_1}}{\vec{a_1}\cdot(\vec{a_2}\times\vec{a_3})}$$
+so we can calculate the cross product 
+\begin{align*}
+\vec{a_3}\times\vec{a_1} &= \det\left(\begin{array}{ccc}
+			\hat{x}		&\hat{y}	&\hat{z}\\
+			0		&0		&c\\
+			(3^{1/2}a/2) 	&a/2		&0
+				\end{array}\right)\\
+&= -ac/2\hat{x} + c(3^{1/2}a/2)\hat{y}
+\end{align*}
+So we can see that
+\begin{align*}
+\vec{b_2} &= 2\pi\frac{\vec{a_3}\times\vec{a_1}}{\vec{a_1}\cdot(\vec{a_2}\times\vec{a_3})}\\
+&= 2\pi\frac{-ac/2\hat{x} + c(3^{1/2}a/2)\hat{y}}{3^{1/2}a^2c/2}\\
+&= -\frac{2\pi}{3^{1/2}a}\hat{x} + \frac{2\pi}{a}\hat{y}
+\end{align*}
+Now for
+$$\vec{b_3} = 2\pi\frac{\vec{a_1}\times\vec{a_2}}{\vec{a_1}\cdot(\vec{a_2}\times\vec{a_3})}$$
+And we calculate the cross product 
+\begin{align*}
+\vec{a_1}\times\vec{a_2} &= \det\left(\begin{array}{ccc}
+			\hat{x}		&\hat{y}	&\hat{z}\\
+			(3^{1/2}a/2) 	&a/2		&0\\
+			-(3^{1/2}a/2) 	&a/2		&0
+				\end{array}\right)\\
+&= 3^{1/2}a^2/2\hat{z}
+\end{align*}
+So we can calculate $\vec{b_3}$ as 
+\begin{align*}
+\vec{b_3} &= 2\pi\frac{\vec{a_1}\times\vec{a_2}}{\vec{a_1}\cdot(\vec{a_2}\times\vec{a_3})}\\
+&= 2\pi\frac{3^{1/2}a^2/2\hat{z}}{3^{1/2}a^2c/2}\\
+&= \frac{2\pi}{c}\hat{z}
+\end{align*}
+
+\item
+See attached
+
+\end{enumerate}
+
+\section{Problem \#3}
+To show that the volume of the Brillouin zone is $(2\pi)^3/V_c$ where we define
+$$V_c\equiv \vec{a_1}\cdot(\vec{a_2}\times\vec{a_3})$$
+So the volume is given by $\vec{b_1}\cdot(\vec{b_2}\times\vec{b_3})$ where $b_n$ are the reciprocal basis vectors given by
+\begin{align*}
+\vec{b_1} &= 2\pi\frac{\vec{a_2}\times\vec{a_3}}{V_c}\\
+\vec{b_2} &= 2\pi\frac{\vec{a_3}\times\vec{a_1}}{V_c}\\
+\vec{b_3} &= 2\pi\frac{\vec{a_1}\times\vec{a_2}}{V_c}
+\end{align*}
+So we calculate the Brillouin zone volume as
+\begin{align*}
+\vec{b_1}\cdot(\vec{b_2}\times\vec{b_3}) &= \frac{(2\pi)^3}{V_c^3}(\vec{a_2}\times\vec{a_3})\cdot((\vec{a_3}\times\vec{a_1})\times(\vec{a_1}\times\vec{a_2}))\\
+&= \frac{(2\pi)^3}{V_c^3}(\vec{a_2}\times\vec{a_3})\cdot(\vec{a_3}\cdot(\vec{a_1}\times\vec{a_2}))\cdot\vec{a_1}\\
+&= \frac{(2\pi)^3}{V_c^3}(\vec{a_3}\cdot(\vec{a_1}\times\vec{a_2}))((\vec{a_2}\times\vec{a_3})\cdot\vec{a_1})\\
+&= \frac{(2\pi)^3}{V_c^3}V_c^2\\
+&= \frac{(2\pi)^3}{V_c}
+\end{align*}
+Note that we are only concerned with the magnitude $V_c$ so we say that
+$$V_c = |\vec{a_3}\cdot(\vec{a_1}\times\vec{a_2})| = |(\vec{a_2}\times\vec{a_3})\cdot\vec{a_1}|$$
+
+\section{Problem \#4}
+If we were to construct primitive vectors from the reciprocal vector we can say that
+$$\vec{a_1} = 2\pi\frac{\vec{b_2}\times\vec{b_3}}{\vec{b_1}\cdot(\vec{b_2}\times\vec{b_3})}$$
+We can show that this is true using the result of problem 3
+\begin{align*}
+2\pi\frac{\vec{b_2}\times\vec{b_3}}{\vec{b_1}\cdot(\vec{b_2}\times\vec{b_3})} &=2\pi\frac{V_c}{(2\pi)^3}\frac{2\pi}{V_c}(\vec{a_3}\times\vec{a_1})\times\frac{2\pi}{V_c}(\vec{a_1}\times\vec{a_2}) \\
+&=\frac{1}{V_c}(\vec{a_3}\times\vec{a_1})\times(\vec{a_1}\times\vec{a_2}) \\
+&=\frac{1}{V_c}(\vec{a_3}\cdot(\vec{a_1}\times\vec{a_2}))\vec{a_1} \\
+&=\frac{1}{V_c}V_c\vec{a_1} = \vec{a_1}
+\end{align*}
+\end{document}
+

@@ -1,0 +1,185 @@
+\documentclass[11pt]{article}
+
+\usepackage{latexsym}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{enumerate}
+\usepackage{amsmath}
+\usepackage{cancel}
+\numberwithin{equation}{section}
+
+\setlength{\evensidemargin}{.25in}
+\setlength{\oddsidemargin}{-.25in}
+\setlength{\topmargin}{-.75in}
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{9.5in}
+\newcommand{\due}{January 27th, 2011}
+\newcommand{\HWnum}{2}
+\input{/home/joey/Documents/Class/Define.tex}
+
+\begin{document}
+\input{../title.tex}
+
+\section{Problem \#1}
+Note that we are at $T=0\unit{K}$ and due to this fact we can see that we are at the ground state for the electrons. This implies that the Fermi Sphere is completely full. So if we take the \emph{Density of States} $D(\epsilon)$ 
+\begin{equation}
+D(\epsilon) = \frac{V}{2\pi^2}\left(\frac{2m}{\hbar^2}\right)^{3/2}\epsilon^{1/2}
+\label{DenOState}
+\end{equation}
+we can find the number of states at a given energy $\epsilon$. Where $\epsilon D(\epsilon)$ is the total energy at that energy level. So if we integrate over all the energies up to the \emph{Fermi Energy} $\epsilon_F$ we can find the total energy $U_0$
+\begin{align*}
+U_0 &= \int_{0}^{\epsilon_F}D(\epsilon)\epsilon d\epsilon\\
+&= \frac{V}{2\pi^2}\left(\frac{2m}{\hbar^2}\right)^{3/2}\int_{0}^{\epsilon_F}\epsilon^{1/2}\epsilon d\epsilon\\
+&= \frac{V}{2\pi^2}\left(\frac{2m}{\hbar^2}\right)^{3/2}\int_{0}^{\epsilon_F}\epsilon^{3/2}d\epsilon\\
+&= \frac{V}{2\pi^2}\left(\frac{2m}{\hbar^2}\right)^{3/2}\left(\frac{2}{5}\epsilon^{5/2}\right|_{0}^{\epsilon_F}\\
+&= \frac{V}{2\pi^2}\left(\frac{2m}{\hbar^2}\right)^{3/2}\frac{2}{5}\epsilon_F^{5/2}
+\end{align*}
+Note that we now can use the relation
+$$N = \frac{V}{3\pi^2}\left(\frac{2m\epsilon_F}{\hbar}\right)^{3/2}$$
+if we rewrite $U_0$ as
+\begin{align*}
+U_0 &= \frac{V}{2\pi^2}\left(\frac{2m}{\hbar^2}\right)^{3/2}\frac{2}{5}\epsilon_F^{5/2}\\
+&= \frac{3}{2}\frac{V}{3\pi^2}\left(\frac{2m\epsilon_F}{\hbar^2}\right)^{3/2}\frac{3}{5}\epsilon_F\\
+&= \frac{3}{2}N\frac{2}{5}\epsilon_F\\
+U_0 &= \frac{3}{5}N\epsilon_F
+\end{align*}
+
+
+\section{Problem \#2}
+Given that the system is at $0\unit{K}$ we can say that the pressure of the system is given by
+$$P = -\frac{\partial U}{\partial V}$$
+So using the relation between the Fermi energy and the electron concentration $N/V$
+\begin{equation}
+\epsilon_F = \frac{\hbar^2}{2m}\left(\frac{3\pi^2N}{V}\right)^{2/3}
+\label{EleConc}
+\end{equation}
+and the result from Problem 1 
+$$U_0 = \frac{3}{5}N\epsilon_F$$
+we can find a function of energy in terms of volume
+\begin{align*}
+U_0 &= \frac{3}{5}N\epsilon_F\\
+U_0(V) &= \frac{3}{5}N\frac{\hbar^2}{2m}\left(\frac{3\pi^2N}{V}\right)^{2/3}
+\end{align*}
+Now we can take a derivative with respect to $V$ to find the pressure $P$
+\begin{align*}
+P &= -\frac{\partial U_0}{\partial V}\\
+&= -\frac{3}{5}N\frac{\hbar^2}{2m}\frac{\partial}{\partial V}\left(\frac{3\pi^2N}{V}\right)^{2/3}\\
+&= -\frac{3}{5}N\frac{\hbar^2}{2m}\frac{2}{3}\left(\frac{3\pi^2N}{V}\right)^{-1/3}\left(-\frac{3\pi^2N}{V^2}\right)\\
+&= \frac{2}{3}\frac{3}{5}N\frac{\hbar^2}{2m}\left(\frac{3\pi^2N}{V}\right)^{-1/3}\left(\frac{3\pi^2N}{V}\right)\frac{1}{V}\\
+&= \frac{2}{3}\frac{3}{5}N\frac{\hbar^2}{2m}\left(\frac{3\pi^2N}{V}\right)^{2/3}\frac{1}{V}
+\end{align*}
+Note that we can have the original $\epsilon_F$ from equation \ref{EleConc} so we can say that
+$$P= \frac{2}{3}\frac{3}{5}N\epsilon_F\frac{1}{V}$$
+and now we see that we get a $U_0$ back so it follows that
+$$P = \frac{2}{3}\frac{U_0}{V}$$
+
+\section{Problem \#3}
+\begin{enumerate}[(a)]
+\item
+To estimate the number of electrons in the sun we need to make a few assumptions. The first is that that mass of the sun is the given value $M_{\odot} = 2\times10^{33}\unit{g}$. Then we assume that the majority (read all) the atoms in the sun are hydrogen with a mass of $1.7\times10^{-24}\unit{g}$ per atom. This implies that there is a total of 
+$$N_a = \frac{2\times10^{33}\unit{g}}{1.7\times10^{-24}\unit{g}} = 1.2\times10^{57}\unit{atoms}$$
+Now we assume there is one electron per atom of hydrogen so that there is a total of $N_e = 1.2\times10^{57}$ electrons. Now that we have the amount of electrons for the mass of the sun if we look at a system where the electrons are ionized in a white dwarf of radius $2\times10^{9}\unit{cm}$ we first need to find the volume of the star by
+\begin{align*}
+V &= \frac{4}{3}\pi r^3\\
+&= \frac{4}{3}\pi (2\times10^{9}\unit{cm})^3\\
+&= 8.4\times10^{9}\unit{cm^3}
+\end{align*}
+Now that we know the number of electrons in this volume we can find the Fermi energy using equation \ref{EleConc}
+\begin{align*}
+\epsilon_F &= \frac{\hbar^2}{2m}\left(\frac{3\pi^2N}{V}\right)^{2/3}\\
+&= \frac{(1.05\times10^{-34}\unit{J\ s})^2}{2(9.11\times10^{-31}\unit{kg})}\left(\frac{3\pi^2(1.2\times10^{57})}{8.4\times10^{3}\unit{m^3}}\right)^{2/3}\\
+&= 6.05\times10^{-39}\unit{J^2\ s^2\ kg^{-1}} \left(4.2\times10^{54}\unit{m^{-3}}\right)^{2/3}\\
+&= 6.05\times10^{-39}\unit{J^2\ s^2\ kg^{-1}} \left(2.6\times10^{36}\unit{m^{-2}}\right)\\
+&= 1.6\times10^{-2}\unit{J^2\ s^2\ m^{-2}\ kg^{-1}} = 1.6\times10^{-2}\unit{J} =6.2\times10^{18}\unit{eV}
+\end{align*}
+
+\item
+If we take the relativistic limit where $\epsilon >> mc^2$ we can say that the energy of the electron is related to it's wavevector by
+$$\epsilon = \hbar kc$$
+where $c$ is the speed of light. We can see that the Fermi energy in this limit is given by
+$$\epsilon_F = \hbar k_F c$$
+So if we use the relation
+\begin{equation}
+k_F = \left(\frac{3\pi^2N}{V}\right)^{1/3}
+\label{KvNV}
+\end{equation}
+between the Wavevector $k_F$ and the electron density. So using equation \ref{KvNV} we see that
+\begin{equation}
+\epsilon_F = \hbar c \left(\frac{3\pi^2N}{V}\right)^{1/3}
+\label{partb}
+\end{equation}
+
+\item
+For a pulsar of radius $1.0\times10^{4}\unit{m}$ we can find the Fermi energy by using equation \ref{partb} from part (b). So 
+\begin{align*}
+\epsilon_F &= \hbar c \left(\frac{3\pi^2N}{V}\right)^{1/3}\\
+&=  1.05\times10^{-34}\unit{J\ s}(3.0\times10^{8}\unit{m\ s^{-1}})\left(\frac{3\pi^2(1.2\times10^{57})}{4/3\pi(1.0\times10^4\unit{m})^3}\right)^{1/3}\\
+&=  (3.16\times10^{-26}\unit{J\ m})\left(\frac{9\pi(1.2\times10^{57})}{4(1.0\times10^4\unit{m})^3}\right)^{1/3}\\
+&=  (3.16\times10^{-26}\unit{J\ m})\left(8.5\times10^{45}\unit{m^{-3}}\right)^{1/3}\\
+&=  (3.16\times10^{-26}\unit{J\ m})\left(2.0\times10^{15}\unit{m^{-1}}\right)\\
+&=  6.4\times10^{-11}\unit{J} = 4.0\times10^{8}\unit{eV}
+\end{align*}
+
+\end{enumerate}
+\section{Problem \#4}
+Given that liquid $\textnormal{He}^3$ has a mass density of $0.0081\unit{g\ cm^{-3}}$. Note that we are assuming that $\textnormal{He}^3$ is a spin $1/2$ fermion. So in order to find the Fermi energy we first need to find the atom density per unit volume. We can do this by using the atomic mass $4.8\times10^{-27}\unit{kg}$ per atom. So we can find atom density as
+$$\frac{N}{V} = \frac{0.0081\unit{g}}{\unit{cm^3}}\frac{1\unit{kg}}{1000\unit{g}}\frac{\unit{atom}}{4.8\times10^{-27}\unit{kg}} = 1.7\times10^{21}\unit{cm^{-3}}$$
+So now we can use equation \ref{EleConc} to find the Fermi energy 
+\begin{align*}
+\epsilon_F &= \frac{\hbar^2}{2m} \left(\frac{3\pi^2N}{V}\right)^{2/3}\\
+&= \frac{(1.05\times10^{-34}\unit{J\ s})^2}{2(4.8\times10^{-27}\unit{kg})}\left(3\pi^2(1.7\times10^{26}\unit{m^{-3}})\right)^{2/3}\\
+&= (1.16\times10^{-42}\unit{J^2\ s^2\ kg^{-1}})(2.9\times10^{18}\unit{m^{-2}})\\
+&= 3.4\times10^{-24}\unit{J} = 2.1\times10^{-5}\unit{eV}
+\end{align*}
+To find the Fermi temperature from the Fermi energy we divide by \emph{Boltzmann's constant}
+\begin{align*}
+T_F &= \frac{\epsilon_F}{k_B}\\
+&= \frac{3.4\times10^{-24}\unit{J}}{1.38\times10^{-23}\unit{J\ K^{-1}}}\\
+&= 0.24\unit{K}
+\end{align*}
+
+\section{Problem \#5}
+\begin{enumerate}[(a)]
+\item
+The important distinction for $k_F$ in two dimensions is that instead of a Fermi sphere we have a Fermi circle. Note that the spacing between electrons remains as $2\pi/L$ where the total area is given by a circle of radius $k_F$, but we can also find the total area by summing over all the $N$ states so
+$$A_F = \frac{N}{2}\left(\frac{2\pi}{L}\right)^2$$
+Note that $N$ is reduced by a factor of two to account for two spin states. So we say
+\begin{align*}
+\frac{N}{2}\left(\frac{2\pi}{L}\right)^2 &= \pi k_F^2\\
+&\Downarrow\\
+k_F^2 &= \frac{N}{2\pi}\frac{(2\pi)^2}{L^2}\\
+&= \frac{2\pi N}{L^2}\\
+k_F &= \sqrt{2\pi n}\\
+\end{align*}
+Note that $n$ is the electron concentration per unit area where $n=N/L^2$ 
+
+\item
+To relate $r_s$ the radius of a circle containing one electron we first need to relate $r_s$ to $n$ the electron concentration by
+$$\frac{1}{n} = \frac{A}{N}= \pi r_s^2$$
+Note that the area using radius $r_s$ only contains one electron by definition so for this case $N=1$. So now we can use the answer from part (a) to find that
+\begin{align*}
+k_F &= \sqrt{2\pi n}\\
+&= \sqrt{\frac{2\pi}{\pi r_s^2}}\\ 
+&= \frac{\sqrt{2}}{r_s} 
+\end{align*}
+
+\item
+We know that energy is related to the wavevector by
+$$\epsilon = \frac{\hbar^2}{2m}k_F^2$$
+so we can relate $\epsilon$ to the number of electrons $N$ in two dimensions by using the solution to part (a) 
+$$\epsilon = \frac{\hbar^2}{2m}\left(\frac{2\pi N}{L^2}\right)^2$$
+Now if we solve for $N$ in terms of $\epsilon$
+\begin{align*}
+\epsilon &= \frac{\hbar^2}{2m}\left(\sqrt{\frac{2\pi N}{L^2}}\right)^2\\
+&\Downarrow\\
+ \frac{2\pi N}{L^2} &= \frac{2m\epsilon}{\hbar^2}\\
+N &=\frac{L^2}{2\pi}\frac{2m\epsilon}{\hbar}\\
+\end{align*}
+So we see that the change in $N$ with respect to $\epsilon$ is 
+$$\frac{dN}{d\epsilon} = \frac{mL^2}{\pi\hbar}$$
+So the number of electrons is constant with respect to the energy.
+
+\end{enumerate}
+
+\end{document}
+

@@ -1,0 +1,242 @@
+\documentclass[11pt]{article}
+
+\usepackage{latexsym}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{enumerate}
+\usepackage{amsmath}
+\usepackage{cancel}
+\numberwithin{equation}{section}
+
+\setlength{\evensidemargin}{.25in}
+\setlength{\oddsidemargin}{-.25in}
+\setlength{\topmargin}{-.75in}
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{9.5in}
+\newcommand{\due}{Fevruary 17th, 2011}
+\newcommand{\HWnum}{5}
+\input{/home/joey/Documents/Class/Define.tex}
+
+\begin{document}
+\input{../title.tex}
+
+\section{Problem \#1}
+\begin{enumerate}[(a)]
+\item
+Given the scattering amplitude $F$ for a linear crystal where the identical point scattering centers are at every lattice point located by $\vec{\rho_m} = m\vec{a}$ where $m$ is an integer as
+$$F = \sum_{m=0}^{M-1}e^{-im(\vec{a}\cdot\vec{\Delta k})}$$
+Note that if we sum over $m$ using the fact that
+$$\sum_{m=0}^{M-1}x^m = \frac{1-x^m}{1-x}$$
+we can say that
+$$F = \frac{1-e^{-iM(\vec{a}\cdot\vec{\Delta k})}}{1-e^{-i(\vec{a}\cdot\vec{\Delta k})}}$$
+Now we assume that the scattered intensity is proportional to $|F|^2$ where we calculate the magnitude of $F$ by taking the product of $F$ with it's complex conjugate $F^*$, so we calculate
+\begin{align*}
+|F|^2 = F^*F &=\frac{1-e^{iM(\vec{a}\cdot\vec{\Delta k})}}{1-e^{i(\vec{a}\cdot\vec{\Delta k})}} \frac{1-e^{-iM(\vec{a}\cdot\vec{\Delta k})}}{1-e^{-i(\vec{a}\cdot\vec{\Delta k})}}\\
+&=\frac{1-e^{iM(\vec{a}\cdot\vec{\Delta k})}-e^{-iM(\vec{a}\cdot\vec{\Delta k})} + \cancelto{1}{e^{-iM(\vec{a}\cdot\vec{\Delta k})}e^{iM(\vec{a}\cdot\vec{\Delta k})}}}{1-e^{i(\vec{a}\cdot\vec{\Delta k})}-e^{-i(\vec{a}\cdot\vec{\Delta k})} + \cancelto{1}{e^{-i(\vec{a}\cdot\vec{\Delta k})}e^{i(\vec{a}\cdot\vec{\Delta k})}}}\\
+&=\frac{2-\left(e^{iM(\vec{a}\cdot\vec{\Delta k})}+e^{-iM(\vec{a}\cdot\vec{\Delta k})}\right) }{2-\left(e^{i(\vec{a}\cdot\vec{\Delta k})}+e^{-i(\vec{a}\cdot\vec{\Delta k})}\right)}\\
+&=\frac{2-2\cos(M(\vec{a}\cdot\vec{\Delta k}))}{2-2\cos(\vec{a}\cdot\vec{\Delta k})}\\
+&=\frac{1-\cos(M(\vec{a}\cdot\vec{\Delta k}))}{1-\cos(\vec{a}\cdot\vec{\Delta k})}
+\end{align*}
+Note that we used the relation 
+$$\cos(x) = \frac{e^{ix}+e^{-ix}}{2}$$
+Now if we use the half angle trigonometric identity 
+$$2\sin^2\left(\frac{1}{2}x\right) = 1-\cos(x)$$
+We can see that
+$$F^*F =\frac{\sin^2\left(\frac{1}{2}M(\vec{a}\cdot\vec{\Delta k})\right)}{\sin^2\left(\frac{1}{2}(\vec{a}\cdot\vec{\Delta k})\right)}$$
+
+\item
+If we change $\vec{\Delta k}$ so that $\vec{a}\cdot\vec{\Delta k} = 2\pi h +\epsilon$ where $\epsilon$ gives the first zero of $\sin\left(\frac{1}{2}M(\vec{a}\cdot\vec{\Delta k})\right)$. Note that when we are at a diffraction maximum the condition $\vec{a}\cdot\vec{\Delta k} = 2\pi h$ is true. We can find the first zero of $\sin\left(\frac{1}{2}M(\vec{a}\cdot\vec{\Delta k})\right)$ by using the identity 
+$$\sin(u+v) = \sin(u)\cos(v) + \cos(u)\sin(v)$$
+So it follows that
+\begin{align*}
+\sin\left(\frac{1}{2}M(\vec{a}\cdot\vec{\Delta k})\right) &= \sin\left(hM\pi + \frac{M\epsilon}{2}\right) \\ 
+&= \cancelto{0}{\sin\left(hM\pi\right)\cos\left(\frac{M\epsilon}{2}\right)} + \cos\left(hM\pi\right)\sin\left(\frac{M\epsilon}{2}\right) \\ 
+&= \cos\left(hM\pi\right)\sin\left(\frac{M\epsilon}{2}\right) \\ 
+\end{align*}
+Note that $h$ and $M$ are integers so $\sin(hM\pi) = 0$ for all $hM$ and the cosine term is given by $\cos(hM\pi) = (-1)^{hM}$, so it is either $1$ or $-1$. The important fact is that the cosine term is never zero. So we can say
+\begin{align*}
+\sin\left(\frac{1}{2}M(\vec{a}\cdot\vec{\Delta k})\right) &= (-1)^{hM}\sin\left(\frac{M\epsilon}{2}\right)
+\end{align*}
+Now we now that if we want to find the zeros of
+$$(-1)^{hM}\sin\left(\frac{M\epsilon}{2}\right) = 0$$
+we note that the sine must be zero. To meet this requirement we say that $\frac{M\epsilon}{2}$ must be $n\pi$ but for the first zero we take $n=1$ so it follows that
+\begin{align*}
+(-1)^{hM}\sin\left(\frac{M\epsilon}{2}\right) &= 0\\
+\sin\left(\frac{M\epsilon}{2}\right) &= 0\\
+&\Downarrow\\
+\frac{M\epsilon}{2} &= \pi\\
+&\Downarrow\\
+\epsilon &= \frac{2\pi}{M} 
+\end{align*}
+\end{enumerate}
+
+\section{Problem \#2}
+\begin{enumerate}[(a)]
+\item
+To calculate the \emph{Structure Factor} for diamond we use the equation
+\begin{equation}
+S_{\vec{G}}(v_1v_2v_3) = \sum_{j}f_je^{-i2\pi(v_1x_j+v_2y_j+v_3z_j)}
+\label{Struct}
+\end{equation}
+Now we know that the primitive basis of the diamond structure is two atoms at the coordinates $000$ and $\frac{1}{4}\frac{1}{4}\frac{1}{4}$. This implies that $x_1=y_1=z_1=0$ and $x_2=y_2=z_2=\frac{1}{4}$. So we can calculate the sum of equation \ref{Struct}. Note that the sum of all $f_j$ is just $f$ so it follows that
+\begin{align*}
+S_{\vec{G}}(v_1v_2v_3) &= \sum_{j}f_je^{-i2\pi(v_1x_j+v_2y_j+v_3z_j)}\\
+&= f\left(e^{-i2\pi(v_1(0)+v_2(0)+v_3(0))} + e^{-i2\pi(v_1\frac{1}{4}+v_2\frac{1}{4}+v_3\frac{1}{4})}\right)\\
+&= f\left(e^{-i2\pi(0)} + e^{-i2\pi\frac{1}{4}(v_1+v_2+v_3)}\right)\\
+&= f\left(1 + e^{-i\frac{1}{2}\pi(v_1+v_2+v_3)}\right)
+\end{align*}
+
+\item
+Note that for a reflection to occur $S$ has to be non-zero. In other words if $S=0$ there is no scattering off the lattice. So we can find the zeros of $S$ by noting we get a zero when 
+$$e^{-i\frac{1}{2}\pi(v_1+v_2+v_3)} = -1$$
+We see that the only time that this is not true is when 
+$$\frac{1}{2}\pi(v_1+v_2+v_3) = 2n\pi$$
+when this condition is true we get
+$$e^{-i\frac{1}{2}\pi(v_1+v_2+v_3)} = 1$$
+So only for $v_1+v_2+v_3 = 4n$ where $n$ is an integer do we get reflection.
+\end{enumerate}
+
+\section{Problem \#3}
+We can calculate the atomic form factor of atomic hydrogen using the equation
+\begin{equation}
+f_G = 4\pi\int drr^2n(r)\frac{\sin(Gr)}{Gr}
+\label{FormFact}
+\end{equation}
+Where we are given the number density of the hydrogen atom in its ground state as
+$$n(r) = \frac{e^{-2r/a_0}}{\pi a_0^3}$$
+So we calculate the integral in equation \ref{FormFact} 
+\begin{align*}
+f_G &= 4\pi\int_{0}^{\infty} drr^2\frac{e^{-2r/a_0}}{\pi a_0^3}\frac{\sin(Gr)}{Gr}\\
+&= \frac{4}{Ga_0^3}\int_{0}^{\infty} re^{-2r/a_0}\sin(Gr)dr\\
+&= \frac{4}{Ga_0^3}\int_{0}^{\infty} re^{-2r/a_0}\left(\frac{e^{iGr}-e^{-iGr}}{2i}\right)dr\\
+&= \frac{2}{Ga_0^3i}\int_{0}^{\infty} re^{-2r/a_0}e^{iGr}-re^{-2r/a_0}e^{-iGr}dr\\
+&= \frac{2}{Ga_0^3i}\int_{0}^{\infty} re^{(iG-2/a_0)r}-re^{-(iG+2/a_0)r}dr
+\end{align*}
+Now to evaluate the first integral we use integration by parts 
+$$\int udv = uv - \int vdu$$
+where
+\begin{align*}
+u = r;\  &dv = e^{(iG-2/a_0)r}dr\\
+du = dr;\  &v = \frac{e^{(iG-2/a_0)r}}{iG-2/a_0} 
+\end{align*}
+So we calculate
+\begin{align*}
+\int_{0}^{\infty} re^{(iG-2/a_0)r}dr &= \cancelto{0}{\left.r\frac{e^{(iG-2/a_0)r}}{G-2/a_0}\right|_{0}^{\infty}} - \int_{0}^{\infty}\frac{e^{(iG-2/a_0)r}}{iG-2/a_0}dr\\
+ &= -\left.\frac{e^{(iG-2/a_0)r}}{(iG-2/a_0)^2}\right|_{0}^{\infty}\\
+ &= -\left(0 - \frac{1}{(iG-2/a_0)^2}\right) = \frac{1}{(iG-2/a_0)^2}
+\end{align*}
+And for the second integral we say 
+\begin{align*}
+u = r;\  &dv = e^{-(iG+2/a_0)r}dr\\
+du = dr;\  &v = -\frac{e^{(iG-2/a_0)r}}{iG+2/a_0} 
+\end{align*}
+So
+\begin{align*}
+\int_{0}^{\infty} re^{-(iG+2/a_0)r}dr &= \cancelto{0}{\left.-r\frac{e^{-(iG+2/a_0)r}}{iG+2/a_0}\right|_{0}^{\infty}} + \int_{0}^{\infty}\frac{e^{-(iG+2/a_0)r}}{iG+2/a_0}dr\\
+ &= -\left.\frac{e^{(iG-2/a_0)r}}{(iG+2/a_0)^2}\right|_{0}^{\infty}\\
+ &= -\left(0 - \frac{1}{(iG+2/a_0)^2}\right) = \frac{1}{(iG+2/a_0)^2}
+\end{align*}
+So now we can find $f_G$
+\begin{align*}
+f_G &= \frac{2}{Ga_0^3i}\int_{0}^{\infty} re^{(iG-2/a_0)r}-re^{-(iG+2/a_0)r}dr\\
+&= \frac{2}{Ga_0^3i}\left(\frac{1}{(iG-2/a_0)^2} - \frac{1}{(iG+2/a_0)^2}\right)\\
+&= \frac{2}{Ga_0^3i}\left(\frac{(iG+2/a_0)^2 - (iG-2/a_0)^2}{(iG-2/a_0)^2(iG+2/a_0)^2}\right)\\
+&= \frac{2}{Ga_0^3i}\left(\frac{(-G^2+4/a_0^2+4iG/a_0) - (-G^2 + 4/a_0^2 - 4iG/a_0)}{\left((iG-2/a_0)(iG+2/a_0)\right)^2}\right)\\
+&= \frac{2}{Ga_0^3i}\left(\frac{8iG/a_0}{\left(-G^2-4/a_0^2\right)^2}\right)\\
+&= \frac{16}{a_0^4}\frac{1}{\left(G^2+4/a_0^2\right)^2}\\
+&= \frac{16}{\left(G^2a_0^2+4\right)^2}
+\end{align*}
+
+\section{Problem \#4}
+\begin{enumerate}[(a)]
+\item
+To find the basis vectors of the unit cell for ABAB graphite we see that two of the basis vectors lie in the plane. See the attached drawing for a picture of the in plane basis vectors $\vec{a_1}$ and $\vec{a_2}$. Note the right triangle the vectors make. The components of these basis vectors come from these right triangles. Note that the angle between the in-plane vectors is $120^{\circ}$. To move between the planes we just move up a distance of $c$ this is our last basis vector. So the basis vectors for ABAB graphite are
+\begin{align*}
+\vec{a_1} &= \frac{a}{2}\hat{y} - \frac{\sqrt{3}a}{2}\hat{x}\\
+\vec{a_2} &= \frac{a}{2}\hat{y} + \frac{\sqrt{3}a}{2}\hat{x}\\
+\vec{a_3} &= c\hat{z}
+\end{align*}
+
+\item
+We can find the reciprocal lattice vectors using the relations
+\begin{align}
+\label{recip1}
+\vec{b_1} &= 2\pi\frac{\vec{a_2}\times\vec{a_3}}{\vec{a_1}\cdot(\vec{a_2}\times\vec{a_3})}\\
+\label{recip2}
+\vec{b_2} &= 2\pi\frac{\vec{a_3}\times\vec{a_1}}{\vec{a_1}\cdot(\vec{a_2}\times\vec{a_3})}\\
+\label{recip3}
+\vec{b_3} &= 2\pi\frac{\vec{a_1}\times\vec{a_2}}{\vec{a_1}\cdot(\vec{a_2}\times\vec{a_3})}
+\end{align}
+So first we calculate the volume of the unit cell by
+\begin{align*}
+\vec{a_1}\cdot(\vec{a_2}\times\vec{a_3}) &= \vec{a}\cdot
+			\det\left(\begin{array}{ccc}
+			\hat{x}			&\hat{y}	&\hat{z}\\
+			\dfrac{\sqrt{3}a}{2}	&\dfrac{a}{2}	&0\\
+			0			&0		&c
+			\end{array}\right)\\
+&= \left(\frac{a}{2}\hat{y} - \frac{\sqrt{3}a}{2}\hat{x}\right)\cdot\left(\frac{ac}{2}\hat{x} - \frac{\sqrt{3}ac}{2}\hat{y}\right)\\
+&= \left(\frac{a}{2}\hat{y} - \frac{\sqrt{3}a}{2}\hat{x}\right)\cdot\left(\frac{ac}{2}\hat{x} - \frac{\sqrt{3}ac}{2}\hat{y}\right)\\
+&= -\frac{\sqrt{3}a^2c}{4} - \frac{\sqrt{3}a^2c}{4}\\
+&= \frac{\sqrt{3}a^2c}{2}
+\end{align*}
+Note that we dropped the negative because we want the positive volume. So to find the basis vectors by equation \ref{recip1} we take the cross product of $\vec{a_2}$ and $\vec{a_3}$. Note we already found this as
+\begin{align*}
+\vec{a_2}\times\vec{a_3} &= \frac{ac}{2}\hat{x} - \frac{\sqrt{3}ac}{2}\hat{y}
+\end{align*}
+So equation \ref{recip1} yields
+\begin{align*}
+\vec{b_1} &= 2\pi\frac{\vec{a_2}\times\vec{a_3}}{\vec{a_1}\cdot(\vec{a_2}\times\vec{a_3})}\\
+&= \frac{4\pi}{\sqrt{3}a^2c}\frac{ac}{2}\hat{x} - \frac{4\pi}{\sqrt{3}a^2c}\frac{\sqrt{3}ac}{2}\hat{y}\\
+&= \frac{2\pi}{\sqrt{3}a}\hat{x} - \frac{2\pi}{a}\hat{y}
+\end{align*}
+Now we calculate
+\begin{align*}
+\vec{a_3}\times\vec{a_1} &= \det\left(\begin{array}{ccc}
+			\hat{x}			&\hat{y}	&\hat{z}\\
+			0			&0		&c\\
+			-\dfrac{\sqrt{3}a}{2}	&\dfrac{a}{2}	&0
+			\end{array}\right)\\
+&= -\frac{ac}{2}\hat{x} +\frac{\sqrt{3}ac}{2}\hat{y}\\
+\end{align*}
+for equation \ref{recip2} which we now can say is
+\begin{align*}
+\vec{b_2} &= 2\pi\frac{\vec{a_3}\times\vec{a_1}}{\vec{a_1}\cdot(\vec{a_2}\times\vec{a_3})}\\
+&= -\frac{4\pi}{\sqrt{3}a^2c}\frac{ac}{2}\hat{x} + \frac{4\pi}{\sqrt{3}a^2c}\frac{\sqrt{3}ac}{2}\hat{y}\\
+&= -\frac{2\pi}{\sqrt{3}a}\hat{x} + \frac{2\pi}{a}\hat{y}
+\end{align*}
+And finally we calculate
+\begin{align*}
+\vec{a_1}\times\vec{a_2} &= \det\left(\begin{array}{ccc}
+			\hat{x}			&\hat{y}	&\hat{z}\\
+			-\dfrac{\sqrt{3}a}{2}	&\dfrac{a}{2}	&0\\
+			\dfrac{\sqrt{3}a}{2}	&\dfrac{a}{2}	&0
+			\end{array}\right)\\
+&= \left(-\frac{\sqrt{3}a^2}{4}-\frac{\sqrt{3}a^2}{4}\right)\hat{z}\\
+&= -\frac{\sqrt{3}a^2}{2}\hat{z}
+\end{align*}
+So equation \ref{recip3} gives us
+\begin{align*}
+\vec{b_3} &= 2\pi\frac{\vec{a_1}\times\vec{a_2}}{\vec{a_1}\cdot(\vec{a_2}\times\vec{a_3})}\\
+&= -\frac{4\pi}{\sqrt{3}a^2c}\frac{\sqrt{3}a^2}{2}\hat{z}\\
+&= -\frac{2\pi}{c}\hat{z}
+\end{align*}
+So we can say that the basis vectors for the reciprocal lattice are
+\begin{align*}
+\vec{b_1} &= \frac{2\pi}{\sqrt{3}a}\hat{x} - \frac{2\pi}{a}\hat{y}\\
+\vec{b_2} &= -\frac{2\pi}{\sqrt{3}a}\hat{x} + \frac{2\pi}{a}\hat{y}\\
+\vec{b_3} &= -\frac{2\pi}{c}\hat{z}
+\end{align*}
+
+\item
+We know that the structure factor is given by equation \ref{Struct} or
+$$ S_{\vec{G}}(v_1v_2v_3) = \sum_{j}f_je^{-i2\pi(v_1x_j+v_2y_j+v_3z_j)}$$
+For a $HKL$ index we know that these values correspond to the number of translations with the reciprocal basis vectors. We know that these integers are in equation \ref{Struct} as $v_1$, $v_2$, and $v_3$. So the structure factor for $HKL$ graphite is given by
+$$ S_{\vec{G}}(v_1v_2v_3) = \sum_{j}f_je^{-i2\pi(Hx_j+Ky_j+Lz_j)}$$
+
+\item
+$$ S_{\vec{G}}(v_1v_2v_3) = \sum_{j}f_je^{-i2\pi(Hx_j+Ky_j+10Lz_j)}$$
+\end{enumerate}
+
+\end{document}
+

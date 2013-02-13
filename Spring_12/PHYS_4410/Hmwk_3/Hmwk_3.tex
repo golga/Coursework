@@ -1,0 +1,273 @@
+\documentclass[11pt]{article}
+
+\usepackage{latexsym}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{enumerate}
+\usepackage{amsmath}
+\usepackage{cancel}
+\numberwithin{equation}{section}
+
+\setlength{\evensidemargin}{.25in}
+\setlength{\oddsidemargin}{-.25in}
+\setlength{\topmargin}{-.75in}
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{9.5in}
+\newcommand{\due}{February 16th, 2012}
+\newcommand{\HWnum}{3}
+\input{/home/joey/Documents/Class/Define.tex}
+
+\begin{document}
+\input{../title.tex}
+
+\section{Problem \#1}
+\begin{enumerate}[(a)]
+\item
+For a delta function bump in the center of an infinite square we can use \emph{Non-degenerate perturbation theory} where the perturbation on the infinite square well is 
+$$H^1 = \alpha\delta(x-a/2)$$
+we can find the first order correction to the energy by using the equation
+\begin{equation}
+E_n^1 = \bra{n_0}H^1\ket{n_0}
+\label{FirstOrderE}
+\end{equation}
+Where $\ket{n_0}$ represents the eigenfunctions of the infinite square well. In coordinate representation we have
+$$\ket{n_0} = \sqrt{\frac{2}{a}}\sin\left(\frac{n\pi}{a}x\right)$$
+note that $\ket{n_0}$ is purely real in this case this implies that $\bra{n_0}=\ket{n_0}$. So by equation \ref{FirstOrderE} we can find the first order correction to the energy
+\begin{align*}
+E_n^1 &= \bra{n_0}H^1\ket{n_0}\\
+&=\frac{2}{a}\int_{-\infty}^{\infty}\sin^2\left(\frac{n\pi}{a}x\right)\alpha\delta(x-a/2)dx\\
+&=\frac{2\alpha}{a}\sin^2\left(\frac{n\pi}{a}\frac{a}{2}\right)\\
+&=\frac{2\alpha}{a}\sin^2\left(\frac{n\pi}{2}\right)
+\end{align*}
+Note that for $n$ even we get the sin of an integer multiple of pi which is zero. This implies for even modes there is no correction to the energy. This makes sense as we expect the wave function to go to zero when there is an infinite potential which is the case of the delta function. So for even $n$ we already have a wave function that satisfies this constraint therefore there is no correction to the energy.
+
+\item
+We can find the first three nonzero terms of the expansion of $\ket{\psi_1^{(1)}}$ using the equation 
+\begin{equation}
+\psi_n^1 = \sum_{m\ne n}\frac{\bra{m_0}H_1\ket{n_0}}{E_n^0-E_m^0}\ket{m_0}
+\label{FirstOrderPsi}
+\end{equation}
+So for $\ket{\psi^{(1)}_1}$ we see that $n=1$ so the first three nonzero terms of the correction are $m = 3,5,7$ note that the even terms will contribute no corrections as we stated in part (a). This implies that we can find 
+\begin{align*}
+\frac{\bra{3_0}H_1\ket{1_0}}{E_1^0-E_3^0} &= \frac{2ma^2}{\hbar^2\pi^2}\frac{\bra{3_0}H_1\ket{1_0}}{1^2-3^2}\\
+&= -\frac{ma^2}{4\hbar^2\pi^2}\bra{3_0}H_1\ket{1_0}\\
+&= -\frac{ma^2}{4\hbar^2\pi^2}\frac{2}{a}\int_{-\infty}^{\infty}\sin\left(\frac{3\pi}{a}x\right)\alpha\delta(x-a/2)\sin\left(\frac{\pi}{a}x\right)dx\\
+&= -\frac{ma\alpha}{2\hbar^2\pi^2}\sin\left(\frac{3\pi}{a}\frac{a}{2}\right)\sin\left(\frac{\pi}{a}\frac{a}{2}\right)\\
+&= -\frac{ma\alpha}{2\hbar^2\pi^2}(-1)(1)\\
+&= \frac{ma\alpha}{2\hbar^2\pi^2}
+\end{align*}
+Now similarly we see for $m=5$ we get
+\begin{align*}
+\frac{\bra{5_0}H_1\ket{1_0}}{E_1^0-E_5^0} &= \frac{4ma\alpha}{\hbar^2\pi^2(1^2-5^2)}\cancelto{1}{\sin\left(\frac{5\pi}{2}\right)\sin\left(\frac{\pi}{2}\right)}\\
+&= -\frac{ma\alpha}{6\hbar^2\pi^2}
+\end{align*}
+And for $m=7$ we find
+\begin{align*}
+\frac{\bra{7_0}H_1\ket{1_0}}{E_1^0-E_7^0} &= \frac{4ma\alpha}{\hbar^2\pi^2(1^2-7^2)}\sin\left(\frac{7\pi}{2}\right)\cancelto{1}{\sin\left(\frac{\pi}{2}\right)}\\
+&= -\frac{ma\alpha}{12\hbar^2\pi^2}\cancelto{-1}{\sin\left(\frac{7\pi}{2}\right)}\\
+&= \frac{ma\alpha}{12\hbar^2\pi^2}
+\end{align*}
+So we can write the first three nonzero terms of $\ket{\psi_1^{(1)}}$ as
+$$\ket{\psi_1^{(1)}} =  \frac{ma\alpha}{2\hbar^2\pi^2}\ket{3_0} -\frac{ma\alpha}{6\hbar^2\pi^2}\ket{5_0} + \frac{ma\alpha}{12\hbar^2\pi^2}\ket{7_0}$$
+\end{enumerate}
+
+\section{Problem \#2}
+\begin{enumerate}[(a)]
+\item
+For a simple harmonic oscillator with a potential $V = \frac{1}{2}kx^2$ we have the energy spectrum $E_n = (n+1/2)\hbar\omega$ where
+$$\omega = \sqrt{\frac{k}{m}}$$
+now if the spring constant $k$ increases slightly by $k\rightarrow(1+\epsilon)k$. Assuming that $\epsilon$ is a constant we can trivially replace the $k$ in the spectrum with the new $k$ to find the spectrum of this new potential. So we have
+$$E_n = \left(n+\frac{1}{2}\right)\hbar\sqrt{\frac{(1+\epsilon)k}{m}}$$
+Now we can expand the energy in a power series of $\epsilon$ to find that
+$$E_n = (n+1/2)\hbar\sqrt{\frac{k}{m}}\left(1+\frac{1}{2}\epsilon-\frac{1}{4}\epsilon^2 + \scrO(\epsilon^3)\right)$$
+Note that we took the constants out and expanded $\sqrt{1+\epsilon}$ centered around $\epsilon=0$.
+
+\item
+Since we know that solution to part (a) is the exact solution to the spectrum we can test perturbation theory by treating the new spring constant as a perturbation so that
+$$H^1 = \frac{1}{2}k\epsilon x^2$$
+We can find the first order correction to the energy using equation \ref{FirstOrderE} but first we can convert to \emph{2nd quantized notation} to simplify the problem. Note that
+\begin{align*}
+\hat{a}\ket{n_0} &= \sqrt{n}\ket{n_0-1}\\
+\hat{a}^{\dagger}\ket{n_0} &= \sqrt{n+1}\ket{n_0+1}
+\end{align*}
+Note that we can represent the coordinate operator $\hat{x}$ as 
+$$\hat{x} = \frac{x_0}{\sqrt{2}}(\hat{a}+\hat{a}^{\dagger})$$
+where we define
+$$x_0\equiv\sqrt{\frac{\hbar}{m\omega}}$$
+now we can use equation \ref{FirstOrderE} to find
+\begin{align*}
+E_n^1 &= \bra{n_0}H^1\ket{n_0}\\
+&= \bra{n_0}\frac{1}{2}k\epsilon\left(\frac{x_0}{\sqrt{2}}(\hat{a}+\hat{a}^{\dagger})\right)^2\ket{n_0}\\
+&= \frac{1}{2}k\epsilon\frac{x_0^2}{2}\bra{n_0}\left(\hat{a}+\hat{a}^{\dagger}\right)^2\ket{n_0}\\
+&= \frac{1}{2}k\epsilon\frac{x_0^2}{2}\bra{n_0}\left((\hat{a})^2+(\hat{a}^{\dagger})^2+\hat{a}\hat{a}^{\dagger} + \hat{a}^{\dagger}\hat{a}\right)\ket{n_0}
+\end{align*}
+We note that 
+$$\hat{a}^{\dagger}\hat{a}\ket{n_0} = n\ket{n_0}$$
+and by the commutation relation $[\hat{a},\hat{a}^{\dagger}] = 1$ we can say that
+$$\hat{a}\hat{a}^{\dagger} = \hat{a}^{\dagger}\hat{a} + 1$$ 
+So we can see that the $(\hat{a})^2$ and the $(\hat{a}^{\dagger})^2$ terms will move the state $\ket{n_0}$ down to $\ket{n_0-2}$ and up to $\ket{n_0+2}$ respectively this implies when we take the inner product with $\bra{n_0}$ these terms will drop out so we can neglect those terms to find
+\begin{align*}
+E_n^1 &= \frac{1}{2}k\epsilon\frac{x_0^2}{2}\bra{n_0}\left(\hat{a}^{\dagger}\hat{a} + 1 + \hat{a}^{\dagger}\hat{a}\right)\ket{n_0}\\
+&= \frac{1}{2}k\epsilon\frac{x_0^2}{2}\bra{n_0}\left(2\hat{a}^{\dagger}\hat{a} + 1\right)\ket{n_0}\\
+&= \frac{1}{2}k\epsilon\frac{x_0^2}{2}\left(2n + 1\right)\bra{n_0}\ket{n_0}\\
+&= \frac{1}{2}k\epsilon\frac{\hbar}{2m\omega}\left(2n + 1\right)\\
+&= \frac{1}{2}k\epsilon\frac{\hbar}{m}\sqrt{\frac{m}{k}}\left(n + 1/2\right)\\
+&= \left(n + 1/2\right)\hbar\sqrt{\frac{k}{m}}\frac{1}{2}\epsilon
+\end{align*}
+Note that this is exactly the first order term in the expansion on $\epsilon$ we found in part (a).
+\end{enumerate}
+
+\section{Problem \#3}
+\begin{enumerate}[(a)]
+\item
+For an anharmonic oscillator with a quartic perturbation $H^1 = \lambda x^4$ we can find the first order correction to the energy by equation \ref{FirstOrderE} using second quantized notation we can say that
+\begin{align*}
+E_n^1 &= \bra{n_0}H^1\ket{n_0}\\
+&= \bra{n_0}\lambda x^4\ket{n_0}\\
+&= \bra{n_0}\lambda\left(\frac{x_0}{\sqrt{2}}(\hat{a}+\hat{a}^{\dagger})\right)^4\ket{n_0}\\
+&= \frac{\lambda x_0^4}{4}\bra{n_0}\left(\hat{a}+\hat{a}^{\dagger}\right)^4\ket{n_0}
+\end{align*}
+Now rather than expanding the $\hat{a}$ and $\hat{a}^{\dagger}$s to the fourth power we note that for the inner product to be nonzero we need the same number of $\hat{a}$ as there are $\hat{a}^{\dagger}$, and if there is an unequal number the innerproduct with $\bra{n_0}$ will be zero. Therefore all the contributing operators of the expansion are
+$$\left(\hat{a}+\hat{a}^{\dagger}\right)^4 \rightarrow \hat{a}\hat{a}\hat{a}^{\dagger}\hat{a}^{\dagger} + \hat{a}^{\dagger}\hat{a}^{\dagger}\hat{a}\hat{a} + \hat{a}\hat{a}^{\dagger}\hat{a}\hat{a}^{\dagger} + \hat{a}\hat{a}^{\dagger}\hat{a}^{\dagger}\hat{a} + \hat{a}^{\dagger}\hat{a}\hat{a}\hat{a}^{\dagger} + \hat{a}^{\dagger}\hat{a}\hat{a}^{\dagger}\hat{a}$$
+Now plugging this back in and using the relations from part (b) of problem 2 we see that
+\begin{align*}
+E_n^1 &= \frac{\lambda x_0^4}{4}\bra{n_0}\left(\hat{a}\hat{a}\hat{a}^{\dagger}\hat{a}^{\dagger} + \hat{a}^{\dagger}\hat{a}^{\dagger}\hat{a}\hat{a} + \hat{a}\hat{a}^{\dagger}\hat{a}\hat{a}^{\dagger} + \hat{a}\hat{a}^{\dagger}\hat{a}^{\dagger}\hat{a} + \hat{a}^{\dagger}\hat{a}\hat{a}\hat{a}^{\dagger} + \hat{a}^{\dagger}\hat{a}\hat{a}^{\dagger}\hat{a}\right)\ket{n_0}\\
+&= \frac{\lambda x_0^4}{4}\bra{n_0}\left((n+2)(n+1)+n(n-1)+(n+1)(n+1)+(n+1)n+n(n+1)+n^2\right)\ket{n_0}\\
+&= \frac{\lambda x_0^4}{4}\bra{n_0}\left(n^2+3n+2+n^2-n+n^2+2n+1+n^2+n+n^2+n+n^2\right)\ket{n_0}\\
+&= \frac{\lambda x_0^4}{4}\left(6n^2+6n+3\right)\bra{n_0}\ket{n_0}\\
+&= \frac{3\hbar^2\lambda}{4m^2\omega^2}\left(1+2n+2n^2\right)
+\end{align*}
+So the energy corrected to first order is
+$$E_n = \hbar\omega(n+1/2) + \frac{3\hbar^2\lambda}{4m^2\omega^2}\left(1+2n+2n^2\right)$$
+
+\item
+Note that if $n$ is large then the $n^2$ term dominates the expression for $E_n$ therefore the expansion breaks down in this realm. This is due to the fact that at high energy (or high $n$) the quartic term dominates the quadratic potential. This implies that the assumption the perturbation is small in no longer true.
+\end{enumerate}
+
+\section{Problem \#4}
+\begin{enumerate}[(a)]
+\item
+Now for an anharmonic oscillator with a odd perturbation 
+$$H^1 = \lambda x^3$$
+we see that in second quantized notation $H^1$ becomes
+$$H^1 = \frac{\lambda x_0^3}{2^{3/2}}\left(\hat{a}+\hat{a}^{\dagger}\right)^3$$
+Note that we can expand
+\begin{align*}
+\left(\hat{a}+\hat{a}^{\dagger}\right)^3 &= \left(\hat{a}+\hat{a}^{\dagger}\right)\left((\hat{a})^2+(\hat{a}^{\dagger})^2 + \hat{a}^{\dagger}\hat{a} + \hat{a}\hat{a}^{\dagger}\right) \\
+&= (\hat{a})^3+(\hat{a}^{\dagger})^3  + \hat{a}\hat{a}^{\dagger}\hat{a}^{\dagger}  + \hat{a}\hat{a}\hat{a}^{\dagger}  + \hat{a}\hat{a}^{\dagger}\hat{a} + \hat{a}^{\dagger}\hat{a}\hat{a} + \hat{a}^{\dagger}\hat{a}\hat{a}^{\dagger} + \hat{a}^{\dagger}\hat{a}^{\dagger}\hat{a}
+\end{align*}
+Note that no term in $(\hat{a}+\hat{a}^{\dagger})^3$ has the same number of $\hat{a}$ and $\hat{a}^{\dagger}$ this implies that equation \ref{FirstOrderE} is zero for all $n$. So to get an approximation of the energy we must go to second order in $H^1$ this implies that we use
+\begin{equation}
+E_n^2 = \sum_{m\ne n} \frac{\left|\bra{n_0}H^1\ket{m_0}\right|^2}{E_n^0-E_m^0}
+\label{2ndOrderE}
+\end{equation}
+Before calculating $E_n^2$ first lets act $H^1$ on $\ket{m_0}$
+\begin{align*}
+H^1\ket{m_0} &= \frac{\lambda x_0^3}{2^{3/2}}\left(\hat{a}+\hat{a}^{\dagger}\right)^3\ket{m_0}\\
+&= \frac{\lambda x_0^3}{2^{3/2}}\left((\hat{a})^3+(\hat{a}^{\dagger})^3  + \hat{a}\hat{a}^{\dagger}\hat{a}^{\dagger}  + \hat{a}\hat{a}\hat{a}^{\dagger}  + \hat{a}\hat{a}^{\dagger}\hat{a} + \hat{a}^{\dagger}\hat{a}\hat{a} + \hat{a}^{\dagger}\hat{a}\hat{a}^{\dagger} + \hat{a}^{\dagger}\hat{a}^{\dagger}\hat{a}\right)\ket{m_0}\\
+&= \frac{\lambda x_0^3}{2^{3/2}}\scriptstyle{\left((\hat{a})^3\ket{m_0} +(\hat{a}^{\dagger})^3\ket{m_0}  + \hat{a}\hat{a}^{\dagger}\hat{a}^{\dagger}\ket{m_0}  + \hat{a}\hat{a}\hat{a}^{\dagger}\ket{m_0}  + \hat{a}\hat{a}^{\dagger}\hat{a}\ket{m_0} + \hat{a}^{\dagger}\hat{a}\hat{a}\ket{m_0} + \hat{a}^{\dagger}\hat{a}\hat{a}^{\dagger}\ket{m_0} + \hat{a}^{\dagger}\hat{a}^{\dagger}\hat{a}\ket{m_0}\right)}\\
+&= \frac{\lambda x_0^3}{2^{3/2}}\scriptstyle{\left(\sqrt{(m_0-2)(m_0-1)(m_0)}\ket{m_0-3} + \sqrt{(m_0+3)(m_0+2)(m+0+1)}\ket{m_0+3}  + (m_0+2)\sqrt{m_0+1}\ket{m_0+1}\right.} \\
+&\ \ \ \ \ \ \ \ \ \ \ \ \ \scriptstyle{\left. + (m_0+1)\sqrt{m_0}\ket{m_0-1}  + m_0^{3/2}\ket{m_0-1} + (m_0-1)\sqrt{m_0}\ket{m_0-1} + (m_0+1)^{3/2}\ket{m_0+1} +m\sqrt{m+1}\ket{m_0+1}\right)}\\
+&= \frac{\lambda x_0^3}{2^{3/2}}\scriptstyle{\left(\sqrt{(m_0-2)(m_0-1)(m_0)}\ket{m_0-3} + \sqrt{(m_0+3)(m_0+2)(m+0+1)}\ket{m_0+3} \right.} \\
+&\ \ \ \ \ \ \ \ \ \ \ \ \ \scriptstyle{\left. + \left((m_0+1)\sqrt{m_0} + m_0^{3/2} + (m_0-1)\sqrt{m_0}\right)\ket{m_0-1}+ \left((m_0+2)\sqrt{m_0+1} + (m_0+1)^{3/2} +m_0\sqrt{m_0+1}\right)\ket{m_0+1}\right)}
+\end{align*}
+Now we can bring the inner product through to get
+\begin{align*}
+\bra{n_0}H^1\ket{m_0} &=  \frac{\lambda x_0^3}{2^{3/2}}\scriptstyle{\left(\sqrt{(m_0-2)(m_0-1)(m_0)}\norm{n_0}{m_0-3} + \sqrt{(m_0+3)(m_0+2)(m_0+1)}\norm{n_0}{m_0+3} \right.} \\
+&\ \ \ \ \ \ \ \ \ \ \ \ \ \scriptstyle{\left. + \left((m_0+1)\sqrt{m_0} + m_0^{3/2} + (m_0-1)\sqrt{m_0}\right)\norm{n_0}{m_0-1}+ \left((m_0+2)\sqrt{m_0+1} + (m_0+1)^{3/2} +m\sqrt{m+1}\right)\norm{n_0}{m_0+1}\right)}
+\end{align*}
+Note that each of the inner products forms a \emph{Kronecker Delta} due to the fact that $m_0$ constitutes an orthonormal basis. So we see that the sum in equation \ref{2ndOrderE} picks out specific $n_0$ and for all else the value is zero. So we see that for $m=n+3$ equation \ref{2ndOrderE} gives
+\begin{align*}
+\frac{1}{\hbar\omega}\frac{\left|\bra{n_0+3}H^1\ket{m_0}\right|^2}{n_0 - (n_0+3)} &= -\frac{\lambda^2 x_0^6}{24\hbar\omega}\left|\sqrt{(n+3-2)(n+3-1)(n+3)}\right|^2\\
+&= -\frac{\lambda^2 x_0^6}{24\hbar\omega}(n+1)(n+2)(n+3)
+\end{align*}
+Now for $m=n-3$ we have
+\begin{align*}
+\frac{1}{\hbar\omega}\frac{\left|\bra{n_0-3}H^1\ket{m_0}\right|^2}{n_0 - (n_0-3)} &= \frac{\lambda^2 x_0^6}{24\hbar\omega}\left|\sqrt{(n-3+3)(n-3+2)(n-3+1)}\right|^2\\
+&= \frac{\lambda^2 x_0^6}{24\hbar\omega}(n)(n-1)(n-2)
+\end{align*}
+and for $m = n+1$ we find
+\begin{align*}
+\frac{1}{\hbar\omega}\frac{\left|\bra{n_0+1}H^1\ket{m_0}\right|^2}{n_0 - (n_0+1)} &= -\frac{\lambda^2 x_0^6}{8\hbar\omega}\left|(n+1+1)\sqrt{n+1} + (n+1)^{3/2} + (n+1-1)\sqrt{n+1}\right|^2\\
+&= -\frac{\lambda^2 x_0^6}{8\hbar\omega}\left|(n+2)\sqrt{n+1} + (n+1)^{3/2} + (n)\sqrt{n+1}\right|^2\\
+&= -\frac{\lambda^2 x_0^6}{8\hbar\omega}\left|n\sqrt{n+1} + 2\sqrt{n+1} + (n+1)^{3/2} + (n)\sqrt{n+1}\right|^2\\
+&= -\frac{\lambda^2 x_0^6}{8\hbar\omega}\left|2(n\sqrt{n+1} + \sqrt{n+1}) + (n+1)^{3/2}\right|^2\\
+&= -\frac{\lambda^2 x_0^6}{8\hbar\omega}\left|2\sqrt{n+1}(n+1) + (n+1)^{3/2}\right|^2\\
+&= -\frac{9\lambda^2 x_0^6}{8\hbar\omega}(n+1)^{3}
+\end{align*}
+and finally for $m=n-1$ we have
+\begin{align*}
+\frac{1}{\hbar\omega}\frac{\left|\bra{n_0-1}H^1\ket{m_0}\right|^2}{n_0 - (n_0-1)} &= \frac{\lambda^2 x_0^6}{8\hbar\omega}\left|\left((n-1+2)\sqrt{n-1+1} + (n-1+1)^{3/2} +(n-1)\sqrt{n-1+1}\right)\right|^2\\
+&= \frac{\lambda^2 x_0^6}{8\hbar\omega}\left|\left((n+1)\sqrt{n} + (n)^{3/2} +(n-1)\sqrt{n}\right)\right|^2\\
+&= \frac{9\lambda^2 x_0^6}{8\hbar\omega}n^{3}
+\end{align*}
+So the second order correction of the energy $E_n$ is
+$$E_n^2 = \frac{\lambda^2 x_0^6}{8\hbar\omega}\left(-\frac{1}{3}(n+1)(n+2)(n+3) + \frac{1}{3}(n)(n-1)(n-2) + 9n^{3} - 9(n+1)^{3}\right)$$
+
+\item
+Now we can find the first order correction to the wave function $\ket{n_1}$ by equation \ref{FirstOrderPsi} note that we already did all the hard calculations (namely finding $\bra{n_0}H_1\ket{n_0}$) in part (a) so we can quickly copy down for $m=n+3$
+\begin{align*}
+\frac{\lambda x_0^3}{2^{3/2}\hbar\omega}\frac{\bra{n_0+3}H^1\ket{m_0}}{n_0 - (n_0+3)} &= -\frac{\lambda x_0^3}{3(2^{3/2})\hbar\omega}\sqrt{(n+1)(n+2)(n+3)}
+\end{align*}
+for $m=n-3$ 
+\begin{align*}
+\frac{\lambda x_0^3}{2^{3/2}\hbar\omega}\frac{\bra{n_0-3}H^1\ket{m_0}}{n_0 - (n_0-3)} &= \frac{\lambda x_0^3}{3(2^{3/2})\hbar\omega}\sqrt{(n)(n-1)(n-2)}
+\end{align*}
+for $m=n-1$ 
+\begin{align*}
+\frac{\lambda x_0^3}{2^{3/2}\hbar\omega}\frac{\bra{n_0-1}H^1\ket{m_0}}{n_0 - (n_0-1)} &= \frac{\lambda x_0^3}{2^{3/2}\hbar\omega}\left((n-1)\sqrt{n} + (n)^{3/2} +(n-1)\sqrt{n}\right)\\
+&= \frac{3\lambda x_0^3}{2^{3/2}\hbar\omega}n^{3/2}
+\end{align*}
+for $m = n+1$
+\begin{align*}
+\frac{\lambda x_0^3}{2^{3/2}\hbar\omega}\frac{\bra{n_0+1}H^1\ket{m_0}}{n_0 - (n_0+1)} &= -\frac{\lambda x_0^3}{2^{3/2}\hbar\omega}\left((n+2)\sqrt{n+1} + (n+1)^{3/2} + (n)\sqrt{n+1}\right)\\
+&= -\frac{3\lambda x_0^3}{2^{3/2}\hbar\omega}(n+1)^{3/2}
+\end{align*}
+So the first order correction to the wave function is 
+$$\ket{n_1} = \frac{\lambda x_0^3}{(2^{3/2})\hbar\omega}\scriptstyle{\left(-\frac{1}{3}\sqrt{(n+1)(n+2)(n+3)}\ket{n_0+3} + \frac{1}{3}\sqrt{(n)(n-1)(n-2)}\ket{n_0-3} + 3n^{3/2}\ket{n_0-1} -3(n+1)^{3/2}\ket{n_0+1}\right)}$$
+\end{enumerate}
+
+\section{Problem \#5}
+\begin{enumerate}[(a)]
+\item
+For a spin $1/2$ particle with a \emph{gyromagnetic ratio} of $\gamma$ we know that it has a magnetic dipole moment of 
+$$\boldsymbol{\mu} = \gamma\boldsymbol{S}$$
+with the magnetic field 
+$$\boldsymbol{B} = B_{\perp}\hat{r}_{\perp} + B_0\hat{z}$$
+where $\hat{r}_{\perp}$ just represents the magnetic field perpendicular to the $\hat{z}$ direction. So we can pick $\hat{r}_{\perp}$ such that the whole B-field lies along the $\hat{z}$ direction. This implies that
+$$\boldsymbol{B} = \sqrt{B_{\perp}^2+B_0^2}\hat{z}$$
+So we can find the Hamiltonian by
+$$H = -\boldsymbol{\mu}\cdot\boldsymbol{B}$$
+Note if we diagonalize the matrix that represents $H$ we have found the eigenstates with their eigenvalues. This is why it is so convenient to pick $\boldsymbol{B}$ along $\hat{z}$ as we already have a diagonalized matrix
+\begin{align*}
+H &= -\boldsymbol{\mu}\cdot\boldsymbol{B}\\
+&= -\gamma\sqrt{B_{\perp}^2+B_0^2}\boldsymbol{S}_z\\
+&= -\gamma \frac{\hbar\sqrt{B_{\perp}^2+B_0^2}}{2}\left(\begin{array}{cc}
+                    1 &0\\
+                    0 &-1\end{array}\right) 
+\end{align*}
+So we see that we have that our spectrum for the state $\chi_{\pm}$ is given by
+$$E_{\pm} = \mp\gamma \frac{\hbar\sqrt{B_{\perp}^2+B_0^2}}{2}$$
+But now if we want to the spinor eigenstates along the original $\hat{z}$ we must rotate our spinors back so the $B_0$ points along $\hat{z}$. So we pick the normalization constant such that
+$$\chi(t) = \left(\begin{array}{c}
+                   \cos(\alpha/2)e^{i\gamma\sqrt{B_{\perp}^2+B_0^2}t/2}\\
+                   \sin(\alpha/2)e^{-i\gamma\sqrt{B_{\perp}^2+B_0^2}t/2}
+                   \end{array}\right)$$
+Where $\alpha$ is the angle we rotated to align the whole B-field with the spinor. This is given by $\alpha=\arctan(B_{\perp}/B_0)$
+
+\item
+We can treat this problem with perturbation theory by taking the Hamiltonian as 
+$$H = -\gamma B_0\boldsymbol{S}_z-\gamma B_{\perp}\boldsymbol{S}_x$$
+we can treat $-\gamma B_{\perp}\boldsymbol{S}_x$ as a perturbation. So we know that for $H_0 = -\gamma B_0\boldsymbol{S}_z$ we have the eigenfunctions
+\item
+\end{enumerate}
+
+\section{Problem \#6}
+\begin{enumerate}[(a)]
+\item
+\item
+\item
+\end{enumerate}
+
+\end{document}
+

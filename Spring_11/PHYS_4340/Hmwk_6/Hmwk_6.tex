@@ -1,0 +1,201 @@
+\documentclass[11pt]{article}
+
+\usepackage{latexsym}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{enumerate}
+\usepackage{amsmath}
+\usepackage{cancel}
+\numberwithin{equation}{section}
+
+\setlength{\evensidemargin}{.25in}
+\setlength{\oddsidemargin}{-.25in}
+\setlength{\topmargin}{-.75in}
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{9.5in}
+\newcommand{\due}{February 24th, 2011}
+\newcommand{\HWnum}{6}
+\input{/home/joey/Documents/Class/Define.tex}
+
+\begin{document}
+\input{../title.tex}
+
+\section{Problem \#1}
+To find the peak positions in the powder diffraction pattern we use the Bragg condition of scattering $\vec{k}-\vec{k'} = \vec{G}$. This implies the fact that 
+$$2|\vec{k}|\sin(\theta) = |\vec{G}|$$
+so if we solve for $\theta$ we get that 
+\begin{equation}
+\theta = \arcsin\left(\frac{|\vec{G}|\lambda}{4\pi}\right)
+\label{thetaeq}
+\end{equation}
+note that we used the fact that $k = 2\pi/\lambda$ since we were given that $\lambda = 1.7\unit{\AA}$. Now we know that the Bragg condition holds for magnitudes of $\vec{G}$ for differing values of $hkl$ where
+$$\vec{G} = h\vec{b_1} + k\vec{b_2} + l\vec{b_3}$$
+Note that the basis vectors are given in as
+\begin{align*}
+\vec{b_1} &= \frac{2\pi}{3a}\left(\sqrt{3}\hat{x}+\hat{y}\right)\\
+\vec{b_2} &= \frac{4\pi}{3a}\hat{y}\\
+\vec{b_3} &= -\frac{\pi}{c}\hat{z}
+\end{align*}
+Where $a = 1.42\unit{\AA}$ and $c = 3.35\unit{\AA}$. So we can find the magnitude of $\vec{G}$ for any $hkl$ by
+\begin{align*}
+|\vec{G}| &= \sqrt{(h\vec{b_1})^2 + (k\vec{b_2})^2 + (l\vec{b_3})^2}\\
+&= \sqrt{\left(\frac{2\pi}{3a}\right)^2(3+1)h^2 + \left(\frac{4\pi}{3a}\right)^2k^2 + \frac{\pi^2}{c^2}l^2}\\
+&= \sqrt{\frac{16\pi^2}{9a^2}h^2 + \frac{16\pi^2}{9a^2}k^2 + \frac{\pi^2}{c^2}l^2}\\
+&= \sqrt{(8.70\unit{\AA^{-1}})h^2 + (8.70\unit{\AA^{-1}})k^2 + (2.95\unit{\AA^{-1}})l^2}
+\end{align*}
+Now we use each permutation of $hkl$ and calculate $\theta$ from equation \ref{thetaeq}. Note that we only go through the permutations of $h,k,l = 1 \textnormal{\ or\ } 0$ as any higher order indices give $\theta>45^{\circ}$. The table of the results follows 
+\begin{center}
+\begin{tabular}{c|c|c}
+$hkl$		&$|\vec{G}|$		&$\theta$\\
+\hline
+$100$		&$2.95\unit{\AA^{-1}}$	&$23.5^{\circ}$\\
+$010$		&$2.95\unit{\AA^{-1}}$	&$23.5^{\circ}$\\
+$001$		&$1.72\unit{\AA^{-1}}$	&$13.4^{\circ}$\\
+$110$		&$4.17\unit{\AA^{-1}}$	&$34.4^{\circ}$\\
+$011$		&$3.41\unit{\AA^{-1}}$	&$27.5^{\circ}$\\
+$101$		&$3.41\unit{\AA^{-1}}$	&$27.5^{\circ}$\\
+$111$		&$4.51\unit{\AA^{-1}}$	&$37.6^{\circ}$
+\end{tabular}
+\end{center}
+
+\section{Problem \#2}
+\begin{enumerate}[(a)]
+\item
+To find the distance between nearest neighbor lattice planes for each reflection $\theta$. We use the geometry of the Bragg condition $\vec{k} -\vec{k'} =\vec{G}$ to see that 
+\begin{equation}
+|\vec{G}| = 2|\vec{k}|\sin(\theta)
+\label{Bragg}
+\end{equation}
+Now we use the fact that the spacing between two planes $d(hkl)$ is given as
+\begin{equation}
+d(hkl) = \frac{2\pi}{|\vec{G}|}
+\label{dist}
+\end{equation}
+so we can combine equations \ref{Bragg} and \ref{dist} to get
+$$d(hkl) = \frac{2\pi}{2k\sin(\theta)}$$
+Note that we are given the wavelength, $\lambda = 1.542\unit{\AA}$, of the incident bean not the wavenumber $k$. So we us $k = 2\pi/\lambda$ to say 
+$$d(hkl) = \frac{\lambda}{2\sin(\theta)}$$
+So for the first Bragg angle $\theta = 12.3^{\circ}$ we find that $d(hkl) = 3.62\unit{\AA}$. The rest of the calculated distances are in the following table
+\begin{center}
+\begin{tabular}{c|c|c}
+$\theta$	&$d(hkl)$		&$|G|$\\
+\hline
+$12.3^{\circ}$	&$3.62\unit{\AA}$	&$1.71\unit{\AA^{-1}}$\\
+$14.1^{\circ}$	&$3.16\unit{\AA}$	&$1.98\unit{\AA^{-1}}$\\
+$20.2^{\circ}$	&$2.23\unit{\AA}$	&$2.81\unit{\AA^{-1}}$\\
+$24.0^{\circ}$	&$1.90\unit{\AA}$	&$3.31\unit{\AA^{-1}}$\\
+$25.1^{\circ}$	&$1.82\unit{\AA}$	&$3.46\unit{\AA^{-1}}$\\
+$29.3^{\circ}$	&$1.58\unit{\AA}$	&$3.99\unit{\AA^{-1}}$\\
+$32.2^{\circ}$	&$1.45\unit{\AA}$	&$4.34\unit{\AA^{-1}}$\\
+$33.1^{\circ}$	&$1.42\unit{\AA}$	&$4.44\unit{\AA^{-1}}$
+\end{tabular}
+\end{center}
+
+\item
+We know for a cubic lattice the distance can be related to the miller indices by
+\begin{equation}
+d(hkl) = \frac{a}{\sqrt{h^2+k^2+l^2}}
+\label{distance}
+\end{equation}
+where $a$ is the length of the cubic cell side. Now we know if the crystalline structure of this substance is simple cubic then we know that the indices can be any integer value. So we can make a table for all the possible miller indices for the simple cubic structure
+\begin{center}
+\begin{tabular}{c|c|c}
+$hkl$		&$d(hkl)$		&$a$\\
+\hline
+$100$	&$3.62\unit{\AA}$	&$3.62\unit{\AA}$\\
+$110$	&$3.16\unit{\AA}$	&$4.47\unit{\AA^{-1}}$
+\end{tabular}
+\end{center}
+Note that we already can see that this diffraction pattern cannot be due to a simple cubic structure, for the cubic length $a$ has to be the same for all diffractions. So we try the face-centered cubic lattice. Note for the fcc lattice the miller indices have to be all even or all odd for diffraction to occur. 
+\begin{center}
+\begin{tabular}{c|c|c}
+$hkl$		&$d(hkl)$		&$a$\\
+\hline
+$111$	&$3.62\unit{\AA}$	&$6.27\unit{\AA}$\\
+$200$	&$3.16\unit{\AA}$	&$6.32\unit{\AA}$\\
+$220$	&$2.23\unit{\AA}$	&$6.31\unit{\AA}$\\
+$311$	&$1.90\unit{\AA}$	&$6.30\unit{\AA}$\\
+$222$	&$1.82\unit{\AA}$	&$6.30\unit{\AA}$\\
+$400$	&$1.58\unit{\AA}$	&$6.32\unit{\AA}$\\
+$331$	&$1.45\unit{\AA}$	&$6.32\unit{\AA}$\\
+$420$	&$1.42\unit{\AA}$	&$6.35\unit{\AA}$
+\end{tabular}
+\end{center}
+So we can see that this the structure of our material is face-centered cubic with a cubic length of $a=6.3\unit{\AA}$
+
+\item
+We know that the volume of the cubic cell for this material is $V = 250\unit{\AA^3} = 2.5\times10^{-22}\unit{cm}$. Given that the density of the material is $8.31\unit{g\ cm^{-3}}$ we can see that the unit cell has
+$$(2.5\times10^{-22}\unit{cm})(8.31\unit{g\ cm^{-3}}) = 2.08\times10^{-21}\unit{g}$$
+We know that the molecular weight for this substance is $5.18\times10^{-22}\unit{g}$. So we can find the number of molecules per unit cube as
+$$\frac{2.08\times10^{-21}\unit{g}}{5.18\times10^{-22}\unit{g}} = 4$$
+so there are $4$ molecules per unit cube which is what we would expect for a face-centered cubic lattice. One total molecule from the 8 corners and 3 total molecules from the 6 faces.
+\end{enumerate}
+
+\section{Problem \#3}
+Given the model of crystalline He$^4$ where each He atom is confined to a line segment of length $L$. We can say that in the ground state the wave function for each segment is the half wavelength of a free particle. We know that the energy of a free particle is given by
+\begin{equation}
+E = \frac{\hbar^2k^2}{2m}
+\label{FreeEnergy}
+\end{equation}
+where $k$ is the wave number of the particle. Now if we can relate the wavenumber $k$ to the wavelength, $\lambda$, by
+$$k = \frac{2\pi}{\lambda}$$
+Now we assume that the wavelength is $\lambda = 2L$. So we see that equation \ref{FreeEnergy} becomes
+$$E = \frac{\hbar^2k^2}{2m} = \frac{\hbar^2}{2m}\left(\frac{2\pi}{\lambda}\right)^2 = \frac{\hbar^2}{2m}\left(\frac{\pi}{L}\right)^2$$
+
+
+\section{Problem \#4}
+\begin{enumerate}[(a)]
+\item
+For a line of $2N$ ions of alternating charge $\pm q$ with a repulsive potential energy $A/R^n$ between the nearest neighbors we can say that the potential energy is given by the sum of the repulsive potential $A/R^n$ and the attractive coulomb potential $\alpha q^2/R$. So
+$$U(R) = N\left(\frac{A}{R^n}-\frac{\alpha q^2}{R}\right)$$
+note that the two terms are opposite signs as one is attractive and the other is repulsive. We can find the equilibrium separation using the fact that at equilibrium we have
+$$\frac{dU}{dR} = 0$$
+We we can calculate $dU/dR$ as
+$$\frac{dU}{dR} = N\left(-\frac{nA}{R^{n+1}} + \frac{\alpha q^2}{R^2}\right)$$
+So for when $dU/dR=0$ we have $R=R_0$ where $R_0$ is the equilibrium separation. So we solve
+\begin{align*}
+\frac{dU}{dR} &=  N\left(-\frac{nA}{R_0^{n+1}} + \frac{\alpha q^2}{R_0^2}\right) = 0\\
+&\Downarrow\\
+\frac{\alpha q^2}{R_0^2} &= \frac{nA}{R_0^{n+1}} \\
+\frac{R_0^{n+1}}{R_0^2} &= \frac{nA}{\alpha q^2} \\
+\frac{R_0^{n}}{R_0} &= \frac{nA}{\alpha q^2} \\
+R_0^{n} &= \frac{nAR_0}{\alpha q^2}
+\end{align*}
+Now we can solve $U(R_0)$
+\begin{align*}
+U(R_0) &= N\left(\frac{A}{R_0^n}-\frac{\alpha q^2}{R_0}\right)\\
+&= N\left(A\frac{\alpha q^2}{nAR_0} - \frac{\alpha q^2}{R_0}\right)\\
+&= \frac{N\alpha q^2}{R_0}\left(\frac{1}{n} - 1\right)\\
+&= -\frac{N\alpha q^2}{R_0}\left(1-\frac{1}{n}\right)
+\end{align*}
+But we know that \emph{Madelung constant} $\alpha$ for a one-dimensional chain is $\alpha = 2\ln(2)$ so the energy at the equilibrium separation is
+$$U(R_0) = -\frac{2Nq^2\ln(2)}{R_0}\left(1-\frac{1}{n}\right)$$
+
+\item
+Given that the crystal is compressed such that $R_0\rightarrow R_0-\delta R_0$. We see that this is a small perturbation from the equilibrium separation $R_0$. So find the leading corrective term we need to Talyor expand $U(R)$ around the point $R_0$ so
+$$U(R) = U(R_0) + \frac{dU(R_0)}{dR}(R-R_0) + \frac{1}{2!}\frac{d^2U(R_0)}{dR}(R-R_0)^2+...$$
+But we know by definition of the equilibrium separation that 
+$$\frac{dU(R_0)}{dR}=0$$
+so the first corrective term is given by
+$$\frac{1}{2!}\frac{d^2U(R_0)}{dR}(R-R_0)^2$$
+So we calculate the second derivative of $U$ with respect to $R$ by
+\begin{align*}
+\frac{dU}{dR} &=  N\frac{d}{dR}\left(-\frac{nA}{R^{n+1}} + \frac{\alpha q^2}{R^2}\right)\\
+&=  N\left(\frac{n(n+1)A}{R_0^{n+2}} - \frac{2\alpha q^2}{R_0^3}\right)
+\end{align*}
+Note that in the final equation we evaluated at the point $R=R_0$ as it is in the first order correction. So now we can evaluate this for $R=R_0(1-\delta)$ so that
+\begin{align*}
+\frac{1}{2!}\frac{d^2U(R_0)}{dR}(R_0(1-\delta)-R_0)^2 &= \frac{1}{2}\frac{d^2U(R_0)}{dR}(-R_0\delta)^2 \\
+&= \frac{N}{2}\left(\frac{n(n+1)A}{R_0^{n+2}}R_0^2 - \frac{2\alpha q^2}{R_0^3}R_0^2\right)\delta^2 \\
+&= \frac{N}{2}\left(\frac{n(n+1)A}{R_0^{n}} - \frac{2\alpha q^2}{R_0}\right)\delta^2 \\
+&= \frac{N}{2}\left(n(n+1)A\frac{\alpha q^2}{nAR_0} - \frac{2\alpha q^2}{R_0}\right)\delta^2 \\
+&= \frac{N}{2}\left(\frac{(n+1)\alpha q^2}{R_0} - \frac{2\alpha q^2}{R_0}\right)\delta^2 \\
+&= \frac{1}{2}\frac{N(n-1)\alpha q^2}{R_0}\delta^2 
+\end{align*}
+Note since we are only compressing a unit length we can say that $2N=1$. Now we see that the leading correcting term is of the form $\frac{1}{2}C\delta^2$ where
+$$C = \frac{(n-1)q^2\ln(2)}{R_0}$$
+\end{enumerate}
+
+
+\end{document}
+

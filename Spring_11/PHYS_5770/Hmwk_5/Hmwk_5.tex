@@ -1,0 +1,763 @@
+\documentclass[11pt]{article}
+
+\usepackage{latexsym}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{enumerate}
+\usepackage{amsmath}
+\usepackage{cancel}
+\numberwithin{equation}{section}
+
+\setlength{\evensidemargin}{.25in}
+\setlength{\oddsidemargin}{-.25in}
+\setlength{\topmargin}{-.75in}
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{9.5in}
+\newcommand{\due}{March 8th, 2011}
+\newcommand{\HWnum}{5}
+\input{/home/joey/Documents/Class/Define.tex}
+
+\begin{document}
+\input{../title.tex}
+
+\section{Problem \HWnum.1}
+\begin{enumerate}[(a)]
+\item
+For a rotating reference frame in ordinary flat Minkowski space we can say that  the primed coordinates is given by
+\begin{align*}
+t &= t'\\
+x &= x'\cos(\omega t) - y'\sin(\omega t)\\
+y &= y'\cos(\omega t) + x'\sin(\omega t)\\
+z &= z'
+\end{align*}
+Note that we are rotating in the $xy$ plane. So we want to find the metric of this space we start with the fact that 
+$$ds^2 = -dt^2 + dx^2 + dy^2 +dz^2$$
+We quickly can see that $dt^2 = dt'^2$ and $dz^2 = dz'^2$. Now the find $dx$ in terms of the primed coordinates we use the product rule to say that
+$$dx = dx'\cos(\omega t) - x'\sin(\omega t)\omega dt - dy'\sin(\omega t) -y'\cos(\omega t)\omega dt$$
+Note that $t=t'$ so we can just say that
+$$dx = dx'\cos(\omega t') - x'\sin(\omega t')\omega dt' - dy'\sin(\omega t') -y'\cos(\omega t')\omega dt'$$
+Now we need to take the square of $dx$ so that
+\begin{align*}
+dx^2 &= \left(dx'\cos(\omega t') - x'\sin(\omega t')\omega dt'^2 - dy'\sin(\omega t') -y'\cos(\omega t')\omega dt'\right)^2 \\
+&= \cos^2(\omega t')dx'^2 + x'^2\omega^2\sin^2(\omega t')dt' +\sin^2(\omega t')dy'^2 + y'^2\omega^2\cos^2(\omega t')dt'^2\\
+&\ \ \ \ \ -2x'\omega\sin(\omega t')\cos(\omega t')dx'dt' - 2\sin(\omega t')\cos(\omega t')dx'dy' - 2y'\omega\cos^2(\omega t')dx'dt'\\
+&\ \ \ \ \ +2x'\omega\sin^2(\omega t')dy'dt' + 2x'y'\omega^2\sin(\omega t)\cos(\omega t)dt'^2 + 2y'\omega\sin(\omega t')\cos(\omega t')dy'dt'
+\end{align*}
+Now we find that $dy$ is
+$$dy = dy'\cos(\omega t) - y'\sin(\omega t')\omega dt' + dx'\sin(\omega t') + x'\cos(\omega t')\omega dt'$$
+And we take the square as
+\begin{align*}
+dy^2 &= \left(dy'\cos(\omega t') - y'\sin(\omega t')\omega dt' + dx'\sin(\omega t') + x'\cos(\omega t')\omega dt'\right)^2\\
+&= \cos^2(\omega t')dy'^2 + y'^2\omega^2\sin^2(\omega t')dt'^2 + \sin^2(\omega t')dx'^2 +x'^2\omega^2\cos^2(\omega t')dt'^2\\
+&\ \ \ \ \ -2y'\omega\sin(\omega t')\cos(\omega t')dy'dt' + 2\sin(\omega t')\cos(\omega t')dx'dy' + 2x'\omega\cos^2(\omega t')dy'dt'\\
+&\ \ \ \ \ -2y'\omega\sin^2(\omega t')dx'dt' -2x'y'\omega^2\sin(\omega t')\cos(\omega t')dt'^2 +2x'\omega\sin(\omega t')\cos(\omega t')dx'dt'
+\end{align*}
+First we calculate $dx^2+dy^2$
+\begin{align*}
+dx^2+dy^2  &= \cos^2(\omega t')dx'^2 + x'^2\omega^2\sin^2(\omega t')dt'^2 +\sin^2(\omega t')dy'^2 + y'^2\omega^2\cos^2(\omega t')dt'^2\\
+&\ \ \ \ \ \cancel{-2x'\omega\sin(\omega t')\cos(\omega t')dx'dt'} - \cancel{2\sin(\omega t')\cos(\omega t')dx'dy'} - 2y'\omega\cos^2(\omega t')dx'dt'\\
+&\ \ \ \ \ +2x'\omega\sin^2(\omega t')dy'dt' + \cancel{2x'y'\omega^2\sin(\omega t)\cos(\omega t)dt'^2} + \cancel{2y'\omega\sin(\omega t')\cos(\omega t')dy'dt'}\\
+&\ \ \ \ \ + \cos^2(\omega t')dy'^2 + y'^2\omega^2\sin^2(\omega t')dt'^2 + \sin^2(\omega t')dx'^2 +x'^2\omega^2\cos^2(\omega t')dt'^2\\
+&\ \ \ \ \ \cancel{-2y'\omega\sin(\omega t')\cos(\omega t')dy'dt'} + \cancel{2\sin(\omega t')\cos(\omega t')dx'dy'} + 2x'\omega\cos^2(\omega t')dy'dt'\\
+&\ \ \ \ \ -2y'\omega\sin^2(\omega t')dx'dt' -\cancel{2x'y'\omega^2\sin(\omega t')\cos(\omega t')dt'^2} \cancel{+2x'\omega\sin(\omega t')\cos(\omega t')dx'dt'}
+\end{align*}
+\begin{align*}
+&= \cos^2(\omega t')dx'^2 + \sin^2(\omega t')dx'^2 + \cos^2(\omega t')dy'^2 + \sin^2(\omega t')dy'^2 \\
+&\ \ \ \ \ + y'^2\omega^2\cos^2(\omega t')dt'^2 + y'^2\omega^2\sin^2(\omega t')dt'^2  + x'^2\omega^2\cos^2(\omega t')dt'^2 + x'^2\omega^2\sin^2(\omega t')dt'^2\\
+&\ \ \ \ \  -2y'\omega\cos^2(\omega t')dx'dt' - 2y'\omega\sin^2(\omega t')dx'dt'\\
+&\ \ \ \ \ +2x'\omega\sin^2(\omega t')dy'dt' +  2x'\omega\cos^2(\omega t')dy'dt'\\
+&= dx'^2 + dy'^2  + y'^2\omega^2dt'^2  + x'^2\omega^2dt'^2 -2y'\omega dx'dt' + 2x'\omega dy'dt' 
+\end{align*}
+So now we can find the invariant with the primed coordinates as
+\begin{align*}
+ds^2 &= -dt^2 + dx^2 + dy^2 + dz^2 \\
+&= -dt'^2 + dx'^2 + dy'^2  + y'^2\omega^2dt'^2  + x'^2\omega^2dt'^2 -2y'\omega dx'dt' + 2x'\omega dy'dt' + dz'^2 \\
+&= (-1 + y'^2\omega^2  + x'^2\omega^2)dt'^2 + dx'^2 + dy'^2  + dz'^2 - 2y'\omega dx'dt' + 2x'\omega dy'dt' \\
+&= \left(-1 + \omega^2(y'^2 + x'^2)\right)dt'^2 + dx'^2 + dy'^2  + dz'^2 - y'\omega(dt'dx' + dx'dt') + x'\omega (dt'dy' + dy'dt')
+\end{align*}
+Note that we split the 2 coefficient into the two separate metric components so that we see that the metric is symmetric.
+
+\item
+We can find the geodesics by varying the functional 
+$$I \equiv \frac{1}{2}\int d\tau g_{\mu\nu}\frac{dx^{\mu}}{d\tau}\frac{dx^{\nu}}{d\tau}$$
+Which for the metric from part (a) is
+\begin{align*}
+I &= \frac{1}{2}\int d\tau \left(\left(-1 + \omega^2(y'^2 + x'^2)\right)\frac{dt'^2}{d\tau^2} + \frac{dx'^2}{d\tau^2} + \frac{dy'^2}{d\tau^2}  + \frac{dz'^2}{d\tau}\right.\\
+&\ \ \ \ \ \ \ \ \left. - y'\omega\left(\frac{dt'}{d\tau}\frac{dx'}{d\tau} + \frac{dx'}{d\tau}\frac{dt'}{d\tau}\right) + x'\omega \left(\frac{dt'}{d\tau}\frac{dy'}{d\tau} + \frac{dy'}{d\tau}\frac{dt'}{d\tau}\right)\right)
+\end{align*}
+Now we can vary $x'$ so $x'\rightarrow x'+\delta x'$ which gives us
+\begin{align*}
+\delta I &= \frac{1}{2}\int d\tau \left(\left(-1 + \omega^2(y'^2 + (x'+\delta x')^2)\right)\frac{dt'^2}{d\tau^2} + \left(\frac{d}{d\tau}(x'+\delta x')\right)^2 + \frac{dy'^2}{d\tau^2}  + \frac{dz'^2}{d\tau}\right.\\
+&\ \ \ \ \ \ \ \ \left. - y'\omega\left(\frac{dt'}{d\tau}\left(\frac{d}{d\tau}(x'+\delta x')\right) + \left(\frac{d}{d\tau}(x'+\delta x')\right)\frac{dt'}{d\tau}\right) + (x'+\delta x')\omega \left(\frac{dt'}{d\tau}\frac{dy'}{d\tau} + \frac{dy'}{d\tau}\frac{dt'}{d\tau}\right)\right)\\
+&= \frac{1}{2}\int d\tau \left(\left(-1 + \omega^2(y'^2 + (x'+\delta x')^2)\right)\frac{dt'^2}{d\tau^2} + \left(\frac{d}{d\tau}(x'+\delta x')\right)^2 \right.\\
+&\ \ \ \ \ \ \ \ \left. - y'\omega\left(\frac{dt'}{d\tau}\left(\frac{dx'}{d\tau}+\frac{d(\delta x')}{d\tau}\right) + \left(\frac{dx'}{d\tau}+\frac{d(\delta x')}{d\tau}\right)\frac{dt'}{d\tau}\right) + (\delta x')\omega \left(\frac{dt'}{d\tau}\frac{dy'}{d\tau} + \frac{dy'}{d\tau}\frac{dt'}{d\tau}\right)\right)\\
+&= \frac{1}{2}\int d\tau \left(\left(\omega^2(x'+\delta x')^2)\right)\frac{dt'^2}{d\tau^2} + \left(\frac{d}{d\tau}(x'+\delta x')\right)^2  - 2y'\omega\frac{dt'}{d\tau}\frac{d(\delta x')}{d\tau} + 2(\delta x')\omega\frac{dt'}{d\tau}\frac{dy'}{d\tau}\right)
+\end{align*}
+Note that we automatically neglected any terms with no $\delta x'$ dependence. Next we need to expand and keep the first order term.
+\begin{align*}
+\left(\frac{d}{d\tau}(x'+\delta x')\right)^2 &= \left(\frac{dx'}{d\tau}\right)^2+ \left(\frac{d(\delta x')}{d\tau}\right) + 2\frac{dx'}{d\tau}\frac{d(\delta x')}{d\tau}\\
+&\approx 2\frac{dx'}{d\tau}\frac{d(\delta x')}{d\tau}
+\end{align*}
+And we can expand and keep the first order term of
+\begin{align*}
+(x'+\delta x')^2 &= x'^2 + (\delta x')^2 + 2x'(\delta x')\\
+&\approx 2x'(\delta x')
+\end{align*}
+So now we can take $\delta I$ as
+\begin{align*}
+\delta I &= \frac{1}{2}\int d\tau \left(2\omega^2x'(\delta x')\frac{dt'^2}{d\tau^2} + 2\frac{dx'}{d\tau}\frac{d(\delta x')}{d\tau}  - 2y'\omega\frac{dt'}{d\tau}\frac{d(\delta x')}{d\tau} + 2(\delta x')\omega\frac{dt'}{d\tau}\frac{dy'}{d\tau}\right)
+\end{align*}
+Now we need to take account for the partial of the $\delta x'$ by using integration by parts 
+\begin{align*}
+\frac{d}{d\tau}\left(\frac{dx'}{d\tau} \delta x'\right) &= \frac{d^2x'}{d\tau^2}(\delta x') + \frac{dx'}{d\tau}\frac{d(\delta x')}{d\tau}\\
+&\Downarrow\\
+\frac{dx'}{d\tau}\frac{d(\delta x')}{d\tau} &= \frac{d}{d\tau}\left(\frac{dx'}{d\tau} \delta x'\right) - \frac{d^2x'}{d\tau^2}(\delta x') 
+\end{align*}
+And for the other term's integration by parts yields 
+\begin{align*}
+\frac{d}{d\tau}\left(y'\frac{dt'}{d\tau}(\delta x')\right) &= \frac{dy'}{d\tau}\frac{dt'}{d\tau}(\delta x') + y'\frac{d^2t'}{d\tau^2}(\delta x') + y'\frac{dt'}{d\tau}\frac{d(\delta x')}{d\tau}\\
+&\Downarrow\\
+y'\frac{dt'}{d\tau}\frac{d(\delta x')}{d\tau} &= \frac{d}{d\tau}\left(y'\frac{dt'}{d\tau}(\delta x')\right) - \frac{dy'}{d\tau}\frac{dt'}{d\tau}(\delta x') - y'\frac{d^2t'}{d\tau^2}(\delta x') 
+\end{align*}
+Note that we require that the end points of the geodesic be zero. So the functional becomes 
+\begin{align*}
+\delta I &= \cancelto{0}{\left(\frac{dx'}{d\tau} \delta x'\right) + \left(y'\frac{dt'}{d\tau}(\delta x')\right)} + \frac{1}{2}\int d\tau \left(2\omega^2x'(\delta x')\frac{dt'^2}{d\tau^2} - 2\frac{d^2x'}{d\tau^2}(\delta x') \right. \\
+&\ \ \ \ \ \left. + 2\omega\frac{dy'}{d\tau}\frac{dt'}{d\tau}(\delta x') + 2\omega y'\frac{d^2t'}{d\tau^2}(\delta x') + 2(\delta x')\omega\frac{dt'}{d\tau}\frac{dy'}{d\tau}\right)\\
+&=  \frac{1}{2}\int d\tau \left(2\omega^2x'\frac{dt'^2}{d\tau^2} - 2\frac{d^2x'}{d\tau^2}  + 2\omega\frac{dy'}{d\tau}\frac{dt'}{d\tau} + 2\omega y'\frac{d^2t'}{d\tau^2} + 2\omega\frac{dt'}{d\tau}\frac{dy'}{d\tau}\right)(\delta x')\\
+&=  \frac{1}{2}\int d\tau \left(2\omega^2x'\left(\frac{dt'}{d\tau}\right)^2 - 2\frac{d^2x'}{d\tau^2}  + 4\omega\frac{dy'}{d\tau}\frac{dt'}{d\tau} + 2\omega y'\frac{d^2t'}{d\tau^2} \right)(\delta x')
+\end{align*}
+So by requiring that the variation of the functional is zero we can see that the geodesic equation for $x$ is
+$$\frac{d^2x'}{d\tau^2} - \omega^2x'\left(\frac{dt'}{d\tau}\right)^2   - 2\omega\frac{dy'}{d\tau}\frac{dt'}{d\tau}  - \omega y'\frac{d^2t'}{d\tau^2}   = 0$$
+Now we can find the $y$ geodesic equation by varying $y\rightarrow y+\delta y$. So now the functional becomes
+\begin{align*}
+\delta I &= \frac{1}{2}\int d\tau \left(\left(-1 + \omega^2((y'+\delta y')^2 + x'^2)\right)\left(\frac{dt'}{d\tau}\right)^2 + \left(\frac{dx'}{d\tau}\right)^2 + \left(\frac{d}{d\tau}(y'+\delta y')\right)^2  + \left(\frac{dz'}{d\tau}\right)^2\right.\\
+&\ \ \ \ \ \ \ \ \left. - (y'+\delta y')\omega\left(\frac{dt'}{d\tau}\frac{dx'}{d\tau} + \frac{dx'}{d\tau}\frac{dt'}{d\tau}\right) + x'\omega \left(\frac{dt'}{d\tau}\left(\frac{d}{d\tau}(y'+\delta y')\right) + \left(\frac{d}{d\tau}(y'+\delta y')\right)\frac{dt'}{d\tau}\right)\right)\\
+&= \frac{1}{2}\int d\tau \left(\omega^2(y'+\delta y')^2\left(\frac{dt'}{d\tau}\right)^2  + \left(\frac{d}{d\tau}(y'+\delta y')\right)^2  - 2(\delta y')\omega\frac{dt'}{d\tau}\frac{dx'}{d\tau} \right.\\
+& \ \ \ \ \ \ \ \ \left.+ x'\omega \left(\frac{dt'}{d\tau}\left(\frac{dy'}{d\tau}'+\frac{d(\delta y')}{d\tau}\right) + \left(\frac{dy'}{d\tau}+\frac{d(\delta y')}{d\tau}\right)\frac{dt'}{d\tau}\right)\right)
+\end{align*}
+\begin{align*}
+&= \frac{1}{2}\int d\tau \left(\omega^2(y'+\delta y')^2\left(\frac{dt'}{d\tau}\right)^2  + \left(\frac{d}{d\tau}(y'+\delta y')\right)^2  - 2(\delta y')\omega\frac{dt'}{d\tau}\frac{dx'}{d\tau} + 2x'\omega \frac{dt'}{d\tau}\frac{d(\delta y')}{d\tau}\right)
+\end{align*}
+So we expand the squared terms again by
+\begin{align*}
+\left(\frac{d}{d\tau}(y'+\delta y')\right)^2 &= \left(\frac{dy'}{d\tau}\right)^2+ \left(\frac{d(\delta y')}{d\tau}\right)^2 + 2\frac{dy'}{d\tau}\frac{d(\delta y')}{d\tau}\\
+&\approx 2\frac{dy'}{d\tau}\frac{d(\delta y')}{d\tau}
+\end{align*}
+And
+\begin{align*}
+(y'+\delta y')^2 &= y'^2 + (\delta y')^2 + 2y'(\delta y')\\
+&\approx 2y'(\delta y')
+\end{align*}
+So our varied functional becomes
+\begin{align*}
+\delta I &= \frac{1}{2}\int d\tau \left(2\omega^2y'(\delta y')\left(\frac{dt'}{d\tau}\right)^2  +  2\frac{dy'}{d\tau}\frac{d(\delta y')}{d\tau} - 2(\delta y')\omega\frac{dt'}{d\tau}\frac{dx'}{d\tau} + 2x'\omega \frac{dt'}{d\tau}\frac{d(\delta y')}{d\tau}\right)
+\end{align*}
+Now we use integration by parts to say 
+\begin{align*}
+\frac{d}{d\tau}\left(\frac{dy'}{d\tau}(\delta y')\right) &= \frac{d^2y'}{d\tau^2}(\delta y') + \frac{dy'}{d\tau}\frac{d(\delta y')}{d\tau}\\
+&\Downarrow\\
+\frac{dy'}{d\tau}\frac{d(\delta y')}{d\tau} &= \frac{d}{d\tau}\left(\frac{dy'}{d\tau}(\delta y')\right) - \frac{d^2y'}{d\tau^2}(\delta y')
+\end{align*}
+and
+\begin{align*}
+\frac{d}{d\tau}\left(x'\frac{dt'}{d\tau}(\delta y')\right) &= \frac{dx'}{d\tau}\frac{dt'}{d\tau}(\delta y') + x'\frac{d^2t'}{d\tau^2}(\delta y') + x'\frac{dt'}{d\tau}\frac{d(\delta y')}{d\tau}
+&\Downarrow\\
+x'\frac{dt'}{d\tau}\frac{d(\delta y')}{d\tau} &= \frac{d}{d\tau}\left(x'\frac{dt'}{d\tau}(\delta y')\right) - \frac{dx'}{d\tau}\frac{dt'}{d\tau}(\delta y') - x'\frac{d^2t'}{d\tau^2}(\delta y') 
+\end{align*}
+Note that we can neglect the terms with a $d/d\tau$ in front due to the fact that we require the end points of the geodesic to be zero. So our varied functional becomes
+\begin{align*}
+\delta I &= \frac{1}{2}\int d\tau \left(2\omega^2y'(\delta y')\left(\frac{dt'}{d\tau}\right)^2  -  2\frac{d^2y'}{d\tau^2}(\delta y') - 2(\delta y')\omega\frac{dt'}{d\tau}\frac{dx'}{d\tau}  - 2\omega\frac{dx'}{d\tau}\frac{dt'}{d\tau}(\delta y') - 2\omega x'\frac{d^2t'}{d\tau^2}(\delta y') \right)\\
+&= \frac{1}{2}\int d\tau \left(2\omega^2y'(\delta y')\left(\frac{dt'}{d\tau}\right)^2  -  2\frac{d^2y'}{d\tau^2}(\delta y') - 4(\delta y')\omega\frac{dt'}{d\tau}\frac{dx'}{d\tau}   - 2\omega x'\frac{d^2t'}{d\tau^2}(\delta y') \right)\\
+&= \frac{1}{2}\int d\tau \left(2\omega^2y'\left(\frac{dt'}{d\tau}\right)^2  -  2\frac{d^2y'}{d\tau^2} - 4\omega\frac{dt'}{d\tau}\frac{dx'}{d\tau}   - 2\omega x'\frac{d^2t'}{d\tau^2} \right)(\delta y')
+\end{align*}
+So by requiring that the varied functional be zero we can find the geodesic equation for $y$ by
+\begin{align*}
+ \frac{d^2y'}{d\tau^2}  - \omega^2y'\left(\frac{dt'}{d\tau}\right)^2  +  2\omega\frac{dt'}{d\tau}\frac{dx'}{d\tau}  + \omega x'\frac{d^2t'}{d\tau^2} = 0
+\end{align*}
+Now for the $z'$ component of the geodesic equation we vary $z'\rightarrow z'+\delta z'$. So our varied functional becomes 
+\begin{align*}
+\delta I &= \frac{1}{2}\int d\tau \left(\left(-1 + \omega^2(y'^2 + x'^2)\right)\frac{dt'^2}{d\tau^2} + \frac{dx'^2}{d\tau^2} + \frac{dy'^2}{d\tau^2}  + \left(\frac{d}{d\tau}(z+\delta z)\right)^2\right.\\
+&\ \ \ \ \ \ \ \ \left. - y'\omega\left(\frac{dt'}{d\tau}\frac{dx'}{d\tau} + \frac{dx'}{d\tau}\frac{dt'}{d\tau}\right) + x'\omega \left(\frac{dt'}{d\tau}\frac{dy'}{d\tau} + \frac{dy'}{d\tau}\frac{dt'}{d\tau}\right)\right)\\
+&= \frac{1}{2}\int d\tau \left( \left(\frac{d}{d\tau}(z'+\delta z')\right)^2\right)\\
+&= \frac{1}{2}\int d\tau \left(2\frac{dz'}{d\tau}\frac{(\delta z')}{d\tau}\right)
+\end{align*}
+Again we use integration by parts to see that
+\begin{align*}
+\frac{d}{d\tau}\left(\frac{dz'}{d\tau}(\delta z')\right) &= \frac{d^2z'}{d\tau^2}(\delta z') + \frac{dz'}{d\tau}\frac{(\delta z')}{d\tau}\\
+&\Downarrow\\
+\frac{dz}{d\tau}\frac{(\delta z')}{d\tau} &= \frac{d}{d\tau}\left(\frac{dz'}{d\tau}(\delta z')\right) - \frac{d^2z'}{d\tau^2}(\delta z')
+\end{align*}
+Again we neglect the endpoints so that the functional becomes`
+\begin{align*}
+\delta I &= \frac{1}{2}\int d\tau \left(-2\frac{d^2z'}{d\tau^2}(\delta z')\right)\\
+&= \int d\tau \left(-\frac{d^2z'}{d\tau^2}\right)(\delta z)
+\end{align*}
+So the geodesic is
+$$\frac{d^2z'}{d\tau^2} = 0$$
+Now for the time component we vary $t'\rightarrow t'+\delta t'$
+\begin{align*}
+\delta I &= \frac{1}{2}\int d\tau \left(\left(-1 + \omega^2(y'^2 + x'^2)\right)\left(\frac{d}{d\tau}(t'+\delta t')\right)^2 + \left(\frac{dx'}{d\tau}\right)^2 + \left(\frac{dy'}{d\tau}\right)^2  + \left(\frac{dz'}{d\tau}\right)^2\right.\\
+&\ \ \ \ \ \ \left. - y'\omega\left(\left(\frac{d}{d\tau}(t'+\delta t')\right)\frac{dx'}{d\tau} + \frac{dx'}{d\tau}\left(\frac{d}{d\tau}(t'+\delta t')\right)\right) + x'\omega \left(\left(\frac{d}{d\tau}(t'+\delta t')\right)\frac{dy'}{d\tau} + \frac{dy'}{d\tau}\left(\frac{d}{d\tau}(t'+\delta t')\right)\right)\right)\\
+&= \frac{1}{2}\int d\tau \left(2\left(-1 + \omega^2(y'^2 + x'^2)\right)\frac{dt'}{d\tau}\frac{d(\delta t')}{d\tau}  - 2\omega y'\frac{d(\delta t')}{d\tau}\frac{dx'}{d\tau} + 2\omega x'\frac{d(\delta t')}{d\tau}\frac{dy'}{d\tau}\right)\\
+&= \frac{1}{2}\int d\tau \left(2\left(-\frac{dt'}{d\tau}\frac{d(\delta t')}{d\tau} + \omega^2y'^2\frac{dt'}{d\tau}\frac{d(\delta t')}{d\tau} + \omega^2x'^2\frac{dt'}{d\tau}\frac{d(\delta t')}{d\tau}\right)  - 2\omega y'\frac{d(\delta t')}{d\tau}\frac{dx'}{d\tau} + 2\omega x'\frac{d(\delta t')}{d\tau}\frac{dy'}{d\tau}\right)
+\end{align*}
+So we need to use integration by parts to get
+\begin{align*}
+\frac{d}{d\tau}\left(\frac{dt'}{d\tau}(\delta t')\right) &= \frac{d^2t'}{d\tau^2}(\delta t') + \frac{dt'}{d\tau}\frac{d(\delta t')}{d\tau}\\
+&\Downarrow\\
+\frac{dt'}{d\tau}\frac{d(\delta t')}{d\tau} &= \frac{d}{d\tau}\left(\frac{dt'}{d\tau}(\delta t')\right) - \frac{d^2t'}{d\tau^2}(\delta t') 
+\end{align*}
+and
+\begin{align*}
+\frac{d}{d\tau}\left(y'^2\frac{dt'}{d\tau}(\delta t')\right) &= 2y'\frac{dy'}{d\tau}\frac{dt'}{d\tau}(\delta t') + y'^2\frac{d^2t'}{d\tau^2}(\delta t') + y'^2\frac{dt'}{d\tau}\frac{d(\delta t')}{d\tau}\\
+&\Downarrow\\
+y'^2\frac{dt'}{d\tau}\frac{d(\delta t')}{d\tau} &= \frac{d}{d\tau}\left(y'^2\frac{dt'}{d\tau}(\delta t')\right) - 2y'\frac{dy'}{d\tau}\frac{dt'}{d\tau}(\delta t') - y'^2\frac{d^2t'}{d\tau^2}(\delta t') 
+\end{align*}
+and
+\begin{align*}
+\frac{d}{d\tau}\left(x'^2\frac{dt'}{d\tau}(\delta t')\right) &= 2x'\frac{dx'}{d\tau}\frac{dt'}{d\tau}(\delta t') + x'^2\frac{d^2t'}{d\tau^2}(\delta t') + x'^2\frac{dt'}{d\tau}\frac{d(\delta t')}{d\tau}\\
+&\Downarrow\\
+x'^2\frac{dt'}{d\tau}\frac{d(\delta t')}{d\tau} &= \frac{d}{d\tau}\left(x'^2\frac{dt'}{d\tau}(\delta t')\right) - 2x'\frac{dy'}{d\tau}\frac{dt'}{d\tau}(\delta t') - x'^2\frac{d^2t'}{d\tau^2}(\delta t') 
+\end{align*}
+and
+\begin{align*}
+\frac{d}{d\tau}\left(y'\frac{dx'}{d\tau}(\delta t')\right) &= \frac{dy'}{d\tau}\frac{dx'}{d\tau}(\delta t') + y'\frac{d^2x'}{d\tau^2}(\delta t') + y'\frac{dx'}{d\tau}\frac{d(\delta t')}{d\tau}\\
+&\Downarrow\\
+y'\frac{dx'}{d\tau}\frac{d(\delta t')}{d\tau} &= \frac{d}{d\tau}\left(y'\frac{dx'}{d\tau}(\delta t')\right) - \frac{dy'}{d\tau}\frac{dx'}{d\tau}(\delta t') - y'\frac{dx'^2}{d\tau^2}(\delta t') 
+\end{align*}
+and 
+\begin{align*}
+\frac{d}{d\tau}\left(x'\frac{dy'}{d\tau}(\delta t')\right) &= \frac{dx'}{d\tau}\frac{dy'}{d\tau}(\delta t') + x'\frac{d^2y'}{d\tau^2}(\delta t') +x'\frac{dy'}{d\tau}\frac{d(\delta t')}{d\tau}\\
+&\Downarrow\\
+x'\frac{dy'}{d\tau}\frac{d(\delta t')}{d\tau} &= \frac{d}{d\tau}\left(x'\frac{dy'}{d\tau}(\delta t')\right) - \frac{dx'}{d\tau}\frac{dy'}{d\tau}(\delta t') - x'\frac{d^2y'}{d\tau^2}(\delta t') 
+\end{align*}
+Again we neglect the end points so we get the functional as
+\begin{align*}
+\delta I &= \frac{1}{2}\int d\tau \left(2\left(\frac{d^2t'}{d\tau^2}(\delta t')  - 2\omega^2y'\frac{dy'}{d\tau}\frac{dt'}{d\tau}(\delta t') - \omega^2y'^2\frac{d^2t'}{d\tau^2}(\delta t')  - 2\omega^2x'\frac{dy'}{d\tau}\frac{dt'}{d\tau}(\delta t') - \omega^2x'^2\frac{d^2t'}{d\tau^2}(\delta t') \right)\right.\\ 
+& \ \ \ \ \ \ \ \ \left.+ 2\omega\frac{dy'}{d\tau}\frac{dx'}{d\tau}(\delta t') + 2\omega y'\frac{dx'^2}{d\tau^2}(\delta t')   -2\omega \frac{dx'}{d\tau}\frac{dy'}{d\tau}(\delta t') -2\omega x'\frac{d^2y'}{d\tau^2}(\delta t') \right)\\
+&= \frac{1}{2}\int d\tau \left(2\left(\frac{d^2t'}{d\tau^2}(\delta t')  - 2\omega^2y'\frac{dy'}{d\tau}\frac{dt'}{d\tau}(\delta t') - \omega^2y'^2\frac{d^2t'}{d\tau^2}(\delta t')  - 2\omega^2x'\frac{dy'}{d\tau}\frac{dt'}{d\tau}(\delta t') - \omega^2x'^2\frac{d^2t'}{d\tau^2}(\delta t') \right)\right.\\ 
+& \ \ \ \ \ \ \ \ \left.+ 2\omega y'\frac{dx'^2}{d\tau^2}(\delta t')  -2\omega x'\frac{d^2y'}{d\tau^2}(\delta t') \right)\\
+&= \frac{1}{2}\int d\tau \left(2\left(1-\omega^2(x'^2+y'^2)\right)\frac{d^2t'}{d\tau^2}  - 4\omega^2y'\frac{dy'}{d\tau}\frac{dt'}{d\tau}  - 4\omega^2x'\frac{dy'}{d\tau}\frac{dt'}{d\tau} + 2\omega y'\frac{dx'^2}{d\tau^2}  -2\omega x'\frac{d^2y'}{d\tau^2} \right)(\delta t')
+\end{align*}
+So the $t'$ component of the geodesic equation is
+\begin{align*}
+\left(1-\omega^2(x'^2+y'^2)\right)\frac{d^2t'}{d\tau^2}  - 2\omega^2y'\frac{dy'}{d\tau}\frac{dt'}{d\tau}  - 2\omega^2x'\frac{dy'}{d\tau}\frac{dt'}{d\tau} + \omega y'\frac{dx'^2}{d\tau^2}  -\omega x'\frac{d^2y'}{d\tau^2} &= 0
+\end{align*}
+
+\item
+If we take the spacial geodesic equations from part (b) 
+\begin{align*}
+&\frac{d^2x'}{d\tau^2} - \omega^2x'\left(\frac{dt'}{d\tau}\right)^2   - 2\omega\frac{dy'}{d\tau}\frac{dt'}{d\tau}  - \omega y'\frac{d^2t'}{d\tau^2}   = 0\\
+&\frac{d^2y'}{d\tau^2}  - \omega^2y'\left(\frac{dt'}{d\tau}\right)^2  +  2\omega\frac{dt'}{d\tau}\frac{dx'}{d\tau}  + \omega x'\frac{d^2t'}{d\tau^2} = 0\\
+&\frac{d^2z'}{d\tau^2} = 0
+\end{align*}
+And if we look at these equations in the non-relativistic limit where $v<<1$ and $dt/d\tau \approx 1$. So the geodesics become
+\begin{align*}
+\frac{d^2x'}{d\tau^2} &= \omega^2x' + 2\omega\frac{dy'}{d\tau} \\
+\frac{d^2y'}{d\tau^2}  &= \omega^2y' -  2\omega\frac{dx'}{d\tau} \\
+&\frac{d^2z'}{d\tau^2} = 0
+\end{align*}
+We can see that this looks like the \emph{Coriolis Force} and the \emph{Centrifugal Force} given by
+\begin{align*}
+\vec{F}_{Cor} &= -2m\vec{\omega}\times\vec{v}\\
+\vec{F}_{Cent} &= -m\vec{\omega}\times(\vec{\omega}\times\vec{r})
+\end{align*}
+So we can see that the Coriolis force for an $\vec{\omega} = \omega\hat{z}$ is
+\begin{align*}
+\vec{F}_{Cor} = -2m\vec{\omega}\times\vec{v} &= -2m\det\left(\begin{array}{ccc}
+			\hat{x}		&\hat{y}	&\hat{z}\\
+			0		&0		&\omega\\
+			v_{x}		&v_{y}		&v_z
+				\end{array}\right)\\
+&= 2m\omega\frac{dy'}{d\tau}\hat{x} - 2m\omega\frac{dx'}{d\tau}\hat{y}
+\end{align*}
+and for the centrifugal force we have
+\begin{align*}
+\vec{F}_{Cent} &= -m\vec{\omega}\times(\vec{\omega}\times\vec{r})\\
+&= -m\vec{\omega}\times\det\left(\begin{array}{ccc}
+			\hat{x}		&\hat{y}	&\hat{z}\\
+			0		&0		&\omega\\
+			{x'}		&{y'}		&z'
+				\end{array}\right)\\
+&= -m\vec{\omega}\times\left(\begin{array}{c}
+		-\omega y'\\	\omega x'\\ 	0	
+				\end{array}\right)\\
+&= -m\det\left(\begin{array}{ccc}
+			\hat{x}		&\hat{y}	&\hat{z}\\
+			0		&0		&\omega\\
+			-\omega y'	&\omega x'	&0	
+				\end{array}\right)\\
+&= m\omega^2x'\hat{x} + m\omega^2y'\hat{y}
+\end{align*}
+We see that the $x$ component of the total force is the same as the $x'$ geodesic equation and the $y$ component of the total force is the same as the $y'$ geodesic equation. Note that the geodesic equation canceled out the mass $m$ and only deals with the acceleration, also there is no force in the $z$ direction and this gives the $z'$ geodesic equation.
+\end{enumerate}
+
+\section{Problem \HWnum.2}
+\begin{enumerate}[(a)]
+\item
+If we vary the functional 
+$$I = \frac{1}{2}\int d\tau g_{\mu\nu}\frac{dx^{\mu}}{d\tau}\frac{dx^{\nu}}{d\tau}$$
+by $x^{\mu}\rightarrow x^{\mu}+\delta x^{\mu}$ so we get
+\begin{align*}
+\delta I &= \frac{1}{2}\int d\tau g_{\mu\nu}\left(\frac{d}{d\tau}x^{\mu}+\delta x^{\mu}\right)\frac{dx^{\nu}}{d\tau}\\
+&= \frac{1}{2}\int d\tau g_{\mu\nu}\frac{d(\delta x^{\mu})}{d\tau}\frac{dx^{\nu}}{d\tau}
+\end{align*}
+So to solve this we integrate by parts where
+\begin{align*}
+\frac{d}{d\tau}\left(g_{\mu\nu}(\delta x^{\mu})\frac{dx^{\nu}}{d\tau}\right) &= \frac{dg_{\mu\nu}}{d\tau}(\delta x^{\mu})\frac{dx^{\nu}}{d\tau} + g_{\mu\nu}(\delta x^{\mu})\frac{d^2x^{\nu}}{d\tau^2} + g_{\mu\nu}\frac{d(\delta x^{\mu})}{d\tau}\frac{dx^{\nu}}{d\tau}\\
+&\Downarrow\\
+g_{\mu\nu}\frac{d(\delta x^{\mu})}{d\tau}\frac{dx^{\nu}}{d\tau} &= \frac{d}{d\tau}\left(g_{\mu\nu}(\delta x^{\mu})\frac{dx^{\nu}}{d\tau}\right) - \frac{dg_{\mu\nu}}{d\tau}(\delta x^{\mu})\frac{dx^{\nu}}{d\tau} - g_{\mu\nu}(\delta x^{\mu})\frac{d^2x^{\nu}}{d\tau^2}
+\end{align*}
+So our varied functional becomes
+\begin{align*}
+\delta I &= \frac{1}{2}\int d\tau\left(\frac{d}{d\tau}\left(g_{\mu\nu}(\delta x^{\mu})\frac{dx^{\nu}}{d\tau}\right) - \frac{dg_{\mu\nu}}{d\tau}(\delta x^{\mu})\frac{dx^{\nu}}{d\tau} - g_{\mu\nu}(\delta x^{\mu})\frac{d^2x^{\nu}}{d\tau^2} \right)\\
+&= \cancelto{0}{\left.g_{\mu\nu}(\delta x^{\mu})\frac{dx^{\nu}}{d\tau}\right|} + \frac{1}{2}\int d\tau\left( - \frac{dg_{\mu\nu}}{d\tau}(\delta x^{\mu})\frac{dx^{\nu}}{d\tau} - g_{\mu\nu}(\delta x^{\mu})\frac{d^2x^{\nu}}{d\tau^2} \right)\\
+&=  \frac{1}{2}\int d\tau\left( -\frac{dg_{\mu\nu}}{d\tau}\frac{dx^{\nu}}{d\tau} - g_{\mu\nu}\frac{d^2x^{\nu}}{d\tau^2} \right)(\delta x^{\mu})
+\end{align*}
+So the geodesic equation is
+$$\frac{dg_{\mu\nu}}{d\tau}\frac{dx^{\nu}}{d\tau} + g_{\mu\nu}\frac{d^2x^{\nu}}{d\tau^2} = 0$$
+Which we can see is the expanded product rule so we can compact it back to get
+$$\frac{d}{d\tau}\left(g_{\mu\nu}\frac{dx^{\mu}}{d\tau}\right) = 0$$
+
+\item
+Given that we are in a Minkowski Space the metric is given by
+$$ds^2 = -dt^2 + dx^2 + dy^2 +dz^2$$ 
+we can show that the vector
+$$R^{\mu} \equiv \left(\begin{array}{c}0\\ -y\\ x\\ 0\end{array}\right)$$
+Satisfies the \emph{Killing's equation}
+\begin{equation}
+\grad_{(\mu}R_{\nu)} = 0
+\label{kill}
+\end{equation}
+Note that we need to lower the index of $R^{\mu}$ by 
+\begin{align*}
+R_{\mu} &= \eta_{\mu\nu}R^{\mu}\\
+&= \left(\begin{array}{cccc}
+	-1	&0	&0	&0\\
+	0	&1	&0	&0\\
+	0	&0	&1	&0\\
+	0	&0	&0	&1\\
+	\end{array}\right)
+	\left(\begin{array}{c}0\\ -y\\ x\\ 0\end{array}\right)\\
+&=	\left(\begin{array}{c}0\\ -y\\ x\\ 0\end{array}\right)
+\end{align*}
+So we can apply equation \ref{kill} and see
+\begin{align*}
+\grad_{(\mu}R_{\nu)} &=\frac{1}{2}\left(\grad_{\mu}R_{\nu} + \grad_{\nu}R_{\mu}\right)
+\end{align*}
+But we see that $\grad_{\mu}R_{\nu}$ is a tensor which we can see
+\begin{align*}
+\grad_{\mu}R_{\nu} &= \left(\begin{array}{cccc}
+	\grad_{0}R_{0}	&\grad_{0}R_{1}	&\grad_{0}R_{2}	&\grad_{0}R_{3}\\
+	\grad_{1}R_{0}	&\grad_{1}R_{1}	&\grad_{1}R_{2}	&\grad_{1}R_{3}\\
+	\grad_{2}R_{0}	&\grad_{2}R_{1}	&\grad_{2}R_{2}	&\grad_{2}R_{3}\\
+	\grad_{3}R_{0}	&\grad_{3}R_{1}	&\grad_{3}R_{2}	&\grad_{3}R_{3}\\
+			\end{array}\right)\\
+&= \left(\begin{array}{cccc}
+	0	&0	&0	&0 \\
+	0	&0	&1	&0\\
+	0	&-1	&0	&0\\
+	0	&0	&0	&0
+			\end{array}\right)
+\end{align*}
+Now we see that the second term ($\grad_{\nu}R_{\mu}$) is just the transpose of $\grad_{\mu}R_{\nu}$ so 
+$$\grad_{\nu}R_{\mu} = \left(\begin{array}{cccc}
+	0	&0	&0	&0 \\
+	0	&0	&-1	&0\\
+	0	&1	&0	&0\\
+	0	&0	&0	&0
+			\end{array}\right)$$
+So we can see that
+\begin{align*}
+\grad_{(\mu}R_{\nu)} &=\frac{1}{2}\left(\grad_{\mu}R_{\nu} + \grad_{\nu}R_{\mu}\right)\\
+&=\frac{1}{2}\left(
+ \left(\begin{array}{cccc}
+	0	&0	&0	&0 \\
+	0	&0	&-1	&0\\
+	0	&1	&0	&0\\
+	0	&0	&0	&0
+			\end{array}\right)
+- \left(\begin{array}{cccc}
+	0	&0	&0	&0 \\
+	0	&0	&-1	&0\\
+	0	&1	&0	&0\\
+	0	&0	&0	&0
+			\end{array}\right)\right)\\
+&= \frac{1}{2}\left(\begin{array}{cccc}
+	0	&0	&0	&0 \\
+	0	&0	&0	&0\\
+	0	&0	&0	&0\\
+	0	&0	&0	&0
+			\end{array}\right)\\
+&= 0
+\end{align*}
+
+\item
+We know that a \emph{Lorentz Boost} in the $x$ direction goes by 
+\begin{align*}
+t' &= \gamma(t - vx)\\
+x' &= \gamma(x - vt)
+\end{align*}
+We can reason from these equations that the change from the unprimed coordinates to the primed coordinates is due to a $\gamma vx$ for $t'$ and a $\gamma vt$ for $x'$. This implies that the killing vector that corresponds to this boost is 
+$$R^{\mu} = \left(\begin{array}{c}
+	\gamma vx\\	\gamma vt\\	0\\	0\\
+		\end{array}\right)$$
+So to see if this satisfies killing's equation we need to lower the index of the vector
+\begin{align*}
+R_{\mu} &= \eta_{\mu\nu}R^{\mu}\\
+&= \left(\begin{array}{cccc}
+	-1	&0	&0	&0\\
+	0	&1	&0	&0\\
+	0	&0	&1	&0\\
+	0	&0	&0	&1\\
+	\end{array}\right)
+	\left(\begin{array}{c}
+	\gamma vx\\	\gamma vt\\	0\\	0\\
+		\end{array}\right)
+=	 \left(\begin{array}{c}
+	-\gamma vx\\	\gamma vt\\	0\\	0\\
+		\end{array}\right)
+\end{align*}
+So now we can test if equation \ref{kill} is true for this $R_{\mu}$ by first finding the tensor 
+\begin{align*}
+\grad_{\mu}R_{\nu} &= \left(\begin{array}{cccc}
+	\grad_{0}R_{0}	&\grad_{0}R_{1}	&\grad_{0}R_{2}	&\grad_{0}R_{3}\\
+	\grad_{1}R_{0}	&\grad_{1}R_{1}	&\grad_{1}R_{2}	&\grad_{1}R_{3}\\
+	\grad_{2}R_{0}	&\grad_{2}R_{1}	&\grad_{2}R_{2}	&\grad_{2}R_{3}\\
+	\grad_{3}R_{0}	&\grad_{3}R_{1}	&\grad_{3}R_{2}	&\grad_{3}R_{3}\\
+			\end{array}\right)\\
+&= \left(\begin{array}{cccc}
+	0	&\gamma v	&0	&0 \\
+	-\gamma v	&0	&0	&0\\
+	0	&0	&0	&0\\
+	0	&0	&0	&0
+			\end{array}\right)
+\end{align*}
+Again we use the fact that $\grad_{\nu}R_{\mu}$ is the transverse of $\grad_{\mu}R_{\nu}$. So we can now test equation \ref{kill} by
+\begin{align*}
+\grad_{(\mu}R_{\nu)} &=\frac{1}{2}\left(\grad_{\mu}R_{\nu} + \grad_{\nu}R_{\mu}\right)\\
+&= \frac{1}{2} \left(\begin{array}{cccc}
+	0	&\gamma v	&0	&0 \\
+	-\gamma v	&0	&0	&0\\
+	0	&0	&0	&0\\
+	0	&0	&0	&0
+			\end{array}\right)
++	\frac{1}{2}\left(\begin{array}{cccc}
+	0	&-\gamma v	&0	&0 \\
+	\gamma v	&0	&0	&0\\
+	0	&0	&0	&0\\
+	0	&0	&0	&0
+			\end{array}\right)\\
+&= \frac{1}{2}\left(\begin{array}{cccc}
+	0	&0	&0	&0 \\
+	0	&0	&0	&0\\
+	0	&0	&0	&0\\
+	0	&0	&0	&0
+			\end{array}\right)\\
+&= 0
+\end{align*}
+So we see the vector $R^{\mu}$ that corresponds to the Lorentz Boost in the $x$ direction is a killing vector. Note that boosts in other directions follow by the same principles and have analogous vectors.
+\end{enumerate}
+
+\section{Problem \HWnum.3}
+\begin{enumerate}[(a)]
+\item
+For the metric
+$$ds^2 = d\theta^2+\sin^2(\theta)d\phi^2$$
+we found in the previous homework that the non-zero Christoffel Connections are
+$$\Gamma^{\theta}_{\phi\phi} = -\sin(\theta)\cos(\theta)$$
+and
+$$\Gamma^{\phi}_{\phi\theta} = \Gamma^{\phi}_{\theta\phi} = \cot(\theta)$$
+So we can use equation \ref{kill} to show that
+\begin{align*}
+\grad_{(\mu}K_{\nu)} &= \frac{1}{2}\left(\grad_{\mu}K_{\nu}+\grad_{\nu}K_{\mu}\right)\\
+&= \frac{1}{2}\left(\partial_{\mu}K_{\nu} - \Gamma^{\lambda}_{\mu\nu}K_{\lambda}+\partial_{\nu}K_{\mu} - \Gamma^{\lambda}_{\nu\mu}K_{\lambda}\right)
+\end{align*}
+Note we use the fact that the Christoffel Connections are torsion free so 
+$$\Gamma^{\lambda}_{\mu\nu} = \Gamma^{\lambda}_{\nu\mu}$$
+So we can see that
+\begin{align*}
+\grad_{(\mu}K_{\nu)} &= \frac{1}{2}\left(\partial_{\mu}K_{\nu} - \Gamma^{\lambda}_{\mu\nu}K_{\lambda}+\partial_{\nu}K_{\mu} - \Gamma^{\lambda}_{\mu\nu}K_{\lambda}\right)\\
+&= \frac{1}{2}\left(\partial_{\mu}K_{\nu} + \partial_{\nu}K_{\mu} - 2\Gamma^{\lambda}_{\mu\nu}K_{\lambda}\right) = 0\\
+&= \partial_{\mu}K_{\nu} + \partial_{\nu}K_{\mu} - 2\Gamma^{\lambda}_{\mu\nu}K_{\lambda} = 0
+\end{align*}
+Now for $\mu=\nu=\theta$ we see that we get
+\begin{align*}
+0 &= \partial_{\theta}K_{\theta} + \partial_{\theta}K_{\theta} - 2\Gamma^{\lambda}_{\theta\theta}K_{\lambda} 
+\end{align*}
+But there is no non-zero $\Gamma$ for $\mu=\nu=\theta$ so the third term drops out 
+\begin{align*}
+0 &= 2\partial_{\theta}K_{\theta} - \cancelto{0}{2\Gamma^{\lambda}_{\theta\theta}K_{\lambda}} \\
+0 &= \partial_{\theta}K_{\theta} 
+\end{align*}
+Now we take $\mu=\nu=\phi$
+\begin{align*}
+0 &= \partial_{\phi}K_{\phi} + \partial_{\phi}K_{\phi} - 2\Gamma^{\lambda}_{\phi\phi}K_{\lambda}
+\end{align*}
+Now we see the only connection that is non-zero is for $\lambda = \theta$ so we get
+\begin{align*}
+0 &= \partial_{\phi}K_{\phi} + \partial_{\phi}K_{\phi} - 2\Gamma^{\theta}_{\phi\phi}K_{\theta}\\
+0 &= 2\partial_{\phi}K_{\phi} + 2\cos(\theta)\sin(\theta)K_{\theta}\\
+0 &= \partial_{\phi}K_{\phi} + \cos(\theta)\sin(\theta)K_{\theta}
+\end{align*}
+Now we take $\mu=\theta$ and $\nu=\phi$ so we get
+\begin{align*}
+0 &= \partial_{\theta}K_{\phi} + \partial_{\phi}K_{\theta} - 2\Gamma^{\lambda}_{\theta\phi}K_{\lambda}
+\end{align*}
+This forces $\lambda = \phi$ for the only non-zero Christoffel Connection. So
+\begin{align*}
+0 &= \partial_{\theta}K_{\phi} + \partial_{\phi}K_{\theta} - 2\Gamma^{\phi}_{\theta\phi}K_{\phi}\\
+0 &= \partial_{\theta}K_{\phi} + \partial_{\phi}K_{\theta} - 2\cot(\theta)K_{\phi}
+\end{align*}
+
+\item
+For the vectors 
+$$K^{\mu}_1 = \left(\begin{array}{c}
+		0\\ 1	\end{array}\right), \ \ \ \ \
+K^{\mu}_2 = \left(\begin{array}{c}
+		\cos(\phi)\\ -\cot(\theta)\sin(\phi)	\end{array}\right),\ \ \ \ \
+K^{\mu}_3 = \left(\begin{array}{c}
+		-\sin(\phi)\\ -\cot(\theta)\cos(\phi)	\end{array}\right)$$
+we can show that they are killing vectors by showing that they satisfy equation \ref{kill}. But first we need to lower the indices of the vectors, so
+\begin{align*}
+K_{{\nu}1} &= g_{\mu\nu}K_1^{\mu}\\
+&= \left(\begin{array}{cc}
+	1	&0\\
+	0	&\sin^2(\theta)
+	\end{array}\right)
+	\left(\begin{array}{c}
+	0\\ 	1	\end{array}\right)\\
+&= \left(\begin{array}{c}
+	0\\	\sin^2(\theta)
+	\end{array}\right)
+\end{align*}
+Now for $K^{\mu}_2$
+\begin{align*}
+K_{{\nu}2} &= g_{\mu\nu}K_2^{\mu}\\
+&= \left(\begin{array}{cc}
+	1	&0\\
+	0	&\sin^2(\theta)
+	\end{array}\right)
+	\left(\begin{array}{c}
+	\cos(\phi)\\ -\cot(\theta)\sin(\phi)	
+	\end{array}\right)\\
+&=	\left(\begin{array}{c}
+	\cos(\phi)\\ -\cos(\theta)\sin(\theta)\sin(\phi)	
+	\end{array}\right)
+\end{align*}
+Now for $K^{\mu}_3$
+\begin{align*}
+K_{{\nu}3} &= g_{\mu\nu}K_3^{\mu}\\
+&= \left(\begin{array}{cc}
+	1	&0\\
+	0	&\sin^2(\theta)
+	\end{array}\right)
+	\left(\begin{array}{c}
+	-\sin(\phi)\\ -\cot(\theta)\cos(\phi)	\end{array}\right)\\
+&=	\left(\begin{array}{c}
+	-\sin(\phi)\\ -\cos(\theta)\sin(\theta)\cos(\phi)\end{array}\right)
+\end{align*}
+If we take the result from part (a) we see that a vector $K_{\mu}$ is a killing vector and is a solution to equation \ref{kill} if all the equations
+\begin{align*}
+\partial_{\theta}K_{\theta} &= 0\\
+\partial_{\phi}K_{\phi} + \cos(\theta)\sin(\theta)K_{\theta} &= 0\\
+\partial_{\theta}K_{\phi} + \partial_{\phi}K_{\theta} - 2\cot(\theta)K_{\phi} &= 0 
+\end{align*}
+hold true. So we see that for $K_{\mu1}$ we have
+\begin{align*}
+\partial_{\theta}K_{\theta1} &= \partial_{\theta}(0) = 0
+\end{align*}
+and
+\begin{align*}
+\partial_{\phi}K_{\phi} + \cos(\theta)\sin(\theta)K_{\theta} &= \partial_{\phi}\sin^2(\theta) + \cos(\theta)\sin(\theta)(0) = 0
+\end{align*}
+and
+\begin{align*}
+\partial_{\theta}K_{\phi} + \partial_{\phi}K_{\theta} - 2\cot(\theta)K_{\phi} &= \partial_{\theta}\sin^2(\theta) + \partial_{\phi}(0) - 2\cot(\theta)\sin^2(\theta)\\
+&= 2\sin(\theta)\cos(\theta) - 2\cos(\theta)\sin(\theta) = 0
+\end{align*}
+So we see that $K^{\mu}_{1}$ is a killing vector. Now for $K^{\mu}_{2}$ we see that
+\begin{align*}
+\partial_{\theta}K_{\theta2} &= \partial_{\theta}\cos(\phi) = 0
+\end{align*}
+and
+\begin{align*}
+\partial_{\phi}K_{\phi} + \cos(\theta)\sin(\theta)K_{\theta} &= -\partial_{\phi}\cos(\theta)\sin(\theta)\sin(\phi) + \cos(\theta)\sin(\theta)\cos(\phi)\\
+&= -\cos(\theta)\sin(\theta)\cos(\phi) + \cos(\theta)\sin(\theta)\cos(\phi) = 0
+\end{align*}
+and
+\begin{align*}
+\partial_{\theta}K_{\phi} + \partial_{\phi}K_{\theta} - 2\cot(\theta)K_{\phi} &= -\partial_{\theta}\cos(\theta)\sin(\theta)\sin(\phi) + \partial_{\phi}\cos(\phi) + 2\cot(\theta)\cos(\theta)\sin(\theta)\sin(\phi)\\
+&= \sin^2(\theta)\sin(\phi) - \cos^2(\theta)\sin(\phi) - \sin(\phi) + 2\cos^2(\theta)\sin(\phi)\\
+&= \sin^2(\theta)\sin(\phi) + \cos^2(\theta)\sin(\phi) - \sin(\phi)\\
+&= \sin(\phi) - \sin(\phi) = 0
+\end{align*}
+So the vector $K^{\mu}_{2}$ is also a killing vector. Now for the vector $K^{\mu}_{3}$ we have
+\begin{align*}
+\partial_{\theta}K_{\theta3} &= -\partial_{\theta}\sin(\phi) = 0
+\end{align*}
+and 
+\begin{align*}
+\partial_{\phi}K_{\phi} + \cos(\theta)\sin(\theta)K_{\theta} &= -\partial_{\phi}\cos(\theta)\sin(\theta)\cos(\phi) - \cos(\theta)\sin(\theta)\sin(\phi)\\
+&= \cos(\theta)\sin(\theta)\sin(\phi) - \cos(\theta)\sin(\theta)\sin(\phi) = 0
+\end{align*}
+and
+\begin{align*}
+\partial_{\theta}K_{\phi} + \partial_{\phi}K_{\theta} - 2\cot(\theta)K_{\phi} &= -\partial_{\theta}\cos(\theta)\sin(\theta)\cos(\phi) - \partial_{\phi}\sin(\phi) + 2\cot(\theta)\cos(\theta)\sin(\theta)\cos(\phi)\\
+&= \sin^2(\theta)\cos(\phi) - \cos^2(\theta)\cos(\phi) - \cos(\phi) + 2\cos^2(\theta)\cos(\phi)\\
+&= \sin^2(\theta)\cos(\phi) + \cos^2(\theta)\cos(\phi) - \cos(\phi) \\
+&= \cos(\phi) - \cos(\phi) = 0
+\end{align*}
+So we see that $K^{\mu}_3$ is also a killing vector. 
+
+\item
+Given the definition of the \emph{commutator} of two vector fields
+\begin{equation}
+[X,Y]^{\mu} \equiv X^{\nu}\partial_{\nu}Y^{\mu} - Y^{\nu}\partial_{\nu}X^{\mu}
+\label{commut}
+\end{equation}
+We can show that this expression follows from using covariant derivatives
+$$\grad_{\mu}V^{\nu} = \partial_{\mu}V^{\nu} + \Gamma^{\nu}_{\mu\lambda}V^{\lambda}$$
+by
+\begin{align*}
+[X,Y]^{\mu} &= X^{\nu}\grad_{\nu}Y^{\mu} - Y^{\nu}\grad_{\nu}X^{\mu}\\
+&= X^{\nu}\left(\partial_{\nu}Y^{\mu} + \Gamma^{\mu}_{\nu\lambda}Y^{\lambda}\right) - Y^{\nu}\left(\partial_{\nu}X^{\mu}+ \Gamma^{\mu}_{\nu\lambda}X^{\lambda}\right) \\
+&= X^{\nu}\partial_{\nu}Y^{\mu} - Y^{\nu}\partial_{\nu}X^{\mu} + X^{\nu}\Gamma^{\mu}_{\nu\lambda}Y^{\lambda} - Y^{\nu}\Gamma^{\mu}_{\nu\lambda}X^{\lambda} 
+\end{align*}
+Now we rename the indices of the last term such that $\nu\rightarrow\lambda$ and $\lambda\rightarrow\nu$. So
+\begin{align*}
+[X,Y]^{\mu} &= X^{\nu}\partial_{\nu}Y^{\mu} - Y^{\nu}\partial_{\nu}X^{\mu} + X^{\nu}\Gamma^{\mu}_{\nu\lambda}Y^{\lambda} - Y^{\lambda}\Gamma^{\mu}_{\lambda\nu}X^{\nu} \\
+&= X^{\nu}\partial_{\nu}Y^{\mu} - Y^{\nu}\partial_{\nu}X^{\mu} + X^{\nu}Y^{\lambda}\left(\Gamma^{\mu}_{\nu\lambda} - \Gamma^{\mu}_{\lambda\nu}\right)
+\end{align*}
+Now we use the fact that the Christoffel connection is torsion free so that
+$$\Gamma^{\mu}_{\lambda\nu} = \Gamma^{\mu}_{\nu\lambda}$$
+So we can see that
+\begin{align*}
+[X,Y]^{\mu} &= X^{\nu}\partial_{\nu}Y^{\mu} - Y^{\nu}\partial_{\nu}X^{\mu} + X^{\nu}Y^{\lambda}\left(\Gamma^{\mu}_{\nu\lambda} - \Gamma^{\mu}_{\lambda\nu}\right)\\
+&= X^{\nu}\partial_{\nu}Y^{\mu} - Y^{\nu}\partial_{\nu}X^{\mu} + X^{\nu}Y^{\lambda}\left(\Gamma^{\mu}_{\nu\lambda} - \Gamma^{\mu}_{\nu\lambda}\right)\\
+&= X^{\nu}\partial_{\nu}Y^{\mu} - Y^{\nu}\partial_{\nu}X^{\mu} 
+\end{align*}
+Note that we arrived at our original definition. This implies that the commutator is a tensor quantity.
+
+\item
+We can now find the commutator of the killing vectors ($K^{\mu}_{i}$) we found in part (b) by using equation \ref{commut}. So for $K^{\mu}_1$ and $K^{\mu}_2$ we have 
+\begin{align*}
+[K_1,K_2]^{\mu} &= K^{\nu}_1\partial_{\nu}K^{\mu}_{2} -K^{\nu}_2\partial_{\nu}K^{\mu}_{1}\\
+&= \left((0)\partial_{\theta}+(1)\partial_{\phi}\right)K^{\mu}_{2} - \left(\cos(\phi)\partial_{\theta} -\cot(\theta)\sin(\phi)\partial_{\phi}\right)K^{\mu}_{1}\\
+&= \partial_{\phi}K^{\mu}_{2} - \cos(\phi)\partial_{\theta}K^{\mu}_{1} + \cot(\theta)\sin(\phi)\partial_{\phi}K^{\mu}_{1}\\
+&= \partial_{\phi}\left(\begin{array}{c}
+			\cos(\phi)\\	-\cot(\theta)\sin(\phi)
+		\end{array}\right)
+ - \cos(\phi)\partial_{\theta}\left(\begin{array}{c}
+			0\\	1
+		\end{array}\right)
++ \cot(\theta)\sin(\phi)\partial_{\phi}\left(\begin{array}{c}
+			0\\	1
+		\end{array}\right)\\
+&= \left(\begin{array}{c}
+			-\sin(\phi)\\	-\cot(\theta)\cos(\phi)
+		\end{array}\right)
+ - \left(\begin{array}{c}
+			0\\	0
+		\end{array}\right)
++ \left(\begin{array}{c}
+			0\\	0
+		\end{array}\right)\\
+&= \left(\begin{array}{c}
+			-\sin(\phi)\\	-\cot(\theta)\cos(\phi)
+		\end{array}\right) = K^{\mu}_3
+\end{align*}
+Note that if we flip the order of the killing vectors we just get
+$$[K_2,K_1]^{\mu} = -K^{\mu}_3$$
+this follows for any two vectors. Now for $K^{\mu}_1$ and $K^{\mu}_3$ we get
+\begin{align*}
+[K_1,K_3]^{\mu} &= K^{\nu}_1\partial_{\nu}K^{\mu}_{3} -K^{\nu}_3\partial_{\nu}K^{\mu}_{1}\\
+&= \partial_{\theta}K^{\mu}_{3} -(-\sin(\phi)\partial_{\theta} - \cot(\theta)\sin(\phi)\partial_{\phi})K^{\mu}_{1}\\
+&= \partial_{\theta}K^{\mu}_{3} + \sin(\phi)\cancelto{0}{\partial_{\theta}K^{\mu}_1} + \cot(\theta)\sin(\phi)\cancelto{0}{\partial_{\phi}K^{\mu}_{1}}\\
+&= \partial_{\theta}\left(\begin{array}{c}
+			-\sin(\phi)\\	-\cot(\theta)\cos(\phi)
+		\end{array}\right)\\
+&=\left(\begin{array}{c}
+			-\cos(\phi)\\	\cot(\theta)\sin(\phi)
+		\end{array}\right) = -K^{\mu}_2
+\end{align*}
+Again if we change the order we get
+$$[K_3,K_1]^{\mu} = K^{\mu}_2$$
+Now for the last two killing vectors $K^{\mu}_2$ and $K^{\mu}_3$ we have
+\begin{align*}
+[K_2,K_3]^{\mu} &= K^{\nu}_2\partial_{\nu}K^{\mu}_{3} -K^{\nu}_3\partial_{\nu}K^{\mu}_{2}\\
+&= (\cos(\phi)\partial_{\theta} - \cot(\theta)\sin(\phi)\partial_{\phi})K^{\mu}_{3} - (-\sin(\phi)\partial_{\theta} - \cot(\theta)\cos(\phi)\partial_{\phi})K^{\mu}_{2}\\
+&= \cos(\phi)\partial_{\theta}K^{\mu}_3 - \cot(\theta)\sin(\phi)\partial_{\phi}K^{\mu}_{3} + \sin(\phi)\partial_{\theta}K^{\mu}_2 + \cot(\theta)\cos(\phi)\partial_{\phi}K^{\mu}_{2}\\
+&= \cos(\phi)\partial_{\theta}\left(\begin{array}{c}
+				-\sin(\phi)\\	-\cot(\theta)\cos(\phi)
+				\end{array}\right)
+- \cot(\theta)\sin(\phi)\partial_{\phi}\left(\begin{array}{c}
+				-\sin(\phi)\\	-\cot(\theta)\cos(\phi)
+				\end{array}\right)\\
+& \ \ \ + \sin(\phi)\partial_{\theta}\left(\begin{array}{c}
+				\cos(\phi)\\	-\cot(\theta)\sin(\phi)
+				\end{array}\right)
++ \cot(\theta)\cos(\phi)\partial_{\phi}\left(\begin{array}{c}
+				\cos(\phi)\\	-\cot(\theta)\sin(\phi)
+				\end{array}\right)
+\end{align*}
+\begin{align*}
+&= \cos(\phi)\left(\begin{array}{c}
+				0\\	\csc^2(\theta)\cos(\phi)
+				\end{array}\right)
+- \cot(\theta)\sin(\phi)\left(\begin{array}{c}
+				-\cos(\phi)\\	\cot(\theta)\sin(\phi)
+				\end{array}\right)\\
+& \ \ \ + \sin(\phi)\left(\begin{array}{c}
+				0\\	\csc^2(\theta)\sin(\phi)
+				\end{array}\right)
++ \cot(\theta)\cos(\phi)\left(\begin{array}{c}
+				-\sin(\phi)\\	-\cot(\theta)\cos(\phi)
+				\end{array}\right)\\
+&= \left(\begin{array}{c}
+				0\\	\csc^2(\theta)\cos^2(\phi)
+				\end{array}\right)
+- \left(\begin{array}{c}
+				-\cot(\theta)\sin(\phi)\cos(\phi)\\						\cot^2(\theta)\sin^2(\phi)
+				\end{array}\right)\\
+& \ \ \ + \left(\begin{array}{c}
+				0\\	\csc^2(\theta)\sin^2(\phi)
+				\end{array}\right)
++ \left(\begin{array}{c}
+				-\cot(\theta)\cos(\phi)\sin(\phi)\\	-\cot^2(\theta)\cos^2(\phi)
+				\end{array}\right)
+\end{align*}
+Now if we combine the vectors we get
+\begin{align*}
+&= \left(\begin{array}{c}
+	\cot(\theta)\sin(\phi)\cos(\phi)-\cot(\theta)\cos(\phi)\sin(\phi)\\
+	\csc^2(\theta)\cos^2(\phi) - \cot^2(\theta)\sin^2(\phi) + \csc^2(\theta)\sin^2(\phi) - \cot^2(\theta)\cos^2(\phi)
+				\end{array}\right)\\
+&= \left(\begin{array}{c}
+		0\\
+	\csc^2(\theta) - \cot^2(\theta)
+				\end{array}\right)
+\end{align*}
+Note that
+\begin{align*}
+\csc^2(\theta) - \cot^2(\theta) = \frac{1}{\sin^2(\theta)} - \frac{\cos^2(\theta)}{\sin^2(\theta)} = \frac{1-\cos^2(\theta)}{\sin^2(\theta)} = \frac{\sin^2(\theta)}{\sin^2(\theta)} = 1
+\end{align*}
+So we see that 
+\begin{align*}
+[K_2,K_3]^{\mu} &= \left(\begin{array}{c}
+		0\\
+	\csc^2(\theta) - \cot^2(\theta)
+				\end{array}\right)\\
+[K_2,K_3]^{\mu} &= \left(\begin{array}{c}
+		0\\  	1
+		\end{array}\right) = K^{\mu}_{1}
+\end{align*}
+Again flipping the order yields a negative so
+$$[K_3,K_2]^{\mu} = -K^{\mu}_1$$
+So we can see in general that
+$$[K_i,K_j]^{\mu} = \levi_{ij}^{\ \ k}K^{\mu}_k$$
+Note that if the indices are the same the \emph{Levi-Chivita} symbol becomes zero. This is what we expect the commutator of the same vector with itself is zero.
+\end{enumerate}
+
+\end{document}
+

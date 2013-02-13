@@ -1,0 +1,122 @@
+\documentclass[11pt]{article}
+
+\usepackage{latexsym}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{enumerate}
+\usepackage{amsmath}
+\usepackage{cancel}
+\numberwithin{equation}{section}
+
+\setlength{\evensidemargin}{.25in}
+\setlength{\oddsidemargin}{-.25in}
+\setlength{\topmargin}{-.75in}
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{9.5in}
+\newcommand{\due}{January 21th, 2011}
+\newcommand{\HWnum}{1}
+\input{/home/joey/Documents/Class/Define.tex}
+
+\begin{document}
+\input{../title.tex}
+
+\section{Problem \#1 (1.4)}
+Yes you can refer to one object as being "twice as hot" as another object, but one has to be careful as this relation is dependent on which temperature scale you are in. If the scale changes then term "twice" loses its meaning and relevance.
+
+\section{Problem \#2 (1.12)}
+
+
+To find the average volume per molecule of an ideal gas we need to use the \emph{Ideal Gas Law}
+\begin{equation}
+PV = Nk_bT
+\label{IdealGas}
+\end{equation}
+We can solve this equation for volume of the total gas
+$$V = \frac{Nk_bT}{P}$$
+and we can divide $V$ by the total number of molecules to find the volume per molecule to get
+$$\frac{V}{N} = \frac{k_bT}{P}$$
+Now if we assume that we are at room temperature ($300\unit{K}$) and at 1 atmosphere of pressure (or $1.01\times10^{5}\unit{Pa}$). We can calculate $V/N$ as
+\begin{align*}
+\frac{V}{N} &= \frac{k_bT}{P}\\
+&= \frac{(1.38\times10^{-23}\unit{J\ K^{-1}})(300\unit{K})}{1.01\times10^{5}\unit{Pa}}\\
+&= 4.10\times10^{-26}\unit{J\ m^{2}\ N^{-1}} = 4.10\times10^{-26}\unit{m^3}
+\end{align*}
+So the average distance between molecules is given by
+$$d = (V)^{1/3} = (4.10\times10^{-26}\unit{m^3})^{1/3} = 3.45\times10^{-9}\unit{m}$$
+Just for reference a small molecule's size is on the order of an Angstrom or $10^{-10}\unit{m}$ so the distance between molecules is an order of magnitude greater.
+
+\section{Problem \#3 (1.14)}
+To calculate the mass of a mol of dry air which has a composition of $78\%$ $N_2$, $21\%$ $O_2$, and $1\%$ $Ar$. Now we know that 1 mol of each of these gases is just the molecular mass of the molecule (or atom) so $0.78\unit{mols}$ of $N_2$ gas has the mass of $0.72(28\unit{g\ mol^{-1}}) = 20.2\unit{g\ mol^{-1}}$ and for $O_2$ we get $13.4\unit{g\ mol^{-1}}$ and for $Ar$ we get $0.400\unit{g\ mol^{-1}}$ so the total molar mass of dry air is the sum of all three which is $34.0\unit{g\ mol^{-1}}$ and for one mol this is just $34.0\unit{g}$
+
+\section{Problem \#4 (1.16)}
+\begin{enumerate}[(a)]
+\item
+If we imagine a slab of air with a thickness $dz$, area $A$, and mass density $\rho$. So we can say that the air has a weight of
+$$W = g\rho Adz$$
+we assume that the air is at mechanical equilibrium. This implies that the pressure below is equal to the weight of the air plus the pressure above. If we assume that pressure is a function of height we can say that the forces at equilibrium will look like
+$$AP(z+dz) + g\rho Adz = AP(z)$$
+Which we can rearrange as
+$$\frac{P(z+dz) - P(z)}{dz} = -g\rho$$
+Where $g$ is the acceleration due to gravity. Now we see that the right hand side is the same as the definition of a derivative so we can say that
+$$\frac{dP}{dz} = -g\rho$$
+
+\item
+Now if we start with equation \ref{IdealGas} as solve for the density of air we see that
+$$\frac{n}{V} = \frac{P}{k_BT}$$
+where $n/V$ is the molecular density of air. To find the mass density of air $\rho$ we see that we just need to multiply by the mass. So
+$$\rho = \frac{n}{V}m$$
+so we can combine this with the result from part (a) to see that
+\begin{align*}
+\frac{dP}{dz} &= -g\rho\\
+&= -g\frac{n}{V}m\\
+&= -g\frac{P}{k_BT}m = -\frac{mg}{k_BT}P
+\end{align*}
+This is called the \emph{barometric equation}
+
+\item
+Now we will assume that the temperature $T$ is independent of the height $z$. We can solve the \emph{barometric equation} for pressure as a function of height. Note we use the method of separation of variables.
+\begin{align}
+\frac{dP}{dz} &= -\frac{mg}{k_BT}P\\
+&\Downarrow\\
+\int\frac{dP}{P} &= -\int\frac{mg}{k_BT}dz\\
+\ln(P) &= -\frac{mg}{k_BT}z + C\\
+&\Downarrow\\
+P(z) &= e^{-mgz/k_BT+C}\\
+&= e^Ce^{-mgz/k_BT} = P_0e^{-mgz/k_BT}
+\end{align}
+Note that $P_0$ is a constant determined by initial conditions. Note that under constant temperature we see that the density is proportional to the pressure by
+$$\frac{n}{V} = \frac{P}{k_BT}$$
+so we see that the density goes by a similar equation
+$$\frac{n}{V} = \frac{P_0}{k_BT}e^{-mgz/k_BT}$$
+\end{enumerate}
+
+\section{Problem \#5 (1.18)}
+To find the root mean square velocity of a nitrogen molecule at room temperature we use the equation
+$$v_{rms} = \sqrt{\frac{3k_BT}{m}}$$
+where the mass of a nitrogen molecule is found by
+$$\frac{28\unit{g}}{\cancel{1\unit{mol}}}\frac{\cancel{1\unit{mol}}}{6.02\times10^{23}\unit{molecules}} = 4.65\times10^{-23}\unit{g} = 4.65\times10^{-26}\unit{kg}$$
+So the root mean square velocity is
+\begin{align*}
+v_{rms} &= \sqrt{\frac{3k_BT}{m}}\\
+&= \sqrt{\frac{3(1.38\times10^{-23}\unit{J\ K})(300\unit{K})}{4.65\times10^{-23}\unit{kg}}}\\
+&= \sqrt{2.67\times10^{5}\unit{m^2\ s^{-2}}}\\
+&= 5.17\times10^{2}\unit{m\ s^{-1}}
+\end{align*}
+
+\section{Problem \#6 (1.23)}
+To calculate the total thermal energy in a liter of helium at room temperature we use 
+$$U_{\textnormal{thermal}} = Nf\frac{1}{2}k_BT$$
+where $f$ is the number of degrees of freedom. Which in the case of helium gas is 3 for each direction of kinetic energy. Also note that we are using the fact that $1\unit{mol}$ of an ideal gas takes up $22.4\unit{L}$ of volume so $1\unit{L}$ is $0.045\unit{mol}$. So we can find $N$ by multiplying by $6.02\times10^{23}$. So $N=2.69\times10^{22}$. Now we can calculate $U$ 
+\begin{align*}
+U_{\textnormal{thermal}} &= Nf\frac{1}{2}k_BT\\
+&= (2.69\times10^{22})(3)\frac{1}{2}(1.38\times10^{-23}\unit{J\ K^{-1}})(300\unit{K})\\
+&= 167\unit{J}
+\end{align*}
+For a liter of air we assume that we have the same number of molecules but this time since most of the gas is made of diatomic nitrogen and oxygen we have to account for the extra 2 degrees of freedom. Note that we are neglecting the small amounts of single atom argon and other gases in the air. So 
+\begin{align*}
+U_{\textnormal{thermal}} &= Nf\frac{1}{2}k_BT\\
+&= (2.69\times10^{22})(5)\frac{1}{2}(1.38\times10^{-23}\unit{J\ K^{-1}})(300\unit{K})\\
+&= 278\unit{J}
+\end{align*}
+\end{document}
+

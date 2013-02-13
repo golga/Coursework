@@ -1,0 +1,75 @@
+\documentclass[11pt]{article}
+
+\usepackage{latexsym}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{enumerate}
+\usepackage{amsmath}
+\usepackage{cancel}
+\numberwithin{equation}{section}
+
+\setlength{\evensidemargin}{.25in}
+\setlength{\oddsidemargin}{-.25in}
+\setlength{\topmargin}{-.75in}
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{9.5in}
+\newcommand{\due}{February 3rd, 2011}
+\newcommand{\HWnum}{3}
+\input{/home/joey/Documents/Class/Define.tex}
+
+\begin{document}
+\input{../title.tex}
+
+\section{Problem \#1}
+\begin{enumerate}[(a)]
+\item
+A base-centered cubic lattice is not a \emph{Bravais Lattice}, because we can clearly see that the atom centered on the horizontal face does not look the same as the nodes on the corner. We can say that the smallest basis for this lattice is just the horizontal face of the lattice. See attached for a drawing of the basis.
+
+\item
+A side-centered cubic lattice is very similar to the base-centered lattice except the centered atom is on the center of sides of the cubes instead of the top and bottom. By the same reasoning we see that the center atoms do not look the same as the other nodes in the lattice therefore this is not a \emph{Bravais Lattice}. So we can determine that the basis the center node of two adjacent sides and the corner node that sits on the connection between the two faces. See attached for a drawing of the basis.
+
+\item
+A edge-centered cubic lattice is not a \emph{Bravais Lattice} because the nodes on the center of the edges only have 2 neighboring nodes while the corner nodes have 4 neighboring nodes. This implies that each node is not the same. The basis of this lattice is just the corner 3 nodes of a face. See attached for a drawing of the basis.
+\end{enumerate}
+
+\section{Problem \#2}
+\begin{enumerate}[(a)]
+\item
+The Diamond lattice's base lattice is face-centered cubic. The face-centered cubic lattice has six nodes located on the center of each face as well as eight nodes for each corner. Each atom associated with a face node is shared with between two faces, therefore each node contributes $1/2$ an atom. The corner atoms are shared between eight different corner nodes, note that this implies that the total number of atoms the corner nodes contribute is one. So the total number of atoms due to the face centered-cubic lattice is $6\frac{1}{2}+1=4$.
+
+Note that the Diamond lattice has four extra nodes not included with the face-centered lattice. These four nodes each form a tetrahedral bond with the four adjacent face-centered nodes. But each of these tetrahedral nodes are not shared so each node represents an atom. This means that the total number of atoms in the primitive cell of the diamond lattice is eight. Note that there is no way to pick a primitive cell with a basis containing one atom.
+
+\item
+In a conventional cubic cell there is only one atom. Note that there are 8 nodes (one on each corner), but each atom is split between 8 nodes. So each corner node only represents $1/8$th of an atom so the total number of atoms is given by $8\frac{1}{8} = 1$ atom. Note that this is a primitive cell.
+
+\item
+
+
+\item
+The packing fraction for hard spheres on the diamond lattice is $0.34$ this implies that the diamond lattice is not dense.
+
+\end{enumerate}
+
+\section{Problem \#3}
+We see that the basis vectors in figure 11 of Kittel point from the corner node to the center node. This in effect rotates the axes by $45$ degrees. So if we have planes with indices $(100)$ and $(001)$ in the conventional cubic cell they will no longer just be one component, now they will have two. Note that the $(100)$ is along the $x$ axis by no is rotated into the $z$ axis.  So $(100)\rightarrow(101)$ and $(001)\rightarrow(011)$.
+
+
+\section{Problem \#4}
+We know that $a$ and $c$ are related through \emph{Pythagoras' Theorem} since we can make a right triangle with half the height and $a$. See attached for the drawing. The other leg of triangle can be found by
+$$l = a\frac{\cos(\pi/3)}{\cos(\pi/6)} = a\frac{1}{2}\frac{2}{\sqrt{3}} = \frac{a}{\sqrt{3}}$$
+Now by \emph{Pythagoras' Theorem}
+\begin{align*}
+a^2 &= l^2+\left(\frac{c}{2}\right)^2\\
+a^2 &= \left(\frac{a}{\sqrt{3}}\right)^2 +\left(\frac{c}{2}\right)^2\\
+&\Downarrow\\
+a^2 - \left(\frac{a}{\sqrt{3}}\right)^2  &= \left(\frac{c}{2}\right)^2\\
+a^2 - \frac{a^2}{3}  &= \frac{c^2}{4}\\
+\frac{2a^2}{3}  &= \frac{c^2}{4}\\
+&\Downarrow\\
+\frac{a^2}{c^2} &= \frac{3}{8}\\
+\frac{a}{c}  &= \sqrt{\frac{3}{8}}
+\end{align*}
+
+
+\end{document}
+

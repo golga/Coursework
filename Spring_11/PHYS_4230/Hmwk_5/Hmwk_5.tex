@@ -1,0 +1,167 @@
+\documentclass[11pt]{article}
+
+\usepackage{latexsym}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{enumerate}
+\usepackage{amsmath}
+\usepackage{cancel}
+\numberwithin{equation}{section}
+
+\setlength{\evensidemargin}{.25in}
+\setlength{\oddsidemargin}{-.25in}
+\setlength{\topmargin}{-.75in}
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{9.5in}
+\newcommand{\due}{February 18th, 2011}
+\newcommand{\HWnum}{5}
+\input{/home/joey/Documents/Class/Define.tex}
+
+\begin{document}
+\input{../title.tex}
+
+\section{Problem 3.5}
+To find a formula for the temperature of an Einstein solid in the limit of $q<<N$. We start the result from homework \#3 problem 2.17
+\begin{equation}
+\Omega(N,q) = \left(\frac{Ne}{q}\right)^{q}
+\label{217}
+\end{equation}
+Note that the entropy of the system follows from 
+$$S = k_B\ln(\Omega)$$
+so from \ref{217} we can find the entropy of the system as
+\begin{align*}
+S &= k_B\ln\left(\frac{Ne}{q}\right)^{q}
+\end{align*}
+Now we know that the energy is quantized by $q$ so we can say that
+$$U = hfq = \epsilon q$$
+So we see that our entropy as a function of energy is 
+$$S = k_B\ln\left(\frac{N\epsilon e}{U}\right)^{U/\epsilon}$$
+Which we can reduce as
+\begin{align*}
+S &= k_B\ln\left(\frac{N\epsilon e}{U}\right)^{U/\epsilon}\\
+&= k_B\frac{U}{\epsilon}\ln\left(\frac{N\epsilon e}{U}\right)\\
+&= k_B\frac{U}{\epsilon}\left(\ln(N)+\ln(\epsilon)+\ln(e)-\ln(U)\right)\\
+&= k_B\frac{U}{\epsilon}\left(\ln(N)+\ln(\epsilon)-\ln(U) + 1\right)
+\end{align*}
+Now we can use the definition of temperature
+$$\frac{1}{T} = \left(\frac{\partial S}{\partial U}\right)_{N,V}$$
+to find the equation for the temperature. Now we take the derivative of $S$ with respect to $U$ to find that
+\begin{align*}
+\frac{1}{T} = \left(\frac{\partial S}{\partial U}\right)_{N,V} &= \frac{\partial}{\partial U}\left(k_B\frac{U}{\epsilon}\left(\ln(N)+\ln(\epsilon)-\ln(U) + 1\right)\right)\\
+&= \frac{\partial}{\partial U}\left(k_B\frac{U}{\epsilon}\ln(N)+k_B\frac{U}{\epsilon}\ln(\epsilon)-k_B\frac{U}{\epsilon}\ln(U) + k_B\frac{U}{\epsilon}\right)\\
+&= \frac{k_B\ln(N)}{\epsilon}+\frac{k_B\ln(\epsilon)}{\epsilon} + \frac{k_B}{\epsilon}-\frac{k_B}{\epsilon}\frac{\partial}{\partial U}U\ln(U)\\
+&= \frac{k_B\ln(N)}{\epsilon}+\frac{k_B\ln(\epsilon)}{\epsilon} + \frac{k_B}{\epsilon}-\frac{k_B}{\epsilon}\left(\ln(U) + \frac{U}{U}\right)\\
+&= \frac{k_B\ln(N)}{\epsilon}+\frac{k_B\ln(\epsilon)}{\epsilon} + \frac{k_B}{\epsilon} - \frac{k_B}{\epsilon} - \frac{k_B}{\epsilon}\ln(U)\\
+&= \frac{k_B\ln(N)}{\epsilon}+\frac{k_B\ln(\epsilon)}{\epsilon} - \frac{k_B}{\epsilon}\ln(U)
+\end{align*}
+\begin{align*}
+&= \frac{k_B}{\epsilon}\left(\ln(N) + \ln(\epsilon) - \ln(U)\right)\\
+\frac{1}{T}  &= \frac{k_B}{\epsilon}\ln\left(\frac{N\epsilon}{U}\right)
+\end{align*}
+Now if we solve for $U$ we get
+\begin{align*}
+\frac{1}{T}  &= \frac{k_B}{\epsilon}\ln\left(\frac{N\epsilon}{U}\right)\\
+&\Downarrow\\
+\frac{\epsilon}{k_BT} &= \ln\left(\frac{N\epsilon}{U}\right)\\
+e^{\epsilon/k_BT} &= \frac{N\epsilon}{U}\\
+&\Downarrow\\
+U &= N\epsilon e^{-\epsilon/k_BT} 
+\end{align*}
+
+\section{Problem 3.8}
+Given the relation for heat capacity 
+\begin{equation}
+C_V \equiv \left(\frac{\partial U}{\partial T}\right)_{N,V}
+\label{HeatCap}
+\end{equation}
+we can find the heat capacity of an Einstein solid at the low temperature (when $q<<N$) using the equation we calculated in problem \#1. 
+$$U = N\epsilon e^{-\epsilon/k_BT}$$
+So we can calculate $C_V$ by equation \ref{HeatCap}
+\begin{align*}
+C_V &= \left(\frac{\partial U}{\partial T}\right)_{N,V}\\
+&= N\epsilon \frac{\partial}{\partial T}e^{-\epsilon/k_BT}\\
+&= N\epsilon e^{-\epsilon/k_BT}\left(\frac{-\epsilon}{k_B}\frac{-1}{T^2}\right)\\
+&= \frac{N\epsilon^2}{k_BT^2} e^{-\epsilon/k_BT}
+\end{align*}
+See attached for the sketch of this curve.
+
+\section{Problem 3.10}
+\begin{enumerate}[(a)]
+\item
+To find the change in the entropy of the ice cube melting at $273\unit{K}$ we use
+$$\Delta S = \frac{Q}{T}$$
+Note that the heat gained through this process is from the latent heat
+$$Q = Lm$$
+where the latent heat of fusion for water is $L = 333\unit{kJ\ kg^{-1}}$ and the mass of the ice cube is $m = 0.03\unit{kg}$. So we calculate the heat gain as
+\begin{align*}
+Q &= Lm = (333\unit{kJ\ kg^{-1}})(0.03\unit{kg}) = 9.99\unit{kJ} = 9.99\times10^{3}\unit{J}
+\end{align*}
+So the entropy of change is given by
+$$\Delta S^{water}_1 = \frac{Q}{T} = \frac{9.99\times10^{3}\unit{J}}{273\unit{K}} = 36.6\unit{J\ K^{-1}}$$
+
+\item
+To calculate the amount of entropy gained by the water as it raised in temperature from $273\unit{K}$ to $298\unit{K}$ we use the equation
+\begin{equation}
+\Delta S = \int_{T_i}^{T_f}\frac{C_V}{T}dT
+\label{Entro}
+\end{equation}
+Where $C_V$ is the heat capacity of the water given as $C_V = cm$. Note that $c$ is the specific heat of water given as $c = 4.18\unit{J\ g^{-1}\ K^{-1}}$. We calculate the heat capacity as
+$$C_V = cm = (4.18\unit{J\ g^{-1}\ K^{-1}})(30\unit{g}) = 125.4\unit{J\ K^{-1}}$$
+So by equation \ref{Entro} yields
+\begin{align*}
+\Delta S^{water}_2 &= \int_{T_i}^{T_f}\frac{C_V}{T}dT\\
+&= \left.C_V \ln(T)\right|_{T_i}^{T_f}\\
+&= C_V\left(\ln(T_f) - \ln(T_i)\right)\\
+&= C_V\ln\left(\frac{T_f}{T_i}\right) \\
+&= (125.4\unit{J\ K^{-1}})\ln\left(\frac{298\unit{K}}{273\unit{K}}\right) = 11.0\unit{J\ K^{-1}}
+\end{align*}
+Note that we assume that $C_V$ is independent of temperature.
+
+\item
+If we assume that the heat gained by the water is the same amount of heat that the air lost. Note this is during the phase where the water is melting but the temperature is not changing. So from part (a) we can say that the air's heat is $Q = -9.99\times10^{3}\unit{J}$. This heat loss was at $298\unit{K}$ so we can say that the entropy change for this phase is
+$$\Delta S^{air}_1 = \frac{Q}{T} = \frac{-9.99\times10^{3}\unit{J}}{298\unit{K}} = -33.5\unit{J\ K^{-1}}$$
+Now we need to find the entropy change the air undergoes while the water gains $25\unit{K}$. Note that we will again assume that the heat lost by the air is the same as the heat gained by the water. We can find the amount of heat gained by the water by
+$$Q = C_V\Delta T$$
+Where $C_V = 125.4\unit{J\ K^{-1}}$ as found in part (b). So the heat lost by the air in this process is
+$$Q^{air} = -Q^{water} = -C_V\Delta T = -(125.4\unit{J\ K^{-1}})(25\unit{K}) = -3135\unit{J}$$
+Now we will assume that the amount of air is much more than the amount of water. This implies that the temperature of the air will remain at $298\unit{K}$. Therefore the entropy change for this process is
+$$\Delta S^{air}_2 = \frac{Q}{T} = \frac{-3135\unit{J}}{298\unit{K}} = -10.5\unit{J\ K^{-1}}$$
+
+\item
+So the total change in entropy of the universe for the whole interaction is just the sum of the entropy changes we found in parts (a) through (c)
+\begin{align*}
+\Delta S_{tot} &= \Delta S^{water}_1 + \Delta S^{water}_2 + \Delta S^{air}_1 + \Delta S^{air}_2 \\
+&= 36.6\unit{J\ K^{-1}} + 11.0\unit{J\ K^{-1}} - 33.5\unit{J\ K^{-1}} - 10.5\unit{J\ K^{-1}} = 3.6\unit{J\ K^{-1}}
+\end{align*}
+So we see that an ice cube melting increases the entropy of the universe. Note that this process happens spontaneously so it makes sense that this process has a net positive change in entropy.
+\end{enumerate}
+
+\section{Problem 3.13}
+\begin{enumerate}[(a)]
+\item
+Given the fact that the sun delivers $1000\unit{J}$ to a square meter of earth every second. We can see in one year a square meter of earth gains
+$$U = P_St = (1000\unit{J\ s^{-1}})(3.16\times10^{7}\unit{s}) = 3.16\times10^{10}\unit{J}$$
+Now we assume that the sun does no work to the earth. This implies that all the energy gained by the earth is in the form of heat. Now we assume that the size of the earth and the sun are large enough so that this energy change does not effect the temperature of each. So we use the fact that the sun is at about $6000\unit{K}$ and the earth is at about $300\unit{K}$. Note that this is just a crude approximation. So we can find the entropy change of the sun by
+$$\Delta S_{sun} = \frac{Q}{T} = \frac{-3.16\times10^{10}\unit{J}}{6000\unit{K}} = -5.26\times10^{6}\unit{J\ K^{-1}}$$
+and the change in entropy of the earth is 
+$$\Delta S_{earth} = \frac{Q}{T} = \frac{3.16\times10^{10}\unit{J}}{300\unit{K}} = 1.05\times10^{8}\unit{J\ K^{-1}}$$
+So the total entropy created in one year for one square meter of earth is
+$$\Delta S = \Delta S_{earth} + \Delta S_{sum} = 1.05\times10^{8}\unit{J\ K^{-1}} - 5.26\times10^{6}\unit{J\ K^{-1}} = 9.99\times10^{7}\unit{J\ K^{-1}}$$
+
+\item
+As we saw in part (a) the amount of entropy gained in one year from the sun is quite large. So growth of grass causes some negative change in entropy in the system, but this is due to the energy gained from the sun. So even if the grass decreases entropy locally the total entropy of the universe (earth and sun in this case) will still increase. Therefore the second law of thermodynamics still holds.
+\end{enumerate}
+
+\section{Problem 3.27}
+Given the thermodynamic identity
+\begin{equation}
+dU = TdS - PdV
+\label{iden}
+\end{equation}
+if we consider a process that takes place with constant entropy ($dS = 0$) we can see that equation \ref{iden} becomes
+$$dU = -PdV$$
+We note that this is the first law of thermodynamics for an adiabatic process. This makes sense if the entropy remains constant then there can be no heat transfer. So for this process the total energy is just work ($U=W$) so if we integrate both sides we get
+$$W = -\int_{V_i}^{V_f}P(V)dV$$
+which is the equation to find work for quasistatic compression/expansion.
+\end{document}
+

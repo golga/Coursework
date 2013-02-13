@@ -1,0 +1,818 @@
+\documentclass[11pt]{article}
+
+\usepackage{latexsym}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{enumerate}
+\usepackage{amsmath}
+\usepackage{cancel}
+\numberwithin{equation}{section}
+
+\setlength{\evensidemargin}{.25in}
+\setlength{\oddsidemargin}{-.25in}
+\setlength{\topmargin}{-.75in}
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{9.5in}
+\newcommand{\due}{February 3rd, 2011}
+\newcommand{\HWnum}{2}
+\input{/home/joey/Documents/Class/Define.tex}
+
+\begin{document}
+\input{../title.tex}
+
+\section{Problem 2.1}
+\begin{enumerate}[(a)]
+\item
+Given the tensor $A^{\alpha}_{\ \beta}$ and the vector $V^{\mu}$ where
+$$A^{\alpha}_{\ \beta} = \left(\begin{array}{cc}
+			A^1_{\ 1} &A^1_{\ 2}\\
+			A^2_{\ 1} &A^2_{\ 2}
+			\end{array}\right)$$
+and 
+$$V^{\mu} = \left(\begin{array}{c}
+			V^1\\
+			V^2
+		\end{array}\right)$$
+We can show that $A^{\alpha}_{\ \beta}V^{\beta}$ corresponds to a matrix multiplication
+\begin{align*}
+A^{\alpha}_{\ \beta}V^{\beta} &= \left(\begin{array}{cc}
+			A^1_{\ 1} &A^1_{\ 2}\\
+			A^2_{\ 1} &A^2_{\ 2}
+			\end{array}\right)
+			\left(\begin{array}{c}
+			V^1\\
+			V^2
+			\end{array}\right)\\
+&= 			\left(\begin{array}{c}
+			A^1_{\ 1}V^1 + A^1_{\ 2}V^2\\
+			A^2_{\ 1}V^1 + A^2_{\ 2}V^2\\
+			\end{array}\right)
+\end{align*}
+So we see that $A^{\alpha}_{\ \beta}V^{\beta}$ represents a vector which is what we found.
+
+\item
+We can look at the contraction $A^{\alpha}_{\ \alpha}$ as a sum over the tensor $A$ where the indexes are the same. Note by our convention we sum over indices that are the same so 
+$$A^{\alpha}_{\ \alpha} =  A^1_{\ 1} + A^2_{\ 2}$$
+Note that this is just the sum of the diagonals in the matrix notation. Therefore we see that $A^{\alpha}_{\ \alpha}$ is the same as a trace.
+
+\item
+For the tensors $A^{\alpha}_{\ \alpha}$ and $B^{\alpha}_{\ \alpha}$ represented by the matrices 
+$$A^{\alpha}_{\ \beta} = \left(\begin{array}{cc}
+			A^1_{\ 1} &A^1_{\ 2}\\
+			A^2_{\ 1} &A^2_{\ 2}
+			\end{array}\right)$$
+and 
+$$B^{\alpha}_{\ \beta} = \left(\begin{array}{cc}
+			B^1_{\ 1} &B^1_{\ 2}\\
+			B^2_{\ 1} &B^2_{\ 2}
+			\end{array}\right)$$
+We can represent the product of the two tensors as a tensor shown by
+$$A^{\alpha}_{\ \beta}B^{\beta}_{\ \gamma} = C^{\alpha}_{\ \gamma}$$
+Note that we summed over the index $\beta$ where $\alpha$ and $\gamma$ were the free indices. So the matrix notation of this tensor product corresponds to matrix multiplication. So it follows that
+\begin{align*}
+C^{\alpha}_{\ \gamma} &= A^{\alpha}_{\ \beta}B^{\beta}_{\ \gamma}\\
+&= \left(\begin{array}{cc}
+	A^1_{\ 1} &A^1_{\ 2}\\
+	A^2_{\ 1} &A^2_{\ 2}
+	\end{array}\right)
+	\left(\begin{array}{cc}
+	B^1_{\ 1} &B^1_{\ 2}\\
+	B^2_{\ 1} &B^2_{\ 2}
+	\end{array}\right)\\
+&= 	\left(\begin{array}{cc}
+	A^1_{\ 1}B^1_{\ 1} +A^1_{\ 2}B^2_{\ 1} &A^1_{\ 1}B^1_{\ 2} +A^1_{\ 2}B^2_{\ 2}\\
+	A^2_{\ 1}B^1_{\ 1} +A^2_{\ 2}B^2_{\ 1} &A^2_{\ 1}B^1_{\ 2} +A^2_{\ 2}B^2_{\ 2}
+	\end{array}\right)
+\end{align*}
+
+\item
+We see from part (c) we represent matrix multiplication as $A^{\alpha}_{\ \beta}B^{\beta}_{\ \gamma}$ where we sum over the index $\beta$. Note that this index represents the columns of the matrix that represents $A$ and it also represents the rows of the matrix that represents $B$. So we are summing over the product between the columns of $A$ and the rows of $B$. This implies that if we switch the indices so that we have $A^{\ \alpha}_{\beta}B^{\beta}_{\ \gamma}$ we are now summing over the product of $A$'s rows with $B$'s rows. This is not possible in standard matrix multiplication so we need to make the rows of $A$ become the columns of $A$. This operation is the transpose of the matrix representing $A$. We can show this if we have a new tensor 
+$$D_{\alpha\beta} = \left(\begin{array}{cc}
+			D_{11} &D_{12}\\
+			D_{21} &D_{22}
+			\end{array}\right)$$
+We can see that the product $A^{\alpha}_{\ \beta}D_{\alpha\gamma}$ is not just the standard matrix multiplication. We need to transpose $A$ so that we are summing over the right components of the matrix
+\begin{align*}
+A^{\alpha}_{\ \beta}D_{\alpha\gamma} &= \left(\begin{array}{cc}
+						A^1_{\ 1} &A^1_{\ 2}\\
+						A^2_{\ 1} &A^2_{\ 2}
+					\end{array}\right)^T
+					\left(\begin{array}{cc}
+						D_{11} &D_{12}\\
+						D_{21} &D_{22}
+					\end{array}\right)\\
+&= \left(\begin{array}{cc}
+	A^1_{\ 1} &A^2_{\ 1}\\
+	A^1_{\ 2} &A^2_{\ 2}
+	\end{array}\right)
+	\left(\begin{array}{cc}
+	D_{11} &D_{12}\\
+	D_{21} &D_{22}
+	\end{array}\right)\\
+&= \left(\begin{array}{cc}
+	A^1_{\ 1}D_{11} + A^2_{\ 1}D_{21}	&A^1_{\ 1}D_{12} + A^2_{\ 1}D_{22}\\
+	A^1_{\ 2}D_{11} + A^2_{\ 2}D_{21}	&A^1_{\ 2}D_{12} + A^2_{\ 2}D_{22}\\
+	\end{array}\right)
+\end{align*}
+Note that only by transposing the matrix $A$ did we get the up index of $A$ to match the first index of $D$ in the sum. We can check that this works by looking at $A^{\alpha}_{\ \beta}D_{\alpha\gamma}$the case where the free indices are $\beta =2 $ and $\gamma = 1$ this implies that
+\begin{align*}
+A^{\alpha}_{\ 2}D_{\alpha1} &= A^{1}_{\ 2}D_{11} + A^{2}_{\ 2}D_{21} 
+\end{align*}
+And this corresponds to the $21$ element of the matrix we calculated. This is expected and implies that we need to transpose $A$ before the matrix multiplication. Note the product $A^{\alpha}_{\ \beta}B^{\gamma}_{\ \alpha}$ represents the sum of the product of the columns of the matrix $A$ with the rows of matrix $B$. But if we want to represent this with matrix multiplication we have to say
+$$A^{\alpha}_{\ \beta}B^{\gamma}_{\ \alpha} = B^{\gamma}_{\ \alpha}A^{\alpha}_{\ \beta} = C^{\gamma}_{\ \beta}$$
+Now his is the same as if we transposed both matrices so
+$$A^{\beta}_{\ \alpha}B^{\alpha}_{\ \gamma} =  C^{\beta}_{\ \gamma}$$
+but we see that this is the transpose of the $C$ we found by the matrix multiplication $BA$. So in order to come to the same matrix we need to transpose $C$. This result is congruent with the matrix identity $(BA)^T = A^TB^T$. Note that in this case we took the transpose of both sides so that $(BA) = (A^TB^T)^T$.
+
+\item
+Given the Lorentz transformation 
+$$F_{\mu'\nu'} = \Lambda^{\alpha}_{\ \mu'}\Lambda^{\beta}_{\ \nu'}F_{\alpha \beta}$$
+we can represent this in matrix notation as
+\begin{align*}
+F_{\mu'\nu'} &= \Lambda^{\alpha}_{\ \mu'}\Lambda^{\beta}_{\ \nu'}F_{\alpha \beta}\\
+&= \Lambda^{\alpha}_{\ \mu'}F_{\alpha \beta}\Lambda^{\beta}_{\ \nu'}\\
+&= \Lambda_{\ \alpha}^{\mu'}F_{\alpha \beta}\Lambda^{\beta}_{\ \nu'}\\
+&= \left(\begin{array}{cccc}
+	\cosh(\phi) &\sinh(\phi) &0 &0\\
+	\sinh(\phi) &\cosh(\phi) &0 &0\\
+	0 &0 &1 &0\\
+	0 &0 &0 &1\\
+		\end{array}\right)^T
+		\left(\begin{array}{cccc}
+		0 &-E_1 &-E_2 &-E_3\\
+		E_1 &0 &B_3 &-B_2\\
+		E_2 &-B_3 &0 &B_1\\
+		E_3 &B_2 &-B_1 &0
+		\end{array}\right)
+		\left(\begin{array}{cccc}
+	\cosh(\phi) &\sinh(\phi) &0 &0\\
+	\sinh(\phi) &\cosh(\phi) &0 &0\\
+	0 &0 &1 &0\\
+	0 &0 &0 &1\\
+		\end{array}\right)
+\end{align*}
+Note that $\phi$ is the boost coefficient also note that we reversed the order of $F_{\alpha\beta}$ so that we could perform matrix multiplication.
+\end{enumerate}
+
+\section{Problem 2.2}
+\begin{enumerate}[(a)]
+\item
+To prove the identity 
+$$\partial_{\mu}x^{\nu} = \delta^{\nu}_{\mu}$$
+where $\delta^{\nu}_{\mu}$ is the \emph{Kronecker delta}. We first note that we are not summing over any terms we only have free indices. Also we need to note that the index on the differential determines with variable the derivative is with respect to. So we see that
+$$\partial_{\mu}x^{\nu} = \frac{\partial}{\partial x^{\mu}}x^{\nu}$$
+So we see that if $\nu\ne\mu$ then we are taking the derivative of a constant (with respect to $x^{\mu}$ so this is zero).  And in the case where $\nu=\mu$ then for example we have the derivative of $x$ with respect to $x$ which we quickly see is one. So we see that
+$$\partial_{\mu}x^{\nu} = \left\{\begin{array}{lc}
+				1	&\textnormal{if}\ \nu=\mu\\
+				0	&\textnormal{if}\ \nu\ne\mu
+			\end{array}\right.$$
+and this is $\delta^{\nu}_{\mu}$
+
+\item
+To raise an index on a tensor we multiply by the inverse metric $\eta^{\mu\nu}$ (note this follows from the fact that to lower the index we multiply by regular metric). So if we want to raise an index on the metric $\eta_{\mu\nu}$ we can say that
+\begin{align*}
+\eta^{\mu\alpha}\eta_{\alpha\nu} &= \left(\begin{array}{cccc}
+	-1 &0 &0 &0\\
+	0 &1 &0 &0\\
+	0 &0 &1 &0\\
+	0 &0 &0 &1\\
+	\end{array}\right)
+	\left(\begin{array}{cccc}
+	-1 &0 &0 &0\\
+	0 &1 &0 &0\\
+	0 &0 &1 &0\\
+	0 &0 &0 &1\\
+	\end{array}\right)\\
+&=	\left(\begin{array}{cccc}
+	1 &0 &0 &0\\
+	0 &1 &0 &0\\
+	0 &0 &1 &0\\
+	0 &0 &0 &1\\
+	\end{array}\right)\\
+&= \delta^{\mu}_{\nu}
+\end{align*}
+Note that this makes sense, if we multiply a matrix by its inverse then the resulting matrix is the identity. This is the result we found. 
+
+\item
+If we were to raise the index of the metric twice by multiplying by inverse metric $\eta^{\mu\nu}$ twice we get
+\begin{align*}
+\eta^{\beta\nu}\eta^{\mu\alpha}\eta_{\alpha\beta} &= \left(\begin{array}{cccc}
+	-1 &0 &0 &0\\
+	0 &1 &0 &0\\
+	0 &0 &1 &0\\
+	0 &0 &0 &1\\
+	\end{array}\right)
+	\left(\begin{array}{cccc}
+	-1 &0 &0 &0\\
+	0 &1 &0 &0\\
+	0 &0 &1 &0\\
+	0 &0 &0 &1\\
+	\end{array}\right)
+	\left(\begin{array}{cccc}
+	-1 &0 &0 &0\\
+	0 &1 &0 &0\\
+	0 &0 &1 &0\\
+	0 &0 &0 &1\\
+	\end{array}\right)\\
+&=	\left(\begin{array}{cccc}
+	-1 &0 &0 &0\\
+	0 &1 &0 &0\\
+	0 &0 &1 &0\\
+	0 &0 &0 &1\\
+	\end{array}\right)
+	\left(\begin{array}{cccc}
+	1 &0 &0 &0\\
+	0 &1 &0 &0\\
+	0 &0 &1 &0\\
+	0 &0 &0 &1\\
+	\end{array}\right)\\
+&= \eta^{\mu\nu}
+\end{align*}
+Note that this is why we write the inverse metric with two indices up.
+
+\item
+Given the two rank $(0,2)$ tensors $S_{\mu\nu}$ and $A_{\mu\nu}$ which are symmetric and antisymmetric respectively so that
+$$S_{\mu\nu} = S_{\nu\mu}$$
+and 
+$$A_{\mu\nu} = -A_{\nu\mu}$$
+If we represent these tensors as a matrix we can see that
+$$S_{\mu\nu} = \left(\begin{array}{cc}
+		S_{11} 	&S_{12}\\
+		S_{12} 	&S_{22}
+		\end{array}\right)$$
+and
+$$A_{\mu\nu} = \left(\begin{array}{cc}
+		0 	&-A_{12}\\
+		A_{12} 	&0
+		\end{array}\right)$$
+We can see that if we raise the indices of these tensors we get
+\begin{align*}
+\eta^{\beta\nu}\eta^{\mu\alpha}S_{\alpha\beta} &= S^{\mu\nu}\\
+&=	\left(\begin{array}{cc}
+		-1 &0\\
+		0 &1 
+	\end{array}\right)
+	\left(\begin{array}{cccc}
+		-1 &0\\
+		0 &1 
+	\end{array}\right)
+	\left(\begin{array}{cc}
+		S_{11} 	&S_{12}\\
+		S_{12} 	&S_{22}
+	\end{array}\right)\\
+&= 	\left(\begin{array}{cc}
+		-1 &0\\
+		0 &1 
+	\end{array}\right)
+	\left(\begin{array}{cc}
+		-S_{11}	&0\\
+		0 	&S_{22}
+	\end{array}\right)\\
+&=	\left(\begin{array}{cc}
+		S_{11}	&0\\
+		0 	&S_{22}
+	\end{array}\right)
+\end{align*}
+Note that $S^{\mu\nu}$ is still symmetric. Now for $A_{\mu\nu}$ we have
+\begin{align*}
+\eta^{\beta\nu}\eta^{\mu\alpha}A_{\alpha\beta} &= A^{\mu\nu}\\
+&=	\left(\begin{array}{cc}
+		-1 &0\\
+		0 &1 
+	\end{array}\right)
+	\left(\begin{array}{cccc}
+		-1 &0\\
+		0 &1 
+	\end{array}\right)
+	\left(\begin{array}{cc}
+		0 	&-A_{12}\\
+		A_{12} 	&0
+	\end{array}\right)\\
+&=	\left(\begin{array}{cc}
+		-1 &0\\
+		0 &1 
+	\end{array}\right)
+	\left(\begin{array}{cc}
+		0 &A_{12}\\
+		A_{12} &0 
+	\end{array}\right)\\
+&=	\left(\begin{array}{cc}
+		0 &-A_{12}\\
+		A_{12} &0 
+	\end{array}\right)
+\end{align*}
+Note that $A^{\mu\nu}$ is still antisymmetric and is also the same matrix.
+
+\item
+Now we can see that the contraction
+$$S_{\mu\nu}A^{\mu\nu} = 0$$
+To prove this we can say that
+$$S_{\mu\nu} = \left(\begin{array}{cc}
+		S_{11} 	&S_{12}\\
+		S_{12} 	&S_{22}
+		\end{array}\right)$$
+and
+$$A^{\mu\nu} = \left(\begin{array}{cc}
+		0 	&-A_{12}\\
+		A_{12} 	&0
+		\end{array}\right)$$
+So it follows that
+\begin{align*}
+S_{\mu\nu}A^{\mu\nu} &= \left(\begin{array}{cc}
+		S_{11} 	&S_{12}\\
+		S_{12} 	&S_{22}
+		\end{array}\right)
+		\left(\begin{array}{cc}
+		0 	&-A_{12}\\
+		A_{12} 	&0
+		\end{array}\right)\\
+&= (S_{11}0) + (-S_{12}A_{12}) + (S_{12}A_{12}) + (S_{22}0)\\
+&=0
+\end{align*}
+Note that this does not follow the standard matrix multiplication, due to the fact that we were summing over both indices therefore we are left with a scalar. If we were only summing over one index then we would do matrix multiplication so that we would be left with a tensor.
+\end{enumerate}
+
+\section{Problem 2.3}
+\begin{enumerate}[(a)]
+\item
+Given the relations
+\begin{align}
+F_{0i} &= -E_i\\
+F_{ij} &= \levi_{ij}^{\ \ k}B_k
+\end{align}
+Where $\levi_{ijk}$ is the \emph{Levi Civita Symbol} and is represented by
+$$\levi_{ijk} = \left\{\begin{array}{ll}
+			0	&\textnormal{for any two indecies equal}\\ 
+			1	&\textnormal{for even permutations of}\ ijk\\
+			-1	&\textnormal{for odd permutations of}\ ijk\\
+		\end{array}\right.$$
+So using these relations we can fill in the Field Strength Tensor $F_{\mu\nu}$. So we immediately see that the diagonal elements are are zero by
+$$F_{00} = \levi_{11}^{\ \ k}B_k = 0 = F_{11} = F_{22} =F_{33}$$
+note that $\levi_{ijk}$ is zero by definition. Next we see by
+$$F_{0i} = -E_i$$
+we can find the electric field components 
+\begin{align*}
+F_{01} &= -E_1\\
+F_{02} &= -E_2\\
+F_{03} &= -E_3
+\end{align*}
+Now we know that $F_{\mu\nu}$ is a antisymmetric tensor so it follows that
+$$F_{0i} = -F_{i0} = -E_i$$
+So by this fact we can say that 
+\begin{align*}
+F_{10} &= E_1\\
+F_{20} &= E_2\\
+F_{30} &= E_3
+\end{align*}
+Now to find the magnetic components we use 
+$$F_{ij} = \levi_{ij}^{\ \ k}B_k$$
+But we already took care of the zero indices so we just have to account for $i =1,2,3$ and $j=1,2,3$. Note that we also have accounted for the case when the indices are the same so we exclude those as well. So it follows that for $i=1$ and $j=2$
+$$F_{12} = \levi_{12}^{\ \ k}B_k$$
+note that $\levi_{12}^{\ \ k}$ is zero for all $k$ except for $k=3$ so
+$$F_{12} = \levi_{12}^{\ \ 3}B_3 = B_3$$
+Note that we had an even permutation so that we have a positive $B_3$. The antisymmetry of the tensor will follow from this. So we see that for the rest of the indices we have
+\begin{align*}
+F_{12} &= \levi_{12}^{\ \ 3}B_3 = B_3\\
+F_{21} &= \levi_{21}^{\ \ 3}B_3 = -B_3\\
+F_{13} &= \levi_{13}^{\ \ 2}B_2 = -B_2\\
+F_{31} &= \levi_{31}^{\ \ 2}B_2 = B_2\\
+F_{23} &= \levi_{23}^{\ \ 1}B_1 = B_1\\
+F_{32} &= \levi_{32}^{\ \ 1}B_1 = -B_1
+\end{align*}
+So if we plug all this into the tensor we see that
+$$F_{\mu\nu} = \left(\begin{array}{cccc}
+		0 &-E_1 &-E_2 &-E_3\\
+		E_1 &0 &B_3 &-B_2\\
+		E_2 &-B_3 &0 &B_1\\
+		E_3 &B_2 &-B_1 &0
+		\end{array}\right)$$
+
+\item
+To show the identity 
+$$\levi^{ij}_{\ \ k}\levi_{ijl} = \delta_{kl}$$
+we first will assume that $k\ne l$ so when we sum over $i$ and $j$ we see that we get 
+$$\levi^{ij}_{\ \ k}\levi_{ijl} = \levi^{12}_{\ \ k}\levi_{12l} + \levi^{21}_{\ \ k}\levi_{21l} + \levi^{13}_{\ \ k}\levi_{13l} + \levi^{31}_{\ \ k}\levi_{31l} + \levi^{23}_{\ \ k}\levi_{23l} + \levi^{32}_{\ \ k}\levi_{32l}$$
+Now we can see that if $k\ne l$ then there is no term that doesn't repeat an index at least in one of the Levi Civita Symbols. So if every product in this sum has at least one zero involved the sum must be zero. Now lets take the case where $k=l$. The sum still looks like 
+$$\levi^{ij}_{\ \ k}\levi_{ijl} = \levi^{12}_{\ \ k}\levi_{12l} + \levi^{21}_{\ \ k}\levi_{21l} + \levi^{13}_{\ \ k}\levi_{13l} + \levi^{31}_{\ \ k}\levi_{31l} + \levi^{23}_{\ \ k}\levi_{23l} + \levi^{32}_{\ \ k}\levi_{32l}$$
+but if we assume that $k=l=3$ then it follows that
+\begin{align*}
+\levi^{ij}_{\ \ k}\levi_{ijl} &= \levi^{12}_{\ \ 3}\levi_{123} + \levi^{21}_{\ \ 3}\levi_{213} + \cancelto{0}{\levi^{13}_{\ \ 3}\levi_{133} + \levi^{31}_{\ \ 3}\levi_{313} + \levi^{23}_{\ \ 3}\levi_{233} + \levi^{32}_{\ \ 3}\levi_{323}}\\
+ &= \levi^{12}_{\ \ 3}\levi_{123} + \levi^{21}_{\ \ 3}\levi_{213}\\
+ &= (1)(1) + (-1)(-1) \\
+&= 2
+\end{align*}
+Now it is easy to see for $k=l=1$ the terms with $i=2$, $j=3$ or $i=3$, $j=2$ will be nonzero and all the other terms will drop out. The same logic follows for $k=l=2$ so we can see that
+$$\levi^{ij}_{\ \ k}\levi_{ijl} = \left\{\begin{array}{cl}
+				2	&\textnormal{if}\ k=l\\
+				0	&\textnormal{if}\ k\ne l
+				\end{array}\right.$$
+Which we can see is twice the Kronecker Delta. Now we can use this relation to show that 
+$$B_i = \frac{1}{2}\levi_{i}^{\ jk}F_{jk}$$
+To do this we first start with 
+$$F_{ij} = \levi_{ij}^{\ \ k}B_k$$
+and we multiply both sides by $\levi_{i}^{\ jk}$ so it follows that
+\begin{align*}
+\levi_{i}^{\ jk}F_{ij} &=\levi_{i}^{\ jk} \levi_{ij}^{\ \ k}B_k\\
+\levi_{i}^{\ jk}F_{ij} &=2\delta_{k}^{k}B_k\\
+\levi_{i}^{\ jk}F_{ij} &=2B_k\\
+&\Downarrow\\
+B_k &= \frac{1}{2}\levi_{i}^{\ jk}F_{ij}
+\end{align*}
+Note that if we change the variables while staying consistent with which indices match we can say that $k\rightarrow i$, $i\rightarrow j$, and $j\rightarrow k$ we can see that this makes 
+$$B_i = \frac{1}{2}\levi_{i}^{\ jk}F_{jk}$$
+note that we used the fact that $\levi_{j}^{\ ki} = \levi_{i}^{\ jk}$. This follows from the fact that we are not changing the order of the indices.
+
+\item
+If we Lorentz Boost in the $x^1$ direction we can perform a \emph{Lorentz Transform} as described in part (e) of problem (2.1). So it follows that
+\begin{align*}
+F_{\mu'\nu'} &= \Lambda^{\alpha}_{\ \mu'}\Lambda^{\beta}_{\ \nu'}F_{\alpha \beta}\\
+&= \Lambda^{\alpha}_{\ \mu'}F_{\alpha \beta}\Lambda^{\beta}_{\ \nu'}\\
+&= \Lambda^{\mu'}_{\ \alpha}F_{\alpha \beta}\Lambda^{\beta}_{\ \nu'}\\
+&= \left(\begin{array}{cccc}
+	\cosh(\phi) &\sinh(\phi) &0 &0\\
+	\sinh(\phi) &\cosh(\phi) &0 &0\\
+	0 &0 &1 &0\\
+	0 &0 &0 &1\\
+		\end{array}\right)^T
+		\left(\begin{array}{cccc}
+		0 &-E_1 &-E_2 &-E_3\\
+		E_1 &0 &B_3 &-B_2\\
+		E_2 &-B_3 &0 &B_1\\
+		E_3 &B_2 &-B_1 &0
+		\end{array}\right)
+		\left(\begin{array}{cccc}
+	\cosh(\phi) &\sinh(\phi) &0 &0\\
+	\sinh(\phi) &\cosh(\phi) &0 &0\\
+	0 &0 &1 &0\\
+	0 &0 &0 &1\\
+		\end{array}\right)\\
+&=		\left(\begin{array}{cccc}
+	\cosh(\phi) &\sinh(\phi) &0 &0\\
+	\sinh(\phi) &\cosh(\phi) &0 &0\\
+	0 &0 &1 &0\\
+	0 &0 &0 &1\\
+		\end{array}\right)
+		\left(\begin{array}{cccc}
+		-E_1\sinh(\phi)	&-E_1\cosh(\phi)	&-E_2	&-E_3\\
+		E_1\cosh(\phi)	&E_1\sinh(\phi)		&B_3	&-B_2\\
+		E_2\cosh(\phi) - B_3\sinh(\phi)	&E_2\sinh(\phi)-B_3\cosh(\phi)		&0	&B_1\\
+		E_3\cosh(\phi) + B_2\sinh(\phi)	&E_3\sinh(\phi)+B_2\cosh(\phi)		&-B_1	&0\\
+		\end{array}\right)\\
+&=	\left(\begin{array}{cccc}
+	{\scriptscriptstyle	-E_1\cosh(\phi)\sinh(\phi)+E_1\cosh(\phi)\sinh(\phi)}
+	&{\scriptscriptstyle	-E_1\cosh^2(\phi)+E_1\sinh^2(\phi)}
+	&{\scriptscriptstyle		-E_2\cosh(\phi)+B_3\sinh(\phi)	}
+	&{\scriptscriptstyle		-E_3\cosh(\phi)-B_2\sinh(\phi)}\\
+	{\scriptscriptstyle	-E_1\sinh^2(\phi)+E_1\cosh^2(\phi)}
+	&{\scriptscriptstyle		-E_1\cosh(\phi)\sinh(\phi)+E_1\cosh(\phi)\sinh(\phi)}
+	&{\scriptscriptstyle		-E_2\sinh(\phi)+B_3\cosh(\phi)	}
+	&{\scriptscriptstyle		-E_3\sinh(\phi)-B_2\cosh(\phi)}\\
+	{\scriptscriptstyle	E_2\cosh(\phi) - B_3\sinh(\phi)	}
+	&{\scriptscriptstyle		E_2\sinh(\phi)-B_3\cosh(\phi)}
+	&{\scriptscriptstyle		0}
+	&{\scriptscriptstyle		B_1}\\
+	{\scriptscriptstyle	E_3\cosh(\phi) + B_2\sinh(\phi)	}
+	&{\scriptscriptstyle		E_3\sinh(\phi)+B_2\cosh(\phi)}
+	&{\scriptscriptstyle		-B_1	}
+	&{\scriptscriptstyle		0}
+		\end{array}\right)\\
+&=	\left(\begin{array}{cccc}
+	{\scriptstyle	0	}
+	&{\scriptstyle		-E_1	}
+	&{\scriptstyle		-E_2\cosh(\phi)+B_3\sinh(\phi)	}
+	&{\scriptstyle		-E_3\cosh(\phi)-B_2\sinh(\phi)}\\
+	{\scriptstyle	E_1	}
+	&{\scriptstyle		0	}
+	&{\scriptstyle		-E_2\sinh(\phi)+B_3\cosh(\phi)	}
+	&{\scriptstyle		-E_3\sinh(\phi)-B_2\cosh(\phi)}\\
+	{\scriptstyle	E_2\cosh(\phi) - B_3\sinh(\phi)	}
+	&{\scriptstyle		E_2\sinh(\phi)-B_3\cosh(\phi)}
+	&{\scriptstyle		0}
+	&{\scriptstyle		B_1}\\
+	{\scriptstyle	E_3\cosh(\phi) + B_2\sinh(\phi)	}
+	&{\scriptstyle		E_3\sinh(\phi)+B_2\cosh(\phi)}
+	&{\scriptstyle		-B_1	}
+	&{\scriptstyle		0}
+		\end{array}\right)
+\end{align*}
+Note that we used the inverse Lorentz Transform. Also note that $F_{\mu'\nu'}$ is still antisymmetric. We see that the transform in components yields
+\begin{align*}
+E_1' &= E_1\\
+E_2' &= E_2\cosh(\phi) - B_3\sinh(\phi)\\
+E_3' &= E_3\cosh(\phi) + B_2\sinh(\phi)\\
+B_1' &= B_1\\
+B_2' &= E_3\sinh(\phi) + B_2\cosh(\phi)\\
+B_3' &= -E_2\sinh(\phi) + B_3\cosh(\phi)\\
+\end{align*}
+
+\item
+To preform a rotation in the $xy$ plane we transform under the tensor
+$$\Lambda^{\mu'}_{\ \nu} = \left(\begin{array}{cccc}
+		1	&0	&0	&0\\
+		0	&\cos(\theta)	&\sin(\theta)	&0\\
+		0	&-\sin(\theta)	&\cos(\theta)	&0\\
+		0	&0	&0	&1\\
+			\end{array}\right)$$
+Where $\theta$ is the angle of rotation. So we transform the Field Strength tensor $F_{\mu\nu}$ by the same method in part (c).
+\begin{align*}
+F_{\mu'\nu'} &= \Lambda^{\alpha}_{\ \mu'}\Lambda^{\beta}_{\ \nu'}F_{\alpha \beta}\\
+&= \Lambda^{\alpha}_{\ \mu'}F_{\alpha \beta}\Lambda^{\beta}_{\ \nu'}\\
+&= \Lambda^{\mu'}_{\ \alpha}F_{\alpha \beta}\Lambda^{\beta}_{\ \nu'}
+\end{align*}
+Note that $\Lambda^{\mu}_{\ \nu'}$ is the inverse transform because the prime is down 
+$$\Lambda^{\mu}_{\ \nu'} = \left(\begin{array}{cccc}
+		1	&0	&0	&0\\
+		0	&\cos(\theta)	&-\sin(\theta)	&0\\
+		0	&\sin(\theta)	&\cos(\theta)	&0\\
+		0	&0	&0	&1\\
+			\end{array}\right)$$
+So now we can find the rotational transformation 
+\begin{align*}
+F_{\mu'\nu'} &=  \Lambda^{\alpha}_{\ \mu'}F_{\alpha \beta}\Lambda^{\beta}_{\ \nu'}\\
+&= \Lambda^{\mu'}_{\ \alpha}F_{\alpha \beta}\Lambda^{\beta}_{\ \nu'}\\
+&= 		\left(\begin{array}{cccc}
+		1	&0	&0	&0\\
+		0	&\cos(\theta)	&-\sin(\theta)	&0\\
+		0	&\sin(\theta)	&\cos(\theta)	&0\\
+		0	&0	&0	&1\\
+			\end{array}\right)^T
+		\left(\begin{array}{cccc}
+		0 &-E_1 &-E_2 &-E_3\\
+		E_1 &0 &B_3 &-B_2\\
+		E_2 &-B_3 &0 &B_1\\
+		E_3 &B_2 &-B_1 &0
+		\end{array}\right)
+ 		\left(\begin{array}{cccc}
+		1	&0	&0	&0\\
+		0	&\cos(\theta)	&-\sin(\theta)	&0\\
+		0	&\sin(\theta)	&\cos(\theta)	&0\\
+		0	&0	&0	&1\\
+			\end{array}\right)\\
+&= 		\left(\begin{array}{cccc}
+		1	&0	&0	&0\\
+		0	&\cos(\theta)	&\sin(\theta)	&0\\
+		0	&-\sin(\theta)	&\cos(\theta)	&0\\
+		0	&0	&0	&1\\
+			\end{array}\right)
+		\left(\begin{array}{cccc}
+		0 &-E_1\cos(\theta)-E_2\sin(\theta) &E_1\sin(\theta)-E_2\cos(\theta) &-E_3\\
+		E_1 &B_3\sin(\theta) &B_3\cos(\theta) &-B_2\\
+		E_2 &-B_3\cos(\theta) &B_3\sin(\theta) &B_1\\
+		E_3 &B_2\cos(\theta)-B_1\sin(\theta) &-B_2\sin(\theta)-B_1\cos(\theta) &0
+		\end{array}\right)\\
+&= 		\left(\begin{array}{cccc}
+	{\scriptstyle	0 }
+	&{\scriptstyle		-E_1\cos(\theta)-E_2\sin(\theta) }
+	&{\scriptstyle		E_1\sin(\theta)-E_2\cos(\theta) }
+	&{\scriptstyle		-E_3}\\
+	{\scriptstyle	E_1\cos(\theta)+E_2\sin(\theta) }
+	&{\scriptstyle		B_3\cos(\theta)\sin(\theta) - B_3\cos(\theta)\sin(\theta) }
+	&{\scriptstyle		B_3\cos^2(\theta)+B_3\sin^2(\theta) }
+	&{\scriptstyle		-B_2\cos(\theta)+B_1\sin(\theta)}\\
+	{\scriptstyle	-E_1\sin(\theta)+E_2\cos(\theta) }
+	&{\scriptstyle		-B_3\sin^2(\theta)-B_3\cos^2(\theta) }
+	&{\scriptstyle		-B_3\cos(\theta)\sin(\theta)+B_3\cos(\theta)\sin(\theta) }
+	&{\scriptstyle		B_2\sin(\theta)+B_1\cos(\theta)}\\
+	{\scriptstyle	E_3 }
+	&{\scriptstyle		B_2\cos(\theta)-B_1\sin(\theta) }
+	&{\scriptstyle		-B_2\sin(\theta)-B_1\cos(\theta) }
+	&{\scriptstyle		0}
+		\end{array}\right)\\
+&= 		\left(\begin{array}{cccc}
+		0 
+			&-E_1\cos(\theta)-E_2\sin(\theta) 
+			&E_1\sin(\theta)-E_2\cos(\theta) 
+			&-E_3\\
+		E_1\cos(\theta)+E_2\sin(\theta) 
+			&0
+			&B_3
+			&-B_2\cos(\theta)+B_1\sin(\theta)\\
+		-E_1\sin(\theta)+E_2\cos(\theta) 
+			&-B_3
+			&0
+			&B_2\sin(\theta)+B_1\cos(\theta)\\
+		E_3 
+			&B_2\cos(\theta)-B_1\sin(\theta) 
+			&-B_2\sin(\theta)-B_1\cos(\theta) 
+			&0
+		\end{array}\right)
+\end{align*}
+Note that the $z$ components of $E$ and $B$ are left unchanged. This is what we expected as we didn't rotate in the $z$ component. Also note that the tensor $F_{\mu'\nu'}$ is still antisymmetric and the $x$ and $y$ components mixed as one would expect when we rotate the $xy$ plane.
+\end{enumerate}
+
+\section{Problem 2.4}
+\begin{enumerate}[(a)]
+\item
+Given the \emph{Lorentz Force Law} in tensor form
+$$m\frac{d^2x^{\mu}}{d\tau^2} = -qU^{\lambda}F_{\lambda}^{\ \mu}$$
+we want to convert this back to the vector form we are familiar with
+$$m\frac{d^2\vec{x}}{dt^2} = q\vec{E}+q\vec{v}\times\vec{B}$$
+in the limit where $v<<c$. So first we need to use chain rule to go from a derivative of the proper time $\tau$ to regular time $t$ so
+$$m\frac{d^2x^{\mu}}{d\tau^2}\frac{d\tau^2}{dt^2}\gamma^2 = m\gamma^2\frac{d^2x^{\mu}}{dt^2}$$
+where $\gamma$ is defined as
+$$\gamma\equiv\frac{1}{\sqrt{1-v^2}}$$ 
+Note that we used the fact that the change in time with respect to the proper time $\tau$ is $\gamma$ so
+$$\frac{dt}{d\tau} = \gamma$$
+So we can evaluate the right hand side using the fact that the four-velocity is given by
+$$U^{\lambda} = \left(\begin{array}{c}
+		\gamma\\	\gamma v^1\\	\gamma v^2\\	\gamma v^3
+		\end{array}\right)$$
+Now we need to raise the index to get $F_{\lambda}^{\ \mu}$ so that
+\begin{align*}
+F_{\lambda}^{\ \mu} &= F_{\lambda\alpha}\eta^{\alpha\mu}\\
+&= 
+		\left(\begin{array}{cccc}
+		0 &-E_1 &-E_2 &-E_3\\
+		E_1 &0 &B_3 &-B_2\\
+		E_2 &-B_3 &0 &B_1\\
+		E_3 &B_2 &-B_1 &0
+		\end{array}\right)
+	\left(\begin{array}{cccc}
+	-1 &0 &0 &0\\
+	0 &1 &0 &0\\
+	0 &0 &1 &0\\
+	0 &0 &0 &1\\
+	\end{array}\right)\\
+&= 
+		\left(\begin{array}{cccc}
+		0 &-E_1 &-E_2 &-E_3\\
+		-E_1 &0 &B_3 &-B_2\\
+		-E_2 &-B_3 &0 &B_1\\
+		-E_3 &B_2 &-B_1 &0
+		\end{array}\right)
+\end{align*}
+
+So we can calculate the right hand side in component form. Note that we are not using standard matrix multiplication. If we were to use matrix multiplication $U^{\lambda}$ would have to be written as a row, but $U^{\lambda}$ is not a one-form so we write it as a column vector to avoid confusion. Note that in the summation form we do not have this problem as we are summing over the same components.
+\begin{align*}
+-qU^{\lambda}F_{\lambda}^{\ \mu} &=
+		-q\left(\begin{array}{c}
+		\gamma\\	\gamma v^1\\	\gamma v^2\\	\gamma v^3
+		\end{array}\right)
+		\left(\begin{array}{cccc}
+		0 &-E_1 &-E_2 &-E_3\\
+		-E_1 &0 &B_3 &-B_2\\
+		-E_2 &-B_3 &0 &B_1\\
+		-E_3 &B_2 &-B_1 &0
+		\end{array}\right)\\
+&=		-q\left(\begin{array}{c}
+		-\gamma E_1v^1 - \gamma E_2v^2 - \gamma E_3v_3\\	
+		-\gamma E_1 - \gamma v^2B_3 + \gamma v^3B_2\\
+		-\gamma E_2 + \gamma v^1B_3 - \gamma v^3B_1\\
+		-\gamma E_3 - \gamma v^1B_2 + \gamma v^2B_1
+		\end{array}\right)\\
+&=		-q\left(\begin{array}{c}
+		-\gamma (E_1v^1 + E_2v^2 + E_3v_3)\\	
+		-\gamma (E_1 + v^2B_3 - v^3B_2)\\
+		-\gamma (E_2 + v^3B_1 - v^1B_3)\\
+		-\gamma (E_3 + v^1B_2 - v^2B_1)
+		\end{array}\right)
+=		q\gamma\left(\begin{array}{c}
+		E_1v^1 + E_2v^2 + E_3v_3\\	
+		E_1 + v^2B_3 - v^3B_2\\
+		E_2 + v^3B_1 - v^1B_3\\
+		E_3 + v^1B_2 - v^2B_1
+		\end{array}\right)
+= q\gamma V^{\mu}
+\end{align*}
+So now we see that have
+$$m\gamma\frac{d^2x^{\mu}}{dt^2} = q V^{\mu}$$
+Where we define
+$$V^{\mu}\equiv \left(\begin{array}{c}
+		E_1v^1 + E_2v^2 + E_3v_3\\	
+		E_1 + v^2B_3 - v^3B_2\\
+		E_2 + v^3B_1 - v^1B_3\\
+		E_3 + v^1B_2 - v^2B_1
+		\end{array}\right)$$
+Note that we can write the spacial components of $V^{\mu}$ as 
+$$V^i = E_i + \levi^{i\ k}_{\ j}v^jB_k$$
+For $i=1,2,3$. Now we see that the term $\levi^{ij}_{\ \ k}B_jv^k$ is the $i$th component of the cross product given by
+$$\levi^{ij}_{\ \ k}B_jv^k = (\vec{v}\times\vec{B})^i$$
+so it follows that the spacial component of the \emph{Lorentz Force Law} is
+\begin{align*}
+m\gamma\frac{d^2x^{i}}{dt^2} &= q V^{i}\\
+m\frac{d^2x^{i}}{dt^2} &= \frac{q}{\gamma}\left(E_i + \levi^{i\ k}_{\ j}v^jB_k\right)
+\end{align*}
+Which we can write in vector form as
+$$m\frac{d^2\vec{x}}{dt^2} = \frac{q}{\gamma}\left(\vec{E} + \vec{v}\times\vec{B}\right)$$
+Now in the limit where $v<<c$ (note that we take $c=1$) so $v<<1$ we see that in this limit $\gamma = 1$ so that
+$$m\frac{d^2\vec{x}}{dt^2} = q\left(\vec{E} + \vec{v}\times\vec{B}\right)$$
+which is the classical result we were expecting.
+
+\item
+Now if we were to look at the time component of the covariant form of the Lorentz Force Law 
+$$m\frac{d^2x^{\mu}}{d\tau^2} = -qU^{\lambda}F_{\lambda}^{\ \mu}$$
+We see that this is $\mu=0$ so that
+$$m\frac{d^2x^{0}}{d\tau^2} = -qU^{\lambda}F_{\lambda}^{\ 0}$$
+and as we stated in part (a) we know that
+$$\frac{dx^0}{d\tau} = \frac{dt}{d\tau} = \gamma$$
+so we get
+$$m\frac{d}{d\tau}\gamma = q\gamma v^iE_i$$
+Note that the first derivative of $\gamma$ is zero in the first order so we need to Taylor expand $\gamma$ to get a higher order. So to find the coefficients of the Taylor expansion we need to take derivatives of $\gamma$ with respect to $v$ evaluated at zero. Note that we will only need the first two non zero terms
+\begin{align*}
+f(v) &= \gamma = (1-v^2)^{-1/2}\\
+f(0) &= (1-0^2)^{-1/2} = 1\\
+f'(v) &= -\frac{1}{2}(1-v^2)^{-3/2}(-2v) = v(1-v^2)^{-3/2}\\
+f'(0) &=  (0)(1-(0)^2)^{-1/2} = 0\\
+f''(v) &= \frac{-3}{2}(v)(1-v^2)^{-5/2}(-2v) + (1-v^2)^{-3/2}\\
+f''(0) &= -3(0)^2(1-0^2)^{-5/2} + (1-0^2)^{-3/2} = 1
+\end{align*}
+So we see that we can write the Taylor expansion as
+\begin{align*}
+\gamma(v) &= f(0) + f'(0)v + \frac{f''(0)}{2!}v^2 + ...\\
+&= 1 + (0)v + \frac{1}{2!}v^2 + ...\\
+&= 1 + \frac{v^2}{2} + \scrO(v^3)
+\end{align*}
+So we now have the second order term of $\gamma$. Note that the square of the velocity is actually the magnitude of the vector squared which we represent as $v^iv_i$ in Einstein notation. Now we need to repeat this expansion for $v\gamma$ again we will expand neglecting the component form and replace it once we have finished the expand. Note that we are only looking for the first nonzero coefficient since we are not taking the derivative so we first order term will not become zero.
+\begin{align*}
+g(v) &= v(1-v^2)^{-1/2}\\
+g(0) &= (0)(1-(0)^2)^{-1/2} = 0\\
+g'(v) &= (1-v^2)^{-1/2} + v^2(1-v^2)^{-3/2}\\
+g'(0) &= (1-0^2)^{-1/2} + 0^2(1-v^2)^{-3/2} = 1
+\end{align*}
+So the Taylor expansion is as follows
+$$v\gamma = v + \scrO(v^3)$$
+Note that we can say that the higher order terms are of order $\scrO(v^3)$ because $g''(0) = 0$. So we can go back to the covariant form of the Lorentz Force Law and see that
+\begin{align*}
+m\frac{d}{d\tau}\gamma &= q\gamma v^iE_i\\
+m\frac{d}{d\tau}\left(1+\frac{1}{2}v^2\right) &= q(v)E_i\\
+m\frac{d}{d\tau}\left(1+\frac{1}{2}v^iv_i\right) &= q(v)E_i\\
+\frac{m}{2}\frac{d}{d\tau}(v^iv_i) &= qv^iE_i\\
+\frac{m}{2}\left(\frac{dv^i}{d\tau}(v_i) + \frac{dv^i}{d\tau}(v_i)\right) &= qv^iE_i\\
+\frac{m}{2}2\frac{dv^i}{d\tau}\cancel{(v_i)} &= q\cancel{v^i}E_i\\
+m\frac{dv^i}{d\tau} &= m\frac{d^2x^i}{d\tau^2} = qE_i
+\end{align*}
+This result is just describes that the force on a charge $q$ by the electric field $E_i$ is the product of the two. This follows directly from the non-relativistic Lorentz Force Law where there is no magnetic field. Note that this only works in the non-relativistic limit for $v$ must satisfy the condition that $v<<1$ for the Taylor expansions to converge to $\gamma$ and $v\gamma$.
+\end{enumerate}
+
+\section{Problem 2.5}
+\begin{enumerate}[(a)]
+\item
+Given the equation for the field strength tensor 
+$$\partial_{[\mu}F_{\nu\lambda]} = 0$$
+note that this is the antisymmetrization of $F_{\mu\nu}$ and $\partial_{\mu}$. So we can say by definition of antisymmetrization that
+$$\partial_{[\mu}F_{\nu\lambda]} = \frac{1}{3!}\left(\partial_{\mu}F_{\nu\lambda} - \partial_{\nu}F_{\mu\lambda} + \partial_{\nu}F_{\lambda\mu} - \partial_{\lambda}F_{\nu\mu} + \partial_{\lambda}F_{\mu\nu} - \partial_{\mu}F_{\lambda\nu}\right)$$
+Note that by definition the Field Strength tensor is antisymmetric so that $F_{\mu\nu} = -F_{\nu\mu}$ so we can see that
+\begin{align*}
+\partial_{[\mu}F_{\nu\lambda]} &= \frac{1}{3!}\left(\partial_{\mu}F_{\nu\lambda}- \partial_{\mu}F_{\lambda\nu} - \partial_{\nu}F_{\mu\lambda} + \partial_{\nu}F_{\lambda\mu} - \partial_{\lambda}F_{\nu\mu} + \partial_{\lambda}F_{\mu\nu} \right)\\
+&= \frac{1}{3!}\left(\partial_{\mu}F_{\nu\lambda}+ \partial_{\mu}F_{\nu\lambda} + \partial_{\nu}F_{\lambda\mu} + \partial_{\nu}F_{\lambda\mu} + \partial_{\lambda}F_{\mu\nu} + \partial_{\lambda}F_{\mu\nu} \right)\\
+&= \frac{1}{3!}\left(2\partial_{\mu}F_{\nu\lambda} + 2\partial_{\nu}F_{\lambda\mu} + 2\partial_{\lambda}F_{\mu\nu} \right)\\
+&= \frac{2}{3!}\left(\partial_{\mu}F_{\nu\lambda} + \partial_{\nu}F_{\lambda\mu} + \partial_{\lambda}F_{\mu\nu} \right)
+\end{align*}
+Now by our original assumption that $\partial_{[\mu}F_{\nu\lambda]}=0$ we see that
+$$\partial_{\mu}F_{\nu\lambda} + \partial_{\nu}F_{\lambda\mu} + \partial_{\lambda}F_{\mu\nu} =0 $$
+
+\item
+So we can take the result from part (b) and show that this represents two of \emph{Maxwell's equations}
+\begin{align}
+\label{max1}
+\grad\cdot\vec{B} &= 0\\
+\label{max2}
+\grad\times\vec{E}+\frac{\partial\vec{B}}{\partial t} &=0
+\end{align}
+To do this lets start by saying that $\mu=0$ so that
+$$\partial_{0}F_{\nu\lambda} + \partial_{\nu}F_{\lambda0} + \partial_{\lambda}F_{0\nu} =0 $$
+Now lets look at just the spacial dimension so that $\nu=i=1,2,3$ and $\lambda=j=1,2,3$ so
+\begin{align*}
+\partial_{0}F_{\nu\lambda} + \partial_{\nu}F_{\lambda0} + \partial_{\lambda}F_{0\nu} &= 0 \\
+\partial_{0}F_{ij} + \partial_{i}F_{j0} + \partial_{j}F_{0i} &= 0 \\
+\partial_{0}F_{ij} + \partial_{i}F_{j0} - \partial_{j}F_{i0} &= 0 \\
+\partial_{0}F_{ij} + \partial_{i}F_{j0} - \partial_{j}F_{i0} &= 0 \\
+\end{align*}
+Now we see that by $F_{i0} = E_i$ so it follows that
+\begin{align*}
+\partial_{0}F_{ij} + \partial_{i}E_{j} - \partial_{j}E_{i} &= 0 \\
+\partial_{0}F_{ij} + \levi^{ij}_{\ \ k}\partial_{i}E_{j} &= 0 
+\end{align*}
+Now we know that the second term is the curl of $\vec{E}$. But for the first term we use the relation $F_{ij} = \levi_{ij}^{\ \ k}B_k$ to see that
+\begin{align*}
+\partial_{0}\levi_{ij}^{\ \ k}B_k + \levi^{lm}_{\ \ k}\partial_{l}E_{m} &= 0 
+\end{align*}
+Note that we needed to change the dummy indices on the second term so that they will be summed over independently. So if we let $k=3$ we see that we get
+\begin{align*}
+\partial_{0}\levi_{ij}^{\ \ 3}B_3 + \levi^{lm}_{\ \ 3}\partial_{l}E_{m} &= 0 \\
+\partial_{0}\levi_{ij}^{\ \ 3}B_3 + \partial_{1}E_{2}-\partial_{2}E_{1} &= 0 
+\end{align*}
+Note that $i$ and $j$ are free indices so they are just picked so that $i=1$ and $j=2$ so that for $k=3$
+$$\partial_{0}B_3 + \partial_{1}E_{2}-\partial_{2}E_{1} = 0$$
+Which we note as the $x^3$ component of a vector which we can see this in vector form as
+$$\grad\times\vec{E}+\frac{\partial\vec{B}}{\partial t} =0$$
+which is a \emph{Maxwell's equation} given by equation \ref{max2}. Now if we choose a spacial case in all indices so that $\mu=1$, $\nu=2$, and $\lambda=3$ we see that
+$$\partial_{1}F_{23} + \partial_{2}F_{31} + \partial_{3}F_{12} =0 $$
+Now if we use the fact that 
+$$F_{ij} = \levi_{ij}^{\ \ k}B_k$$
+we see that 
+\begin{align*}
+\partial_{1}F_{23} + \partial_{2}F_{31} + \partial_{3}F_{12} &= 0 \\
+\partial_{1}(\levi_{23}^{\ \ k}B_k) + \partial_{2}(\levi_{31}^{\ \ l}B_l) + \partial_{3}(\levi_{12}^{\ \ m}B_m) &= 0 
+\end{align*}
+Now we can see that the Levi Civita is nonzero only for $k=1$, $l=2$, and $m=3$. So we can say that
+\begin{align*}
+\partial_{1}(\levi_{23}^{\ \ 1}B_1) + \partial_{2}(\levi_{31}^{\ \ 2}B_2) + \partial_{3}(\levi_{12}^{\ \ 3}B_3) &= 0 \\
+\partial_{1}B_1 + \partial_{2}B_2 + \partial_{3}B_3 &= 0 \\
+\partial_{i}B_i  &= 0 
+\end{align*}
+Note that this is the index notation for a divergence of $\vec{B}$ in vector notation this is given by equation \ref{max1}
+$$\grad\cdot\vec{B}= 0$$
+\end{enumerate}
+\end{document}
+

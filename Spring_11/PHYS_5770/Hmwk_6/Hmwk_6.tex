@@ -1,0 +1,476 @@
+\documentclass[11pt]{article}
+
+\usepackage{latexsym}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{enumerate}
+\usepackage{amsmath}
+\usepackage{cancel}
+\numberwithin{equation}{section}
+
+\setlength{\evensidemargin}{.25in}
+\setlength{\oddsidemargin}{-.25in}
+\setlength{\topmargin}{-.75in}
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{9.5in}
+\newcommand{\due}{March 15th, 2011}
+\newcommand{\HWnum}{6}
+\input{/home/joey/Documents/Class/Define.tex}
+
+\begin{document}
+\input{../title.tex}
+
+\section{Problem \HWnum.1}
+\begin{enumerate}[(a)]
+\item
+Given that the \emph{Riemann Curvature Tensor} with all it indices down is defined as
+\begin{equation}
+R_{\rho\sigma\mu\nu} \equiv g_{\rho\lambda}R^{\lambda}_{\ \sigma\mu\nu}
+\label{RiemDown}
+\end{equation}
+we know that $R_{\rho\sigma\mu\nu}$ is antisymmetric in the last two indices 
+\begin{equation}
+R_{\rho\sigma\mu\nu} = R_{\rho\sigma[\mu\nu]}
+\label{symm1}
+\end{equation}
+and it is antisymmetric in the first two indices
+\begin{equation}
+R_{\rho\sigma\mu\nu} = R_{[\rho\sigma]\mu\nu}
+\label{symm2}
+\end{equation}
+Also $R_{\rho\sigma\mu\nu}$ is symmetric in exchanging pairs of indices 
+\begin{equation}
+R_{\rho\sigma\mu\nu} = R_{\mu\nu\rho\sigma}
+\label{symm3}
+\end{equation}
+We also know the that the last three indices follow the rule
+$$R_{\rho\sigma\mu\nu} + R_{\rho\mu\nu\sigma} + R_{\rho\nu\sigma\mu} = 0$$
+or
+\begin{equation}
+R_{\rho[\sigma\mu\nu]} = 0
+\label{symm4}
+\end{equation}
+Given that we have a two dimensional metric with coordinates $x^{1}$ and $x^2$ it follows from these symmetry properties that the only independent component of $R_{\rho\sigma\mu\nu}$ is $R_{1212}$. We see that by equation \ref{symm1} that 
+$$R_{1212} = - R_{1221}$$
+and by equations \ref{symm1} \ref{symm2} that 
+$$R_{1212} = -R_{2112} = R_{2121}$$
+Now by equation \ref{symm4} we see that
+$$R_{1212} + R_{1122} + R_{1221} = 0$$
+but we already know that $R_{1221} = -R_{1212}$ this implies that
+$$R_{1122} = 0$$
+and by equation \ref{symm3} this implies that 
+$$R_{2211} = 0$$
+Note it also follows from equation \ref{symm4} that
+\begin{align*}
+R_{1111} + R_{1111} + R_{1111} &= 0\\
+&\Downarrow\\
+R_{1111} &= 0
+\end{align*}
+By the same equation we have 
+$$R_{2222} = R_{1222} = R_{2111} = 0$$
+But we can use equations \ref{symm1}, \ref{symm2}, and \ref{symm3} to see that
+$$R_{1222} = R_{2212} = -R_{2221} = -R_{2122} = 0$$
+and that
+$$R_{2111} = R_{1121} = -R_{1112} = -R_{1211} = 0$$
+So we see that all the components of $R_{\rho\sigma\mu\nu}$ are given by
+\begin{align*}
+R_{1212} &= - R_{1221} = -R_{2112} = R_{2121}\\
+0 &= R_{1111} = R_{2222}\\
+0 &= R_{1122} = R_{2211}\\
+0 &= R_{1222} = R_{2212} = -R_{2221} = -R_{2122}\\
+0 &= R_{2111} = R_{1121} = -R_{1112} = -R_{1211}
+\end{align*}
+So we see that all the components of $R_{\rho\sigma\mu\nu}$ are either zero or $R_{1212}$ up to a factor of a negative.
+
+\item
+Given the definition for the Riemann curvature tensor
+\begin{equation}
+R^{\rho}_{\ \sigma\mu\nu} = \partial_{\mu}\Gamma^{\rho}_{\nu\sigma}-\partial_{\nu}\Gamma^{\rho}_{\mu\sigma} +\Gamma^{\rho}_{\mu\lambda}\Gamma^{\lambda}_{\nu\sigma} - \Gamma^{\rho}_{\nu\lambda}\Gamma^{\lambda}_{\mu\sigma}
+\label{RiemDef}
+\end{equation}
+We can lower the index to get $R_{\rho\sigma\mu\nu}$ and get that
+\begin{equation}
+R_{\rho\sigma\mu\nu} = g_{\rho\lambda}R^{\lambda}_{\ \sigma\mu\nu} = g_{\rho\lambda}\left(\partial_{\mu}\Gamma^{\lambda}_{\nu\sigma}-\partial_{\nu}\Gamma^{\lambda}_{\mu\sigma} +\Gamma^{\lambda}_{\mu\alpha}\Gamma^{\alpha}_{\nu\sigma} - \Gamma^{\lambda}_{\nu\alpha}\Gamma^{\alpha}_{\mu\sigma}\right)
+\label{RiemGam}
+\end{equation}
+we can find $R_{r\theta r\theta}$ for the metric 
+$$ds^2 = dr^2 + r^2d\theta^2$$
+Note that the only nonzero \emph{Christoffel Connections} for this metric are
+\begin{align*}
+\Gamma^{r}_{\theta\theta} &= -r\\
+\Gamma^{\theta}_{r\theta} &= \Gamma^{\theta}_{\theta r} = \frac{1}{r}
+\end{align*}
+So for $R_{r\theta r\theta}$ equation \ref{RiemGam} yields
+$$R_{r\theta r\theta} = g_{r\lambda}\left(\partial_{r}\Gamma^{\lambda}_{\theta\theta}-\partial_{\theta}\Gamma^{\lambda}_{r\theta} +\Gamma^{\lambda}_{r\alpha}\Gamma^{\alpha}_{\theta\theta} - \Gamma^{\lambda}_{\theta\alpha}\Gamma^{\alpha}_{r\theta}\right)$$
+Note that the metric $g_{\mu\nu}$ is diagonal this implies that the only nonzero term of this sum is for $g_{r\lambda} = g_{rr}$. This fact forces $\lambda = r$ so now we have
+\begin{align*}
+R_{r\theta r\theta} &= g_{r\lambda}\left(\partial_{r}\Gamma^{\lambda}_{\theta\theta}-\partial_{\theta}\Gamma^{\lambda}_{r\theta} +\Gamma^{\lambda}_{r\alpha}\Gamma^{\alpha}_{\theta\theta} - \Gamma^{\lambda}_{\theta\alpha}\Gamma^{\alpha}_{r\theta}\right)\\
+&= g_{rr}\left(\partial_{r}\Gamma^{r}_{\theta\theta}-\partial_{\theta}\cancelto{0}{\Gamma^{r}_{r\theta}} +\Gamma^{r}_{r\alpha}\Gamma^{\alpha}_{\theta\theta} - \Gamma^{r}_{\theta\alpha}\Gamma^{\alpha}_{r\theta}\right)\\
+&= g_{rr}\left(\partial_{r}\Gamma^{r}_{\theta\theta} + \Gamma^{r}_{r\alpha}\Gamma^{\alpha}_{\theta\theta} - \Gamma^{r}_{\theta\alpha}\Gamma^{\alpha}_{r\theta}\right)
+\end{align*}
+Now we see that the second to last term in the parentheses is
+\begin{align*}
+\Gamma^{r}_{r\alpha}\Gamma^{\alpha}_{\theta\theta} &= \cancelto{0}{\Gamma^{r}_{rr}}\Gamma^{r}_{\theta\theta} + \Gamma^{r}_{r\theta}\cancelto{0}{\Gamma^{\theta}_{\theta\theta}} = 0
+\end{align*}
+And the last term in the parentheses is 
+$$\Gamma^{r}_{\theta\alpha}\Gamma^{\alpha}_{r\theta} = \cancelto{0}{\Gamma^{r}_{\theta r}\Gamma^{r}_{r\theta}} + \Gamma^{r}_{\theta\theta}\Gamma^{\theta}_{r\theta} = -r\frac{1}{r} = -1$$
+So $R_{r\theta r\theta}$ is
+\begin{align*}
+R_{r\theta r\theta} &= g_{rr}\left(\partial_{r}\Gamma^{r}_{\theta\theta} + 1\right)\\
+&= (1)\left(\partial_{r}(-r) + 1\right)\\
+&= (1)\left(-1 + 1\right) = 0
+\end{align*}
+So the Riemann curvature tensor is zero for all the components. This makes sense since we are in flat space with polar coordinates, and the coordinate system does not effect the curvature tensor and in flat space the curvature tensor is zero.
+\end{enumerate}
+
+\section{Problem \HWnum.2}
+\begin{enumerate}[(a)]
+\item
+The \emph{Ricci Tensor} is defined as the contraction
+$$R_{\mu\nu} \equiv R^{\rho}_{\ \mu\rho\nu}$$
+but we want to use the symmetries in the indices so we raise the index of the Riemann curvature tensor with all lower indices so we have
+\begin{equation}
+R_{\mu\nu} = g^{\rho\lambda}R_{\rho\mu\lambda\nu}
+\label{Ricci}
+\end{equation}
+To show that $R_{\mu\nu}$ is a unique tensor we want to show that if we contract over a different index we get the same tensor, or zero. We can easily see that by the symmetry in equation \ref{symm1} we have
+$$g^{\rho\lambda}R_{\rho\mu\lambda\nu} = -g^{\rho\lambda}R_{\rho\mu\nu\lambda}$$
+this implies that
+$$g^{\rho\lambda}R_{\rho\mu\nu\lambda} = -R_{\mu\nu}$$
+So contracting over the last index instead of the third just gives a negative. Now for
+$$g^{\rho\lambda}R_{\rho\lambda\mu\nu}$$
+we need to use equation \ref{symm4} to say that
+$$R_{\rho\lambda\mu\nu} = -R_{\rho\mu\nu\lambda} - R_{\rho\nu\lambda\mu}$$
+Now we can see that (using equations \ref{symm1} and \ref{symm3})
+\begin{align*}
+g^{\rho\lambda}R_{\rho\lambda\mu\nu} &= g^{\rho\lambda}\left(-R_{\rho\mu\nu\lambda} - R_{\rho\nu\lambda\mu}\right)\\
+&= g^{\rho\lambda}\left(-R_{\rho\mu\nu\lambda} - R_{\lambda\mu\rho\nu}\right)\\
+&= g^{\rho\lambda}\left(-R_{\rho\mu\nu\lambda} + R_{\lambda\mu\nu\rho}\right)
+\end{align*}
+Now we rename the dummy indices in the last term so that $\rho\rightarrow\lambda$ and $\lambda\rightarrow\rho$ so we find that and using the fact that the metric is symmetric we find that
+\begin{align*}
+g^{\rho\lambda}R_{\rho\lambda\mu\nu} &= -g^{\rho\lambda}R_{\rho\mu\nu\lambda} + g^{\lambda\rho}R_{\rho\mu\nu\lambda}\\
+&= -g^{\rho\lambda}R_{\rho\mu\nu\lambda} + g^{\rho\lambda}R_{\rho\mu\nu\lambda}\\
+&= 0
+\end{align*}
+So we see that if we contract over the second index we get a zero tensor. This implies that if we contract over any of the free indices we will get the Ricci tensor or zero. So the Ricci tensor is unique. We can see that the Ricci tensor is symmetric by equation \ref{symm3}
+\begin{align*}
+R_{\mu\nu} = g^{\rho\lambda}R_{\rho\mu\lambda\nu} &= g^{\rho\lambda}R_{\lambda\nu\rho\mu}
+\end{align*}
+Now we relabel the indices so $\rho\rightarrow\lambda$ and $\lambda\rightarrow\rho$ so
+$$R_{\mu\nu} = g^{\lambda\rho}R_{\rho\nu\lambda\mu}$$
+and we use the fact that the metric is symmetric so
+$$R_{\mu\nu} = g^{\rho\lambda}R_{\rho\nu\lambda\mu} = R_{\nu\mu}$$
+
+\item
+To prove the \emph{Bainchi Identity}
+\begin{equation}
+\grad_{[\lambda}R_{\mu\nu]\rho\sigma} = 0
+\label{Bainchi}
+\end{equation}
+We go to locally inertial coordinates so we can use the identity 
+$$R_{\hat{\mu}\hat{\nu}\hat{\rho}\hat{\sigma}} = \frac{1}{2}\left(\partial_{\hat{\mu}}\partial_{\hat{\sigma}}g_{\hat{\nu}\hat{\rho}} - \partial_{\hat{\mu}}\partial_{\hat{\rho}}g_{\hat{\nu}\hat{\sigma}} - \partial_{\hat{\nu}}\partial_{\hat{\sigma}}g_{\hat{\mu}\hat{\rho}} + \partial_{\hat{\nu}}\partial_{\hat{\rho}}g_{\hat{\mu}\hat{\sigma}}\right)$$
+and the fact that the covariant derivative becomes the partial derivative. So we see that
+\begin{align*}
+\grad_{[\hat{\lambda}}R_{\hat{\mu}\hat{\nu}]\hat{\rho}\hat{\sigma}} &= \grad_{\hat{\lambda}}R_{\hat{\mu}\hat{\nu}\hat{\rho}\hat{\sigma}} + \grad_{\hat{\mu}}R_{\hat{\nu}\hat{\lambda}\hat{\rho}\hat{\sigma}} + \grad_{\hat{\nu}}R_{\hat{\lambda}\hat{\mu}\hat{\rho}\hat{\sigma}}\\ 
+&= \partial_{\hat{\lambda}}R_{\hat{\mu}\hat{\nu}\hat{\rho}\hat{\sigma}} + \partial_{\hat{\mu}}R_{\hat{\nu}\hat{\lambda}\hat{\rho}\hat{\sigma}} + \partial_{\hat{\nu}}R_{\hat{\lambda}\hat{\mu}\hat{\rho}\hat{\sigma}}\\ 
+&= \frac{1}{2}\partial_{\hat{\lambda}}\left(\partial_{\hat{\mu}}\partial_{\hat{\sigma}}g_{\hat{\nu}\hat{\rho}} - \partial_{\hat{\mu}}\partial_{\hat{\rho}}g_{\hat{\nu}\hat{\sigma}} - \partial_{\hat{\nu}}\partial_{\hat{\sigma}}g_{\hat{\mu}\hat{\rho}} + \partial_{\hat{\nu}}\partial_{\hat{\rho}}g_{\hat{\mu}\hat{\sigma}}\right)\\
+&+ \frac{1}{2}\partial_{\hat{\mu}}\left(\partial_{\hat{\nu}}\partial_{\hat{\sigma}}g_{\hat{\lambda}\hat{\rho}} - \partial_{\hat{\nu}}\partial_{\hat{\rho}}g_{\hat{\lambda}\hat{\sigma}} - \partial_{\hat{\lambda}}\partial_{\hat{\sigma}}g_{\hat{\nu}\hat{\rho}} + \partial_{\hat{\lambda}}\partial_{\hat{\rho}}g_{\hat{\nu}\hat{\sigma}}\right)\\
+&+ \frac{1}{2}\partial_{\hat{\nu}}\left(\partial_{\hat{\lambda}}\partial_{\hat{\sigma}}g_{\hat{\mu}\hat{\rho}} - \partial_{\hat{\lambda}}\partial_{\hat{\rho}}g_{\hat{\mu}\hat{\sigma}} - \partial_{\hat{\mu}}\partial_{\hat{\sigma}}g_{\hat{\lambda}\hat{\rho}} + \partial_{\hat{\mu}}\partial_{\hat{\rho}}g_{\hat{\lambda}\hat{\sigma}}\right)\\
+&= \frac{1}{2}\left(\partial_{\hat{\lambda}}\partial_{\hat{\mu}}\partial_{\hat{\sigma}}g_{\hat{\nu}\hat{\rho}} - \partial_{\hat{\lambda}}\partial_{\hat{\mu}}\partial_{\hat{\rho}}g_{\hat{\nu}\hat{\sigma}} - \partial_{\hat{\lambda}}\partial_{\hat{\nu}}\partial_{\hat{\sigma}}g_{\hat{\mu}\hat{\rho}} + \partial_{\hat{\lambda}}\partial_{\hat{\nu}}\partial_{\hat{\rho}}g_{\hat{\mu}\hat{\sigma}}\right.\\
+&+ \partial_{\hat{\mu}}\partial_{\hat{\nu}}\partial_{\hat{\sigma}}g_{\hat{\lambda}\hat{\rho}} - \partial_{\hat{\mu}}\partial_{\hat{\nu}}\partial_{\hat{\rho}}g_{\hat{\lambda}\hat{\sigma}} - \partial_{\hat{\mu}}\partial_{\hat{\lambda}}\partial_{\hat{\sigma}}g_{\hat{\nu}\hat{\rho}} + \partial_{\hat{\mu}}\partial_{\hat{\lambda}}\partial_{\hat{\rho}}g_{\hat{\nu}\hat{\sigma}}\\
+&+ \left.\partial_{\hat{\nu}}\partial_{\hat{\lambda}}\partial_{\hat{\sigma}}g_{\hat{\mu}\hat{\rho}} - \partial_{\hat{\nu}}\partial_{\hat{\lambda}}\partial_{\hat{\rho}}g_{\hat{\mu}\hat{\sigma}} - \partial_{\hat{\nu}}\partial_{\hat{\mu}}\partial_{\hat{\sigma}}g_{\hat{\lambda}\hat{\rho}} + \partial_{\hat{\nu}}\partial_{\hat{\mu}}\partial_{\hat{\rho}}g_{\hat{\lambda}\hat{\sigma}}\right)\\
+&= \frac{1}{2}\left(\cancel{\partial_{\hat{\lambda}}\partial_{\hat{\mu}}\partial_{\hat{\sigma}}g_{\hat{\nu}\hat{\rho}}} - \cancel{\partial_{\hat{\lambda}}\partial_{\hat{\mu}}\partial_{\hat{\rho}}g_{\hat{\nu}\hat{\sigma}}} - \cancel{\partial_{\hat{\lambda}}\partial_{\hat{\nu}}\partial_{\hat{\sigma}}g_{\hat{\mu}\hat{\rho}}} + \partial_{\hat{\lambda}}\partial_{\hat{\nu}}\partial_{\hat{\rho}}g_{\hat{\mu}\hat{\sigma}}\right.\\
+&+ \partial_{\hat{\mu}}\partial_{\hat{\nu}}\partial_{\hat{\sigma}}g_{\hat{\lambda}\hat{\rho}} - \partial_{\hat{\mu}}\partial_{\hat{\nu}}\partial_{\hat{\rho}}g_{\hat{\lambda}\hat{\sigma}} - \cancel{\partial_{\hat{\mu}}\partial_{\hat{\lambda}}\partial_{\hat{\sigma}}g_{\hat{\nu}\hat{\rho}}} + \cancel{\partial_{\hat{\mu}}\partial_{\hat{\lambda}}\partial_{\hat{\rho}}g_{\hat{\nu}\hat{\sigma}}}\\
+&+ \left.\cancel{\partial_{\hat{\nu}}\partial_{\hat{\lambda}}\partial_{\hat{\sigma}}g_{\hat{\mu}\hat{\rho}}} - \partial_{\hat{\nu}}\partial_{\hat{\lambda}}\partial_{\hat{\rho}}g_{\hat{\mu}\hat{\sigma}} - \partial_{\hat{\nu}}\partial_{\hat{\mu}}\partial_{\hat{\sigma}}g_{\hat{\lambda}\hat{\rho}} + \partial_{\hat{\nu}}\partial_{\hat{\mu}}\partial_{\hat{\rho}}g_{\hat{\lambda}\hat{\sigma}}\right)\\
+&= \frac{1}{2}\left(\partial_{\hat{\lambda}}\partial_{\hat{\nu}}\partial_{\hat{\rho}}g_{\hat{\mu}\hat{\sigma}}+ \partial_{\hat{\mu}}\partial_{\hat{\nu}}\partial_{\hat{\sigma}}g_{\hat{\lambda}\hat{\rho}} - \partial_{\hat{\mu}}\partial_{\hat{\nu}}\partial_{\hat{\rho}}g_{\hat{\lambda}\hat{\sigma}}\right.\\
+& \ \ \ \ \ \left. - \partial_{\hat{\nu}}\partial_{\hat{\lambda}}\partial_{\hat{\rho}}g_{\hat{\mu}\hat{\sigma}} - \partial_{\hat{\nu}}\partial_{\hat{\mu}}\partial_{\hat{\sigma}}g_{\hat{\lambda}\hat{\rho}} + \partial_{\hat{\nu}}\partial_{\hat{\mu}}\partial_{\hat{\rho}}g_{\hat{\lambda}\hat{\sigma}}\right)\\
+&= 0
+\end{align*}
+\end{enumerate}
+
+\section{Problem \HWnum.3}
+\begin{enumerate}[(a)]
+\item
+Given the metric of a two-sphere
+$$ds^2 = d\theta^2 + \sin^2(\theta)d\phi^2$$
+with the Christoffel connections
+\begin{align*}
+\Gamma^{\theta}_{\phi\phi} &= -\sin(\theta)\cos(\theta)\\
+\Gamma^{\phi}_{\phi\theta} = \Gamma^{\phi}_{\theta\phi} &= \cot(\theta)
+\end{align*}
+we can calculate the Riemann curvature tensor using the definition given in equation \ref{RiemGam} to find $R_{\theta\phi\theta\phi}$
+\begin{align*}
+R_{\rho\sigma\mu\nu} &= g_{\rho\lambda}\left(\partial_{\mu}\Gamma^{\lambda}_{\nu\sigma}-\partial_{\nu}\Gamma^{\lambda}_{\mu\sigma} +\Gamma^{\lambda}_{\mu\alpha}\Gamma^{\alpha}_{\nu\sigma} - \Gamma^{\lambda}_{\nu\alpha}\Gamma^{\alpha}_{\mu\sigma}\right)\\
+&\Downarrow\\
+R_{\theta\phi\theta\phi} &=  g_{\theta\lambda}\left(\partial_{\theta}\Gamma^{\lambda}_{\phi\phi}-\partial_{\phi}\Gamma^{\lambda}_{\theta\phi} +\Gamma^{\lambda}_{\theta\alpha}\Gamma^{\alpha}_{\phi\phi} - \Gamma^{\lambda}_{\phi\alpha}\Gamma^{\alpha}_{\theta\phi}\right)
+\end{align*}
+Note that the metric is symmetric and more importantly in this case the metric is diagonal so the $g_{\theta\lambda}$ term is only nonzero for $\lambda = \theta$ this implies that
+\begin{align*}
+R_{\theta\phi\theta\phi} &=  g_{\theta\theta}\left(\partial_{\theta}\Gamma^{\theta}_{\phi\phi}-\partial_{\phi}\cancelto{0}{\Gamma^{\theta}_{\theta\phi}} + \Gamma^{\theta}_{\theta\alpha}\Gamma^{\alpha}_{\phi\phi} - \Gamma^{\theta}_{\phi\alpha}\Gamma^{\alpha}_{\theta\phi}\right)\\
+&=  g_{\theta\theta}\left(\partial_{\theta}\Gamma^{\theta}_{\phi\phi} + \Gamma^{\theta}_{\theta\alpha}\Gamma^{\alpha}_{\phi\phi} - \Gamma^{\theta}_{\phi\alpha}\Gamma^{\alpha}_{\theta\phi}\right)
+\end{align*}
+Now we see that the term $\Gamma^{\theta}_{\theta\alpha}$ is zero for all $\alpha$ and the term $\Gamma^{\theta}_{\phi\alpha}$ is only nonzero for $\alpha=\phi$ this implies that
+\begin{align*}
+R_{\theta\phi\theta\phi} &=  g_{\theta\theta}\left(\partial_{\theta}\Gamma^{\theta}_{\phi\phi} + \cancelto{0}{\Gamma^{\theta}_{\theta\alpha}}\Gamma^{\alpha}_{\phi\phi} - \Gamma^{\theta}_{\phi\alpha}\Gamma^{\alpha}_{\theta\phi}\right)\\
+&=  g_{\theta\theta}\left(\partial_{\theta}\Gamma^{\theta}_{\phi\phi} - \Gamma^{\theta}_{\phi\phi}\Gamma^{\phi}_{\theta\phi}\right)\\
+&=  (1)\left(-\partial_{\theta}\sin(\theta)\cos(\theta) + \sin(\theta)\cos(\theta)\cot(\theta)\frac{}{}\right)\\
+&=  \left(-\left(-\sin^2(\theta) + \cos^2(\theta)\right) + \sin(\theta)\cos(\theta)\frac{\cos(\theta)}{\sin(\theta)}\right)\\
+&=  \left(\sin^2(\theta) - \cos^2(\theta) + \cos^2(\theta)\right)\\
+&=  \sin^2(\theta)
+\end{align*}
+
+
+\item
+To find all the nonzero components of $R^{\mu}_{\ \nu\rho\sigma}$ we need to first raise the index of $R_{\theta\phi\theta\phi}$ by
+\begin{align*}
+R^{\theta}_{\ \phi\theta\phi} &= g^{\theta\lambda}R_{\lambda\phi\theta\phi}\\
+&= \cancelto{1}{g^{\theta\theta}}R_{\theta\phi\theta\phi}\\
+&= \sin^2(\theta)
+\end{align*}
+Note that we use the fact that the inverse metric is also diagonal so $g^{\theta\lambda}$ is only nonzero for $\lambda = \theta$. Now we found in part (a) of problem $\HWnum.1$ that the only nonzero components of the Riemann curvature tensor in two dimensions are given by
+$$R_{1212} = - R_{1221} = -R_{2112} = R_{2121}$$
+So it follows that 
+$$R_{\theta\phi\theta\phi} = - R_{\theta\phi\phi\theta} = -R_{\phi\theta\theta\phi} = R_{\phi\theta\phi\theta}$$
+So the only nonzero components of $R_{\mu\nu\rho\sigma}$ are given by
+\begin{align*}
+R_{\theta\phi\theta\phi} &=  R_{\phi\theta\phi\theta} = \sin^2(\theta)\\
+R_{\theta\phi\phi\theta} &= R_{\phi\theta\theta\phi} = -\sin^2(\theta)
+\end{align*}
+Now we need to raise the index of each of these. Note we already found that $R^{\theta}_{\ \phi\theta\phi} = \sin^2(\theta)$. So by the same process we have
+\begin{align*}
+R^{\phi}_{\ \theta\phi\theta} &= g^{\phi\lambda}R_{\lambda\theta\phi\theta}\\
+&= g^{\phi\phi}R_{\phi\theta\phi\theta}\\
+&= \frac{1}{\sin^2(\theta)}\sin^2(\theta) = 1
+\end{align*}
+and
+\begin{align*}
+R^{\theta}_{\ \phi\phi\theta} &= g^{\theta\lambda}R_{\lambda\phi\phi\theta}\\
+&= \cancelto{1}{g^{\theta\theta}}R_{\theta\phi\phi\theta}\\
+&= R_{\theta\phi\phi\theta} = -\sin^2(\theta)
+\end{align*}
+and
+\begin{align*}
+R^{\phi}_{\ \theta\theta\phi} &= g^{\phi\lambda}R_{\lambda\theta\theta\phi}\\
+&= g^{\phi\phi}R_{\phi\theta\theta\phi}\\
+&= \frac{1}{\sin^2(\theta)}(-\sin^2(\theta)) = -1
+\end{align*}
+So the nonzero components of $R^{\mu}_{\ \nu\rho\sigma}$ are
+\begin{align*}
+R^{\theta}_{\ \phi\theta\phi} &= \sin^2(\theta)\\
+R^{\theta}_{\ \phi\phi\theta} &= -\sin^2(\theta)\\
+R^{\phi}_{\ \theta\phi\theta} &= 1\\
+R^{\phi}_{\ \theta\theta\phi} &= -1
+\end{align*}
+
+\item
+We can calculate the Ricci Tensor by
+\begin{equation}
+R_{\mu\nu} = g^{\alpha\beta}R_{\alpha\mu\beta\nu}
+\label{RicciTen}
+\end{equation}
+Now we know that the inverse metric is diagonal this forces $\alpha = \beta = \theta, \phi$. So we can calculate
+\begin{align*}
+R_{\mu\nu} &= g^{\theta\theta}R_{\theta\mu\theta\nu}
+\end{align*}
+We found in part (b) that $R_{\theta\mu\theta\nu}$ is only nonzero for $\mu=\nu=\phi$ so it follows 
+\begin{align*}
+R_{\mu\nu} &= g^{\theta\theta}R_{\theta\mu\theta\nu}\\
+&\Downarrow\\
+R_{\phi\phi} &= \cancelto{1}{g^{\theta\theta}}R_{\theta\phi\theta\phi}\\
+&= R_{\theta\phi\theta\phi} = \sin^2(\theta)
+\end{align*}
+and for $\alpha=\beta=\phi$ we have
+\begin{align*}
+R_{\mu\nu} &= g^{\phi\phi}R_{\phi\mu\phi\nu}
+\end{align*}
+Again we found that $R_{\phi\mu\phi\nu}$ is only nonzero for $\mu=\nu=\theta$ so we have
+\begin{align*}
+R_{\mu\nu} &= g^{\phi\phi}R_{\phi\mu\phi\nu}\\
+&\Downarrow\\
+R_{\theta\theta} &= g^{\phi\phi}R_{\phi\theta\phi\theta}\\
+&= \frac{1}{\sin^2(\theta)}\sin^2(\theta) = 1
+\end{align*}
+So the components of the Ricci tensor are
+\begin{align*}
+R_{\theta\theta} &= 1\\
+R_{\phi\phi} &= \sin^2(\theta)\\
+R_{\theta\phi} &=R_{\phi\theta} = 0
+\end{align*}
+Now we can calculate the Ricci scalar $R$ by
+\begin{equation}
+R = g^{\mu\nu}R_{\mu\nu}
+\label{RicciScal}
+\end{equation}
+But as we see in equation \ref{RicciScal} that the only nonzero metric is when $\mu = \nu = \theta, \phi$. So we calculate
+\begin{align*}
+R &= \cancelto{1}{g^{\theta\theta}}R_{\theta\theta} + g^{\phi\phi}R_{\phi\phi}\\
+&= 1 + \frac{1}{\sin^2(\theta)}\sin^2(\theta) = 2
+\end{align*}
+
+\item
+We can show that the Riemann tensor and the Ricci scalar satisfy
+\begin{equation}
+R_{\mu\nu\rho\sigma} = aR\left(g_{\mu\rho}g_{\nu\sigma} - g_{\mu\sigma}g_{\nu\rho}\right)
+\label{PartD}
+\end{equation}
+We can see for $R_{\theta\phi\theta\phi}$ that equation \ref{PartD} yields
+\begin{align*}
+R_{\theta\phi\theta\phi} &= aR\left(g_{\theta\theta}g_{\phi\phi} - \cancelto{0}{g_{\theta\phi}g_{\phi\theta}}\right)\\
+&= aRg_{\theta\theta}g_{\phi\phi}\\
+&= a(2)(1)\sin^2(\theta) = 2a\sin^2(\theta) 
+\end{align*}
+So we see that equation \ref{PartD} holds for $a = 1/2$. We know that in two dimensions that $R_{\theta\phi\theta\phi}$ is the only independent coordinate, so we see that this holds for that component therefore equation \ref{PartD} holds for all components of $R_{\mu\nu\rho\sigma}$.
+\end{enumerate}
+
+\section{Problem \HWnum.4}
+\begin{enumerate}[(a)]
+\item
+We know the general form of the geodesic equation 
+$$\frac{d^2x^{\mu}}{d\tau^2} + \Gamma^{\mu}_{\rho\sigma}\frac{dx^{\rho}}{d\tau}\frac{dx^{\sigma}}{d\tau} = 0$$
+and we are given the Christoffel Connections so we can find the geodesic equations as
+\begin{align*}
+&\frac{d^2t}{d\tau^2} + \Phi'\left(\frac{dr}{d\tau}\frac{dt}{d\tau} + \frac{dt}{d\tau}\frac{dr}{d\tau}\right) = 0\\
+&\frac{d^2r}{d\tau^2} - \Phi'\left(\frac{dr}{d\tau}\right)^2 + \Phi'\left(\frac{dt}{d\tau}\right)^2 -r(1+2\Phi)\left(\frac{d\theta}{d\tau}\right)^2  - r\sin^2(\theta)(1+2\Phi)\left(\frac{d\phi}{d\tau}\right)^2 = 0\\
+&\frac{d^2\theta}{d\tau^2} + \frac{1}{r}\left(\frac{dr}{d\tau}\frac{d\theta}{d\tau} + \frac{d\theta}{d\tau}\frac{dr}{d\tau}\right) -\sin(\theta)\cos(\theta)\left(\frac{d\phi}{d\tau}\right)^2 = 0\\
+&\frac{d^2\phi}{d\tau^2} + \frac{1}{r}\left(\frac{dr}{d\tau}\frac{d\phi}{d\tau}+ \frac{d\phi}{d\tau}\frac{dr}{d\tau}\right) + \cot(\theta)\left(\frac{d\theta}{d\tau}\frac{d\phi}{d\tau}+ \frac{d\phi}{d\tau}\frac{d\theta}{d\tau}\right) = 0
+\end{align*}
+Now we assume that the particles are initially at rest so that
+$$\frac{dr}{d\tau} = \frac{d\theta}{d\tau} = \frac{d\phi}{d\tau} = 0$$
+This assumption implies that the $\theta$ component of the geodesic equation becomes 
+\begin{align*}
+&\frac{d^2\theta}{d\tau^2} + \frac{1}{r}\left(\cancelto{0}{\frac{dr}{d\tau}\frac{d\theta}{d\tau}} + \cancelto{0}{\frac{d\theta}{d\tau}\frac{dr}{d\tau}}\right) -\sin(\theta)\cos(\theta)\cancelto{0}{\left(\frac{d\phi}{d\tau}\right)^2} = 0\\
+&\frac{d^2\theta}{d\tau^2} = 0
+\end{align*}
+So we see that a second derivative is zero this implies that $\theta$ is a constant. For the $\phi$ component we have
+\begin{align*}
+&\frac{d^2\phi}{d\tau^2} + \frac{1}{r}\cancelto{0}{\left(\frac{dr}{d\tau}\frac{d\phi}{d\tau}+ \frac{d\phi}{d\tau}\frac{dr}{d\tau}\right)} + \cot(\theta)\cancelto{0}{\left(\frac{d\theta}{d\tau}\frac{d\phi}{d\tau}+ \frac{d\phi}{d\tau}\frac{d\theta}{d\tau}\right)} = 0\\
+&\frac{d^2\phi}{d\tau^2} = 0
+\end{align*}
+So $\phi$ is also a constant. But for the $r$ component we have
+\begin{align*}
+&\frac{d^2r}{d\tau^2} - \Phi'\cancelto{0}{\left(\frac{dr}{d\tau}\right)^2} + \Phi'\left(\frac{dt}{d\tau}\right)^2 -r(1+2\Phi)\cancelto{0}{\left(\frac{d\theta}{d\tau}\right)^2}  - r\sin^2(\theta)(1+2\Phi)\cancelto{0}{\left(\frac{d\phi}{d\tau}\right)^2} = 0\\
+&\frac{d^2r}{d\tau^2} + \Phi'\left(\frac{dt}{d\tau}\right)^2 = 0
+\end{align*}
+So we see that $r$ will evolve with $\tau$.
+
+\item
+Given the \emph{Geodesic deviation equation} 
+\begin{equation}
+A^{\mu} = R^{\mu}_{\ \nu\rho\sigma}U^{\nu}U^{\rho}S^{\sigma}
+\label{devi}
+\end{equation}
+We can calculate $A^r$ by
+\begin{align*}
+A^{r} = R^{r}_{\ \nu\rho\sigma}U^{\nu}U^{\rho}S^{\sigma}
+\end{align*}
+But at $t=0$ we are initially at rest. This implies that the only nonzero component of the $U^{\mu}$ is $\mu=t$ this forces
+\begin{align*}
+A^{r} = R^{r}_{\ tt\sigma}U^{t}U^{t}S^{\sigma}
+\end{align*}
+So now we can calculate the components of the Riemann curvature tensor $R^r_{\ tt\sigma}$ by 
+\begin{align*}
+R^{r}_{\ tt\sigma} &= \partial_{t}\Gamma^{r}_{\sigma t}-\partial_{\sigma}\Gamma^{r}_{t t} +\Gamma^{r}_{t\lambda}\Gamma^{\lambda}_{\sigma t} - \Gamma^{r}_{\sigma\lambda}\Gamma^{\lambda}_{t t}
+\end{align*}
+So for $\sigma = t$ we have
+\begin{align*}
+R^{r}_{\ ttt} &= \partial_{t}\Gamma^{r}_{t t}-\partial_{t}\Gamma^{r}_{t t} +\Gamma^{r}_{t\lambda}\Gamma^{\lambda}_{t t} - \Gamma^{r}_{t\lambda}\Gamma^{\lambda}_{t t}\\
+&= \Gamma^{r}_{t\lambda}\Gamma^{\lambda}_{t t} - \Gamma^{r}_{t\lambda}\Gamma^{\lambda}_{t t}
+\end{align*}
+Now we see that the only nonzero Christoffel connection in the first term represented by $\Gamma^{r}_{r\lambda}$ is for $\lambda = r$ and the second term $\Gamma^{r}_{t\lambda}$ is only nonzero for $\lambda = t$. So we have
+\begin{align*}
+R^{r}_{\ ttt} = \Gamma^{r}_{tt}\Gamma^{t}_{t t} - \Gamma^{r}_{tt}\Gamma^{t}_{t t} = 0
+\end{align*}
+Now for $\sigma = r$ we have
+\begin{align*}
+R^{r}_{\ ttr} &= \partial_{t}\cancelto{0}{\Gamma^{r}_{r t}}-\partial_{r}\Gamma^{r}_{t t} +\Gamma^{r}_{t\lambda}\Gamma^{\lambda}_{r t} - \Gamma^{r}_{r\lambda}\Gamma^{\lambda}_{t t}\\
+&= -\partial_{r}\Gamma^{r}_{t t} +\Gamma^{r}_{t\lambda}\Gamma^{\lambda}_{r t} - \Gamma^{r}_{r\lambda}\Gamma^{\lambda}_{t t}
+\end{align*}
+Now we see that the second term $\Gamma^{r}_{t\lambda}$ is only nonzero when $\lambda = t$ and the last term $\Gamma^{r}_{r\lambda}$ is only nonzero when $\lambda = r$. So 
+\begin{align*}
+R^{r}_{\ ttr} &= -\partial_{r}\Gamma^{r}_{t t} +\Gamma^{r}_{tt}\Gamma^{t}_{r t} - \Gamma^{r}_{rr}\Gamma^{r}_{t t}\\
+&= -\partial_{r}\Phi' + (\Phi')(\Phi') - (-\Phi')(\Phi')\\
+&= -\Phi'' + 2(\Phi')^2
+\end{align*}
+Now for $\sigma = \theta$ we have
+\begin{align*}
+R^{r}_{\ tt\theta} &= \cancelto{0}{\partial_{t}\Gamma^{r}_{\theta t}}-\partial_{\theta}\Gamma^{r}_{t t} +\Gamma^{r}_{t\lambda}\Gamma^{\lambda}_{\theta t} - \Gamma^{r}_{\theta\lambda}\Gamma^{\lambda}_{t t}\\
+&= \Gamma^{r}_{t\lambda}\Gamma^{\lambda}_{\theta t} - \Gamma^{r}_{\theta\lambda}\Gamma^{\lambda}_{t t}
+\end{align*}
+So we we see the first term $\Gamma^{r}_{t\lambda}$ is nonzero for only $\lambda = t$ and the last term $\Gamma^{r}_{\theta\lambda}$ is nonzero for only $\lambda = \theta$. So we have
+\begin{align*}
+R^{r}_{\ tt\theta} &= \Gamma^{r}_{tt}\cancelto{0}{\Gamma^{t}_{\theta t}} - \Gamma^{r}_{\theta\theta}\cancelto{0}{\Gamma^{\theta}_{t t}} = 0
+\end{align*}
+Now for $\sigma = \phi$ we have
+\begin{align*}
+R^{r}_{\ tt\phi} &= \partial_{t}\cancelto{0}{\Gamma^{r}_{\phi t}}- \cancelto{0}{\partial_{\phi}\Gamma^{r}_{t t}} +\Gamma^{r}_{t\lambda}\Gamma^{\lambda}_{\phi t} - \Gamma^{r}_{\phi\lambda}\Gamma^{\lambda}_{t t}\\
+&= \Gamma^{r}_{t\lambda}\Gamma^{\lambda}_{\phi t} - \Gamma^{r}_{\phi\lambda}\Gamma^{\lambda}_{t t}
+\end{align*}
+We see that the first term $\Gamma^{r}_{t\lambda}$ is only nonzero for $\lambda = t$ and the last term $\Gamma^{r}_{\phi\lambda}$ is only nonzero for $\lambda = \phi$. So we have
+\begin{align*}
+R^{r}_{\ tt\phi} &= \Gamma^{r}_{tt}\cancelto{0}{\Gamma^{t}_{\phi t}} - \Gamma^{r}_{\phi\phi}\cancelto{0}{\Gamma^{\phi}_{t t}} = 0
+\end{align*}
+So we see that $R^{r}_{\ tt\sigma}$ is only nonzero for $\sigma = r$. So we can say that $A^r$ is
+\begin{align*}
+A^{r} &= R^{r}_{\ tt\sigma}U^{t}U^{t}S^{\sigma}\\
+&= R^{r}_{\ ttr}U^{t}U^{t}S^{r}\\
+&= \left(-\Phi'' + 2(\Phi')^2\right)\left(\frac{dt}{d\tau}\right)^2S^{r}
+\end{align*}
+Now for $A^{\theta}$ we can see that
+\begin{align*}
+A^{\theta} = R^{\theta}_{\ \nu\rho\sigma}U^{\nu}U^{\rho}S^{\sigma}\\
+= R^{\theta}_{\ tt\sigma}U^{t}U^{t}S^{\sigma}
+\end{align*}
+Note that we used the fact that the particle is initially at rest so the only nonzero component of $U^{\mu}$ was for $\mu=t$. So for $\sigma = t$ we have
+\begin{align*}
+R^{\theta}_{\ ttt} &= \partial_{t}\Gamma^{\theta}_{t t}-\partial_{t}\Gamma^{\theta}_{t t} +\Gamma^{\theta}_{t\lambda}\Gamma^{\lambda}_{t t} - \Gamma^{\theta}_{t\lambda}\Gamma^{\lambda}_{t t}\\
+&= \Gamma^{\theta}_{t\lambda}\Gamma^{\lambda}_{t t} - \Gamma^{\theta}_{t\lambda}\Gamma^{\lambda}_{t t} = 0
+\end{align*}
+And for $\sigma = r$ we have
+\begin{align*}
+R^{\theta}_{\ ttr} &= \partial_{t}\cancelto{0}{\Gamma^{\theta}_{r t}} - \partial_{r}\cancelto{0}{\Gamma^{\theta}_{t t}} +\Gamma^{\theta}_{t\lambda}\Gamma^{\lambda}_{r t} - \Gamma^{\theta}_{r\lambda}\Gamma^{\lambda}_{t t}\\
+&= \Gamma^{\theta}_{t\lambda}\Gamma^{\lambda}_{r t} - \Gamma^{\theta}_{r\lambda}\Gamma^{\lambda}_{t t}
+\end{align*}
+Now we see that there is no $\lambda$ that makes $\Gamma^{\theta}_{t\lambda}$ nonzero and the term $\Gamma^{\theta}_{r\lambda}$ in only nonzero for $\lambda = \theta$ so 
+\begin{align*}
+R^{\theta}_{\ ttr} &= \cancelto{0}{\Gamma^{\theta}_{t\lambda}}\Gamma^{\lambda}_{r t} - \Gamma^{\theta}_{r\theta}\Gamma^{\theta}_{t t}\\
+&=  -\Gamma^{\theta}_{r\theta}\cancelto{0}{\Gamma^{\theta}_{t t}} = 0
+\end{align*}
+Now for $\sigma = \theta$ we have
+\begin{align*}
+R^{\theta}_{\ tt\theta} &= \partial_{t}\cancelto{0}{\Gamma^{\theta}_{\theta t}} - \partial_{\theta}\cancelto{0}{\Gamma^{\theta}_{t t}} +\Gamma^{\theta}_{t\lambda}\Gamma^{\lambda}_{\theta t} - \Gamma^{\theta}_{\theta\lambda}\Gamma^{\lambda}_{t t}\\
+&= \Gamma^{\theta}_{t\lambda}\Gamma^{\lambda}_{\theta t} - \Gamma^{\theta}_{\theta\lambda}\Gamma^{\lambda}_{t t}
+\end{align*}
+And we see that $\Gamma^{\theta}_{t\lambda}$ is zero for all $\lambda$ and the term $\Gamma^{\theta}_{\theta\lambda}$ forces $\lambda = r$. So we 
+\begin{align*}
+R^{\theta}_{\ tt\theta} &= \cancelto{0}{\Gamma^{\theta}_{t\lambda}\Gamma^{\lambda}_{\theta t}} - \Gamma^{\theta}_{\theta r}\Gamma^{r}_{t t}\\
+&= -\Gamma^{\theta}_{\theta r}\Gamma^{r}_{t t}\\
+&= -\frac{\Phi'}{r}
+\end{align*}
+Now for $\sigma = \phi$ we have
+\begin{align*}
+R^{\theta}_{\ tt\phi} &= \cancelto{0}{\partial_{t}\Gamma^{\theta}_{\phi t}-\partial_{\phi}\Gamma^{\theta}_{t t}} + \Gamma^{\theta}_{t\lambda}\Gamma^{\lambda}_{\phi t} - \Gamma^{\theta}_{\phi\lambda}\Gamma^{\lambda}_{t t}\\
+&= \cancelto{0}{\Gamma^{\theta}_{t\lambda}}\Gamma^{\lambda}_{\phi t} - \Gamma^{\theta}_{\phi\lambda}\Gamma^{\lambda}_{t t}\\
+&=  - \Gamma^{\theta}_{\phi\lambda}\Gamma^{\lambda}_{t t}
+\end{align*}
+We see that $\Gamma^{\theta}_{\phi\lambda}$ is only nonzero for $\lambda =\phi$ so we have 
+\begin{align*}
+R^{\theta}_{\ tt\phi} &=  - \Gamma^{\theta}_{\phi\lambda}\Gamma^{\lambda}_{t t}\\
+&=  - \Gamma^{\theta}_{\phi\phi}\cancelto{0}{\Gamma^{\phi}_{t t}} = 0
+\end{align*}
+So the only nonzero component of $R^{\theta}_{\ tt\sigma}$ is for $\sigma = \theta$ so we have
+$$A^{\theta} = -\frac{\Phi'}{r}\left(\frac{dt}{d\tau}\right)S^{\theta}$$
+
+\item
+We see the equation 
+$$A^{r} = \left(-\Phi'' + 2(\Phi')^2\right)\left(\frac{dt}{d\tau}\right)^2S^{r}$$
+implies that the sphere will elongate, because $A^{r}$ is smaller for a larger $r$. Therefore we see that the relative acceleration will be larger for the particles at the top of the ball and smaller for the particles lower. This implies that the lower particles will get farther away from the higher particles. The width of the ball will change by
+$$A^{\theta} = -\frac{\Phi'}{r}\left(\frac{dt}{d\tau}\right)S^{\theta}$$
+this equation shows that the sphere will contract in the $\theta$ direction, because as time goes on we see that the relative acceleration will get more negative (note $\Phi'$ is positive). This implies that as time goes the distance between the $\theta$ component of the geodesics will get closer. So the sphere will squish together and the middle and stretch out on the ends into an egg shape.
+
+\item
+In part (a) we said that $\phi$ and $\theta$ are constants. This implies that the geodesics follow a path that goes straight into the center of the earth. This is consistent with what we said in part (c). Note the contraction in the width of the sphere results from from staying on the same $\theta$ and $\phi$. By moving closer to the center the distance between two geodesics of constant $\theta$ and $\phi$ gets smaller. This is analogous to the arc length as the radius decreases the arc length decreases as well. The result of this is the squishing motion that is described in part (c).
+\end{enumerate}
+
+\end{document}
+

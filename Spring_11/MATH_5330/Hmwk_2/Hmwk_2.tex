@@ -1,0 +1,111 @@
+\documentclass[11pt]{article}
+
+\usepackage{latexsym}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{enumerate}
+\usepackage{amsmath}
+\usepackage{cancel}
+\numberwithin{equation}{section}
+
+\setlength{\evensidemargin}{.25in}
+\setlength{\oddsidemargin}{-.25in}
+\setlength{\topmargin}{-.75in}
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{9.5in}
+\newcommand{\due}{February 4th, 2011}
+\newcommand{\HWnum}{2}
+\input{/home/joey/Documents/Class/Define.tex}
+
+\begin{document}
+\input{../title.tex}
+
+\section{Problem \#1}
+To find the \emph{Fourier Coefficients} $\hat{f}(n)$ for a given function $f(\theta)$ we use the formula
+\begin{equation}
+\hat{f}(n) = \frac{1}{2\pi}\int_{-\pi}^{\pi}f(\theta)e^{-in\theta}d\theta
+\label{Four}
+\end{equation}
+So for $f(\theta) = \theta$ equation \ref{Four} becomes
+\begin{align*}
+\hat{f}(n) &= \frac{1}{2\pi}\int_{-\pi}^{\pi}\theta e^{-in\theta}d\theta
+\end{align*}
+To solve this we use \emph{Integration by parts} where
+\begin{align*}
+u = \theta\ \  &dv = e^{-in\theta}d\theta\\
+du = d\theta\ \  &v = -\frac{1}{in}e^{-in\theta}
+\end{align*}
+So if we follow the formula for \emph{Integration by Parts}
+\begin{equation}
+\int udv = uv - \int vdu
+\label{Int}
+\end{equation}
+we can say that
+\begin{align*}
+\hat{f}(n) &= \frac{1}{2\pi}\int_{-\pi}^{\pi}\theta e^{-in\theta}d\theta\\
+&= \frac{1}{2\pi}\left(-\frac{1}{in}\theta e^{-in\theta} - \frac{-1}{in}\int_{-\pi}^{\pi}e^{-in\theta}d\theta\right)\\
+&= \frac{1}{2\pi}\left(\left.-\frac{1}{in}\theta e^{-in\theta}\right|_{-\pi}^{\pi} - \frac{-1}{in}\int_{-\pi}^{\pi}e^{-in\theta}d\theta\right)\\
+&= \frac{1}{2\pi}\left(-\frac{1}{in}\left((\pi)e^{-in\pi} - (-\pi)e^{in\pi}\right) + \left(\frac{1}{in}\frac{-1}{in}e^{-in\theta}\right|_{-\pi}^{\pi}\right)\\
+&= \frac{1}{2\pi}\left(-\frac{\pi}{in}\left(e^{-in\pi} + e^{in\pi}\right) + \frac{1}{n^2}\left(e^{-in\pi} - e^{in\pi}\right)\right)\\
+&= \frac{1}{2\pi}\left(-\frac{2\pi}{in}\cos(n\pi) + \frac{2i}{n^2}\sin(n\pi)\right)
+\end{align*}
+Now we now that for all $n=1,2,3...$ that $\sin(n\pi) = 0$ and that $\cos(n\pi)$ alternates between $1$ and $-1$ for odd and even $n$ respectively. We can call this $(-1)^n$ so we see that
+\begin{align*}
+\hat{f}(n) &= \frac{1}{2\pi}\left(-\frac{2\pi}{in}\cos(n\pi) + \cancelto{0}{\frac{2i}{n^2}\sin(n\pi)}\right)\\
+&= -\frac{1}{2\pi}\frac{2\pi}{in}(-1)^n\\
+&= \frac{1}{in}(-1)(-1)^n\\
+&= \frac{(-1)^{n+1}}{in}
+\end{align*}
+So the Fourier series is
+$$f(\theta) = \sum_{n=-\infty}^{\infty}\frac{(-1)^{n+1}}{in}e^{in\theta}$$
+
+\section{Problem \#2}
+For $f(\theta) = |\theta|$ we calculate the Fourier coefficient by equation \ref{Four}, but we need to make $f(\theta)$ into a piecewise function 
+$$f(\theta) = \left\{\begin{array}{lc}
+		\theta	&\textnormal{for}\ \theta>0\\
+		-\theta	&\textnormal{for}\ \theta<0
+			\end{array}\right.$$
+\begin{align*}
+\hat{f}(n) &= \frac{1}{2\pi}\int_{-\pi}^{\pi}f(\theta)e^{-in\theta}d\theta\\
+&= \frac{1}{2\pi}\int_{-\pi}^{0}-\theta e^{-in\theta}d\theta + \frac{1}{2\pi}\int_{0}^{\pi}\theta e^{-in\theta}d\theta
+\end{align*}
+Now we need to do integration by parts for each integral. So for the first integral we let
+\begin{align*}
+u = \theta\ \  &dv = e^{-in\theta}d\theta\\
+du = d\theta\ \  &v = -\frac{1}{in}e^{-in\theta}
+\end{align*}
+So it follows from equation \ref{Int} 
+\begin{align*}
+-\frac{1}{2\pi}\int_{-\pi}^{0}\theta e^{-in\theta}d\theta &= -\frac{1}{2\pi}\left(\left.\frac{-1}{in}\theta e^{-in\theta}\right|_{-\pi}^{0}-\int_{-\pi}^{0}e^{-in\theta}d\theta \right)\\
+&= -\frac{1}{2\pi}\left(\frac{-1}{in}\left((0)e^{-in(0)} - (-\pi)e^{in\pi}\right)-\frac{-1}{in}\left(e^{-in\theta}\right|_{-\pi}^{0} \right)\\
+&= -\frac{1}{2\pi}\left(\frac{-\pi}{in}e^{in\pi}-\frac{-1}{in}\left(e^{-in(0)} - e^{in\pi}\right)\right)\\
+&= -\frac{1}{2\pi}\left(\frac{-\pi}{in}e^{in\pi}-\frac{-1}{in}\left(1 - e^{in\pi}\right)\right)\\
+&= \frac{1}{2\pi}\frac{1}{in}\left(\pi e^{in\pi}+ e^{in\pi}- 1 \right)
+\end{align*}
+Note for the second integral we choose the same variables for integration by parts
+\begin{align*}
+u = \theta\ \  &dv = e^{-in\theta}d\theta\\
+du = d\theta\ \  &v = -\frac{1}{in}e^{-in\theta}
+\end{align*}
+So equation \ref{Int} yields
+\begin{align*}
+\frac{1}{2\pi}\int_{0}^{\pi}\theta e^{-in\theta}d\theta &= \frac{1}{2\pi}\left(\left.\frac{-1}{in}\theta e^{-in\theta}\right|_{0}^{\pi}-\int_{0}^{\pi}e^{-in\theta}d\theta \right)\\
+&= \frac{1}{2\pi}\left(\frac{-1}{in}\left(\pi e^{-in\pi} - (0)e^{-in(0)}\right) - \frac{-1}{in}\left(e^{-in\theta}\right|_{0}^{\pi} \right)\\
+&= \frac{1}{2\pi}\left(\frac{-\pi}{in} e^{-in\pi} - \frac{-1}{in}\left(e^{-in\pi} - e^{-in(0)}\right)\right)\\
+&= \frac{1}{2\pi}\left(\frac{-\pi}{in} e^{-in\pi} - \frac{-1}{in}\left(e^{-in\pi} - 1\right)\right)\\
+&= -\frac{1}{2\pi}\frac{1}{in}\left(\pi e^{-in\pi} - e^{-in\pi} + 1\right)\\
+\end{align*}
+Now we can find the sum of these two parts to find the total integral
+\begin{align*}
+\hat{f}(n) &= \frac{1}{2\pi}\int_{-\pi}^{0}-\theta e^{-in\theta}d\theta + \frac{1}{2\pi}\int_{0}^{\pi}\theta e^{-in\theta}d\theta\\
+&= \frac{1}{2\pi}\frac{1}{in}\left(\pi e^{in\pi}+ e^{in\pi}- 1 \right) - \frac{1}{2\pi}\frac{1}{in}\left(\pi e^{-in\pi} - e^{-in\pi} + 1\right)\\
+&= \frac{1}{2\pi}\frac{1}{in}\left(\pi e^{in\pi}+ e^{in\pi}- 1 - \pi e^{-in\pi} + e^{-in\pi} - 1\right)\\
+&= \frac{1}{2\pi}\frac{1}{in}\left(\pi \left(e^{in\pi}-e^{-in\pi}\right) + e^{in\pi} + e^{-in\pi} - 2\right)\\
+&= \frac{1}{2\pi}\frac{1}{in}\left(\cancelto{0}{2i\pi\sin(n\pi)} + 2\cos(n\pi) - 2\right)\\
+&= \frac{1}{2\pi}\frac{2}{in}\left((-1)^n - 1\right)\\
+&= \frac{(-1)^n - 1}{in\pi}
+\end{align*}
+So the Fourier series is 
+$$f(\theta) = \sum_{n=-\infty}^{\infty}\frac{(-1)^n - 1}{in\pi}e^{in\theta}$$
+note that for $n\rightarrow$ even $\hat{f}(n) = 0$.
+\end{document}

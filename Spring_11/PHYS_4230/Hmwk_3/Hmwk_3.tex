@@ -1,0 +1,203 @@
+\documentclass[11pt]{article}
+
+\usepackage{latexsym}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{enumerate}
+\usepackage{amsmath}
+\usepackage{cancel}
+\numberwithin{equation}{section}
+
+\setlength{\evensidemargin}{.25in}
+\setlength{\oddsidemargin}{-.25in}
+\setlength{\topmargin}{-.75in}
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{9.5in}
+\newcommand{\due}{February 4th, 2011}
+\newcommand{\HWnum}{3}
+\input{/home/joey/Documents/Class/Define.tex}
+
+\begin{document}
+\input{../title.tex}
+
+\section{Problem \#1 (2.4)}
+The total number of ways to pick five cards out of a 52 card deck is given by 52 choose 5. Mathematically this means
+$${52\choose 5} = \frac{52!}{5!(52-5)!}$$
+Note that the term $\frac{52!}{(52-5)!} = 52\times51\times50\times49\times48$ this is the total number of ways to pick 5 cards from the deck such that order matters. So we divide out by the number of ways to arrange 5 cards which is $5!$. So we can calculate the number as
+$${52\choose5} = \frac{52\times51\times50\times49\times48}{5!} = \frac{311875200}{120} = 2598960\unit{total\ number\ of\ poker\ hands}$$
+Note that the highest ranking hand the royal flush is only 4 of the total number of possible hand, one for each suit. So the probability of being dealt a royal flush is 
+$$\frac{4}{2598960} = 0.0000015$$
+
+\section{Problem \#2 (2.8)}
+\begin{enumerate}[(a)]
+\item
+In the system of two Einstein solids that share a total of 20 units of energy. We can reason that each macrostate is the each unique energy value of solid $A$ given by $q_A$. We see that $q_A$ can be any integer value in the range $[0,20]$. This implies that there are 21 different macrostates for this system. Note that this is one more that the total number of energy units.
+
+\item
+The total number of microstates for this system is given by the formula
+\begin{equation}
+\Omega(N,q) =  {q+N-1\choose q} = \frac{(q+N-1)!}{q!(N-1)!}
+\label{micro}
+\end{equation}
+So for our system we have $q=20$ and $N=20$ so it follows that
+$$\Omega_{tot}{20+20-1\choose 20}  = {39\choose 20} = \frac{39!}{20!(19!)} = 68923264410\unit{microstates}$$
+
+\item
+To find the probability of finding all the energy in solid $A$ when the system is at thermal equilibrium we need to find the total number of microstates where all the energy is in solid $A$. Note that this is when $q_A=20$ and that in solid $A$ we have $N_A = 10$ so for these values equation \ref{micro} yields
+$$\Omega_A = {q_A+N_A-1\choose q_A} = {20+10-1\choose 20} = \frac{29!}{20!(9)!} = 10015005\unit{microstates}$$
+but for each of these microstates we have all the possible microstates of solid $B$. So we know that for solid $B$ $N_B =10$ and $q_B = q-q_A = 20-20 = 0$. So equation \ref{micro} yields
+$$\Omega_B {q_B+N_B-1\choose q_B} = {0+10-1\choose 0} = \frac{9!}{0!(9)!} = 1\unit{microstates}$$
+So there is only one possible way for solid $B$ to have zero energy units. Therefore the total number of microstates for $q_A =20$ is 
+$$\Omega(q_A=20) = \Omega_A\Omega_B = 10015005\unit{microstates}$$
+so the probability of finding the system in this state is
+$$\frac{\Omega(q_A=20)}{\Omega_{tot}} = \frac{10015005}{68923264410} = 0.00015$$
+
+\item
+The probability of finding exactly half the energy in solid $A$ or when $q_A = 10$ is found by equation \ref{micro}
+$$\Omega_A = {10+10-1\choose 10} = 92378$$
+and for solid $B$ 
+$$\Omega_B = {10+10-1\choose 10} = 92378$$
+so the total number of microstates is 
+$$\Omega(q_A=10) = \Omega_A\Omega_B = 8533694884\unit{microstates}$$
+So we can find the probability of being in this state the same as we did in part (c)
+$$\frac{\Omega(q_A=10)}{\Omega_{tot}} = \frac{8533694884}{68923264410} = 0.12$$
+
+\item
+We could say that this system would exhibit irreversible behavior when we go from a state that is improbable to one that is probable. An example of this would be the system is in a macrostate such that $q_A=0$ and after some time we are in the macrostate where $q_A=10$. We went from a highly unlikely state to a highly likely state. This is the same as saying that the heat flowed from $B$ to $A$ and wont flow back into $B$ once we reach thermal equilibrium.
+\end{enumerate}
+
+\section{Problem \#3 (2.12)}
+\begin{enumerate}[(a)]
+\item
+See attached
+
+\item
+If we define the \emph{Natural Logarithm} as 
+$$e^{\ln(x)} = x$$
+We can see that
+\begin{align*}
+\ln(a)+\ln(b) &=  \ln\left(e^{\ln(a)+\ln(b)}\right)\\
+&=  \ln\left(e^{\ln(a)}e^{\ln(b)}\right)\\
+&=  \ln\left(ab\right)\\
+\end{align*}
+And that 
+\begin{align*}
+b\ln(a) &= \ln\left(e^{b\ln(a)}\right)\\
+&= \ln\left(\left(e^{\ln(a)}\right)^b\right)\\
+&= \ln\left(a^b\right)\\
+\end{align*}
+
+\item
+To find the derivative of the \emph{Natural Logarithm} let us define a variable $y$ such that
+$$y = \ln(x)$$
+so we can solve for $x$ to see that
+$$x = e^y$$
+so if we find the derivative of $x$ with respect to $y$ we see that
+$$\frac{dx}{dy} = e^y = x$$
+so now if we we can say that the derivative of $y$ with respect to $y$ is 
+$$\frac{dy}{dy} = 1$$
+on the left hand side but on the right hand side we get
+$$1 = \frac{d}{dy}\ln(x)$$
+but if we apply chain rule we see that we get
+\begin{align*}
+\frac{dy}{dy} = 1 &= \frac{d\ln(x)}{dy}\\
+&= \frac{d\ln(x)}{dx}\frac{dx}{dy}\\
+&= \frac{d\ln(x)}{dx}x\\
+&\Downarrow\\
+\frac{d\ln(x)}{dx} &= \frac{1}{x}
+\end{align*}
+
+\item
+For $|x|<<1$ we can assume that the \emph{Taylor Expansion} of $\ln(1+x)$ will converge. So to calculate the Taylor Series centered around zero we use
+$$f(x) = f(0) + f'(0)x + \frac{f''(0)}{2!}x^2 + ... \frac{f^{(n)}(0)}{n!}x^n + ...$$
+So we calculate the first derivatives of $\ln(1+x)$ evaluated at zero that is non zero.
+\begin{align*}
+f(0) &= \ln(1+0) = 0\\
+f'(x) &= \frac{1}{1+x}\\
+f'(0) &= \frac{1}{1+0} = 1\\
+\end{align*}
+So the Taylor Series first order approximation gives 
+$$\ln(1+x) \approx x$$
+note that this series only converges to the original function for $x$ under our assumption that $x<<1$. We can test that for $x=0.1$ we have $\ln(1.1) = 0.095$ which is about $0.1$ and for $x=0.01$ we have $\ln(1.01) = 0.009950$. Note that the approximation gets more accurate as $x$ gets smaller.
+\end{enumerate}
+
+\section{Problem \#4 (2.13)}
+\begin{enumerate}[(a)]
+\item
+\begin{align*}
+e^{a\ln(b)} &= \left(e^{\ln(b)}\right)^a\\
+&= b^a
+\end{align*}
+
+\item
+Assuming that $b<<a$ we see that the function $\ln(a+b)$ can be approximated by our result from part (d) of problem 3
+\begin{align*}
+\ln(a+b) &= \ln\left(a\left(1+\frac{b}{a}\right)\right)\\
+&= \ln(a) + \ln\left(1+\frac{b}{a}\right)\\
+&= \ln(a) + \frac{b}{a}
+\end{align*}
+Note that this only works under the assumption $b<<a$ so that $b/a<<1$.
+\end{enumerate}
+
+\section{Problem \#5 (2.17)}
+If we take equation \ref{micro} for a vary large $N$ we can say that
+$$\Omega(N,q) = \frac{(q+N)!}{q!N!}$$
+Now if we use \emph{Stirling's Approximation}
+\begin{equation}
+N! \approx N^Ne^{-N}
+\label{Stir}
+\end{equation}
+and take the natural log of the multiplicity we get
+\begin{align*}
+\ln\Omega(N,q) &= \ln\left(\frac{(q+N)!}{q!N!}\right)\\
+&= \ln((q+N)!) - \ln(q!) -\ln(N!)\\
+&= \ln((q+N)^{(q+N)}e^{-(q+N)}) - \ln(q^qe^{-q}) -\ln(N^Ne^{-N})\\
+&= \ln((q+N)^{(q+N)}) + \ln(e^{-(q+N)}) - \ln(q^q) - \ln(e^{-q}) - \ln(N^N) - \ln(e^{-N})\\
+&= (q+N)\ln(q+N) - (q+N) - q\ln(q) + q - N\ln(N) + N \\
+&= (q+N)\ln\left(N\left(1+\frac{q}{N}\right)\right) - q\ln(q) - N\ln(N) \\
+&= (q+N)\left(\ln(N)+ \ln\left(1+\frac{q}{N}\right)\right) - q\ln(q) - N\ln(N) \\
+&= (q+N)\left(\ln(N) + \frac{q}{N}\right) - q\ln(q) - N\ln(N) \\
+&= q\ln(N) + N\ln(N) + \frac{q^2}{N} + q - q\ln(q) - N\ln(N) \\
+&= q(\ln(N) - \ln(q))  + \frac{q^2}{N} + q \\
+&= q\left(\ln\left(\frac{N}{q}\right)\right)  + \frac{q^2}{N} + q \\
+&= \ln\left(\frac{N}{q}\right)^q  + \frac{q^2}{N} + q 
+\end{align*}
+Now we can neglect the $\frac{q^2}{N}$ under the assumption $q<<N$. So
+\begin{align*}
+\ln\Omega(N,q) &=  \ln\left(\frac{N}{q}\right)^q  + q \\
+e^{\ln\Omega(N,q)} &=  e^{\ln\left(\frac{N}{q}\right)^q  + q} \\
+e^{\ln\Omega(N,q)} &=  e^{\ln\left(\frac{N}{q}\right)^q}e^{q} \\
+\Omega(N,q) &=  \left(\frac{N}{q}\right)^qe^{q} \\
+&=  \left(\frac{Ne}{q}\right)^q
+\end{align*}
+
+\section{Problem \#6 (2.19)}
+If we take the multiplicity of the two-state paramagnet is given by
+$$\Omega(N_{\downarrow}) ={N\choose N_{\downarrow}} = \frac{N!}{N_{\downarrow}!(N-N_{\downarrow})!}$$
+If we operate under the assumption that $N_{\downarrow}<<N$. We can take the natural log of the multiplicity
+\begin{align*}
+\ln\Omega(N_{\downarrow}) &= \ln\left(\frac{N!}{N_{\downarrow}!(N-N_{\downarrow})!}\right)\\
+&= \ln(N!) - \ln(N_{\downarrow}!) - \ln((N-N_{\downarrow})!)
+\end{align*}
+Now if we use equation \ref{Stir} we can say that
+\begin{align*}
+\ln\Omega(N_{\downarrow}) &= \ln(N^Ne^{-N}) - \ln(N_{\downarrow}^{N_{\downarrow}}e^{-N_{\downarrow}}) - \ln((N-N_{\downarrow})^{(N-N_{\downarrow})}e^{-(N-N_{\downarrow})})\\
+&= N\ln(N) - N - N_{\downarrow}\ln(N_{\downarrow}) + N_{\downarrow} - (N-N_{\downarrow})\ln(N-N_{\downarrow}) + N - N_{\downarrow}\\
+&= N\ln(N)  - N_{\downarrow}\ln(N_{\downarrow})  - (N-N_{\downarrow})\ln\left(N\left(1-\frac{N_{\downarrow}}{N}\right)\right) \\
+&= N\ln(N)  - N_{\downarrow}\ln(N_{\downarrow})  - (N-N_{\downarrow})\left(\ln(N) + \ln\left(1-\frac{N_{\downarrow}}{N}\right)\right) \\
+&= N\ln(N)  - N_{\downarrow}\ln(N_{\downarrow})  - (N-N_{\downarrow})\left(\ln(N) -\frac{N_{\downarrow}}{N}\right) \\
+&= N\ln(N)  - N_{\downarrow}\ln(N_{\downarrow})  - N\ln(N) + N_{\downarrow}\ln(N) + N_{\downarrow} - \frac{N_{\downarrow}^2}{N}\\
+&= N_{\downarrow}(\ln(N) - \ln(N_{\downarrow})) + N_{\downarrow} - \cancelto{0}{\frac{N_{\downarrow}^2}{N}}\\
+&= N_{\downarrow}\left(\ln\left(\frac{N}{N_{\downarrow}}\right)\right) + N_{\downarrow} \\
+&= \ln\left(\frac{N}{N_{\downarrow}}\right)^{N_{\downarrow}}+ N_{\downarrow} 
+\end{align*}
+Now we to cancel out the natural logs we exponentiate $\Omega(N_{\downarrow})$
+\begin{align*}
+e^{\ln(\Omega(N_{\downarrow}))} = \Omega(N_{\downarrow}) &= e^{\ln\left(\dfrac{N}{N_{\downarrow}}\right)^{N_{\downarrow}}+ N_{\downarrow}}\\
+&= e^{\ln\left(\dfrac{N}{N_{\downarrow}}\right)^{N_{\downarrow}}} e^{N_{\downarrow}}\\
+&= \left(\dfrac{N}{N_{\downarrow}}\right)^{N_{\downarrow}} e^{N_{\downarrow}}\\
+&= \left(\dfrac{Ne}{N_{\downarrow}}\right)^{N_{\downarrow}} 
+\end{align*}
+Note that this is very similar to the result of the previous problem. This is due to the fact that the number of particles is much larger than the number of macrostates, $q$ or $N_{\downarrow}$. When these are very small the microstates dominate the multiplicity as we have shown. Also physically the low temperature limit makes the system looks like the paramagnet system.
+\end{document}
+

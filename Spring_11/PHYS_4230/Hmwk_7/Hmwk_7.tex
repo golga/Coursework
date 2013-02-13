@@ -1,0 +1,161 @@
+\documentclass[11pt]{article}
+
+\usepackage{latexsym}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{enumerate}
+\usepackage{amsmath}
+\usepackage{cancel}
+\numberwithin{equation}{section}
+
+\setlength{\evensidemargin}{.25in}
+\setlength{\oddsidemargin}{-.25in}
+\setlength{\topmargin}{-.75in}
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{9.5in}
+\newcommand{\due}{March 11th, 2011}
+\newcommand{\HWnum}{7}
+\input{/home/joey/Documents/Class/Define.tex}
+
+\begin{document}
+\input{../title.tex}
+
+\section{Problem 4.5}
+We know for a \emph{Carnot engine} we have four steps to the cycle. Two isothermal steps and two adiabatic steps. The first step is an isothermal expansion from $V_1$ to $V_2$, because we are on an isotherm we know that the total change in energy is zero, this implies that $Q_H = W_{12}$ where $W_{12}$ is the work to expand the ideal gas from $V_1$ to $V_2$. Which we can find by
+\begin{align*}
+W_{12} &= -\int_{V_1}^{V_2}PdV\\
+&= -Nk_BT_H\int_{V_1}^{V_2}\frac{1}{V}dV\\
+&= -Nk_BT_H\ln\left(\frac{V_2}{V_1}\right)
+\end{align*}
+And by the \emph{First Law of Thermodynamics} we can see that
+$$\Delta U = Q + W$$
+but as we have said $\Delta U = 0$ so we can see that $-Q_H = W_{12}$. So we found in the first step we have
+$$Q_H = Nk_BT_H\ln\left(\frac{V_2}{V_1}\right)$$
+Now for the 2nd isotherm we are at $T_C$ and we have an isothermal compression from $V_3$ to $V_4$ at $T_C$ that does work $W_{34}$. Note since this is compression we explicitly assume that $V_3>V_4$ and this implies that we have a negative work at this point. By the same calculation for $W_{12}$ we have
+$$W_{34} = -Nk_BT_C\ln\left(\frac{V_4}{V_3}\right)$$
+And by the first law we have
+$$Q_C = Nk_BT_C\ln\left(\frac{V_4}{V_3}\right)$$
+Now we account for the adiabatic expansion from $V_2$ to $V_3$ going from $T_H$ to $T_C$. For an ideal gas this is described by 
+$$V_iT_i^{f/2} = V_fT_f^{f/2}$$
+So for this adiabatic expansion we have
+\begin{align*}
+V_2T_H^{f/2} &= V_3T_C^{f/2}\\
+&\Downarrow\\
+\frac{V_2}{V_3} &= \left(\frac{T_C}{T_H}\right)^{f/2}
+\end{align*}
+And similarly for the adiabatic compression from $V_4$ to $V_1$ going from $T_C$ to $T_H$ we have
+$$\frac{V_1}{V_4} = \left(\frac{T_C}{T_H}\right)^{f/2}$$
+we see that this two expressions are equal, this implies that
+\begin{align*}
+\frac{V_2}{V_3} &= \frac{V_1}{V_4} \\
+&\Downarrow\\
+\frac{V_4}{V_3} &= \frac{V_1}{V_2} 
+\end{align*}
+Now we want the total work given by $W_{tot} = W_{12}+W_{34}$ which we can calculate as
+\begin{align*}
+W_{tot} &= Nk_BT_H\ln\left(\frac{V_2}{V_1}\right) + Nk_BT_C\ln\left(\frac{V_4}{V_3}\right)\\
+&= Nk_BT_H\ln\left(\frac{V_2}{V_1}\right) + Nk_BT_C\ln\left(\frac{V_1}{V_2}\right)\\
+&= Nk_BT_H\ln\left(\frac{V_2}{V_1}\right) - Nk_BT_C\ln\left(\frac{V_2}{V_1}\right)\\
+&= Nk_B(T_H-T_C)\ln\left(\frac{V_2}{V_1}\right)
+\end{align*}
+Now we use the definition of efficiency to find that
+\begin{align*}
+e &\equiv \frac{W_{tot}}{Q_H}\\
+&= \frac{Nk_B(T_H-T_C)\ln\left(V_2/V_1\right)}{Nk_BT_H\ln\left(V_2/V_1\right)}\\
+&= \frac{T_H-T_C}{T_H} = 1 -\frac{T_C}{T_H}
+\end{align*}
+
+\section{Problem 4.8}
+Leaving your refrigerator door open can be thought of as making the hot and cold reservoir the same. So we remove $Q_C$ and add $Q_H$ to the reservoir. This implies that the heat change is
+$$\Delta Q = Q_H - Q_C$$
+but by the first law we know that the waste heat of the refrigerator is the same as the heat we removed $Q_C$ plus the work we did to remove the heat. This implies that
+$$Q_H = Q_C + W$$
+So our change in heat in the kitchen will be
+$$\Delta Q = Q_H - Q_C = Q_C + W - Q_C = W$$
+so the total change of heat is the same as the work we did to remove the heat from the cold reservoir. Since we did work this means $W$ is positive so the overall heat increases. Therefore you cannot cool off your kitchen by leaving the refrigerator door open. 
+
+\section{Problem 4.10}
+For a kitchen refrigerator that lets heat leak into the cold reservoir at a rate of $300\unit{W}$ we first assume that we have an ideal \emph{coefficient of performance} $\textnormal{COP}$. Which is given by 
+$$\textnormal{COP} = \frac{T_C}{T_H-T_C}$$
+For a typical kitchen refrigerator we have $T_H = 298\unit{K}$ and $T_C = 255\unit{K}$. This gives us
+$$\textnormal{COP} = \frac{255\unit{K}}{298\unit{K}-255\unit{K}} = \frac{255\unit{K}}{43\unit{K}} = 5.9$$
+This means that for every joule of work the refrigerator does we remove $5.9\unit{J}$ from the cold reservoir. So to keep the temperature the same in the fridge we have to remove $300\unit{J}$ a second. So every second we need to do $300/5.9 = 50.8\unit{J}$ of work. So the refrigerator must draw at least $50.8\unit{W}$ of power from the wall.
+
+\section{Problem 4.13}
+We know that the coefficient of performance tells us the amount of heat we can remove for a joule of work. This means that the total energy it requires to remove $Q_C$ heat from the cold reservoir is given by
+$$E = \frac{Q_C}{\textnormal{COP}}$$
+Now if we say that the heat that enters an air conditioned building is proportional to the difference in temperature between inside and outside
+$$Q_C \propto T_H-T_C$$
+now we know that if we have an ideal air conditioner the COP is given by
+$$\textnormal{COP} = \frac{T_C}{T_H-T_C}$$
+using these two facts we can see that
+\begin{align*}
+E &= \frac{Q_C}{\textnormal{COP}}\\
+&\propto \frac{T_H-T_C}{\frac{T_C}{T_H-T_C}}\\
+&\propto \frac{(T_H-T_C)^2}{T_C}
+\end{align*}
+So the energy required to air condition a build goes by the square of the difference of $T_H$ and $T_C$. Take for example a hot day where $T_H = 300\unit{K}$ and we want the building to be $T_C = 293\unit{K}$ we have
+\begin{align*}
+E &\propto \frac{(T_H-T_C)^2}{T_C}\\
+&\propto \frac{(300\unit{K} - 293\unit{K})^2}{293\unit{K}}\\
+&\propto 0.167\unit{K}
+\end{align*}
+But if we want to lower the inside temperature to $T_C = 290\unit{K}$ we find that $E\propto 0.344\unit{K}$ so lowering $3\unit{K}$ the proportional energy more than doubles.
+
+\section{Problem 4.14}
+\begin{enumerate}[(a)]
+\item
+For the reverse air conditioner we want to define the coefficient of performance as the benefit over the cost. In this case the benefit is the heat gained by the inside of the building $Q_h$. And the cost is the work required to pump $Q_h$ into the building. So
+$$\textnormal{COP} = \frac{Q_h}{W}$$
+
+\item
+We know that by the first law the heat we pump into the building is the same as the heat we remove from the outside plus the work we did to pump the heat. This is given by
+$$Q_h = Q_c + W$$
+This will make the COP become
+\begin{align*}
+\textnormal{COP} &= \frac{Q_h}{W}\\
+&= \frac{Q_h}{Q_h-Q_c}\\
+&= \frac{1}{1-Q_c/Q_h}
+\end{align*}
+So we see that this is always greater than one since $Q_h-Q_c<Q_h$
+
+\item
+So by the \emph{Second Law of Thermodynamics} we say that the entropy transfered to the inside has to be greater than the entropy taken from the outside
+$$\frac{Q_h}{T_h} \ge \frac{Q_c}{T_c}$$
+or
+$$\frac{Q_c}{Q_h} \le \frac{T_c}{T_h}$$
+So we can say the COP in terms of $T_c$ and $T_h$ is
+$$\textnormal{COP} \ge \frac{1}{1-T_c/T_h}$$
+
+\item
+The heat pump is better than the electric furnace because the heat gained on the inside is the heat from the outside plus the work needed to pump it into the building. While the electric furnace just converts electrical work into heat.
+\end{enumerate}
+
+\section{Problem 4.18}
+To find the efficiency of the \emph{Otto cycle} we start with the efficiency 
+$$e = 1-\frac{Q_h}{Q_c}$$
+Now we know that $Q_h$ is the temperature change from step 4 to 1 or 
+$$Q_h = T_4-T_1$$
+and the cold heat is
+$$Q_c = T_3-T_2$$
+But we know that these temperatures are related to each other by an adiabatic compression or expansion. So
+\begin{align*}
+T_1V_1^{\gamma-1} &= T_2V_2^{\gamma-1}\\
+T_3V_2^{\gamma-1} &= T_4V_1^{\gamma-1}
+\end{align*}
+This implies that 
+\begin{align*}
+T_4 &= T_3\left(\frac{V_2}{V_1}\right)^{\gamma-1}\\
+T_1 &= T_2\left(\frac{V_2}{V_1}\right)^{\gamma-1}
+\end{align*}
+So our efficiency becomes
+\begin{align*}
+e &= 1 - \frac{Q_h}{Q_c}\\
+&= 1 - \frac{T_4-T_1}{T_3-T_2}\\
+&= 1 - \frac{T_3\left(\frac{V_2}{V_1}\right)^{\gamma-1} - T_2\left(\frac{V_2}{V_1}\right)^{\gamma-1}}{T_3-T_2}\\
+&= 1 - \frac{T_3 - T_2}{T_3-T_2}\left(\frac{V_2}{V_1}\right)^{\gamma-1}\\
+&= 1 - \left(\frac{V_2}{V_1}\right)^{\gamma-1}
+\end{align*}
+
+\end{document}
+
