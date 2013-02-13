@@ -1,0 +1,540 @@
+\documentclass[11pt]{article}
+
+\usepackage{latexsym}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{enumerate}
+\usepackage{amsmath}
+\usepackage{cancel}
+\numberwithin{equation}{section}
+
+\setlength{\evensidemargin}{.25in}
+\setlength{\oddsidemargin}{-.25in}
+\setlength{\topmargin}{-.75in}
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{9.5in}
+\newcommand{\due}{January 25th, 2011}
+\newcommand{\HWnum}{1}
+\input{/home/joey/Documents/Class/Define.tex}
+
+\begin{document}
+\input{../title.tex}
+
+\section{Problem 1.1}
+\begin{enumerate}[(a)]
+\item
+Given that we have a car traveling at constant velocity $v = \frac{3}{5}$ (note we use the unit system where $c=1$) and that the car and garage is length $x^{1'} = L=5\unit{m}$ in it's rest frame. So for an observer $\scrO$ that is in the same frame as the garage we can find the length of the car according to $\scrO$ by taking the \emph{Lorentz Transform}
+\begin{equation}
+x^{1'} = \gamma(x^1-vx^0)
+\label{LornTran}
+\end{equation}
+Where we define 
+$$\gamma \equiv \frac{1}{\sqrt{1-v^2}}$$
+So according to equation \ref{LornTran} where we are at $x^0 = 0$ the first instant note that 
+\begin{align*}
+x^{1'} &= \gamma(x^1-vx^0)\\
+&\Downarrow\\
+x^1 &= \frac{x^{1'}}{\gamma}+vx^0\\
+ &= \sqrt{1-\left(\frac{3}{5}\right)^2}(5)+v(0)\\
+ &= \sqrt{\frac{16}{25}}(5) = 4\unit{m}
+\end{align*}
+And since the garage is in the same frame as $\scrO$ the length is the proper length the given as $5\unit{m}$. So according to $\scrO$ the lengths of the car and garage are
+\begin{align*}
+L_{\textnormal{car}} &= 4\unit{m}\\
+L_{\textnormal{garage}} &= 5\unit{m}
+\end{align*}
+Yes observer $\scrO$ thinks that the car is completely in the garage when the car once the car has traveled 4 meters it.
+
+\item
+For an observer $\scrO'$ that is in the rest frame of the car (or moving with it according to $\scrO$) then the length of the car according $\scrO'$ is $5$ meters. And the length of the garage is $4$ meters by the same length contraction that we found for the car in part (a). So according to the observer $\scrO'$ the lengths are
+\begin{align*}
+L_{\textnormal{car}} &= 5\unit{m}\\
+L_{\textnormal{garage}} &= 4\unit{m}
+\end{align*}
+So $\scrO'$ never sees the car completely in the garage according to her it wont fit!
+
+\item
+See attached.
+
+\item
+While it seems that $\scrO$ and $\scrO'$ see different things. In actuality they are just seeing things at different times. This lack of simultaneity explains why one observer thinks the car fits and the other thinks it is too big.
+\end{enumerate}
+
+\section{Problem 1.2}
+\begin{enumerate}[(a)]
+\item
+Given the Lorentz Transformations 
+\begin{align}
+\label{Lorn1}
+x' &= \gamma(x - vt)\\
+\label{Lorn2}
+t' &= \gamma(t - vx)
+\end{align}
+we want to boost twice once from $\scrO$ to $\scrO'$ by a velocity $v_1$ and then from $\scrO'$ to $\scrO''$ with velocity $v_2$. So our first boost goes by 
+\begin{align*}
+x' &= \frac{x - v_1t}{\sqrt{1-v_1^2}}\\
+t' &= \frac{t - v_1x}{\sqrt{1-v_1^2}}
+\end{align*}
+and then we can find the next boost by
+\begin{align*}
+x'' &= \frac{x' - v_2t'}{\sqrt{1-v_2^2}}\\
+&= \frac{\frac{x - v_1t}{\sqrt{1-v_1^2}} - v_2\frac{t - v_1x}{\sqrt{1-v_1^2}}}{\sqrt{1-v_2^2}}\\
+&= \frac{x - v_1t - v_2t + v_1v_2x}{\sqrt{1-v_1^2}\sqrt{1-v_2^2}}\\
+&= \frac{x(1+v_1v_2) - t(v_1+v_2)}{\sqrt{(1-v_1^2)(1-v_2^2)}}\\
+&= \frac{x - t\frac{v_1+v_2}{1+v_1v_2}}{(1+v_1v_2)^{-1}\sqrt{(1-v_1^2)(1-v_2^2)}}\\
+&= \frac{x - t\frac{v_1+v_2}{1+v_1v_2}}{\sqrt{\frac{(1-v_1^2)(1-v_2^2)}{(1+v_1v_2)^2}}}\\
+&= \frac{x - t\frac{v_1+v_2}{1+v_1v_2}}{\sqrt{\frac{1 - v_1^2 - v_2^2 +v_1^2v_2^2+2v_1v_2-2v_1v_2}{(1+v_1v_2)^2}}}\\
+&= \frac{x - t\frac{v_1+v_2}{1+v_1v_2}}{\sqrt{\frac{(1 + v_1v_2)^2 - (v_1+v_2)^2}{(1+v_1v_2)^2}}}\\
+&= \frac{x - t\frac{v_1+v_2}{1+v_1v_2}}{\sqrt{1-\left(\frac{v_1+v_2}{1+v_1v_2)}\right)^2}}
+\end{align*}
+Now we can look at a transform going from $\scrO$ to $\scrO''$ using velocity $v_{tot}$ 
+$$x' = \frac{x - tv_{tot}}{\sqrt{1-v_{tot}^2}}$$
+We see that this is in the same form as the expression we calculated. So we can see that
+$$v_{tot} = \frac{v_1+v_2}{1+v_1v_2}$$
+
+\item
+If we define a boost parameter for the velocity $v$ as
+$$v\equiv \tanh(\phi)$$
+we can see that the \emph{Lorentz Transformation} from equation \ref{LornTran} can be rewritten in terms of $\phi$ by
+\begin{align*}
+x' &= \gamma(x - vt)\\
+&= \frac{x - \tanh(\phi)t}{\sqrt{1-\tanh^2(\phi)}}\\
+&= \frac{x - \tanh(\phi)t}{\sech(\phi)}\\
+&= \cosh(\phi){x - \tanh(\phi)t}\\
+&= x\cosh(\phi) - t\sinh(\phi)
+\end{align*}
+Note that we see that $\gamma = \cosh(\phi)$. Now for the \emph{Lorentz Transform} for time we have
+\begin{align*}
+t' &= \gamma(t-vx)\\
+&= \cosh(\phi)(t-x\tanh(\phi))\\
+&= t\cosh(\phi)-x\cosh(\phi)\tanh(\phi))\\
+&= t\cosh(\phi)-x\sinh(\phi)
+\end{align*}
+
+\item
+So if we were going to boost again like we did in part (a) we can go from $\scrO$ to $\scrO'$ by the boost parameter $\phi_1$
+\begin{align*}
+x' &= x\cosh(\phi_1) - t\sinh(\phi_1)\\
+t' &= t\cosh(\phi_1)-x\sinh(\phi_1)
+\end{align*}
+And then the next boost from $\scrO'$ to $\scrO''$ with the boost parameter $\phi_2$
+\begin{align*}
+x'' &= x'\cosh(\phi_2) - t'\sinh(\phi_2)\\
+&= (x\cosh(\phi_1) - t\sinh(\phi_1))\cosh(\phi_2) - (t\cosh(\phi_1)-x\sinh(\phi_1))\sinh(\phi_2)\\
+&= x\cosh(\phi_1)\cosh(\phi_2) - t\sinh(\phi_1)\cosh(\phi_2) - t\cosh(\phi_1)\sinh(\phi_1)-x\sinh(\phi_1)\sinh(\phi_2)\\
+&= x(\cosh(\phi_1)\cosh(\phi_2) + \sinh(\phi_1)\sinh(\phi_2))  - t(\sinh(\phi_1)\cosh(\phi_2)+ \cosh(\phi_1)\sinh(\phi_1))\\
+&= x\cosh(\phi_1+\phi_2) - t\sinh(\phi_1+\phi_2)
+\end{align*}
+Now if we just go from $\scrO$ to $\scrO''$ by a boost of $\phi_{tot}$ we get
+$$x' = x\cosh(\phi_{tot}) - t\sinh(\phi_{tot})$$
+so we can see that this is in the same for as what we found where
+$$\phi_{tot} = \phi_1+\phi_2$$
+
+\item
+The invariant is given by
+$$\Delta s^2 = -\Delta t^2 + \Delta x^2$$
+note that we are only in $1+1$ dimensions. So in the $\scrO$ frame we see that the invariant is
+$$\Delta s^2 -\Delta t^2 + \Delta x^2$$
+now in the $\scrO'$ frame we see that
+\begin{align*}
+\Delta s'^2 &= -\Delta t'^2 + \Delta x'^2\\
+&= -(\Delta t\cosh(\phi) - \Delta x\sinh(\phi))^2 + (\Delta x\cosh(\phi) - \Delta t\sinh(\phi))^2\\
+&= -\Delta t^2\cosh^2(\phi) - \Delta x^2\sinh^2(\phi) +2\Delta t\Delta x\sinh(\phi)\cosh(\phi) \\
+&\ \ \ + \Delta x^2\cosh^2(\phi) + \Delta t^2\sinh^2(\phi) - 2\Delta t\Delta x\sinh(\phi)\cosh(\phi)\\
+&= -\Delta t^2\cosh^2(\phi) - \Delta x^2\sinh^2(\phi) +   \Delta x^2\cosh^2(\phi) + \Delta t^2\sinh^2(\phi) \\
+&= \Delta t^2(\sinh^2(\phi) - \cosh^2(\phi)) + \Delta x^2(\cosh^2(\phi) - \sinh^2(\phi)) \\
+&= -\Delta t^2 + \Delta x^2
+\end{align*}
+So the invariant is invariant.
+\end{enumerate}
+
+\section{Problem 1.3}
+\begin{enumerate}[(a)]
+\item
+See attached
+
+\item
+For the observer $\scrO'$ that is traveling at $-0.75$ in the $x$ direction we can see that in this frame the coordinates of the events get transformed by equations \ref{Lorn1} and \ref{Lorn2}. Note that for $v=-0.75$ we can find $\gamma$ as
+\begin{align*}
+\gamma &= \frac{1}{\sqrt{1-v^2}}\\
+&= \frac{1}{\sqrt{1-(-0.75)^2}}\\
+&= 1.5
+\end{align*}
+
+So for event $A$ (the two particles being emitted) observer $\scrO'$ see this happen at
+\begin{align*}
+x' &= \gamma(x - vt)\\
+&= 1.5(0 - (-0.75)(-2))\\
+&= -2.25
+\end{align*}
+And for the time we get
+\begin{align*}
+t' &= \gamma(t - vx)\\
+&= (1.5)(-2 - (-0.75)0)\\
+&= -3.0
+\end{align*}
+So the rest of the coordinates follow by the same calculation so we can say that
+\begin{align*}
+A' &= (-3.0, -2.25)\\
+B' &= (5.25, 5.25)\\
+C' &= (0.75, -0.75)\\
+D' &= (1.5, -0.19)\\
+E' &= (6.0, 5.8)\\
+F' &= (7.8, 5.9)
+\end{align*}
+Note to find $F'$ we first needed to calculate $F = (5.2,0)$. To do this we used the fact that the signal was traveling at $0.75$ and went $2$ meters. So it follows that
+\begin{align*}
+vt &= x\\
+&\Downarrow\\
+t &= \frac{x}{v} = \frac{2}{0.75} = 2.7\unit{m}
+\end{align*}
+So the particle traveled $2.7$ meters of time from $2.5$ meters so the event happens at time $t=5.2$ meters of time. See attached for the plot of the primed frame.
+
+\item
+So we can find the speed of the particles trajectory in the $\scrO'$ frame by using the \emph{velocity composition law}
+$$v_{tot} = \frac{v_1+v_2}{1+v_1v_2}$$
+So for the particle traveling from $A'$ to $B'$ we see that $v_1 = 0.75$ and $v_2 = .5$
+So $v_{tot}$ is given by
+\begin{align*}
+v_{AB} &= \frac{v_1+v_2}{1+v_1v_2}\\
+&= \frac{0.75+0.5}{1+0.75(0.5)v}\\
+&= 0.91
+\end{align*}
+Note that $v_{AB}^{-1} = 1.1$ and this is the slope we found before. For the other slopes we get
+\begin{align*}
+V_{AC} &= 0.4\\
+V_{AC}^{-1} &= 2.5\\
+V_{EF} &= 0\\
+V_{EF}^{-1} &= \infty\\
+V_{DF} &= 0.96\\
+V_{DF}^{-1} &= 1.0\\
+\end{align*}
+Note that the slope with $V_{EF}$ is calculated as $18$ but this is has a slope of near infinite.
+
+\item
+Yes observer $\scrO$ thinks that the signals were sent at the same time, but observer $\scrO'$ thinks that the left detector sent the signal first. The interval between these events for $\scrO$ is
+\begin{align*}
+\Delta s^2 &= -(\Delta t)^2 + (\Delta x)^2\\
+&= -(0)^2 + (4)^2\\
+&= 16
+\end{align*}
+And the interval for $\scrO'$ the interval is
+\begin{align*}
+\Delta s^2 &= -(\Delta t)^2 + (\Delta x)^2\\
+&= -(3.75)^2 + (5.44)^2\\
+&= -14.0 + 29.6 = 15.6
+\end{align*}
+This are within agreement so the $\Delta s^2$ is invariant.
+
+\end{enumerate}
+
+\section{Problem 1.4}
+\begin{enumerate}[(a)]
+\item
+To find the proper time $\tau$ we use the fact that in the proper frame that
+$$d\tau^2 = -ds^2$$
+where $ds^2$ is the invariant. Now that we have an infinitesimal change in the proper time $d\tau$ we can find the proper time $\tau$ by integrating along the path $\lambda$
+\begin{align*}
+\tau &= \int_{\lambda}d\tau\\
+&= \int_{\lambda}\sqrt{-ds^2}\\
+&= \int_{\lambda}\sqrt{-\eta_{\mu\nu}dx^{\mu}dx^{\nu}}\\
+&= \int_{\lambda}d\lambda\sqrt{-\eta_{\mu\nu}\frac{dx^{\mu}}{d\lambda}\frac{dx^{\nu}}{d\lambda}}
+\end{align*}
+Now we take the given parameterization
+\begin{align*}
+x^0(\lambda) &= \frac{\sinh(a\lambda)}{a}\\
+x^1(\lambda) &= \frac{\cosh(a\lambda)}{a}\\
+x^2(\lambda) &= x^3(\lambda) = 0
+\end{align*}
+We can find the proper time by calculating the integral. Note that we neglected the $x^2$ and $x^3$ components because they are zero.
+\begin{align*}
+\tau &= \int_{\lambda}d\lambda\sqrt{-\eta_{\mu\nu}\frac{dx^{\mu}}{d\lambda}\frac{dx^{\nu}}{d\lambda}}\\
+&= \int_{\lambda}d\lambda\sqrt{\frac{dx^{0}}{d\lambda}\frac{dx^{0}}{d\lambda}-\frac{dx^{1}}{d\lambda}\frac{dx^{1}}{d\lambda}}\\
+&= \int_{\lambda}d\lambda\sqrt{\left(\frac{dx^{0}}{d\lambda}\right)^2-\left(\frac{dx^{1}}{d\lambda}\right)^2}\\
+&= \int_{\lambda}d\lambda\sqrt{\frac{\cosh^2(a\lambda)}{a^2}a^2-\frac{\sinh^2(a\lambda)}{a^2}a^2}\\
+&= \int_{\lambda}d\lambda\cancelto{1}{\sqrt{\cosh^2(a\lambda)-\sinh^2(a\lambda)}}\\
+&= \int_{\lambda}d\lambda\\
+&= \lambda + C
+\end{align*}
+Where $C$ is some additive constant.
+
+\item
+Now we will assume that $C=0$ so that $\lambda = \tau$ we can find the four-velocity $U^{\mu}$ can be found by
+$$U^{\mu} = \frac{dx^{\mu}}{d\tau}  = \frac{dx^{\mu}}{d\lambda}$$
+Note that the last equality requires the assumption that $\lambda = \tau$. So we can see that 
+\begin{align*}
+U^0(\lambda) &= \frac{d}{d\lambda}\frac{\sinh(a\lambda)}{a}\\
+&= \cosh(a\lambda)
+\end{align*}
+and
+\begin{align*}
+U^1(\lambda) &= \frac{d}{d\lambda}\frac{\cosh(a\lambda)}{a}\\
+&= \sinh(a\lambda)
+\end{align*}
+And note that $x^2$ and $x^3$ are still zero so
+$$U^2(\lambda) = U^3(\lambda) = 0$$
+So the whole four-vector for $U^{\mu}$ is 
+$$U^{\mu}(\tau) = \left(\begin{array}{c} 	\cosh(a\tau)\\
+					\sinh(a\tau)\\
+					0\\
+					0\end{array}\right)$$
+Now using the fact that the four-acceleration is given by the expression
+$$\frac{dU^{\mu}}{d\tau}$$
+so we can quickly say that
+$$\frac{dU^{\mu}}{d\tau} = \left(\begin{array}{c} 	a\sinh(a\tau)\\
+					a\cosh(a\tau)\\
+					0\\
+					0\end{array}\right)$$
+Note that for simplicity we replaced the $\lambda$ with $\tau$. Now we want to find the instantaneous rest frame at some time $\tau_0$ we need to make it so that the four-velocity becomes 
+$$U^{\mu'}(\tau = \tau_0) = \left(\begin{array}{c} 	1\\
+					0\\
+					0\\
+					0\end{array}\right)$$
+So we need to find the velocity $v$ such that $U^{1'} = 0$ using the \emph{Lorentz Transformation} given by equation \ref{LornTran}. So we can solve equation \ref{LornTran} for $U^{1'} = 0$ to show that
+\begin{align*}
+U^{1'} &= \gamma(U^1-vU^0)\\
+&\Downarrow\\
+0 &= \gamma(U^1-vU^0)\\
+U^{1} &= vU^0\\
+&\Downarrow\\
+v &= \frac{U^1}{U^0}\\
+v &= \frac{\sinh(a\tau_0)}{\cosh(a\tau_0)} = \tanh(a\tau_0)
+\end{align*}
+So to get into the instantaneous rest frame at $\tau=\tau_0$ we need to boost by $v = \tanh(a\tau_0)$.
+
+\item
+To find the instantaneous four-acceleration we need do a \emph{Lorentz Transform} into the primed frame we found in part (b) for the four-acceleration we found. So 
+\begin{align*}  
+\frac{dU^{0'}}{d\tau} &= \gamma\left(\frac{dU^0}{d\tau}-v\frac{dU^1}{d\tau}\right)\\
+&= \frac{\left(\frac{dU^0}{d\tau}-v\frac{dU^1}{d\tau}\right)}{\sqrt{1-v^2}}\\
+&= \frac{\left(a\sinh(a\tau_0)-\tanh(a\tau_0)a\cosh(a\tau_0)\right)}{\sqrt{1-\tanh^2(a\tau_0)}}\\
+&= \frac{a\sinh(a\tau_0)-a\sinh(a\tau_0)}{\sqrt{1-\tanh^2(a\tau_0)}}\\
+&= 0
+\end{align*}  
+And for 
+\begin{align*}  
+\frac{dU^{1'}}{d\tau} &= \gamma\left(\frac{dU^1}{d\tau} - v\frac{dU^0}{d\tau}\right)\\
+&= \frac{\frac{dU^1}{d\tau} - v\frac{dU^0}{d\tau}}{\sqrt{1-v^2}}\\
+&= \frac{a\cosh(a\tau_0) - \tanh(a\tau_0)a\sinh(a\tau_0)}{\sqrt{1-\tanh^2(a\tau_0)}}\\
+&= \frac{a\cosh(a\tau_0) - a\tanh(a\tau_0)\sinh(a\tau_0)}{\sqrt{\sech^2(a\tau_0)}}\\
+&= \cosh(a\tau_0)\frac{a\cancelto{1}{(\cosh^2(a\tau_0) - \sinh^2(a\tau_0))}}{\cosh(a\tau_0)}\\
+&= \frac{a\cosh(a\tau_0)}{\cosh(a\tau_0)}\\
+&= a
+\end{align*}  
+So
+$$\frac{dU^{\mu'}}{d\tau} = \left(\begin{array}{c} 	0\\
+					a\\
+					0\\
+					0\end{array}\right)$$
+Note that $a$ is the acceleration along the direction of travel in the rest frame.
+\end{enumerate}
+
+\section{Problem 1.5}
+\begin{enumerate}[(a)]
+\item
+\begin{enumerate}[(i)]
+\item
+To find the transform for the rank $(1,1)$ tensor $X^{\mu}_{\ \nu}$ we can use the metric $\eta_{\mu\nu}$ to lower the index of the given transform
+$$X^{\mu\nu} \rightarrow X^{\mu'\nu'} = \Lambda^{\mu'}_{\ \rho}\Lambda^{\nu'}_{\ \sigma}X^{\rho\sigma}$$
+So we see that 
+$$X^{\mu}_{\ \nu} = \eta_{\nu\alpha}X^{\mu\alpha}$$
+So using the transform we see that
+\begin{align*}
+X^{\mu'}_{\ \nu'} &= \eta_{\nu'\alpha'}X^{\mu'\alpha'}\\
+&= \eta_{\nu'\alpha'}\Lambda^{\mu'}_{\ \rho}\Lambda^{\alpha'}_{\ \sigma}X^{\rho\sigma}
+\end{align*}
+
+\item
+To find the transform for the rank $(0,0)$ trace $X^{\lambda}_{\ \lambda}$ is $X^{\lambda'}_{\ \lambda'}$. This is due to the fact that $X^{\lambda}_{\ \lambda}$ is a scalar.
+
+\item
+For $V^{\mu}V_{\mu}$ we see that we have another $(0,0)$ tensor or a scalar. Therefore this does not change under a transform so
+$$V^{\mu}V_{\mu} = V^{\mu'}V_{\mu'}$$  
+
+\item
+For the rank $(1,0)$ tensor $V_{\mu}X^{\mu\nu}$ the transform is
+\begin{align*}
+V_{\mu'}X^{\mu'\nu'} &= \eta_{\mu'\gamma'}V^{\gamma'}X^{\mu'\nu'}\\
+&= \eta_{\mu'\gamma'}\Lambda^{\gamma'}_{\rho}V^{\rho}\Lambda^{\mu'}_{\ \alpha}\Lambda^{\nu'}_{\ \sigma}X^{\alpha\sigma}
+\end{align*}
+\end{enumerate}
+
+\item
+\begin{enumerate}[(i)]
+\item
+\begin{align*}
+X^{\mu}_{\ \nu} &= \eta_{\nu\alpha}X^{\mu\alpha}\\
+&= \left(\begin{array}{cccc}
+	-1 &0 &0 &0\\
+	0 &1 &0 &0\\
+	0 &0 &1 &0\\
+	0 &0 &0 &1\\
+\end{array}\right)
+\left(\begin{array}{cccc}
+	0 &0 &3 &-1\\
+	-1 &0 &0 &2\\
+	0 &1 &0 &1\\
+	-2 &0 &0 &-1\\
+\end{array}\right)\\
+&= \left(\begin{array}{cccc}
+	0 &0 &-3 &1\\
+	-1 &0 &0 &2\\
+	0 &1 &0 &1\\
+	-2 &0 &0 &-1\\
+\end{array}\right)
+\end{align*}
+
+\item
+Note that $X^{\lambda}_{\ \lambda}$ is a trace so to find its value we need to sum the diagonal of the matrix
+\begin{align*}
+		X^{\mu\nu} =	\left(\begin{array}{cccc}
+				0 &0 &3 &-1\\
+				-1 &0 &0 &2\\
+				0 &1 &0 &1\\
+				-2 &0 &0 &-1\\
+			\end{array}\right)
+\end{align*}
+Which we can quickly see that
+$$X^{\lambda}_{\ \lambda} = -1$$
+
+
+\item
+\begin{align*}
+V^{\mu}V_{\mu} &= V^{\mu}\eta_{\mu\nu}V^{\nu}\\
+		&= \left(\begin{array}{c}
+			1\\ 2\\ 0\\ 1
+			\end{array}\right)
+		\left(\begin{array}{cccc}
+			-1 &0 &0 &0\\
+			0 &1 &0 &0\\
+			0 &0 &1 &0\\
+			0 &0 &0 &1\\
+		\end{array}\right)
+		\left(\begin{array}{c}
+			1\\ 2\\ 0\\ 1
+			\end{array}\right)\\
+		&=  \left(\begin{array}{c}
+			1\\ 2\\ 0\\ 1
+			\end{array}\right)
+		  \left(\begin{array}{cccc}
+			-1 &2 &0 &1
+			\end{array}\right)\\
+&= -1+4+0+1 = 4
+\end{align*}
+
+\item
+\begin{align*}
+V_{\mu}X^{\mu\nu} &= \left(\begin{array}{cccc}
+			1 &2 &0 &1
+			\end{array}\right)
+			\left(\begin{array}{cccc}
+				0 &0 &3 &-1\\
+				-1 &0 &0 &2\\
+				0 &1 &0 &1\\
+				-2 &0 &0 &-1\\
+			\end{array}\right)\\
+&= \left(\begin{array}{c}
+		-4\\ 0\\ 3\\ 2
+	\end{array}\right)
+\end{align*}
+\end{enumerate}
+
+\item
+To find the values of $X^{\mu\nu}$ and $V^{\mu}$ in the boosted frame we need to calculate
+\begin{align*}
+X^{\mu'\nu'} &= \eta_{\mu\nu}\Lambda^{\mu'}_{\ \rho}X^{\rho\sigma}\Lambda^{\nu'}_{\ \sigma}\\
+	&=	\left(\begin{array}{cccc}
+			-1 &0 &0 &0\\
+			0 &1 &0 &0\\
+			0 &0 &1 &0\\
+			0 &0 &0 &1\\
+		\end{array}\right)\\
+ &\ \ \times\left(\begin{array}{cccc}
+	\cosh(\phi) &-\sinh(\phi) &0 &0\\
+	-\sinh(\phi) &\cosh(\phi) &0 &0\\
+	0 &0 &1 &0\\
+	0 &0 &0 &1\\
+\end{array}\right)
+\left(\begin{array}{cccc}
+	0 &0 &3 &-1\\
+	-1 &0 &0 &2\\
+	0 &1 &0 &1\\
+	-2 &0 &0 &-1\\
+\end{array}\right)
+\left(\begin{array}{cccc}
+	\cosh(\phi) &-\sinh(\phi) &0 &0\\
+	-\sinh(\phi) &\cosh(\phi) &0 &0\\
+	0 &0 &1 &0\\
+	0 &0 &0 &1\\
+\end{array}\right)\\
+&= \left(\begin{array}{cccc}
+	-\cosh(\phi)\sinh(\phi) &\sinh(\phi) &-3\cosh(\phi) &\cosh(\phi)+2\sinh(\phi)\\
+	-\cosh^2(\phi) &\cosh(\phi)\sinh(\phi) &-3\sinh(\phi)\sinh(\phi) &2\cosh(\phi)+\sinh(\phi)\\
+	\sinh(\phi) &\cosh(\phi) &0 &1\\
+	-2\cosh(\phi) &2\sinh(\phi) &0 &-1\\
+\end{array}\right)
+\end{align*}
+So we can see that $X^{\lambda}_{\ \lambda} = -1$. Now for $V^{\mu'}$ we calculate
+\begin{align*}
+V^{\mu'} &= \Lambda^{\mu'}_{\ \rho}V^{\rho}\\
+&= \left(\begin{array}{cccc}
+	\cosh(\phi) &-\sinh(\phi) &0 &0\\
+	-\sinh(\phi) &\cosh(\phi) &0 &0\\
+	0 &0 &1 &0\\
+	0 &0 &0 &1\\
+\end{array}\right)
+\left(\begin{array}{c}
+			1\\ 2\\ 0\\ 1
+			\end{array}\right)\\
+&= \left(\begin{array}{c}
+		\cosh(\phi)-2\sinh(\phi)\\
+		2\cosh(\phi) - \sinh(\phi)\\
+		0\\
+		1\\
+			\end{array}\right)
+\end{align*}
+So now we can calculate the inner product
+\begin{align*}
+V^{\mu'}V_{\mu'} &= V^{\mu'}\eta_{\mu'\nu'}V^{\nu'}\\ 
+		&= \left(\begin{array}{c}
+		\cosh(\phi)-2\sinh(\phi)\\
+		2\cosh(\phi) - \sinh(\phi)\\
+		0\\
+		1\\
+			\end{array}\right)
+		\left(\begin{array}{cccc}
+			-1 &0 &0 &0\\
+			0 &1 &0 &0\\
+			0 &0 &1 &0\\
+			0 &0 &0 &1\\
+		\end{array}\right)
+		\left(\begin{array}{c}
+		\cosh(\phi)-2\sinh(\phi)\\
+		2\cosh(\phi) - \sinh(\phi)\\
+		0\\
+		1\\
+			\end{array}\right)\\
+		&= \left(\begin{array}{c}
+		\cosh(\phi)-2\sinh(\phi)\\
+		2\cosh(\phi) - \sinh(\phi)\\
+		0\\
+		1\\
+			\end{array}\right)
+		 \left(\begin{array}{cccc}
+		-\cosh(\phi)+2\sinh(\phi)
+		&2\cosh(\phi) - \sinh(\phi)
+		&0
+		&1
+			\end{array}\right)\\
+&= (\cosh(\phi)-2\sinh(\phi))(-\cosh(\phi)+2\sinh(\phi)) + (2\cosh(\phi) - \sinh(\phi))^2 + 0^2 + 1^2\\
+&= -\cosh^2(\phi) - 4\sinh^2(\phi) + 4\sinh(\phi)\cosh(\phi) + (2\cosh(\phi) - \sinh(\phi))^2 + 1\\
+&= -\cosh^2(\phi)-4\sinh^2(\phi) + 4\sinh(\phi)\cosh(\phi) + 4\cosh^2(\phi) + \sinh^2(\phi) - 4\sinh(\phi)\cosh(\phi) + 1\\
+&= 3\cosh^2(\phi)-3\sinh^2(\phi) + 1\\
+&= 3+1 = 4
+\end{align*}
+Note that this agrees with what we found in part (b). This is good because the inner product is a scalar so it should remain constant under transformation.
+
+\end{enumerate}
+
+\end{document}
+
