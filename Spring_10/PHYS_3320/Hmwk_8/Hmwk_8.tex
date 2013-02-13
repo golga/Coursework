@@ -1,0 +1,236 @@
+\documentclass[11pt]{article}
+
+\usepackage{latexsym}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{enumerate}
+\usepackage{amsmath}
+\usepackage{cancel}
+\numberwithin{equation}{section}
+
+\setlength{\evensidemargin}{.25in}
+\setlength{\oddsidemargin}{-.25in}
+\setlength{\topmargin}{-.75in}
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{9.5in}
+\newcommand{\due}{March 19th, 2010}
+\newcommand{\HWnum}{8}
+\newcommand{\grad}{\bold\nabla}
+\newcommand{\vecE}{\vec{E}}
+\newcommand{\scrptR}{\vec{\mathfrak{R}}}
+\newcommand{\kapa}{\frac{1}{4\pi\epsilon_0}}
+\newcommand{\emf}{\mathcal{E}}
+
+\begin{document}
+\input{../title.tex}
+
+\section{Problem \#1}
+\begin{enumerate}[(a)]
+\item
+Given the plane wave solution in a linear homogeneous dielectric
+$$\vec{E}(z,t) = \vec{E_1}\cos\left(\sqrt{6}z-6\times10^{10}t\right)$$
+we can see that the angular frequency is $\omega=6\times10^{10}$. So this wave falls under the classification of \emph{microwave} in the electromagnetic spectrum.
+
+\item
+We know that the index of refraction $n$ is the ratio between the speed of the wave in free space with the speed of the wave in the medium or
+\begin{equation}
+n = \frac{c}{v}
+\label{Index}
+\end{equation}
+We can find the speed of this wave in the medium using the relation
+\begin{equation}
+v = \frac{\omega}{k}
+\label{MedSpe}
+\end{equation}
+So if we combine equations \ref{Index} and \ref{MedSpe} we get
+\begin{align*}
+n &= \frac{ck}{\omega}\\
+&= \frac{(3\times10^{8})(\sqrt{6}\times10^{2})}{6\times10^{10}}\\
+&= 1.22
+\end{align*}
+
+\item
+Since we know that $\omega=6\times10^{10}$ and in free space we know the wave travels at a velocity of $c$ so we can find the wavelength from
+\begin{equation}
+c = \frac{\omega}{k}
+\label{Speed}
+\end{equation}
+where $k$ is the wave number which is related to wavelength by
+\begin{equation}
+k = \frac{2\pi}{\lambda}
+\label{Numb}
+\end{equation}
+so if we combine equations \ref{Speed} and \ref{Numb} we get
+\begin{align*}
+c &= \frac{\omega}{k}\\
+c &= \frac{\omega\lambda}{2\pi}
+\end{align*}
+So if we solve for $\lambda$ we get
+\begin{align*}
+\lambda &= \frac{2\pi c}{\omega} \\
+&= \frac{2\pi (3\times10^{8})}{6\times10^{10}} \\
+&= 3.14\times10^{-2}\ {m}
+\end{align*}
+
+\item
+To find the magnetic field induced by this field we say
+\begin{equation}
+\vec{B} = \frac{1}{c}(\hat{k}\times\vec{E})
+\label{Mag}
+\end{equation}
+So if we assume that $\vec{E}$ is only in $\hat{x}$ and $\hat{y}$ or that $\vec{E_1}=E_1(\hat{x}+\hat{y})$ we can see equation \ref{Mag} becomes
+\begin{align*}
+\vec{B} &= \frac{1}{c}(\hat{k}\times\vec{E})\\
+&= \frac{1}{c}\left(\hat{k}\times\vec{E_1}\cos\left(\sqrt{6}z-6\times10^{10}t\right)\right)\\
+&= \frac{1}{c}E_1\cos\left(\sqrt{6}z-6\times10^{10}t\right)\left(\hat{z}\times(\hat{x}+\hat{y})\right)\\
+&= \frac{E_1}{c}\cos\left(\sqrt{6}z-6\times10^{10}t\right)\det\left(\begin{array}{ccc}
+\hat{x}		&\hat{y}	&\hat{z}\\
+0		&0		&1	\\
+1		&1		&0	\\
+\end{array}\right)\\
+&= \frac{E_1}{c}\cos\left(\sqrt{6}z-6\times10^{10}t\right)(-\hat{x}+\hat{y})\\
+&= \frac{\vec{E_2}}{c}\cos\left(\sqrt{6}z-6\times10^{10}t\right)
+\end{align*}
+Note we define 
+$$\vec{E_2}\equiv E_1(\hat{y}-\hat{x})$$
+\end{enumerate}
+
+\section{Problem \#2}
+To prove
+\begin{equation}
+\grad\cdot\vec{S}+\frac{\partial}{\partial t}U = -\vec{J}_{free}\cdot\vec{E}
+\label{Poyn}
+\end{equation}
+We can start with \emph{Amp\'{e}re's Law}
+\begin{equation}
+\grad\times\vec{H} = \vec{J}_{free}+\frac{\partial\vec{D}}{\partial t}
+\label{Amp}
+\end{equation}
+and solve for $\vec{J}_{free}$ and dot that with $\vec{E}$ we get
+\begin{align*}
+\vec{E}\cdot\vec{J}_{free} &= \vec{E}\cdot(\grad\times\vec{H}) - \vec{E}\cdot\frac{\partial\vec{D}}{\partial t}
+\end{align*}
+Now we know that
+\begin{align*}
+\grad\cdot(\vec{E}\times\vec{H}) &= \vec{E}\cdot(\grad\times\vec{H})-\vec{H}\cdot(\grad\times\vec{E})\\
+\vec{E}\cdot(\grad\times\vec{H}) &=  \grad\cdot\vec{S} + \vec{H}\cdot(\grad\times\vec{E})\\
+&=  \grad\cdot\vec{S} - \vec{H}\cdot\left(\frac{\partial\vec{B}}{\partial t}\right)
+\end{align*}
+from the triple product formula and \emph{Maxwell's equations}. Note that we said that
+$$\vec{S} = \vec{E}\times\vec{H}$$
+So now we can say that
+\begin{align*}
+\vec{E}\cdot\vec{J}_{free} &= \grad\cdot\vec{S} - \vec{H}\cdot\frac{\partial\vec{B}}{\partial t} - \vec{E}\cdot\frac{\partial\vec{D}}{\partial t}
+\end{align*}
+Now we can see that from the product rule of derivatives that
+$$\vec{E}\cdot\frac{\partial\vec{D}}{\partial t} = \frac{1}{2}\frac{\partial}{\partial t}(\vec{E}\cdot\vec{D})$$
+and
+$$\vec{H}\cdot\frac{\partial\vec{B}}{\partial t} = \frac{1}{2}\frac{\partial}{\partial t}(\vec{B}\cdot\vec{H})$$
+So
+\begin{align*}
+\vec{E}\cdot\vec{J}_{free} &= \grad\cdot\vec{S} - \vec{H}\cdot\frac{\partial\vec{B}}{\partial t} - \vec{E}\cdot\frac{\partial\vec{D}}{\partial t}\\
+&= \grad\cdot\vec{S} - \frac{1}{2}\frac{\partial}{\partial t}(\vec{B}\cdot\vec{H}) - \frac{1}{2}\frac{\partial}{\partial t}(\vec{E}\cdot\vec{D})\\
+&= \grad\cdot\vec{S} - \frac{1}{2}\frac{\partial}{\partial t}(\vec{B}\cdot\vec{H} + \vec{E}\cdot\vec{D})\\
+&= \grad\cdot\vec{S} - \frac{\partial}{\partial t}U
+\end{align*}
+where we say that
+$$U = \frac{1}{2}(\vec{B}\cdot\vec{H} + \vec{E}\cdot\vec{D})$$
+
+\section{Problem \#3}
+\begin{enumerate}[(a)]
+\item
+If we assume that the charge density $\rho$ is zero then we see the \emph{Maxwell equation}
+\begin{equation}
+\grad\cdot\vec{E} = 0
+\label{Max1}
+\end{equation}
+Now from the \emph{Maxwell equation}
+\begin{equation}
+\grad\times\vec{E} = -\frac{\partial\vec{B}}{\partial t}
+\label{Max2}
+\end{equation}
+we we take the curl of both sides we see that
+$$\grad\times(\grad\times\vec{E}) = -\frac{\partial}{\partial t}(\grad\times\vec{B})$$
+and if we apply the fact that
+$$\grad\times(\grad\times\vec{A}) = \grad(\grad\cdot\vec{A})-\grad^2\vec{A}$$
+we see that
+\begin{align*}
+\grad(\grad\cdot\vec{E})-\grad^2\vec{E} &= -\frac{\partial}{\partial t}(\grad\times\vec{B})\\
+\grad^2\vec{E} &= \frac{\partial}{\partial t}(\grad\times\vec{B})
+\end{align*}
+Now from the \emph{Maxwell equation}
+\begin{equation}
+\grad\times\vec{B} = \mu_0\vec{J}+\frac{1}{c^2}\frac{\partial\vec{E}}{\partial t}
+\label{Max3}
+\end{equation}
+Now we get
+\begin{align*}
+\grad^2\vec{E} &= \frac{\partial}{\partial t}\left(\mu_0\vec{J}+\frac{1}{c^2}\frac{\partial\vec{E}}{\partial t}\right)\\
+\grad^2\vec{E} &= \mu_0\frac{\partial}{\partial t}\vec{J}+\frac{1}{c^2}\frac{\partial^2}{\partial t^2}\vec{E}\\
+\grad^2\vec{E} - \frac{1}{c^2}\frac{\partial^2}{\partial t^2}\vec{E} &= \mu_0\frac{\partial}{\partial t}\vec{J}
+\end{align*}
+
+\item
+If we start with 
+$$\vec{F} = m\vec{a}$$
+we can relate this to $\vec{J}$ by saying that
+$$\vec{J} = \rho\vec{v}$$
+so if we take a time derivative of $\vec{J}$ we see
+$$\frac{\partial\vec{J}}{\partial t} = \rho\vec{a}$$
+So we see that 
+$$\vec{F} = \frac{m_e}{\rho}\frac{\partial\vec{J}}{\partial t}$$
+now we know that 
+$$\vec{F} = e\vec{E}$$
+where $e$ is the charge of an electron. So we can see that
+\begin{align*}
+e\vec{E} &= \frac{m_e}{\rho}\frac{\partial\vec{J}}{\partial t}\\
+\frac{e\rho}{m_e}\vec{E} &= \frac{\partial\vec{J}}{\partial t}\\
+\frac{e^2N_e}{m_e}\vec{E} &= \frac{\partial\vec{J}}{\partial t}
+\end{align*}
+Note that we used the fact that $\rho = N_e e$ where $N_e$ is the electron density. So now if we look at the equation we found in part (a) we get
+\begin{align*}
+\grad^2\vec{E} - \frac{1}{c^2}\frac{\partial^2}{\partial t^2}\vec{E} &= \mu_0\frac{\partial}{\partial t}\vec{J}\\
+\grad^2\vec{E} - \frac{1}{c^2}\frac{\partial^2}{\partial t^2}\vec{E} &= \mu_0\frac{e^2N_e}{m_e}\vec{E}\\
+\grad^2\vec{E} - \frac{1}{c^2}\frac{\partial^2}{\partial t^2}\vec{E} &= \epsilon_0\mu_0\frac{e^2N_e}{\epsilon_0m_e}\vec{E}
+\end{align*}
+If we define the plasma frequency $\omega_p$ as
+$$\omega_p^2\equiv\frac{N_ee^2}{\epsilon_0m_e}$$ 
+we see that 
+$$\grad^2\vec{E} - \frac{1}{c^2}\frac{\partial^2}{\partial t^2}\vec{E} = \frac{\omega_p^2}{c^2}\vec{E}$$
+now if we use the fact that $\vec{E} = \vec{\widetilde{E}}e^{-i\omega t}$ we see that 
+\begin{align*}
+\grad^2\vec{\widetilde{E}}e^{-i\omega t} - \frac{1}{c^2}\frac{\partial^2}{\partial t^2}\vec{\widetilde{E}}e^{-i\omega t} &= \frac{\omega_p^2}{c^2}\vec{\widetilde{E}}e^{-i\omega t}\\
+\grad^2\vec{\widetilde{E}}e^{-i\omega t} - \frac{1}{c^2}i^2\omega^2\vec{\widetilde{E}}e^{-i\omega t} &= \frac{\omega_p^2}{c^2}\vec{\widetilde{E}}e^{-i\omega t}\\
+\grad^2\vec{\widetilde{E}} + \frac{\omega^2}{c^2}\vec{\widetilde{E}} &= \frac{\omega_p^2}{c^2}\vec{\widetilde{E}}\\
+\left(\grad^2 + \frac{\omega^2}{c^2}\right)\vec{\widetilde{E}} &= \frac{\omega_p^2}{c^2}\vec{\widetilde{E}}
+\end{align*}
+
+\item
+Now if we assume that $\vec{\widetilde{E}} = E_0\hat{x}e^{ikz}$ then we can apply the equation we found in part (c) where
+\begin{align*}
+\grad^2\vec{\widetilde{E}} &= \frac{\partial^2}{\partial z^2}E_0\hat{x}e^{ikz}\\
+&= i^2k^2E_0\hat{x}e^{ikz} =  -k^2\vec{\widetilde{E}}
+\end{align*}
+So
+\begin{align*}
+\left(-k^2 + \frac{\omega^2}{c^2}\right)\vec{\widetilde{E}} &= \frac{\omega_p^2}{c^2}\vec{\widetilde{E}}\\
+-k^2 + \frac{\omega^2}{c^2} &= \frac{\omega_p^2}{c^2}\\
+k^2 &= \frac{\omega^2}{c^2} - \frac{\omega_p^2}{c^2}\\
+k &= \frac{\sqrt{\omega^2-\omega_p^2}}{c}
+\end{align*}
+
+\item
+We see that when $\omega<\omega_p$ then $k'=ik$ where $k$ is real so 
+$$\vec{\widetilde{E}} = E_0\hat{x}e^{kz}$$
+so the real part of $\vec{E}$ is given by
+$$\textnormal{Re}[\vec{E}] = E_0\hat{x}e^{kz}\cos(\omega t)$$
+
+\item
+If we say that the reflection coefficient $R$ is given by
+$$R = \frac{(n_1-n_2)^2}{(n_1+n_2)^2}$$
+where $n_1$ and $n_2$ are the respective indexes of refraction we can say that for $\omega<\omega_p$ $R\rightarrow0$.
+
+\end{enumerate}
+
+\end{document}
+

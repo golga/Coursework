@@ -1,0 +1,364 @@
+\documentclass[11pt]{article}
+
+\usepackage{latexsym}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{enumerate}
+\usepackage{amsmath}
+\usepackage{cancel}
+\numberwithin{equation}{section}
+
+\setlength{\evensidemargin}{.25in}
+\setlength{\oddsidemargin}{-.25in}
+\setlength{\topmargin}{-.75in}
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{9.5in}
+\newcommand{\due}{January 27th, 2010}
+\newcommand{\HWnum}{3}
+\newcommand{\grad}{\bold\nabla}
+\newcommand{\vecE}{\vec{E}}
+\newcommand{\scrptR}{\vec{\mathfrak{R}}}
+\newcommand{\Img}{\textnormal{Im}}
+\newcommand{\Real}{\textnormal{Re}}
+\newcommand{\kapa}{\frac{1}{4\pi\epsilon_0}}
+
+\begin{document}
+\input{../title.tex}
+
+\section{Problem \#1}
+\begin{enumerate}[(a)]
+\item
+If we define the complex variable $z$ as $z\equiv x+iy$ where
+$\Real(z) = x$ and $\Img(z) = y$, we can say that
+\begin{enumerate}[(i)]
+\item
+\begin{align*}
+\frac{1}{2}(z+z*) &= \frac{1}{2}(x+iy+x-iy)\\
+&= \frac{1}{2}(x+x)\\
+&= \frac{1}{2}(2x)\\
+&= x = \Real(z)
+\end{align*}
+\item
+\begin{align*}
+\frac{1}{2i}(z-z*) &= \frac{1}{2i}(x+iy-(x-iy))\\
+&= \frac{1}{2i}(x+iy-x+iy)\\
+&= \frac{1}{2i}2iy\\
+&= y = \Img(z)
+\end{align*}
+\item
+Let $z_1 = x_1+iy_1$ and $z_2 = x_2+iy_2$ so
+\begin{align*}
+\Real(z_1z_2) &= \Real\left((x_1+iy_1)(x_2+iy_2)\right)\\
+&= \Real\left((x_1x_2+ix_1y_2+ix_2y_1+i^2y_1y_2\right)\\
+&= \Real\left((x_1x_2-y_1y_2+i(x_1y_2+x_2y_1)\right)\\
+&= x_1x_2-y_1y_2\\
+&= \Real(z_1)\Real(z_2)-\Img(z_1)\Img(z_2)
+\end{align*}
+\item
+\begin{align*}
+\Img(z_1z_2) &= \Img\left((x_1+iy_1)(x_2+iy_2)\right)\\
+&= \Img\left((x_1x_2+ix_1y_2+ix_2y_1+i^2y_1y_2\right)\\
+&= \Img\left((x_1x_2-y_1y_2+i(x_1y_2+x_2y_1)\right)\\
+&= x_1y_2+x_2y_1\\
+&= \Real(z_1)\Img(z_2)+\Real(z_2)\Img(z_1)
+\end{align*}
+\end{enumerate}
+
+\item
+Note that the modulus of $z$ is only real valued as shown
+$$|z| = \sqrt{x^2+y^2}$$
+So we can see that 
+$$\Img(|z|^2) = 0$$
+or that there is no imaginary part to $|z|^2$. Now to find $\Img(z^2)$ we see that 
+\begin{align*}
+\Img(z^2) &= \Img\left((x+iy)^2\right)\\
+&= \Img(x^2+(iy)^2+2ixy)\\
+&= \Img(x^2-y^2+2ixy)\\
+&= 2xy\\
+&= 2\Real(z)\Img(z)
+\end{align*}
+Note that there exists an imaginary part of $z^2$. 
+
+\item
+Now if we define $z$ as $z\equiv Ae^{i\theta}$ where $A$ and $\theta$ are real valued constants we can use \emph{Euler's Formula}
+\begin{equation}
+e^{ix} = \cos(x)+i\sin(x)
+\label{euler}
+\end{equation}
+to say that
+$$\Real(z) = A\cos(\theta)$$
+$$\Img(z) = A\sin(\theta)$$
+$$z^{*} = Ae^{-i\theta} = A\left[\cos(\theta)-i\sin(\theta)\right]$$
+and
+\begin{align*}
+|z| &= \sqrt{z*z}\\
+&= \sqrt{Ae^{-i\theta}Ae^{i\theta}}\\
+&= \sqrt{A^2e^{-i\theta+i\theta}}\\
+&= \sqrt{A^2e^0} = \sqrt{A^2}\\
+&= A
+\end{align*}
+Note that we call $A$ the modulus of $z$ because $|z| = A$.
+
+\item
+To derive trigonometric identities for $\sin(\alpha+\beta)$ and $\cos(\alpha+\beta)$ we us equation \ref{euler} to say
+\begin{align*}
+\cos{(\alpha+\beta)}+i\sin{(\alpha+\beta)} &= e^{i(\alpha+\beta)}\\
+&= e^{i\alpha}e^{i\beta}\\
+&= \left(\cos(\alpha)+i\sin(\alpha)\right)\left(\cos(\beta)+i\sin(\beta)\right)\\
+&= \cos(\alpha)\cos(\beta)+i\cos(\alpha)\sin(\beta)+i\cos(\beta)\sin(\alpha) +i\sin(\alpha) i\sin(\beta) \\
+&= \cos(\alpha)\cos(\beta)-\sin(\alpha) \sin(\beta)+i\left[\cos(\alpha)\sin(\beta)+\cos(\beta)\sin(\alpha)\right] 
+\end{align*}
+Now if we combine the real and imaginary parts of the left and right side of the equation we get the equations
+$$\cos{(\alpha+\beta)} = \cos(\alpha)\cos(\beta)-\sin(\alpha)\sin(\beta)$$
+$$\sin{(\alpha+\beta)} = \cos(\alpha)\sin(\beta)+\cos(\beta)\sin(\alpha)$$
+
+\item
+If we assume the two possible solutions for the differential equation 
+$$\frac{d^2}{dx^2}f(x) = -k^2f(x)$$
+are
+$$f(x) = Ae^{ikx}+Be^{-ikx}$$
+and
+$$f(x) = a\sin(kx) + b\cos(kx)$$
+which we can test by saying
+\begin{align*}
+\frac{d^2}{dx^2}f(x) &= \frac{d^2}{dx^2}\left(Ae^{ikx}+Be^{-ikx}\right)\\
+&= A(ik)^2e^{ikx}+B(-ik)^2e^{-ikx}\\
+&= A(-k^2)e^{ikx}+B(-k^2)e^{-ikx}\\
+&= -k^2(Ae^{ikx}+Be^{-ikx})\\
+&= -k^2f(x)
+\end{align*}
+and
+\begin{align*}
+\frac{d^2}{dx^2}f(x) &= \frac{d^2}{dx^2}\left(a\sin(kx) + b\cos(kx)\right)\\
+&= \frac{d}{dx}\left(ak\cos(kx) - bk\sin(kx)\right)\\
+&= -ak^2\sin(kx) - bk^2\cos(kx)\\
+&= -k^2(a\sin(kx) + b\cos(kx))\\
+&= -k^2f(x)
+\end{align*}
+Now since both are solutions we can find $a$ and $b$ in terms of $A$ and $B$. Using equation \ref{euler} we can say
+\begin{align*}
+Ae^{ikx}+Be^{-ikx} &= A\cos(kx)+iA\sin(kx)+B\cos(-kx)+iB\sin(-kx)\\
+&= A\cos(kx)+iA\sin(kx)+B\cos(kx)-iB\sin(kx)\\
+&= (A+B)\cos(kx)+i(A-B)\sin(kx)
+\end{align*}
+Now we have the first solution in the same form as the second solution so it is easy to see that $a = i(A-B)$ and $b = A+B$.
+\end{enumerate}
+
+\section{Problem \#2}
+\begin{enumerate}[(a)]
+\item
+The \emph{inner product} of $\Psi_1(x,t)$ and $\Psi_2(x,t)$ is given by
+$$\int_{-\infty}^{\infty}\Psi_1^*(x,t)\Psi_2(x,t)dx$$
+to prove that the \emph{inner product} is independent of time we try to show that
+$$\frac{\partial}{\partial t}\int_{-\infty}^{\infty}\Psi_1^*(x,t)\Psi_2(x,t)dx = 0$$
+So first we can say that the with respect to $t$ can be pulled into the integral because the time derivative is a linear operator so 
+$$\frac{\partial}{\partial t}\int_{-\infty}^{\infty}\Psi_1^*(x,t)\Psi_2(x,t)dx \int_{-\infty}^{\infty}\frac{\partial}{\partial t}\left[\Psi_1^*(x,t)\Psi_2(x,t)\right]dx$$
+Now if we apply the \emph{product rule} on the integrand 
+$$\int_{-\infty}^{\infty}\frac{\partial}{\partial t}\left[\Psi_1^*(x,t)\Psi_2(x,t)\right]dx = \int_{-\infty}^{\infty}\Psi_1^*(x,t)\frac{\partial\Psi_2(x,t)}{\partial t} +\frac{\partial\Psi_1^*(x,t)}{\partial t}\Psi_2(x,t)dx$$
+Now if we take the \emph{Schr\"{o}dinger equation}
+\begin{equation}
+i\hbar\frac{\partial \Psi}{\partial t} = -\frac{\hbar^2}{2m}\frac{\partial^2\Psi}{\partial x^2}+V\Psi
+\label{schro}
+\end{equation}
+and get the partial with respect to $t$ alone we see that
+\begin{align*}
+i\hbar\frac{\partial \Psi}{\partial t} &= -\frac{\hbar^2}{2m}\frac{\partial^2\Psi}{\partial x^2}+V\Psi\\
+\frac{\partial \Psi}{\partial t} &= -\frac{\hbar^2}{2mi\hbar}\frac{\partial^2\Psi}{\partial x^2}+\frac{1}{i\hbar}V\Psi\\
+&= -\frac{\hbar}{2mi}\frac{i}{i}\frac{\partial^2\Psi}{\partial x^2}+\frac{1}{i\hbar}\frac{i}{i}V\Psi
+\end{align*}
+\begin{equation}
+\frac{\partial \Psi}{\partial t} =\frac{i\hbar}{2m}\frac{\partial^2\Psi}{\partial x^2} - \frac{i}{\hbar}V\Psi
+\label{partt}
+\end{equation}
+So now we can take the complex conjugate of equation \ref{partt} to get
+\begin{equation}
+\frac{\partial \Psi^*}{\partial t} = -\frac{i\hbar}{2m}\frac{\partial^2\Psi^*}{\partial x^2} + \frac{i}{\hbar}V\Psi^*
+\label{parttcon}
+\end{equation}
+Now if we replace equations \ref{partt} and \ref{parttcon} into the integral we get
+\begin{align*}
+\int_{-\infty}^{\infty}\frac{\partial}{\partial t}\left[\Psi_1^*(x,t)\Psi_2(x,t)\right]dx &= \int_{-\infty}^{\infty}\Psi_1^*(x,t)\frac{\partial\Psi_2(x,t)}{\partial t} +\frac{\partial\Psi_1^*(x,t)}{\partial t}\Psi_2(x,t)dx\\
+&= \int_{-\infty}^{\infty}\Psi_1^*(x,t)\left(\frac{i\hbar}{2m}\frac{\partial^2\Psi_2(x,t)}{\partial x^2} - \frac{i}{\hbar}V\Psi_2(x,t)\right) \\
+& \ \ \ \ \ \ \ + \Psi_2(x,t)\left(-\frac{i\hbar}{2m}\frac{\partial^2\Psi_1^*(x,t)}{\partial x^2} + \frac{i}{\hbar}V\Psi_1^*(x,t)\right)dx\\
+&= \int_{-\infty}^{\infty}\Psi_1^*(x,t)\frac{i\hbar}{2m}\frac{\partial^2\Psi_2(x,t)}{\partial x^2} - \cancel{\Psi_1^*(x,t)\frac{i}{\hbar}V\Psi_2(x,t)} \\
+& \ \ \ \ \ \ \ - \Psi_2(x,t)\frac{i\hbar}{2m}\frac{\partial^2\Psi_1^*(x,t)}{\partial x^2} + \cancel{\Psi_2(x,t)\frac{i}{\hbar}V\Psi_1^*(x,t)}dx\\
+&= \int_{-\infty}^{\infty}\Psi_1^*(x,t)\frac{i\hbar}{2m}\frac{\partial^2\Psi_2(x,t)}{\partial x^2} - \Psi_2(x,t)\frac{i\hbar}{2m}\frac{\partial^2\Psi_1^*(x,t)}{\partial x^2}dx\\
+&= \frac{i\hbar}{2m}\int_{-\infty}^{\infty}\frac{\partial}{\partial x}\left(\Psi_1^*(x,t)\frac{\partial\Psi_2(x,t)}{\partial x} - \Psi_2(x,t)\frac{\partial\Psi_1^*(x,t)}{\partial x}\right)dx\\
+&= \left.\frac{i\hbar}{2m}\left(\Psi_1^*(x,t)\frac{\partial\Psi_2(x,t)}{\partial x} - \Psi_2(x,t)\frac{\partial\Psi_1^*(x,t)}{\partial x}\right)\right|_{-\infty}^{\infty}
+\end{align*}
+Now we know that a wavefunction goes to zero at $\pm\infty$ so we see that this term goes to zero. So it follows that
+$$\frac{\partial}{\partial t}\int_{-\infty}^{\infty}\Psi_1^*(x,t)\Psi_2(x,t)dx = 0$$
+
+\item
+We see from part (a) that the integral of $\Psi^*\Psi$ is independent of time, and if we recall that $\Psi^*\Psi dx$ is the probability density function, $\rho$. So we can see that $\rho$ is independent of time. That means if we normalize the wave function so that the total probability is one it will remain normalized at later times. If this was not the case the normalization factor would become a function of time and then $\Psi(x,t)$ would not be a solution to the Schr\"{o}dinger equation (equation \ref{schro}).
+
+\item
+So if we say that $P_{ab}$ is the total probability of observing the particle between points $x=a$ and $x=b$ we can say that
+$$P_{ab} =  \int_{a}^{b}\Psi^*(x,t)\Psi(x,t)dx$$
+So we can see that the time derivative of $P_{ab}$ is given by
+$$\frac{dP_{ab}}{dt} =  \frac{\partial}{\partial t}\int_{a}^{b}\Psi^*(x,t)\Psi(x,t)dx$$
+Now from part (a) we found that
+\begin{align*}
+\frac{\partial}{\partial t}\int_{a}^{b}\Psi^*(x,t)\Psi(x,t)dx &= \left.\frac{i\hbar}{2m}\left(\Psi^*(x,t)\frac{\partial\Psi(x,t)}{\partial x} - \Psi(x,t)\frac{\partial\Psi^*(x,t)}{\partial x}\right)\right|_{a}^{b}\\
+&= \frac{i\hbar}{2m}\left(\Psi^*(b,t)\frac{\partial\Psi(b,t)}{\partial x} - \Psi(b,t)\frac{\partial\Psi^*(b,t)}{\partial x}\right) \\
+& \ \ \ \  - \frac{i\hbar}{2m}\left(\Psi^*(a,t)\frac{\partial\Psi(a,t)}{\partial x} - \Psi(a,t)\frac{\partial\Psi^*(a,t)}{\partial x}\right)
+\end{align*}
+Now if we define a function $J(x,t)$ as
+$$J(x,t) \equiv \frac{i\hbar}{2m}\left(\Psi^*(x,t)\frac{\partial\Psi(x,t)}{\partial x} - \Psi(x,t)\frac{\partial\Psi^*(x,t)}{\partial x}\right)$$
+we see that
+$$\frac{\partial}{\partial t}\int_{a}^{b}\Psi^*(x,t)\Psi(x,t)dx = J(b,t) - J(a,t)$$ 
+So it follows that 
+$$\frac{dP_{ab}}{dt} = J(b,t) - J(a,t)$$
+
+\item
+I think we see from part (c) that the probability evolves over time and but if we know how the wavefunction evolves with time we know how the probability will change in time.
+\end{enumerate}
+
+\section{Problem \#3}
+\begin{enumerate}[(a)]
+\item
+For the integral
+$$\int_{-\infty}^{\infty}e^{-az^2}dz$$
+we use a $u$ substitution where
+$$u = \sqrt{a}z$$
+and
+$$du = \sqrt{a}dz$$
+so our integral becomes 
+$$\frac{1}{\sqrt{a}}\int_{-\infty}^{\infty}e^{-u^2}du$$
+Now we can apply the identity 
+$$\int_{-\infty}^{\infty}e^{-z^2}dz = \sqrt{\pi}$$
+So 
+\begin{align*}
+\int_{-\infty}^{\infty}e^{-az^2}dz &= \frac{1}{\sqrt{a}}\int_{-\infty}^{\infty}e^{-u^2}du\\
+&= \frac{1}{\sqrt{a}}\sqrt{\pi}\\
+&= \sqrt{\frac{\pi}{a}}
+\end{align*}
+Now to find the integral
+$$\int_{-\infty}^{\infty}z^2e^{-az^2}dz$$
+we see that this is like the derivative of the first integral with respect to $z$ so if we take the derivative of
+$$\sqrt{\frac{\pi}{a}}$$
+with respect to $a$ we can find the solution to the integral so
+\begin{align*}
+\int_{-\infty}^{\infty}\frac{d}{da}e^{-az^2}dz &= \frac{d}{da}\sqrt{\frac{\pi}{a}}\\
+\int_{-\infty}^{\infty}z^2e^{-az^2}dz &= \frac{\sqrt{\pi}}{2a^{3/2}}
+\end{align*}
+
+\item
+Given the wave function 
+$$\Psi(x,t) = A\left(e^{-i\alpha\hbar t/m}+\beta xe^{-3i\alpha\hbar t/m}\right)e^{-\alpha x^2}$$
+we can find the probability density $\rho(x)$ by calculating
+\begin{align*}
+\rho(x) &= |z|^2 = \Psi^*\Psi\\
+&=\left(A\left(e^{i\alpha\hbar t/m}+\beta xe^{3i\alpha\hbar t/m}\right)e^{-\alpha x^2}\right)\left(A\left(e^{-i\alpha\hbar t/m}+\beta xe^{-3i\alpha\hbar t/m}\right)e^{-\alpha x^2}\right)\\
+&=A^2e^{-2\alpha x^2}\left(e^{i\alpha\hbar t/m}+\beta xe^{3i\alpha\hbar t/m}\right)\left(e^{-i\alpha\hbar t/m}+\beta xe^{-3i\alpha\hbar t/m}\right)\\
+&=A^2e^{-2\alpha x^2}\left(e^{i\alpha\hbar t/m}e^{-i\alpha\hbar t/m}+e^{i\alpha\hbar t/m}\beta xe^{-3i\alpha\hbar t/m}+e^{-i\alpha\hbar t/m}\beta xe^{3i\alpha\hbar t/m}+\beta^2 x^2e^{-3i\alpha\hbar t/m}e^{3i\alpha\hbar t/m}\right)\\
+&=A^2e^{-2\alpha x^2}\left(1+\beta xe^{i\alpha\hbar t/m-3i\alpha\hbar t/m}+\beta xe^{-i\alpha\hbar t/m+3i\alpha\hbar t/m}+\beta^2 x^2\right)\\
+&=A^2e^{-2\alpha x^2}\left(1+\beta x\left(e^{-2i\alpha\hbar t/m}+e^{2i\alpha\hbar t/m}\right)+\beta^2 x^2\right)
+\end{align*}
+Now if we apply equation \ref{euler} we see that
+\begin{align*}
+\rho(x) &=A^2e^{-2\alpha x^2}\left(1+\beta x\left(e^{-2i\alpha\hbar t/m}+e^{2i\alpha\hbar t/m}\right)+\beta^2 x^2\right)\\
+&=A^2e^{-2\alpha x^2}\left(1+\beta x\left(\cos(-2\alpha\hbar t/m)+i\sin(-2\alpha\hbar t/m) + \cos(2\alpha\hbar t/m) + i\sin(2\alpha\hbar t/m)\right)+\beta^2 x^2\right)\\
+&=A^2e^{-2\alpha x^2}\left(1+\beta x\left(\cos(2\alpha\hbar t/m)-i\sin(2\alpha\hbar t/m) + \cos(2\alpha\hbar t/m) + i\sin(2\alpha\hbar t/m)\right)+\beta^2 x^2\right)\\
+&=A^2e^{-2\alpha x^2}\left(1+\beta x\left(\cos(2\alpha\hbar t/m) + \cos(2\alpha\hbar t/m)\right)+\beta^2 x^2\right)\\
+&=A^2e^{-2\alpha x^2}\left(1+2\beta x\cos(2\alpha\hbar t/m)+\beta^2 x^2\right)
+\end{align*}
+We see that the probability density is not independent of time.
+
+\item
+To normalize the wavefunction $\Psi$ we need to find $A$ using the fact that
+$$\int^{\infty}_{-\infty}\Psi^*\Psi dx = 1$$
+So
+\begin{align*}
+1 &= \int^{\infty}_{-\infty}\Psi^*\Psi dx\\
+&=\int^{\infty}_{-\infty}A^2e^{-2\alpha x^2}\left(1+2\beta x\cos(2\alpha\hbar t/m)+\beta^2 x^2\right)dx\\
+&= A^2\left(\int^{\infty}_{-\infty}e^{-2\alpha x^2}dx + \int^{\infty}_{-\infty}2\beta x\cos(2\alpha\hbar t/m)e^{-2\alpha x^2}dx + \int^{\infty}_{-\infty}\beta^2 x^2e^{-2\alpha x^2}dx\right)
+\end{align*}
+We can calculate each integral separately first we see that  
+$$\int^{\infty}_{-\infty}\beta^2 x^2e^{-2\alpha x^2}dx = \frac{\sqrt{\pi}\beta^2}{2(2\alpha)^{3/2}}$$
+from part (a).
+$$\int^{\infty}_{-\infty}e^{-2\alpha x^2}dx$$ 
+we use the relation we found in part (a) so
+$$\int^{\infty}_{-\infty}e^{-2\alpha x^2}dx = \sqrt{\frac{\pi}{2\alpha}}$$ 
+For the final integral we use a $u$ substitution where
+$$u = -2\alpha x^2$$
+so the derivative of $u$ with respect of $x$ yields
+$$du = -4\alpha xdx$$
+Replacing $u$ and $du$ gives us
+\begin{align*}
+\int^{\infty}_{-\infty}2\beta x\cos(2\alpha\hbar t/m)e^{-2\alpha x^2}dx &= \frac{2\beta}{-4\alpha}\cos(2\alpha\hbar t/m)\int^{\infty}_{-\infty}e^{u}du\\
+&= \frac{-\beta}{2\alpha}\cos(2\alpha\hbar t/m)\left(e^u\right|^{\infty}_{-\infty}\\
+&= \frac{-\beta}{2\alpha}\cos(2\alpha\hbar t/m)\left(e^{-2\alpha x^2}\right|^{\infty}_{-\infty}\\
+&= \frac{-\beta}{2\alpha}\cos(2\alpha\hbar t/m)\left(0-0\right)\\
+&= 0
+\end{align*}
+So we can combine the integrals to get
+\begin{align*}
+1 &= A^2\left(\int^{\infty}_{-\infty}e^{-2\alpha x^2}dx + \int^{\infty}_{-\infty}2\beta x\cos(2\alpha\hbar t/m)e^{-2\alpha x^2}dx + \int^{\infty}_{-\infty}\beta^2 x^2e^{-2\alpha x^2}dx\right)\\
+&= A^2\left(\sqrt{\frac{\pi}{2\alpha}}+\frac{\sqrt{\pi}\beta^2}{2(2\alpha)^{3/2}}\right)\\
+&= A^2\left(\frac{4\alpha\sqrt{\pi}}{2(2\alpha)^{3/2}}+\frac{\sqrt{\pi}\beta^2}{2(2\alpha)^{3/2}}\right)\\
+&= A^2\left(\frac{\sqrt{\pi}(4\alpha+\beta^2)}{2(2\alpha)^{3/2}}\right)\\
+A^2 &= \frac{2(2\alpha)^{3/2}}{\sqrt{\pi}(4\alpha+\beta^2)}\\
+A &= \sqrt{\frac{2(2\alpha)^{3/2}}{\sqrt{\pi}(4\alpha+\beta^2)}}
+\end{align*}
+
+\item
+To find the expectation of $x$ or $\langle x\rangle$ we calculate 
+\begin{align*}
+\langle x\rangle &= \int_{-\infty}^{\infty}\Psi^*x\Psi dx\\
+&=\int^{\infty}_{-\infty}A^2e^{-2\alpha x^2}x\left(1+2\beta x\cos(2\alpha\hbar t/m)+\beta^2 x^2\right)dx\\
+&= A^2\left(\cancelto{0}{\int^{\infty}_{-\infty}xe^{-2\alpha x^2}dx} + \int^{\infty}_{-\infty}2\beta x^2\cos(2\alpha\hbar t/m)e^{-2\alpha x^2}dx + \cancelto{0}{\int^{\infty}_{-\infty}\beta^2 x^3e^{-2\alpha x^2}dx}\right)\\
+&= A^2\int^{\infty}_{-\infty}2\beta x^2\cos(2\alpha\hbar t/m)e^{-2\alpha x^2}dx\\
+&= A^22\beta\cos(2\alpha\hbar t/m)\int^{\infty}_{-\infty} x^2e^{-2\alpha x^2}dx\\
+&= A^22\beta\cos(2\alpha\hbar t/m)\frac{\sqrt{\pi}}{2(2\alpha)^{3/2}}\\
+&= \frac{\sqrt{\pi}A^2\beta}{(2\alpha)^{3/2}}\cos(2\alpha\hbar t/m)
+\end{align*}
+The motion of the average value of the particle's position is periodic so it goes like a harmonic oscillator.
+\end{enumerate}
+
+\section{Problem \#4}
+\begin{enumerate}[(a)]
+\item
+Given that the wavefunction at the point on the screen is
+$$\Psi_{tot} = \Psi_0e^{-i\omega t}\left(1+e^{i\delta}+e^{2i\delta}\right)$$
+we can calculate the probability density as
+\begin{align*}
+\rho(x) &= \Psi_{tot}^*\Psi_{tot}\\
+&= \Psi_0e^{i\omega t}\left(1+e^{-i\delta}+e^{-2i\delta}\right)\Psi_0e^{-i\omega t}\left(1+e^{i\delta}+e^{2i\delta}\right)\\
+&= \Psi_0^2\cancelto{1}{e^{i\omega t}e^{-i\omega t}}\left(1+e^{-i\delta}+e^{-2i\delta}\right)\left(1+e^{i\delta}+e^{2i\delta}\right)\\
+&= \Psi_0^2\left(1+e^{i\delta}+e^{2i\delta} + e^{-i\delta}+\cancelto{1}{e^{-i\delta}e^{i\delta}}+e^{-i\delta}e^{2i\delta} + e^{-2i\delta}+e^{i\delta}e^{-2i\delta}+\cancelto{1}{e^{2i\delta}e^{-2i\delta}}\right)\\
+&= \Psi_0^2\left(1+e^{i\delta}+e^{2i\delta} + e^{-i\delta}+1+e^{-i\delta+2i\delta} + e^{-2i\delta}+e^{i\delta-2i\delta}+1\right)\\
+&= \Psi_0^2\left(3+2e^{i\delta}+2e^{-i\delta} + e^{2i\delta} + e^{-2i\delta}\right)\\
+&= \Psi_0^2\left(3+2\left(\cos(\delta)+i\sin(\delta)+\cos(-\delta)+i\sin(-\delta)\right) + \cos(2\delta)+i\sin(2\delta) + \cos(-2\delta) + i\sin(-2\delta)\right)\\
+&= \Psi_0^2\left(3+4\cos(\delta) + 2\cos(2\delta)\right)
+\end{align*}
+
+\item
+See attached for the sketch of the probability density.
+
+\item
+First we know that the period of the function is given by
+$$\Delta\delta = 2\pi$$
+where $\Delta\delta$ is the difference between two values for $\delta$ when $\rho$ is at a max. You can see this visually in part (b). So we are given the relation
+$$\delta = \frac{2\pi l}{\lambda}$$
+and we can see from the figure provided that 
+$$l = d\sin(\theta)$$ 
+where $\theta$ is the angle that the wave diffracts. So we see that
+$$\delta = \frac{2\pi d\sin(\theta)}{\lambda}$$
+So we can say that
+\begin{align*}
+\Delta\delta = 2\pi &= \delta_1-\delta_2\\
+&= \frac{2\pi d\sin(\theta_1)}{\lambda} - \frac{2\pi d\sin(\theta_2)}{\lambda}\\
+&= \frac{2\pi d}{\lambda}(\sin(\theta_1) - \sin(\theta_2))\\
+2\pi\frac{\lambda}{2\pi d} &= \sin(\theta_1) - \sin(\theta_2)\\
+\frac{\lambda}{d} &= \sin(\theta_1) - \sin(\theta_2)
+\end{align*}
+Now if we assume that the angles $\theta_1$ and $\theta_2$ are small so we can use the small angle approximation to say
+$$\frac{\lambda}{d} \approx \theta_1 - \theta_2$$
+So now if we call the angular separation $\Delta\theta$ and define it as
+$$\Delta\theta \equiv \theta_1 - \theta_2$$
+so we see that the angular separation is given by
+$$\Delta\theta = \frac{\lambda}{d}$$ 
+\end{enumerate}
+\end{document}
+

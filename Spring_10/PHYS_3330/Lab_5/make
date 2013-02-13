@@ -1,0 +1,3 @@
+latex Lab_5.tex
+latex Lab_5.tex
+dvips Lab_5.dvi

@@ -1,0 +1,293 @@
+\documentclass[11pt]{article}
+
+\usepackage{latexsym}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{enumerate}
+\usepackage{amsmath}
+\usepackage{cancel}
+\numberwithin{equation}{section}
+
+\setlength{\evensidemargin}{.25in}
+\setlength{\oddsidemargin}{-.25in}
+\setlength{\topmargin}{-.75in}
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{9.5in}
+\newcommand{\due}{January 20th, 2010}
+\newcommand{\HWnum}{2}
+\newcommand{\grad}{\bold\nabla}
+\newcommand{\vecE}{\vec{E}}
+\newcommand{\scrptR}{\vec{\mathfrak{R}}}
+\newcommand{\kapa}{\frac{1}{4\pi\epsilon_0}}
+
+\begin{document}
+\input{../title.tex}
+
+\section{Problem \#1}
+\begin{enumerate}[(a)]
+\item
+We see that the probability that an object chosen at random from the box will have length 8 is given by the ratio between the number of items of length 8 and the total number of items or
+$$P(X=8) = \frac{4}{18} = \frac{2}{9}$$
+
+\item
+To calculate the average length $\langle L\rangle$ of an object in the box we say
+\begin{align*}
+\langle L\rangle &= \sum Lp(L)\\
+&= 3\frac{2}{9}+4\frac{2}{18}+6\frac{3}{18} + 8\frac{2}{9}+9\frac{3}{18}+11\frac{3}{18}\\
+&= \frac{3(4)+4(2)+6(3)+8(4)+9(3)+11(3)}{18}\\
+&= \frac{130}{18} = \frac{65}{9} \approx 7.222
+\end{align*}
+
+\item
+The probability that we will select an item of length $\langle L\rangle \approx 7.2$ is zero as there is no item of that exact length.
+
+\item
+To calculate the average of the square of the length $\langle L^2\rangle$ of an object in the box we say
+\begin{align*}
+\langle L^2\rangle &= \sum L^2p(L)\\
+&= 3^2\frac{2}{9}+4^2\frac{2}{18}+6^2\frac{3}{18} + 8^2\frac{2}{9}+9^2\frac{3}{18}+11^2\frac{3}{18}\\
+&= \frac{9(4)+16(2)+36(3)+64(4)+81(3)+121(3)}{18}\\
+&= \frac{1038}{18} = \frac{519}{9} \approx 57.67
+\end{align*}
+
+\item
+To calculate the standard deviation $\sigma$ for the length of an item drawn from the box we use the equation 
+\begin{equation}
+\sigma = \sqrt{\langle L^2\rangle - \langle L\rangle^2}
+\label{stdev}
+\end{equation}
+So using equation \ref{stdev} we get
+\begin{align*}
+\sigma &= \sqrt{\langle L^2\rangle - \langle L\rangle^2}\\
+&= \sqrt{57.67 - (7.222)^2}\\
+&= \sqrt{57.67 - 52.16} \approx 2.35
+\end{align*}
+
+\item
+If an object chosen is in the range $\langle L\rangle\pm\sigma$ we see that it is in the range of $4.87\le x\le9.57$. Now we see that there are 10 objects in this range. Three of length 6, 4 of 8, and 3 of 9. So the probability that we select an object in this range is 
+$$P(4.87\le X\le 9.57) = \frac{10}{18} = \frac{5}{9}$$ 
+This is the majority of the item which is reasonable because we are 1 $\sigma$ away from the average.
+\end{enumerate}
+
+\section{Problem \#2}
+\begin{enumerate}[(a)]
+\item
+We know that the position of the mass is given by the function
+$$x(t) = A\cos\left(\omega t\right)$$ 
+where $\omega=\sqrt{k/m}$. We also know that the velocity of the mass is given by
+$$v(t) = \frac{dx}{dt} = -A\omega\sin(\omega t)$$
+Now we know that the one full oscillation of the mass is twice the time of the period $T$. So the probability of finding the mass at a $dt$ is given by
+$$p = \frac{2dt}{T}$$
+Now if we solve for $dt$ from the velocity we see that
+$$dt = \frac{dx}{-A\omega\sin(\omega t)}$$
+So now the probability is 
+$$\frac{2dt}{T} = \frac{2}{T}\frac{dx}{-A\omega\sin(\omega t)}$$
+Now if we solve for $t$ as a function of $x$ we get
+$$\omega t = \arccos(x/A)$$
+Now we see from the attached figure that
+$$\sin(\omega t) = \frac{\sqrt{A^2-x^2}}{A}$$
+So that now we see that the probability becomes
+$$\frac{2dt}{T} = \frac{2}{T\omega}\frac{dx}{\sqrt{A^2-x^2}}$$
+Note that $T\omega=2\pi$ so 
+$$\frac{2dt}{T} = \frac{1}{\pi}\frac{1}{\sqrt{A^2-x^2}}dx$$
+now we can see that the probability density is given by
+$$\rho(x) = \frac{1}{\pi}\frac{1}{\sqrt{A^2-x^2}}\ -A\le x\le A$$
+
+\item
+We need to verify that
+$$\int_{-\infty}^{\infty}\rho(x)dx = 1$$
+so we calculate
+\begin{align*}
+\int_{-\infty}^{\infty}\rho(x)dx &= \int_{-A}^{A}\frac{1}{\pi}\frac{1}{\sqrt{A^2-x^2}}dx\\
+&= \frac{1}{\pi}\left.\arctan\left(\frac{x}{\sqrt{A^2-x^2}}\right)\right|_{-A}^{A}\\
+&= \frac{1}{\pi}\left[\arctan\left(\frac{A}{\sqrt{A^2-A^2}}\right) - \arctan\left(\frac{-A}{\sqrt{A^2-(-A)^2}}\right)\right]\\
+&= \frac{1}{\pi}\left[\frac{\pi}{2}+\frac{\pi}{2}\right]\\
+&= \frac{\pi}{\pi} = 1
+\end{align*}
+
+\item
+To calculate $\langle x\rangle$ we use the equation
+\begin{equation}
+\langle x\rangle = \int_{-\infty}^{\infty}x\rho(x)dx
+\label{expt}
+\end{equation}
+So 
+\begin{align*}
+\langle x\rangle &= \int_{-\infty}^{\infty}x\rho(x)dx\\
+&= \int_{-A}^{A}\frac{1}{\pi}\frac{x}{\sqrt{A^2-x^2}}dx
+\end{align*}
+Now if we use a $u$ substitution where
+$$u = A^2-x^2$$
+and
+$$du = -2xdx$$
+so our integral becomes 
+\begin{align*}
+\langle x\rangle &= -\int_{u(-A)}^{u(A)}\frac{1}{\pi}\frac{1}{2\sqrt{u}}du\\
+&= -\frac{1}{2\pi}\left(2\sqrt{u}\right|_{u(-A)}^{u(A)}\\
+&= -\frac{1}{\pi}\left(\sqrt{A^2-x^2}\right|_{-A}^{A}\\
+&= -\frac{1}{\pi}\left(\sqrt{A^2-A^2}-\sqrt{A^2-(-A)^2}\right)\\
+&= 0
+\end{align*}
+We see that zero is the midpoint between $A$ and $-A$ so we could have guess zero without calculating. Now to calculate $\langle x^2\rangle$ we use equation \ref{expt} to get
+\begin{align*}
+\langle x^2\rangle &= \int_{-\infty}^{\infty}x^2\rho(x)dx\\
+&= \int_{-A}^{A}\frac{1}{\pi}\frac{x^2}{\sqrt{A^2-x^2}}dx\\
+&= \frac{1}{\pi}\frac{1}{2}\left(A^2\arctan\left(\frac{x}{\sqrt{A^2-x^2}}\right)-x\sqrt{A^2-x^2}\right|_{-A}^{A}\\
+&= \frac{1}{\pi}\frac{1}{2}\left(A^2\arctan\left(\frac{A}{\sqrt{A^2-A^2}}\right)-A\sqrt{A^2-A^2}-A^2\arctan\left(\frac{-A}{\sqrt{A^2-(-A)^2}}\right)-(-A)\sqrt{A^2-(-A)^2}\right)\\
+&= \frac{1}{\pi}\frac{1}{2}\left(A^2\frac{\pi}{2} + A^2\frac{\pi}{2}\right)\\
+&= \frac{1}{\pi}\frac{1}{2}A^2\pi\\
+&= \frac{A^2}{2}
+\end{align*}
+Now to calculate $\sigma_x$ we use equation \ref{stdev} to get
+\begin{align}
+\sigma_x &= \sqrt{\langle x^2\rangle - \langle x\rangle^2}\\
+&= \sqrt{\frac{A^2}{2} - 0}\\
+&= \frac{\sqrt{2}A}{2}
+\end{align}
+
+
+\item
+See attached for the sketch of $\rho(x)$.
+\end{enumerate}
+
+\section{Problem \#3}
+\begin{enumerate}[(a)]
+\item
+The first assumption behind the Bohr model is that the electron travels in orbits around the nucleus. Where the driving force is the electrostatic force rather than gravity. The other assumption is that the electron stays at a constant energy when it orbits. The non-classical assumption is that the electron's angular momentum are integer multiples of $\hbar$ so
+$$L = n\hbar$$
+
+\item
+We start with \emph{Coulomb's Law} and apply it to a Hydrogen atom and we see that the force on the electron is given by
+$$F = \frac{ke^2}{r^2}$$
+where $e$ is the charge of an electron, $r$ is the distance between the nucleus and the electron, and $k$ is a proportionality constant. Now we see that this force is the centripetal acceleration is equal to this quantity by \emph{Newton's 2nd Law}. So
+$$m\frac{v^2}{r} = \frac{ke^2}{r^2}$$
+and if we cancel the $r$ we get
+\begin{equation}
+mv^2 = \frac{ke^2}{r}
+\label{force}
+\end{equation}
+Now if we take that the angular momentum is $L = mvr$ and we use the assumption from part (a) we see
+$$mvr = n\hbar$$
+Solving for $v$ yields
+$$v = \frac{n\hbar}{mr}$$
+Now if we substitute $v$ into equation \ref{force} we get
+$$m\left(\frac{n\hbar}{mr}\right)^2 = \frac{ke^2}{r}$$
+Solving for $r$ give us
+$$r = \frac{n^2\hbar^2}{ke^2m}$$
+Where we define the \emph{Bohr Radius} as
+$$a_B\equiv\frac{n^2\hbar^2}{ke^2m}$$
+so the allowed radii are given by
+\begin{equation}
+r = n^2a_B
+\label{bohrad}
+\end{equation}
+Now to calculate the total energy we first need to say that the potential energy is given by
+$$U = -\frac{ke^2}{r}$$
+so the total energy of the electron is 
+$$E = \frac{1}{2}mv^2 - \frac{ke^2}{r}$$
+again if we use the relation from equation \ref{force} we see that
+\begin{align*}
+E &= \frac{1}{2}\frac{ke^2}{r} - \frac{ke^2}{r}\\
+&= \frac{ke^2}{2r} - \frac{ke^2}{r}\\
+&= \frac{ke^2 - 2ke^2}{2r}\\
+&= -\frac{ke^2}{2r}\\
+\end{align*}
+Now we see that the energy is dependent on the radius of the electron. So if we use equation \ref{bohrad} we see that
+$$E = -\frac{ke^2}{2n^2a_B}$$
+and if we define 
+$$E_B \equiv \frac{ke^2}{2a_B}$$ 
+we get 
+$$E = -\frac{E_B}{n^2}$$
+
+\item
+So the change in energy we get when we change states say from $n=2$ to $n=1$ we see that we have
+$$\Delta E = E_n - E_m = E_B\left(\frac{1}{m^2} - \frac{1}{n^2}\right)$$
+and we know the relation between the energy and frequency as
+$$E = hf$$
+so we can solve for the frequency and calculate
+\begin{align*}
+f &= \frac{E_B}{h}\left(\frac{1}{m^2} - \frac{1}{n^2}\right)\\
+&= \frac{2.18\times10^{-18}}{6.63\times10^{-34}}\left(\frac{1}{1^2} - \frac{1}{2^2}\right)\\
+&= 2.47\times10^{15}\ s^{-1}
+\end{align*}
+Now classically if we start with equation \ref{force} we can say that the velocity of the electron is 
+$$v = \sqrt{\frac{ke^2}{mr}}$$
+now if we say that the period of one revolution is $T$ and is given by
+$$T = \frac{d}{v}$$
+where $d$ is given as $2\pi r$. Now we know that the inverse of the period is the frequency $f$ so 
+\begin{align*}
+f &= \frac{v}{d}\\
+&= \frac{1}{2\pi r}\sqrt{\frac{ke^2}{mr}}\\
+&= \frac{1}{2\pi (5.29\times10^{-11})}\sqrt{\frac{ke^2}{m(5.29\times10^{-11})}}\\
+&= 6.59\times10^{15}\ s^{-1}
+\end{align*}
+
+\end{enumerate}
+
+\section{Problem \#4}
+\begin{enumerate}[(a)]
+\item
+Given the wave function
+$$\Psi(x,t) = Ae^{-\alpha(x^2+i\hbar t/m)}$$
+where $\alpha$ and $A$ are constants. We normalize the function so that
+$$\int_{-\infty}^{\infty} |\Psi|^2dx = 1$$
+So we calculate 
+\begin{align*}
+|\Psi|^2 = \Psi*\Psi &= Ae^{-\alpha(x^2-i\hbar t/m)}Ae^{-\alpha(x^2+i\hbar t/m)}\\ 
+&= A^2e^{-\alpha(x^2-i\hbar t/m)-\alpha(x^2+i\hbar t/m)}\\ 
+&= A^2e^{-\alpha(x^2-i\hbar t/m + x^2+i\hbar t/m)}\\ 
+&= A^2e^{-2\alpha x^2}
+\end{align*}
+So we calculate the integral as
+\begin{align*}
+\int_{-\infty}^{\infty} |\Psi|^2dx = \int_{-\infty}^{\infty}A^2e^{-2\alpha x^2}dx &= 1\\
+\int_{-\infty}^{\infty}e^{-2\alpha x^2}dx &= \frac{1}{A^2}\\
+\sqrt{\frac{\pi}{2\alpha}} &= \frac{1}{A^2}\\
+A &= \left(\frac{2\alpha}{\pi}\right)^{1/4}
+\end{align*}
+
+\item
+We see that this function is a symmetric function around $x=0$ so the only point where there is equal probability for the particle to be either to the left or to the right is at $x=0$.
+
+\item
+Assuming $\alpha = 1/2$ we can calculate the probability of the particle is in the interval $-1\le x\le1$ we calculate
+\begin{align*}
+\int_{-1}^1|\Psi|^2dx &= \sqrt{\frac{1}{\pi}}\int_{-1}^{1}e^{-x^2}dx\\
+&= 0.84
+\end{align*}
+
+\item
+To solve the \emph{Schr\"{o}dinger equation} in the form
+\begin{equation}
+-\frac{\hbar^2}{2m}\frac{\partial^2}{\partial x^2}\Psi(x,t) + V(x,t)\Psi(x,t) = i\hbar\frac{\partial}{\partial t}\Psi(x,t)
+\label{schequ}
+\end{equation}
+We first calculate
+\begin{align*}
+\frac{\partial^2}{\partial x^2}\Psi(x,t) &= \frac{\partial^2}{\partial x^2}Ae^{-\alpha(x^2+i\hbar t/m)}\\
+&= -2A\alpha\frac{\partial}{\partial x}e^{-\alpha(x^2+i\hbar t/m)}x\\
+&= -2A\alpha\left(e^{-\alpha(x^2+i\hbar t/m)}+xe^{-\alpha(x^2+i\hbar t/m)}(-2\alpha x)\right)\\
+&= -2A\alpha e^{-\alpha(x^2+i\hbar t/m)}\left(1-2\alpha x^2\right)\\
+\end{align*}
+and now
+\begin{align*}
+\frac{\partial}{\partial t}\Psi(x,t) &= \frac{\partial}{\partial t} Ae^{-\alpha(x^2+i\hbar t/m)}\\
+&= Ae^{-\alpha(x^2+i\hbar t/m)}(-\alpha i\hbar/m)\\
+&= -\frac{A\alpha i\hbar}{m}e^{-\alpha(x^2+i\hbar t/m)}
+\end{align*}
+So replacing these values into equation \ref{schequ} we get
+\begin{align*}
+-\frac{\hbar^2}{2m}(-2A\alpha)\cancel{e^{-\alpha(x^2+i\hbar t/m)}}\left(1-2\alpha x^2\right) + V(x,t)A\cancel{e^{-\alpha(x^2+i\hbar t/m)}} &= i\hbar\left(-\frac{A\alpha i\hbar}{m}\right)\cancel{e^{-\alpha(x^2+i\hbar t/m)}}\\
+\frac{\alpha\hbar^2}{m}\left(1-2\alpha x^2\right) + V(x,t) &= -\frac{\alpha i^2\hbar^2}{m}\\
+V(x,t) &= \frac{\alpha\hbar^2}{m}-\frac{\alpha\hbar^2}{m}\left(1-2\alpha x^2\right)\\
+V(x,t) &= \frac{\alpha\hbar^2}{m}\left(1-1+2\alpha x^2\right)\\
+V(x,t) &= \frac{\alpha\hbar^2}{m}\left(2\alpha x^2\right)\\
+V(x,t) &= \frac{2\alpha^2\hbar^2}{m}x^2
+\end{align*}
+This is like the potential from a spring that goes by
+$$U(x) = \frac{1}{2}kx^2$$
+
+\end{enumerate}
+
+\end{document}
+

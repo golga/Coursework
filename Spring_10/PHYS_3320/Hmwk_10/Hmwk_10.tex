@@ -1,0 +1,228 @@
+\documentclass[11pt]{article}
+
+\usepackage{latexsym}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{enumerate}
+\usepackage{amsmath}
+\usepackage{cancel}
+\numberwithin{equation}{section}
+
+\setlength{\evensidemargin}{.25in}
+\setlength{\oddsidemargin}{-.25in}
+\setlength{\topmargin}{-.75in}
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{9.5in}
+\newcommand{\due}{April 12th, 2010}
+\newcommand{\HWnum}{10}
+\newcommand{\grad}{\bold\nabla}
+\newcommand{\vecE}{\vec{E}}
+\newcommand{\scrptR}{\vec{\mathfrak{R}}}
+\newcommand{\kapa}{\frac{1}{4\pi\epsilon_0}}
+\newcommand{\emf}{\mathcal{E}}
+
+\begin{document}
+\input{../title.tex}
+
+\section{Problem \#1}
+\begin{enumerate}[(a)]
+\item
+We know that the wavenumber $k$ is related to the index of refraction $n$ through
+\begin{equation}
+k = \frac{\omega}{c}n
+\label{wavenum}
+\end{equation}
+where $\omega$ is the frequency of the wave and $c$ is the speed of light. Now if we assume that $k$ and $n$ are functions of $\omega$ equation \ref{wavenum} becomes
+$$k(\omega) = \frac{\omega}{c}n(\omega)$$
+To find the group velocity $v_g$ we use the relation
+\begin{equation}
+v_g = \frac{1}{\frac{dk(\omega)}{d\omega}}
+\label{groupvel}
+\end{equation}
+Where
+\begin{align*}
+\frac{dk(\omega)}{d\omega} &= \frac{d}{d\omega}\frac{\omega}{c}n(\omega)\\
+&= \frac{1}{c}\left(n(\omega)+\omega\frac{dn(\omega)}{d\omega}\right)
+\end{align*}
+by chain rule. So equation \ref{groupvel} yields
+$$v_g = \frac{c}{n(\omega)+\omega\frac{dn(\omega)}{d\omega}}$$
+
+\item
+For a single resonance frequency we can say that $n(\omega)$ is
+$$n(\omega) = 1+\frac{Nq^2}{2m\epsilon_0}\frac{(\omega_0^2-\omega^2)}{(\omega_0^2-\omega^2)^2+\gamma^2\omega^2}$$
+we can define a quantity $\Delta\equiv\omega-\omega_0$ we see that
+\begin{align*}
+\omega_0^2-\omega^2 &= (\omega_0+\omega)(\omega_0-\omega)\\
+&= -(\omega_0+\omega)\Delta
+\end{align*}
+So we see that 
+\begin{align*}
+n(\omega) &= 1+\frac{Nq^2}{2m\epsilon_0}\frac{(\omega_0^2-\omega^2)}{(\omega_0^2-\omega^2)^2+\gamma^2\omega^2}\\
+&= 1+\frac{Nq^2}{2m\epsilon_0}\frac{-(\omega_0+\omega)\Delta}{(-(\omega_0+\omega)\Delta)^2+\gamma^2\omega^2}\\
+&= 1-\frac{Nq^2}{2m\epsilon_0}\frac{(\omega_0+\omega)\Delta}{(\omega_0+\omega)^2\Delta^2+\gamma^2\omega^2}\\
+&= 1-\frac{Nq^2}{2m\epsilon_0}\frac{(\omega_0+\omega)\Delta}{\omega^2\left(\frac{(\omega_0+\omega)^2}{\omega^2}\Delta^2+\gamma^2\right)}\\
+&= 1-\frac{Nq^2}{2m\epsilon_0}\frac{\frac{\omega_0+\omega}{\omega}\Delta}{\omega\left(\left(\frac{\omega_0+\omega}{\omega}\right)^2\Delta^2+\gamma^2\right)}
+\end{align*}
+Now we assume that $\omega$ is very close to $\omega_0$ this implies that
+$$\frac{\omega_0}{\omega} \approx 1$$
+so we see that
+\begin{align*}
+\frac{\omega_0+\omega}{\omega} &= \frac{\omega_0}{\omega}+1\\
+&= \frac{\omega_0}{\omega}+1\\
+&= 2
+\end{align*}
+So we see that $n(\omega)$ becomes 
+\begin{align*}
+n(\omega) &= 1-\frac{Nq^2}{2m\epsilon_0}\frac{\frac{\omega_0+\omega}{\omega}\Delta}{\omega\left(\left(\frac{\omega_0+\omega}{\omega}\right)^2\Delta^2+\gamma^2\right)}\\
+&= 1-\frac{Nq^2}{2m\epsilon_0}\frac{2\Delta}{\omega\left(2^2\Delta^2+\gamma^2\right)}\\
+&= 1-\frac{Nq^2}{4m\epsilon_0\omega}\frac{\Delta}{\Delta^2+\gamma^2/4}\\
+&= 1-A\frac{\Delta}{\Delta^2+\gamma^2/4}
+\end{align*}
+Where
+$$A\equiv\frac{Nq^2}{4m\epsilon_0\omega}$$
+
+\item
+\end{enumerate}
+
+\section{Problem \#2}
+\begin{enumerate}
+\item
+If we assume that the velocity of the wave is proportional to the square of the wavelength or
+$$v = C\sqrt{\lambda}$$
+Now we know that the wavelength is related to the wave number by
+$$\lambda = \frac{2\pi}{k}$$
+and the velocity of a wave is given by
+$$v = \frac{\omega}{k}$$
+So we find that
+\begin{align*}
+v &= C\sqrt{\lambda}\\
+\frac{\omega}{k} &= C\sqrt{\frac{2\pi}{k}}\\
+\omega &= Ck\sqrt{\frac{2\pi}{k}}\\
+\omega(k) &= C\sqrt{2\pi k}
+\end{align*}
+Now we know that the group velocity of the wave is given by
+$$v_g = \frac{d\omega}{dk}$$ 
+Note that we have $\omega$ as a function of $k$ so we just take a derivative with respect to $k$ to find $v_g$
+\begin{align*}
+v_g &= \frac{d\omega}{dk}\\
+&= \frac{d}{dk}C\sqrt{2\pi k}\\
+&= C\sqrt{2\pi}\frac{d}{dk}\sqrt{k}\\
+&= C\sqrt{2\pi}\frac{1}{2}\frac{1}{\sqrt{k}}\\
+&= \frac{1}{2}C\sqrt{\frac{2\pi}{k}}\\
+&= \frac{1}{2}C\sqrt{\lambda}\\
+v_g &= \frac{1}{2}v
+\end{align*}
+So the group velocity is twice the velocity $v$.
+
+\item
+We see that we can relate the wave number and frequency for the wave function
+$$\Psi(x,t) = Ae^{i(px-Et)/\hbar}$$
+by seeing that we normally write a plane wave as
+$$f(x,t) = Ae^{i(kx-\omega t)}$$
+so we can say
+\begin{align*}
+\frac{i(px-Et)}{\hbar} &= i(kx-\omega t)\\
+\frac{p}{\hbar}x-\frac{E}{\hbar}t &= kx-\omega t
+\end{align*}
+So we can see that $k = p/\hbar$ and $\omega = E/\hbar$. Now we can use the relation 
+$$E = \frac{p^2}{2m}$$
+to find the phase velocity, $v$, by
+\begin{align*}
+v &= \frac{\omega}{k}\\
+&= \frac{E}{p}\\
+&= \frac{p}{2m}
+\end{align*}
+Now to find the group velocity we first need to find $\omega$ as a function of $k$ by
+\begin{align*}
+\omega &= \frac{E}{\hbar}\\
+&= \frac{p^2}{2m\hbar}\\
+&= \frac{\hbar k^2}{2m}
+\end{align*}
+So we can find the group velocity as
+\begin{align*}
+v_g &= \frac{d\omega}{dk}\\
+&= \frac{d}{dk}\frac{\hbar k^2}{2m}\\
+&= \frac{\hbar k}{m}\\
+&= \frac{p}{m}
+\end{align*}
+Note that the group velocity is again twice that of the phase velocity. We also see that classically the velocity is given by $p = mv_c$. So we can say that the group velocity is the classical velocity.
+\end{enumerate}
+
+\section{Problem \#3}
+\begin{enumerate}[(a)]
+\item
+To find the \emph{Fourier Transform}
+\begin{equation}
+f(\omega) = \int_{-\infty}^{\infty}f(t)e^{-i\omega t}dt
+\label{four}
+\end{equation}
+for 
+$$f(t) = Ae^{-t^2/2\Delta^2}$$
+equation \ref{four} yields
+\begin{align*}
+f(\omega) &= \int_{-\infty}^{\infty}Ae^{-t^2/2\Delta^2}e^{-i\omega t}dt\\
+&= \int_{-\infty}^{\infty}Ae^{-t^2/2\Delta^2-i\omega t}dt
+\end{align*}
+Note that we can reduce the exponent by completing the square
+\begin{align*}
+-t^2/2\Delta^2-i\omega t &= -\frac{1}{2\Delta^2}\left(t^2+2i\Delta^2\omega t\right)\\
+&= -\frac{1}{2\Delta^2}\left(t^2+2i\Delta^2\omega t + i^2\Delta^4\omega^2 - i^2\Delta^4\omega^2\right)\\
+&= -\frac{1}{2\Delta^2}\left((t+i\Delta^2\omega)^2 + \Delta^4\omega^2\right)\\
+&= -\frac{1}{2\Delta^2}(t+i\Delta^2\omega)^2 - \frac{1}{2}\Delta^2\omega^2
+\end{align*}
+So the transform becomes
+\begin{align*}
+\int_{-\infty}^{\infty}Ae^{-t^2/2\Delta^2-i\omega t}dt &= \int_{-\infty}^{\infty}Ae^{-\frac{1}{2\Delta^2}(t+i\Delta^2\omega)^2  \frac{1}{2}\Delta^2\omega^2}dt\\
+&= e^{-\omega^2\Delta^2/2}\int_{-\infty}^{\infty}Ae^{-\frac{1}{2\Delta^2}(t+i\Delta^2\omega)^2}dt
+\end{align*}
+Now we can use a $u$ substitution where
+$$u = \frac{1}{\sqrt{2}\Delta}(t+i\Delta^2\omega)$$
+where
+$$du = \frac{1}{\sqrt{2}\Delta}dt$$
+\begin{align*}
+e^{-\omega^2\Delta^2/2}\int_{-\infty}^{\infty}Ae^{-\frac{1}{2\Delta^2}(t+i\Delta^2\omega)^2}dt &= e^{-\omega^2\Delta^2/2}\sqrt{2}{\Delta}\int_{-\infty}^{\infty}Ae^{-u^2}du\\
+&= Ae^{-\omega^2\Delta^2/2}\sqrt{2}{\Delta}\sqrt{\pi}\\
+&= A\sqrt{2\pi\Delta^2}e^{-\omega^2\Delta^2/2}
+\end{align*}
+Note that the characteristic bandwidth is when
+\begin{align*}
+\omega^2\frac{\Delta^2}{2} &= 1\\
+\omega &= \frac{\sqrt{2}}{\Delta}
+\end{align*}
+
+\item
+Now to find the \emph{Fourier Transform} of
+$$E(t) = E_0e^{-t^2/(2\Delta^2)}\cos(\omega_0t)$$
+we first need to say that 
+$$\cos(\omega_0t) = \frac{1}{2}(e^{i\omega_0t}+e^{-i\omega_0t})$$
+So equation \ref{four} yields 
+\begin{align*}
+E(\omega) &= \frac{E_0}{2}\int_{-\infty}^{\infty}e^{-t^2/(2\Delta^2)}(e^{i\omega_0t}+e^{-i\omega_0t})e^{-i\omega t}dt\\
+&= \frac{E_0}{2}\int_{-\infty}^{\infty}e^{-t^2/(2\Delta^2)}(e^{-i(\omega-\omega_0)t}+e^{-i(\omega+\omega_0)t})dt\\
+&= \frac{E_0}{2}\left(\int_{-\infty}^{\infty}e^{-t^2/(2\Delta^2)}e^{-i(\omega-\omega_0)t}dt+\int_{-\infty}^{\infty}e^{-t^2/(2\Delta^2)}e^{-i(\omega+\omega_0)t}dt\right)
+\end{align*}
+Note that both of these integrals are the same as in part (a) except we replace $\omega$ with $\omega\pm\omega_0$ so we can just use the result from part (a) to find that
+\begin{align*}
+E(\omega) &= \frac{E_0}{2}\left(\int_{-\infty}^{\infty}e^{-t^2/(2\Delta^2)}e^{-i(\omega-\omega_0)t}dt+\int_{-\infty}^{\infty}e^{-t^2/(2\Delta^2)}e^{-i(\omega+\omega_0)t}dt\right)\\
+&= \frac{E_0}{2}\left(\sqrt{2\pi\Delta^2}e^{-(\omega-\omega_0)\Delta^2/2}+\sqrt{2\pi\Delta^2}e^{-(\omega+\omega_0)\Delta^2/2}\right)\\
+&= E_0\sqrt{\frac{\pi\Delta^2}{2}}\left(e^{-(\omega-\omega_0)\Delta^2/2}+e^{-(\omega+\omega_0)\Delta^2/2}\right)
+\end{align*}
+See attached for a sketch of $E(\omega)$
+0
+\item
+Now if we add the $z$ dependence to $E(\omega)$ we get
+$$E(\omega,z) = E_0\sqrt{\frac{\pi\Delta^2}{2}}e^{-ikz}\left(e^{-(\omega-\omega_0)\Delta^2/2}+e^{-(\omega+\omega_0)\Delta^2/2}\right)$$
+where $k$ is dependent on $\omega$ by $k(\omega) = k_0+(\omega-\omega_0)k_0'+1/2(\omega-\omega_0)^2k_0''$. Now we apply the \emph{Fourier Transform} to find $E(z,t)$
+\begin{align*}
+E(z,t) &= \int_{-\infty}^{\infty}E(\omega,t)e^{i\omega t}d\omega\\
+&= E_0\sqrt{\frac{\pi\Delta^2}{2}}\int_{-\infty}^{\infty}\left(e^{-(\omega-\omega_0)\Delta^2/2}+e^{-(\omega+\omega_0)\Delta^2/2}\right)e^{-ik(\omega)z}e^{i\omega t}d\omega\\
+&= E_0\sqrt{\frac{\pi\Delta^2}{2}}\int_{-\infty}^{\infty}\left(e^{-(\omega-\omega_0)\Delta^2/2}+e^{-(\omega+\omega_0)\Delta^2/2}\right)e^{-i(k_0+(\omega-\omega_0)k_0'+1/2(\omega-\omega_0)^2k_0'')z}e^{i\omega t}d\omega
+\end{align*}
+Using mathematica we see that
+$$E(t,z) = \Re\left[E_0\frac{\Delta}{\sqrt{\Delta^2-ik_0''z}}e^{\frac{-(t-z/v_g)}{2(\Delta^2-ik_0''z)}}e^{i(k_0z-\omega_0t)}\right]$$
+
+\item
+\end{enumerate}
+
+\end{document}
+

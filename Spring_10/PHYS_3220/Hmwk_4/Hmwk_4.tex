@@ -1,0 +1,465 @@
+\documentclass[11pt]{article}
+
+\usepackage{latexsym}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{enumerate}
+\usepackage{amsmath}
+\usepackage{cancel}
+\numberwithin{equation}{section}
+
+\setlength{\evensidemargin}{.25in}
+\setlength{\oddsidemargin}{-.25in}
+\setlength{\topmargin}{-.75in}
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{9.5in}
+\newcommand{\due}{February 3rd, 2010}
+\newcommand{\HWnum}{4}
+\newcommand{\grad}{\bold\nabla}
+\newcommand{\vecE}{\vec{E}}
+\newcommand{\scrptR}{\vec{\mathfrak{R}}}
+\newcommand{\kapa}{\frac{1}{4\pi\epsilon_0}}
+\newcommand{\expt}[1]{\langle{#1}\rangle}
+
+\begin{document}
+\input{../title.tex}
+
+\section{Problem \#1}
+\begin{enumerate}[(a)]
+\item
+We assume that the wave function of an infinite square well has a solution that is separable that is it is in the form $\Psi(x,t) = \psi(x)\varphi(t)$. Where $\varphi(t)$ is the solution to the differential equation 
+$$i\hbar\frac{d\varphi}{dt} = E\varphi$$
+where $E$ is a constant. So we see that this solution is an exponential or
+$$\varphi(t) = e^{-iE_nt/\hbar}$$
+So the wave function for all time $t$ is given as
+$$\Psi(x,t) = \sqrt{\frac{2}{a}}\sin\left(\frac{n\pi x}{a}\right)e^{-iE_nt/\hbar}$$
+where the energy $E_n$ is given by
+$$E_n = \frac{n^2\pi^2\hbar^2}{2ma^2}$$
+
+\item
+To find the expectation of x $\langle x\rangle$ we calculate
+$$\langle x\rangle = \int_{-\infty}^{\infty}\Psi^*x\Psi dx$$
+where we use $\Psi(x,t)$ from part (a). So we calculate $\langle x\rangle$ as
+\begin{align*}
+\langle x\rangle &= \int_{-\infty}^{\infty}\Psi^*x\Psi dx\\
+&= \int_{0}^{a}\sqrt{\frac{2}{a}}\sin\left(\frac{n\pi x}{a}\right)e^{iE_nt/\hbar}x\sqrt{\frac{2}{a}}\sin\left(\frac{n\pi x}{a}\right)e^{-iE_nt/\hbar}dx\\
+&= {\frac{2}{a}}\int_{0}^{a}\sin^2\left(\frac{n\pi x}{a}\right)e^{iE_nt/\hbar-iE_nt/\hbar}xdx\\
+&= {\frac{2}{a}}\int_{0}^{a}\sin^2\left(\frac{n\pi x}{a}\right)xdx
+\end{align*}
+To evaluate this integral we need to use integration by parts where
+$$u = x\ du = 1$$
+and using the half angle relation 
+$$dv = \sin^2\left(\frac{n\pi x}{a}\right) = \frac{1}{2} - \frac{1}{2}\cos\left(\frac{2n\pi x}{a}\right)$$
+and we can calculate 
+$$v = \frac{1}{2}x - \frac{a}{4n\pi}\sin\left(\frac{2n\pi x}{a}\right)$$
+so using
+\begin{equation}
+\int udv = uv -\int vdu
+\label{intparts}
+\end{equation}
+So applying equation \ref{intparts} to our integral becomes 
+\begin{align*}
+\frac{2}{a}\int_{0}^{a}\sin^2\left(\frac{n\pi x}{a}\right)xdx &= \frac{2}{a}\left(\frac{1}{2}x^2 - \frac{a}{4n\pi}\sin\left(\frac{2n\pi x}{a}\right)\right|_0^a  - \frac{1}{a}\int_{0}^{a}x-\frac{a}{4n\pi}\sin\left(\frac{2n\pi x}{a}\right)dx\\
+&= \frac{2}{a}\left(\frac{1}{2}a^2\right) - \frac{1}{a}\left(\frac{1}{2}x^2+\frac{a^2}{8n^2\pi^2}\cos\left(\frac{2n\pi x}{a}\right)\right|_0^a\\
+&= a - \frac{1}{a}\frac{1}{2}a^2\\
+&= a - \frac{a}{2}\\
+\langle x\rangle &= \frac{a}{2}
+\end{align*}
+So we see that the expectation is halfway down the well. This means that the most probable location for the particle is in the middle of the wave. To find $\langle x^2\rangle$ we need to find the integral 
+\begin{align*}
+\langle x^2\rangle &= \int_{-\infty}^{\infty}\Psi^*x^2\Psi dx\\
+&= {\frac{2}{a}}\int_{0}^{a}\sin^2\left(\frac{n\pi x}{a}\right)x^2dx
+\end{align*}
+Again we use integration by parts where
+$$u = x^2\ du = 2x$$
+and
+$$dv = \sin^2\left(\frac{n\pi x}{a}\right) = \frac{1}{2} - \frac{1}{2}\cos\left(\frac{2n\pi x}{a}\right)$$
+$$v = \frac{1}{2}x - \frac{a}{4n\pi}\sin\left(\frac{2n\pi x}{a}\right)$$
+again we apply equation \ref{intparts} to get
+\begin{align*}
+{\frac{2}{a}}\int_{0}^{a}\sin^2\left(\frac{n\pi x}{a}\right)x^2dx &= \frac{2}{a}\left(\frac{1}{2}x^3 - \cancelto{0}{\frac{ax^2}{4n\pi}\sin\left(\frac{2n\pi x}{a}\right)}\right|_0^a - \frac{2}{a}\int_{0}^{a} x^2 - \frac{ax}{2n\pi}\sin\left(\frac{2n\pi x}{a}\right) dx\\
+&= \frac{2}{a}\frac{a^3}{2} - \left(\frac{2}{a}\frac{1}{3}x^3\right|_0^a - \frac{2}{a}\int_0^a\frac{ax}{2n\pi}\sin\left(\frac{2n\pi x}{a}\right)dx\\
+&= a^2 - \frac{2}{a}\frac{a^3}{3} + \frac{1}{n\pi}\int_0^a x\sin\left(\frac{2n\pi x}{a}\right)dx\\
+&= a^2 - \frac{2a^2}{3} + \frac{1}{n\pi}\int_0^a x\sin\left(\frac{2n\pi x}{a}\right)dx\\
+&= \frac{a^2}{3} + \frac{1}{n\pi}\int_0^a x\sin\left(\frac{2n\pi x}{a}\right)dx
+\end{align*}
+Now we use integration by parts again where
+$$u = x\ du = 1$$
+and 
+$$dv = \sin\left(\frac{2n\pi x}{a}\right)$$
+where
+$$v = -\frac{a}{2n\pi}\cos\left(\frac{2n\pi x}{a}\right)$$
+so equation \ref{intparts} gives us
+\begin{align*}
+\frac{1}{n\pi}\int_0^a x\sin\left(\frac{2n\pi x}{a}\right)dx &= \frac{1}{n\pi}\left(-\frac{ax}{2n\pi}\cos\left(\frac{2n\pi x}{a}\right)\right|_0^a + \frac{1}{n\pi}\frac{a}{2n\pi}\int_0^a \cos\left(\frac{2n\pi x}{a}\right)dx\\
+&= \frac{-a}{2n^2\pi^2}\left(a\cos\left(\frac{2n\pi a}{a}\right) - 0\right) + \cancelto{0}{\frac{a}{2n^2\pi^2}\frac{a}{2n\pi}\left(\sin\left(\frac{2n\pi x}{a}\right)\right|_0^a}\\
+&= \frac{-a^2}{2n^2\pi^2}
+\end{align*}
+So we can say that
+$$\langle x^2\rangle = \frac{a^2}{3} - \frac{a^2}{2n^2\pi^2}$$
+To find the expectation of the momentum we use the momentum operator $\hat{p}$ where
+\begin{equation}
+\hat{p} = \frac{\hbar}{i}\frac{\partial}{\partial x}
+\label{momop}
+\end{equation}
+So to calculate $\expt{p}$ we say that
+\begin{align*}
+\expt{p} &= \int_{-\infty}^{\infty}\Psi^*\frac{\hbar}{i}\frac{\partial}{\partial x}\Psi dx\\
+&= \frac{2}{a}\int_{0}^{a}\sin\left(\frac{n\pi x}{a}\right)e^{iE_nt/\hbar}\frac{\hbar}{i}\frac{\partial}{\partial x}\sin\left(\frac{n\pi x}{a}\right)e^{-iE_nt/\hbar}dx\\
+&= \frac{2}{a}\int_{0}^{a}\sin\left(\frac{n\pi x}{a}\right)\frac{\hbar}{i}\frac{n\pi}{a}\cos\left(\frac{n\pi x}{a}\right)dx\\
+&= \frac{2\hbar n\pi}{ia^2}\int_{0}^{a}\sin\left(\frac{n\pi x}{a}\right)\cos\left(\frac{n\pi x}{a}\right)dx
+\end{align*}
+Now we can use the trig identity 
+\begin{equation}
+\sin(2\theta) = 2\cos(\theta)\sin(\theta)
+\end{equation}
+So our integral becomes 
+\begin{align*}
+\frac{2\hbar n\pi}{ia^2}\int_{0}^{a}\sin\left(\frac{n\pi x}{a}\right)\cos\left(\frac{n\pi x}{a}\right)dx &= \frac{2\hbar n\pi}{ia^2}\frac{1}{2}\int_{0}^{a}\sin\left(\frac{2n\pi x}{a}\right)dx\\
+&= \frac{\hbar n\pi}{ia^2}\frac{a}{2n\pi}\left(\cos\left(\frac{2n\pi x}{a}\right)\right|_0^a\\
+&= \frac{\hbar n\pi}{ia^2}\frac{a}{2n\pi}\left(\cos\left(\frac{2n\pi a}{a}\right) - \cos\left(\frac{2n\pi 0}{a}\right)\right)\\
+&= \frac{\hbar n\pi}{ia^2}\frac{a}{2n\pi}\left(\cos\left(2n\pi\right) - \cos\left(0\right)\right)\\
+&= \frac{\hbar n\pi}{ia^2}\frac{a}{2n\pi}\left(1-1\right)\\
+\expt{p} &= 0
+\end{align*}
+So expectation of the momentum is zero. This makes sense because we are in a stationary state so the probability does not change in time. Now to calculate $\expt{p^2}$ we square the momentum operator (equation \ref{momop}) or
+$$\hat{p}^2 = -\hbar^2\frac{\partial^2}{\partial x^2}$$
+so we calculate $\expt{p^2}$. Note that we already canceled the time part because the is no $x$ dependence of we can pull it out of the derivative.
+\begin{align*}
+\expt{p^2} &= -\int_{-\infty}^{\infty}\Psi^*{\hbar^2}\frac{\partial^2}{\partial x^2}\Psi dx\\
+&= -\frac{2\hbar^2}{a}\int_{0}^{a}\sin\left(\frac{n\pi x}{a}\right)\frac{\partial^2}{\partial x^2}\sin\left(\frac{n\pi x}{a}\right)dx\\
+&= \frac{2\hbar^2}{a}\frac{n^2\pi^2}{a^2}\int_{0}^{a}\sin\left(\frac{n\pi x}{a}\right)\sin\left(\frac{n\pi x}{a}\right)dx\\
+&= \frac{2\hbar^2 n^2\pi^2}{a^3}\int_{0}^{a}\sin^2\left(\frac{n\pi x}{a}\right)dx\\
+&= \frac{2\hbar^2 n^2\pi^2}{a^3}\frac{1}{2}\int_{0}^{a}1-\cos\left(\frac{2n\pi x}{a}\right)dx\\
+&= \frac{\hbar^2 n^2\pi^2}{a^3}\left(x-\frac{a}{2n\pi}\sin\left(\frac{2n\pi x}{a}\right)\right|_{0}^{a}\\
+&= \frac{\hbar^2 n^2\pi^2}{a^3}\left(a-\cancelto{0}{\frac{a}{2n\pi}\sin\left(\frac{2n\pi a}{a} \right)}-0\right)\\
+&= \frac{\hbar^2 n^2\pi^2}{a^3}a\\
+&= \frac{\hbar^2 n^2\pi^2}{a^2}
+\end{align*}
+
+\item
+To find the standard deviations of $x$ and $p$ we use 
+\begin{equation}
+\sigma_{Q} = \sqrt{\expt{Q^2}-\expt{Q}^2}
+\label{stdev}
+\end{equation}
+So we calculate $\sigma_x$ as
+\begin{align*}
+\sigma_{x} &= \sqrt{\expt{x^2}-\expt{x}^2}\\
+&= \sqrt{\frac{a^2}{3} - \frac{a^2}{2n^2\pi^2} - \frac{a^2}{2^2}}\\
+&= \sqrt{\frac{1}{3} - \frac{1}{2n^2\pi^2} - \frac{1}{2^2}}\\
+&= a\sqrt{\frac{8n^2\pi^2-12-6n^2\pi^2}{24n^2\pi^2}}\\
+&= \frac{a}{n\pi}\sqrt{\frac{8n^2\pi^2-12-6n^2\pi^2}{24}}
+\end{align*}
+And we calculate $\sigma_p$ as
+\begin{align*}
+\sigma_{p} &= \sqrt{\expt{p^2}-\expt{p}^2}\\
+&= \sqrt{\frac{\hbar^2 n^2\pi^2}{a^2}-0^2}\\
+&= \sqrt{\frac{\hbar^2 n^2\pi^2}{a^2}}\\
+&= \frac{\hbar n\pi}{a}
+\end{align*}
+
+\item
+Now if we apply \emph{Heisenberg's Uncertainty Principle}
+\begin{equation}
+\sigma_x\sigma_p \ge\frac{\hbar}{2}
+\label{HeisUP}
+\end{equation}
+to this system we see that
+\begin{align*}
+\sigma_x\sigma_p &= \frac{a}{n\pi}\sqrt{\frac{8n^2\pi^2-12-6n^2\pi^2}{24}} \frac{\hbar n\pi}{a}\\
+\sigma_x\sigma_p &= \hbar\sqrt{\frac{8n^2\pi^2-12-6n^2\pi^2}{24}}
+\end{align*}
+So if we apply equation \ref{HeisUP} 
+$$\hbar\sqrt{\frac{8n^2\pi^2-12-6n^2\pi^2}{24}} \ge \frac{\hbar}{2}$$
+we see that the $\hbar$s cancel so we are left with
+$$\sqrt{\frac{8n^2\pi^2-12-6n^2\pi^2}{24}} \ge \frac{1}{2}$$
+Note that if $n=0$ we see that we are at about $1/2$, but $n=0$ is non-physical not to mention that it is imaginary value. So the stationary state that is closest to the lower bound is $n=1$.
+\end{enumerate}
+
+\section{Problem \#2}
+\begin{enumerate}[(a)]
+\item
+Recall from problem 1 that
+$$\psi_n(x) = \sqrt{\frac{2}{a}}\sin\left(\frac{n\pi x}{a}\right)$$
+So if we have a wavefunction of the form 
+$$\Psi(x,0) = A(\psi_2(x)+\psi_3(x))$$
+we can normalize the function by saying
+$$1 = \int_{-\infty}^{\infty}\Psi^*\Psi dx$$
+where
+\begin{align*}
+\Psi^*\Psi &= A\left(\sqrt{\frac{2}{a}}\sin\left(\frac{2\pi x}{a}\right) + \sqrt{\frac{2}{a}}\sin\left(\frac{3\pi x}{a}\right)\right)A\left(\sqrt{\frac{2}{a}}\sin\left(\frac{2\pi x}{a}\right) + \sqrt{\frac{2}{a}}\sin\left(\frac{3\pi x}{a}\right)\right)\\
+&= A^2\frac{2}{a}\left(\sin\left(\frac{2\pi x}{a}\right) + \sin\left(\frac{3\pi x}{a}\right)\right)^2\\
+&= A^2\frac{2}{a}\left(\sin^2\left(\frac{2\pi x}{a}\right) + \sin^2\left(\frac{3\pi x}{a}\right) + 2\sin\left(\frac{2\pi x}{a}\right)\sin\left(\frac{3\pi x}{a}\right)\right)
+\end{align*}
+So we can take the integral over all space
+\begin{align*}
+1 &= \int_{-\infty}^{\infty}\Psi^*\Psi dx\\
+&= A^2\frac{2}{a}\int_{0}^{a}\sin^2\left(\frac{2\pi x}{a}\right)dx + \int_{0}^{a}\sin^2\left(\frac{3\pi x}{a}\right)dx + \int_{0}^{a}2\sin\left(\frac{2\pi x}{a}\right)\sin\left(\frac{3\pi x}{a}\right)dx
+\end{align*}
+Note that 
+$$\int_{0}^{a}2\sin\left(\frac{2\pi x}{a}\right)\sin\left(\frac{3\pi x}{a}\right)dx = 0$$
+because sine is an orthogonal function and over the interval $[0,a]$ (for this $k_n$) the integral is zero due to the fact that we have different indexes. So
+\begin{align*}
+&= A^2\frac{2}{a}\int_{0}^{a}\sin^2\left(\frac{2\pi x}{a}\right)dx + \int_{0}^{a}\sin^2\left(\frac{3\pi x}{a}\right)dx + \cancelto{0}{\int_{0}^{a}2\sin\left(\frac{2\pi x}{a}\right)\sin\left(\frac{3\pi x}{a}\right)dx}\\
+&= A^2\frac{2}{a}\left(\frac{1}{2}\int_{0}^{a}1-\cos\left(\frac{4\pi x}{a}\right)dx + \frac{1}{2}\int_{0}^{a}1-\cos\left(\frac{6\pi x}{a}\right)dx\right) \\
+&= A^2\frac{2}{a}\frac{1}{2}\left(x-\frac{a}{4\pi}\sin\left(\frac{4\pi x}{a}\right)\right|_0^a + \left(x-\frac{a}{6\pi}\sin\left(\frac{6\pi x}{a}\right)\right|_0^a \\
+&= \frac{A^2}{a}\left(a-\frac{a}{4\pi}\sin\left(\frac{4\pi a}{a}\right)-0\right) + \left(a-\frac{a}{6\pi}\sin\left(\frac{6\pi a}{a}\right)-0\right) \\
+&= \frac{A^2}{a}(a + a) \\
+&= \frac{A^2}{a}2a \\
+1 &= 2A^2 \\
+A &= \frac{\sqrt{2}}{2} 
+\end{align*}
+
+\item
+So from problem one we know that the time dependent part of $\Psi_n(x,t)$ is given by
+$$\varphi(t) = e^{-iE_nt/\hbar}$$
+So we can say that our wavefunction is
+$$\Psi(x,t) = \frac{1}{\sqrt{a}}\left(\sin\left(\frac{2\pi x}{a}\right)e^{-iE_2t/\hbar} + \sin\left(\frac{3\pi x}{a}\right)e^{-iE_3t/\hbar}\right)$$
+Now we can find $|\Psi(x,t)|^2$ by using the relation 
+\begin{equation}
+|\Psi(x,t)|^2 = \Psi^*(x,t)\Psi(x,t)
+\end{equation}
+So we calculate
+\begin{align*}
+\Psi^*(x,t)\Psi(x,t) &= \frac{1}{a}\left(\sin\left(\frac{2\pi x}{a}\right)e^{iE_2t/\hbar} + \sin\left(\frac{3\pi x}{a}\right)e^{iE_3t/\hbar}\right)\left(\sin\left(\frac{2\pi x}{a}\right)e^{-iE_2t/\hbar} + \sin\left(\frac{3\pi x}{a}\right)e^{-iE_3t/\hbar}\right)\\
+&= \frac{1}{a}\left(\sin\left(\frac{2\pi x}{a}\right)e^{iE_2t/\hbar}\sin\left(\frac{2\pi x}{a}\right)e^{-iE_2t/\hbar} + \sin\left(\frac{2\pi x}{a}\right)e^{iE_2t/\hbar}\sin\left(\frac{3\pi x}{a}\right)e^{-iE_3t/\hbar} \right.\\
+&\left.+ \sin\left(\frac{3\pi x}{a}\right)e^{iE_3t/\hbar}\sin\left(\frac{2\pi x}{a}\right)e^{-iE_2t/\hbar} + \sin\left(\frac{3\pi x}{a}\right)e^{iE_3t/\hbar}\sin\left(\frac{3\pi x}{a}\right)e^{-iE_3t/\hbar}\right)\\
+&= \frac{1}{a}\left(\sin^2\left(\frac{2\pi x}{a}\right) + \sin^2\left(\frac{3\pi x}{a}\right) \right.\\
+&\left.+\sin\left(\frac{2\pi x}{a}\right)e^{iE_2t/\hbar}\sin\left(\frac{3\pi x}{a}\right)e^{-iE_3t/\hbar} + \sin\left(\frac{3\pi x}{a}\right)e^{iE_3t/\hbar}\sin\left(\frac{2\pi x}{a}\right)e^{-iE_2t/\hbar}\right)\\
+&= \frac{1}{a}\left(\sin^2\left(\frac{2\pi x}{a}\right) + \sin^2\left(\frac{3\pi x}{a}\right) + \sin\left(\frac{2\pi x}{a}\right)\sin\left(\frac{3\pi x}{a}\right)\left(e^{iE_2t/\hbar-iE_3t/\hbar} + e^{iE_3t/\hbar-iE_2t/\hbar}\right)\right)\\
+&= \frac{1}{a}\left(\sin^2\left(\frac{2\pi x}{a}\right) + \sin^2\left(\frac{3\pi x}{a}\right) + \sin\left(\frac{2\pi x}{a}\right)\sin\left(\frac{3\pi x}{a}\right)\left(e^{it/\hbar(E_2-E_3)} + e^{it/\hbar(E_3-E_2)}\right)\right)
+\end{align*}
+\begin{align*}
+&= \frac{1}{a}\left(\sin^2\left(\frac{2\pi x}{a}\right) + \sin^2\left(\frac{3\pi x}{a}\right) + \sin\left(\frac{2\pi x}{a}\right)\sin\left(\frac{3\pi x}{a}\right)\left(e^{it/\hbar(E_2-E_3)} + e^{-it/\hbar(E_2-E_3)}\right)\right)\\
+&= \frac{1}{a}\left(\sin^2\left(\frac{2\pi x}{a}\right) + \sin^2\left(\frac{3\pi x}{a}\right) + 2\sin\left(\frac{2\pi x}{a}\right)\sin\left(\frac{3\pi x}{a}\right)\cos\left(\frac{E_3-E_2}{\hbar}t\right)\right)
+\end{align*}
+Note that we flipped $E_3$ and $E_2$ this is trivial as the negative can be absorbed into the cosine. So we see that the angular frequency of oscillation $\omega$ is
+$$\omega = \frac{E_3-E_2}{\hbar}$$
+where
+$$E_n = \frac{n^2\pi^2\hbar^2}{2ma^2}$$
+so we see that $\omega$ is calculated as
+\begin{align*}
+\omega &= \frac{E_3-E_2}{\hbar}\\
+&= \frac{1}{\hbar}\frac{\pi^2\hbar^2}{2ma^2}(3^2-2^2)\\
+&= \frac{5\pi^2\hbar}{2ma^2}
+\end{align*}
+
+\item
+To find the $\expt{x}$ we need to find
+$$\int_{-\infty}^{\infty}\Psi^*x\Psi dx$$
+For the sake of clarity we will split the integrals into each of the separate parts first we calculate
+\begin{align*}
+\frac{1}{a}\int_0^ax\sin^2\left(\frac{2\pi x}{a}\right)dx &= \frac{1}{a}\frac{1}{2}\int_0^ax-x\cos\left(\frac{4\pi x}{a}\right)dx\\
+&= \frac{1}{2a}\left(\frac{1}{2}x^2\right|_0^a - \int_0^ax\cos\left(\frac{4\pi x}{a}\right)dx\\
+&= \frac{1}{2a}\frac{a^2}{2} - \frac{1}{2a}\int_0^ax\cos\left(\frac{4\pi x}{a}\right)dx
+\end{align*}
+Now we use integration by parts to calculate the remaining integral where
+$$u = x\ du = 1$$
+$$dv = \cos\left(\frac{4\pi x}{a}\right)$$
+and
+$$v = \frac{a}{4\pi}\sin\left(\frac{4\pi x}{a}\right)$$
+so equation \ref{intparts} yields 
+\begin{align*}
+&= \frac{a}{4} - \frac{1}{2a}\int_0^ax\cos\left(\frac{4\pi x}{a}\right)dx\\
+&= \frac{a}{4} - \frac{1}{2a}\left(x\frac{a}{4\pi}\sin\left(\frac{4\pi x}{a}\right)\right|_0^a - \int_0^a\frac{a}{4\pi}\sin\left(\frac{4\pi x}{a}\right)dx\\
+&= \frac{a}{4} - \frac{1}{8\pi}\frac{a}{4\pi}\left(\cos\left(\frac{4\pi x}{a}\right)\right|_0^a\\
+&= \frac{a}{4} - \frac{1}{8\pi}\frac{a}{4\pi}\left(1-1\right)\\
+&= \frac{a}{4}
+\end{align*}
+Note that 
+$$\frac{1}{a}\int_0^ax\sin^2\left(\frac{3\pi x}{a}\right)dx = \frac{a}{4}$$
+as the calculation is exactly the same and as you see from above the terms inside of the sine function play no role in the final integral. Now to calculate 
+$$\frac{2}{a}\int_0^a x\sin\left(\frac{2\pi x}{a}\right)\sin\left(\frac{3\pi x}{a}\right)\cos\left(\frac{E_3-E_2}{\hbar}t\right)dx$$
+Using the two trig identies 
+$$\cos(\alpha+\beta) = \cos(\alpha)\cos(\beta)+\sin(\alpha)\sin(\beta)$$
+and
+$$\cos(\alpha-\beta) = \cos(\alpha)\cos(\beta)-\sin(\alpha)\sin(\beta)$$
+we see that 
+\begin{align*}
+\cos(\alpha+\beta) - \cos(\alpha-\beta) &= \cos(\alpha)\cos(\beta)+\sin(\alpha)\sin(\beta) - \cos(\alpha)\cos(\beta) + \sin(\alpha)\sin(\beta)\\
+&= 2\sin(\alpha)\sin(\beta) 
+\end{align*}
+So we can rewrite our integral as
+\begin{align*}
+\frac{2}{a}\int_0^a x\sin\left(\frac{2\pi x}{a}\right)\sin\left(\frac{3\pi x}{a}\right)\cos\left(\frac{E_3-E_2}{\hbar}t\right)dx &= \frac{2}{a}\frac{1}{2}\int_0^a x\left(\cos\left(\frac{(3+2)\pi x}{a}\right) - \cos\left(\frac{\pi x}{a}\right)\right)\cos\left(\omega t\right)dx\\
+&= \frac{1}{a}\cos\left(\omega t\right)\int_0^a x\cos\left(\frac{5\pi x}{a}\right)dx - \int_0^ax\cos\left(\frac{\pi x}{a}\right)dx
+\end{align*}
+Now for each of these integrals we need to apply integration by parts so for the first integral we have
+$$u = x\ du = 1$$
+and
+$$dv = \cos\left(\frac{5\pi x}{a}\right)$$
+where 
+$$v = \frac{a}{5\pi}\sin\left(\frac{5\pi x}{a}\right)$$
+So we can apply equation \ref{intparts} to get
+\begin{align*}
+\int_0^a x\cos\left(\frac{5\pi x}{a}\right)dx &= \cancelto{0}{\left.x\frac{a}{5\pi}\sin\left(\frac{5\pi x}{a}\right)\right|_0^a} - \int_0^a\frac{a}{5\pi}\sin\left(\frac{5\pi x}{a}\right)dx\\
+&= \frac{a}{5\pi}\frac{a}{5\pi}\left(\cos\left(\frac{5\pi x}{a}\right)\right|_0^a\\
+&= \frac{a^2}{25\pi^2}\left(\cos\left(\frac{5\pi a}{a}\right) - \cos\left(\frac{5\pi 0}{a}\right)\right)\\
+&= \frac{a^2}{25\pi^2}\left(-1 - 1\right)\\
+&= \frac{-2a^2}{25\pi^2}
+\end{align*}
+Now we can see that the only difference between this integral and the other integral is the factor in the cosine and that only changes the constant in front so
+$$\int_0^ax\cos\left(\frac{\pi x}{a}\right)dx = \frac{-2a^2}{\pi^2}$$
+So now we just sum the terms to find $\expt{x}$
+\begin{align*}
+\expt{x} &= \frac{a}{4}+\frac{a}{4}+\frac{\cos(\omega t)}{a}\left(\frac{-2a^2}{25\pi^2} - \frac{-2a^2}{\pi^2}\right)\\
+&= \frac{a}{2}+\frac{\cos(\omega t)}{a}2a^2\left(\frac{1}{\pi^2} - \frac{1}{25\pi^2}\right)\\
+&= \frac{a}{2}+2\cos(\omega t)a\left(\frac{25}{25\pi^2} - \frac{1}{25\pi^2}\right)\\
+&= \frac{a}{2}+\frac{48\cos(\omega t) a}{25\pi^2}
+\end{align*}
+Now to find $\expt{p}$ we can use the relation
+\begin{equation}
+\expt{p} = m\frac{d\expt{x}}{dt}
+\label{exptmom}
+\end{equation}
+So we calculate equation \ref{exptmom}
+\begin{align*}
+\expt{p} &= m\frac{d\expt{x}}{dt}\\
+&= m\frac{d}{dt}\frac{a}{2}+\frac{48 a}{25\pi^2}\cos(\omega t)\\
+&= -m\frac{48\omega a}{25\pi^2}\sin(\omega t)
+\end{align*}
+Where 
+$$\omega = \frac{E_3-E_2}{\hbar}$$
+
+\item
+We can find the expectation of the Hamiltonian using the relation
+\begin{equation}
+\expt{H} = \sum_{n=1}^{\infty}|c_n|^2E_n
+\label{exptH}
+\end{equation}
+Now we see that 
+$$|c_n|^2 = \frac{1}{a}$$
+for all $n$ so we can find $\expt{H}$ from equation \ref{exptH}
+\begin{align*}
+\expt{H} &= \frac{1}{a}E_2+\frac{1}{a}E_3\\
+&= \frac{1}{a}(E_2+E_3)\\
+&= \frac{1}{a}\left(\frac{2^2\pi^2\hbar^2}{2ma^2}+\frac{3^2\pi^2\hbar^2}{2ma^2}\right)\\
+&= \frac{13\pi^2\hbar^2}{2ma^3}
+\end{align*}
+We can apply the fact that
+\begin{align*}
+\hat{H}^2\psi &= \hat{H}(\hat{H}\psi)\\
+&= \hat{H}(E\psi)\\
+&= E(\hat{H}\psi)\\
+&= E(E\psi)\\
+&= E^2\psi
+\end{align*}
+This implies the fact that $\expt{H^2} = E^2 = \expt{H}^2$. So we can see that the variance of the energy is
+\begin{align*}
+\sigma_E &= \sqrt{\expt{H^2} -\expt{H}^2}\\
+&= \sqrt{\expt{H}^2 -\expt{H}^2}\\
+&= 0
+\end{align*}
+So we see that we have no uncertainty in the value for the energy.
+\end{enumerate}
+
+\section{Problem \#3}
+\begin{enumerate}[(a)]
+\item
+At $t=0$ the wavefunction is the same as an infinite square well with length $a=1/2$. So we can say that
+$$\Psi(x,t) = 2\sin\left(2\pi x\right)e^{-iE_1t/\hbar}$$
+for $0<x<1/2$. And for the range $1/2<x<1$ the wave function is zero so the total wavefunction is
+$$\Psi(x,t) = \left\{\begin{array}{cc}
+	2\sin\left(2\pi x\right)e^{-iE_1t/\hbar}	&0<x<1/2\\
+	0						&1/2<x<1
+	\end{array}\right.$$
+
+\item
+So now we see that we need to find the coefficients $c_n$ we can use the equation
+\begin{equation}
+c_n = \int\psi_n(x)^*f(x)dx
+\label{coeff}
+\end{equation}
+where $f(x)$ is the function we have initially which we found in part (a). And $\psi_n(x)$ are the stationary states of the well with width 1 given by
+$$\psi_n(x) = \sqrt{2}\sin(n\pi x)$$
+so now we can apply equation \ref{coeff} to get
+\begin{align*}
+c_n &= \int\psi_n(x)^*f(x)dx\\
+&= 2\sqrt{2}\int_0^{1/2}\sin(n\pi x)\sin(2\pi x)dx + \cancelto{0}{\int_{1/2}^1(0)dx}\\
+&= 2\sqrt{2}\int_0^{1/2}\sin(n\pi x)\sin(2\pi x)dx\\
+&= 2\sqrt{2}\frac{1}{2}\int_0^{1/2}\cos(n\pi x-2\pi x)-\cos(n\pi x + 2\pi x)dx\\
+&= \sqrt{2}\int_0^{1/2}\cos((n-2)\pi x)dx-\int_{0}^{1/2}\cos((n+2)\pi x)dx\\
+&= \sqrt{2}\left(\left.\frac{1}{(n-2)\pi}\sin((n-2)\pi x)\right|_0^{1/2} - \left.\frac{1}{(n+2)\pi}\sin((n+2)\pi x)\right|_0^{1/2}\right)
+\end{align*}
+\begin{align*}
+&= \sqrt{2}\left(\frac{1}{(n-2)\pi}\left(\sin((n-2)\pi/2)-0\right) - \frac{1}{(n+2)\pi}\left(\sin((n+2)\pi/2)-0\right)\right)\\
+&= \sqrt{2}\left(\frac{1}{(n-2)\pi}\sin\left(\frac{(n-2)\pi}{2}\right) - \frac{1}{(n+2)\pi}\sin\left(\frac{(n+2)\pi}{2}\right)\right)\\
+&= \sqrt{2}\left(\frac{1}{(n-2)\pi}\sin\left(\frac{n\pi}{2}-\pi\right) - \frac{1}{(n+2)\pi}\sin\left(\frac{n\pi}{2}+\pi\right)\right)\\
+&= \frac{\sqrt{2}}{\pi}\left(-\frac{1}{(n-2)}\sin\left(\frac{n\pi}{2}\right) + \frac{1}{(n+2)}\sin\left(\frac{n\pi}{2}\right)\right)\\
+c_n &= \frac{\sqrt{2}}{\pi}\sin\left(\frac{n\pi}{2}\right)\left(\frac{1}{n+2}-\frac{1}{n-2}\right)\\
+\end{align*}
+Note that for $n=2$ we have a discontinuity so we have to plug in $n=2$ before taking the integral. Doing this yields
+\begin{align*}
+2\sqrt{2}\int_0^{1/2}\sin(2\pi x)\sin(2\pi x)dx &= 2\sqrt{2}\int_0^{1/2}\sin^2(2\pi x)dx \\
+&= 2\sqrt{2}\frac{1}{2}\int_0^{1/2}1-\cos(4\pi x)dx \\
+&= \sqrt{2}\left(x-\frac{1}{4\pi}\sin(4\pi x)\right|_0^{1/2} \\
+&= \sqrt{2}\left(\frac{1}{2}-\cancelto{0}{\frac{1}{4\pi}\sin(2\pi)} - 0\right) \\
+c_2 &= \frac{\sqrt{2}}{2}
+\end{align*}
+See attached for the Mathematica notebook that shows plots of $\Psi$ for $n=5,\ 50,\ 500$.
+
+\item
+Given the time constant $t_0$ which is defined as
+$$t_0 \equiv \frac{2ma^2}{\hbar \pi^2}$$
+We see that the units of $t_0$ are 
+\begin{align*}
+\left[t_0\right] &= \frac{kg\ m^2}{J\ s}\\
+&= \frac{kg\ m^2}{kg\ m^s\ s^{-2}\ s}\\
+&= \frac{1}{s^{-1}}\\
+&= s
+\end{align*}
+Now we know that the time dependent part of the wavefunction is given by
+$$\varphi(t) = e^{-iE_nt\hbar}$$
+but if we want to replace $t$ here with $\tau\equiv t/t_0$ we have to say that
+\begin{align*}
+\varphi(t) &= e^{-iE_nt\hbar}\\
+&= \exp{\frac{-iE_nt_0\tau}{\hbar}}\\
+&= \exp{\frac{-i\tau}{\cancel{\hbar}}\frac{n^2\cancel{\pi^2\hbar^2}}{\cancel{2ma^2}}\cancel{\frac{2ma^2}{\hbar \pi^2}}}\\
+&= e^{-in^2\tau}
+\end{align*}
+See attached for Mathematica notebook with plots.
+\end{enumerate}
+
+\section{Problem \#4}
+\begin{enumerate}[(a)]
+\item
+To calculate the energy of an electron at a ground state in an infinite square well with $a=10^{-15}\ m$ we say
+\begin{align*}
+E_1 &= \frac{\pi^2\hbar^2}{2m_ea^2}\\
+&= \frac{\pi^2\hbar^2}{2(9.1\times10^{-31})(10^{-15})^2}\\
+&= 6.02\times10^{-10}\ J\frac{1\ eV}{1.6\times10^{-19}\ J}\\
+&= 3.8\times10^9\ eV
+\end{align*}
+So we can calculate the mass of this energy using
+\begin{equation}
+E = mc^2
+\label{ensti}
+\end{equation}
+Equation \ref{ensti} gives us
+\begin{align*}
+m &= \frac{E}{c^2}\\
+&= \frac{3.8\times10^9}{c^2}\\
+&= 4.2\times10^{-8}\ eV\ c^{-2}
+\end{align*}
+Now we know that the mass of a proton is $m_p = 9.4\times10^{8}\ eV\ c^{-2}$. So we can say that the ratio between the two is 
+$$\frac{m_e}{m_p} = 4.5\times10^{-17}$$
+this is a very small amount. This fact implies that this is not a good model for the nucleus because we will not be able to account for the increased mass with this small of an amount.
+
+\item
+Now if we repeat part (a), but this time we pick $a$ such that it models the electron orbital say $a=10^{-10}$ we can calculate the energy of a ground state electron
+\begin{align*}
+E_1 &= \frac{\pi^2\hbar^2}{2m_ea^2}\\
+&= \frac{\pi^2\hbar^2}{2(9.1\times10^{-31})(10^{-10})^2}\\
+&= 6.03\times10^{-20}\ J\frac{1\ eV}{1.6\times10^{-19}\ J}\\
+&= 3.8\times10^{-1}\ eV
+\end{align*}
+Wow this is a very small energy! The mass of this binding energy from equation \ref{ensti} is
+$$m = 4.1\times10^{-18}\ eV\ c^{-2}$$
+so the ratio of this with the mass of the proton is
+$$\frac{m_e}{m_p} = 4.5\times10^{-27}$$
+The binding energy from an electron orbital contributes next to nothing in the corrections of the mass of the atom.
+\end{enumerate}
+
+\end{document}
+

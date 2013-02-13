@@ -1,0 +1,160 @@
+\documentclass[11pt]{article}
+
+\usepackage{latexsym}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{enumerate}
+\usepackage{amsmath}
+\usepackage{cancel}
+\numberwithin{equation}{section}
+
+\setlength{\evensidemargin}{.25in}
+\setlength{\oddsidemargin}{-.25in}
+\setlength{\topmargin}{-.75in}
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{9.5in}
+\newcommand{\due}{February 12th, 2010}
+\newcommand{\HWnum}{4}
+\newcommand{\grad}{\bold\nabla}
+\newcommand{\vecE}{\vec{E}}
+\newcommand{\scrptR}{\vec{\mathfrak{R}}}
+\newcommand{\kapa}{\frac{1}{4\pi\epsilon_0}}
+\newcommand{\emf}{\mathcal{E}}
+
+\begin{document}
+\input{../title.tex}
+\section{Problem \#1}
+\begin{enumerate}[(a)]
+\item
+We know that the magnetic field due to an infinitely long solenoid is
+$$\vec{B} = \mu_0\frac{N}{l}I$$
+Where $N$ is the number of loops per length $l$. Now we know that the flux of this solenoid is just the cross-sectional area of the solenoid time the magnetic field. So
+$$\Phi_B = \mu_0\frac{N}{l}I\pi R^2$$
+Now we know that $M$ is the constant of proportionality between flux and current so we see that
+$$M = \mu_0\frac{N}{l}\pi R^2$$
+
+\item
+We see that when we double the number of loops we double the flux. So the flux is now
+$$\Phi_B = 2\mu_0\frac{N}{l}I\pi R^2$$
+so this implies that $M$ is twice it was in part (b) or
+$$M = 2\mu_0\frac{N}{l}\pi R^2$$
+
+\item
+If the solenoid was not infinite the magnetic field will loop back to the other end of the solenoid. This will decrease the flux through the loop we have. So the flux will decrease but the current will stay the same. Therefore the mutual inductance $M$ will be smaller than the case with the infinite solenoid.
+
+\item
+The ferromagnetic material will increase the magnetic field produced by the solenoid. This implies that the flux will increase as well, but this is only up until the ferromagnetic material becomes saturated. At this point the magnetic field and magnetic flux will not change. So the mutual inductance will increase from the system with out the ferromagnetic material but will only increase up to the saturation point.
+\end{enumerate}
+
+\section{Problem \#2}
+We can see that the flux through the loop is given by 
+$$\Phi_B = B_0hx(t)$$
+Where $B_0$ is the constant magnetic field and $h$ is the length of the bar. Now we know that the current is related to the flux through the self inductance. Which is given by
+\begin{equation}
+\Phi_B = LI
+\label{SelfInd}
+\end{equation}
+So now we can say that the current is given by
+\begin{align*}
+\Phi_B &= LI\\
+I &= \frac{\Phi_B}{L}\\
+&= \frac{B_0hx(t)}{L}
+\end{align*}
+Now we can find the force on the bar from 
+\begin{equation}
+\vec{F} = I \int d\vec{l}\times\vec{B}
+\label{Force}
+\end{equation}
+Note that $d\vec{l}=-dl\hat{y}$ so we can calculate equation \ref{Force}. Note that $dl$ is negative because of the flow of current.
+\begin{align*}
+\vec{F} &= I \int d\vec{l}\times\vec{B}\\
+m\frac{d^2x}{dt^2} &= -I \int_0^h dl\hat{y}\times B_0\hat{z}\\
+&= -I hB_0\\
+\end{align*}
+Now if we replace the value of $I$ we found we can say that
+\begin{align*}
+m\frac{d^2x}{dt^2} &= -\frac{B_0hx(t)}{L} hB_0\\
+\frac{d^2x}{dt^2} &= -\frac{B_0^2h^2}{Lm}x(t)
+\end{align*}
+Now we have a differential equation of which the solution is 
+$$x(t) = A\sin(\omega t)+B\cos(\omega t)$$
+where $\omega$ is defined as
+$$\omega\equiv\frac{B_0h}{\sqrt{Lm}}$$
+So we need to fit our boundary conditions. We assume that $x(0) = 0$ and $x'(0) = v_0$ so we see that
+\begin{align*}
+x(0) = 0 &= A\sin(\omega 0)+B\cos(\omega 0)\\
+0 &= B\\
+\end{align*}
+And
+\begin{align*}
+x'(0) = v_0 &= A\cos(\omega 0)\omega\\
+v_0 &= A\omega\\
+A &= \frac{v_0}{\omega}
+\end{align*}
+So we see that our function of $x$ is given by
+$$x(t) = \frac{v_0}{\omega}\sin(\omega t)$$
+Now if we take the derivative of this function to find the velocity we get
+$$x'(t) = v(t) = v_0\cos(\omega t)$$
+
+
+\section{Problem \#3}
+Instead of finding the current induced in the loop of radius $b$ from loop $a$ we are going to find the current induced in $a$ from the induced current in $b$. We know that the magnetic field at the center of a loop $b$ is given by
+$$\vec{B} = \frac{\mu_0 I}{2\pi b}\hat{z}$$
+So we can find the flux through the inside loop using
+\begin{equation}
+\Phi_B = \int \vec{B}\cdot d\vec{a}
+\label{MagFlux}
+\end{equation}
+Now we assume that the small loop is very small compared to the large loop so that the magnetic field is the same everywhere inside of the loop. So we can calculate equation \ref{MagFlux} as
+\begin{align*}
+\Phi_B &= \int \vec{B}\cdot d\vec{a}\\
+&= \int \frac{\mu_0 I}{2\pi b}\hat{z}\cdot da\hat{z}\\
+&= \frac{\mu_0 I}{2\pi b}\int da\\
+&= \frac{\mu_0 I}{2\pi b}\pi a^2\\
+&= \frac{\mu_0 a^2I}{2b}
+\end{align*}
+Now we see that we have a mutual inductance of
+$$M = \frac{\mu_0 a^2}{2b}$$
+Now we know that the mutual inductance from loop $b$ on loop $a$ is the same as the mutual inductance from loop $a$ to loop $b$. So we know that the flux through the large loop is
+$$\Phi_B = \frac{\mu_0 a^2}{2b} I_1$$
+Now to find the electromotive force on the outside loop we use \emph{Faraday's Law} which is given by
+\begin{equation}
+\emf = -\frac{d\Phi_B}{dt}
+\label{EMF}
+\end{equation}
+So we can use equation \ref{EMF} to find the electromotive force on the large loop as
+$$\emf = -\frac{d\Phi_B}{dt} = -\frac{\mu_0 a^2}{2b} \frac{dI_1}{dt}$$
+
+\section{Problem \#4}
+\begin{enumerate}[(a)]
+\item
+Using \emph{Kirchoff's Laws} we see that $I = I_1+I_2$ where $I_1$ is the current through the resistor $R$ and $I_2$ is the current through the inductor $L$. Now we know that the each loop has to have the voltage change be zero so we see that
+$$V-I_1R = 0$$
+and 
+$$V-L\frac{dI_2}{dt} = 0$$
+So we need to find what $I_2$ is equal to. Note that we can quickly see that
+$$I_1 = \frac{V_0\cos(\omega t)}{R}$$
+Now we see that we have a differential equation 
+$$\frac{dI_2}{dt} = \frac{V}{L}$$
+Now we know that $V = V_0\cos(\omega t)$ so we have a differential equation which we can solve using separation of variables
+\begin{align*}
+\frac{dI_2}{dt} &= \frac{V}{L}\\
+\frac{dI_2}{dt} &= \frac{V_0\cos(\omega t)}{L}\\
+\int\ dI_2 &= \frac{V_0}{L}\int\cos(\omega t)dt\\
+I_2 &= \frac{V_0}{L\omega}\sin(\omega t)
+\end{align*}
+Now we see that the total current is given by
+\begin{align*}
+I &= I_1+I_2\\
+&= \frac{V_0}{R}\cos(\omega t) + \frac{V_0}{L\omega}\sin(\omega t)\\
+\end{align*}
+
+\item
+We see that when $\omega\rightarrow 0$ the first term the current becomes $V_0/R$, and the second term goes to $V_0/L$. So the total current becomes
+$$\lim_{\omega\rightarrow0} I = \frac{V_0}{R}+\frac{V_0}{L}$$
+this makes sense because we know that the inductor resists change so when there is no change the inductor acts like a resistor. For the case where $\omega\rightarrow\infty$ we see that the second term goes to zero so the total current is given by
+$$\lim_{\omega\rightarrow\infty} I = \frac{V_0}{R}\cos(\omega t)$$
+\end{enumerate}
+This also makes sense because the inductor whats to resist change and with $\omega$ at infinity the inductor will act like a short and all the current in the circuit flows through the resistor.
+\end{document}
+

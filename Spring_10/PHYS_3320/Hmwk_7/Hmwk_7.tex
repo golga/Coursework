@@ -1,0 +1,349 @@
+\documentclass[11pt]{article}
+
+\usepackage{latexsym}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{enumerate}
+\usepackage{amsmath}
+\usepackage{cancel}
+\numberwithin{equation}{section}
+
+\setlength{\evensidemargin}{.25in}
+\setlength{\oddsidemargin}{-.25in}
+\setlength{\topmargin}{-.75in}
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{9.5in}
+\newcommand{\due}{March 12th, 2010}
+\newcommand{\HWnum}{7}
+\newcommand{\grad}{\bold\nabla}
+\newcommand{\vecE}{\vec{E}}
+\newcommand{\scrptR}{\vec{\mathfrak{R}}}
+\newcommand{\kapa}{\frac{1}{4\pi\epsilon_0}}
+\newcommand{\emf}{\mathcal{E}}
+
+\begin{document}
+\input{../title.tex}
+
+\section{Problem \#1}
+\begin{enumerate}[(a)]
+\item
+Given the wave equation
+$$\vec{E}(\vec{r},t) = \vec{E}_1\cos(\vec{k}\cdot\vec{r}-\omega t) + \vec{E}_2\cos(\vec{k}\cdot\vec{r}-\omega t-\pi/2)$$
+Now if we write this in complex notation we can say that
+$$\vec{E}(\vec{r},t) = \vec{\widetilde{E}_1}e^{i(\vec{k}\cdot\vec{r}-\omega t)} + \vec{\widetilde{E}_2}e^{i(\vec{k}\cdot\vec{r}-\omega t - \pi/2)}$$
+So if we say that $\vec{E_1} = E_0\hat{x}$ and $\vec{E_2} = E_0\hat{x}$ we see that
+\begin{align*}
+\vec{E}(\vec{r},t) &= E_0\hat{x}e^{i(\vec{k}\cdot\vec{r}-\omega t)} + E_0\hat{x}e^{i(\vec{k}\cdot\vec{r}-\omega t - \pi/2)}\\
+&= E_0\hat{x}e^{i(\vec{k}\cdot\vec{r}-\omega t)} + E_0\hat{x}e^{-i\pi/2}e^{i(\vec{k}\cdot\vec{r}-\omega t)}\\
+&= E_0\hat{x}\left(1+e^{-i\pi/2}\right)e^{i(\vec{k}\cdot\vec{r}-\omega t)}
+\end{align*}
+Now if we take the real part of this equation we will isolate the cosine terms. So
+\begin{align*}
+\vec{E}(\vec{r},t) &= \Re\left(E_0\hat{x}\left(1+e^{-i\pi/2}\right)e^{i(\vec{k}\cdot\vec{r}-\omega t)}\right)\\
+&= \Re\left(E_0\hat{x}\left(1+\cos(-\pi/2)+i\sin(-\pi/2)\right)\left(\cos(\vec{k}\cdot\vec{r}-\omega t) + i\sin(\vec{k}\cdot\vec{r}-\omega t)\right)\right)\\
+&= \Re\left(E_0\hat{x}\left(1-i\right)\left(\cos(\vec{k}\cdot\vec{r}-\omega t) + i\sin(\vec{k}\cdot\vec{r}-\omega t)\right)\right)\\
+&= \Re\left(E_0\hat{x}\left(\cos(\vec{k}\cdot\vec{r}-\omega t) + i\sin(\vec{k}\cdot\vec{r}-\omega t)- i\cos(\vec{k}\cdot\vec{r}-\omega t) + \sin(\vec{k}\cdot\vec{r}-\omega t)\right)\right)\\
+&= E_0\hat{x}\left(\cos(\vec{k}\cdot\vec{r}-\omega t) + \sin(\vec{k}\cdot\vec{r}-\omega t)\right)
+\end{align*}
+Now if we use the trig identity 
+\begin{equation} 
+a\sin(x)+b\cos(x) = \sqrt{a^2+b^2}\sin(x+\varphi)
+\label{TrigInd} 
+\end{equation} 
+Where $\varphi$ is given by
+$$\varphi = \arcsin\left(\frac{b}{\sqrt{a^2+b^2}}\right)$$
+So for this case $a=b=1$ so we can find $\varphi$ as
+\begin{align*}
+\varphi &= \arcsin\left(\frac{b}{\sqrt{a^2+b^2}}\right)\\
+&= \arcsin\left(\frac{1}{\sqrt{1^2+1^2}}\right)\\
+&= \arcsin\left(\frac{1}{\sqrt{2}}\right)\\
+&= \frac{\pi}{4}
+\end{align*}
+So our electric field wave becomes 
+\begin{align*}
+\vec{E}(\vec{r},t) &= E_0\hat{x}\left(\cos(\vec{k}\cdot\vec{r}-\omega t) + \sin(\vec{k}\cdot\vec{r}-\omega t)\right)\\
+&= E_0\hat{x}\sqrt{1^2+1^2}\sin(\vec{k}\cdot\vec{r}-\omega t+\pi/4) \\
+&= E_0\hat{x}\sqrt{2}\cos(\vec{k}\cdot\vec{r}-\omega t-\pi/4)
+\end{align*}
+Note that we shifted the sine to a cosine by subtracting a factor of $\pi/2$.
+
+\item
+Now if we take say that $\vec{E_2} = E_0\hat{y}$ our electric field wave becomes
+$$\vec{E}(\vec{r},t) = E_0\hat{x}\cos(\vec{k}\cdot\vec{r}-\omega t) +E_0\hat{y}\cos(\vec{k}\cdot\vec{r}-\omega t-\pi/2)$$
+We see that the two components of $\vec{E}$ are out of phase so we see that the wave is circularly polarized. Therefore this wave is not linearly polarized.
+
+\item
+To find the magnetic field that is induced by this electric field we can say that
+\begin{align*}
+\vec{B} &= \frac{1}{c}\hat{k}\times\vec{E}\\
+&= \frac{1}{c}\hat{z}\times E_0\hat{x}\cos(\vec{k}\cdot\vec{r}-\omega t) +E_0\hat{y}\cos(\vec{k}\cdot\vec{r}-\omega t-\pi/2)\\
+&= \frac{1}{c}\det\left(\begin{array}{ccc}
+	\hat{x}		&\hat{y}		&\hat{z}\\
+	0		&0			&1	\\
+	E_0\cos(\vec{k}\cdot\vec{r}-\omega t)	&E_0\cos(\vec{k}\cdot\vec{r}-\omega t-\pi/2)	&0\\
+	\end{array}\right)\\	
+&= -\frac{1}{c}E_0\hat{x}\cos(\vec{k}\cdot\vec{r}-\omega t-\pi/2) + \frac{1}{c}E_0\hat{y}\cos(\vec{k}\cdot\vec{r}-\omega t)
+\end{align*}
+
+\item
+To find the energy density in these waves we use
+\begin{equation}
+u_{em} = \frac{1}{2}\left(\epsilon_0 E^2+\frac{1}{\mu_0}B^2\right)
+\label{energyDen}
+\end{equation}
+So for this problem equation \ref{energyDen} yields
+\begin{align*}
+u_{em} &= \frac{1}{2}\left(\epsilon_0 E^2+\frac{1}{\mu_0}B^2\right)\\
+&= \frac{1}{2}\left(\epsilon_0E_0^2\cos^2(\vec{k}\cdot\vec{r}-\omega t) +\epsilon_0E_0^2\cos^2(\vec{k}\cdot\vec{r}-\omega t-\pi/2) \right.\\
+&\ \ \ \left.+\frac{1}{\mu_0c^2}E_0^2\cos^2(\vec{k}\cdot\vec{r}-\omega t-\pi/2) + \frac{1}{\mu_0c^2}E_0^2\cos^2(\vec{k}\cdot\vec{r}-\omega t)\right)\\
+&= \frac{1}{2}\left(\epsilon_0E_0^2\cos^2(\vec{k}\cdot\vec{r}-\omega t) +\epsilon_0E_0^2\cos^2(\vec{k}\cdot\vec{r}-\omega t-\pi/2) \right.\\
+&\ \ \ \left.+\frac{\epsilon_0\mu_0}{\mu_0}E_0^2\cos^2(\vec{k}\cdot\vec{r}-\omega t-\pi/2) + \frac{\epsilon_0\mu_0}{\mu_0}E_0^2\cos^2(\vec{k}\cdot\vec{r}-\omega t)\right)\\
+&= \frac{1}{2}\left(\epsilon_0E_0^2\cos^2(\vec{k}\cdot\vec{r}-\omega t) +\epsilon_0E_0^2\cos^2(\vec{k}\cdot\vec{r}-\omega t-\pi/2) \right.\\
+&\ \ \ \left.+\epsilon_0E_0^2\cos^2(\vec{k}\cdot\vec{r}-\omega t-\pi/2) + \epsilon_0E_0^2\cos^2(\vec{k}\cdot\vec{r}-\omega t)\right)\\
+&= \epsilon_0E_0^2\left(\cos^2(\vec{k}\cdot\vec{r}-\omega t) +\cos^2(\vec{k}\cdot\vec{r}-\omega t-\pi/2) \right)\\
+&= \epsilon_0E_0^2\left(\cos^2(\vec{k}\cdot\vec{r}-\omega t) +\sin^2(\vec{k}\cdot\vec{r}-\omega t) \right)\\
+&= \epsilon_0E_0^2
+\end{align*}
+To find the \emph{Poynting Vector} we calculate 
+\begin{equation}
+\vec{S} = \frac{1}{\mu_0}(\vec{E}\times\vec{B})
+\label{poyn}
+\end{equation}
+So for our electric and magnetic waves we calculate equation \ref{poyn} as
+\begin{align*}
+\vec{S} &= \frac{1}{\mu_0}(\vec{E}\times\vec{B})\\
+&= \frac{1}{\mu_0}\left[\left(E_0\hat{x}\cos(\vec{k}\cdot\vec{r}-\omega t) +E_0\hat{y}\cos(\vec{k}\cdot\vec{r}-\omega t-\pi/2)\right)\right.\\
+&\left. \ \ \ \times\left(-\frac{1}{c}E_0\hat{x}\cos(\vec{k}\cdot\vec{r}-\omega t-\pi/2) + \frac{1}{c}E_0\hat{y}\cos(\vec{k}\cdot\vec{r}-\omega t)\right)\right]\\
+&= \frac{1}{\mu_0}\det\left(\begin{array}{ccc}
+	\hat{x}		&\hat{y}		&\hat{z}\\
+	E_0\cos(\vec{k}\cdot\vec{r}-\omega t)	&E_0\cos(\vec{k}\cdot\vec{r}-\omega t-\pi/2)	&0\\
+	-\frac{1}{c}E_0\cos(\vec{k}\cdot\vec{r}-\omega t-\pi/2)	&\frac{1}{c}E_0\cos(\vec{k}\cdot\vec{r}-\omega t)	&0\\
+	\end{array}\right)\\
+&= \frac{1}{\mu_0c}\hat{z}E_0^2\cos^2(\vec{k}\cdot\vec{r}-\omega t) + \frac{1}{\mu_0c}E_0^2\hat{z}\cos^2(\vec{k}\cdot\vec{r}-\omega t-\pi/2)\\
+&= \frac{1}{\mu_0c}E_0^2\hat{z}\left(\cos^2(\vec{k}\cdot\vec{r}-\omega t) +\cos^2(\vec{k}\cdot\vec{r}-\omega t-\pi/2)\right)\\
+&= \frac{1}{\mu_0c}E_0^2\hat{z}\left(\cos^2(\vec{k}\cdot\vec{r}-\omega t) +\sin^2(\vec{k}\cdot\vec{r}-\omega t)\right)\\
+&= \frac{E_0^2}{\mu_0c}\hat{z}
+\end{align*}
+
+\item
+To find the angular momentum density of the EM fields about the origin we first need to find the linear momentum density from
+\begin{equation}
+\vec{p}_{em} = \mu_0\epsilon_0\vec{S}
+\label{LinMom}
+\end{equation}
+Since we found $\vec{S}$ in part (d) we can quickly say that
+\begin{align*}
+\vec{p}_{em} &= \mu_0\epsilon_0\vec{S}\\
+&= \mu_0\epsilon_0\frac{E_0^2}{\mu_0c}\hat{z}\\
+&= \frac{\epsilon_0E_0^2}{c}\hat{z}
+\end{align*}
+Now we can find the angular momentum density from the equation
+\begin{equation}
+\vec{l}_{em} = \vec{r}\times\vec{p}_{em}
+\label{AngMom}
+\end{equation}
+So using the $\vec{p}_{em}$ we found we can calculate equation \ref{AngMom}
+\begin{align*}
+\vec{l}_{em} &= \vec{r}\times\vec{p}_{em}\\
+&= \vec{r}\times\frac{\epsilon_0E_0^2}{c}\hat{z}\\
+&= \det\left(\begin{array}{ccc}
+	\hat{x}		&\hat{y}		&\hat{z}\\
+	x		&y			&z\\
+	0		&0			&\dfrac{\epsilon_0E_0^2}{c}
+\end{array}\right)\\
+&= \dfrac{\epsilon_0E_0^2}{c}y\hat{x} - \frac{\epsilon_0E_0^2}{c}x\hat{y}
+\end{align*}
+So we see that the angular momentum points in the direction that the electric field changes and that the angular momentum is circular.
+\end{enumerate}
+
+\section{Problem \#2}
+\begin{enumerate}[(a)]
+\item
+If we start with the \emph{Maxwell Equation}
+\begin{equation}
+\grad\cdot\vec{D} = \rho_{free}
+\label{GradD}
+\end{equation}
+Where $\vec{D}$ is the displacement which is given by
+$$\vec{D}\equiv\epsilon_0\vec{E}+\vec{P}$$
+now we see for this system we have no free charge so $\rho_{free} = 0$. This implies that
+\begin{align*}
+\grad\cdot\vec{D} = 0 &= \epsilon_0\grad\cdot\vec{E}+\grad\cdot\vec{P}\\
+\grad\cdot\vec{E} &= -\frac{1}{\epsilon_0}\grad\cdot\vec{P}
+\end{align*}
+Before we reduce this term any farther we need to look at another one of \emph{Maxwell's equations}
+\begin{equation}
+\grad\times\vec{E}=-\frac{\partial \vec{B}}{\partial t}
+\label{CurlE}
+\end{equation}
+And if we take the curl of equation \ref{CurlE} we see that
+$$\grad\times(\grad\times\vec{E}) =-\frac{\partial}{\partial t}(\grad\times\vec{B})$$
+We can reduce the right hand side of this equation by using the triple product identity 
+\begin{equation}
+\grad\times(\vec{A}\times\vec{B}) = (\vec{B}\cdot\grad)\vec{A}-(\vec{A}\cdot\grad)\vec{B} + \vec{A}(\grad\cdot\vec{B})-\vec{B}(\grad\cdot\vec{A})
+\label{Trip}
+\end{equation}
+So equation \ref{Trip} shows
+\begin{align*}
+\grad\times(\grad\times\vec{E}) &= \cancelto{0}{(\vec{E}\cdot\grad)\grad}-(\grad\cdot\grad)\vec{E} + \grad(\grad\cdot\vec{E})-\cancelto{0}{\vec{E}(\grad\cdot\grad)}\\
+&= \grad(\grad\cdot\vec{E}) - \grad^2\vec{E}
+\end{align*}
+Now we can replace $\grad\cdot\vecE$ with the quantity we found earlier.
+\begin{align*}
+\grad(\grad\cdot\vec{E}) - \grad^2\vec{E}=-\frac{\partial}{\partial t}(\grad\times\vec{B})\\
+-\frac{\grad(\grad\cdot\vec{P})}{\epsilon_0} - \grad^2\vec{E}=-\frac{\partial}{\partial t}(\grad\times\vec{B})
+\end{align*}
+Now we use the \emph{Maxwell equation}
+\begin{equation}
+\grad\times\vec{H} = \vec{J}_{free}+\frac{\partial\vec{D}}{\partial t}
+\label{CurlH}
+\end{equation}
+Note that $\vec{J}_{free} = 0$ so we can say that
+\begin{align*}
+\grad\times\vec{H} &= \frac{\partial\vec{D}}{\partial t}\\
+\grad\times\left(\frac{1}{\mu_0}\vec{B}+\vec{M}\right) &= \frac{\partial\vec{D}}{\partial t}\\
+\frac{1}{\mu_0}\grad\times\vec{B} &= \frac{\partial\vec{D}}{\partial t}\\
+\grad\times\vec{B} &= \mu_0\frac{\partial\vec{D}}{\partial t}\\
+\end{align*}
+Note that we were given the fact that $\vec{M} = 0$. So we can say that
+\begin{align*}
+-\frac{\grad(\grad\cdot\vec{P})}{\epsilon_0} - \grad^2\vec{E} &= -\frac{\partial}{\partial t}\mu_0\frac{\partial\vec{D}}{\partial t}\\
+\frac{\grad(\grad\cdot\vec{P})}{\epsilon_0} + \grad^2\vec{E} &= \mu_0\frac{\partial^2\vec{D}}{\partial t^2}\\
+\frac{\grad(\grad\cdot\vec{P})}{\epsilon_0} + \grad^2\vec{E} &= \mu_0\epsilon_0\frac{\partial^2\vec{E}}{\partial t^2} +\mu_0\frac{\partial^2\vec{P}}{\partial t^2} \\
+\frac{\grad(\grad\cdot(\gamma\grad\times\vec{E}))}{\epsilon_0} + \grad^2\vec{E} &= \frac{1}{c^2}\frac{\partial^2\vec{E}}{\partial t^2} +\mu_0\frac{\partial^2}{\partial t^2}(\gamma\grad\times\vec{E}) \\
+\end{align*}
+Note that we used the given fact that $\vec{P} =\gamma\grad\times\vecE$ now we can reduce $\grad\cdot(\gamma\grad\times\vec{E})$ using
+\begin{equation}
+\grad\cdot(\grad\times\vec{A}) = 0
+\end{equation}
+So we see that 
+$$\grad^2\vec{E}=\frac{1}{c^2}\frac{\partial^2\vec{E}}{\partial t^2} +\mu_0\gamma\frac{\partial^2}{\partial t^2}(\grad\times\vec{E})$$
+
+\item
+Given the equation of a plane wave
+$$\vec{E}(\vec{r},t) = \vec{\widetilde{E_0}}e^{i(\vec{k}\cdot\vec{r}-\omega t)}$$
+Where we assume that $\vec{\widetilde{E_0}} = E_1\hat{x}+E_2\hat{y}$ and $\vec{k} = k\hat{z}$ so our equation becomes
+$$\vec{E}(\vec{r},t) = E_1\hat{x}e^{i(kz-\omega t)} + E_2\hat{y}e^{i(kz-\omega t)}$$
+So now we can apply the equation we found in part (a)
+$$\grad^2\vec{E}=\frac{1}{c^2}\frac{\partial^2\vec{E}}{\partial t^2} +\mu_0\gamma\frac{\partial^2}{\partial t^2}(\grad\times\vec{E})$$
+first find the left hand side to say 
+\begin{align*}
+\grad^2\vec{E} &= \frac{\partial^2}{\partial x^2}\vec{E} + \frac{\partial^2}{\partial y^2}\vec{E} + \frac{\partial^2}{\partial z^2}\vec{E}\\
+&= \frac{\partial^2}{\partial x^2}E_1\hat{x}e^{i(kz-\omega t)}+ E_2\hat{y}e^{i(kz-\omega t)} + \frac{\partial^2}{\partial y^2}E_1\hat{x}e^{i(kz-\omega t)}+ E_2\hat{y}e^{i(kz-\omega t)} + \frac{\partial^2}{\partial z^2}E_1\hat{x}e^{i(kz-\omega t)}+ E_2\hat{y}e^{i(kz-\omega t)}\\
+&= \frac{\partial}{\partial z}E_1\hat{x}ike^{i(kz-\omega t)}+ E_2ik\hat{y}e^{i(kz-\omega t)}\\
+&= -E_1k^2\hat{x}e^{i(kz-\omega t)} - E_2k^2\hat{y}e^{i(kz-\omega t)}
+\end{align*}
+Now we can find the second time derivative of $\vecE$ as
+\begin{align*}
+\frac{1}{c^2}\frac{\partial^2\vec{E}}{\partial t^2} &=  \frac{1}{c^2}\frac{\partial^2}{\partial t^2} E_1\hat{x}e^{i(kz-\omega t)}+ E_2\hat{y}e^{i(kz-\omega t)}\\
+&=  \frac{1}{c^2}\frac{\partial}{\partial t} \left(-E_1i\omega\hat{x}e^{i(kz-\omega t)}- E_2i\omega\hat{y}e^{i(kz-\omega t)}\right)\\
+&=  -\frac{\omega^2}{c^2}E_1\hat{x}e^{i(kz-\omega t)}-\frac{\omega^2}{c^2}E_2\hat{y}e^{i(kz-\omega t)}
+\end{align*}
+And for the last part of the equation we need to find the curl of $\vecE$ 
+\begin{align*}
+\grad\times\vecE &= \left(\cancelto{0}{\frac{\partial E_z}{\partial y}}-\frac{\partial E_y}{\partial z}\right)\hat{x} + \left(\frac{\partial E_x}{\partial z}-\cancelto{0}{\frac{\partial E_z}{\partial x}}\right)\hat{y} + \cancelto{0}{\left(\frac{\partial E_y}{\partial x}-\frac{\partial E_x}{\partial y}\right)\hat{z}}\\
+&=  -\frac{\partial E_y}{\partial z}\hat{x} + \frac{\partial E_x}{\partial z}\hat{y}\\
+&= -\frac{\partial}{\partial z}E_2e^{i(kz-\omega t)}\hat{x} + \frac{\partial}{\partial z}E_1e^{i(kz-\omega t)}\hat{y}\\
+&=  -E_2ike^{i(kz-\omega t)}\hat{x} + E_1ike^{i(kz-\omega t)}\hat{y}
+\end{align*}
+Now we can find
+\begin{align*}
+\mu_0\gamma\frac{\partial^2}{\partial t^2}(\grad\times\vec{E}) &= \mu_0\gamma\frac{\partial^2}{\partial t^2}\left(-E_2ike^{i(kz-\omega t)}\hat{x} + E_1ike^{i(kz-\omega t)}\hat{y}\right) \\ 
+&= \mu_0\gamma\frac{\partial}{\partial t}\left(-E_2\omega ke^{i(kz-\omega t)}\hat{x} + E_1\omega ke^{i(kz-\omega t)}\hat{y}\right) \\ 
+&= \mu_0\gamma\left(E_2\omega^2ike^{i(kz-\omega t)}\hat{x} - E_1\omega^2ike^{i(kz-\omega t)}\hat{y}\right) 
+\end{align*}
+Now we can see that the equation from part (a) split into components is
+\begin{align*}
+-E_1k^2\hat{x}e^{i(kz-\omega t)} &= -\frac{\omega^2}{c^2}E_1\hat{x}e^{i(kz-\omega t)} + \mu_0\gamma E_2\omega^2ike^{i(kz-\omega t)}\hat{x}\\ 
+-E_2k^2\hat{y}e^{i(kz-\omega t)} &= -\frac{\omega^2}{c^2}E_2\hat{y}e^{i(kz-\omega t)} - \mu_0\gamma E_1\omega^2ike^{i(kz-\omega t)}\hat{y}
+\end{align*}
+Now if we just look at the $\hat{x}$ components and assume that $E_1=E_2$ we get
+\begin{align*}
+-E_1k^2\hat{x}e^{i(kz-\omega t)} &= -\frac{\omega^2}{c^2}E_1\hat{x}e^{i(kz-\omega t)} + \mu_0\gamma E_2\omega^2ike^{i(kz-\omega t)}\hat{x}\\ 
+-k^2 &= -\frac{\omega^2}{c^2} + \mu_0\gamma \omega^2ik 
+\end{align*}
+Now if we say that the index of refraction $n$ is related to $k$ by
+$$k = \frac{n\omega}{c}$$
+we can replace the $k$ in the equation to get
+\begin{align*}
+-\left(\frac{n\omega}{c}\right)^2 + \frac{\omega^2}{c^2} - \mu_0\gamma \omega^2i\frac{n\omega}{c} &= 0\\
+-n^2\frac{\omega^2}{c^2} + \frac{\omega^2}{c^2} - n\frac{i\omega^3\mu_0\gamma}{c} &= 0\\
+n^2 + n\frac{c^2}{\omega^2}\frac{i\omega^3\mu_0\gamma}{c} - 1 &= 0\\
+n^2 + nic\mu_0\gamma\omega - 1 &= 0
+\end{align*}
+Now to solve for $n$ we use the \emph{Quadratic Equation}
+\begin{equation}
+x = \frac{-b\pm\sqrt{b^2-4ac}}{2a}
+\label{Quad}
+\end{equation}
+So equation \ref{Quad} yields 
+\begin{align*}
+n &= \frac{1}{2}\left(-ic\mu_0\gamma\omega\pm\sqrt{\left(ic\mu_0\gamma\omega\right)^2 - 4(1)(-1)}\right)\\
+n &= \frac{-ic\mu_0\gamma\omega}{2}\pm\frac{1}{2}\sqrt{-\left(c\mu_0\gamma\omega\right)^2 + 4}\\
+n &= \frac{-c\mu_0\gamma\omega}{2}\pm\sqrt{\left(\frac{c\mu_0\gamma\omega}{2}\right)^2 + 1}
+\end{align*}
+\end{enumerate}
+
+\section{Problem \#3}
+\begin{enumerate}[(a)]
+\item
+Given the electric field
+$$\vecE(\vec{r},t) = E_0\hat{y}\cos(kz-\omega t)$$
+we can find the magnetic field induced by this electric field by
+\begin{align*}
+\vec{B} &= \frac{1}{c}\hat{k}\times\vecE\\
+&= \frac{1}{c}\hat{z}\times E_0\hat{y}\cos(kz-\omega t)\\
+&= \frac{1}{c}E_0\cos(kz-\omega t)\hat{z}\times\hat{y}\\
+&= \frac{1}{c}E_0\cos(kz-\omega t)(-\hat{x})\\
+\vec{B} &= -\frac{1}{c}E_0\cos(kz-\omega t)\hat{x}
+\end{align*}
+
+\item
+Now if we assume that there is a charged particle of charge $q$ and mass $m$ held at the origin we can find the force on this particle using the \emph{Lorentz Force}
+\begin{equation}
+\vec{F} = q(\vecE+\vec{v}\times\vec{B})
+\label{Lorenz}
+\end{equation}
+Where $\vec{v}$ is the velocity of the particle. So if we assume the particle is initially released with no velocity equation \ref{Lorenz} becomes
+$$\vec{F} = q\vecE$$
+so at $t=0$ the force on the particle can be found by. Note that the particle is located at the origin. 
+\begin{align*}
+\vec{F} &= q\vecE\\
+&= qE_0\hat{y}\cos(k0-\omega 0)\\
+&= qE_0\hat{y}\cos(0)\\
+&= qE_0\hat{y}
+\end{align*}
+Now we can apply \emph{Newton's Second Law}
+\begin{equation}
+\vec{F} = m\vec{a}
+\label{Newt}
+\end{equation}
+to find the acceleration $\vec{a}$ as
+$$\vec{a} = \frac{qE_0}{m}\hat{y}$$
+
+\item
+Now we see that the particle has an initial velocity $\vec{u}$ in the $\hat{y}$ direction. Now we have to take into account the magnetic field when we find the acceleration, but we can still assume that we are just an instant after the particle has released. So we assume that we are still at the origin and $t\approx 0$. So equation \ref{Lorenz} yields
+\begin{align*}
+\vec{F} &= q(\vecE+\vec{v}\times\vec{B})\\
+&= q(E_0\hat{y}\cos(k0-\omega 0)+\vec{u}\times-\frac{1}{c}E_0\cos(k0-\omega 0)\hat{x})\\
+&= q(E_0\cos(0)\hat{y}+u\hat{y}\times-\frac{1}{c}E_0\cos(0)\hat{x})\\
+&= q(E_0\hat{y}-\frac{u}{c}E_0\hat{y}\times\hat{x})\\
+&= q(E_0\hat{y}-\frac{u}{c}E_0(-\hat{z})\\
+&= qE_0\hat{y}+\frac{u}{c}qE_0\hat{z}
+\end{align*}
+Using equation \ref{Newt} we find the acceleration as
+$$\vec{a} = \frac{qE_0}{m}\hat{y}+\frac{qE_0u}{cm}\hat{z}$$
+
+\item
+We see that the electric and magnetic field vary by a cosine, and we see that at $z=0$, $t=0$ the cosine is at a maximum and for the first quarter of a period the fields are decreasing in magnitude. Though they are still pointing in the positive $\hat{y}$ and negative $\hat{x}$ direction. So this implies that the particle will continue in the positive $\hat{y}$ and $\hat{z}$ directions, but it will be accelerating so the force from the magnetic field will increase while the force from the electric field will decrease. See attached for a sketch of the motion of the particle note that this motion lies in the $yz$ plane. 
+
+\item
+Now for the next quarter period the cosine becomes negative and its magnitude is getting larger. So the particle is going to decelerate down to zero then accelerating in the opposite direction. See attached for the sketch.
+
+\item
+We see that the particle goes in a circular motion. That is it will cycle around the same point as time increases. So we can say that the long term motion is circular.
+
+\end{enumerate}
+
+\end{document}
+

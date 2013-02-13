@@ -1,0 +1,429 @@
+\documentclass[11pt]{article}
+
+\usepackage{latexsym}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{enumerate}
+\usepackage{amsmath}
+\usepackage{cancel}
+\numberwithin{equation}{section}
+
+\setlength{\evensidemargin}{.25in}
+\setlength{\oddsidemargin}{-.25in}
+\setlength{\topmargin}{-.75in}
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{9.5in}
+\newcommand{\due}{February 17th, 2010}
+\newcommand{\HWnum}{6}
+\newcommand{\grad}{\bold\nabla}
+\newcommand{\vecE}{\vec{E}}
+\newcommand{\scrptR}{\vec{\mathfrak{R}}}
+\newcommand{\kapa}{\frac{1}{4\pi\epsilon_0}}
+\newcommand{\expt}[1]{\langle{#1}\rangle}
+
+\begin{document}
+\input{../title.tex}
+
+\section{Problem \#1}
+\begin{enumerate}[(a)]
+\item
+Given the wavefunction 
+$$\Psi(x,0) = Ae^{-ax^2}$$
+we can normalize it using the postulate of quantum mechanics 
+\begin{equation}
+\int_{-\infty}^{\infty}|\Psi(x,t)|^2dx = 1
+\label{norm}
+\end{equation}
+So if we calculate equation \ref{norm} with our given wave function we see that
+\begin{align*}
+\int_{-\infty}^{\infty}|\Psi(x,t)|^2dx &=  \int_{-\infty}^{\infty}\Psi^*(x,t)\Psi^(x,t)dx \\
+&=  \int_{-\infty}^{\infty}Ae^{-ax^2}Ae^{-ax^2}dx \\
+&=  A^2\int_{-\infty}^{\infty}e^{-2ax^2}dx 
+\end{align*}
+Now if we use the identity 
+\begin{equation}
+\int_{-\infty}^{\infty}e^{-az^2}dz =  \sqrt{\frac{\pi}{a}}
+\label{xsqint}
+\end{equation}
+So we see that 
+\begin{align*}
+1 = A^2\int_{-\infty}^{\infty}e^{-2ax^2}dx &=  A^2\sqrt{\frac{\pi}{2a}}\\
+1 &=  A^2\sqrt{\frac{\pi}{2a}}\\
+A &=  \left(\frac{2a}{\pi}\right)^{1/4}
+\end{align*}
+Now we can find the Fourier transform $\phi(k)$ by using
+\begin{equation}
+\phi(k) = \frac{1}{\sqrt{2\pi}}\int_{-\infty}^{\infty}\Psi(x,0)e^{-ikx}dx
+\label{FourPhi}
+\end{equation}
+So we can find $\phi(k)$ for our given wavefunction by 
+\begin{align*}
+\phi(k) &= \frac{1}{\sqrt{2\pi}}\int_{-\infty}^{\infty}\Psi(x,0)e^{-ikx}dx\\
+&= \frac{1}{\sqrt{2\pi}}\left(\frac{2a}{\pi}\right)^{1/4}\int_{-\infty}^{\infty}e^{-ax^2}e^{-ikx}dx\\
+&= \frac{1}{\sqrt{2\pi}}\left(\frac{2a}{\pi}\right)^{1/4}\int_{-\infty}^{\infty}e^{-(ax^2+ikx)}dx
+\end{align*}
+Now we need to complete the square of the exponent $-(ax^2+ikx)$ so that we can have it in a form we can integrate. So
+\begin{align*}
+-(ax^2+ikx) &= -a\left(x^2+\frac{ik}{a}x\right)\\
+&= -a\left(x^2+\frac{ik}{a}x + \frac{i^2k^2}{2^2a^2} - \frac{i^2k^2}{2^2a^2}\right)\\
+&= -a\left(x^2+\frac{ik}{a}x - \frac{k^2}{4a^2} + \frac{k^2}{4a^2}\right)\\
+&= -a\left(x+\frac{ik}{2a}\right)^2 - \frac{k^2}{4a}
+\end{align*}
+Now if we define a new variable $u$ such that
+$$u^2 = a\left(x+\frac{ik}{2a}\right)^2$$
+so we take the square root and see that 
+$$u\equiv \sqrt{a}\left(x+\frac{ik}{2a}\right)$$
+Now we just have a simple $u$ substitution where
+$$du = \sqrt{a}dx$$
+So our integral becomes
+\begin{align*}
+\frac{1}{\sqrt{2\pi}}\left(\frac{2a}{\pi}\right)^{1/4}\int_{-\infty}^{\infty}e^{-(ax^2+ikx)}dx &= \frac{1}{\sqrt{2\pi}}\left(\frac{2a}{\pi}\right)^{1/4}\int_{-\infty}^{\infty}e^{-a\left(x+\dfrac{ik}{2a}\right)^2 - \dfrac{k^2}{4a}}dx\\
+&= \frac{1}{\sqrt{2\pi}}\left(\frac{2a}{\pi}\right)^{1/4}\frac{1}{\sqrt{a}}\int_{u(-\infty)}^{u(\infty)}e^{-u^2 - {k^2}/{4a}}du\\
+&= \left(\frac{1}{4\pi^2a^2}\frac{2a}{\pi}\right)^{1/4}e^{-{k^2}/{4a}}\int_{u(-\infty)}^{u(\infty)}e^{-u^2} du
+\end{align*}
+Now if we use equation \ref{xsqint} we see that
+\begin{align*}
+\left(\frac{1}{2\pi^3a}\right)^{1/4}e^{-{k^2}/{4a}}\int_{u(-\infty)}^{u(\infty)}e^{-u^2} du &= \left(\frac{1}{2\pi^3a}\right)^{1/4}e^{-{k^2}/{4a}}\sqrt{\pi}\\
+&= \left(\frac{\pi^2}{2\pi^3a}\right)^{1/4}e^{-{k^2}/{4a}}\\
+\phi(k) &= \left(\frac{1}{2\pi a}\right)^{1/4}e^{-{k^2}/{4a}}\\
+\end{align*}
+
+\item
+We know that the general form of a free particle is given by
+\begin{equation}
+\Psi(x,t) = \frac{1}{\sqrt{2\pi}}\int_{-\infty}^{\infty} \phi(k)e^{i(kx-\omega t)}dk
+\label{GenFree}
+\end{equation}
+So if we use the $\phi(k)$ we found in part (a) in equation \ref{GenFree} we get
+\begin{align*}
+\Psi(x,t) &= \frac{1}{\sqrt{2\pi}}\int_{-\infty}^{\infty} \phi(k)e^{i(kx-\omega t)}dk\\
+&= \frac{1}{\sqrt{2\pi}}\left(\frac{1}{2\pi a}\right)^{1/4}\int_{-\infty}^{\infty} e^{-{k^2}/{4a}}e^{i(kx-\omega t)}dk\\
+&= \left(\frac{1}{4\pi^2}\frac{1}{2\pi a}\right)^{1/4}\int_{-\infty}^{\infty} e^{-{k^2}/{4a}+i(kx-\omega t)}dk\\
+&= \left(\frac{1}{8\pi^3a}\right)^{1/4}\int_{-\infty}^{\infty} e^{-{k^2}/{4a}+ikx-i\omega t}dk
+\end{align*}
+Note that we $\omega$ is dependent on $k$ through
+$$\omega = \frac{\hbar k^2}{2m}$$
+So our exponent is given by
+\begin{align*}
+-\frac{k^2}{4a}+ikx-i\omega t &= -\frac{1}{4a}k^2 + ikx -i\frac{\hbar k^2}{2m}t\\
+&= -k^2\left(\frac{1}{4a} + \frac{i\hbar t}{2m}\right) +ikx\\
+&= -k^2\frac{1}{4a}\left(1 + 4a\frac{i\hbar t}{2m}\right) +ikx\\
+&= -k^2\frac{1}{4a}\left(1 + \frac{2i\hbar at}{m}\right) +ikx\\
+&= -k^2\frac{1}{4a}\left(1 + i\Omega t\right) +ikx
+\end{align*}
+Note that we defined the variable $\Omega$ as
+$$\Omega\equiv\frac{2a\hbar}{m}$$
+Now we see that we need to to complete the square of the exponent. So we say
+\begin{align*}
+-k^2\frac{1}{4a}\left(1 + i\Omega t\right) +ikx &= -\frac{1 + i\Omega t}{4a}\left(k^2 - \frac{4iax}{1+i\Omega t}k\right)\\
+&= -\frac{1 + i\Omega t}{4a}\left(k^2 - \frac{4iax}{1+i\Omega t}k + \left(\frac{2iax}{1+i\Omega t}\right)^2 - \left(\frac{2iax}{1+i\Omega t}\right)^2\right)\\
+&= -\frac{1 + i\Omega t}{4a}\left(\left(k-\frac{2iax}{1+i\Omega t}\right)^2 + \frac{4a^2x^2}{(1+i\Omega t)^2}\right)\\
+&= -\frac{1 + i\Omega t}{4a}\left(k-\frac{2iax}{1+i\Omega t}\right)^2 - \frac{ax^2}{1+i\Omega t}\\
+\end{align*}
+Now like before we can use a $u$ substitution where we define $u$ as
+$$u\equiv\frac{\sqrt{1 + i\Omega t}}{2\sqrt{a}}\left(k-\frac{2iax}{1+i\Omega t}\right)$$
+and we can see that
+$$u = \frac{\sqrt{1 + i\Omega t}}{2\sqrt{a}}dk$$
+So our integral becomes 
+\begin{align*}
+\left(\frac{1}{8\pi^3a}\right)^{1/4}\int_{-\infty}^{\infty} e^{-{k^2}/{4a}+ikx-i\omega t}dk &= \left(\frac{1}{8\pi^3a}\right)^{1/4}\int_{-\infty}^{\infty} e^{-\frac{1 + i\Omega t}{4a}\left(k-\frac{2iax}{1+i\Omega t}\right)^2 - \frac{ax^2}{1+i\Omega t}}dk\\
+&= \left(\frac{1}{8\pi^3a}\right)^{1/4}\frac{2\sqrt{a}}{\sqrt{1 + i\Omega t}}\int_{-\infty}^{\infty} e^{-u^2 - \frac{ax^2}{1+i\Omega t}}dk\\
+&= \left(\frac{16a^2}{8\pi^3a}\right)^{1/4}\frac{e^{-\frac{ax^2}{1+i\Omega t}}}{\sqrt{1 + i\Omega t}}\int_{-\infty}^{\infty} e^{-u^2}dk\\
+&= \left(\frac{2a}{\pi^3}\right)^{1/4}\frac{e^{-ax^2/(1+i\Omega t)}}{\sqrt{1 + i\Omega t}}\sqrt{\pi}
+\end{align*}
+\begin{align*}
+\Psi(x,t) &= \left(\frac{2a}{\pi}\right)^{1/4}\frac{e^{-ax^2/(1+i\Omega t)}}{\sqrt{1 + i\Omega t}}
+\end{align*}
+
+\item
+To find the probability density of the wave function we find in part (b) we need to find $|\Psi(x,t)|^2$ which is given by $\Psi^*(x,t)\Psi(x,t)$ so we calculate
+\begin{align*}
+\Psi^*(x,t)\Psi(x,t) &= \left(\frac{2a}{\pi}\right)^{1/4}\frac{e^{-ax^2/(1-i\Omega t)}}{\sqrt{1 - i\Omega t}}\left(\frac{2a}{\pi}\right)^{1/4}\frac{e^{-ax^2/(1+i\Omega t)}}{\sqrt{1 + i\Omega t}}\\
+&= \left(\frac{2a}{\pi}\right)^{1/2}\frac{e^{-ax^2/(1-i\Omega t)}}{\sqrt{1 - i\Omega t}}\frac{e^{-ax^2/(1+i\Omega t)}}{\sqrt{1 + i\Omega t}}\\
+&= \left(\frac{2a}{\pi}\right)^{1/2}\frac{e^{-ax^2/(1-i\Omega t)}e^{-ax^2/(1+i\Omega t)}}{\sqrt{(1-i\Omega t)(1 + i\Omega t)}}\\
+&= \left(\frac{2a}{\pi}\right)^{1/2}\frac{e^{-ax^2\left(\frac{1}{1-i\Omega t}+\frac{1}{1+i\Omega t}\right)}}{\sqrt{1 + (\Omega t)^2}}\\
+&= \left(\frac{2a}{\pi(1+(\Omega t)^2)}\right)^{1/2}\exp\left(-ax^2\left(\frac{1+i\Omega t}{1+(\Omega t)^2}+\frac{1-i\Omega t}{1+(\Omega t)^2}\right)\right)\\
+&= \left(\frac{2a}{\pi(1+(\Omega t)^2)}\right)^{1/2}\exp\left(-ax^2\left(\frac{1+i\Omega t+1-i\Omega t}{1+(\Omega t)^2}\right)\right)\\
+&= \left(\frac{2a}{\pi(1+(\Omega t)^2)}\right)^{1/2}\exp\left(\frac{-2ax^2}{1+(\Omega t)^2}\right)\\
+&= \sqrt{\frac{2}{\pi}}we^{-2w^2x^2}
+\end{align*}
+Note that we defined the variable $w$ as
+$$w\equiv\sqrt{\frac{a}{1+(\Omega t)^2}}$$
+
+\item
+To find the expectation of $x$ and $p$ we need to use the formula for expectation given by
+\begin{equation}
+\expt{Q} = \int_{-\infty}^{\infty}\Psi^*(x,t)Q\Psi(x,t)dx
+\label{expt}
+\end{equation}
+So if we apply equation \ref{expt} to $x$ we see that $x$ is not an operator so we can say that
+\begin{align*}
+\expt{x} &= \int_{-\infty}^{\infty}\Psi^*(x,t)x\Psi(x,t)dx\\
+&= \int_{-\infty}^{\infty}x\Psi^*(x,t)\Psi(x,t)dx\\
+&= \int_{-\infty}^{\infty}x\sqrt{\frac{2}{\pi}}we^{-2w^2x^2}dx
+\end{align*}
+Where $w$ is defined in part (c). So we can solve this integral using a $u$ substitution where
+$$u = -2w^2x^2$$
+and 
+$$du = -4w^2xdx$$
+So our integral becomes
+\begin{align*}
+\int_{-\infty}^{\infty}x\sqrt{\frac{2}{\pi}}we^{-2w^2x^2}dx &= \sqrt{\frac{2}{\pi}}w\frac{-1}{4w^2}\int_{-\infty}^{\infty}e^{u}du\\
+&= -\sqrt{\frac{2}{\pi}}\frac{1}{4w}\left.e^{-2w^2x^2}\right|_{-\infty}^{\infty}\\
+&= -\sqrt{\frac{2}{\pi}}\frac{1}{4w}\left(\cancelto{0}{e^{-2w^2x^2}}-\cancelto{0}{e^{-2w^2x^2}}\right)\\
+&= -\sqrt{\frac{2}{\pi}}\frac{1}{4w}\left(0-0\right)\\
+&= 0
+\end{align*}
+Now for the expectation of $p$ we define the momentum operator as
+$$\hat{p} = \frac{\hbar}{i}\frac{\partial}{\partial x}$$
+and we apply this operator to equation \ref{expt}. We get
+\begin{align*}
+\expt{p} &= \int_{-\infty}^{\infty}\Psi^*(x,t)\frac{\hbar}{i}\frac{\partial}{\partial x}\Psi(x,t)dx\\
+&= \int_{-\infty}^{\infty}\left(\frac{2a}{\pi}\right)^{1/4}\frac{e^{-ax^2/(1-i\Omega t)}}{\sqrt{1 - i\Omega t}}\frac{\hbar}{i}\frac{\partial}{\partial x}\left(\frac{2a}{\pi}\right)^{1/4}\frac{e^{-ax^2/(1+i\Omega t)}}{\sqrt{1 + i\Omega t}}dx\\
+&= \sqrt{\frac{2a}{\pi}}\frac{\hbar}{i}\int_{-\infty}^{\infty}\frac{e^{-ax^2/(1-i\Omega t)}}{\sqrt{1 - i\Omega t}}\frac{e^{-ax^2/(1+i\Omega t)}}{\sqrt{1 + i\Omega t}}\frac{-2ax}{1+i\Omega t}dx\\
+&= \sqrt{\frac{2a}{\pi}}\frac{\hbar}{i}\int_{-\infty}^{\infty}\frac{e^{-ax^2/(1-i\Omega t)}e^{-ax^2/(1+i\Omega t)}}{\sqrt{1 + (\Omega t)^2}}\frac{-2ax}{1+i\Omega t}dx\\
+&= -\sqrt{\frac{2}{\pi}}\frac{\hbar w}{i}\frac{2a}{1+i\Omega t}\int_{-\infty}^{\infty}xe^{-2w^2x^2}dx
+\end{align*}
+Now we see that we have the same integral we calculated for the expectation of $x$ this implies that
+\begin{align*}
+-\sqrt{\frac{2}{\pi}}\frac{\hbar w}{i}\frac{2a}{1+i\Omega t}\int_{-\infty}^{\infty}xe^{-2w^2x^2}dx &= -\sqrt{\frac{2}{\pi}}\frac{\hbar w}{i}\frac{2a}{1+i\Omega t}\left.e^{-2w^2x^2}\right|_{-\infty}^{\infty}\\
+\expt{p} &= 0
+\end{align*}
+So we found that the expectation of $x$ and $p$ are both zero. This makes sense since we don't have any potential to acting on the particle.
+\end{enumerate}
+
+\section{Problem \#2}
+\begin{enumerate}[(a)]
+\item
+To find the expectation value of $x^2$ of the wavefunction in problem 1 we use equation \ref{expt}. 
+\begin{align*}
+\expt{x^2} &= \int_{-\infty}^{\infty}\Psi^*x^2\Psi dx\\
+&= \int_{-\infty}^{\infty}x^2\Psi^*\Psi dx\\
+&= \int_{-\infty}^{\infty}x^2 \sqrt{\frac{2}{\pi}}we^{-2w^2x^2}dx
+\end{align*}
+Note that we can do this because $x^2$ is not an operator so we can just have $x^2$ times the probability density. Where $w$ is defined as
+$$w\equiv\sqrt{\frac{a}{1+(\Omega t)^2}}$$
+So we use integration by parts to calculate this integral. We use the relation
+\begin{equation}
+\int udv = uv - \int vdu
+\label{IntParts}
+\end{equation}
+where 
+$$u=x;\ du=1$$
+and
+$$dv = xe^{-2w^2x^2};\ v=\frac{-1}{4w^2}e^{-2w^2x^2}$$
+So equation \ref{IntParts} yields 
+\begin{align*}
+ \sqrt{\frac{2}{\pi}}w\int_{-\infty}^{\infty}x^2 e^{-2w^2x^2}dx &= \sqrt{\frac{2}{\pi}}w\left(\cancelto{0}{\left.x\frac{-1}{4w^2}e^{-2w^2x^2}\right|_{-\infty}^{\infty}}- \int_{-\infty}^{\infty}\frac{-1}{4w^2}e^{-2w^2x^2}dx\right)\\
+&= \sqrt{\frac{2}{\pi}}w\frac{1}{4w^2}\int_{-\infty}^{\infty}e^{-2w^2x^2}dx\\
+&= \sqrt{\frac{2}{\pi}}\frac{1}{4w}\sqrt{\frac{\pi}{2w^2}}\\
+\expt{x^2} &=\frac{1}{4w^2} = \frac{1+(\Omega t)^2}{4a}
+\end{align*}
+Now to find the expectation of $p^2$ equation \ref{expt} gives 
+\begin{align*}
+\expt{p^2} &= \int_{-\infty}^{\infty}\Psi^*\left(\frac{\hbar}{i}\frac{\partial}{\partial x}\right)^2\Psi dx\\
+&= -\hbar^2\int_{-\infty}^{\infty}\Psi^*\frac{\partial^2}{\partial x^2}\Psi dx\\
+&= -\hbar^2\int_{-\infty}^{\infty}\left(\frac{2a}{\pi}\right)^{1/4}\frac{e^{-ax^2/(1-i\Omega t)}}{\sqrt{1 - i\Omega t}}\frac{\partial^2}{\partial x^2}\left(\frac{2a}{\pi}\right)^{1/4}\frac{e^{-ax^2/(1+i\Omega t)}}{\sqrt{1 + i\Omega t}} dx\\
+&= -\hbar^2\sqrt{\frac{2a}{\pi}}\int_{-\infty}^{\infty}\frac{e^{-ax^2/(1-i\Omega t)}}{\sqrt{1 - i\Omega t}}\frac{\partial}{\partial x}\left[\frac{-2ax}{1+i\Omega t}\frac{e^{-ax^2/(1+i\Omega t)}}{\sqrt{1 + i\Omega t}}\right] dx\\
+&= -\hbar^2\sqrt{\frac{2a}{\pi}}\int_{-\infty}^{\infty}\frac{e^{-ax^2/(1-i\Omega t)}}{\sqrt{1 - i\Omega t}}\left( \frac{-2a}{1+i\Omega t}\frac{e^{-ax^2/(1+i\Omega t)}}{\sqrt{1 + i\Omega t}} +\frac{-2ax}{1+i\Omega t}\frac{-2ax}{1+i\Omega t}\frac{e^{-ax^2/(1+i\Omega t)}}{\sqrt{1 + i\Omega t}} \right) dx\\
+&= -\hbar^2\sqrt{\frac{2a}{\pi}}\int_{-\infty}^{\infty}\frac{-2a}{1+i\Omega t}\frac{e^{-ax^2/(1-i\Omega t)}}{\sqrt{1 - i\Omega t}}\frac{e^{-ax^2/(1+i\Omega t)}}{\sqrt{1 + i\Omega t}} + \left(\frac{2ax}{1+i\Omega t}\right)^2\frac{e^{-ax^2/(1-i\Omega t)}}{\sqrt{1 - i\Omega t}}\frac{e^{-ax^2/(1+i\Omega t)}}{\sqrt{1 + i\Omega t}}  dx\\
+&= \hbar^2\sqrt{\frac{2}{\pi}}w\frac{2a}{1+i\Omega t}\left(\int_{-\infty}^{\infty}e^{-2w^2x^2}dx - \frac{2a}{1+i\Omega t}\int_{-\infty}^{\infty}x^2e^{-2w^2x^2} dx\right)\\
+&= \hbar^2\sqrt{\frac{2}{\pi}}w\frac{2a}{1+i\Omega t}\left(\sqrt{\frac{\pi}{2w^2}} - \frac{2a}{1+i\Omega t}\int_{-\infty}^{\infty}x^2e^{-2w^2x^2} dx\right)
+\end{align*}
+Now we see that the remaining integral we calculated when we calculated $\expt{x^2}$ is 
+$$\int_{-\infty}^{\infty}x^2e^{-2w^2x^2} dx = \frac{1}{4w^3}\sqrt{\frac{\pi}{2}}$$
+So our integral becomes
+\begin{align*}
+\hbar^2\sqrt{\frac{2}{\pi}}w\frac{2a}{1+i\Omega t}\left(\sqrt{\frac{\pi}{2w^2}} - \frac{2a}{1+i\Omega t}\int_{-\infty}^{\infty}x^2e^{-2w^2x^2} dx\right) &= \hbar^2\sqrt{\frac{2}{\pi}}w\frac{2a}{1+i\Omega t}\left(\sqrt{\frac{\pi}{2w^2}} - \frac{2a}{1+i\Omega t}\frac{1}{4w^3}\sqrt{\frac{\pi}{2}}\right)\\
+&= \hbar^2\frac{2a}{1+i\Omega t}\left(1 - \frac{a}{1+i\Omega t}\frac{1}{2w^2}\right)
+\end{align*}
+Now to reduce this term we need to write $w$ as its definition so
+\begin{align*}
+\hbar^2\frac{2a}{1+i\Omega t}\left(1 - \frac{a}{1+i\Omega t}\frac{1}{2w^2}\right) &= \hbar^2\frac{2a}{1+i\Omega t}\left(1 - \frac{a}{1+i\Omega t}\frac{1+(\Omega t)^2}{2a}\right)\\
+&= \hbar^2\frac{2a}{1+i\Omega t}\left(1 - \frac{a}{1+i\Omega t}\frac{(1-i\Omega t)(1+i\Omega t)}{2a}\right)\\
+&= \hbar^2\frac{2a}{1+i\Omega t}\left(1 - \frac{1-i\Omega t}{2}\right)\\
+&= \hbar^2\frac{2a}{1+i\Omega t}\left(\frac{1+i\Omega t}{2}\right)\\
+\expt{p^2} &= \hbar^2a
+\end{align*}
+Now we can find the standard deviation of momentum and position using
+\begin{equation}
+\sigma_Q = \sqrt{\expt{Q^2}-\expt{Q}^2}
+\label{Std}
+\end{equation}
+So for $x$ equation \ref{Std} yields
+\begin{align*}
+\sigma_x &= \sqrt{\expt{x^2}-\expt{x}^2}\\
+&= \sqrt{\expt{x^2}-(0)}\\
+&= \sqrt{\frac{1+(\Omega t)^2}{4a}}
+\end{align*}
+And for momentum equation \ref{Std} yields
+\begin{align*}
+\sigma_p &= \sqrt{\expt{p^2}-\expt{p}^2}\\
+&= \sqrt{\expt{p^2}-(0)}\\
+&= \hbar\sqrt{a}
+\end{align*}
+So if we apply the \emph{Heisenberg Uncertainty principle}
+\begin{equation}
+\sigma_x\sigma_p\ge\frac{\hbar}{2}
+\label{uncer}
+\end{equation}
+we get
+\begin{align*}
+\sigma_x\sigma_p &= \sqrt{\frac{1+(\Omega t)^2}{4a}}\hbar\sqrt{a}\\
+&= \frac{\hbar}{2}\sqrt{1+(\Omega t)^2}\\
+\end{align*}
+So if we apply equation \ref{uncer} we see that
+$$\frac{\hbar}{2}\sqrt{1+(\Omega t)^2}\ge\frac{\hbar}{2}$$
+So we see that this is true for all $t$ so the uncertainty principle holds. And we see that we are at the minimum allowed value $\hbar/2$ when $t=0$.
+
+\item
+See attached for sketch of $|\Psi(x,t)|^2$ vs $x$
+\begin{enumerate}[(i)]
+\item We see that as time goes on the wave function is smoothing out. This implies that the probability that the particle is at the origin is decreasing and the standard deviation is increasing as time increases. 
+
+\item We see that the constant we defined $w$ and $\Omega$ represent the rate at which the wavefunction degenerates down to the point where the position of the particle is completely unknown (as $t\rightarrow\infty$).
+\end{enumerate}
+
+
+\item
+As we see from part (b) when the particle is released from rest the probability of finding the particle in the same spot is decreasing. We can say that $a=0.1\ mm$ $m = 1.41\times10^{-25}\ kg$ and $\Omega$ is calculated as $1.50\times10^{-13}\ m^3\ s^{-1}$ so the timescale is very small. 
+
+\end{enumerate}
+
+\section{Problem \#3}
+\begin{enumerate}[(a)]
+\item
+To find the Fourier transform $F(k)$ of the delta function $\delta(x)$ we use the equation
+\begin{equation}
+F(k) = \frac{1}{\sqrt{2\pi}}\int_{-\infty}^{\infty}f(x)e^{-ikx}dx
+\label{FourTran}
+\end{equation}
+where $f(x)=\delta(x)$. So equation \ref{FourTran} yields
+\begin{align*}
+F(k) &= \frac{1}{\sqrt{2\pi}}\int_{-\infty}^{\infty}f(x)e^{-ikx}dx\\
+&= \frac{1}{\sqrt{2\pi}}\int_{-\infty}^{\infty}\delta(x)e^{-ikx}dx\\
+&= \frac{1}{\sqrt{2\pi}}e^{-ik0}\\
+&= \frac{1}{\sqrt{2\pi}}
+\end{align*}
+So if we use \emph{Plancherel's Theorem} 
+\begin{equation}
+f(x) = \frac{1}{\sqrt{2\pi}}\int_{-\infty}^{\infty}F(k)e^{ikx}dk\Longleftrightarrow F(k) = \frac{1}{\sqrt{2\pi}}\int_{-\infty}^{\infty}f(x)e^{-ikx}dx
+\label{PlanTheo}
+\end{equation}
+We see that from equation \ref{PlanTheo} that
+\begin{align*}
+f(x) &= \frac{1}{\sqrt{2\pi}}\int_{-\infty}^{\infty}F(k)e^{ikx}dk\\
+\delta(x) &= \frac{1}{\sqrt{2\pi}}\int_{-\infty}^{\infty}\frac{1}{\sqrt{2\pi}}e^{ikx}dk\\
+\delta(x) &= \frac{1}{2\pi}\int_{-\infty}^{\infty}e^{ikx}dk
+\end{align*}
+
+\item
+To show that the momentum distribution is given by
+$$\Phi(p) = \frac{1}{\sqrt{\hbar}}\phi(k)$$
+we start with the relation $p=\hbar k$ so from 
+$$\Psi(x,0) = \frac{1}{\sqrt{2\pi}}\int_{-\infty}^{\infty}\phi(k)e^{ikx}dk$$
+if we want to write this in this in term of $p$ we need to say that
+$$dp = \hbar dk$$
+so we can write $\Phi(x,0)$ as
+$$\Psi(x,0) = \frac{1}{\sqrt{2\pi}}\frac{1}{\hbar}\int_{-\infty}^{\infty}\Phi(p)e^{ipx/\hbar}dp$$
+so now we can use equation \ref{PlanTheo} we can change the $1/\hbar$ to $1/\sqrt{\hbar}$ so that the prefactors are the same on both sides of equation \ref{PlanTheo}. So we say that
+$$\Psi(x,0) = \frac{1}{\sqrt{2\pi\hbar}}\int_{-\infty}^{\infty}\Phi(p)e^{ipx/\hbar}dp$$
+Now if we apply \emph{Plancherel's Theorem} we see that
+\begin{align*}
+\Phi(p) &= \frac{1}{\sqrt{2\pi\hbar}}\int_{-\infty}^{\infty}\Psi(x,0)e^{-ipx/\hbar}dx\\
+&= \frac{1}{\sqrt{\hbar}}\frac{1}{\sqrt{2\pi}}\int_{-\infty}^{\infty}\Psi(x,0)e^{-ikx}dx\\
+&= \frac{1}{\sqrt{\hbar}}\phi(k)
+\end{align*}
+Note that because we had the integration constant $dx$ and not $dk$ we can switch from $p/\hbar$ to $k$ without changing a constant in front. Now to show that $\Phi(p)$ is normalized we can show that 
+\begin{align*}
+\int_{-\infty}^{\infty}\Phi^*(p)\Phi(p)dp &= \int_{-\infty}^{\infty}\frac{1}{\sqrt{\hbar}}\phi^*(k)\frac{1}{\sqrt{\hbar}}\phi(k)\hbar dk\\
+&= \int_{-\infty}^{\infty}\left(\frac{1}{\sqrt{2\pi}}\int_{-\infty}^{\infty}\Psi^*(x,0)e^{ikx}dx\right)\left(\frac{1}{\sqrt{2\pi}}\int_{-\infty}^{\infty}\Psi(x',0)e^{-ikx'}dx'\right)dk\\
+&= \frac{1}{2\pi}\int_{-\infty}^{\infty}\int_{-\infty}^{\infty}\int_{-\infty}^{\infty}\Psi^*(x,0)e^{ikx}\Psi(x',0)e^{-ikx'}dxdx'dk
+\end{align*}
+Now if we rearrange the integral so that
+\begin{align*}
+\frac{1}{2\pi}\int_{-\infty}^{\infty}\int_{-\infty}^{\infty}\int_{-\infty}^{\infty}\Psi^*(x,0)e^{ikx}\Psi(x',0)e^{-ikx'}dxdx'dk &= \int_{-\infty}^{\infty}\int_{-\infty}^{\infty}\Psi^*(x,0)\Psi(x',0)dxdx'\left(\frac{1}{2\pi}\int_{-\infty}^{\infty}e^{ikx}e^{-ikx'}dk\right)\\ 
+&= \int_{-\infty}^{\infty}\int_{-\infty}^{\infty}\Psi^*(x,0)\Psi(x',0)dxdx'\left(\frac{1}{2\pi}\int_{-\infty}^{\infty}e^{ik(x-x')}dk\right)
+\end{align*}
+We see that we get a delta function. So
+\begin{align*}
+\int_{-\infty}^{\infty}\int_{-\infty}^{\infty}\Psi^*(x,0)\Psi(x',0)e^{-ikx'}dxdx'\left(\frac{1}{2\pi}\int_{-\infty}^{\infty}e^{ikx}dk\right) &= \int_{-\infty}^{\infty}\int_{-\infty}^{\infty}\Psi^*(x,0)\Psi(x',0)\delta(x-x')dxdx'\\
+&= \int_{-\infty}^{\infty}\Psi^*(x',0)\Psi(x',0)dx'\\
+\int_{-\infty}^{\infty}\Phi^*(p)\Phi(p)dp &= 1
+\end{align*}
+So we see that the momentum space $\Phi(p)$ is normalized if the wavefunction $\Psi(x,0)$ is normalized.
+
+\item
+If we define the position operator $\hat{x}$ as
+$$\hat{x}=i\hbar\frac{\partial}{\partial p}$$
+And we take the integral 
+\begin{align*}
+\int_{-\infty}^{\infty}\Phi^*(p)\hat{x}\Phi(p)dp &= \int_{-\infty}^{\infty}\frac{1}{\sqrt{2\pi\hbar}}\int_{-\infty}^{\infty}\Psi^*(x,0)e^{ipx/\hbar}dx i\hbar\frac{\partial}{\partial p}\frac{1}{\sqrt{2\pi\hbar}}\int_{-\infty}^{\infty}\Psi(x',0)e^{-ipx'/\hbar}dx'dp\\
+&= \frac{i}{2\pi}\int_{-\infty}^{\infty}\int_{-\infty}^{\infty}\Psi^*(x,0)e^{ipx/\hbar}dx \int_{-\infty}^{\infty}\Psi(x',0)\frac{\partial}{\partial p}e^{-ipx'/\hbar}dx'dp\\
+&= \frac{i}{2\pi}\int_{-\infty}^{\infty}\int_{-\infty}^{\infty}\Psi^*(x,0)e^{ipx/\hbar}dx \int_{-\infty}^{\infty}\frac{-ix}{\hbar}\Psi(x',0)e^{-ipx'/\hbar}dx'\\
+&= \frac{1}{2\pi\hbar}\int_{-\infty}^{\infty}\int_{-\infty}^{\infty}\Psi^*(x,0)e^{ipx/\hbar}dx x\int_{-\infty}^{\infty}\Psi(x',0)e^{-ipx'/\hbar}dx'\\
+&= \int_{-\infty}^{\infty}\int_{-\infty}^{\infty}\Psi^*(x,0)x\Psi(x',0)dxdx'\frac{1}{2\pi\hbar}\int_{-\infty}^{\infty}e^{ipx/\hbar}e^{-ipx'/\hbar}dp
+\end{align*}
+We see that we get a delta function again. So
+\begin{align*}
+&= \int_{-\infty}^{\infty}\int_{-\infty}^{\infty}\Psi^*(x,0)x\Psi(x',0)dxdx'\frac{1}{2\pi}\int_{-\infty}^{\infty}e^{ik(x-x')}dk\\
+&= \int_{-\infty}^{\infty}\int_{-\infty}^{\infty}\Psi^*(x,0)x\Psi(x',0)\delta(x-x')dxdx'\\
+&= \int_{-\infty}^{\infty}\Psi^*(x',0)x'\Psi(x',0)dx'\\
+\int_{-\infty}^{\infty}\Phi^*(p)\hat{x}\Phi(p)dp &= \expt{x}
+\end{align*}
+
+\item
+So see from part (c) that the position operator $\hat{x}$ is like the momentum operator $\hat{p}$ in position space. In both cases we are taking a first order partial derivative. In momentum space we take the derivative with respect to momentum and in position space we take the derivative with respect to position. We can expect the analogy to continue if $\hat{x}$ is just $x$ in position space it follows that 
+$$\hat{p} = p$$
+in momentum space. So we can say that
+$$\expt{p} = \int_{-\infty}^{\infty}\Phi^*(p)p\Phi(p)dp$$
+\end{enumerate}
+
+\section{Problem \#4}
+\begin{enumerate}[(a)]
+\item
+Given the plane wave wavefunction
+$$\Psi(x,t) = Ae^{ik_0x-i\hbar k_0t/2m}$$
+we can find the inverse Fourier transform using
+\begin{equation}
+\phi(k,t) = \frac{1}{\sqrt{2\pi}}\int_{-\infty}^{\infty}\Psi(x,t)e^{ikx}dx
+\label{InTran}
+\end{equation}
+So we see that the plane wave with equation \ref{InTran} gives us
+\begin{align*}
+\phi(k,t) &= \frac{1}{\sqrt{2\pi}}\int_{-\infty}^{\infty}\Psi(x,t)e^{ikx}dx\\
+&= \frac{1}{\sqrt{2\pi}}\int_{-\infty}^{\infty}Ae^{ik_0x-i\hbar k_0t/2m}e^{ikx}dx\\
+&= A\sqrt{2\pi}e^{-i\hbar k_0t/2m}\frac{1}{2\pi}\int_{-\infty}^{\infty}e^{i(k_0-k)x}dx\\
+&= A\sqrt{2\pi}e^{-i\hbar k_0t/2m}\delta(k_0-k)
+\end{align*}
+Using the relation from question 3
+$$\Phi(p) = \frac{1}{\sqrt{\hbar}}\phi(k)$$
+we can say that
+$$\Phi(p) = A\sqrt{2\pi\hbar}e^{-ip_0t/2m}\delta(p_0/\hbar - p/\hbar)$$
+So we see that we get a delta function for $\Phi(p)$ this forces the momentum to be $p_0$ in the wavefunction in the position space.
+
+\item
+To find the probability current $J(x,t)$ we use the definition 
+\begin{equation}
+J(x,t)\equiv\frac{i\hbar}{2m}\left(\Psi\frac{\partial\Psi^*}{\partial x}-\Psi^*\frac{\partial\Psi}{\partial x}\right)
+\label{probcurr}
+\end{equation}
+So if we use the plane wave wavefunction on equation \ref{probcurr} we find that
+\begin{align*}
+J(x,t) &= \frac{i\hbar}{2m}\left(\Psi\frac{\partial\Psi^*}{\partial x}-\Psi^*\frac{\partial\Psi}{\partial x}\right)\\ 
+&= \frac{i\hbar}{2m}\left(Ae^{ik_0x-i\hbar k_0t/2m}\frac{\partial}{\partial x}A^*e^{-ik_0x+i\hbar k_0t/2m}-A^*e^{-ik_0x+i\hbar k_0t/2m}\frac{\partial}{\partial x}Ae^{ik_0x-i\hbar k_0t/2m}\right)\\ 
+&= \frac{i\hbar}{2m}A^*A\left(e^{ik_0x-i\hbar k_0t/2m}(-ik_0)e^{-ik_0x+i\hbar k_0t/2m}-e^{-ik_0x+i\hbar k_0t/2m}(ik_0)e^{ik_0x-i\hbar k_0t/2m}\right)\\ 
+&= \frac{i\hbar(-ik_0)}{2m}|A|^2\left(e^{ik_0x-i\hbar k_0t/2m}e^{-ik_0x+i\hbar k_0t/2m}+e^{-ik_0x+i\hbar k_0t/2m}e^{ik_0x-i\hbar k_0t/2m}\right)\\ 
+&= \frac{\hbar k_0}{2m}|A|^2\left(e^{ik_0x-i\hbar k_0t/2m-ik_0x+i\hbar k_0t/2m}+e^{-ik_0x+i\hbar k_0t/2m+ik_0x-i\hbar k_0t/2m}\right)\\ 
+&= \frac{\hbar k_0}{2m}|A|^2\left(e^{0}+e^{0}\right)\\ 
+&= \frac{\hbar k_0}{m}|A|^2
+\end{align*}
+Note that we can see that velocity is given by $\hbar k_0/m$ so we can say that the probability has a density on $|A|^2$ and it flows in the direction of $k_0$.
+
+\item
+If we flip the sign of $k_0$ we flip the direction the wavefunction is traveling. This will result mathematically in the change of the sign in the expectation values and of the time dependent components of our wavefunction.
+\end{enumerate}
+
+
+\end{document}
+

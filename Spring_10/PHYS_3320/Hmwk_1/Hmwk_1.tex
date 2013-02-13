@@ -1,0 +1,348 @@
+\documentclass[11pt]{article}
+
+\usepackage{latexsym}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{enumerate}
+\usepackage{amsmath}
+\usepackage{cancel}
+\numberwithin{equation}{section}
+
+\setlength{\evensidemargin}{.25in}
+\setlength{\oddsidemargin}{-.25in}
+\setlength{\topmargin}{-.75in}
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{9.5in}
+\newcommand{\due}{January 22nd, 2010}
+\newcommand{\HWnum}{1}
+\newcommand{\grad}{\bold\nabla}
+\newcommand{\vecE}{\vec{E}}
+\newcommand{\vecscrptR}{\vec{\mathfrak{R}}}
+\newcommand{\scrptR}{\mathfrak{R}}
+\newcommand{\kapa}{\frac{1}{4\pi\epsilon_0}}
+
+\begin{document}
+\input{../title.tex}
+
+\section{Problem \#1}
+To find the electric field due to two long concentric cylinders having radii $s=a$ and $s=b$ with surface charge densities $\sigma_a$ and $\sigma_b$ respectively we use \emph{Gauss' Law}
+\begin{equation}
+\oint\vec{E}\cdot d\vec{a} = \frac{Q_{enc}}{\epsilon_0}
+\label{Gauss}
+\end{equation}
+First to find the electric field outside the two cylinders we use a Gaussian cylinder of length $L$ and radius $s>b$. So we know that the charge enclosed, $Q_{enc}$ is given by
+$$Q_{enc} = \sigma_a(2\pi aL)+\sigma_b(2\pi bL)$$
+Now we see that the electric field is constant and perpendicular on the Gaussian cylinder so equation \ref{Gauss} is calculated as
+\begin{align*}
+\oint\vec{E}\cdot d\vec{a} &= \frac{Q_{enc}}{\epsilon_0}\\
+E\oint da &= \frac{\sigma_a(2\pi aL)+\sigma_b(2\pi bL)}{\epsilon_0}\\
+E(2\pi sL) &= 2\pi L\frac{\sigma_aa+\sigma_bb}{\epsilon_0}\\
+E &= \frac{2\pi L}{2\pi sL}\frac{\sigma_aa+\sigma_bb}{\epsilon_0}\\
+\vec{E} &= \frac{\sigma_aa+\sigma_bb}{\epsilon_0}\frac{1}{s}\hat{s}
+\end{align*}
+For the region between the two cylinders we pick a Gaussian cylinder of length $L$ and radius $a<s<b$ we see that
+$$Q_{enc} = \sigma_a(2\pi aL)$$
+and now we apply equation \ref{Gauss}
+\begin{align*}
+\oint\vec{E}\cdot d\vec{a} &= \frac{Q_{enc}}{\epsilon_0}\\
+E\oint da &= \frac{\sigma_a(2\pi aL)}{\epsilon_0}\\
+E(2\pi sL) &= \frac{\sigma_a(2\pi aL)}{\epsilon_0}\\
+E &= \frac{\sigma_a(2\pi aL)}{(2\pi sL)\epsilon_0}\\
+\vec{E} &= \frac{\sigma_aa}{\epsilon_0}\frac{1}{s}\hat{s}\\
+\end{align*}
+Note that for $s<a$ the charge enclosed is zero so the electric field is zero in this region. So the total electric field is given by
+$$\vec{E} = \left\{\begin{array}{lc}
+	\dfrac{\sigma_aa+\sigma_bb}{\epsilon_0}\dfrac{1}{s}\hat{s}	&b<s\\
+\\
+	\dfrac{\sigma_aa}{\epsilon_0}\dfrac{1}{s}\hat{s}		&a<s<b\\
+\\
+	0								&s<a
+		\end{array}\right.$$
+Now we can calculate the potential from the electric field using 
+\begin{equation}
+V(\vec{r}) = -\int\vec{E}\cdot d\vec{l}
+\label{poten}
+\end{equation}
+Note that we pick the direction of $d\vec{l}$ to be along the $\hat{s}$ direction so we can calculate the potential using equation \ref{poten} for $s>b$. Note that the potential cannot be set to zero at $\infty$ or the origin so we pick the reference point for the potential as $V(2b) = 0$.
+\begin{align*}
+V(\vec{r}) &= -\int\vec{E}\cdot d\vec{l}\\
+\cancelto{0}{V(2b)} - V(s) &= -\int_s^{2b}Edl\\
+V(s) &= \int_s^{2b}{\sigma_aa+\sigma_bb}{\epsilon_0}\dfrac{1}{s'}ds'\\
+&= \dfrac{\sigma_aa+\sigma_bb}{\epsilon_0}\left(\ln(s')\right|_s^{2b}\\
+&= \dfrac{\sigma_aa+\sigma_bb}{\epsilon_0}\left(\ln(2b)-\ln(s)\right)\\
+&= \dfrac{\sigma_aa+\sigma_bb}{\epsilon_0}\ln\left(\frac{2b}{s}\right)
+\end{align*}
+And for $a<s<b$ equation \ref{poten} is calculated as
+\begin{align*}
+V(\vec{r}) &= -\int\vec{E}\cdot d\vec{l}\\
+\cancelto{0}{V(2b)} - V(s) &= -\int_s^{2b}Edl\\
+- V(s) &= - \int_s^{b}\dfrac{\sigma_aa}{\epsilon_0}\dfrac{1}{s'}ds' - \int_b^{2b}\dfrac{\sigma_aa+\sigma_bb}{\epsilon_0}\dfrac{1}{s'}ds'\\
+V(s) &= \dfrac{\sigma_aa}{\epsilon_0}\left(\ln(s')\right|_s^{b} + \dfrac{\sigma_aa+\sigma_bb}{\epsilon_0}\left(\ln(s')\right|_b^{2b}\\
+V(s) &= \dfrac{\sigma_aa}{\epsilon_0}\left(\ln(b)-\ln(s)\right) + \dfrac{\sigma_aa+\sigma_bb}{\epsilon_0}\left(\ln(2b)-\ln(b)\right)\\
+V(s) &= \dfrac{\sigma_aa}{\epsilon_0}\ln\left(\frac{b}{s}\right) + \dfrac{\sigma_aa+\sigma_bb}{\epsilon_0}\ln\left(\frac{2b}{b}\right)\\
+V(s) &= \dfrac{\sigma_aa}{\epsilon_0}\ln\left(\frac{b}{s}\right) + \dfrac{\sigma_aa+\sigma_bb}{\epsilon_0}\ln\left(2\right)
+\end{align*}
+And for $s<a$ equation \ref{poten} is calculated as
+\begin{align*}
+V(\vec{r}) &= -\int\vec{E}\cdot d\vec{l}\\
+\cancelto{0}{V(2b)} - V(s) &= -\int_s^{2b}Edl\\
+- V(s) &= -\int_s^a(0)ds - \int_a^{b}\dfrac{\sigma_aa}{\epsilon_0}\dfrac{1}{s'}ds' - \int_b^{2b}\dfrac{\sigma_aa+\sigma_bb}{\epsilon_0}\dfrac{1}{s'}ds'
+\end{align*}
+\begin{align*}
+V(s) &= \int_a^{b}\dfrac{\sigma_aa}{\epsilon_0}\dfrac{1}{s'}ds' + \int_b^{2b}\dfrac{\sigma_aa+\sigma_bb}{\epsilon_0}\dfrac{1}{s'}ds'\\
+&= \dfrac{\sigma_aa}{\epsilon_0}\left(\ln(s')\right|_a^{b} + \dfrac{\sigma_aa+\sigma_bb}{\epsilon_0}\left(\ln(s')\right|_b^{2b}\\
+&= \dfrac{\sigma_aa}{\epsilon_0}\left(\ln(b)-\ln(a)\right) + \dfrac{\sigma_aa+\sigma_bb}{\epsilon_0}\left(\ln(2b)-\ln(b)\right)\\
+&= \dfrac{\sigma_aa}{\epsilon_0}\ln\left(\frac{b}{a}\right) + \dfrac{\sigma_aa+\sigma_bb}{\epsilon_0}\ln\left(\frac{2b}{b}\right)\\
+&= \dfrac{\sigma_aa}{\epsilon_0}\ln\left(\frac{b}{a}\right) + \dfrac{\sigma_aa+\sigma_bb}{\epsilon_0}\ln\left(2\right)
+\end{align*}
+So our total electric potential is
+$$V(s) = \left\{\begin{array}{lc}
+\dfrac{\sigma_aa+\sigma_bb}{\epsilon_0}\ln\left(\dfrac{2b}{s}\right)	&s>b\\
+\\
+\dfrac{\sigma_aa}{\epsilon_0}\ln\left(\dfrac{b}{s}\right) + \dfrac{\sigma_aa+\sigma_bb}{\epsilon_0}\ln\left(2\right)	&a<s<b\\
+\\
+\dfrac{\sigma_aa}{\epsilon_0}\ln\left(\dfrac{b}{a}\right) + \dfrac{\sigma_aa+\sigma_bb}{\epsilon_0}\ln\left(2\right)	&s<a\\
+\end{array}\right.$$
+
+\section{Problem \#2}
+To find the electric field produced by the spherically symmetric charge distribution with charge density $\rho(r) = \rho_0(1-r/a)^2$. We will use equation \ref{Gauss} or \emph{Gauss' Law}. So for $r>a$ we need to calculate the charge enclosed 
+\begin{align*}
+Q_{enc} &= \int_V\rho d\tau\\
+&= \int_V\rho_0(1-r/a)^2 d\tau\\
+&= \rho_0\int_V\left(1-\frac{2r}{a}+\frac{r^2}{a^2}\right) d\tau\\
+&= \rho_0\int_0^{a}\int_0^{\pi}\int_0^{2\pi}\left(1-\frac{2r}{a}+\frac{r^2}{a^2}\right) r^2\sin\theta drd\theta d\phi\\
+&= \rho_0\int_0^{\pi}\sin\theta d\theta\int_0^{2\pi}d\phi\int_0^{a}\left(1-\frac{2r}{a}+\frac{r^2}{a^2}\right) r^2dr\\
+&= 4\pi\rho_0\int_0^{a}\left(r^2-\frac{2r^3}{a}+\frac{r^4}{a^2}\right)dr\\
+&= 4\pi\rho_0\left(\frac{1}{3}r^3-\frac{1}{4}\frac{2r^4}{a}+\frac{1}{5}\frac{r^5}{a^2}\right|_0^a\\
+&= 4\pi\rho_0\left(\frac{1}{3}a^3-\frac{1}{4}\frac{2a^4}{a}+\frac{1}{5}\frac{a^5}{a^2} - 0\right)\\
+&= 4\pi\rho_0\left(\frac{a^3}{3}-\frac{a^3}{2}+\frac{a^3}{5}\right)\\
+&= 4\pi\rho_0\frac{a^3}{30}
+\end{align*}
+Now we can apply equation \ref{Gauss} to yield
+\begin{align*}
+\oint\vec{E}\cdot d\vec{a} &= \frac{Q_{enc}}{\epsilon_0}\\
+E\oint da &= \frac{4\pi\rho_0a^3}{30\epsilon_0}\\
+E(4\pi r^2) &= \frac{4\pi\rho_0a^3}{30\epsilon_0}\\
+E &= \frac{1}{4\pi r^2}\frac{4\pi\rho_0a^3}{30\epsilon_0}\\
+\vecE &= \frac{\rho_0a^3}{30\epsilon_0}\frac{1}{r^2}\hat{r}
+\end{align*}
+Now for $r<a$ we calculate the charge enclosed as
+\begin{align*}
+Q_{enc} &= \int_V\rho d\tau\\
+&= \int_V\rho_0(1-r/a)^2 d\tau\\
+&= \rho_0\int_V\left(1-\frac{2r}{a}+\frac{r^2}{a^2}\right) d\tau\\
+&= \rho_0\int_0^{r}\int_0^{\pi}\int_0^{2\pi}\left(1-\frac{2r}{a}+\frac{r^2}{a^2}\right) r^2\sin\theta drd\theta d\phi\\
+&= \rho_0\int_0^{\pi}\sin\theta d\theta\int_0^{2\pi}d\phi\int_0^{r}\left(1-\frac{2r}{a}+\frac{r^2}{a^2}\right) r^2dr\\
+&= 4\pi\rho_0\int_0^{r}\left(r^2-\frac{2r^3}{a}+\frac{r^4}{a^2}\right)dr\\
+&= 4\pi\rho_0\left(\frac{1}{3}r^3-\frac{1}{4}\frac{2r^4}{a}+\frac{1}{5}\frac{r^5}{a^2}\right|_0^r\\
+&= 4\pi\rho_0\left(\frac{1}{3}r^3-\frac{1}{4}\frac{2r^4}{a}+\frac{1}{5}\frac{r^5}{a^2}-0\right)\\
+&= 4\pi\rho_0\left(\frac{r^3}{3}-\frac{r^4}{2a}+\frac{r^5}{5a^2}-0\right)\\
+&= 4\pi\rho_0\left(\frac{10a^2r^3}{30a^2}-\frac{15ar^4}{30a^2}+\frac{6r^5}{30a^2}\right)\\
+&= 4\pi\rho_0\left(\frac{10a^2r^3-15ar^4+6r^5}{30a^2}\right)\\
+&= 4\pi\rho_0r^3\left(\frac{10a^2-15ar+6r^2}{30a^2}\right)
+\end{align*}
+Now we can apply equation \ref{Gauss} to yield
+\begin{align*}
+\oint\vec{E}\cdot d\vec{a} &= \frac{Q_{enc}}{\epsilon_0}\\
+E\oint da &= \frac{4\pi\rho_0r^3}{30a^2\epsilon_0}10a^2-15ar+6r^2\\
+E(4\pi r^2) &=\frac{4\pi\rho_0r^3}{30a^2\epsilon_0}10a^2-15ar+6r^2\\
+E &=\frac{1}{4\pi r^2}\frac{4\pi\rho_0r^3}{30a^2\epsilon_0}10a^2-15ar+6r^2\\
+\vecE &= \frac{\rho_0(10a^2r-15ar^2+6r^3)}{30a^2\epsilon_0}\hat{r}
+\end{align*}
+So the total electric field is
+$$\vecE = \left\{\begin{array}{lc}
+	\dfrac{\rho_0(10a^2r-15ar^2+6r^3)}{30a^2\epsilon_0}\hat{r}	&r>a\\
+\\	
+	\dfrac{\rho_0r}{30\epsilon_0}\hat{r}				&r<a
+		\end{array}\right.$$
+
+\section{Problem \#3}
+First we need to define a volume current density $\vec{J}$ by using the equation
+\begin{equation}
+\vec{J} = \rho\vec{v}
+\label{volden}
+\end{equation}
+where $\rho$ is the current density and $\vec{v}$ is the tangential velocity of the sphere given by
+$$\vec{v} = \vec{\omega}\times\vec{r'}$$
+Now we can apply the \emph{Biot-Savart Law} 
+\begin{equation}
+\vec{B} = \frac{\mu_0}{4\pi}\int_V\frac{\vec{J}(\vec{r'})\times\vecscrptR}{\scrptR^3}d\tau
+\label{biosav}
+\end{equation}
+Now we calculate $\vec{J}$ by taking the cross product where
+$$\vec{\omega} = \omega\hat{z}$$
+and
+$$\vec{r'} = r'\sin(\theta)\cos(\phi)\hat{x} + r'\sin(\theta)\sin(\phi)\hat{y} + r'\cos(\theta)\hat{z}$$
+So we see that
+\begin{align*}
+\vec{\omega}\times\vec{r'} &= \det\left(\begin{array}{ccc}
+	\hat{x}				&\hat{y}	&\hat{z}\\
+	0				&0		&w\\
+	r'\sin(\theta)\cos(\phi) 	&r'\sin(\theta)\sin(\phi)  &r'\cos(\theta)\hat{z}
+			\end{array}\right)\\
+&= -\omega r'\sin(\theta)\sin(\phi)\hat{x} + \omega r'\sin(\theta)\cos(\phi)\hat{y}
+\end{align*}
+Now we use the definition of $\vecscrptR$ as
+$$\vecscrptR = \vec{r} - \vec{r'}$$
+Where $\vec{r} = z\hat{z}$ so we see that
+$$\vec{r} - \vec{r'} = -r'\sin(\theta)\cos(\phi)\hat{x} - r'\sin(\theta)\sin(\phi)\hat{y} + \left(z-r'\cos(\theta)\right)\hat{z}$$
+So now we can calculate 
+\begin{align*}
+\vec{J}\times\vecscrptR &= \rho(\vec{\omega}\times\vec{r'})\times(\vec{r}-\vec{r'}) = \det\left(\begin{array}{ccc}
+	\hat{x}				&\hat{y}	&\hat{z}\\
+	-\omega r'\sin(\theta)\sin(\phi) &\omega r'\sin(\theta)\cos(\phi) &0\\
+	-r'\sin(\theta)\cos(\phi)\hat{x}	&-r'\sin(\theta)\sin(\phi)		 &z-r'\cos(\theta)
+			\end{array}\right)\\
+	&= \rho\left[\omega r'\sin(\theta)\cos(\phi)(z-r'\cos(\theta))\hat{x} + \omega r'\sin(\theta)\cos(\phi)(z-r'\cos(\theta))\hat{y}\right.\\
+	 &\left.+\omega r'^2\sin^2(\theta)(\sin^2(\phi)+\cos^2(\phi))\hat{z}\right]\\
+	&= \rho\left[\omega r'\sin(\theta)\cos(\phi)(z-r'\cos(\theta))\hat{x} + \omega r'\sin(\theta)\cos(\phi)(z-r'\cos(\theta))\hat{y} +\omega r'^2\sin^2(\theta)\hat{z}\right]
+\end{align*}
+Now we can see from the symmetry of the system that the only component that does not cancel is the $\hat{z}$ or
+$$\rho\omega r'^2\sin^2(\theta)\hat{z}$$
+so we can ignore the $x$ and $y$ components. Now we need we see from the \emph{Law of Cosines} the magnitude of $\vecscrptR$ is given by
+$$\scrptR = \sqrt{r'^2+z^2-2r'z\cos(\theta)}$$
+Now we can apply equation \ref{biosav} and see that the $z$ component is given by
+\begin{align*}
+\vec{B} &= \frac{\mu_0}{4\pi}\int_V\frac{\vec{J}(\vec{r'})\times\vecscrptR}{\scrptR^3}d\tau\\
+&= \frac{\mu_0}{4\pi}\int_V\frac{\rho\omega r'^2\sin^2(\theta)\hat{z}}{(r'^2+z^2-2r'z\cos(\theta))^{3/2}}d\tau\\
+&= \frac{\mu_0}{4\pi}\int_{0}^{R}\int_{0}^{\pi}\int_{0}^{2\pi}\frac{\rho\omega r'^2\sin^2(\theta)\hat{z}}{(r'^2+z^2-2r'z\cos(\theta))^{3/2}}r'^2\sin(\theta)dr'd\theta d\phi\\
+&= \frac{\mu_0}{4\pi}\int_{0}^{R}\int_{0}^{\pi}\int_{0}^{2\pi}\frac{\rho\omega r'^4\sin^3(\theta)\hat{z}}{(r'^2+z^2-2r'z\cos(\theta))^{3/2}}dr'd\theta d\phi\\
+&= \frac{\mu_0}{4\pi}2\pi\int_{0}^{R}\int_{0}^{\pi}\frac{\rho\omega r'^4\sin^3(\theta)\hat{z}}{(r'^2+z^2-2r'z\cos(\theta))^{3/2}}dr'd\theta\\
+&= \frac{\mu_0\rho\omega}{2}\int_{0}^{R}\int_{0}^{\pi}\frac{ r'^4\sin^3(\theta)\hat{z}}{(r'^2+z^2-2r'z\cos(\theta))^{3/2}}dr'd\theta
+\end{align*}
+
+\section{Problem \#4}
+To find the magnetic field from these two wires we use \emph{Amp\'{e}re's Law}
+\begin{equation}
+\oint\vec{B}\cdot d\vec{l} = \mu_0I_{enc}
+\label{amp}
+\end{equation}
+We see that the current enclosed for an Amp\'{e}rian loop outside the positively running current is
+$$I_{enc} = I$$
+so we can calculate the magnetic field using equation \ref{amp}
+\begin{align*}
+\oint\vec{B}\cdot d\vec{l} &= \mu_0I_{enc}\\
+B\oint dl &= \mu_0I\\
+B(2\pi s) &= \mu_0I\\
+\vec{B}_1 &= \frac{\mu_0I}{2\pi s}\hat{\phi}
+\end{align*}
+Now for an Amp\'{e}rian loop inside of the wire we see that
+\begin{align*}
+I_{enc} &= \frac{I}{\pi a^2}(\pi s^2)\\
+&= \frac{Is^2}{a^2}
+\end{align*}
+So equation \ref{amp} becomes
+\begin{align*}
+\oint\vec{B}\cdot d\vec{l} &= \mu_0I_{enc}\\
+B\oint dl &= \mu_0\frac{Is^2}{a^2}\\
+B(2\pi s) &= \mu_0\frac{Is^2}{a^2}\\
+B &= \mu_0\frac{Is^2}{a^2}\frac{1}{2\pi s}\\
+\vec{B}_1 &= \mu_0\frac{Is}{2\pi a^2}\hat{\phi}\\
+\end{align*}
+So the total magnetic field is 
+$$\vec{B}_1 = \left\{\begin{array}{lc}
+	\mu_0\dfrac{Is}{2\pi a^2}\hat{\phi}		&s<a\\
+\\
+	\dfrac{\mu_0I}{2\pi s}\hat{\phi}		&s>a
+		\end{array}\right.$$
+Now we see the for the other wire we have equal and opposite current so
+$$I_1 = -I_2$$ 
+so the magnetic field from this wire is given by
+$$\vec{B}_2 = \left\{\begin{array}{lc}
+	-\mu_0\dfrac{Is}{2\pi a^2}\hat{\phi}		&s<a\\
+\\
+	-\dfrac{\mu_0I}{2\pi s}\hat{\phi}	&s>a
+		\end{array}\right.$$
+We can find the vector potential from these magnetic fields using the relation
+$$\vec{B} = -\frac{\partial A}{\partial s} \hat{\phi}$$
+So we can solve this problem using separation of variables to get
+\begin{align*}
+\vec{A}_1 &= -\int\vec{B}ds\\
+&= -\int_a^s \dfrac{\mu_0I}{2\pi s}ds\\
+&= -\dfrac{\mu_0I}{2\pi}\left(\ln(s)\right|_a^s\\
+&= -\dfrac{\mu_0I}{2\pi}\left(\ln(s)-\ln(a)\right)\\
+&= -\dfrac{\mu_0I}{2\pi}\ln\left(\frac{s}{a}\right)\hat{z}
+\end{align*}
+And the other wire only differs by a sign so
+$$\vec{A}_2= \dfrac{\mu_0I}{2\pi}\ln\left(\frac{s}{a}\right)\hat{z}$$
+
+\section{Problem \#5}
+To find the potential of this system we need to solve \emph{Laplace's Equation}
+\begin{equation}
+\grad^2V = 0
+\label{lap}
+\end{equation}
+Where equation \ref{lap} in cylindrical coordinates is
+$$\grad^2V = \frac{1}{s}\frac{\partial}{\partial s}\left(s\frac{\partial V}{\partial s}\right) + \frac{1}{s^2}\frac{\partial V}{\partial \phi} + \frac{\partial V}{\partial z}$$
+Note that we assume that $V$ has no $z$ dependence because the cylinder is very long so equation \ref{lap} becomes
+$$\grad^2V = \frac{1}{s}\frac{\partial}{\partial s}\left(s\frac{\partial V}{\partial s}\right) + \frac{1}{s^2}\frac{\partial V}{\partial \phi}$$
+Now we assume that $V(s,\phi)$ is of the form $V(s,\phi) = S(s)\Phi(\phi)$ so we can calculate equation \ref{lap} as
+\begin{align*}
+\grad^2V = 0 &= \frac{1}{s}\frac{\partial}{\partial s}\left(s\frac{\partial V}{\partial s}\right) + \frac{1}{s^2}\frac{\partial V}{\partial \phi}\\
+0 &= \Phi(\phi)\frac{1}{s}\frac{\partial}{\partial s}\left(s\frac{\partial S(s)}{\partial s}\right) + S(s)\frac{1}{s^2}\frac{\partial \Phi(\phi)}{\partial \phi}\\
+0 &= \Phi(\phi)\frac{1}{s}\frac{\partial}{\partial s}\left(s\frac{\partial S(s)}{\partial s}\right) + S(s)\frac{1}{s^2}\frac{\partial \Phi(\phi)}{\partial \phi}
+\end{align*}
+Now if we divide by $V(s,\phi)$ we get
+\begin{align*}
+0 &= \frac{1}{S(s)}\frac{1}{s}\frac{\partial}{\partial s}\left(s\frac{\partial S(s)}{\partial s}\right) + \frac{1}{\Phi(\phi)}\frac{1}{s^2}\frac{\partial \Phi(\phi)}{\partial \phi}\\
+0 &= \frac{1}{S(s)}\frac{s^2}{s}\frac{\partial}{\partial s}\left(s\frac{\partial S(s)}{\partial s}\right) + \frac{1}{\Phi(\phi)}\frac{s^2}{s^2}\frac{\partial \Phi(\phi)}{\partial \phi}\\
+0 &= \frac{s}{S(s)}\frac{\partial}{\partial s}\left(s\frac{\partial S(s)}{\partial s}\right) + \frac{1}{\Phi(\phi)}\frac{\partial \Phi(\phi)}{\partial \phi}
+\end{align*}
+Now we see that we have the sum of two function each depending on just one variable and this sum is equal to zero so we can quickly see that both functions are constant so we are left with the differential equations
+$$\frac{s}{S(s)}\frac{\partial}{\partial s}\left(s\frac{\partial S(s)}{\partial s}\right) = C_1$$ 
+$$\frac{1}{\Phi(\phi)}\frac{\partial \Phi(\phi)}{\partial \phi}=C_2$$
+note that $C_1=-C_2$ and that $C_2$ is the negative constant so that we get a sinusoidal solution in $\phi$ so we define
+$$C_2\equiv -k^2$$
+So we get the differential equation
+$$\frac{\partial \Phi(\phi)}{\partial \phi}=-k^2\Phi(\phi)$$
+which we know to have the general solution in the form
+$$\Phi(\phi) = A\cos(k\phi) + B\sin(k\phi)$$
+Where $k=0,1,2,3...$. Now if we guess that the solution of $S(s)$ as $S(s) = s^n$ we can calculate 
+\begin{align*}
+\frac{s}{s^n}\frac{\partial}{\partial s}\left(s\frac{\partial s^n}{\partial s}\right) &= k^2\\
+\frac{s}{s^n}\frac{\partial}{\partial s}\left(sns^{n-1}\right) &= k^2\\
+\frac{s}{s^n}\frac{\partial}{\partial s}\left(ns^{n}\right) &= k^2\\
+\frac{1}{s^{n-1}}\left(n^2s^{n-1}\right) &= k^2\\
+n^2 &= k^2\\
+n &= \pm k
+\end{align*}
+So the general solution of $S(s)$ is 
+$$S(s) = Cs^k+Ds^{-k}$$
+We saw from about that $k=0,1,2,3$ so we need to take into account when $k=0$ or $S(s)$ is constant so we see that the differential equation becomes
+$$s\frac{\partial S(s)}{\partial s} = E$$ 
+So if we use the method of separation of variable we get
+\begin{align*}
+\int\partial S(s) &= \int E\frac{\partial s}{s}\\ 
+S(s) &= E\ln(s)+F
+\end{align*}
+Now we can write the general solution for the potential as
+\begin{align*}
+V(s,\phi) &= F+E\ln(s) +\sum_{k=0}(Cs^k+Ds^{-k})(A\cos(k\phi) + B\sin(k\phi))\\
+&= F+E\ln(s) +\sum_{k=0}s^k(A_k\cos(k\phi) + B_k\sin(k\phi))+s^{-k}(C_k\cos(k\phi) + D_k\sin(k\phi))
+\end{align*}
+Now we can apply the boundary conditions
+$$V(R,\phi) = 0$$
+This gives us
+\begin{align*}
+V(a,\phi) = 0 &= F+E\ln(a) +\sum_{k=0}a^k(A_k\cos(k\phi) + B_k\sin(k\phi))+a^{-k}(C_k\cos(k\phi) + D_k\sin(k\phi))
+\end{align*}
+We see from this that $F$ and $E$ must be zero So 
+$$V(s,\phi) = \sum_{k=0}s^k(A_k\cos(k\phi) + B_k\sin(k\phi))+s^{-k}(C_k\cos(k\phi) + D_k\sin(k\phi))$$
+Now if we apply the fact that the potential outside the sphere from the uniform electric field is $$V = -E_0\cos(\phi)$$
+we see that the sine term must be zero and that $k=1$ so we are left with
+\begin{align*}
+V(s,\phi) &= As\cos(\phi)+Cs^{-1}\cos(\phi)\\
+&= (As+Cs^{-1})\cos(\phi)
+\end{align*}
+Now we can say that
+\begin{align*}
+V(a,\phi) = 0 &= (Aa+Ca^{-1})\cos(\phi)\\
+0 &= Aa+Ca^{-1}\\
+-Aa &= Ca^{-1}\\
+-Aa^2 &= C
+\end{align*}
+And we know that $A=-E_0$ so the solution is
+$$V(s,\phi) = \left(-E_0s+E_0\frac{a^2}{s}\right)\cos(\phi)$$
+
+\end{document}
+

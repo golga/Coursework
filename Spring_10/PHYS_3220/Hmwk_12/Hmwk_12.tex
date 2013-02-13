@@ -1,0 +1,161 @@
+\documentclass[11pt]{article}
+
+\usepackage{latexsym}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{enumerate}
+\usepackage{amsmath}
+\usepackage{cancel}
+\numberwithin{equation}{section}
+
+\setlength{\evensidemargin}{.25in}
+\setlength{\oddsidemargin}{-.25in}
+\setlength{\topmargin}{-.75in}
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{9.5in}
+\newcommand{\due}{April 21st, 2010}
+\newcommand{\HWnum}{12}
+\newcommand{\grad}{\bold\nabla}
+\newcommand{\vecE}{\vec{E}}
+\newcommand{\scrptR}{\vec{\mathfrak{R}}}
+\newcommand{\kapa}{\frac{1}{4\pi\epsilon_0}}
+\newcommand{\expt}[1]{\langle{#1}\rangle}
+\newcommand{\norm}[2]{\langle{#1}|{#2}\rangle}
+\newcommand{\ket}[1]{|{#1}\rangle}
+\newcommand{\bra}[1]{\langle{#1}|}
+
+
+\begin{document}
+\input{../title.tex}
+
+\section{Problem \#1}
+\begin{enumerate}[(a)]
+\item
+We see that the radial part of the \emph{Scr\"{o}dinger Equation} is given by
+\begin{equation}
+\frac{d}{dr}\left(r^2\frac{dR}{dr}\right)-\frac{2mr^2}{\hbar^2}[V(r)-E]R = l(l+1)R
+\label{RadSchro}
+\end{equation}
+Now if we define a new function $u(r)$ where
+$$u(r)\equiv rR(r)$$
+note that
+$$\frac{du}{dr} = R+r\frac{dR}{dr}$$
+and
+$$\frac{d^2u}{dr^2} = 2\frac{dR}{dr}+r\frac{d^2R}{dr^2}$$
+now we can say that
+\begin{align*}
+r\frac{d^2u}{dr^2} &= 2r\frac{dR}{dr}+r^2\frac{d^2R}{dr^2}\\
+&= \frac{d}{dr}\left(r^2\frac{dR}{dr}\right)
+\end{align*}
+from the \emph{Chain rule}. So we see that equation \ref{RadSchro} becomes
+\begin{align*}
+r\frac{d^2u}{dr^2}-\frac{2mr}{\hbar^2}[V(r)-E]u &= \frac{l(l+1)}{r}u\\
+\frac{d^2u}{dr^2}-\frac{2m}{\hbar^2}[V(r)-E]u &= \frac{l(l+1)}{r^2}u\\
+\frac{d^2u}{dr^2}-\frac{2m}{\hbar^2}V(r)u - \frac{l(l+1)}{r^2}u &=Eu\\
+-\frac{\hbar^2}{2m}\frac{d^2u}{dr^2}+\left[V(r) + \frac{\hbar^2}{2m}\frac{l(l+1)}{r^2}\right]u &=Eu
+\end{align*}
+Now for the infinite spherical well potential
+$$V(r) = \left\{\begin{array}{lc}
+0	&r\le a\\
+\infty	&r> a
+	\end{array}\right.$$
+We see that for $r\le a$
+\begin{align*}
+-\frac{\hbar^2}{2m}\frac{d^2u}{dr^2}+\left[\frac{\hbar^2}{2m}\frac{l(l+1)}{r^2}\right]u &=Eu\\
+\frac{\hbar^2}{2m}\frac{d^2u}{dr^2} &= \frac{\hbar^2}{2m}\frac{l(l+1)}{r^2}u - Eu\\
+\frac{d^2u}{dr^2} &= \frac{l(l+1)}{r^2}u - \frac{2mE}{\hbar^2}u
+\end{align*}
+So we have the differential equation 
+$$\frac{d^2u}{dr^2} = \left[\frac{l(l+1)}{r^2} - k^2\right]u$$
+where
+$$k\equiv\frac{\sqrt{2mE}}{\hbar}$$
+now if we assume that the angular momentum is zero or $l=0$ we get
+$$\frac{d^2u}{dr^2} = -k^2u$$
+this equation implies that the solution is a combination of sines and cosines or
+$$u(r) = A\sin(kr)+B\cos(kr)$$
+Note that we are concerned with $R(r)$ so the solution to equation \ref{RadSchro} is
+$$R(r) = \frac{A\sin(kr)}{r} + \frac{B\cos(kr)}{r}$$
+we see that for $r=0$ this equation goes to infinity if $B\ne0$ so we can say that
+$$R(r) = \frac{A\sin(kr)}{r}$$
+now if we apply the next boundary condition $R(r=a) = 0$ we see that 
+$$\sin(ka) = 0$$
+this implies that
+$$ka = n\pi$$
+where $n=1,2,3,...$ so we see that
+$$k = \frac{n\pi}{a}$$
+Now to normalize $R(r)$ we note that $u(r)$ shares the same constant $A$ so if we normalize $u(r)$ we have normalized $R(r)$. So
+\begin{align*}
+1 = \int_{0}^{\infty}|u(r)|^2dr &= A^2\int_0^{a}\sin^2(kr)dr\\
+&= \frac{A^2}{2}\int_0^{a}1-\cos(2kr)dr\\
+&= \frac{A^2}{2}\left(a-\right.\frac{1}{2k}\sin(2kr)\left|_0^a\right)\\
+&= A^2\frac{a}{2}\\
+A &= \sqrt{\frac{2}{a}}
+\end{align*}
+So the radial part of the wave function is
+$$R(r) = \sqrt{\frac{2}{a}}\frac{\sin(n\pi r/a)}{r}$$
+to find the whole wave function $\psi$ we recall that 
+$$\psi(\vec{r}) = R(r)Y_l^m(\theta,\phi)$$
+where $Y_l^m(\theta,\phi)$ is the spherical harmonic given by
+$$Y_l^m(\theta,\phi) = (-1)^m\sqrt{\frac{(2l+1)}{4\pi}\frac{(l-|m|)!}{(l+|m|)!}}e^{im\phi}P_l^m(\cos\theta)$$
+note that $P_0^0=1$, so we can see that for $l=0$ (this requires $m=0$) we get that
+$$Y_0^0 = \frac{1}{\sqrt{4\pi}}$$
+So we can see that
+$$\psi_{n00} = \frac{1}{\sqrt{2\pi a}}\frac{\sin(n\pi r/a)}{r}$$
+Note that the eigenvalue $E$ is given by 
+\begin{align*}
+k^2 &= \frac{2mE}{\hbar^2}\\
+\frac{n^2\pi^2}{a^2} &= \frac{2mE}{\hbar^2}\\
+E &= \frac{n^2\pi^2\hbar^2}{2ma^2}
+\end{align*}
+
+\item
+Given the radial probability density $P(r)$ where 
+$$P(r)dr = 4\pi r^2|\psi(r)|^2dr$$
+where 
+$$\psi_n(r) = \sqrt{\frac{2}{\pi}}\frac{\sin(n\pi r/a)}{r}$$
+So 
+$$P_n(r) = 8\sin^2(n\pi r/a)$$
+See attached for sketches of $P_1(r)$, $P_2(r)$, and $P_3(r)$.
+\end{enumerate}
+
+\section{Problem \#2}
+\begin{enumerate}[(a)]
+\item
+Given \emph{Time-Independent Schr\"{o}dinger's Equation} in 3 dimensions
+$$-\frac{\hbar^2}{2m}\grad^2\psi+V\psi = E\psi$$
+but if we assume that a spherically-symmetric wavefunction 
+$$\psi(r,\theta,\phi) = Ae^{-r/a}$$
+we only need to take into account the radial equation to solve for the constant $a$. 
+$$\frac{d}{dr}\left(r^2\frac{dR}{dr}\right)-\frac{2mr^2}{\hbar^2}[V(r)-E]R = l(l+1)R$$
+
+\item
+\item
+\item
+\end{enumerate}
+
+\section{Problem \#3}
+\begin{enumerate}[(a)]
+\item
+\item
+\item
+\item
+\item
+\item
+\end{enumerate}
+
+\section{Problem \#4}
+\begin{enumerate}[(a)]
+\item
+\item
+\item
+\end{enumerate}
+
+\section{Problem \#5}
+\begin{enumerate}[(a)]
+\item
+\item
+\item
+\end{enumerate}
+
+\end{document}
+

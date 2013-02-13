@@ -1,0 +1,315 @@
+\documentclass[11pt]{article}
+
+\usepackage{latexsym}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{enumerate}
+\usepackage{amsmath}
+\usepackage{cancel}
+\numberwithin{equation}{section}
+
+\setlength{\evensidemargin}{.25in}
+\setlength{\oddsidemargin}{-.25in}
+\setlength{\topmargin}{-.75in}
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{9.5in}
+\newcommand{\due}{January 26th, 2010}
+\newcommand{\HWnum}{2}
+\newcommand{\grad}{\bold\nabla}
+\newcommand{\vecE}{\vec{E}}
+\newcommand{\scrptR}{\vec{\mathfrak{R}}}
+\newcommand{\kapa}{\frac{1}{4\pi\epsilon_0}}
+
+\begin{document}
+\input{../title.tex}
+
+\section{Problem \#1}
+To find the resistance of the two cylinders $R$ we will find it from \emph{Ohm's Law}
+\begin{equation}
+V = IR
+\label{ohm}
+\end{equation}
+First need to find the electric field in between the two cylinders. To do this we need to use \emph{Gauss' Law}
+\begin{equation}
+\oint\vecE\cdot d\vec{a} = \frac{q_{enc}}{\epsilon_0}
+\label{gauss}
+\end{equation}
+with a Gaussian cylinder with radius $s$ where $a<s<b$. So equation \ref{gauss} is calculated as
+\begin{align*}
+\oint\vecE\cdot d\vec{a} &= \frac{q_{enc}}{\epsilon_0}\\
+E\oint da &= \frac{\lambda l}{\epsilon_0}\\
+E(2\pi sl) &= \frac{\lambda l}{\epsilon_0}\\
+E &= \frac{\lambda l}{2\pi sl\epsilon_0}\\
+\vecE &= \frac{\lambda}{2\pi s\epsilon_0}\hat{s}
+\end{align*}
+Note that $\lambda$ is the charge per length of the inner cylinder. Now we can find the current using the equation
+$$I = \int \vec{J}\cdot d\vec{a}$$
+note that we know $\vec{J}$ from \emph{Ohm's Law}, but not equation \ref{ohm} but \emph{Ohm's Law} in the form
+\begin{equation}
+\vec{J} = \frac{1}{\rho}\vec{E}
+\label{ohm2}
+\end{equation}
+So we can find the current as
+\begin{align*}
+I &= \int \vec{J}\cdot d\vec{a}\\
+&= \int \frac{1}{\rho}\vec{E}\cdot d\vec{a}\\
+&= \frac{1}{\rho}E\int da\\
+&= \frac{1}{\rho}\frac{\lambda}{2\pi s\epsilon_0}(2\pi sl)\\
+&= \frac{1}{\rho}\frac{\lambda l}{\epsilon_0}
+\end{align*}
+where $\rho$ is the resistivity. Now we can calculate the difference in the potential at point $a$ and $b$ by saying 
+\begin{align*}
+V &= -\int_a^b\vecE\cdot d\vec{l}\\
+&= -\int_a^b\frac{\lambda}{2\pi s\epsilon_0}\hat{s}\cdot ds\hat{s}\\
+&= \frac{\lambda}{2\pi\epsilon_0}\int_a^b\frac{1}{s} ds\\
+&= \frac{\lambda}{2\pi\epsilon_0}\left(\ln(s)\right|_a^b\\
+&= \frac{\lambda}{2\pi\epsilon_0}\left(\ln(b)-\ln(a)\right)\\
+&= \frac{\lambda}{2\pi\epsilon_0}\ln\left(\frac{b}{a}\right)
+\end{align*}
+So now we can use equation \ref{ohm} to find the resistance $R$
+\begin{align*}
+V &= IR\\
+R &= \frac{I}{V}\\
+&= \frac{1}{\rho}\frac{\lambda l}{\epsilon_0}\frac{2\pi\epsilon_0}{\lambda\ln(b/a}\\
+&= \frac{1}{\rho}\frac{2\pi l}{\ln(b/a)}
+\end{align*}
+
+\section{Problem \#2}
+\begin{enumerate}[(a)]
+\item
+We need to find the potential from an infinite line of charge with charge distribution $\lambda$. So we use \emph{Gauss' Law} or equation \ref{gauss} to find the electric field due to the line.
+\begin{align*}
+\oint\vecE\cdot d\vec{a} &= \frac{Q_{enc}}{\epsilon_0}\\
+E\oint da &= \frac{\lambda l}{\epsilon_0}\\
+E(2\pi sl) &= \frac{\lambda l}{\epsilon_0}\\
+E &= \frac{\lambda l}{2\pi sl\epsilon_0}\\
+\vecE &= \frac{\lambda}{2\pi \epsilon_0 s}\hat{s}
+\end{align*}
+Note that the charge distribution for the second line of charge is $-\lambda$ so the electric field is
+$$\vecE = \frac{-\lambda}{2\pi \epsilon_0 s'}\hat{s'}$$
+Now we can find the potential from these electric fields by
+\begin{align*}
+V &= -\int\vecE\cdot d\vec{l}\\
+\cancelto{0}{V(1)}-V(s) &= -\int_s^1\frac{\lambda}{2\pi \epsilon_0 s}\hat{s}\cdot ds\hat{s}\\
+V(s) &= \int_s^1\frac{\lambda}{2\pi \epsilon_0 s} ds\\
+&= \int_s^1\frac{\lambda}{2\pi \epsilon_0 }\ln(s)|_s^1 \\
+&= \frac{\lambda}{2\pi \epsilon_0 }(\ln(1)-\ln(s)) \\
+V(s) &= -\frac{\lambda}{2\pi \epsilon_0 }\ln(s) \\
+\end{align*}
+And for the other line charge we have the potential 
+$$V(s') = \frac{\lambda}{2\pi \epsilon_0 }\ln(s')$$
+So now we need to superimpose the potentials where we can say that
+$$s = \sqrt{(x+d/2)^2+y^2}$$
+and
+$$s' = \sqrt{(x-d/2)^2+y^2}$$
+so our total potential is
+\begin{align*}
+V_{tot}(s,\phi) &= V(s) + V(s')\\
+&= \frac{\lambda}{2\pi \epsilon_0 }\ln\left(\sqrt{(x+d/2)^2+y^2}\right) -\frac{\lambda}{2\pi \epsilon_0 }\ln\left(\sqrt{(x-d/2)^2+y^2}\right)\\
+&= \frac{\lambda}{2\pi \epsilon_0 }\ln\left(\frac{\sqrt{(x+d/2)^2+y^2}}{\sqrt{(x-d/2)^2+y^2}}\right)\\
+&= \frac{\lambda}{4\pi \epsilon_0 }\ln\left(\frac{(x+d/2)^2+y^2}{(x-d/2)^2+y^2}\right)
+\end{align*}
+Now we want to remove the log from our equation so we say that
+\begin{align*}
+V &= \frac{\lambda}{4\pi \epsilon_0 }\ln\left(\frac{(x+d/2)^2+y^2}{(x-d/2)^2+y^2}\right) \\
+\frac{4\pi\epsilon_0V}{\lambda} &= \ln\left(\frac{(x+d/2)^2+y^2}{(x-d/2)^2+y^2}\right) \\
+e^{\frac{4\pi\epsilon_0V}{\lambda}} &= \frac{(x+d/2)^2+y^2}{(x-d/2)^2+y^2}
+\end{align*}
+now for simplicity we can say that
+$$\alpha\equiv e^{\frac{4\pi\epsilon_0V}{\lambda}}$$ 
+So now 
+\begin{align*}
+\alpha &= \frac{(x+d/2)^2+y^2}{(x-d/2)^2+y^2}\\
+\alpha\left((x-d/2)^2+y^2\right) &= (x+d/2)^2+y^2\\
+\alpha\left(x^2-dx+d^2/4+y^2\right) &= x^2+dx+d^2/4+y^2\\
+\alpha x^2-\alpha dx+\alpha d^2/4+\alpha y^2 - x^2-dx-d^2/4-y^2 &= 0\\
+x^2(\alpha-1) -dx(\alpha+1)+d^2/4(\alpha-1)+y^2(\alpha-1) &= 0\\
+x^2 -dx\frac{\alpha+1}{\alpha-1} +d^2/4+y^2 &= 0
+\end{align*}
+Now we can define 
+$$\beta \equiv \frac{\alpha+1}{\alpha-1}$$
+So now we can say that
+$$x^2 -\beta dx+d^2/4+y^2 = 0$$
+Now we need to complete the square so we add $(\beta d/2)^2$ to both sides to get
+\begin{align*}
+x^2 -\beta dx+d^2/4+y^2 + \left(\frac{\beta d}{2}\right)^2 &= \left(\frac{\beta d}{2}\right)^2 \\ 
+\left(x-\frac{\beta d}{2}\right)^2 +\frac{d^2}{4} +y^2  &= \left(\frac{\beta d}{2}\right)^2 \\ 
+\left(x-\frac{\beta d}{2}\right)^2 +y^2  &= \left(\frac{\beta d}{2}\right)^2-\frac{d^2}{4}  \\ 
+\left(x-\frac{\beta d}{2}\right)^2 +y^2  &= \frac{d^2}{4}\left(\beta^2-1\right) 
+\end{align*}
+Now we can see that this is the same as an equation for a circle where
+$$\frac{h}{2} = \frac{\beta d}{2}$$
+and
+$$a^2 = \frac{d^2}{4}\left(\beta^2-1\right)$$
+So if we calculate $h/2a$ we see that
+\begin{align*}
+\frac{h}{2a} &= \frac{\dfrac{\beta d}{2}}{\frac{d}{2}\sqrt{\beta^2-1}}\\
+&= \frac{\beta}{\sqrt{\beta^2-1}}\\
+&= \frac{\alpha+1}{\alpha-1}\left(\frac{(\alpha+1)^2}{(\alpha-1)^2}-\frac{(\alpha-1)^2}{(\alpha-1)^2}\right)^{-1/2}\\
+&= \frac{\alpha+1}{\alpha-1}\left(\frac{\alpha^2+2\alpha+1 - \alpha^2 + 2\alpha - 1}{(\alpha-1)^2}\right)^{-1/2}\\
+&= \frac{\alpha+1}{\alpha-1}\left(\frac{4\alpha}{(\alpha-1)^2}\right)^{-1/2}\\
+&= \frac{\alpha+1}{2\sqrt{\alpha}}
+\end{align*}
+Now we can solve for $\alpha$ by saying
+\begin{align*}
+\frac{h}{2a} &= \frac{\alpha+1}{2\sqrt{\alpha}}\\
+\frac{h}{2a}2\sqrt{\alpha} &= {\alpha+1}\\
+\frac{h^2}{a^2}\alpha &= (\alpha+1)^2\\
+\frac{h^2}{a^2}\alpha &= \alpha^2+2\alpha+1\\
+0 &= -\frac{h^2}{a^2}\alpha + \alpha^2+2\alpha+1\\
+0 &=  \alpha^2+\left(2-\frac{h^2}{a^2}\right)\alpha+1
+\end{align*}
+Now we can use the \emph{Quadratic Formula} 
+\begin{equation}
+x = \frac{-b\pm\sqrt{b^2-4ac}}{2a}
+\label{quad}
+\end{equation}
+to find a solution for $\alpha$. So equation \ref{quad} yields
+\begin{align*}
+\alpha &= \frac{-\left(2-\frac{h^2}{a^2}\right)\pm\sqrt{\left(2-\frac{h^2}{a^2}\right)^2 - 4}}{2}\\
+&= \frac{-2+\frac{h^2}{a^2}\pm\sqrt{4-2\frac{h^2}{a^2}+\frac{h^4}{a^4} - 4}}{2}\\
+&= \frac{-2+\frac{h^2}{a^2}\pm\frac{h}{a}\sqrt{2+\frac{h^2}{a^2}}}{2}\\
+&= -1+\frac{h^2}{2a^2}+\frac{h}{2a}\sqrt{2+\frac{h^2}{a^2}}
+\end{align*}
+So know we see that from our definitions that
+\begin{align*}
+\alpha &= e^{\frac{4\pi\epsilon_0V}{\lambda}}\\ 
+\ln(\alpha) &= \frac{4\pi\epsilon_0V}{\lambda}\\ 
+\lambda &= \frac{4\pi\epsilon_0V}{\ln(\alpha)} 
+\end{align*}
+and we now we know that 
+\begin{align*}
+\frac{\beta d}{2} &= \frac{h}{2}\\
+d &= \frac{h}{\beta}\\
+&= h\frac{\alpha+1}{\alpha-1}
+\end{align*}
+Where
+$$\alpha = -1+\frac{h^2}{2a^2}+\frac{h}{2a}\sqrt{2+\frac{h^2}{a^2}}$$
+Now we can check our units, we expect that $<\lambda> = C\ m^{-1}$ and we know that
+$$<V_0> = N\ m\ C^{-1};\ <\epsilon_0> = C^2\ N^{-1}\ m^{-2}$$
+So we calculate
+\begin{align*}
+\left<-\frac{2V_0\pi \epsilon_0}{\ln(\alpha)}\right> &= N\ m\ C^{-1} C^2\ N^{-1}\ m^{-2}\\ 
+&=C\ m^{-1}
+\end{align*}
+Good our units agree.
+
+\item
+To find the current per length we use the fact that
+$$I = \int\vec{J}\cdot d\vec{a}$$
+and we apply equation \ref{ohm2} to say
+$$I = \frac{1}{\rho}\int\vec{E}\cdot d\vec{a}$$
+where $\rho$ is the resistivity of the material. So now we can apply equation \ref{gauss} to say that
+\begin{align*}
+I &= \frac{1}{\rho}\int\vec{E}\cdot d\vec{a}\\
+&= \frac{1}{\rho}\frac{q_{enc}}{\epsilon_0}\\
+&= \frac{\lambda l}{\rho\epsilon_0}
+\end{align*}
+So the current per length is given by
+$$\frac{I}{l} = \frac{\lambda}{\rho\epsilon_0}$$
+where $\lambda$ is found in part (a).
+
+\end{enumerate}
+
+\section{Problem \#3}
+First we can start by finding the magnetic field from the line by using \emph{Amp\'{e}re's law}
+\begin{equation}
+\oint\vec{B}\cdot d\vec{l} = \mu_0 I_{enc}
+\label{amp}
+\end{equation}
+So we can calculate the magnetic field using equation \ref{amp}
+\begin{align*}
+\oint\vec{B}\cdot d\vec{l} &= \mu_0 I_{enc}\\
+B\oint d{l} &= \mu_0 I\\
+B(2\pi s) &= \mu_0 I\\
+\vec{B} = \frac{\mu_0I}{2\pi s}\hat{\phi}
+\end{align*}
+and we can say that the velocity $v$ is
+$$\vec{v} = v_0\hat{z}$$
+So now we can say the force per unit charge, $\vec{f}$, is given by
+$$\vec{f} = \vec{v}\times\vec{B}$$
+this is from the \emph{Lorentz force law} so we calculate
+\begin{align*}
+\vec{f} &= \vec{v}\times\vec{B}\\
+&= v_0\hat{z}\times\frac{\mu_0I}{2\pi s}\hat{\phi}\\
+&= -v_0\frac{\mu_0I}{2\pi s}\hat{s}
+\end{align*}
+So we can find the electromotive force by 
+\begin{align*}
+\varepsilon &= -\frac{d\Phi}{dt} \\
+&= \oint\vec{f}\cdot d\vec{l}\\
+&= \oint-v_0\frac{\mu_0I}{2\pi s}\hat{s}\cdot ds\hat{s}\\
+&= -\int_{r-l/2}^{r+l/2} v_0\frac{\mu_0I}{2\pi s}ds\\
+&= -v_0\frac{\mu_0I}{2\pi}\int_{r-l/2}^{r+l/2}\frac{1}{s} ds\\
+&= -v_0\frac{\mu_0I}{2\pi}\ln(s)|_{r-l/2}^{r+l/2}\\
+&= -v_0\frac{\mu_0I}{2\pi}(\ln({r+l/2}) - \ln({r-l/2}))\\
+&= -v_0\frac{\mu_0I}{2\pi}\ln\left(\frac{r+l/2}{r-l/2}\right)
+\end{align*}
+But we need to note that the total electromotive force is zero because there will be a build up of charge and the induced electric field will cancel this force out perfectly.
+
+\section{Problem \#4}
+We can find the electromotive force by using
+$$\varepsilon = -\frac{d\Phi_m}{dt}$$
+Where we can say that the magnetic flux is 
+$$\Phi_m = Bxl$$
+So we can can say that
+\begin{align*}
+-\frac{d\Phi_m}{dt} &= -Bl\frac{d}{dt}x\\
+&= -Blv
+\end{align*}
+So we can calculate the current this EMF induces by using \emph{Ohm's Law} or equation \ref{ohm}
+\begin{align*}
+\varepsilon &= IR\\
+I &= \frac{\varepsilon}{R}\\
+&= \frac{-Blv}{R}\\
+\end{align*}
+Now we can find the force that this EMF creates by saying 
+\begin{align*}
+\vec{F}_m &= I\int d\vec{l}\times\vec{B}\\
+&= IB\int dl\\
+&= IBl\\
+&= \frac{B^2l^2v}{R}
+\end{align*}
+Note that this is opposite of the direction of the tension from the string. So now we have the differential equation 
+$$m\frac{dv}{dt} = Mg - \frac{B^2l^2}{R}v$$
+First we need to solve the homogeneous solution of
+$$m\frac{dv}{dt} = -\frac{B^2l^2}{R}v$$
+which we can solve by using separation of variables 
+\begin{align*}
+m\frac{dv}{dt} &= -\frac{B^2l^2}{R}v\\
+\int\frac{1}{v}dv &= -\int\frac{B^2l^2}{Rm}dt\\
+\ln(v) &= -\frac{B^2l^2}{Rm}t + C\\
+v(t) &= e^{-\frac{B^2l^2}{Rm}t + C}\\
+&= e^{C}e^{-\frac{B^2l^2}{Rm}t}\\
+&= Ce^{-\frac{B^2l^2}{Rm}t}\\
+\end{align*}
+So now we can solve the particular solution which we know will be constant so we see that
+\begin{align*}
+0 &= Mg - \frac{B^2l^2}{R}v\\
+Mg &= \frac{B^2l^2}{R}v\\
+v_p &= \frac{MgR}{B^2l^2}
+\end{align*}
+So the general solution is 
+$$v(t) = Ce^{-\frac{B^2l^2}{Rm}t} + \frac{MgR}{B^2l^2}$$
+So we apply the initial condition
+$$v(0) = 0$$
+So 
+\begin{align*}
+v(0) &= 0 = Ce^{-\frac{B^2l^2}{Rm}0}  + \frac{MgR}{B^2l^2}\\
+&= 0 = C  + \frac{MgR}{B^2l^2}\\
+A  &= -\frac{MgR}{B^2l^2}
+\end{align*}
+So our final function of $v$ is
+$$v(t) = \frac{MgR}{B^2l^2}\left(1 - \exp\left({-\frac{B^2l^2}{Rm}t}\right)\right)$$
+So if we check our units we expect that $<v(t)> = m\ s^{-1}$ and we know that
+$$<M> = <m> = kg;\ <g> = m\ s^{-2};\ <t> = s;\ <l> = m;\ <B> = kg\ C^{-1}\ s^{-1};\ <R> = kg\ m^2\ s^{-1}\ C^{-2}$$
+So we can calculate 
+\begin{align*}
+\left<\frac{MgR}{B^2l^2}\left(1 - \exp\left({-\frac{B^2l^2}{Rm}t}\right)\right)\right> &= \frac{kg\ m\ s^{-2}\ kg\ m^2\ s^{-1}\ C^{-2}}{kg^2\ C^{-2}\ s^{-2}\ m^2}\left(\exp\left[\frac{kg^2\ C^{-2}\ s^{-2}\ m^2}{kg\ m^2\ s^{-1}\ C^{-2}\ kg}s\right]\right)\\
+&= \frac{kg^2\ m^3\ s^{-3}\ C^{-2}}{kg^2\ m^2\ s^{-2}\ C^{-2}}\left(\exp\left[\frac{kg^2\ m^2\ s^{-1}\ C^{-2}}{kg^2\ m^2\ s^{-1}\ C^{-2}}\right]\right)\\
+&= m\ s^{-1}
+\end{align*}
+Good our units agree.
+
+\end{document}
+

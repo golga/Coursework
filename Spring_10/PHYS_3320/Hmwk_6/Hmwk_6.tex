@@ -1,0 +1,456 @@
+\documentclass[11pt]{article}
+
+\usepackage{latexsym}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{enumerate}
+\usepackage{amsmath}
+\usepackage{cancel}
+\numberwithin{equation}{section}
+
+\setlength{\evensidemargin}{.25in}
+\setlength{\oddsidemargin}{-.25in}
+\setlength{\topmargin}{-.75in}
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{9.5in}
+\newcommand{\due}{March 5th, 2010}
+\newcommand{\HWnum}{6}
+\newcommand{\grad}{\bold\nabla}
+\newcommand{\vecE}{\vec{E}}
+\newcommand{\scrptR}{\vec{\mathfrak{R}}}
+\newcommand{\kapa}{\frac{1}{4\pi\epsilon_0}}
+\newcommand{\emf}{\mathcal{E}}
+\newcommand{\dl}{d\vec{l}}
+\newcommand{\da}{d\vec{a}}
+
+\begin{document}
+\input{../title.tex}
+
+\section{Problem \#1}
+\begin{enumerate}[(a)]
+\item
+To find the electric field between the two plates we can use \emph{Gauss' Law}
+\begin{equation}
+\oint\vec{E}\cdot\da = \frac{Q_{enc}}{\epsilon_0}
+\label{Gauss}
+\end{equation}
+Where our Gaussian surface is a pillbox of length $l$ so equation \ref{Gauss} becomes
+\begin{align*} 
+\oint\vec{E}\cdot\da &= \frac{Q_{enc}}{\epsilon_0}\\
+E\oint da &= \frac{1}{\epsilon_0}\frac{Q}{\pi a^2}(l^2)\\
+E(l^2) &= \frac{1}{\epsilon_0}\frac{Q}{\pi a^2}(l^2)\\
+\vec{E} &= \frac{Q}{\epsilon_0\pi a^2}\hat{z}
+\end{align*} 
+Now to find the magnetic field we can use \emph{Amp\'{e}re's Law}
+\begin{equation}
+\oint\vec{B}\cdot\dl = \mu_0I_{enc}+\mu_0\epsilon_0\frac{\partial}{\partial t}\int\vec{E}\cdot\da
+\label{ampere}
+\end{equation}
+So we see that is we pick an Amp\'{e}rian loop of radius $s$ we have two different cases. So for $s>a$ we can see that equation \ref{ampere} becomes 
+\begin{align*}
+\oint\vec{B}\cdot\dl &= \cancelto{0}{\mu_0I_{enc}}+\mu_0\epsilon_0\frac{\partial}{\partial t}\int\vec{E}\cdot\da\\
+B\oint dl &= \mu_0\epsilon_0\frac{\partial}{\partial t}\frac{Q}{\epsilon_0\pi a^2}\pi a^2\\
+B(2\pi s) &= \mu_0\frac{\partial Q}{\partial t}\\
+\vec{B} &= \frac{\mu_0 I}{2\pi s}\hat{\phi}
+\end{align*}
+And for $s<a$ we get
+\begin{align*}
+\oint\vec{B}\cdot\dl &= \cancelto{0}{\mu_0I_{enc}}+\mu_0\epsilon_0\frac{\partial}{\partial t}\int\vec{E}\cdot\da\\
+B\oint dl &= \mu_0\epsilon_0\frac{\partial}{\partial t}\frac{Q}{\epsilon_0\pi a^2}\pi s^2\\
+B(2\pi s) &= \mu_0\frac{\partial Q}{\partial t}\frac{s^2}{a^2}\\
+\vec{B} &= \mu_0\frac{\partial Q}{\partial t}\frac{s^2}{a^2(2\pi s)}\\
+\vec{B} &= \frac{\mu_0Is}{2\pi a^2}\hat{\phi}
+\end{align*}
+
+\item
+To find $u_{em}$ we use the equation
+\begin{equation}
+u_{em} = \frac{1}{2}\left(\epsilon_0 E^2+\frac{1}{\mu_0}B^2\right)
+\label{EnergyDen}
+\end{equation}
+Note that we are just using the magnetic field when $s<a$. So equation \ref{EnergyDen} yields
+\begin{align*}
+u_{em} &= \frac{1}{2}\left(\epsilon_0 E^2+\frac{1}{\mu_0}B^2\right)\\
+&= \frac{1}{2}\left(\epsilon_0 \left(\frac{Q}{\epsilon_0\pi a^2}\right)^2+\frac{1}{\mu_0}\left(\frac{\mu_0Is}{2\pi a^2}\right)^2\right)\\
+&= \frac{1}{2}\left(\frac{Q^2}{\epsilon_0\pi^2 a^4} + \frac{\mu_0I^2s^2}{4\pi^2 a^4}\right)\\
+&= \frac{1}{2\pi^2 a^4}\left(\frac{Q^2}{\epsilon_0} + \frac{\mu_0I^2s^2}{4}\right)
+\end{align*}
+Now to calculate the \emph{Poynting vector} we use the definition of $\vec{S}$ 
+\begin{equation}
+\vec{S}\equiv\frac{1}{\mu_0}(\vec{E}\times\vec{B})
+\label{Poyn}
+\end{equation}
+So for inside the plate equation \ref{Poyn} is
+\begin{align*}
+\vec{S} &= \frac{1}{\mu_0}(\vec{E}\times\vec{B})\\
+&= \frac{1}{\mu_0}(\frac{Q}{\epsilon_0\pi a^2}\hat{z}\times\frac{\mu_0Is}{2\pi a^2}\hat{\phi})\\
+&= \frac{1}{\mu_0}(-\frac{Q}{\epsilon_0\pi a^2}\frac{\mu_0Is}{2\pi a^2}\hat{s})\\
+&= -\frac{QIs}{2\epsilon_0\pi^2 a^4}\hat{s}
+\end{align*}
+So we see that $\vec{S}$ is pointing in the negative $\hat{s}$ direction. This makes sense because the energy is flowing in that direction. Also we can check if the conservation of energy equation
+\begin{equation}
+\frac{\partial}{\partial t}(u_{mech}+u_{em}) = -\grad\cdot\vec{S}
+\label{Conser}
+\end{equation}
+holds true. So we can calculate the right hand side of equation \ref{Conser}
+\begin{align*}
+\frac{\partial}{\partial t}(u_{mech}+u_{em}) &= \frac{\partial}{\partial t}u_{em}\\ 
+&= \frac{1}{2\pi^2 a^4}\frac{\partial}{\partial t}\left(\frac{Q^2}{\epsilon_0} + \frac{\mu_0I^2s^2}{4}\right)\\
+&= \frac{1}{2\pi^2 a^4}\frac{2QI}{\epsilon_0}\\
+&= \frac{QI}{\epsilon_0\pi^2 a^4}
+\end{align*}
+and the left hand side of equation \ref{Conser} is
+\begin{align*}
+-\grad\cdot\vec{S} &= -\grad\cdot-\frac{QIs}{2\epsilon_0\pi^2 a^4}\hat{s}\\
+&= \frac{1}{s}\frac{\partial}{\partial s}s\frac{QIs}{2\epsilon_0\pi^2 a^4}\\
+&= \frac{1}{s}\frac{\partial}{\partial s}\frac{QIs^2}{2\epsilon_0\pi^2 a^4}\\
+&= \frac{1}{s}\frac{2QIs}{2\epsilon_0\pi^2 a^4}\\
+&= \frac{QI}{\epsilon_0\pi^2 a^4}
+\end{align*}
+Good we see that equation \ref{Conser} holds true.
+
+\item
+We assume the only energy is in the magnetic fields so we can find the total energy from 
+\begin{equation}
+U_{em} = \int_Vu_{em}d\tau
+\end{equation}
+Where we found $u_{em}$ in part (b)
+\begin{align*}
+U_{em} &= \int_Vu_{em}d\tau\\
+&=\frac{1}{2\pi^2 a^4}\int_V\left(\frac{Q^2}{\epsilon_0} + \frac{\mu_0I^2s^2}{4}\right)d\tau\\
+&=\frac{1}{2\pi^2 a^4}\left(\int_0^{a}\int_0^{2\pi}\int_0^{d}\frac{Q^2}{\epsilon_0}sdsd\phi dz + \int_0^{a}\int_0^{2\pi}\int_0^{d}\frac{\mu_0I^2s^2}{4}sdsd\phi dz\right)\\
+&=\frac{1}{2\pi^2 a^4}\left(\frac{Q^2\pi a^2d}{\epsilon_0} + 2\pi d\frac{\mu_0I^2}{4}\int_0^{a}s^3ds\right)\\
+&=\frac{1}{2\pi^2 a^4}\left(\frac{Q^2\pi a^2d}{\epsilon_0} + 2\pi d\frac{\mu_0I^2}{4}\left(\frac{1}{4}s^4\right|_0^ads\right)\\
+&=\frac{1}{2\pi^2 a^4}\left(\frac{Q^2\pi a^2d}{\epsilon_0} + \frac{\mu_0I^2\pi a^4d}{8}\right)\\
+&=\frac{d}{2\pi a^2}\left(\frac{Q^2}{\epsilon_0} + \frac{\mu_0I^2a^2}{8}\right)
+\end{align*}
+So we can check if the energy flux density holds true this equation
+\begin{equation}
+\frac{dW}{dt} = -\oint\vec{S}\cdot\da
+\label{EnerFlux}
+\end{equation}
+must hold true too. So we can calculate the flux of $\vec{S}$ on the surface of the cylinder so
+\begin{align*}
+-\oint\vec{S}\cdot\da &= -\oint-\frac{QIs}{2\epsilon_0\pi^2 a^4}\hat{s}\cdot\da\\
+&= \int_0^{2\pi}\int_0^{d}\frac{QIa}{2\epsilon_0\pi^2 a^4}\hat{s}\cdot ad\phi dz\hat{s}\\
+&= \int_0^{2\pi}\int_0^{d}\frac{QIa}{2\epsilon_0\pi^2 a^4}ad\phi dz\\
+&= \int_0^{2\pi}\int_0^{d}\frac{QI}{2\epsilon_0\pi^2 a^2}d\phi dz\\
+&= \frac{QI}{2\epsilon_0\pi^2 a^2}2\pi d\\
+&= \frac{QId}{\epsilon_0\pi a^2}
+\end{align*}
+Note that $a=s$ on the surface we are integrating over. Now we can take the time derivative of $U_{em}$ to check that they equal 
+\begin{align*}
+\frac{dU_{em}}{dt} &= \frac{d}{2\pi a^2}\frac{d}{dt}\left(\frac{Q^2}{\epsilon_0} + \frac{\mu_0I^2a^2}{8}\right)\\
+&= \frac{d}{2\pi a^2}\frac{2QI}{\epsilon_0}\\
+&= \frac{QId}{\epsilon_0\pi a^2}
+\end{align*}
+Good equation \ref{EnerFlux} holds true.
+\end{enumerate}
+
+\section{Problem \#2}
+\begin{enumerate}[(a)]
+\item
+To find the electromagnetic momentum, $\vec{P}_{em}$ we use
+\begin{equation}
+\vec{P}_{em} = \mu_0\epsilon_0\int_V\vec{S}d\tau
+\label{EMMomen}
+\end{equation}
+Where $\vec{S}$ is given by equation \ref{Poyn}
+\begin{align*}
+\vec{S} &= \frac{1}{\mu_0}(\vec{E}\times\vec{B})\\
+&= \frac{1}{\mu_0}(E\hat{z}\times B\hat{x})\\
+&= \frac{EB}{\mu_0}\hat{y}
+\end{align*}
+So now we can calculate equation \ref{EMMomen}
+\begin{align*}
+\vec{P}_{em} &= \mu_0\epsilon_0\int_V\vec{S}d\tau\\
+&= \mu_0\epsilon_0\int_V\frac{EB}{\mu_0}\hat{y}d\tau\\
+&= \mu_0\epsilon_0\frac{EB}{\mu_0}\hat{y}\int_Vd\tau\\
+&= \epsilon_0EBAd\hat{y}
+\end{align*}
+Where $A$ is the area of the plates and $d$ is the distance between the plates.
+
+\item
+If we say that the impulse is given by
+$$I = \int_0^{\infty} Fdt$$
+So we can say that the current that is flowing between the plates, $\vec{I}$, makes the force
+$$\vec{F} = \vec{I}\times\vec{B}$$
+where $\vec{I} = Id\hat{z}$ so we can say that
+\begin{align*}
+I &= \int_0^{\infty} Fdt\\
+&= \int_0^{\infty} Id\hat{z}\times B\hat{x}dt\\
+&= \int_0^{\infty} IdB\hat{y}dt\\
+&= Bd\int_0^{\infty} -\frac{dQ}{dt}\hat{y}dt\\
+&= -Bd\hat{y}\int_0^{\infty}dQ\\
+&= -Bd\hat{y}Q(t)|_0^{\infty}\\
+&= -Bd\hat{y}(\cancelto{0}{Q(\infty)}-Q(0))\\
+&= BdQ\hat{y}
+\end{align*}
+Now if we say that the electric field due to two parallel plates is 
+$$E = \frac{Q}{\epsilon_0A}$$
+So we can solve for $Q$ to get
+$$Q = E\epsilon_0 A$$
+So we can say the impulse is 
+$$I = \epsilon_0EBAd\hat{y}$$
+
+\item
+We see that the electric field induced by a changing magnetic field is given by
+\begin{equation}
+\int\vec{E}\cdot\dl = -\frac{d\Phi}{dt}
+\label{Fara}
+\end{equation}
+So we know that the magnetic flux is given by
+$$\Phi = Bdl$$
+where $l$ is the length. We also know that field is slowly decreasing so we can say that 
+\begin{align*}
+\int\vec{E}\cdot\dl &= -\frac{d\Phi}{dt}\\
+E\int dl &= -dl\frac{dB}{dt}\\
+El &= -dl\frac{dB}{dt}\\
+\vec{E} &= -d\frac{dB}{dt}\hat{y}
+\end{align*}
+So now we can find the force on the electric field as
+\begin{align*}
+\vec{F} &= Q\vec{E}\\
+&= -\sigma Ad\frac{dB}{dt}
+\end{align*}
+Note we used the fact that $\sigma = Q/A$. So now we can find the impulse
+\begin{align*}
+I &= \int_0^{\infty}\vec{F}dt\\
+&= \int_0^{\infty}-\sigma Ad\frac{dB}{dt}\hat{y}dt\\
+&= -\sigma Ad\hat{y}\int_0^{\infty}dB\\
+&= -\sigma Ad\hat{y}B(t)|_0^{\infty}\\
+&= -\sigma Ad\hat{y}(\cancelto{0}{B(\infty)}-B(0))\\
+&= \sigma AdB\hat{y}
+\end{align*}
+Now if we use the fact that
+\begin{align*}
+E &= \frac{Q}{\epsilon_0 A}\\
+&= \frac{\sigma}{\epsilon_0}
+\end{align*}
+We can say that
+$$\vec{I} = \epsilon_0 EBAd\hat{y}$$
+\end{enumerate}
+
+\section{Problem \#3}
+\begin{enumerate}[(a)]
+\item
+We can find the electric field from the "electron" by using \emph{Gauss' Law}
+\begin{align*}
+\oint\vec{E}\cdot\da &= \frac{Q_enc}{\epsilon_0}\\
+E\oint da &= \frac{e}{\epsilon_0}\\
+E(4\pi r^2) &= \frac{e}{\epsilon_0}\\
+\vec{E} &= \frac{e}{4\pi\epsilon_0 r^2}\hat{r}
+\end{align*}
+Now from example 5.11 on page 236 of Griffiths we know that the magnetic field inside the sphere is
+$$\vec{B}_{in} = \frac{\mu_0e\omega}{6\pi R}\hat{z}$$
+and the vector potential outside the sphere is
+$$\vec{A} = \frac{\mu_0R^2\omega e}{12\pi}\frac{\sin(\theta)}{r^2}\hat{\phi}$$
+So we need to take the curl of $\vec{A}$ to find $\vec{B}_{out}$
+\begin{align*}
+\vec{B}_{out} &= \grad\times\vec{A}\\
+&= \frac{1}{r\sin\theta}\left[\frac{\partial}{\partial\theta}(\sin\theta A_{\phi})\right]\hat{r} - \frac{1}{r}\left[\frac{\partial}{\partial r}(rA_{\phi})\right]\hat{\theta}\\
+&= \frac{1}{r\sin\theta}\left[\frac{\partial}{\partial\theta}(\sin\theta\frac{\mu_0R^2\omega e}{12\pi}\frac{\sin(\theta)}{r^2} )\right]\hat{r} - \frac{1}{r}\left[\frac{\partial}{\partial r}(r\frac{\mu_0R^2\omega e}{12\pi}\frac{\sin(\theta)}{r^2})\right]\hat{\theta}\\
+&= \frac{1}{r\sin\theta}\left[\frac{\mu_0R^2\omega e}{12\pi}\frac{1}{r^2}\frac{\partial}{\partial\theta}\sin^2(\theta)\right]\hat{r} - \frac{1}{r}\left[\frac{\mu_0R^2\omega e}{12\pi}\sin(\theta)\frac{\partial}{\partial r}\frac{1}{r}\right]\hat{\theta}\\
+&= \frac{1}{r\sin\theta}\left[\frac{\mu_0R^2\omega e}{12\pi}\frac{1}{r^2}2\sin(\theta)\cos(\theta)\right]\hat{r} - \frac{1}{r}\left[\frac{\mu_0R^2\omega e}{12\pi}\sin(\theta)\left(-\frac{1}{r^2}\right)\right]\hat{\theta}\\
+&= \frac{\mu_0R^2\omega e}{6\pi}\frac{\cos(\theta)}{r^3}\hat{r} + \frac{\mu_0R^2\omega e}{12\pi}\frac{\sin(\theta)}{r^3}\hat{\theta}\\
+&= \frac{\mu_0R^2\omega e}{6\pi}\left(\frac{\cos(\theta)}{r^3}\hat{r} + \frac{\sin(\theta)}{2r^3}\hat{\theta}\right)
+\end{align*}
+So now we can find the total energy that the "electron" stores in its fields by
+\begin{align*}
+U_{em} &= \frac{1}{2}\int\left(\epsilon_0E^2+\frac{1}{\mu_0}B^2\right)d\tau
+\end{align*}
+But we will calculate each integral individually so
+\begin{align*}
+\int\epsilon_0E^2d\tau &= \int_R^{\infty}\int_0^{\pi}\int_0^{2\pi}\epsilon_0\left(\frac{e}{4\pi\epsilon_0 r^2}\right)^2r^2\sin(\theta)drd\theta d\phi\\
+&= \int_R^{\infty}4\pi\frac{e^2}{16\pi^2\epsilon_0 r^4}r^2dr\\
+&= \int_R^{\infty}\frac{e^2}{4\pi\epsilon_0 r^2}dr\\
+&= \frac{e^2}{4\pi\epsilon_0}\left(-\frac{1}{r}\right|_R^{\infty}\\
+&= \frac{e^2}{4\pi\epsilon_0}\frac{1}{R} = \frac{e^2}{4\pi\epsilon_0R}
+\end{align*}
+Now for the magnetic field
+\begin{align*}
+\int\frac{1}{\mu_0}B^2d\tau &= \frac{1}{\mu_0}\int_0^{R}\int_0^{\pi}\int_0^{2\pi} B_{in}^2r^2\sin(\theta)drd\theta d\phi + \int_R^{\infty}\int_0^{\pi}\int_0^{2\pi} B_{out}^2r^2\sin(\theta)drd\theta d\phi\\
+&= \frac{1}{\mu_0}\int_0^{R}\int_0^{\pi}\int_0^{2\pi} \left(\frac{\mu_0e\omega}{6\pi R}\right)^2r^2\sin(\theta)drd\theta d\phi + \int_R^{\infty}\int_0^{\pi}\int_0^{2\pi} B_{out}^2r^2\sin(\theta)drd\theta d\phi\\
+&= \frac{\mu_0e^2\omega^2}{36\pi^2 R^2}\frac{4}{3}\pi R^3 + \frac{1}{\mu_0}\frac{\mu_0^2R^4\omega^2e^2}{36\pi^2}\int_R^{\infty}\int_0^{\pi}\int_0^{2\pi}\left(\frac{\cos^2(\theta)}{r^6}+\frac{\sin^2(\theta)}{4r^6}\right)r^2\sin(\theta)drd\theta d\phi\\
+&= \frac{\mu_0e^2\omega^2R}{27\pi} + \frac{\mu_0R^4\omega^2e^2}{36\pi^2}\int_0^{2\pi}d\phi\int_R^{\infty}\int_0^{\pi}\frac{\cos^2(\theta)\sin(\theta)}{r^4}drd\theta +\int_R^{\infty}\int_0^{\pi}\frac{\sin^3(\theta)}{4r^4}drd\theta\\
+&= \frac{\mu_0e^2\omega^2R}{27\pi} + \frac{\mu_0R^4\omega^2e^2}{18\pi}\int_R^{\infty}\frac{1}{r^4}dr\left(\int_0^{\pi}\cos^2(\theta)\sin(\theta)d\theta +\int_0^{\pi}\frac{\sin^3(\theta)}{4}d\theta\right)\\
+&= \frac{\mu_0e^2\omega^2R}{27\pi} + \frac{\mu_0R^4\omega^2e^2}{18\pi}\frac{1}{3R^3}\left(\int_0^{\pi}\cos^2(\theta)\sin(\theta)d\theta +\int_0^{\pi}\frac{\sin^3(\theta)}{4}d\theta\right)\\
+&= \frac{\mu_0e^2\omega^2R}{27\pi} + \frac{\mu_0R\omega^2e^2}{54\pi}\left(\int_0^{\pi}\cos^2(\theta)\sin(\theta)d\theta +\int_0^{\pi}\frac{\sin^3(\theta)}{4}d\theta\right)\\
+\end{align*}
+Now to solve 
+$$\int_0^{\pi}\cos^2(\theta)\sin(\theta)d\theta$$
+we use a $u$ substitution where 
+$$u = \cos(\theta)$$
+and
+$$du = -\sin(\theta)d\theta$$
+so we get
+\begin{align*}
+\int_0^{\pi}\cos^2(\theta)\sin(\theta)d\theta &= -\int_{u(0)}^{u(\pi)}u^2du\\
+&= \int_{-1}^{1}u^2du\\
+&= \left.\frac{1}{3}u^3\right|_{-1}^{1}\\
+&= \frac{1}{3}\left(1-(-1)\right) = \frac{2}{3}
+\end{align*}
+Now for the other integral we use the trig identity 
+$$\sin^2(\theta) = 1- \cos^2(\theta)$$
+So 
+\begin{align*}
+\int_0^{\pi}\frac{\sin^3(\theta)}{4}d\theta &= \frac{1}{4}\int_0^{\pi}\sin(\theta)(1-\cos^2(\theta))d\theta\\
+&= \frac{1}{4}\int_0^{\pi}\sin(\theta)d\theta-\frac{1}{4}\int_0^{\pi}\cos^2(\theta)\sin(\theta)d\theta\\
+&= -\frac{1}{4}\left(\cos(\theta)\right|_0^{\pi}-\frac{1}{4}\frac{2}{3}\\
+&= -\frac{1}{4}\left(-1-1\right)-\frac{1}{6}\\
+&= \frac{1}{2}-\frac{1}{6} = \frac{1}{3}
+\end{align*}
+So our over all integral becomes
+\begin{align*}
+\int\frac{1}{\mu_0}B^2d\tau &= \frac{\mu_0e^2\omega^2R}{27\pi} + \frac{\mu_0R\omega^2e^2}{54\pi}\left(\int_0^{\pi}\cos^2(\theta)\sin(\theta)d\theta +\int_0^{\pi}\frac{\sin^3(\theta)}{4}d\theta\right)\\
+&= \frac{\mu_0e^2\omega^2R}{27\pi} + \frac{\mu_0R\omega^2e^2}{54\pi}\left(\frac{2}{3}+\frac{1}{3}\right)\\
+&= \frac{2\mu_0e^2\omega^2R}{54\pi} + \frac{\mu_0R\omega^2e^2}{54\pi}\\
+&= \frac{3\mu_0e^2\omega^2R}{54\pi} 
+\end{align*}
+So the total energy in the fields is 
+\begin{align*}
+U_{em} &= \frac{1}{2}\int\left(\epsilon_0E^2+\frac{1}{\mu_0}B^2\right)d\tau\\
+&= \frac{1}{2}\left(\frac{e^2}{4\pi\epsilon_0R}+\frac{3\mu_0e^2\omega^2R}{54\pi}\right)\\
+&= \frac{e^2}{8\pi\epsilon_0R}+\frac{\mu_0e^2\omega^2R}{36\pi}
+\end{align*}
+
+\item
+To find the angular momentum we first need to find the momentum per unit volume
+\begin{align*}
+\vec{p}_{um} &= \epsilon_0(\vec{E}\times\vec{B})\\
+&= \epsilon_0\left(\frac{e}{4\pi\epsilon_0 r^2}\hat{r}\times\frac{\mu_0R^2\omega e}{6\pi}\frac{\sin(\theta)}{2r^3}\hat{\theta}\right)\\
+&= \epsilon_0\left(\frac{e}{4\pi\epsilon_0 r^2}\frac{\mu_0R^2\omega e}{6\pi}\frac{\sin(\theta)}{2r^3}\hat{\phi}\right)\\
+&= \frac{\mu_0R^2\omega e^2\sin(\theta)}{48\pi^2r^5}\hat{\phi}
+\end{align*}
+Note that the momentum inside the sphere is zero since the electric field is zero. And we only crossed with the $\hat{\theta}$ component of the magnetic field because the $\hat{r}$ component crossed with the electric field is zero. Now we can find the angular momentum per unit volume 
+\begin{align*}
+\vec{l}_{em} &= \vec{r}\times\vec{p}_{em}\\
+&= r\sin(\theta)\hat{s}\times\frac{\mu_0R^2\omega e^2\sin(\theta)}{48\pi^2r^5}\hat{\phi}\\
+&= r\sin(\theta)\frac{\mu_0R^2\omega e^2\sin(\theta)}{48\pi^2r^5}\hat{z}\\
+&= \frac{\mu_0R^2\omega e^2\sin^2(\theta)}{48\pi^2r^4}\hat{z}
+\end{align*}
+Note that $\hat{\phi}$ is in the same direction as the cylindrical $\hat{\theta}$ so $\hat{s}\times\hat{\phi}=\hat{z}$. Now we just integrate $\vec{l}_{em}$ over all space to find the total angular momentum.
+\begin{align*}
+\vec{L}_{em} &= \int_{V}\vec{l}_{em}d\tau\\
+&= \int_R^{\infty}\int_0^{\pi}\int_0^{2\pi}\frac{\mu_0R^2\omega e^2\sin^2(\theta)}{48\pi^2r^4}\hat{z}r^2\sin(\theta)drd\theta d\phi\\
+&= \frac{\mu_0R^2\omega e^2}{48\pi^2}\hat{z}\int_R^{\infty}\frac{1}{r^2}dr\int_0^{\pi}\sin^3(\theta)d\theta\int_0^{2\pi}d\phi\\
+&= \frac{\mu_0R^2\omega e^2}{48\pi^2}2\pi\hat{z}\int_R^{\infty}\frac{1}{r^2}dr\int_0^{\pi}\sin^3(\theta)d\theta
+\end{align*}
+\begin{align*}
+&= \frac{\mu_0R^2\omega e^2}{24\pi}\frac{4}{3}\hat{z}\int_R^{\infty}\frac{1}{r^2}dr\\
+&= \frac{\mu_0R^2\omega e^2}{18\pi}\hat{z}\left(-\frac{1}{r}\right|_R^{\infty}\\
+&= \frac{\mu_0R^2\omega e^2}{18\pi}\hat{z}\frac{1}{R}\\
+&= \frac{\mu_0R\omega e^2}{18\pi}\hat{z}
+\end{align*}
+
+\item
+Assuming that the angular momentum is given by
+$$L_{em} = \frac{\hbar}{2}$$
+we can see that
+\begin{align*}
+\frac{\mu_0R\omega e^2}{18\pi} &= \frac{\hbar}{2}\\
+R\omega &= \frac{9\hbar\pi}{\mu_0e^2}\\
+&= \frac{9(1.05\times10^{-34})\pi}{(1.26\times10^{-6})(1.60\times10^{-19})^2}\\
+&= 9.23\times10^{10}\ m\ s^{-1}
+\end{align*}
+Now if we assume that 
+$$U_{em} = mc^2$$
+we see that
+\begin{align*}
+m_ec^2 &= \frac{e^2}{8\pi\epsilon_0R}+\frac{\mu_0e^2\omega^2R}{36\pi}\\
+m_ec^2 &= \frac{e^2\omega}{8\pi\epsilon_0(9.23\times10^{10})}+\frac{\mu_0e^2\omega(9.23\times10^{10})}{36\pi}\\
+m_ec^2 &= \frac{(1.60\times10^{-19})^2\omega}{8\pi(8.85\times10^{-12})(9.23\times10^{10})}+\frac{(1.26\times10^{-6})(1.60\times10^{-19})^2\omega(9.23\times10^{10})}{36\pi}\\
+m_ec^2 &= \omega(1.25\times10^{-39}+2.63\times10^{-35})\\
+\omega &= \frac{(9.11\times10^{-31})(3.00\times10^{8})^2}{2.63\times10^{-35}}\\
+&= 3.11\times10^{21}\ rad\ s^{-1}
+\end{align*}
+Now we can find $R$
+\begin{align*}
+R &= \frac{9.23\times10^{10}}{\omega}\\
+&= \frac{9.23\times10^{10}}{3.11\times10^{21}}\\
+&= 2.96\times10^{-11}
+\end{align*}
+We see that this model doesn't makes sense because the tangential velocity is $\omega R$ and we found that $\omega R>c$ which is not possible.
+\end{enumerate}
+
+\section{Problem \#4}
+\begin{enumerate}[(a)]
+\item
+We can see that the wave has an amplitude of $E_0$ in the $\hat{z}$ direction while the wave is traveling in the $\vec{k}$ direction. So we see that the wave is moving along the $\hat{y}$ direction. Also the wavelength is $\lambda = 2\pi k$ and the speed of the wave is given by $v = \omega/k$. Note that the field at $x=a$ is the same as any other $x$ as the electric field does not vary in the x direction. 
+
+\item
+The direction of the electric field does not change in time it is always heading in the direction of $\vec{E_0}$. This is a polarized wave since the electric field will always lie in the same plane.
+
+\item
+We can find the amplitude of the magnetic field $\vec{B_0}$ by saying
+\begin{align*}
+\omega\vec{B_0} &= \vec{k}\times\vec{E_0}\\
+\omega\vec{B_0} &= k\hat{y}\times E_0\hat{z}\\
+\omega\vec{B_0} &= kE_0\hat{x}\\
+\vec{B_0} &= \frac{k}{\omega}E_0\hat{x}\\
+\vec{B_0} &= \frac{1}{c}E_0\hat{x}
+\end{align*}
+So we can say that 
+$$\vec{B}(\vec{r},t) = \frac{1}{c}E_0\hat{x}\cos(\vec{k}\cdot\vec{r}+\omega t+\delta)$$
+
+\item
+To find the energy density we calculate
+\begin{align*}
+u_{em} &= \frac{1}{2}\left(\epsilon_0E^2+\frac{1}{\mu_0}B^2\right)\\
+&= \frac{1}{2}\left(\epsilon_0E_0^2\cos^2(\vec{k}\cdot\vec{r}+\omega t+\delta)+\frac{1}{\mu_0}\frac{E_0^2}{c^2}\cos^2(\vec{k}\cdot\vec{r}+\omega t+\delta)\right)\\
+&= \frac{1}{2}E_0^2\cos^2(\vec{k}\cdot\vec{r}+\omega t+\delta)\left(\epsilon_0+\frac{1}{\mu_0}\frac{1}{c^2}\right)\\
+&= \frac{1}{2}E_0^2\cos^2(\vec{k}\cdot\vec{r}+\omega t+\delta)\left(\epsilon_0+\frac{1}{\mu_0}\mu_0\epsilon_0\right)\\
+&= \epsilon_0E_0^2\cos^2(\vec{k}\cdot\vec{r}+\omega t+\delta)
+\end{align*}
+And we can find the \emph{Poynting Vector} 
+\begin{align*}
+\vec{S} &= \frac{1}{\mu_0}(\vec{E}\times\vec{B})\\
+&= \frac{1}{\mu_0c}E_0^2\cos^2(\vec{k}\cdot\vec{r}+\omega t+\delta)\hat{y}
+\end{align*}
+We see that $\vec{S}$ points along the direction of the movement of the wave.
+
+\item
+To find the momentum density we calculate 
+\begin{align*}
+\vec{p}_{em} &= \mu_0\epsilon_0\vec{S}\\
+&= \mu_0\epsilon_0\frac{1}{\mu_0c}E_0^2\cos^2(\vec{k}\cdot\vec{r}+\omega t+\delta)\hat{y}\\
+&= \frac{\epsilon_0}{\mu_0c}E_0^2\cos^2(\vec{k}\cdot\vec{r}+\omega t+\delta)\hat{y}\\
+\end{align*}
+Good the momentum is in the direction of travel. Now we can find the stress tensor by calculating 
+\begin{align*}
+T_{ij} = \epsilon_0\left(E_iE_j-\frac{1}{2}\delta_{ij}E^2\right)+\frac{1}{\mu_0}\left(B_iB_j-\frac{1}{2}\delta_{ij}B^2\right)
+\end{align*}
+Note that the since $\vec{E}$ is only in the $\hat{z}$ direction and $\vec{B}$ is only in the $\hat{x}$ direction the only non-zero terms are when $i=j=x$ and $i=j=z$ so we can calculate
+\begin{align*}
+T_{zz} &= \epsilon_0\left(E_zE_z-\frac{1}{2}\delta_{zz}E^2\right)+\cancelto{0}{\frac{1}{\mu_0}\left(B_zB_z-\frac{1}{2}\delta_{zz}B^2\right)}\\
+&= \epsilon_0\left(E_z^2-\frac{1}{2}E_z^2\right)\\
+&= \frac{\epsilon_0}{2}E_z^2\\
+&= \frac{\epsilon_0}{2}E_0^2\cos^2(\vec{k}\cdot\vec{r}+\omega t+\delta)
+\end{align*}
+And
+\begin{align*}
+T_{xx} &= \cancelto{0}{\epsilon_0\left(E_xE_x-\frac{1}{2}\delta_{xx}E^2\right)}+\frac{1}{\mu_0}\left(B_xB_x-\frac{1}{2}\delta_{xx}B^2\right)\\
+&= \frac{1}{2\mu_0}B_x^2\\
+&= \frac{1}{2\mu_0}\frac{1}{c^2}E_0^2\cos^2(\vec{k}\cdot\vec{r}+\omega t+\delta)\\
+&= \frac{\epsilon_0}{2}E_0^2\cos^2(\vec{k}\cdot\vec{r}+\omega t+\delta)
+\end{align*}
+We see that they are the same, this makes sense since the field are inducing each other.
+
+\item
+To find the angular momentum we can say that
+\begin{align*}
+\vec{l}_{em} &= \vec{r}\times\vec{p}_{em}\\
+&= (x\hat{x}+y\hat{y}+z\hat{z})\times\frac{\epsilon_0}{\mu_0c}E_0^2\cos^2(\vec{k}\cdot\vec{r}+\omega t+\delta)\hat{y}\\
+&= \det\left(\begin{array}{ccc}
+\hat{x}		&\hat{y}	&\hat{z}\\	
+x		&y		&z	\\
+0		&\frac{\epsilon_0}{\mu_0c}E_0^2\cos^2(\vec{k}\cdot\vec{r}+\omega t+\delta)	&0
+\end{array}\right)\\
+&= -z\frac{\epsilon_0}{\mu_0c}E_0^2\cos^2(\vec{k}\cdot\vec{r}+\omega t+\delta)\hat{x} + x\frac{\epsilon_0}{\mu_0c}E_0^2\cos^2(\vec{k}\cdot\vec{r}+\omega t+\delta)\hat{z}
+\end{align*}
+We see that if we were to integrate over a box centered at the origin we would end up with a non-zero value since the functions are odd.
+
+\end{enumerate}
+
+\end{document}
+

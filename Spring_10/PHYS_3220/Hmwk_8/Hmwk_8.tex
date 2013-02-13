@@ -1,0 +1,432 @@
+\documentclass[11pt]{article}
+
+\usepackage{latexsym}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{enumerate}
+\usepackage{amsmath}
+\usepackage{cancel}
+\numberwithin{equation}{section}
+
+\setlength{\evensidemargin}{.25in}
+\setlength{\oddsidemargin}{-.25in}
+\setlength{\topmargin}{-.75in}
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{9.5in}
+\newcommand{\due}{March 10th, 2010}
+\newcommand{\HWnum}{8}
+\newcommand{\grad}{\bold\nabla}
+\newcommand{\vecE}{\vec{E}}
+\newcommand{\scrptR}{\vec{\mathfrak{R}}}
+\newcommand{\kapa}{\frac{1}{4\pi\epsilon_0}}
+\newcommand{\expt}[1]{\langle{#1}\rangle}
+\newcommand{\vect}[1]{|{#1}\rangle}
+\newcommand{\norm}[2]{\langle{#1}|{#2}\rangle}
+
+\begin{document}
+\input{../title.tex}
+
+\section{problem \#1}
+To begin we need to solve \emph{Time-Independent Schr\"{o}dinger Equation}
+\begin{equation}
+-\frac{\hbar^2}{2m}\frac{d^2\psi}{dx^2}+V(x)\psi = E\psi
+\label{TISE}
+\end{equation}
+For the piecewise potential 
+$$V(x) = \left\{\begin{array}{ll}
+	0	&x<0\\
+	-V_0	&0<x<2a\\
+	0	&x>2a
+	\end{array}\right.$$
+So for $x<0$ and $E = V_0/3$ the solution to equation \ref{TISE} is
+\begin{align*}
+-\frac{\hbar^2}{2m}\frac{d^2\psi}{dx^2}+\cancelto{0}{V(x)\psi} &= E\psi\\
+-\frac{\hbar^2}{2m}\frac{d^2\psi}{dx^2} &= \frac{V_0}{3}\psi\\
+\frac{d^2\psi}{dx^2} &= -\frac{2mV_0}{3\hbar^2}\psi
+\end{align*}
+We see that if we define the variable $k$ as
+$$k\equiv\frac{\sqrt{2mV_0}}{\sqrt{3}\hbar}$$
+our differential equation becomes
+$$\frac{d^2\psi}{dx^2} = -k^2\psi$$
+Where the solution is in the form
+$$\psi_I(x) = Ae^{ikx}+Be^{-ikx}$$
+For the region $0<x<2a$ the equation \ref{TISE} yields
+\begin{align*}
+-\frac{\hbar^2}{2m}\frac{d^2\psi}{dx^2}+V(x)\psi &= E\psi\\
+-\frac{\hbar^2}{2m}\frac{d^2\psi}{dx^2}&=  \frac{V_0}{3}\psi + V_0\psi\\
+-\frac{\hbar^2}{2m}\frac{d^2\psi}{dx^2}&=  \frac{4V_0}{3}\psi\\
+\frac{d^2\psi}{dx^2} &= -\frac{8mV_0}{3\hbar^2}\psi\\
+\end{align*}
+and has a solution of the form
+$$\psi_{II}(x) = Ce^{ik'x} + De^{-ik'x}$$
+where we define the variable $k'$ as
+$$k'\equiv\frac{\sqrt{8mV_0}}{\sqrt{3}\hbar}$$
+For convenience we can say that
+$$\psi_{II}(x) = C\sin(k'x) + D\cos(k'x)$$
+And for the region $x>2a$ equation \ref{TISE} becomes
+\begin{align*}
+-\frac{\hbar^2}{2m}\frac{d^2\psi}{dx^2}+\cancelto{0}{V(x)\psi} &= E\psi\\
+-\frac{\hbar^2}{2m}\frac{d^2\psi}{dx^2} &= \frac{V_0}{3}\psi\\
+\frac{d^2\psi}{dx^2} &= -\frac{2mV_0}{3\hbar^2}\psi\\
+\frac{d^2\psi}{dx^2} &= -k^2\psi
+\end{align*}
+Which has a solution of the form
+$$\psi_{III}(x) = Ee^{ikx}+Fe^{-ikx}$$
+note that $k$ is the same $k$ as above. Also we know that in this region we have no left traveling waves from our assumption that our particle is coming in from the right. This implies that $F=0$ so 
+$$\psi_{III}(x) = Ee^{ikx}$$
+Now we can apply the boundary conditions for this problem
+\begin{enumerate}[i]
+\item $\psi_I(0) = \psi_{II}(0)$
+\item $\psi_I'(0) = \psi_{II}'(0)$
+\item $\psi_{II}(2a) = \psi_{III}(2a)$
+\item $\psi_{II}'(2a) = \psi_{III}'(2a)$
+\end{enumerate}
+So applying boundary condition (i) and (ii) we get
+\begin{align*}
+\psi_I(0) &= \psi_{II}(0)\\
+Ae^{ik0}+Be^{-ik0} &= C\sin(k'0) + D\cos(k'0)\\
+A+B &= D
+\end{align*}
+and
+\begin{align*}
+\psi_I'(0) &= \psi_{II}'(0)\\
+ikAe^{ik0}-ikBe^{-ik0} &= Ck'\cos(k'0) - Dk'\sin(k'0)\\
+ik(A-B) &= Ck'\\
+\frac{ik(A-B)}{k'} &= C
+\end{align*}
+For the boundary conditions at $x=2a$ we get
+\begin{align*}
+\psi_{II}(2a) &= \psi_{III}(2a)\\
+C\sin(k'2a) + D\cos(k'2a) &= Ee^{ik2a}
+\end{align*}
+and
+\begin{align*}
+\psi_{II}'(2a) &= \psi_{III}'(2a)\\
+Ck'\cos(k'2a) - Dk'\sin(k'2a) &= ikEe^{ik2a}\\
+k'(C\cos(k'2a) - D\sin(k'2a)) &= ikEe^{ik2a}
+\end{align*}
+Now we know that these boundary conditions yield a transmission coefficient
+$$T^{-1} = 1+\frac{V_0^2}{4E(E+V_0)}\sin^2\left(\frac{2a}{\hbar}\sqrt{2m(E+V_0)}\right)$$
+assuming $E=V_0/3$ $T$ becomes
+\begin{align*}
+T^{-1} &= 1+\frac{V_0^2}{4(V_0/3)(V_0/3+V_0)}\sin^2\left(\frac{2a}{\hbar}\sqrt{2m(V_0/3+V_0)}\right)\\
+&= 1+\frac{V_0^2}{16V_0^2/9}\sin^2\left(\frac{2a}{\hbar}\sqrt{8mV_0/3}\right)\\
+&= 1+\frac{9}{16}\sin^2\left(\sqrt{\frac{4a^2}{\hbar^2}\frac{8mV_0}{3}}\right)\\
+&= 1+\frac{9}{16}\sin^2\left(\frac{4}{\sqrt{3}}\sqrt{\frac{2mV_0a^2}{\hbar^2}}\right)
+\end{align*}
+Now we can see that for 
+$$\frac{2mV_0a^2}{\hbar^2}<<1$$
+the sine in the transmission coefficient becomes 
+\begin{align*}
+T^{-1} &= 1+\frac{9}{16}\sin^2\left(\cancelto{0}{\frac{4}{\sqrt{3}}\sqrt{\frac{2mV_0a^2}{\hbar^2}}}\right)\\
+&= 1+\frac{9}{16}\sin^2\left(0\right)\\
+&= 1
+\end{align*}
+So in this limit we see that the particle is always transmitted. Now for 
+$$\frac{2mV_0a^2}{\hbar^2} = \frac{\pi^2}{48}$$
+we get
+\begin{align*}
+T^{-1} &= 1+\frac{9}{16}\sin^2\left(\frac{4}{\sqrt{3}}\sqrt{\frac{2mV_0a^2}{\hbar^2}}\right)\\
+&= 1+\frac{9}{16}\sin^2\left(\frac{4}{\sqrt{3}}\sqrt{\frac{\pi^2}{48}}\right)\\
+&= 1+\frac{9}{16}\sin^2\left(\frac{4}{\sqrt{3}}\frac{\pi}{4\sqrt{3}}\right)\\
+&= 1+\frac{9}{16}\sin^2\left(\frac{\pi}{3}\right)\\
+&= 1+\frac{9}{16}\left(\frac{\sqrt{3}}{2}\right)^2\\
+&= 1+\frac{9}{16}\frac{3}{4}\\
+&= 1+\frac{27}{64}\\
+&= \frac{91}{64}
+\end{align*}
+So we can take the inverse and see that 
+$$T = \frac{64}{91}\approx0.70$$
+Now for 
+$$\frac{2mV_0a^2}{\hbar^2} = \frac{3\pi^2}{16}$$
+we get
+\begin{align*}
+T^{-1} &= 1+\frac{9}{16}\sin^2\left(\frac{4}{\sqrt{3}}\sqrt{\frac{2mV_0a^2}{\hbar^2}}\right)\\
+&= 1+\frac{9}{16}\sin^2\left(\frac{4}{\sqrt{3}}\sqrt{\frac{3\pi^2}{16}}\right)\\
+&= 1+\frac{9}{16}\sin^2\left(\frac{4}{\sqrt{3}}\frac{\sqrt{3}\pi}{4}\right)\\
+&= 1+\frac{9}{16}\cancelto{0}{\sin^2\left(\pi\right)}\\
+&= 1
+\end{align*}
+So just like in the case where the potential was very small, we get a transmission of 100\%. For the case where $E\rightarrow 0$ or
+$$\lim_{E\rightarrow 0} T^{-1} = \lim_{E\rightarrow 0} 1+\frac{V_0^2}{4E(E+V_0)}\sin^2\left(\frac{2a}{\hbar}\sqrt{2m(E+V_0)}\right)$$
+we see that the pre-factor to the sine squared goes to infinity, this implies that the $T$ goes to zero. So as we have less and less energy we have less chance of transmission. For the case were $E>>V_0$ we see that the pre-factor of the sine term goes to zero so the transmission goes to 1. So as the particle gets more energy the more likely the particle will be transmitted.
+
+\section{problem \#2}
+\begin{enumerate}[(a)]
+\item
+Now if we take the transmission coefficient from problem 1.
+$$T^{-1} =  1+\frac{V_0^2}{4E(E+V_0)}\sin^2\left(\frac{2a}{\hbar}\sqrt{2m(E+V_0)}\right)$$
+Except this time we switch sign of $V_0$ (it was negative now it is positive) to make a barrier instead of a well we get
+\begin{align*}
+T^{-1} &=  1+\frac{V_0^2}{4E(E-V_0)}\sin^2\left(\frac{2a}{\hbar}\sqrt{2m(E-V_0)}\right)\\
+&=  1-\frac{V_0^2}{4E(V_0-E)}\sin^2\left(\frac{2a}{\hbar}\sqrt{-2m(V_0-E)}\right)\\
+&=  1-\frac{V_0^2}{4E(V_0-E)}\sin^2\left(\frac{2a}{\hbar}i\sqrt{2m(V_0-E)}\right)
+\end{align*}
+Note we assume that $V_0>E$ now if we take the relation
+\begin{equation}
+\sinh(x) = -i\sin(ix)
+\label{Sinh}
+\end{equation}
+and square both sides we see that we get
+$$\sinh^2(x) = -\sin^2(ix)$$
+So $T^{-1}$ becomes 
+$$T^{-1} =  1+\frac{V_0^2}{4E(V_0-E)}\sinh^2\left(\frac{2a}{\hbar}\sqrt{2m(V_0-E)}\right)$$
+
+\item
+For the case where an electron approaches a square barrier with initial energy $0.5\ eV$ where the barrier is at a potential $1\ eV$ with a width of $5\ {\buildrel _{\circ} \over{\mathrm{A}}}$ Using the equation for the transmission coefficient we can calculate the probability that the electron will tunnel. 
+\begin{align*}
+T^{-1} &=  1+\frac{V_0^2}{4E(V_0-E)}\sinh^2\left(\frac{2a}{\hbar}\sqrt{2m(V_0-E)}\right)\\
+&=  1+\frac{(1\ eV)^2}{4(0.5\ eV)(1\ eV-0.5\ eV)}\sinh^2\left(\frac{2(5\ {\buildrel _{\circ} \over{\mathrm{A}}})}{\hbar}\sqrt{2m_e(1\ eV-0.5\ eV)}\right)\\
+&=  1+(1)\sinh^2\left(\frac{2(5\times10^{-10})}{1.05\times10^{-34}}\sqrt{2(9.11\times10^{-31})(8.01\times10^{-20})}\right)\\
+&= 1 + \sinh^2(3.64)\\
+&= 362.0
+\end{align*}
+So the probability of the electron passing through this barrier is 1 in 362. 
+
+
+\item
+For the baseball we assume that the total energy is kinetic energy
+\begin{align*}
+E &= \frac{1}{2}mv^2\\
+&= \frac{1}{2}(0.15)(40)^2\\
+&= 120\ J
+\end{align*}
+So if we assume that $V_0 = 5E$ we see that $V_0 = 600\ J$ given that $a=0.1\ m$ we can find the transmission coefficient $T$
+\begin{align*}
+T^{-1} &=  1+\frac{V_0^2}{4E(V_0-E)}\sinh^2\left(\frac{2a}{\hbar}\sqrt{2m(V_0-E)}\right)\\
+&=  1+\frac{(600)^2}{4(120)(600-120)}\sinh^2\left(\frac{2(0.1)}{(1.05\times10^{-34})}\sqrt{2(0.15)(600-120)}\right)\\
+&=  1+(1.5625)\sinh^2\left(2.29\times10^{34}\right)\\
+&\approx 10^{34}
+\end{align*}
+So once in $10^{34}$ throws of the baseball will go through the wall. So if each throw requires one second it would take $10^{34}\ s$ for the ball to tunnel through the wall. Given that the age of the universe is $4.23\times10^{17}\ s$ it would take 
+$$10^{34}\ s \frac{1}{4.24\times10^{17}\ s} = 2.36\times 10^{17}\ \textnormal{ages of the universe}$$
+Thats quite a long time!
+\end{enumerate}
+
+\section{problem \#3}
+\begin{enumerate}[(a)]
+\item
+Griffiths Problem A.1 on page 438 
+\begin{enumerate}[(i)]
+\item
+Given the ordinary vector in 3 dimensions 
+$$a_x\hat{i} + a_y\hat{j}+a_z\hat{k}$$
+If we have $a_z = 0$ then we have a vector space of 2 dimensions that is the vector space is made up of all the vectors that lie in the plane of $\hat{i}$ and $\hat{j}$.
+
+\item
+For the case where all $a_z=1$ we do not have a vector space. Take for example if we say
+$$\vect{\alpha} = a_x\hat{i} + a_y\hat{j}+1\hat{k}$$
+then we add the vector with itself
+$$\vect{\alpha} + \vect{\alpha} = \vect{\beta}$$
+we see that 
+$$\vect{\beta} = 2a_x\hat{i} + 2a_y\hat{j}+2\hat{k}$$
+We see that $\vect{\beta}$ is not in the subset of vectors whose $z$ component is $1$. Therefore vector addition is not all inclusive of this subset so we do not have a vector space.
+
+\item
+The subset of vectors where all the components are equal is a vector space for if we take a vector
+$$\vect{\alpha} = a\hat{i}+a\hat{j}+a\hat{k}$$
+and add to it another vector in this subset
+$$\vect{\beta} = b\hat{i}+b\hat{j}+b\hat{k}$$
+we get
+$$c\vect{\alpha}+d\vect{\beta} = (ac+bd)\hat{i}+(ac+bd)\hat{j}+(ac+bd)\hat{k}$$
+We that this vector is still in the subset of vectors where all the components are equal. So we stay in the same subset under vector addition and scalar multiplication so we must conclude that this subset is a vector space.
+\end{enumerate}
+
+\item
+Given a set that consists of all $2\times2$ matrices. This set forms a vector space if $\vect{\gamma}$ is also a $2\times2$ matrix where
+$$\vect{\gamma} = a\vect{\alpha}+b\vect{\beta}$$
+Note that by assumption $\vect{\alpha}$ and $\vect{\beta}$ are $2\times2$ matrices where we can say
+$$\vect{\alpha} = \left(\begin{array}{cc}
+	\alpha_{11}	&\alpha_{12}\\
+	\alpha_{21}	&\alpha_{22}
+		\end{array}\right)$$
+and 
+$$\vect{\beta} = \left(\begin{array}{cc}
+	\beta_{11}	&\beta_{12}\\
+	\beta_{21}	&\beta_{22}
+		\end{array}\right)$$
+So we calculate 
+\begin{align*}
+\vect{\gamma} &= a\vect{\alpha}+b\vect{\beta}\\
+&= a\left(\begin{array}{cc}
+	\alpha_{11}	&\alpha_{12}\\
+	\alpha_{21}	&\alpha_{22}
+		\end{array}\right) + 
+	b\left(\begin{array}{cc}
+	\beta_{11}	&\beta_{12}\\
+	\beta_{21}	&\beta_{22}
+		\end{array}\right)\\
+&= \left(\begin{array}{cc}
+	a\alpha_{11}	&a\alpha_{12}\\
+	a\alpha_{21}	&a\alpha_{22}
+		\end{array}\right) + 
+	\left(\begin{array}{cc}
+	b\beta_{11}	&b\beta_{12}\\
+	b\beta_{21}	&b\beta_{22}
+		\end{array}\right)\\
+&= \left(\begin{array}{cc}
+	a\alpha_{11}+b\beta_{11}	&a\alpha_{12}+b\beta_{12}\\
+	a\alpha_{21}+b\beta_{21}	&a\alpha_{22}+b\beta_{22}
+		\end{array}\right)  
+\end{align*}
+We see that under scaler multiplication and vector addition we are still in the subset of all $2\times2$ matrices. So we can conclude that $2\times2$ matrices form a vector space with 4 dimensions. Where we can have a set of basis vectors 
+$$\left(\begin{array}{cc}
+	1	&0\\
+	0	&0
+		\end{array}\right)
+\left(\begin{array}{cc}
+	0	&1\\
+	0	&0
+		\end{array}\right) 
+\left(\begin{array}{cc}
+	0	&0\\
+	1	&0
+		\end{array}\right) 
+\left(\begin{array}{cc}
+	0	&0\\
+	0	&1
+		\end{array}\right)$$ 
+
+\item
+If we form a set of all functions $f(x)$ that are defined on the range $0\le x\le 1$ but are zero outside of that range. We can define a two vectors as 
+$$\vect{\alpha} = f(x) = \left\{\begin{array}{cc}
+	f(x)	&0\le x\le 1\\
+	0	&\textnormal{otherwise}
+	\end{array}\right.$$
+and
+$$\vect{\beta} = g(x) = \left\{\begin{array}{cc}
+	g(x)	&0\le x\le 1\\
+	0	&\textnormal{otherwise}
+	\end{array}\right.$$
+Now if we say that $\vect{\gamma}$ is
+$$\vect{\gamma} = a\vect{\alpha} +b\vect{\beta}$$
+We can test to see if $\vect{\gamma}$ is still in this subset
+\begin{align*}
+\vect{\gamma} &= a\vect{\alpha} +b\vect{\beta}\\
+&= af(x) + bg(x)\\
+&= \left\{\begin{array}{cc}
+	af(x)	&0\le x\le 1\\
+	0	&\textnormal{otherwise}
+	\end{array}\right.+
+\left\{\begin{array}{cc}
+	bg(x)	&0\le x\le 1\\
+	0	&\textnormal{otherwise}
+	\end{array}\right.\\
+&= \left\{\begin{array}{cc}
+	af(x)+bg(x)	&0\le x\le 1\\
+	0	&\textnormal{otherwise}
+	\end{array}\right.
+\end{align*}
+So $\vect{\gamma}$ is a function defined in the range $0\le x\le 1$ and zero outside this range. This implies that this subset is a vector space.
+
+\item
+The set of all normalized function $f(x)$ is a vector space if $\vect{\gamma}$ is a normalized function. Where we say that
+$$\vect{\gamma} = a\vect{\alpha} + b\vect{\beta}$$
+Note that $\vect{\alpha}$ and $\vect{\beta}$ are normalized functions $f(x)$ and $g(x)$ respectively. So we see that
+$$\vect{\gamma} = af(x)+bg(x)$$
+So we can find out if $\vect{\gamma}$ is normalizable 
+\begin{align*}
+\langle\gamma|\gamma\rangle &= \int (af(x)+bg(x))^*(af(x)+bg(x))dx\\
+&= \int a^*af^*(x)f(x)+b^*bg^*(x)g(x)+\cancelto{0}{b^*ag^*(x)f(x)+a^*bf^*(x)g(x)}dx\\
+&= \int |a|^2|f(x)|^2dx + \int|b|^2|g(x)|^2dx\\
+&= |a|^2 + |b|^2
+\end{align*}
+So we see that the function that represents $\vect{\gamma}$ is normalizable. Therefore we can say that normalizable functions form a vector space.
+\end{enumerate}
+
+\section{problem \#4}
+\begin{enumerate}[(a)]
+\item
+Given two \emph{hermitian operators} $\hat{Q}$ and $\hat{R}$ we see that the operator that is the sum of these two operators acts like
+\begin{align*}
+\norm{\psi}{(\hat{Q}+\hat{R})\psi} &= \norm{\psi}{\hat{Q}\psi+\hat{R}\psi}\\
+&= \norm{\psi}{\hat{Q}\psi}+\norm{\psi}{\hat{R}\psi}\\
+&= \norm{\hat{Q}\psi}{\psi}+\norm{\hat{R}\psi}{\psi}\\
+&= \norm{\hat{Q}\psi+\hat{R}\psi}{\psi}\\
+&= \norm{(\hat{Q}+\hat{R})\psi}{\psi}
+\end{align*}
+So the sum of two hermitian operators is a hermitian operator.
+
+\item
+Given the operator $\hat{O}$ (assuming $\hat{O}$ is a hermitian operator) and the complex constant $\alpha$ we see that $\alpha\hat{O}$ acts like
+\begin{align*}
+\norm{\psi}{\alpha\hat{O}\psi} &= \alpha\norm{\psi}{\hat{O}\psi}\\
+&= \alpha\norm{\hat{O}\psi}{\psi}\\
+&= \norm{\alpha^*\hat{O}\psi}{\psi}
+\end{align*}
+So for $\alpha\hat{O}$ to be a hermitian operator the equality 
+$$\norm{\alpha\hat{O}\psi}{\psi} = \norm{\alpha^*\hat{O}\psi}{\psi}$$
+has to be true. And for this to be true $\alpha^* = \alpha$ this implies that $\alpha$ has no imaginary part, or is fully real. 
+
+\item
+Given the definition of the \emph{hermitian conjugate}
+\begin{equation}
+\norm{f}{\hat{O}g} = \norm{\hat{O}^{\dagger}f}{g}
+\label{hermcon}
+\end{equation}
+We can say that the hermitian conjugate of the operator $i$ (multiply by $i$) is
+\begin{align*}
+\norm{f}{ig} &= i\norm{f}{g}\\
+&= \norm{i^*f}{g}\\
+&= \norm{-if}{g}
+\end{align*}
+So the hermitian conjugate of $i$ is $-i$. Now for the operator $\partial/\partial x$
+\begin{align*}
+\norm{f}{\frac{\partial}{\partial x}g} &= \int_{-\infty}^{\infty} f^*\frac{\partial g}{\partial x}dx\\
+&= \int_{-\infty}^{\infty} f^*\frac{\partial g}{\partial x}dx
+\end{align*}
+Now if we \emph{apply integration by parts}
+\begin{equation}
+\int u\frac{\partial v}{\partial x} = uv - \int v\frac{\partial u}{\partial x}dx
+\label{IntPart}
+\end{equation}
+we get
+\begin{align*}
+\int_{-\infty}^{\infty} f^*\frac{\partial g}{\partial x}dx &= \cancelto{0}{f^*g|_{-\infty}^{\infty}} - \int \left(\frac{\partial f}{\partial x}\right)^*gdx\\
+&=  -\int \left(\frac{\partial f}{\partial x}\right)^*gdx\\
+&= -\norm{\frac{\partial}{\partial x}f}{g}\\
+&= \norm{-\frac{\partial}{\partial x}f}{g}
+\end{align*}
+So the hermitian conjugate of $\partial/\partial x$ is $-\partial/\partial x$. Note that this is only true for normalizable functions, which we assumed from the start.
+
+\item
+To show that $\hat{x} = x$ is hermitian we say that
+\begin{align*}
+\norm{f}{\hat{x}g} &= \norm{f}{xg}\\ 
+&= \int_{-\infty}^{\infty}f^*(xg)dx\\
+&= \int_{-\infty}^{\infty}x^*f^*gdx\\
+&= \int_{-\infty}^{\infty}(xf)^*gdx\\
+&= \norm{xf}{g} = \norm{\hat{x}f}{g}
+\end{align*}
+note that we assume that $x$ is real or $x^* = x$. For the momentum operator 
+$$\hat{p} = \frac{\hbar}{i}\frac{\partial}{\partial x}$$
+we say that (using equation \ref{IntPart})
+\begin{align*}
+\norm{f}{\hat{p}g} &= \int_{-\infty}^{\infty}f^*\frac{\hbar}{i}\frac{\partial g}{\partial x}\\
+&= \cancelto{0}{\frac{\hbar}{i}f^*g|_{-\infty}^{\infty}} - \int_{-\infty}^{\infty}\frac{\hbar}{i}\frac{\partial f^*}{\partial x}g\\
+&= - \int_{-\infty}^{\infty}-\left(\frac{\hbar}{i}\right)^*\frac{\partial f^*}{\partial x}g\\
+&= \int_{-\infty}^{\infty}\left(\frac{\hbar}{i}\frac{\partial f}{\partial x}\right)^*g\\
+&= \norm{\hat{p}f}{g}
+\end{align*}
+Note that we assume again that $f$ and $g$ are normalizable. Given the step operator 
+$$a_+ = \frac{1}{\sqrt{2\hbar m\omega}}(-ip+m\omega x)$$
+we can see that the hermitian conjugate is 
+$$a_+^{\dagger} = \frac{1}{\sqrt{2\hbar m\omega}}(+ip+m\omega x)$$
+which is also $a_-$.
+
+\item
+Given the operator $(\hat{A}\hat{B})^{\dagger}$ by equation \ref{hermcon} we can see that
+\begin{align*}
+\norm{(\hat{A}\hat{B})^{\dagger}f}{g} &= \norm{f}{\hat{A}\hat{B}g}\\
+&= \norm{\hat{A}^{\dagger}f}{\hat{B}g}\\
+&= \norm{\hat{B}^{\dagger}\hat{A}^{\dagger}f}{g}
+\end{align*}
+This implies that $(\hat{A}\hat{B})^{\dagger} = \hat{B}^{\dagger}\hat{A}^{\dagger}$. So if we now assume that $\hat{A}$ and $\hat{B}$ are hermitian this implies that
+$$\norm{f}{\hat{A}\hat{B}g} = \norm{\hat{B}\hat{A}}{f}$$
+so for the product $\hat{A}\hat{B}$ to be a hermitian it has to commute or
+$$\hat{A}\hat{B} = \hat{B}\hat{A}$$
+
+\end{enumerate}
+
+\end{document}
+

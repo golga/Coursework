@@ -1,0 +1,239 @@
+\documentclass[11pt]{article}
+
+\usepackage{latexsym}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{enumerate}
+\usepackage{amsmath}
+\usepackage{cancel}
+\numberwithin{equation}{section}
+
+\setlength{\evensidemargin}{.25in}
+\setlength{\oddsidemargin}{-.25in}
+\setlength{\topmargin}{-.75in}
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{9.5in}
+\newcommand{\due}{February 5th, 2010}
+\newcommand{\HWnum}{3}
+\newcommand{\grad}{\bold\nabla}
+\newcommand{\vecE}{\vec{E}}
+\newcommand{\scrptR}{\vec{\mathfrak{R}}}
+\newcommand{\kapa}{\frac{1}{4\pi\epsilon_0}}
+\newcommand{\emf}{\mathcal{E}}
+
+\begin{document}
+\input{../title.tex}
+
+\section{Problem \#1}
+\begin{enumerate}[(a)]
+\item 
+We start with \emph{Faraday's Law} which states
+\begin{equation}
+\oint\vec{E}\cdot d\vec{l} = -\frac{d\Phi_B}{dt}
+\label{flux}
+\end{equation}
+where $\Phi_B$ is the magnetic flux which is given as
+$$\Phi_B(t) = \alpha t$$
+and 
+$$\frac{d\Phi_B(t)}{dt} = \alpha$$
+So if we take the closed loop integral we can see that
+$$\oint\vecE\cdot d\vec{l} = V_1-V_2$$
+so now if we apply \emph{Ohm's Law} 
+\begin{equation}
+V = IR
+\label{ohms}
+\end{equation}
+we see that $V_1 = IR_1$ and $V_2 = -IR_2$. Note that $V_2$ has current flowing in the opposite direction so we have a negative sign. Now we can say that
+$$\oint\vecE\cdot d\vec{l} = IR_1+IR_2$$
+So now if we apply equation \ref{flux} and solve for the current we get
+\begin{align*}
+\oint\vec{E}\cdot d\vec{l} &= -\frac{d\Phi_B}{dt}\\
+I(R_1+R_2) &= -\alpha\\
+I &= -\frac{\alpha}{R_1+R_2}
+\end{align*}
+So now we replace $I$ in our expressions of $V_1$ and $V_2$ and we get
+$$V_1 = -\frac{\alpha R_1}{R_1+R_2}$$
+$$V_2 = \frac{\alpha R_2}{R_1+R_2}$$
+
+\item
+We get different reading for each of the voltmeters in part (a). This is possible because of equation \ref{flux}. Normally if we go around a closed loop our change in voltage is zero, but we longer have a conservative field and the path of travel matters. So going from point $A$ to point $B$ will change depending of which path you choose.
+
+\item
+If we treat the induced electromotive forces as if they were batteries we can analyze the circuit using \emph{Kirchoff's Laws}. So we can say that the left loop is represented by
+$$-\emf_1 = I_1R_1+I_1R_2+I_2R_2$$
+and the right loop is represented by
+$$-\emf_2 = I_2R_3+I_2R_2+I_1R_2$$
+Where we know $R_1 = 6$, $R_2=3$, and $R_3=5$ and we can calculate the emfs as
+\begin{align*}
+\emf_1 &= (100)\pi(0.1)^2\\
+&= \pi
+\end{align*}
+\begin{align*}
+\emf_2 &= (100)\pi(0.15)^2\\
+&= 2.25\pi
+\end{align*}
+so our equations become
+\begin{align*}
+-\emf_1 &= I_1(R_1+R_2)+I_2R_2\\
+-\pi &= 9I_1+3I_2
+\end{align*}
+\begin{align*}
+-\emf_2 = I_2R_3+I_2R_2+I_1R_2\\
+-2.25\pi = 8I_2+3I_1
+\end{align*}
+Now we have a system of equations with 2 unknowns which we can write as a matrix
+$$\left(\begin{array}{cc|r}
+	9	&3	&-\pi\\	
+	3	&8	&-2.25\pi	
+	\end{array}\right)$$
+Now we can perform row reductions to get the solutions for $I_1$ and $I_2$. First $-3r_2+r_1\rightarrow r_1$
+$$\left(\begin{array}{cc|r}
+	0	&-21	&-\pi-6.75\pi = -5.75\pi\\	
+	3	&8	&-2.25\pi	
+	\end{array}\right)$$
+Next $(-1/21)r_1\rightarrow r_1$
+$$\left(\begin{array}{cc|r}
+	0	&1	&-(5.75/21)\pi\\	
+	3	&8	&-2.25\pi	
+	\end{array}\right)$$
+then $-8r_1+r_2\rightarrow r_2$
+$$\left(\begin{array}{cc|r}
+	0	&1	&(5.75/21)\pi\approx0.86\\	
+	3	&0	&2.25\pi - (8*5.75/21)\pi\approx0.19
+	\end{array}\right)$$
+and finally $(1/3)r_2\rightarrow r_2$
+$$\left(\begin{array}{cc|r}
+	0	&1	&-0.86\\	
+	1	&0	&-0.063
+	\end{array}\right)$$
+Now we see that the current through $R_1$ is $-0.063\ A$ and the current through $R_3$ is $-0.86\ A$ and if we say that the total current though $R_2$ is $-I_1-I_2$ we see that the current through $R_2$ is $0.92\ A$.
+\end{enumerate}
+
+\section{Problem \#2}
+\begin{enumerate}[(a)]
+\item
+We know that the force per unit charge, $\vec{f}$ on the plasma is due to the \emph{Lorenz Force} which is given by
+\begin{equation}
+\vec{f} = \vec{E}+\vec{B}\times\vec{v}
+\label{lorenz}
+\end{equation}
+So in this situation we see that the force from the magnetic field is 
+\begin{align*}
+\vec{f}_s &= \vec{B}\times\vec{v}\\
+&= B_0\hat{x}\times v_z\hat{z}\\
+&= B_0\hat{x}v_z\hat{y}
+\end{align*}
+Now we assume that the force due to the electric field is only smooths out the flow of the plasma. Now we can use the relation 
+\begin{equation}
+V = \int_a^b\vec{f}_s\cdot d\vec{l}
+\label{potdiff}
+\end{equation}
+So if we apply equation \ref{potdiff} 
+\begin{align*}
+V &= \int_a^b\vec{f}_s\cdot d\vec{l}\\
+&= \int_0^{\Delta y}B_0v_z\hat{y}\cdot dy\hat{y}\\
+&= B_0v_z\Delta y
+\end{align*}
+
+\item
+To find the current driven through the load resistor $R$ we use \emph{Ohm's Law} given by equation \ref{ohms}. So we need to find the resistance through the plasma which is represented by $R$. So we know that resistance is given by
+\begin{equation}
+R = \frac{l}{\sigma A}
+\label{equation}
+\end{equation}
+where $l$ is the length the current travels, $A$ is the cross-sectional area, and $\sigma$ is the conductivity. So we can find the resistance of the plasma by
+\begin{align*}
+R &= \frac{l}{\sigma A}\\
+&= \frac{\Delta y}{\sigma \Delta x\Delta z}
+\end{align*}
+Note that the length $l$ is $\Delta y$ because we found that the current is flowing in the $\hat{y}$ direction. So now we can solve equation \ref{ohms} to find the current $I$
+\begin{align*}
+I &= \frac{V}{R}\\
+&= B_0v_z\Delta y\frac{\sigma \Delta x\Delta z}{\Delta y}\\
+&= B_0v_z\sigma \Delta x\Delta z
+\end{align*}
+\end{enumerate}
+
+\section{Problem \#3}
+If we look at \emph{Faraday's Law}
+\begin{equation}
+\grad\times\vec{E} = -\frac{\partial B}{\partial t}
+\label{Faraday}
+\end{equation}
+and \emph{Amp\'{e}re's Law}
+\begin{equation}
+\grad\times\vec{B} = \mu_0\vec{J}
+\label{Faraday}
+\end{equation}
+we see that they are almost the same. So if assume that
+$$\vec{B} \rightarrow \vec{E}$$
+$$\mu_0\vec{J}\rightarrow-\frac{\partial B}{\partial t}$$
+Now we can see that the toroidal coil is analogous to a finding the magnetic field above the center of a loop of radius $a$ carrying a steady current (example 5.6 on Griffith's page 218). From here the magnetic field is given by
+$$B(z) = \frac{\mu_0}{4\pi}I\int\frac{dl'}{\scrptR^2}\cos(\theta)$$
+Note that this equation is in terms of $I$ and not $J$, but we know that if we multiply $J$ by the cross-sectional area we get the current. So if we do the same for the magnetic field we get a magnetic flux. This implies that
+$$\mu_0I\rightarrow\frac{\partial \Phi_B}{\partial t}$$
+So we can say that
+$$E(z) = -\frac{1}{4\pi}\frac{\partial \Phi_B}{\partial t}\int\frac{dl'}{\scrptR^2}\cos(\theta)$$
+Where we know that the magnetic field from a toroidal coil is
+$$\vec{B} = \frac{\mu_0NI(t)}{2\pi a}$$
+we see that the only time dependent function in $\vec{B}$ is $I(t)$ and we are given 
+$$\frac{\partial I}{\partial t} = k$$
+so we can say that
+$$\frac{\partial \Phi_B}{\partial t} = \frac{\mu_0Nk}{2\pi a}wh$$
+so now our integral becomes
+\begin{align*}
+E(z) &= -\frac{1}{4\pi}\frac{\mu_0Nk}{2\pi a}wh\int\frac{dl'}{\scrptR^2}\cos(\theta)\\
+&= -\frac{1}{4\pi}\frac{\mu_0Nk}{2\pi a}wh\frac{2\pi a}{\scrptR^2}\cos(\theta)\\
+&= -\frac{\mu_0Nkwh}{4\pi(a^2+z^2)^2}\cos(\theta)\\
+&= -\frac{\mu_0Nkwh}{4\pi(a^2+z^2)^2}\frac{a}{\sqrt{a^2+z^2}}\\
+\vec{E} &= -\frac{\mu_0Nhawk}{4\pi(a^2+z^2)^{3/2}}\hat{z}
+\end{align*}
+
+\section{Problem \#4}
+\begin{enumerate}[(a)]
+\item
+To find the electromotive force we first need to find the magnetic flux through the loop. Magnetic flux is defined as
+$$\Phi_B = \int_S\vec{B}\cdot d\vec{a}$$
+We are given the magnetic field as
+$$\vec{B} = B\cos(\omega t+\alpha)\hat{x}$$
+and now the area vector is changing in time due to the changing angle $\phi(t)$. We see that the components of the area vector $\vec{A}$ can by written as
+$$\vec{A} = A\cos(\phi(t)-\pi/2)\hat{x} + A\sin(\phi(t) - \pi/2)\hat{y}$$
+Note that we can pull out the $\pi/2$ term by flipping the sines to cosines and vise versa. So
+$$\vec{A} = A\sin(\phi(t))\hat{x} + A\cos(\phi(t))\hat{y}$$
+So now we can find the magnetic flux
+\begin{align*}
+\Phi_B &= \int_S\vec{B}\cdot d\vec{a}\\
+&= \int_SB\cos(\omega t+\alpha)\hat{x}\cdot\left(da\sin(\phi(t))\hat{x} + da\cos(\phi(t))\hat{y}\right)\\
+&= \int_SB\cos(\omega t+\alpha)\sin(\phi(t))da\\
+&= B\cos(\omega t+\alpha)\sin(\omega t + \phi_0)\int_Sda\\
+&= BA\cos(\omega t+\alpha)\sin(\omega t + \phi_0)
+\end{align*}
+Note that $A$ is the area of our loop. Now we know that the electromotive force is given by
+\begin{equation}
+\emf = -\frac{d\Phi_B}{dt}
+\label{EMF}
+\end{equation}
+So we can find the first time derivative of the flux as
+\begin{align*}
+\frac{d\Phi_B}{dt} &= BA\frac{d}{dt}\left(\cos(\omega t+\alpha)\sin(\omega t + \phi_0)\right)\\
+&= BA\left(-\sin(\omega t+\alpha)\omega\sin(\omega t + \phi_0)+\cos(\omega t+\alpha)\cos(\omega t + \phi_0)\omega\right)\\
+&= BA\omega\left(\cos(\omega t+\alpha)\cos(\omega t + \phi_0)-\sin(\omega t+\alpha)\sin(\omega t + \phi_0)\right)
+\end{align*}
+Now if we use the trig identity 
+$$\cos(\alpha+\beta) = \cos(\alpha)\cos(\beta)-\sin(\alpha)\sin(\beta)$$
+and equation \ref{EMF} we see that our electromotive force is 
+\begin{align*}
+\emf &= -\frac{d\Phi_B}{dt}\\
+&= -BA\omega\left(\cos(\omega t+\alpha)\cos(\omega t + \phi_0)-\sin(\omega t+\alpha)\sin(\omega t + \phi_0)\right)\\
+&= -BA\omega\left(\cos(\omega t+\alpha+\omega t + \phi_0)\right)\\
+&= -BA\omega\cos(2\omega t+\alpha+\phi_0)
+\end{align*}
+
+\item
+We see that if we want the electromotive force to be zero for all time $t$ we need to make the $\cos(2\omega t+\alpha+\phi_0)$ term to be zero for all $t$. For this to be true we see that
+$$\frac{\pi}{2} = 2\omega t+\alpha+\phi_0$$
+would have to be true for all $t$. This is not possible if $\alpha$ and $\phi_0$ are constant. So it is not possible to make the induced emf to always be zero.
+\end{enumerate}
+
+\end{document}
+

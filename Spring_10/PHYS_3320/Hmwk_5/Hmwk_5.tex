@@ -1,0 +1,346 @@
+\documentclass[11pt]{article}
+
+\usepackage{latexsym}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{enumerate}
+\usepackage{amsmath}
+\usepackage{cancel}
+\numberwithin{equation}{section}
+
+\setlength{\evensidemargin}{.25in}
+\setlength{\oddsidemargin}{-.25in}
+\setlength{\topmargin}{-.75in}
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{9.5in}
+\newcommand{\due}{February 25th, 2010}
+\newcommand{\HWnum}{5}
+\newcommand{\grad}{\bold\nabla}
+\newcommand{\vecE}{\vec{E}}
+\newcommand{\scrptR}{\vec{\mathfrak{R}}}
+\newcommand{\kapa}{\frac{1}{4\pi\epsilon_0}}
+\newcommand{\emf}{\mathcal{E}}
+
+\begin{document}
+\input{../title.tex}
+
+\section{Problem \#1}
+\begin{enumerate}[(a)]
+\item
+If we use the \emph{Kirchoff's Law} for the voltage across a closed loop we can say that
+$$V_0 = IR+\frac{Q}{C}+L\frac{dI}{dt}$$
+but we are trying to find a function for the voltage across the capacitor which we know is 
+$$V_C = \frac{Q}{C}$$
+now can find the relation between $V_C$ and the current $I$ we can say
+\begin{align*}
+Q &= CV_C\\
+\frac{dQ}{dt} &= I = C\frac{dV_C}{dt}
+\end{align*}
+So if we replace the current in terms of $V_C$ we can get a differential equation for $V_C$ so
+\begin{align*}
+0 &= -V_0 + IR + \frac{Q}{C} + L\frac{dI}{dt}\\
+0 &= -V_0 + RC\frac{dV_C}{dt} + V_C+LC\frac{d^2V_C}{dt^2}
+\end{align*}
+Now we can solve the homogeneous equation 
+$$0 =  \frac{R}{L}\frac{dV_C}{dt} + \frac{1}{LC}V_C+\frac{d^2V_C}{dt^2}$$
+We can say the solution is of the form $V_C = e^{st}$ so we can say 
+\begin{align*}
+s^2 + \frac{R}{L}s+\frac{1}{LC} &= 0\\
+\end{align*}
+We can use the \emph{Quadratic Formula} to find $s$ as
+$$s_{\pm} = -\frac{1}{2}\frac{R}{L}\pm\frac{1}{2}\sqrt{\frac{R^2}{L^2}-4\frac{1}{LC}}$$
+So we can say that the homogeneous solution is
+$$V_{Cp} = Ae^{s_-t}+Be^{s_+t}$$
+Now we see that the particular solution is just the constant $V_0$ so the general solutions is 
+$$V_{C} = Ae^{s_-t}+Be^{s_+t} + V_0$$
+Now if we apply the initial conditions $V_C(0) = 0$ and $\frac{dV_C(0)}{dt}=0$ we see that
+\begin{align*}
+V_{C}(0) = 0 &= Ae^{s_-0}+Be^{s_+0} + V_0\\
+0 &= A+B + V_0\\
+-V_0 &= A+B 
+\end{align*}
+And
+\begin{align*}
+\frac{dV_{C}(0)}{dt} = 0 &= As_-e^{s_-0}+Bs_+e^{s_+0}\\
+0 &= As_-+Bs_+\\
+0 &= As_-+(-A-V_0)s_+\\
+0 &= As_- - As_+ - V_0s_+\\
+As_- - As_+ &= V_0s_+\\
+A &= \frac{V_0s_+}{s_- -s_+}
+\end{align*}
+And we can find $B$ as
+\begin{align*}
+B &= -A - V_0\\
+&= -\frac{V_0s_+}{s_- -s_+} - V_0\\
+&= -V_0\left(\frac{s_+}{s_- -s_+} +1\right)\\
+&= -V_0\left(\frac{s_+ s_- - s_+}{s_- -s_+}\right)\\
+&= -\frac{V_0s_-}{s_- -s_+}
+\end{align*}
+So we can say that
+$$V_C(t) = \frac{V_0s_+}{s_- -s_+}e^{s_-t}-\frac{V_0s_-}{s_- -s_+}e^{s_+t}+V_0$$
+
+\item
+If we apply \emph{Ohm's Law}
+\begin{equation}
+V = IR
+\end{equation}
+Where in this case the $R$ is the impedance of the circuit so if we solve for the current we see that
+$$I = \frac{V}{R+i\omega L + \frac{1}{i\omega C}}$$
+Now if we take the voltage as $V = V_0\sin(\omega t)=V_0e^{i\omega t}$ and we rationalize the denominator we can say
+\begin{align*}
+I &= \frac{V_0e^{i\omega t}}{R+i\omega L - \frac{i}{\omega C}}\\
+&= \frac{V_0e^{i\omega t}}{R+i\left(\omega L - \frac{1}{\omega C}\right)}\\
+&= \frac{V_0e^{i\omega t}}{R+i\left(\omega L - \frac{1}{\omega C}\right)} \frac{R-i\left(\omega L - \frac{1}{\omega C}\right)}{R-i\left(\omega L - \frac{1}{\omega C}\right)}\\
+&= \frac{V_0e^{i\omega t}\left(R-i\left(\omega L - \frac{1}{\omega C}\right)\right)}{R^2+\left(\omega L - \frac{1}{\omega C}\right)^2} \\
+&= \frac{V_0(\cos(\omega t)+i\sin(\omega t))\left(R-i\left(\omega L - \frac{1}{\omega C}\right)\right)}{R^2+\left(\omega L - \frac{1}{\omega C}\right)^2} \\
+&= \frac{V_0\left(R\cos(\omega t)-i\cos(\omega t)\left(\omega L - \frac{1}{\omega C}\right) + Ri\sin(\omega t)+\sin(\omega t)\left(\omega L - \frac{1}{\omega C}\right)\right)}{R^2+\left(\omega L - \frac{1}{\omega C}\right)^2} 
+\end{align*}
+If we take the imaginary part of the current we see that we get
+$$I = \frac{V_0\left(R\sin(\omega t)-\cos(\omega t)\left(\omega L - \frac{1}{\omega C}\right)\right)}{R^2+\left(\omega L - \frac{1}{\omega C}\right)^2} $$
+\end{enumerate}
+See attached for the sketch of this function.
+
+\section{Problem \#2}
+\begin{enumerate}[(a)]
+\item
+To find the force on the rod we first want to find the total energy stored in the magnetic field using
+\begin{equation}
+W = \frac{1}{2\mu_0}\int_{all\ space}B^2d\tau
+\label{BEnergy}
+\end{equation}
+So to use equation \ref{BEnergy} we need to find the magnetic everywhere. We know that $\vec{B} = 0$ outside of the solenoid and using \emph{Amp\`{e}re's Law}
+\begin{equation}
+\oint \vec{B}\cdot d\vec{l} = \mu_0 I_{enc}
+\label{AmpLaw}
+\end{equation}
+we can find the magnetic field inside the solenoid where there is no rod as
+\begin{align*}
+\oint \vec{B}\cdot d\vec{l} &= \mu_0 I_{enc}\\
+B\oint dl &= \mu_0 nLI_0\\
+BL &= \mu_0 nLI_0\\
+\vec{B} &= \mu_0 nI_0\hat{z}
+\end{align*}
+Now we need to find the magnetic field inside the rod. To do this we first need to find the $H$ field inside the rod from 
+\begin{equation}
+\oint\vec{H}\cdot d\vec{l} = I_{fenc}
+\label{HAmp}
+\end{equation}
+Where $I_{fenc}$ is the free enclosed current. So we calculate $\vec{H}$ as
+\begin{align*}
+\oint\vec{H}\cdot d\vec{l} &= I_{fenc}\\
+H\oint dl &= nLI_0\\
+HL &= nLI_0\\
+\vec{H} &= nI_0\hat{z}
+\end{align*}
+Now to find the magnetic field from $\vec{H}$ we use the fact that it is a linear material and that
+\begin{equation}
+\vec{B} = \mu\vec{H}
+\label{LinH}
+\end{equation}
+So we see that the magnetic field inside the rod is given by
+$$\vec{B}_{rod} = \mu nI_0$$
+Now we know the magnetic field over all space so we can calculate the energy in the field from equation \ref{BEnergy}
+\begin{align*}
+W &= \frac{1}{2\mu_0}\int_{all\ space}B^2d\tau\\
+&= \frac{1}{2\mu_0}\int_0^Rsds\int_0^{2\pi}d\phi\int_0^{L}B_{rod}^2dz+\int_L^{L_1}B^2dz\\
+&= \frac{\pi R^2}{2\mu_0}\int_0^{L}(\mu nI_0)^2dz+\int_L^{L_1}(\mu_0nI_0)^2dz\\
+&= \frac{\pi R^2n^2I_0^2}{2\mu_0}(\mu^2 L + \mu_0^2L_1-\mu_0^2L)
+\end{align*}
+Now we have the total energy with the rod in the solenoid. Now we need to find the energy before the rod is inserted from equation \ref{BEnergy}
+\begin{align*}
+W_0 &= \frac{1}{2\mu_0}\int_{all\ space}B^2d\tau\\
+&= \frac{1}{2\mu_0}\int_0^Rsds\int_0^{2\pi}d\phi\int_0^{L_1}B^2dz\\
+&= \frac{\pi R^2}{2\mu_0}\int_0^{L_1}(\mu_0nI_0)^2dz\\
+&= \frac{\pi R^2n^2I_0^2}{2\mu_0}\mu_0^2L_1
+\end{align*}
+Now if we find the change in energy from $W_0$ to $W$ we get
+\begin{align*}
+W-W_0 &= \frac{\pi R^2n^2I_0^2}{2\mu_0}(\mu^2 L + \mu_0^2L_1-\mu_0^2L) - \frac{\pi R^2n^2I_0^2}{2\mu_0}\mu_0^2L_1\\
+&= \frac{\pi R^2n^2I_0^2}{2\mu_0}\left(\mu^2 L + \mu_0^2L_1 - \mu_0^2L - \mu_0^2L_1\right)\\
+&= \frac{\pi R^2n^2I_0^2}{2\mu_0}L\left(\mu^2 - \mu_0^2\right)\\
+&= \frac{\pi R^2n^2I_0^2}{2\mu_0}L\mu_0^2\left((1+\chi_m)^2 - 1\right)\\
+&= \frac{\pi R^2n^2I_0^2\mu_0}{2}L\left((1+\chi_m)^2 - 1\right)
+\end{align*}
+Note that we used the definition $\mu\equiv\mu_0(1+\chi_m)$. Now we know that the force is related to the change in energy by
+\begin{equation}
+W = \int\vec{F}\cdot d\vec{l}
+\label{Work}
+\end{equation}
+Where we assume that the force and $d\vec{l}$ are both pointing in the $\hat{z}$ direction so equation \ref{Work} yields
+\begin{align*}
+W & = \int\vec{F}\cdot d\vec{l}\\
+& = F\int_0^L dz\\
+& = FL
+\end{align*}
+So we see that the force is given by
+$$F = \frac{W}{L}$$
+and we have found the total energy in the system so the magnitude of the force is given by
+$$F = \frac{\pi R^2n^2I_0^2\mu_0}{2}\left((1+\chi_m)^2 - 1\right)$$
+
+\item
+We see that the magnitude of the force is positive so it moves in the positive $\hat{z}$ direction which we defined as into the solenoid. So the rod moves into the solenoid. Note that difference between a diamagnetic or paramagnetic material is that $\chi_m$ changes signs. But $\chi_m$ is very small so we assume that the term 
+$$\left((1+\chi_m)^2 - 1\right)$$
+will not change signs if $\chi_m$ changes signs so the direction of the force will not change is the material changes from diamagnetic to paramagnetic. 
+\end{enumerate}
+
+\section{Problem \#3}
+\begin{enumerate}[(a)]
+\item
+Using equation \ref{AmpLaw} we can find the magnetic field inside the coaxial cable using and Amp\`{e}rian loop of radius $s$. Note we are assuming that each cylinder is carrying current, $I$, that has the same magnitude, but opposite direction.
+\begin{align*}
+\oint\vec{B}\cdot dl &= \mu_0 I\\
+B(2\pi s) &= \mu_0 I\\
+\vec{B} &= \frac{\mu_0 I}{2\pi s}\hat{\phi}
+\end{align*}
+Now if we find the total work using equation \ref{BEnergy}
+\begin{align*}
+W &= \frac{1}{2\mu_0}\int_V B^2 d\tau\\
+&= \frac{1}{2\mu_0}\int_a^b\int_0^{2\pi}\int_0^l \left(\frac{\mu_0 I}{2\pi s}\right)^2 sdsd\phi dz\\
+&= \frac{\mu_0 I^2}{8\pi^2}\int_a^b\int_0^{2\pi}\int_0^l \frac{1}{s} dsd\phi dz\\
+&= \frac{\mu_0 I^2}{8\pi^2}2\pi l\int_a^b \frac{1}{s} ds\\
+&= \frac{\mu_0 I^2}{8\pi^2}2\pi l\left(\ln(s)\right|_a^b \\
+&= \frac{\mu_0 I^2}{8\pi^2}2\pi l\left(\ln(b)-\ln(a)\right) \\
+&= \frac{\mu_0 I^2 l}{4\pi}\ln\left(\frac{b}{a}\right)
+\end{align*}
+Now if we use the relation between work and inductance
+\begin{equation}
+W = \frac{1}{2}LI^2
+\label{WorkInduct}
+\end{equation}
+We see that the $I^2$ terms cancel and we are left with 
+$$\frac{L}{l} = \frac{\mu_0}{2\pi}\ln\left(\frac{b}{a}\right)$$
+Which is the self inductance per length.
+
+\item
+If we start with \emph{Faraday's Law}
+\begin{equation}
+\oint\vec{E}\cdot d\vec{l} = -\frac{d\Phi}{dt}
+\label{FaraLaw}
+\end{equation}
+where we pick out loop as a square that runs along the $\hat{s}$ from $s$ to $d$ where $d$ is outside the coaxial cable. And has a length $l$ along the $\hat{z}$ direction. Note that the area vector of this loop points in the $\hat{\phi}$ direction. So assuming that our current is given by $I(t) = I_0\cos(\omega t)$ we can find the flux through this loop as
+\begin{align*} 
+\Phi &= \oint\vec{B}\cdot d\vec{a}\\
+&= \int_0^l\int_s^{b}\frac{\mu_0 I_0\cos(\omega t)}{2\pi s}\hat{\phi}\cdot dsdz\hat{\phi}\\
+&= \frac{\mu_0 I_0\cos(\omega t)}{2\pi}\int_s^{b}\int_0^l\frac{1}{s}dsdz\\
+&= \frac{\mu_0 I_0\cos(\omega t)}{2\pi}l\int_s^{b}\frac{1}{s}ds\\
+&= \frac{\mu_0 I_0\cos(\omega t)}{2\pi}l\ln\left(\frac{b}{s}\right)
+\end{align*} 
+Now if we apply equation \ref{FaraLaw} we note the similarity between current flowing around a solenoid and the magnetic field pointing down the solenoid so we say that the electric field points in the $\hat{z}$ direction.
+\begin{align*}
+\oint\vec{E}\cdot d\vec{l} &= -\frac{d\Phi}{dt}\\
+\cancelto{0}{E(d)l}-E(s)l &= -\frac{\mu_0 I_0}{2\pi}l\ln\left(\frac{b}{s}\right)\frac{d}{dt}\cos(\omega t)\\
+-E(s)l &= \frac{\mu_0 I_0\omega}{2\pi}l\ln\left(\frac{b}{s}\right)\sin(\omega t)\\
+\vec{E}(s) &= \frac{\mu_0 I_0\omega}{2\pi}\ln\left(\frac{s}{b}\right)\sin(\omega t)\hat{z}\\
+\end{align*}
+
+\item
+If we use the definition of the displacement current density 
+\begin{equation}
+\vec{J}_d\equiv\epsilon_0\frac{\partial \vec{E}}{\partial t}
+\label{DisCurr}
+\end{equation}
+So equation \ref{DisCurr} gives us
+\begin{align*}
+\vec{J}_d&\equiv\epsilon_0\frac{\partial \vec{E}}{\partial t}\\
+&= \epsilon_0\frac{\mu_0 I_0\omega}{2\pi}\ln\left(\frac{s}{b}\right)\hat{z}\frac{\partial}{\partial t}\sin(\omega t)\\
+&= \epsilon_0\frac{\mu_0 I_0\omega^2}{2\pi}\ln\left(\frac{s}{b}\right)\cos(\omega t)\hat{z}
+\end{align*}
+Now to find the displacement current we need to integrate over the perpendicular area so
+\begin{align*}
+I_d &= \oint J_dda\\
+ &= \int_a^b\int_0^{2\pi}\epsilon_0\frac{\mu_0 I_0\omega^2}{2\pi}\ln\left(\frac{s}{b}\right)\cos(\omega t)sdsd\phi\\
+ &= \epsilon_0\mu_0 I_0\omega^2\cos(\omega t)\int_a^b\ln\left(\frac{s}{b}\right)sds\\
+ &= \epsilon_0\mu_0 I_0\omega^2\cos(\omega t)\left(\frac{-s^2}{4}+\frac{1}{2}s^2\ln\left(\frac{s}{b}\right)\right|_a^b\\
+ &= \epsilon_0\mu_0 I_0\omega^2\cos(\omega t)\left(\frac{-b^2}{4}+\frac{1}{2}b^2\ln\left(\frac{b}{b}\right) + \frac{a^2}{4}-\frac{1}{2}a^2\ln\left(\frac{a}{b}\right)\right)\\
+ &= \epsilon_0\mu_0 I_0\omega^2\cos(\omega t)\left(\frac{a^2}{4} - \frac{b^2}{4} - \frac{1}{2}a^2\ln\left(\frac{a}{b}\right)\right)
+\end{align*}
+So we see that $I_d$ is proportional to $I_0$. Assuming $b=4\ mm$ and $a= 0.1\ mm$ at $t=0$ we see that
+\begin{align*}
+I_d &= \epsilon_0\mu_0 I_0\omega^2\cos(\omega 0)\left(\frac{a^2}{4} - \frac{b^2}{4} - \frac{1}{2}a^2\ln\left(\frac{a}{b}\right)\right)\\
+I_d &= \epsilon_0\mu_0 I_0\omega^2\left(\frac{(0.0001)^2}{4} - \frac{(0.004)^2}{4} - \frac{1}{2}(0.0001)^2\ln\left(\frac{0.1}{4}\right)\right)\\
+I_d &= -4.4\times10^{-23}\omega^2I_0
+\end{align*}
+So we can see that $I_d$ and $I_0$ run it opposite directions. So if we want $I_d$ to be $5\%$ of $I_0$ we have to say
+\begin{align*}
+4.4\times10^{-23}\omega^2 &= 0.05\\
+\omega &= \sqrt{\frac{0.05}{4.4\times10^{-23}}}\\
+&= 3.3\times10^{10}\ Hz
+\end{align*}
+We see that we need a vary large frequency for $I_d$ to have an effect.
+\end{enumerate}
+
+\section{Problem \#4}
+\begin{enumerate}[(a)]
+\item
+To find the capacitance of the coaxial cable lets assume that the inner wire has a linear charge distribution $\lambda$ we can find the electric field inside the wires from \emph{Gauss' Law} note that we assume $\lambda$ is constant in time.
+\begin{equation}
+\oint\vec{E}\cdot d\vec{a} = \frac{Q_{enc}}{\epsilon_0}
+\label{Gauss}
+\end{equation}
+So we can use equation \ref{Gauss} to say
+\begin{align*}
+E\oint da &= \frac{\lambda l}{\epsilon_0}\\
+E(2\pi s l) &= \frac{\lambda l}{\epsilon_0}\\
+\vec{E} &= \frac{\lambda}{2\pi\epsilon_0 s}\hat{s}
+\end{align*}
+Now we need to find the difference in potential from the inner cylinder to the outer cylinder by using 
+\begin{equation}
+V = -\int\vec{E}\cdot d\vec{l}
+\label{Pot}
+\end{equation}
+So if we apply equation \ref{Pot} we get
+\begin{align*}
+V &= -\int_a^b\frac{\lambda}{2\pi\epsilon_0 s}\hat{s}\cdot ds\hat{s}\\
+&= -\frac{\lambda}{2\pi\epsilon_0}\int_a^b\frac{1}{s}ds\\
+&= \frac{\lambda}{2\pi\epsilon_0}\ln\left(\frac{b}{a}\right)
+\end{align*}
+Now we use the definition of capacitance 
+\begin{equation}
+C\equiv\frac{Q}{V}
+\label{Capac}
+\end{equation}
+Where $Q=\lambda l$ so
+\begin{align*}
+C &= \lambda l\frac{2\pi\epsilon_0}{\lambda}\frac{1}{\ln(b/a)}\\
+\frac{C}{l} &= \frac{2\pi\epsilon_0}{\ln(b/a)}
+\end{align*}
+Now if we take the product of the capacitance and the inductance from problem 3 part (a) we see that
+\begin{align*}
+\frac{C}{l}\frac{L}{l} &= \frac{2\pi\epsilon_0}{\ln(b/a)}\frac{\mu_0}{2\pi}\ln(b/a)\\
+&= \epsilon_0\mu_0 = \frac{1}{c^2}
+\end{align*}
+Note that $c$ is the speed of light.
+
+\item
+We assume that the currents and net charge in both shells cancel each other (the coax cable in neutral), so we can say that the magnetic and electric field is zero everywhere except for $a<s<b$. Note that we neglect the areas inside the shell and wire since we assume they are very small. We found the electric field in part (a) as
+$$\vec{E} = \frac{\lambda}{2\pi\epsilon_0 s}\hat{s}$$
+And if we apply \emph{Amp\`{e}re's Law} we can say that
+\begin{align*}
+\oint\vec{B}\cdot d\vec{l} &= \mu_0 I_{enc}\\
+B\oint dl &= \mu_0 I\\
+B(2\pi s) &= \mu_0 I\\
+\vec{B} &= \frac{\mu_0 I}{2\pi s}\hat{\phi}
+\end{align*}
+
+\item
+To calculate the Poynting vector $\vec{S}$ we say
+\begin{align*}
+\vec{S} &= \frac{1}{\mu_0}\vec{E}\times\vec{B}\\
+&= \frac{1}{\mu_0}\frac{\lambda}{2\pi\epsilon_0 s}\hat{s}\times\frac{\mu_0 I}{2\pi s}\hat{\phi}\\
+&= \frac{1}{\mu_0}\frac{\lambda}{2\pi\epsilon_0 s}\frac{\mu_0 I}{2\pi s}\hat{s}\times\hat{\phi}\\
+&= \frac{\lambda I}{4\pi^2\epsilon_0 s^2}\hat{z}
+\end{align*}
+Yes we see that the power density is moving along the length of the coaxial cable. If we want to find the power that is flowing down the wire we need to integrate over the cross-sectional area
+\begin{align*}
+P &= \oint\vec{S}\cdot d\vec{a}\\
+&= \int_a^b\int_0^{2\pi}\frac{\lambda I}{4\pi^2\epsilon_0 s^2}\hat{z}\cdot sdsd\phi\hat{z}\\
+&= \int_a^b\int_0^{2\pi}\frac{\lambda I}{4\pi^2\epsilon_0 s^2}sdsd\phi\\
+&= 2\pi\frac{\lambda I}{4\pi^2\epsilon_0}\int_a^b\frac{1}{s}ds\\
+&= \frac{\lambda I}{2\pi\epsilon_0}\ln(b/a)
+\end{align*}
+Now we see that we have the $V$ we found from before so we can say that
+$$P = IV$$
+\end{enumerate}
+
+\end{document}
+

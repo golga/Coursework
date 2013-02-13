@@ -1,0 +1,410 @@
+\documentclass[11pt]{article}
+
+\usepackage{latexsym}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{enumerate}
+\usepackage{amsmath}
+\usepackage{cancel}
+\numberwithin{equation}{section}
+
+\setlength{\evensidemargin}{.25in}
+\setlength{\oddsidemargin}{-.25in}
+\setlength{\topmargin}{-.75in}
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{9.5in}
+\newcommand{\due}{March 17th, 2010}
+\newcommand{\HWnum}{9}
+\newcommand{\grad}{\bold\nabla}
+\newcommand{\vecE}{\vec{E}}
+\newcommand{\scrptR}{\vec{\mathfrak{R}}}
+\newcommand{\kapa}{\frac{1}{4\pi\epsilon_0}}
+\newcommand{\expt}[1]{\langle{#1}\rangle}
+\newcommand{\ket}[1]{|{#1}\rangle}
+\newcommand{\bra}[1]{\langle{#1}|}
+\newcommand{\norm}[2]{\langle{#1}|{#2}\rangle}
+
+\begin{document}
+\input{../title.tex}
+
+\section{Problem \#1}
+\begin{enumerate}[(a)]
+\item
+To show that 
+$$|\norm{A}{B}|^2\le\norm{A}{A}\norm{B}{B}$$
+we can define a new ket $C$ as
+$$\ket{C}\equiv\ket{B}-\left(\frac{\norm{A}{B}}{\norm{A}{A}}\right)\ket{A}$$
+Now we know that $\norm{C}{C}$ is going to be a positive quantity no matter what $\ket{C}$ my be so we can say that
+$$\norm{C}{C}\ge 0$$
+Now we can find $\norm{C}{C}$ in terms of $\ket{A}$ and $\ket{B}$
+\begin{align*}
+\norm{C}{C} &=\bra{C}\left(\ket{B}-\left(\frac{\norm{A}{B}}{\norm{A}{A}}\right)\ket{A}\right)\\
+&=\norm{C}{B}-\left(\frac{\norm{A}{B}}{\norm{A}{A}}\right)\norm{C}{A}
+\end{align*}
+Now we know generally that $\norm{\alpha}{\beta}$ is a complex number with a complex conjugate $\norm{\beta}{\alpha}$ or $\norm{\alpha}{\beta}^*=\norm{\beta}{\alpha}$. So we can say that
+\begin{align*}
+\norm{C}{B}^* &= \norm{B}{C}\\
+&= \bra{B}\left(\ket{B}-\left(\frac{\norm{A}{B}}{\norm{A}{A}}\right)\ket{A}\right)\\
+&= \norm{B}{B}-\left(\frac{\norm{A}{B}}{\norm{A}{A}}\right)\norm{B}{A}\\
+&= \norm{B}{B}-\left(\frac{\norm{A}{B}\norm{A}{B}^*}{\norm{A}{A}}\right)\\
+&= \norm{B}{B}-\left(\frac{|\norm{A}{B}|^2}{\norm{A}{A}}\right)
+\end{align*}
+Now we can know that $|\norm{A}{B}|^2$ is real and so is $\norm{\alpha}{\alpha}$ for any $\alpha$. So this implies that $\norm{C}{B}^*$ is real valued therefore $\norm{C}{B}^* = \norm{C}{B}$ or $\norm{B}{C} = \norm{C}{B}$. So we can say that 
+$$\norm{C}{B} = \norm{B}{B}-\left(\frac{|\norm{A}{B}|^2}{\norm{A}{A}}\right)$$
+Now we can find $\norm{C}{A}$ using the same technique 
+\begin{align*}
+\norm{C}{A}^* &= \norm{A}{C}\\
+&= \bra{A}\left(\ket{B}-\left(\frac{\norm{A}{B}}{\norm{A}{A}}\right)\ket{A}\right)\\
+&= \norm{A}{B}-\left(\frac{\norm{A}{B}}{\norm{A}{A}}\right)\norm{A}{A}\\
+&= \norm{A}{B}-\norm{A}{B}\\
+&= 0
+\end{align*}
+Now we can say that 0 is real valued so we can say that
+$$\norm{C}{A} = 0$$
+So we can say that $\norm{C}{C}$ is
+\begin{align*}
+\norm{C}{C} &=\norm{C}{B}-\left(\frac{\norm{A}{B}}{\norm{A}{A}}\right)\cancelto{0}{\norm{C}{A}}\\
+&= \norm{C}{B}\\
+&= \norm{B}{B}-\left(\frac{|\norm{A}{B}|^2}{\norm{A}{A}}\right)
+\end{align*}
+Now if we apply the fact that $\norm{C}{C}$ has to be positive we can say that
+\begin{align*}
+0 &\le \norm{C}{C}\\
+0 &\le \norm{B}{B}-\left(\frac{|\norm{A}{B}|^2}{\norm{A}{A}}\right)\\
+\norm{B}{B} &\ge \left(\frac{|\norm{A}{B}|^2}{\norm{A}{A}}\right)\\
+\norm{B}{B}\norm{A}{A} &\ge |\norm{A}{B}|^2
+\end{align*}
+So we are left with the \emph{Schwartz inequality}
+\begin{equation}
+|\norm{A}{B}|^2 \le \norm{A}{A}\norm{B}{B}
+\label{Schaw}
+\end{equation}
+
+\item
+The \emph{Schwartz inequality} (equation \ref{Schaw}) is an important condition for the definition of an angle between two kets 
+$$\cos(\theta) \equiv \sqrt{\frac{\norm{A}{B}\norm{B}{A}}{\norm{A}{A}\norm{B}{B}}}$$
+If equation \ref{Schaw} was not true then the term 
+$$\sqrt{\frac{\norm{A}{B}\norm{B}{A}}{\norm{A}{A}\norm{B}{B}}}$$
+could be greater than one. This causes a contradiction for $\cos(\theta)$ is only valued between $[-1,1]$. SO we see that due to \emph{Schwartz inequality} the definition of $\cos(\theta)$ is possible.
+
+We can see that for a normal two dimensional vector this definition of $\cos(\theta)$ is just like the scaler definition of the dot product.
+$$\vec{A}\cdot\vec{B} = |A||B|\cos(\theta)$$
+where the we can see that $|A|^2 = \norm{A}{A}$ and $|B|^2 = \norm{B}{B}$. And the dot product is like the inner products or 
+$$(\vec{A}\cdot\vec{B})^2 = \norm{A}{B}\norm{B}{A}$$
+So with this equalities we get the usual definition of the angle between two vectors.
+\end{enumerate}
+
+\section{Problem \#2}
+\begin{enumerate}[(a)]
+\item
+Given the operator $\hat{Q} = \dfrac{\partial^2}{\partial\phi^2}$ we can see if it is hermitian by saying
+\begin{align*}
+\norm{f}{\hat{Q}f} &= \int_{-\infty}^{\infty}f^*\frac{\partial^2f}{\partial\phi^2}d\phi
+\end{align*}
+Now if we apply \emph{integration by parts}
+\begin{equation}
+\int u\frac{dv}{dx}dx = uv - \int v\frac{du}{dx}dx
+\label{IntPart}
+\end{equation}
+Where we can say that 
+$$u = f^*;\ du = \frac{\partial f^*}{\partial\phi}$$
+and
+$$dv = \frac{\partial^2f}{\partial\phi^2};\ v= \frac{\partial f}{\partial\phi}$$
+So equation \ref{IntPart} yields
+\begin{align*}
+\int_{-\infty}^{\infty}f^*\frac{\partial^2f}{\partial\phi^2}d\phi &= \left.f^*\frac{\partial f}{\partial\phi}\right|_{-\infty}^{\infty} - \int_{-\infty}^{\infty}\frac{\partial f^*}{\partial\phi}\frac{\partial f}{\partial\phi}d\phi\\
+&=  -\int_{-\infty}^{\infty}\frac{\partial f^*}{\partial\phi}\frac{\partial f}{\partial\phi}d\phi
+\end{align*}
+Now we apply equation \ref{IntPart} where
+$$u = \frac{\partial f^*}{\partial\phi};\ du = \frac{\partial^2f^*}{\partial\phi^2}$$
+and
+$$dv = \frac{\partial f}{\partial\phi};\ v = f$$
+so 
+\begin{align*}
+-\int_{-\infty}^{\infty}\frac{\partial f^*}{\partial\phi}\frac{\partial f}{\partial\phi}d\phi &= -\left.\frac{\partial f^*}{\partial\phi}f\right|_{-\infty}^{\infty} + \int_{-\infty}^{\infty} \frac{\partial^2f^*}{\partial\phi^2}fd\phi\\
+&= \int_{-\infty}^{\infty} \frac{\partial^2f^*}{\partial\phi^2}fd\phi\\
+&= \norm{\hat{Q}f}{f}
+\end{align*}
+So we see that $\hat{Q}$ is hermitian.
+
+\item
+To find the eigenvalues and eigenfuctions of $\hat{Q}$ need to find a function that satisfies 
+$$\frac{\partial^2}{\partial\phi^2}f(\phi) = lf(\phi)$$
+where $l$ is the eigenvalue. So we can see that if $f(\phi) = Ae^{il\phi}$ then
+\begin{align*}
+\frac{\partial^2}{\partial\phi^2} Ae^{il\phi} &= \frac{\partial}{\partial\phi} Aile^{il\phi}\\ 
+&= -Al^2e^{il\phi}
+\end{align*}
+So we see that $f(\phi) = e^{il\phi}$ is the eigenfuction of $\hat{Q}$ with an eigenvalue of $-l^2$ where $l$ is any real number. Note that $e^{l\phi}$ is also an eigenfuction but we assume that $f(\phi+2\pi) = f(\phi)$ and this does not hold true for $e^{l\phi}$.
+
+\item
+Since this is a free particle the Hamiltonian operator $\hat{H}$ is
+$$\hat{H} = -\frac{\hbar^2}{2m}\frac{\partial^2}{\partial x^2}$$
+now we know that the relation between length and arc-length is
+$$x = R\phi$$
+So from this equality we see that
+$$\frac{\partial^2}{\partial x} = R\frac{\partial^2}{\partial\phi^2}$$
+so we see that $\hat{H}$ becomes
+\begin{align*}
+\hat{H} &= -\frac{\hbar^2}{2m}\frac{\partial^2}{\partial x^2}\\
+\hat{H} &= -\frac{\hbar^2R}{2m}\frac{\partial^2}{\partial\phi^2}\\
+\hat{H} &= -\frac{\hbar^2R}{2m}\hat{Q}
+\end{align*}
+\end{enumerate}
+
+\section{Problem \#3}
+\begin{enumerate}[(a)]
+\item
+To show that $[A+B,C] = [A,C]+[B,C]$ we will multiply by a function $f(x)$.
+\begin{align*}
+[A+B,C]f(x) &= (A+B)Cf(x) - C(A+B)f(x)\\
+&= (A+B)Cf(x) - C(Af(x)+Bf(x))\\
+&= ACf(x)+BCf(x) - CAf(x) - CBf(x))\\
+&= ACf(x)- CAf(x) + CBf(x)) - CBf(x))\\
+&= (AC- CA)f(x) + CB - CB)f(x))\\
+&= [A,C]f(x) + [B,C]f(x))\\
+[A+B,C] &= [A,C] + [B,C]
+\end{align*}
+
+\item
+\begin{align*}
+[AB,C]f(x) &= (AB)Cf(x) - C(AB)f(x)\\
+&= ABCf(x) - CABf(x) + ACBf(x) - ACBf(x)\\
+&= ABCf(x) - ACBf(x) + ACBf(x)- CABf(x)  \\
+&= A(BC - CB)f(x) + (AC- CA)Bf(x)  \\
+&= A[B,C]f(x) + [A,C]Bf(x)  \\
+[AB,C] &= A[B,C] + [A,C]B 
+\end{align*}
+
+\item
+\begin{align*}
+[f(x),p]g(x) &= \left[f(x), \frac{\hbar}{i}\frac{\partial}{\partial x}\right]g(x)\\
+&= f(x)\frac{\hbar}{i}\frac{\partial}{\partial x}g(x) - \frac{\hbar}{i}\frac{\partial}{\partial x}f(x)g(x)\\
+&= f(x)\frac{\hbar}{i}\frac{\partial g(x)}{\partial x} - \frac{\hbar}{i}\frac{\partial f(x)}{\partial x}g(x) - f(x)\frac{\hbar}{i}\frac{\partial g(x)}{\partial x}\\
+&=  - \frac{\hbar}{i}\frac{\partial f(x)}{\partial x}g(x) \\
+[f(x),p] &= i\hbar \frac{\partial f(x)}{\partial x} 
+\end{align*}
+
+\item
+Given the definition of the Hamiltonian operator 
+$$\hat{H} = \frac{\hat{p}^2}{2m}+V(\hat{x})$$
+We can find the commuter of $\hat{H}$ and $\hat{p}$
+\begin{align*}
+[\hat{H},\hat{p}]f(x) &= \hat{H}\hat{p}f(x) - \hat{p}\hat{H}f(x)\\
+&= \left(\frac{\hat{p}^2}{2m}+V(\hat{x})\right)\frac{\hbar}{i}\frac{\partial}{\partial x}f(x) - \frac{\hbar}{i}\frac{\partial}{\partial x}\left(\frac{\hat{p}^2}{2m}+V(\hat{x})\right)f(x)\\
+&= \left(-\frac{\hbar^2}{2m}\frac{\partial^2}{\partial x^2}+V(\hat{x})\right)\frac{\hbar}{i}\frac{\partial f}{\partial x} - \frac{\hbar}{i}\frac{\partial}{\partial x}\left(-\frac{\hbar^2}{2m}\frac{\partial^2}{\partial x^2}+V(\hat{x})\right)f(x)\\
+&= -\frac{\hbar^2}{2m}\frac{\partial^2}{\partial x^2}\frac{\hbar}{i}\frac{\partial f}{\partial x}+V(\hat{x})\frac{\hbar}{i}\frac{\partial f}{\partial x} - \frac{\hbar}{i}\frac{\partial}{\partial x}\left(-\frac{\hbar^2}{2m}\frac{\partial^2f}{\partial x^2}+V(\hat{x})f(x)\right)\\
+&= -\frac{\hbar^3}{2mi}\frac{\partial^3f}{\partial x^3}+V(\hat{x})\frac{\hbar}{i}\frac{\partial f}{\partial x} + \frac{\hbar^3}{2mi}\frac{\partial^3f}{\partial x^3} - \frac{\hbar}{i}\frac{\partial}{\partial x}V(\hat{x})f(x)\\
+&= V(\hat{x})\frac{\hbar}{i}\frac{\partial f}{\partial x}  -\frac{\hbar}{i}\frac{\partial V}{\partial x}f(x)-\frac{\hbar}{i}\frac{\partial f}{\partial x}V(\hat{x})\\
+&=  -\frac{\hbar}{i}\frac{\partial V}{\partial x}f(x)\\
+[\hat{H},\hat{p}] &=  i\hbar\frac{\partial V}{\partial x}
+\end{align*}
+
+\item
+\begin{align*}
+[\hat{H},\hat{x}]f(x) &= \hat{H}\hat{x}f(x) - \hat{x}\hat{H}f(x)\\
+&=  \left(-\frac{\hbar^2}{2m}\frac{\partial^2}{\partial x^2}+V(\hat{x})\right)xf(x) - x\left(-\frac{\hbar^2}{2m}\frac{\partial^2}{\partial x^2}+V(\hat{x})\right)f(x)\\
+&=  -\frac{\hbar^2}{2m}\frac{\partial^2}{\partial x^2}xf(x)+V(\hat{x})xf(x) - x\left(-\frac{\hbar^2}{2m}\frac{\partial^2}{\partial x^2}f(x)+V(\hat{x})f(x)\right)\\
+&=  -\frac{\hbar^2}{2m}\frac{\partial}{\partial x}\left(\frac{\partial f}{\partial x}x + f(x) \right)+V(\hat{x})xf(x) - x\left(-\frac{\hbar^2}{2m}\frac{\partial^2f}{\partial x^2}+V(\hat{x})f(x)\right)\\
+&=  -\frac{\hbar^2}{2m}\left(\frac{\partial^2 f}{\partial x^2}x + \frac{\partial f}{\partial x} + \frac{\partial f}{\partial x}\right)+V(\hat{x})xf(x) - x\left(-\frac{\hbar^2}{2m}\frac{\partial^2f}{\partial x^2}+V(\hat{x})f(x)\right)\\
+&=  -\frac{\hbar^2}{2m}\frac{\partial^2 f}{\partial x^2}x -\frac{\hbar^2}{m}\frac{\partial f}{\partial x} + V(\hat{x})xf(x) +\frac{\hbar^2}{2m}\frac{\partial^2f}{\partial x^2}x- V(\hat{x})xf(x)\\
+&=  -\frac{\hbar^2}{m}\frac{\partial f}{\partial x} 
+\end{align*}
+We can check our answer by using the relation
+\begin{equation}
+\frac{d}{dt}\expt{Q} = \frac{i}{\hbar}\expt{[\hat{H},\hat{Q}]}+\left\langle\frac{\partial\hat{Q}}{\partial t}\right\rangle
+\label{Hamil}
+\end{equation}
+so for $\hat{x}$ equation \ref{Hamil} says
+\begin{align*}
+\frac{d}{dt}\expt{x} &= \frac{i}{\hbar}\expt{[\hat{H},\hat{x}]}+\left\langle\frac{\partial\hat{x}}{\partial t}\right\rangle\\
+&= \frac{i}{\hbar}\left\langle-\frac{\hbar^2}{m}\frac{\partial f}{\partial x}\right\rangle+\left\langle\frac{\partial\hat{x}}{\partial t}\right\rangle\\
+&= \left\langle\frac{\hbar}{im}\frac{\partial f}{\partial x}\right\rangle+\left\langle\frac{\partial\hat{x}}{\partial t}\right\rangle\\
+&= \left\langle\frac{\hat{p}}{m}\right\rangle+\left\langle\frac{\partial\hat{x}}{\partial t}\right\rangle
+\end{align*}
+
+\item
+For two dimensions we have a momentum operator for each dimension. For $x$ we have
+$$\hat{p_x} = \frac{\hbar}{i}\frac{\partial}{\partial x}$$
+and for $y$
+$$\hat{p_y} = \frac{\hbar}{i}\frac{\partial}{\partial y}$$
+So we can find how well these commute 
+\begin{align*}
+[\hat{p_x},\hat{p_y}]f(x,y) &= \hat{p_x}\hat{p_y}f(x,y) - \hat{p_y}\hat{p_x}f(x,y)\\
+&=  \frac{\hbar}{i}\frac{\partial}{\partial x}\frac{\hbar}{i}\frac{\partial}{\partial y}f(x,y) - \frac{\hbar}{i}\frac{\partial}{\partial y}\frac{\hbar}{i}\frac{\partial}{\partial x}f(x,y)\\ 
+&=  -\hbar^2\frac{\partial}{\partial x}\frac{\partial f}{\partial y} + \hbar^2\frac{\partial}{\partial y}\frac{\partial f}{\partial x}\\
+&=  -\hbar^2\frac{\partial^2 f}{\partial x\partial y} + \hbar^2\frac{\partial^2 f}{\partial y\partial x}
+\end{align*}
+Note that we know that 
+$$\frac{\partial^2 f}{\partial x\partial y} = \frac{\partial^2 f}{\partial y\partial x}$$
+So 
+$$[\hat{p_x},\hat{p_y}] = 0$$
+\end{enumerate}
+
+\section{Problem \#4}
+\begin{enumerate}[(a)]
+\item
+Given the wave functions
+$$\psi_1 = \frac{2}{3}\phi_1+\frac{\sqrt{5}}{3}\phi_2$$
+and
+$$\psi_2 = -\frac{\sqrt{5}}{3}\phi_1+\frac{2}{3}\phi_2$$
+where $\phi_n$ is the $n$th eigenfunction of an observable $\hat{B}$ and $\phi_n$ is the $n$th eigenfunction of an observable $\hat{A}$. So if we assume that $\phi_n$ is normalized we find if $\phi_n$ is normalized.
+\begin{align*}
+\int_{-\infty}^{\infty}\psi_1^*\psi_1dx &= \int_{-\infty}^{\infty}\left(\frac{2}{3}\phi_1^*+\frac{\sqrt{5}}{3}\phi_2^*\right)\left(\frac{2}{3}\phi_1+\frac{\sqrt{5}}{3}\phi_2\right) dx\\
+&= \int_{-\infty}^{\infty}\frac{4}{9}\phi_1^*\phi_1+\frac{5}{9}\phi_2^*\phi_2 + \frac{2\sqrt{5}}{9}\phi_1\phi_2^*+\frac{2\sqrt{5}}{9}\phi_1^*\phi_2 dx\\
+&= \int_{-\infty}^{\infty}\frac{4}{9}|\phi_1|^2+\frac{5}{9}|\phi_2|^2dx \\
+&= \frac{4}{9}\int_{-\infty}^{\infty}|\phi_1|^2dx+\frac{5}{9}\int_{-\infty}^{\infty}|\phi_2|^2dx \\
+&= \frac{4}{9}+\frac{5}{9} \\
+&= 1
+\end{align*}
+Note that because $\phi_n$ forms an orthogonal basis so $\phi_1^*\phi_2 = 0$. So for $\phi_2$ we have
+\begin{align*}
+\int_{-\infty}^{\infty}\psi_2^*\psi_2dx &= \int_{-\infty}^{\infty}\left(-\frac{\sqrt{5}}{3}\phi_1^*+\frac{2}{3}\phi_2^*\right)\left(-\frac{\sqrt{5}}{3}\phi_1+\frac{2}{3}\phi_2\right)dx\\
+&= \int_{-\infty}^{\infty}\frac{5}{9}\phi_1^*\phi_1 + \frac{4}{9}\phi_2^*\phi_2 - \frac{2\sqrt{5}}{9}\phi_2^*\phi_1+\frac{2\sqrt{5}}{9}\phi_1^*\phi_2dx\\
+&= \frac{5}{9}\int_{-\infty}^{\infty}|\phi_1|^2dx + \frac{4}{9}\int_{-\infty}^{\infty}|\phi_2|^2dx\\
+&= \frac{5}{9} + \frac{4}{9}\\
+&= 1
+\end{align*}
+So given the fact that $\phi_1$ and $\phi_2$ are normalized we see that $\psi_1$ and $\psi_2$ are also normalized.
+
+\item
+If we measure $\hat{A}$ in a random state and find that the measurement $a_1$ where $a_1$ is an eigenvalue of $\psi_1$. We know that immediately after this measurement the system is in the $\psi_1$ state. 
+
+\item
+Now if we measure $\hat{B}$ we have a chance of measuring both $b_1$ and $b_2$, where $b_1$ and $b_2$ are eigenvalues of $\phi_1$ and $\phi_2$ respectively. Also note that from 
+$$\psi_1 = \frac{2}{3}\phi_1+\frac{\sqrt{5}}{3}\phi_2$$
+we see that we have a $4/9$ probability of finding $b_1$ and a $5/9$ probability of finding $b_2$.
+
+\item
+\begin{enumerate}[i]
+\item
+Now if we measure $\hat{B}$ and find the value $b_1$ we now are in the state of $\phi_1$. Now to find what would happen if we measured $\hat{A}$ we have to write $\phi_1$ in terms of $\psi_n$. We see that from
+$$\psi_1 = \frac{2}{3}\phi_1+\frac{\sqrt{5}}{3}\phi_2$$
+if we solve for $\phi_1$ we get
+$$\phi_1 = -\frac{\sqrt{5}}{2}\phi_2 + \frac{3}{2}\psi_1$$
+And if we solve 
+$$\psi_2 = -\frac{\sqrt{5}}{3}\phi_1+\frac{2}{3}\phi_2$$
+in terms of $\phi_2$ we get
+$$\phi_2 = \frac{\sqrt{5}}{2}\phi_1 + \frac{3}{2}\psi_2$$
+Now we can replace $\phi_2$ in the equation for $\phi_1$ to get
+\begin{align*}
+\phi_1 &= -\frac{\sqrt{5}}{2}\left(\frac{\sqrt{5}}{2}\phi_1 + \frac{3}{2}\psi_2\right) + \frac{3}{2}\psi_1\\
+\phi_1 &= -\frac{5}{4}\phi_1 - \frac{3\sqrt{5}}{4}\psi_2 + \frac{3}{2}\psi_1\\
+\phi_1  +\frac{5}{4}\phi_1 &= - \frac{3\sqrt{5}}{4}\psi_2 + \frac{3}{2}\psi_1\\
+\frac{9}{4}\phi_1 &= -\frac{3\sqrt{5}}{4}\psi_2 + \frac{3}{2}\psi_1\\
+\phi_1 &= -\frac{4}{9}\frac{3\sqrt{5}}{4}\psi_2 + \frac{4}{9}\frac{3}{2}\psi_1\\
+\phi_1 &= -\frac{\sqrt{5}}{3}\psi_2 + \frac{2}{3}\psi_1
+\end{align*}
+So we see that if we were to measure $\hat{A}$ again we would measure $a_1$ with a probability of $4/9$.
+
+\item
+First we need to find $\phi_2$ in terms of $\psi_1$ and $\psi_2$ by saying
+\begin{align*}
+\phi_2 &= \frac{\sqrt{5}}{2}\phi_1 + \frac{3}{2}\psi_2\\
+\phi_2 &= \frac{\sqrt{5}}{2}\left(-\frac{\sqrt{5}}{2}\phi_2 + \frac{3}{2}\psi_1\right) + \frac{3}{2}\psi_2\\
+\phi_2 &= -\frac{5}{4}\phi_2 + \frac{3\sqrt{5}}{4}\psi_1 + \frac{3}{2}\psi_2\\
+\phi_2 +\frac{5}{4}\phi_2 &=  \frac{3\sqrt{5}}{4}\psi_1 + \frac{3}{2}\psi_2\\
+\frac{9}{4}\phi_2 &=  \frac{3\sqrt{5}}{4}\psi_1 + \frac{3}{2}\psi_2\\
+\phi_2 &=  \frac{4}{9}\frac{3\sqrt{5}}{4}\psi_1 + \frac{4}{9}\frac{3}{2}\psi_2\\
+\phi_2 &=  \frac{\sqrt{5}}{3}\psi_1 + \frac{2}{3}\psi_2
+\end{align*}
+Now if we measure $\hat{B}$ we are either in $\phi_1$ or $\phi_2$ but we don't know so the probability of finding $a_1$ is the probability of being in $\phi_1$ and measuring $a_1$ which is
+$$\frac{4}{9}\frac{2}{9} = \frac{8}{81}$$
+plus the probability of being in $\phi_2$ and finding $a_1$ which is
+$$\frac{5}{9}\frac{5}{9} = \frac{25}{81}$$
+So the total chance of finding $a_1$ is
+$$\frac{8}{81}+\frac{25}{81} = \frac{33}{81} = \frac{11}{27}$$
+
+\item
+If we measure $\hat{A}$ initially and find $a_1$ and at a later time we measure the system again we will find $a_1$ again with 100\% certainty since the wave function is in the eigenvector of $\psi_1$.
+\end{enumerate}
+
+We see that $\hat{A}$ and $\hat{B}$ commute because we can measure them in either order and we will still get the same probability of finding each eigenvalue. Note that doing this is only possible in quantum mechanics. Classically measurements will not effect the state and will not change future measurements. 
+\end{enumerate}
+
+\section{Problem \#5}
+\begin{enumerate}[(a)]
+\item
+We see that the wave function at $t=0$ is a sum of the eigenfunctions of the operator $\hat{H}$ of the expanded square well
+$$\Psi(x,0) = \sum_{n=0}^{\infty}c_n\sqrt{\frac{2}{L}}\sin\left(\frac{n\pi}{L}x\right)$$
+we can find the expectation value of the energy of the expanded well by saying that 
+\begin{align*}
+\expt{E} &= \int_{-\infty}^{\infty}\Psi(x,0)^*\hat{H}\Psi(x,0)dx\\
+&= -\frac{2}{L}\frac{\hbar^2}{2m}\sum_{n=0}^{\infty}c_n^*c_n\int_{0}^{L}\sin\left(\frac{n\pi}{L}x\right)\frac{\partial^2}{\partial x^2}\sin\left(\dfrac{n\pi}{L}x\right)dx\\
+&= -\frac{2}{L}\frac{\hbar^2}{2m}\sum_{n=0}^{\infty}|c_n|^2\int_{0}^{L}\sin\left(\frac{n\pi}{L}x\right)\left(-\sin\left(\frac{n\pi}{L}x\right)\frac{n^2\pi^2}{L^2}\right)dx\\
+&= \sum_{n=0}^{\infty}\frac{2}{L}\frac{\hbar^2}{2m}\frac{n^2\pi^2}{L^2}|c_n|^2\int_{0}^{L}\sin^2\left(\frac{n\pi}{L}x\right)dx\\
+&= \sum_{n=0}^{\infty}\frac{n^2\pi^2\hbar^2}{mL^3}|c_n|^2\frac{1}{2}\int_{0}^{L}1-\cos\left(\frac{2n\pi}{L}x\right)dx\\
+&= \sum_{n=0}^{\infty}\frac{n^2\pi^2\hbar^2}{2mL^3}|c_n|^2\left(L-\int_{0}^{L}\cos\left(\frac{2n\pi}{L}x\right)dx\right)\\
+&= \sum_{n=0}^{\infty}\frac{n^2\pi^2\hbar^2}{2mL^3}|c_n|^2\left(L-\frac{L}{2n\pi}\left.\sin\left(\frac{2n\pi}{L}x\right)\right|_0^L\right)\\
+&= \sum_{n=0}^{\infty}\frac{n^2\pi^2\hbar^2}{2mL^3}|c_n|^2\left(L-\frac{L}{2n\pi}\sin\left(\frac{2n\pi}{L}L\right)\right)\\
+&= \sum_{n=0}^{\infty}\frac{n^2\pi^2\hbar^2}{2mL^3}|c_n|^2\left(L-\frac{L}{2n\pi}\sin\left(2n\pi\right)\right)\\
+&= \sum_{n=0}^{\infty}\frac{n^2\pi^2\hbar^2}{2mL^3}|c_n|^2L\\
+&= \sum_{n=0}^{\infty}\frac{n^2\pi^2\hbar^2}{2mL^2}|c_n|^2
+\end{align*}
+Note that the first energy level of the smaller square well is given by
+$$E_1 = \frac{\pi^2\hbar^2}{2m(L/2)^2} = \frac{2\pi^2\hbar^2}{L^2m}$$
+this is smaller than the energy we found, which makes sense because it required energy to expand the potential from $L/2$ to $L$.
+
+\item
+Now we know that the wavefunction in this well is given by
+$$\Psi(x,0) = \sum_{n=1}^{\infty}c_n\psi_n(x)$$
+where $\psi_n(x)$ are the eigenfunctions of $\hat{H}$ so the probability of finding the particle at each energy level is $|c_n|^2$ so we can find $c_n$ from
+\begin{equation}
+c_n = \int\psi_n(x)^*f(x)dx
+\label{cn}
+\end{equation}
+So we can calculate $c_n$ using equation \ref{cn} where 
+$$f(x) = \dfrac{2}{\sqrt{L}}\sin\left(\frac{2\pi}{L}x\right)$$
+So we find that
+\begin{align*}
+c_n &= \int\psi_n(x)^*f(x)dx\\
+&= \int_{0}^{L/2}\sqrt{\frac{2}{L}}\sin\left(\frac{n\pi}{L}x\right)\dfrac{2}{\sqrt{L}}\sin\left(\frac{2\pi}{L}x\right)dx\\
+&= \frac{2\sqrt{2}}{L}\int_{0}^{L/2}\cos\left(\frac{n\pi}{L}x-\frac{2\pi}{L}x\right)-\cos\left(\frac{n\pi}{L}x+\frac{2\pi}{L}x\right)dx\\
+&= \frac{2\sqrt{2}}{L}\frac{1}{2}\int_{0}^{L/2}\cos\left(\frac{\pi}{L}(n-2)x\right)-\cos\left(\frac{\pi}{L}(n+2)x\right)dx\\
+&= \frac{\sqrt{2}}{L}\left(\left.\frac{L}{\pi(n-2)}\sin\left(\frac{\pi}{L}(n-2)x\right)\right|_{0}^{L/2}-\left.\frac{L}{\pi(n+2)}\sin\left(\frac{\pi}{L}(n+2)x\right)\right|_{0}^{L/2}\right)\\
+&= \frac{\sqrt{2}}{L}\left(\frac{L}{\pi(n-2)}\sin\left(\frac{\pi}{L}(n-2)\frac{L}{2}\right)-\frac{L}{\pi(n+2)}\sin\left(\frac{\pi}{L}(n+2)\frac{L}{2}\right)\right)\\
+&= \frac{\sqrt{2}}{L}\left(\frac{L}{\pi(n-2)}\sin\left(\frac{n\pi}{2} - \pi\right)-\frac{L}{\pi(n+2)}\sin\left(\frac{n\pi}{2} + \pi\right)\right)\\
+&= \frac{\sqrt{2}}{\pi}\sin\left(\frac{n\pi}{2}\right)\left(\frac{1}{n-2}-\frac{1}{n+2}\right)
+\end{align*}
+Now to find the probability of finding the energy at $E_n$ is 
+\begin{align*}
+|c_n|^2 &= c_n^*c_n\\
+&= \frac{\sqrt{2}}{\pi}\sin\left(\frac{n\pi}{2}\right)\left(\frac{1}{n-2}-\frac{1}{n+2}\right)\frac{\sqrt{2}}{\pi}\sin\left(\frac{n\pi}{2}\right)\left(\frac{1}{n-2}-\frac{1}{n+2}\right)\\
+&= \frac{2}{\pi^2}\sin^2\left(\frac{n\pi}{2}\right)\left(\frac{1}{n-2}-\frac{1}{n+2}\right)^2
+\end{align*}
+Note that this does not work for $n=2$ so we find $c_2$ directly from equation \ref{cn}
+\begin{align*}
+c_2 &= \int\psi_2(x)^*f(x)dx\\
+&= \int_{0}^{L/2}\sqrt{\frac{2}{L}}\sin\left(\frac{2\pi}{L}x\right)\dfrac{2}{\sqrt{L}}\sin\left(\frac{2\pi}{L}x\right)dx\\
+&= \frac{2\sqrt{2}}{L}\int_{0}^{L/2}\sin^2\left(\frac{2\pi}{L}x\right)dx\\
+&= \frac{2\sqrt{2}}{L}\frac{1}{2}\int_{0}^{L/2}1-\cos\left(\frac{4\pi}{L}x\right)dx\\
+&= \frac{\sqrt{2}}{L}\left(\frac{L}{2}- \int_{0}^{L/2}\cos\left(\frac{4\pi}{L}x\right)dx\right)\\
+&= \frac{\sqrt{2}}{L}\left(\frac{L}{2}- \left.\frac{L}{4\pi}\sin\left(\frac{4\pi}{L}x\right)\right|_{0}^{L/2}\right)\\
+&= \frac{\sqrt{2}}{L}\left(\frac{L}{2}- \frac{L}{4\pi}\sin\left(2\pi\right)\right)\\
+&= \frac{\sqrt{2}}{L}\frac{L}{2}\\
+&= \frac{\sqrt{2}}{2}
+\end{align*}
+
+\item
+So using what we found in part (b) we can find the expectation value of energy by saying
+$$\expt{E} = \sum_{n=0}^{\infty}E_n\textnormal{Prob}(E_n)$$
+where we found that
+$$\textnormal{Prob}(E_n) = |c_n|^2$$
+and we know for an infinite square well the energy is given by
+$$E_n = \frac{n^2\pi^2\hbar^2}{2mL^2}$$
+so for this system $\expt{E}$ is
+\begin{align*}
+\expt{E} &= \sum_{n=0}^{\infty}E_n\textnormal{Prob}(E_n)\\
+&= \sum_{n=0}^{\infty}\frac{n^2\pi^2\hbar^2}{2mL^2}|c_n|^2\\
+&= \frac{32}{9\pi^2}\frac{\pi^2\hbar^2}{2mL^2}+ \frac{1}{2}\frac{4\pi^2\hbar^2}{2mL^2}+\sum_{n=3}^{\infty}\frac{n^2\pi^2\hbar^2}{2mL^2}\frac{2}{\pi^2}\sin^2\left(\frac{n\pi}{2}\right)\left(\frac{1}{n-2}-\frac{1}{n+2}\right)^2\\
+&= \frac{32}{9}\frac{\hbar^2}{2mL^2}+ \frac{\pi^2\hbar^2}{mL^2}+\sum_{n=3}^{\infty}\frac{n^2\hbar^2}{mL^2}\sin^2\left(\frac{n\pi}{2}\right)\left(\frac{1}{n-2}-\frac{1}{n+2}\right)^2
+\end{align*}
+Note that is is the same result we found in part (a) except we have a specific solution for $c_n$.
+
+\item
+Now if we don't measure the wavefunction initially and allow it to evolve over a long time we see that the particle will evolve over time, but it will not end up in a steady state. So even over a long period of time the expectation value of the position will depend on time, but we did not add any energy into the system so the expectation value of the energy is independent of time.
+
+\end{enumerate}
+
+\end{document}
+

@@ -1,0 +1,581 @@
+\documentclass[11pt]{article}
+
+\usepackage{latexsym}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{enumerate}
+\usepackage{amsmath}
+\usepackage{cancel}
+\numberwithin{equation}{section}
+
+\setlength{\evensidemargin}{.25in}
+\setlength{\oddsidemargin}{-.25in}
+\setlength{\topmargin}{-.75in}
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{9.5in}
+\newcommand{\due}{January 3rd, 2010}
+\newcommand{\HWnum}{1}
+\newcommand{\grad}{\bold\nabla}
+\newcommand{\vecE}{\vec{E}}
+\newcommand{\scrptR}{\vec{\mathfrak{R}}}
+\newcommand{\kapa}{\frac{1}{4\pi\epsilon_0}}
+\newcommand{\expt}[1]{\langle{#1}\rangle}
+
+\begin{document}
+\input{../title.tex}
+
+\section{Problem \#1}
+\begin{enumerate}[(a)]
+\item
+Given the definitions 
+$$a_+\equiv \frac{1}{\sqrt{2\hbar m\omega}}(-ip+m\omega x)$$
+and
+$$a_-\equiv \frac{1}{\sqrt{2\hbar m\omega}}(+ip+m\omega x)$$
+We can find that
+$$\hbar\omega\left(a_+a_-+\frac{1}{2}\right)$$ 
+is equal to the Hamiltonian operator for a simple harmonic oscillator $\hat{H}$ which is given by
+\begin{equation}
+\hat{H} = -\frac{\hbar^2}{2m}\frac{\partial^2}{\partial x^2} + \frac{1}{2}m\omega x^2
+\label{hamil}
+\end{equation}
+So we calculate 
+\begin{align*}
+\hbar\omega\left(a_+a_-+\frac{1}{2}\right) &= \hbar\omega\left(\frac{1}{\sqrt{2\hbar m\omega}}(-ip+m\omega x)\frac{1}{\sqrt{2\hbar m\omega}}(+ip+m\omega x) + \frac{1}{2}\right)\\
+&= \hbar\omega\frac{1}{2\hbar m\omega}(-ip+m\omega x)(+ip+m\omega x)+\frac{\hbar\omega}{2} \\
+&= \frac{1}{2m}\left(-i^2p^2+m^2\omega^2 x^2+im\omega xp-im\omega px\right) + \frac{\hbar\omega}{2}\\
+&= \frac{1}{2m}\left(p^2+m^2\omega^2 x^2+im\omega(xp-px)\right) + \frac{\hbar\omega}{2}
+\end{align*}
+Now we see that the term $xp-px$ is special because $p$ is an operator defined by
+\begin{equation}
+\hat{p} = \frac{\hbar}{i}\frac{\partial}{\partial x}
+\label{momen}
+\end{equation}
+So we see from equation \ref{momen} that $\hat{p}$ does not commute and this extra term we define as the \emph{commutator} which is defined as
+\begin{equation}
+[A,B]\equiv AB-BA
+\label{commute}
+\end{equation}
+Now to find the value of $[x,p]$ we multiply it by a function $f(x)$ so we calculate
+\begin{align*}
+[x,p]f(x) &= \left[x\frac{\hbar}{i}\frac{\partial}{\partial x}f(x)-\frac{\hbar}{i}\frac{\partial}{\partial x}xf(x)\right]\\
+&= \frac{\hbar}{i}\left[x\frac{\partial f}{\partial x}-x\frac{\partial f}{\partial x}-f\frac{\partial x}{\partial x}\right]\\
+&= \frac{\hbar}{i}\left[x\frac{\partial f}{\partial x}-x\frac{\partial f}{\partial x}-f\right]\\
+&= -\frac{\hbar}{i}f(x)\\
+[x,p]\cancel{f(x)} &= i\hbar \cancel{f(x)}\\
+[x,p] &= i\hbar
+\end{align*}
+So now we replace $[x,p]$ for $xp-px$ to get
+\begin{align*}
+\frac{1}{2m}\left(p^2+m^2\omega^2 x^2+im\omega(xp-px)\right) + \frac{\hbar\omega}{2} &= \frac{1}{2m}\left(p^2+m^2\omega^2 x^2+im\omega[x,p]\right) + \frac{\hbar\omega}{2}\\
+&= \frac{p^2}{2m}+\frac{1}{2}m\omega^2 x^2+\frac{1}{2}i\omega(i\hbar) + \frac{\hbar\omega}{2}\\
+&= \frac{p^2}{2m}+\frac{1}{2}m\omega^2 x^2 - \frac{\hbar\omega}{2} + \frac{\hbar\omega}{2}\\
+&= \frac{p^2}{2m}+\frac{1}{2}m\omega^2 x^2 \\
+&= \frac{1}{2m}\left(\frac{\hbar}{i}\frac{\partial}{\partial x}\right)^2+\frac{1}{2}m\omega^2 x^2 \\
+&= \frac{1}{2m}\frac{\hbar^2}{i^2}\frac{\partial^2}{\partial x^2}+\frac{1}{2}m\omega^2 x^2 \\
+&= -\frac{\hbar^2}{2m}\frac{\partial^2}{\partial x^2}+\frac{1}{2}m\omega^2 x^2 
+\end{align*}
+Note that this is the same as equation \ref{hamil}. Now for the opposite multiplication of $a_-$ and $a_+$ we get
+\begin{align*}
+\hbar\omega\left(a_-a_+-\frac{1}{2}\right) &= \hbar\omega\left(\frac{1}{\sqrt{2\hbar m\omega}}(+ip+m\omega x)\frac{1}{\sqrt{2\hbar m\omega}}(-ip+m\omega x) - \frac{1}{2}\right)\\
+&= \hbar\omega\frac{1}{2\hbar m\omega}(+ip+m\omega x)(-ip+m\omega x)-\frac{\hbar\omega}{2} \\
+&= \frac{1}{2m}\left(-i^2p^2+m^2\omega^2 x^2+im\omega px-im\omega xp\right) - \frac{\hbar\omega}{2}\\
+&= \frac{1}{2m}\left(p^2+m^2\omega^2 x^2+im\omega(px-xp)\right) - \frac{\hbar\omega}{2}\\
+&= \frac{1}{2m}\left(p^2+m^2\omega^2 x^2+im\omega[p,x]\right) - \frac{\hbar\omega}{2}\\
+&= \frac{1}{2m}\left(p^2+m^2\omega^2 x^2 - im\omega[x,p]\right) - \frac{\hbar\omega}{2}\\
+&= \frac{p^2}{2m}+\frac{1}{2}m\omega^2 x^2 - \frac{1}{2}i\omega(i\hbar) - \frac{\hbar\omega}{2}\\
+&= \frac{p^2}{2m}+\frac{1}{2}m\omega^2 x^2 + \frac{\hbar\omega}{2} - \frac{\hbar\omega}{2}\\
+&= -\frac{\hbar^2}{2m}\frac{\partial^2}{\partial x^2}+\frac{1}{2}m\omega^2 x^2 
+\end{align*}
+Note that we use the property of the commutator that $[A,B] = -[B,A]$. Notice that this too is equal to equation \ref{hamil}.
+
+\item
+We know that the energy of the simple harmonic oscillator is given by
+\begin{equation}
+E_n = \hbar\omega(n+1/2)
+\label{energy}
+\end{equation}
+Now we proved in the first part that
+$$a_+a_- = \frac{\hat{H}}{\hbar\omega}-\frac{1}{2}$$
+so if we take the term
+$$a_+a_-u_n = \frac{\hat{H}u_n}{\hbar\omega}-\frac{1}{2}u_n$$
+we see that we have a $\hat{H}u_n$ term and we know from the \emph{Time Independent Schr\"{o}dinger Equation} that
+$$\hat{H}\psi_n(x) = E_n\psi_n(x)$$
+so we see that 
+\begin{align*}
+a_+a_-u_n &= \frac{\hat{H}u_n}{\hbar\omega}-\frac{1}{2}u_n\\
+&= \frac{E_nu_n}{\hbar\omega}-\frac{1}{2}u_n\\
+&= \frac{\hbar\omega(n+1/2)u_n}{\hbar\omega}-\frac{1}{2}u_n\\
+&= (n+1/2)u_n-\frac{1}{2}u_n\\
+&= nu_n+\frac{1}{2}u_n-\frac{1}{2}u_n\\
+&= nu_n
+\end{align*}
+Now if we calculate $a_-a_+u_n$ using the relation we found in part (a) 
+$$a_-a_+ = \frac{\hat{H}}{\hbar\omega}+\frac{1}{2}$$
+so we calculate 
+\begin{align*}
+a_-a_+u_n &= \frac{\hat{H}u_n}{\hbar\omega}+\frac{1}{2}u_n\\
+&= \frac{E_nu_n}{\hbar\omega}+\frac{1}{2}u_n\\
+&= \frac{\hbar\omega(n+1/2)u_n}{\hbar\omega}+\frac{1}{2}u_n\\
+&= (n+1/2)u_n+\frac{1}{2}u_n\\
+&= nu_n+\frac{1}{2}u_n+\frac{1}{2}u_n\\
+&= (n+1)u_n
+\end{align*}
+
+\item
+To show that
+\begin{equation}
+\int_{-\infty}^{\infty}f^*(a_{\pm}g)dx = \int_{-\infty}^{\infty}(a_{\mp}f)^*gdx
+\label{partc}
+\end{equation}
+we can say that
+\begin{align*}
+\int_{-\infty}^{\infty}f^*(a_{\pm}g)dx &= \frac{1}{\sqrt{2\hbar m\omega}}\int_{-\infty}^{\infty}f^*\left(\mp ip+m\omega x\right)gdx\\
+&= \frac{1}{\sqrt{2\hbar m\omega}}\int_{-\infty}^{\infty}f^*\left(\mp i\frac{\hbar}{i}\frac{d}{dx}+m\omega x\right)gdx\\
+&= \frac{1}{\sqrt{2\hbar m\omega}}\int_{-\infty}^{\infty}f^*\left(\mp\hbar\frac{d}{dx}+m\omega x\right)gdx\\
+&= \frac{1}{\sqrt{2\hbar m\omega}}\left(\int_{-\infty}^{\infty}f^*\left(\mp\hbar\frac{dg}{dx}\right)dx+\int_{-\infty}^{\infty}f^*m\omega xgdx\right)
+\end{align*}
+Now we need to use integration by parts to calculate
+$$\mp\hbar\int_{-\infty}^{\infty}f^*\frac{dg}{dx}dx$$
+Where we use the formula
+\begin{equation}
+\int u\frac{dv}{dx}dx = uv-\int v\frac{du}{dx}dx
+\label{intparts}
+\end{equation}
+So if we use equation \ref{intparts} where
+$$u = f^*\ du = \frac{df^*}{dx}$$
+and
+$$dv = \frac{dg}{dx}\ v = g$$
+So equation \ref{intparts} gives us. Note that $g$ and $f^*$ have to go to zero at infinity for these integrals to exist.
+\begin{align*}
+\mp\hbar\int_{-\infty}^{\infty}f^*\frac{dg}{dx}dx &= \mp\hbar\left(\left.f^*g\right|_{-\infty}^{\infty} - \int_{-\infty}^{\infty}g\frac{df^*}{dx}\right)\\
+&= \mp\hbar\left(- \int_{-\infty}^{\infty}g\frac{df^*}{dx}\right)\\
+&= \pm\hbar\int_{-\infty}^{\infty}g\frac{df^*}{dx}
+\end{align*}
+So our original integral can be written as
+\begin{align*}
+\frac{1}{\sqrt{2\hbar m\omega}}\left(\int_{-\infty}^{\infty}f^*\left(\mp\hbar\frac{dg}{dx}\right)dx+\int_{-\infty}^{\infty}f^*m\omega xgdx\right) &= \frac{1}{\sqrt{2\hbar m\omega}}\left(\int_{-\infty}^{\infty}g\left(\pm\hbar\frac{df^*}{dx}\right)dx+\int_{-\infty}^{\infty}f^*m\omega xgdx\right)\\
+&= \frac{1}{\sqrt{2\hbar m\omega}}\left(\int_{-\infty}^{\infty}g\left(\pm\hbar\frac{df^*}{dx}\right) + f^*m\omega xgdx\right)\\
+&= \frac{1}{\sqrt{2\hbar m\omega}}\left(\int_{-\infty}^{\infty}g\left[\pm\hbar\frac{df^*}{dx} + f^*m\omega x\right]dx\right)\\
+&= \frac{1}{\sqrt{2\hbar m\omega}}\left(\int_{-\infty}^{\infty}g\left[\left(\pm\hbar\frac{d}{dx} + m\omega x\right)f^*\right]dx\right)\\
+&= \frac{1}{\sqrt{2\hbar m\omega}}\left(\int_{-\infty}^{\infty}g\left[\left(\pm\hbar\frac{d}{dx} + m\omega x\right)f\right]^*dx\right)\\
+&= \int_{-\infty}^{\infty}(a_{\mp}f^*)gdx
+\end{align*}
+
+
+\item
+To evaluate the integral 
+$$\int_{-\infty}^{\infty}(a_+u_n)^*(a_+u_n)$$
+we can use the relations we found in parts (b) and (c) we can say that
+\begin{align*}
+\int_{-\infty}^{\infty}(a_+u_n)^*(a_+u_n)dx &= \int_{-\infty}^{\infty}u_n^*(a_-a_+u_n)dx\\
+&= \int_{-\infty}^{\infty}u_n^*(n+1)u_ndx\\
+&= (n+1)\int_{-\infty}^{\infty}|u_n|^2dx\\
+\end{align*}
+Now we note the relation 
+$$a_+u_n = c_nu_{n+1}$$
+So we see that this integral also equals 
+\begin{align*}
+\int_{-\infty}^{\infty}(a_+u_n)^*(a_+u_n) &=  \int_{-\infty}^{\infty}(c_nu_{n+1})^*(c_nu_{n+1})\\
+&=  |c_n|^2\int_{-\infty}^{\infty}|u_{n+1}|^2
+\end{align*}
+So now we see the equality 
+$$|c_n|^2\int_{-\infty}^{\infty}|u_{n+1}|^2 = (n+1)\int_{-\infty}^{\infty}|u_n|^2dx$$
+Now we assume that $u_n$ and $u_{n+1}$ are normalizable so we see that the integrals over their probability functions is just one and we get
+$$|c_n| = \sqrt{n+1}$$
+Now for the $a_-$ we see that
+\begin{align*}
+\int_{-\infty}^{\infty}(a_-u_n)^*(a_-u_n)dx &= \int_{-\infty}^{\infty}u_n^*(a_+a_-u_n)dx\\
+&= \int_{-\infty}^{\infty}u_n^*nu_ndx\\
+&= n\int_{-\infty}^{\infty}|u_n|^2dx\\
+\end{align*}
+and we use the relation
+$$a_-u_n = d_nu_{n-1}$$
+So we see that
+\begin{align*}
+\int_{-\infty}^{\infty}(a_-u_n)^*(a_-u_n) &=  \int_{-\infty}^{\infty}(d_nu_{n-1})^*(d_nu_{n-1})\\
+&=  |d_n|^2\int_{-\infty}^{\infty}|u_{n-1}|^2
+\end{align*}
+So now we get an equality similar to the one before
+$$|d_n|^2\int_{-\infty}^{\infty}|u_{n-1}|^2 = n\int_{-\infty}^{\infty}|u_n|^2dx$$
+This implies the fact that
+$$|d_n| = \sqrt{n}$$
+So we can relate $a_+$ and $a_-$ to the steps of $u_n$ by
+$$a_+u_n = \sqrt{n+1}u_{n+1}$$
+and
+$$a_-u_n = \sqrt{n}u_{n-1}$$
+
+\end{enumerate}
+
+\section{Problem \#2}
+\begin{enumerate}[(a)]
+\item
+If we start for the definition of $a_{\pm}$
+$$a_{\pm}\equiv \frac{1}{\sqrt{2\hbar m\omega}}(\mp ip+m\omega x)$$
+we see that if we add an $a_+$ and an $a_-$ we can cancel out the $p$ so
+\begin{align*}
+a_++a_- &= \frac{1}{\sqrt{2\hbar m\omega}}(-ip+m\omega x) + \frac{1}{\sqrt{2\hbar m\omega}}(+ip+m\omega x)\\
+&= \frac{1}{\sqrt{2\hbar m\omega}}\left(-ip+m\omega x + ip+m\omega x\right)\\
+&= \frac{1}{\sqrt{2\hbar m\omega}}\left(2m\omega x\right)
+\end{align*}
+Now if we solve for $x$ we see that we get
+\begin{align*}
+a_++a_- &= \frac{1}{\sqrt{2\hbar m\omega}}\left(2m\omega x\right)\\
+\frac{1}{2m\omega}(a_++a_-) &= \frac{1}{\sqrt{2\hbar m\omega}} x\\
+\frac{\sqrt{2\hbar m\omega}}{2m\omega}(a_++a_-) &= x\\
+x &= \sqrt{\frac{\hbar}{2m\omega}}(a_++a_-)
+\end{align*}
+Now if we subtract them from each other we can isolate the $p$ so
+\begin{align*}
+a_+-a_- &= \frac{1}{\sqrt{2\hbar m\omega}}(-ip+m\omega x) - \frac{1}{\sqrt{2\hbar m\omega}}(+ip+m\omega x)\\
+&= \frac{1}{\sqrt{2\hbar m\omega}}\left(-ip+m\omega x - ip-m\omega x\right)\\
+&= \frac{1}{\sqrt{2\hbar m\omega}}\left(-2ip\right)\\
+p &= -\frac{\sqrt{2\hbar m\omega}}{2i}(a_+-a_-)\\
+p &= i\sqrt{\frac{\hbar m\omega}{2}}(a_+-a_-)
+\end{align*}
+
+\item
+To find the expectation of $x$, $\expt{x}$, we use the equation to find expectation
+\begin{equation}
+\expt{Q} = \int_{-\infty}^{\infty}\psi^*Q\psi dx
+\label{expt}
+\end{equation}
+So to find $\expt{x}$ we use what we found for $x$ in part (a) to get
+\begin{align*}
+\expt{x} &= \int_{-\infty}^{\infty}\psi_n^*\sqrt{\frac{\hbar}{2m\omega}}(a_++a_-)\psi_ndx\\
+&= \sqrt{\frac{\hbar}{2m\omega}}\int_{-\infty}^{\infty}\psi_n^*(a_+\psi_n+a_-\psi_n)dx\\
+&= \sqrt{\frac{\hbar}{2m\omega}}\int_{-\infty}^{\infty}\psi_n^*(c_n\psi_{n+1}+d_n\psi_{n-1})dx\\
+&= \sqrt{\frac{\hbar}{2m\omega}}\left(c_n\int_{-\infty}^{\infty}\psi_n^*\psi_{n+1}dx+d_n\int_{-\infty}^{\infty}\psi^*_n\psi_{n-1}dx\right)
+\end{align*}
+Now we know that $\psi_n(x)$ is a set of orthogonal functions, so these integrals drop to zero and we find that the expectation of $x$ is
+$$\expt{x} = 0$$
+Now if we find the expectation of $x^2$ we calculate
+\begin{align*}
+\expt{x^2} &= \int_{-\infty}^{\infty}\psi_n^*\left(\sqrt{\frac{\hbar}{2m\omega}}(a_++a_-)\right)^2\psi_ndx\\
+&= \frac{\hbar}{2m\omega}\int_{-\infty}^{\infty}\psi_n^*(a_++a_-)^2\psi_ndx\\
+&= \frac{\hbar}{2m\omega}\int_{-\infty}^{\infty}\psi_n^*((a_+)^2+(a_+a_-)+(a_-a_+)+(a_-)^2)\psi_ndx\\
+&= \frac{\hbar}{2m\omega}\int_{-\infty}^{\infty}\psi_n^*((a_+)^2\psi_n+(a_+a_-\psi_n)+(a_-a_+\psi_n)+(a_-)^2\psi_n)dx\\
+&= \frac{\hbar}{2m\omega}\int_{-\infty}^{\infty}\psi_n^*(a_+c_n\psi_{n+1}+n\psi_n+(n+1)\psi_n+(a_-d_n\psi_{n-1})dx\\
+&= \frac{\hbar}{2m\omega}\left(\cancelto{0}{c_{n+1}c_n\int_{-\infty}^{\infty}\psi_n^*\psi_{n+2}dx}+n\int_{-\infty}^{\infty}\psi_n^*\psi_ndx+(n+1)\int_{-\infty}^{\infty}\psi_n^*\psi_ndx+\cancelto{0}{d_{n+1}d_n\int_{-\infty}^{\infty}\psi_n^*\psi_{n-2}dx}\right)\\
+&= \frac{\hbar}{2m\omega}\left(n\int_{-\infty}^{\infty}\psi_n^*\psi_ndx+(n+1)\int_{-\infty}^{\infty}\psi_n^*\psi_ndx\right)\\
+\expt{x^2} &= \frac{\hbar}{2m\omega}\left(n+n+1\right) = \frac{\hbar}{2m\omega}\left(2n+1\right) = \frac{\hbar}{m\omega}\left(n+\frac{1}{2}\right)
+\end{align*}
+Now for the expectation of the momentum $\expt{p}$ we get
+\begin{align*}
+\expt{p} &= \int_{-\infty}^{\infty}\psi_n^*i\sqrt{\frac{\hbar m\omega}{2}}(a_+-a_-)\psi_ndx\\
+&= i\sqrt{\frac{\hbar m\omega}{2}}\int_{-\infty}^{\infty}\psi_n^*(a_+\psi_n-a_-\psi_n)dx\\
+&= i\sqrt{\frac{\hbar m\omega}{2}}\int_{-\infty}^{\infty}\psi_n^*(c_n\psi_{n+1}-d_n\psi_{n-1})dx\\
+&= i\sqrt{\frac{\hbar m\omega}{2}}c_n\int_{-\infty}^{\infty}\psi_n^*\psi_{n+1}dx-d_n\int_{-\infty}^{\infty}\psi^*_n\psi_{n-1}dx\\
+\expt{p} &= 0
+\end{align*}
+Note that the integrals are zero due to the orthogonality of $\psi$. Now to find $\expt{p^2}$ we say
+\begin{align*}
+\expt{p^2} &= \int_{-\infty}^{\infty}\psi_n^*\left(i\sqrt{\frac{\hbar m\omega}{2}}(a_+-a_-)\right)^2\psi_ndx\\
+&= -\frac{\hbar m\omega}{2}\int_{-\infty}^{\infty}\psi_n^*\left(a_+-a_-\right)^2\psi_ndx\\
+&= -\frac{\hbar m\omega}{2}\int_{-\infty}^{\infty}\psi_n^*((a_+)^2-(a_+a_-)-(a_-a_+)+(a_-)^2)\psi_ndx\\
+&= -\frac{\hbar m\omega}{2}\int_{-\infty}^{\infty}\psi_n^*((a_+)^2\psi_n-(a_+a_-\psi_n)-(a_-a_+\psi_n)+(a_-)^2\psi_n)dx\\
+&= -\frac{\hbar m\omega}{2}\int_{-\infty}^{\infty}\psi_n^*(a_+c_n\psi_{n+1}-n\psi_n-(n+1)\psi_n+(a_-d_n\psi_{n-1}))
+\end{align*}
+\begin{align*}
+&= -\frac{\hbar m\omega}{2}\left(\cancelto{0}{c_{n+1}c_n\int_{-\infty}^{\infty}\psi_n^*\psi_{n+2}dx}-n\int_{-\infty}^{\infty}\psi_n^*\psi_ndx-(n+1)\int_{-\infty}^{\infty}\psi_n^*\psi_ndx+\cancelto{0}{d_{n+1}d_n\int_{-\infty}^{\infty}\psi_n^*\psi_{n-2}dx}\right)\\
+&= -\frac{\hbar m\omega}{2}\left(-n\int_{-\infty}^{\infty}\psi_n^*\psi_ndx-(n+1)\int_{-\infty}^{\infty}\psi_n^*\psi_ndx\right)\\
+&= \frac{\hbar m\omega}{2}\left(n+n+1\right) = \hbar m\omega\left(n+\frac{1}{2}\right) 
+\end{align*}
+
+\item
+We know that the Hamiltonian for the simple harmonic oscillator is given by
+$$H = \frac{p^2}{2m}+\frac{1}{2}m\omega^2x^2$$
+so we can say that the expectation of the Hamiltonian is given by
+$$\expt{H} = \frac{\expt{p^2}}{2m}+\frac{1}{2}m\omega^2\expt{x^2}$$
+So we found $\expt{x^2}$ and $\expt{p^2}$ in the part (b) above. So
+\begin{align*}
+\expt{H} &= \frac{\expt{p^2}}{2m}+\frac{1}{2}m\omega^2\expt{x^2}\\
+&= \frac{1}{2m}\hbar m\omega\left(n+\frac{1}{2}\right)+\frac{1}{2}m\omega^2\frac{\hbar}{m\omega}\left(n+\frac{1}{2}\right)\\
+&= \frac{\hbar\omega}{2}\left(n+\frac{1}{2}\right)+\frac{\hbar\omega}{2}\left(n+\frac{1}{2}\right)\\
+&= \hbar\omega\left(n+\frac{1}{2}\right)
+\end{align*}
+Note that this is the equation for the total energy.
+
+\item
+To calculate the standard deviation of these terms we us
+\begin{equation}
+\sigma_Q = \sqrt{\expt{Q^2}-(\expt{Q})^2}
+\label{STD}
+\end{equation}
+So to find $\sigma_x$ we calculate
+\begin{align*}
+\sigma_x &=\sqrt{\expt{x^2}-(\expt{x})^2}\\ 
+&=\sqrt{\frac{\hbar}{m\omega}\left(n+\frac{1}{2}\right)-(0)^2}\\ 
+&=\sqrt{\frac{\hbar}{m\omega}\left(n+\frac{1}{2}\right)}\\ 
+\end{align*}
+and for $\sigma_p$ we say
+\begin{align*}
+\sigma_p &=\sqrt{\expt{p^2}-(\expt{p})^2}\\ 
+&=\sqrt{\hbar\omega\left(n+\frac{1}{2}\right)-(0)^2}\\ 
+&=\sqrt{\hbar\omega\left(n+\frac{1}{2}\right)}\\ 
+\end{align*}
+So we can apply the \emph{Heisenberg Uncertainty Principle} where
+\begin{equation}
+\sigma_x\sigma_p \ge\frac{\hbar}{2}
+\label{uncert}
+\end{equation}
+So if we apply equation \ref{uncert} we get
+\begin{align*}
+\sqrt{\frac{\hbar}{m\omega}\left(n+\frac{1}{2}\right)}\sqrt{\hbar\omega\left(n+\frac{1}{2}\right)} &\ge\frac{\hbar}{2}\\ 
+\sqrt{\frac{\hbar}{m\omega}\left(n+\frac{1}{2}\right)\hbar\omega\left(n+\frac{1}{2}\right)} &\ge\frac{\hbar}{2}\\ 
+\sqrt{\frac{\hbar^2}{m}\left(n+\frac{1}{2}\right)^2} &\ge\frac{\hbar}{2}\\ 
+\hbar\sqrt{\frac{1}{m}}\left(n+\frac{1}{2}\right) &\ge\frac{\hbar}{2}\\ 
+\sqrt{\frac{1}{m}}\left(n+\frac{1}{2}\right) &\ge\frac{1}{2}
+\end{align*}
+So we see that when $n=0$ we have the lowest possible uncertainty.
+\end{enumerate}
+
+\section{Problem \#3}
+\begin{enumerate}[(a)]
+\item
+Given the wavefunction 
+$$\psi_{\alpha}(x) = A\sum_{n=0}^{\infty}\frac{\alpha^n}{\sqrt{n!}}u_n(x)$$
+Where we assume that $A$ is such that $\psi_{\alpha}(x)$ is normalized. So we wish to show that
+$$a_-\psi_{\alpha}(x) = \alpha\psi_{\alpha}(x)$$
+So we calculate $a_-\psi_{\alpha}(x)$
+\begin{align*}
+a_-\psi_{\alpha}(x) &= a_-A\sum_{n=0}^{\infty}\frac{\alpha^n}{\sqrt{n!}}u_n(x)\\
+&= A\sum_{n=0}^{\infty}\frac{\alpha^n}{\sqrt{n!}}a_-u_n(x)\\
+&= A\sum_{n=0}^{\infty}\frac{\alpha^n}{\sqrt{n!}}\sqrt{n}u_{n-1}(x)\\
+&= A\sum_{n=0}^{\infty}\frac{\alpha^n}{\sqrt{(n-1)!}}u_{n-1}(x)
+\end{align*}
+Now if we want to move the index up one so we have $u_n(x)$ rather than $u_{n-1}$. So
+\begin{align*}
+A\sum_{n=0}^{\infty}\frac{\alpha^n}{\sqrt{(n-1)!}}u_{n-1}(x) &= A\sum_{n=0}^{\infty}\frac{\alpha^{n+1}}{\sqrt{(n)!}}u_{n}(x)\\
+&= A\sum_{n=0}^{\infty}\frac{\alpha\alpha^{n}}{\sqrt{(n)!}}u_{n}(x)\\
+&= \alpha\psi_{\alpha}(x)
+\end{align*}
+So we see that $\psi_{\alpha}(x)$ is an eigenvector of $a_-$
+
+\item
+To find the expectation of $x$ for $\psi_{\alpha}(x)$ we use equation \ref{expt} and the relations we found in problem 2 part (a). 
+\begin{align*}
+\expt{x} &= \int_{-\infty}^{\infty}\psi_{\alpha}^*x\psi_{\alpha}\\
+&= \int_{-\infty}^{\infty}\psi_{\alpha}^*\left(\sqrt{\frac{\hbar}{2m\omega}}(a_++a_-)\right)\psi_{\alpha}dx\\
+&= \sqrt{\frac{\hbar}{2m\omega}}\int_{-\infty}^{\infty}\psi_{\alpha}^*(a_++a_-)\psi_{\alpha}dx\\
+&= \sqrt{\frac{\hbar}{2m\omega}}\int_{-\infty}^{\infty}\psi_{\alpha}^*(a_+\psi_{\alpha}+a_-\psi_{\alpha})dx\\
+&= \sqrt{\frac{\hbar}{2m\omega}}\left(\int_{-\infty}^{\infty}\psi_{\alpha}^*(a_+\psi_{\alpha})dx+\int_{-\infty}^{\infty}\psi_{\alpha}^*(a_-\psi_{\alpha})dx\right)
+\end{align*}
+Now we use equation \ref{partc} which we proved in part (c) of problem 1. We can apply this to the first integral to get
+\begin{align*}
+ \sqrt{\frac{\hbar}{2m\omega}}\left(\int_{-\infty}^{\infty}\psi_{\alpha}^*(a_+\psi_{\alpha})dx+\int_{-\infty}^{\infty}\psi_{\alpha}^*(a_-\psi_{\alpha})dx\right) &= \sqrt{\frac{\hbar}{2m\omega}}\left(\int_{-\infty}^{\infty}(a_-\psi_{\alpha})^*\psi_{\alpha}dx+\int_{-\infty}^{\infty}\psi_{\alpha}^*(a_-\psi_{\alpha})dx\right)
+\end{align*}
+Now we can use the fact that $\psi_{\alpha}(x)$ is a eigenvector of $a_-$ to get
+\begin{align*}
+\sqrt{\frac{\hbar}{2m\omega}}\left(\int_{-\infty}^{\infty}(a_-\psi_{\alpha})^*\psi_{\alpha}dx+\int_{-\infty}^{\infty}\psi_{\alpha}^*(a_-\psi_{\alpha})dx\right) &= \sqrt{\frac{\hbar}{2m\omega}}\left(\int_{-\infty}^{\infty}(\alpha\psi_{\alpha})^*\psi_{\alpha}dx+\int_{-\infty}^{\infty}\psi_{\alpha}^*(\alpha\psi_{\alpha})dx\right) \\
+&= \sqrt{\frac{\hbar}{2m\omega}}\left(\alpha^*\int_{-\infty}^{\infty}\psi_{\alpha}^*\psi_{\alpha}dx+\alpha\int_{-\infty}^{\infty}\psi_{\alpha}^*\psi_{\alpha}dx\right) \\
+&= \sqrt{\frac{\hbar}{2m\omega}}\left(\alpha^*+\alpha\right) = \sqrt{\frac{2\hbar}{m\omega}}\textnormal{Re}(\alpha) 
+\end{align*}
+Now to find $\expt{p}$ we compute using equation \ref{expt}
+\begin{align*}
+\expt{p} &= \int_{-\infty}^{\infty}\psi_{\alpha}^*p\psi_{\alpha}dx\\
+&= \int_{-\infty}^{\infty}\psi_{\alpha}^*\left(i\sqrt{\frac{\hbar m\omega}{2}}(a_+-a_-)\right)\psi_{\alpha}dx\\
+&= i\sqrt{\frac{\hbar m\omega}{2}}\int_{-\infty}^{\infty}\psi_{\alpha}^*(a_+-a_-)\psi_{\alpha}dx\\
+&= i\sqrt{\frac{\hbar m\omega}{2}}\int_{-\infty}^{\infty}\psi_{\alpha}^*(a_+\psi_{\alpha}-a_-\psi_{\alpha})dx\\
+&= i\sqrt{\frac{\hbar m\omega}{2}}\left(\int_{-\infty}^{\infty}\psi_{\alpha}^*(a_+\psi_{\alpha})dx-\int_{-\infty}^{\infty}\psi_{\alpha}^*(a_-\psi_{\alpha})dx\right)\\
+&= i\sqrt{\frac{\hbar m\omega}{2}}\left(\int_{-\infty}^{\infty}(a_-\psi_{\alpha})^*\psi_{\alpha}dx-\int_{-\infty}^{\infty}\psi_{\alpha}^*(a_-\psi_{\alpha})dx\right)\\
+&= i\sqrt{\frac{\hbar m\omega}{2}}\left(\int_{-\infty}^{\infty}(\alpha\psi_{\alpha})^*\psi_{\alpha}dx-\int_{-\infty}^{\infty}\psi_{\alpha}^*(\alpha\psi_{\alpha})dx\right)\\
+&= i\sqrt{\frac{\hbar m\omega}{2}}\left(\alpha^*\int_{-\infty}^{\infty}\psi_{\alpha}^*\psi_{\alpha}dx-\alpha\int_{-\infty}^{\infty}\psi_{\alpha}^*\psi_{\alpha}dx\right)
+\end{align*}
+\begin{align*}
+&= i\sqrt{\frac{\hbar m\omega}{2}}\left(\alpha^*-\alpha\right)\\
+&= i\sqrt{\frac{\hbar m\omega}{2}}(-2i\textnormal{Im}(\alpha))\\
+&= \sqrt{2\hbar m\omega}\textnormal{Im}(\alpha)
+\end{align*}
+
+
+\item
+We know from part (a) that our wavefunction independent of time is given by
+$$\psi_{\alpha}(x) = A\sum_{n=0}^{\infty}\frac{\alpha^n}{\sqrt{n!}}u_n(x)$$
+so we can say that the time dependent wavefunction is 
+$$\Psi_{\alpha}(x,t) = A\sum_{n=0}^{\infty}\frac{\alpha^n}{\sqrt{n!}}u_n(x)e^{-iE_nt/\hbar}$$
+Where $E_n$ is the quantized energies given by
+$$E_n = \hbar\omega\left(n+\frac{1}{2}\right)$$
+so we can see if $\Psi_{\alpha}(x,t)$ is still an eigenvector of $a_-$
+\begin{align*}
+a_-\Psi_{\alpha}(x,t) &= a_-A\sum_{n=0}^{\infty}\frac{\alpha^n}{\sqrt{n!}}u_n(x)e^{-iE_nt/\hbar}\\ 
+&= A\sum_{n=0}^{\infty}\frac{\alpha^n}{\sqrt{n!}}a_-u_n(x)e^{-i\omega(n+1/2)t}\\ 
+&= A\sum_{n=0}^{\infty}\frac{\alpha^n}{\sqrt{n!}}\sqrt{n}u_{n-1}(x)e^{-i\omega(n+1/2)t}\\ 
+&= A\sum_{n=1}^{\infty}\frac{\alpha^n}{\sqrt{(n-1)!}}u_{n-1}(x)e^{-i\omega(n+1/2)t}\\ 
+&= A\sum_{n=0}^{\infty}\frac{\alpha^{n+1}}{\sqrt{(n)!}}u_{n}(x)e^{-i\omega(n+1/2+1)t}\\ 
+&= A\sum_{n=0}^{\infty}\frac{\alpha^{n+1}}{\sqrt{(n)!}}u_{n}(x)e^{-i\omega(n+1/2)t-i\omega t}\\ 
+&= A\sum_{n=0}^{\infty}\frac{\alpha\alpha^{n}}{\sqrt{(n)!}}u_{n}(x)e^{-i\omega(n+1/2)t}e^{-i\omega t}\\ 
+&= A\alpha e^{-i\omega t}\sum_{n=0}^{\infty}\frac{\alpha^{n}}{\sqrt{(n)!}}u_{n}(x)e^{-iE_nt/\hbar} = \alpha e^{-i\omega t}\Psi_{\alpha}(x,t)
+\end{align*}
+So we see that the eigenvalue $\alpha$ is a function of time where
+$$\alpha(t) = \alpha e^{-i\omega t}$$
+
+\item
+So we know from part (b) that the expectation of $x$ is given by
+$$\expt{x} = \sqrt{\frac{2\hbar}{m\omega}}\textnormal{Re}(\alpha(t))$$
+So we can say that the real part of $\alpha(t)$ is
+$$\textnormal{Re}(\alpha(t)) = \alpha\cos(\omega t)$$
+so we see that the expectation of $x$ is given by
+$$\expt{x}(t) = \sqrt{\frac{2\hbar}{m\omega}}\alpha\cos(\omega t)$$
+which we see is oscillating in time. Which is very similar to the classical case. Now for $\expt{p}$ we know that
+$$\expt{p} = \sqrt{2\hbar m\omega}\textnormal{Im}(\alpha(t))$$
+Where the imaginary part of $\alpha$ is given by
+$$\textnormal{Im}(\alpha(t)) = -\alpha\sin(\omega t)$$
+so the expectation of the momentum is 
+$$\expt{p}(t) = -\sqrt{2\hbar m\omega}\alpha\sin(\omega t)$$
+This too oscillates in time which we agrees with the classical case as well. Note that this is also off by a phase from its position. Therefore when the position is at a max the momentum is at a minimum.
+\end{enumerate}
+
+\section{Problem \#4}
+\begin{enumerate}[(a)]
+\item
+If we define a unit-less variable $\xi$ where
+$$\xi\equiv\frac{x}{\bar{x}}$$
+now we pick $\bar{x}$ such that its units are in meters. We say that
+$$\bar{x} = \sqrt{\frac{\hbar}{m\omega}}$$
+note that the units 
+\begin{align*}
+\left<\sqrt{\frac{\hbar}{m\omega}}\right> &= \sqrt{\frac{J\ s}{kg\ s^{-1}}}\\
+&= \sqrt{\frac{kg\ m^2\ s^{-2}\ s^2}{kg}}\\
+&= \sqrt{m^2} = m
+\end{align*}
+So if we start with the \emph{Time Independent Schr\"{o}dinger Equation} for the simple harmonic oscillator we have
+\begin{equation}
+-\frac{\hbar^2}{2m}\frac{d^2u}{dx^2}+\frac{1}{2}m\omega^2x^2u = Eu
+\label{TISE}
+\end{equation}
+Now if we want to write this in terms of $\xi$ we first need to see that
+$$\frac{d^2u}{dx^2} = \frac{d^2u}{d\xi^2}\frac{1}{\bar{x}^2}$$
+So we can find equation \ref{TISE} in terms of $\xi$ by
+\begin{align*}
+-\frac{\hbar^2}{2m}\frac{d^2u}{d\xi^2}\frac{1}{\bar{x}^2}+\frac{1}{2}m\omega^2\xi^2\bar{x}^2u &= Eu\\
+-\frac{\hbar^2}{2m}\frac{m\omega}{\hbar}\frac{d^2u}{d\xi^2}+\frac{1}{2}m\omega^2\xi^2\frac{\hbar}{m\omega}u &= Eu\\
+-\frac{\hbar\omega}{2}\frac{d^2u}{d\xi^2}+\frac{\hbar\omega}{2}\xi^2u &= Eu\\
+-\frac{d^2u}{d\xi^2}+\xi^2u &= \frac{2E}{\hbar\omega}u\\
+\frac{d^2u}{d\xi^2} &= \xi^2u - \frac{2E}{\hbar\omega}u\\
+\frac{d^2u}{d\xi^2} &= \left(\xi^2 - \frac{2E}{\hbar\omega}\right)u
+\end{align*}
+And if we define a variable $K$ as
+$$K\equiv\frac{2E}{\hbar\omega}$$
+We get
+$$\frac{d^2u}{d\xi^2} = \left(\xi^2 - K\right)u$$
+Note that units of $\hbar\omega/2$ are
+\begin{align*}
+\left<\frac{\hbar\omega}{2}\right> &= J\ s\ s^{-1}\\
+&= J
+\end{align*}
+Note that $K$ is a unit-less quantity.
+
+\item
+Now we see that $E$ remains constant so if $|x|\rightarrow\infty$ which in turn means that $|\xi|\rightarrow\infty$ the $K$ term drops off and we get
+$$\frac{d^2u}{d\xi^2} \approx \xi^2u$$
+So if we guess that the solution of this simple differential equation is
+$$u(\xi) = Ae^{-\xi^2/2} + Be^{\xi^2/2}$$
+we see that
+\begin{align*}
+\frac{d^2u}{d\xi^2} &= \frac{d}{d\xi}\left(-A\xi e^{-\xi^2/2} + B\xi e^{\xi^2/2}\right)\\
+&=-A\left(e^{-\xi^2/2}-\xi^2e^{-\xi^2/2}\right) + B\left(e^{\xi^2/2}+\xi^2e^{\xi^2/2}\right)\\
+&=-Ae^{-\xi^2/2}\left(1-\xi^2\right) + Be^{\xi^2/2}\left(1+\xi^2\right)
+\end{align*}
+Now if we still assume that $\xi$ is very large ($\xi\rightarrow\infty$) we see that
+\begin{align*}
+&=-Ae^{-\xi^2/2}\left(-\xi^2\right) + Be^{\xi^2/2}\left(\xi^2\right)\\
+&= A\xi^2e^{-\xi^2/2} + B\xi^2e^{\xi^2/2}\\
+&= \xi^2\left(Ae^{-\xi^2/2} + Be^{\xi^2/2}\right)\\
+&= \xi^2u
+\end{align*}
+So we see that this is a solution to the differential equation in the limit as $x\rightarrow\infty$. Now we see that for $u(\xi)$ to me normalizable $B$ has to be zero because the exponential attached to $B$ will go to infinity at infinity. So we can say the solution is
+$$u(\xi) = Ae^{-\xi^2/2}$$
+
+\item
+So to figure out what this wavefunction is doing not at the asymptotic limit we say
+$$u(\xi) = h(\xi)e^{-\xi^2/2}$$
+Now if we substitute this back into equation \ref{TISE} we get
+\begin{align*}
+\frac{d^2u}{d\xi^2} &= \left(\xi^2 - K\right)u\\
+\frac{d}{d\xi}\left(h'(\xi)e^{-\xi^2/2}- h(\xi)\xi e^{-\xi^2/2}\right) &= \left(\xi^2 - K\right)h(\xi)e^{-\xi^2/2}\\
+\frac{d}{d\xi}\left[\left(h'(\xi)- h(\xi)\xi\right)e^{-\xi^2/2}\right] &= \left(\xi^2 - K\right)h(\xi)e^{-\xi^2/2}\\
+-\xi e^{-\xi^2/2}\left(h'(\xi)- h(\xi)\xi\right) + e^{-\xi^2/2}\left(h''(\xi) - h'(\xi)\xi - h(\xi)\right)  &= \left(\xi^2 - K\right)h(\xi)e^{-\xi^2/2}\\
+\cancel{e^{-\xi^2/2}}\left(-\xi\left(h'(\xi)- h(\xi)\xi\right) + h''(\xi) - h'(\xi)\xi - h(\xi)\right)  &= \left(\xi^2 - K\right)h(\xi)\cancel{e^{-\xi^2/2}}\\
+-h'(\xi)\xi + h(\xi)\xi^2 + h''(\xi) - h'(\xi)\xi - h(\xi)  &= \left(\xi^2 - K\right)h(\xi)\\
+h(\xi)\xi^2 + h''(\xi) -2h'(\xi)\xi - h(\xi)  &= \left(\xi^2 - K\right)h(\xi)\\
+h''(\xi) -2h'(\xi)\xi - h(\xi)  &= \left(\xi^2 - K\right)h(\xi)-h(\xi)\xi^2\\
+h''(\xi) -2h'(\xi)\xi - h(\xi)  &= h(\xi)\xi^2 - Kh(\xi)-h(\xi)\xi^2\\
+h''(\xi) -2h'(\xi)\xi - h(\xi)  &= -Kh(\xi)\\
+h''(\xi) -2h'(\xi)\xi - h(\xi) + Kh(\xi) &= 0\\
+h''(\xi) -2h'(\xi)\xi + h(\xi)(K - 1) &= 0\\
+\end{align*}
+
+\item
+Now if we assume that the solution to the differential equation we found in part (c) is a power series given by
+$$h(\xi) = \sum_{j=0}^{\infty}a_j\xi^j$$
+So if we plug this into the diffeq we get
+\begin{align*}
+h''(\xi) -2h'(\xi)\xi + h(\xi)(K - 1) &= 0\\
+\sum_{j=2}^{\infty}a_jj(j-1)\xi^{j-2} - 2\sum_{j=0}^{\infty}a_jj\xi^{j-1}\xi + \sum_{j=0}^{\infty}a_j\xi^j(K - 1) &= 0\\
+\sum_{j=2}^{\infty}a_jj(j-1)\xi^{j-2} - 2\sum_{j=0}^{\infty}a_jj\xi^{j} + \sum_{j=0}^{\infty}a_j\xi^j(K - 1) &= 0\\
+\sum_{j=0}^{\infty}a_{j+2}(j+2)(j+1)\xi^{j} - 2\sum_{j=0}^{\infty}a_jj\xi^{j} + \sum_{j=0}^{\infty}a_j\xi^j(K - 1) &= 0\\
+a_{j+2}(j+2)(j+1)- 2a_jj + a_j(K - 1) &= 0\\
+a_{j+2}(j+2)(j+1) &= a_j(2j - K + 1)\\
+a_{j+2} &= \frac{2j - K + 1}{(j+2)(j+1)}a_j\\
+\end{align*}
+
+\item
+To find where the series ends or where $a_{n+2} = 0$ when $a_n$ is non-zero. So
+\begin{align*}
+0 &= \frac{2n - K + 1}{(n+2)(n+1)}\\
+0 &= 2n - K + 1\\
+K &= 2n+1
+\end{align*}
+Now we use the definition of $K$ to find the allowed energies
+\begin{align*}
+K &= \frac{2E_n}{\hbar\omega}\\
+2n+1 &= \frac{2E_n}{\hbar\omega}\\
+n+\frac{1}{2} &= \frac{E_n}{\hbar\omega}\\
+E_n &= \hbar\omega\left(n+\frac{1}{2}\right)
+\end{align*}
+\end{enumerate}
+
+\section{Problem \#5}
+\begin{enumerate}[(a)]
+\item
+See Mathematica sheet attached.
+
+\item
+Note that we changed the initial conditions such that $u(\xi) = 0$ and $u'(\xi) = 1$, because we changed states. See the Mathematica sheet attached.
+
+\item
+For the potential energy
+$$V(x) = \frac{1}{2}\alpha x^4$$
+Note that the units of $\alpha$ are
+$$<\alpha> = \frac{kg}{s^2\ m^2}$$
+So if we say that
+$$\bar{x} = \left(\frac{\hbar^2}{\alpha m}\right)^{\gamma}$$
+So if we want the units of $\bar{x}$ to be in meters we first need to see that
+\begin{align*}
+\left<\frac{\hbar^2}{\alpha m}\right> &= \frac{J^2\ s^2}{kg\ s^{-2}\ m^{-2}\ kg}\\
+&= \frac{kg^2\ m^{4}\ s^{-4}\ s^2}{kg^2\ s^{-2}\ m^{-2}}\\
+&= \frac{m^{4}\ s^{-4}\ s^4}{m^{-2}}\\
+&= \frac{m^{4}}{m^{-2}} = m^6
+\end{align*}
+So we see that the exponent $\gamma$ has to be $\gamma = 1/6$. Now if we apply equation \ref{TISE} we get
+\begin{align*}
+-\frac{\hbar^2}{2m}\frac{d^2u}{dx^2}+\frac{1}{2}\alpha x^4u &= Eu\\
+-\frac{\hbar^2}{2m}\frac{1}{\bar{x}^2}\frac{d^2u}{d\xi^2}+\frac{1}{2}\alpha\bar{x}^4\xi^4u &= Eu\\
+-\frac{\hbar^2}{2m}\left(\frac{\alpha m}{\hbar^2}\right)^{2/6}\frac{d^2u}{d\xi^2}+\frac{1}{2}\alpha\left(\frac{\hbar^2}{\alpha m}\right)^{4/6}\xi^4u &= Eu\\
+-\frac{1}{2}\left(\frac{\hbar^6\alpha m}{\hbar^2 m^3}\right)^{1/3}\frac{d^2u}{d\xi^2}+\frac{1}{2}\left(\frac{\alpha^3\hbar^4}{\alpha^2 m^2}\right)^{1/3}\xi^4u &= Eu\\
+-\frac{1}{2}\left(\frac{\hbar^4\alpha}{m^2}\right)^{1/3}\frac{d^2u}{d\xi^2}+\frac{1}{2}\left(\frac{\hbar^4\alpha}{m^2}\right)^{1/3}\xi^4u &= Eu\\
+\frac{1}{2}\left(\frac{\hbar^4\alpha}{m^2}\right)^{1/3}\left(-\frac{d^2u}{d\xi^2}+\xi^4u\right) &= Eu\\
+\frac{d^2u}{d\xi^2} &= \xi^4u - 2E\left(\frac{m^2}{\hbar^4\alpha}\right)^{1/3}u\\
+\frac{d^2u}{d\xi^2} &= (\xi^4-K)u
+\end{align*}
+Where 
+$$K\equiv2E\left(\frac{m^2}{\hbar^4\alpha}\right)^{1/3}$$
+Note that if $K=E/\bar{E}$ then 
+$$\bar{E} = \frac{1}{2}\left(\frac{\hbar^4\alpha}{m^2}\right)^{1/3}$$
+
+\item
+Note that for the first excited energy state we used $u(\xi) = 0$ and $u'(\xi)=1$. See the Mathematica Sheet attached.
+\end{enumerate}
+
+\end{document}
+
