@@ -13,7 +13,7 @@
 \setlength{\topmargin}{-.75in}
 \setlength{\textwidth}{6.5in}
 \setlength{\textheight}{9.5in}
-\newcommand{\due}{September 12th, 2015}
+\newcommand{\due}{September 9th, 2015}
 \newcommand{\HWnum}{1}
 \input{"C:/Users/joeor_000/Documents/Coursework/Define.tex"}
 
@@ -21,9 +21,211 @@
 \input{../title.tex}
 
 \section{Problem \#1}
-\begin{enumerate}[(a)]
-\item
-\end{enumerate}
+We can solve the ordinary differential equation
+\begin{equation}
+\frac{y'}{y} = x\log(y) + 2x
+\label{Prob1}
+\end{equation}
+through the method of separation of variables where we place equation \ref{Prob1} in the form
+$$A(y)dy = B(x)dx.$$
+We can do this by
+\begin{align*}
+\frac{y'}{y} &= x\log(y) + 2x\\
+&\Downarrow\\
+\frac{dy}{dx}\frac{1}{y} &= x(\log(y) + 2)\\
+&\Downarrow\\
+\frac{dy}{y} &= xdx(\log(y) + 2)\\
+\frac{dy}{y(\log(y)+2)} &= xdx\\
+&\Downarrow\\
+\int\frac{dy}{y(\log(y)+2)} &= \int xdx = \frac{1}{2}x^2 + C
+\end{align*}
+Note we can solve the integral with by substituting
+\begin{align*}
+u &= \log(y) + 2\\
+du &= \frac{1}{y}dy.
+\end{align*}
+Therefore we can solve the integral by
+\begin{align*}
+\int\frac{dy}{y(\log(y)+2)} &\Rightarrow \int\frac{du}{u}\\
+&= \log(u) \Rightarrow \log(\log(y)+2)
+\end{align*}
+Now we can solve for $y(x)$ as
+\begin{align*}
+\log(\log(y)+2) &= \frac{1}{2}x^2+C\\
+&\Downarrow\\
+\log(y)+2 &= Ce^{x^2/2}\\
+\log(y) &= Ce^{x^2/2}-2\\
+&\Downarrow\\
+y(x) &= \exp(C\exp(x^2/2)-2)\\
+&= \exp(\exp(x^2/2)-2/C)\\
+&= C\exp(\exp(x^2/2))
+\end{align*}
+Note that we grouped the constants $\exp(-C/2)$ into another constant $C$ without loss of 
+generality.
+
+\pagebreak
+
+\section{Problem \#2}
+For the differential equation 
+\begin{equation}
+y' = \sin(x+y) -1,
+\label{Prob2}
+\end{equation}
+we change variables using the equality
+$$z = \alpha x + \beta y + \gamma$$
+where we choose $\alpha=\beta = 1$ and $\gamma = 0$ so that we can have
+$$z = x + y$$
+with
+$$\frac{dz}{dx} = 1 + \frac{dy}{dx}$$
+solving for $$y'$$ we see that we have
+$$\frac{dy}{dx} = \frac{dz}{dx} - 1$$
+Which implies that equation \ref{Prob2} becomes 
+$$\frac{dy}{dx} = \sin(x+y) - 1 \Rightarrow \sin(z) -1 = \frac{dz}{dx} - 1.$$
+Therefore by changing to the variable $z$ we have a separable differential equation
+$$\frac{dz}{dx} = \sin(z).$$
+Which we separate as
+\begin{align*}
+\frac{dz}{dx} &= \sin(z)\\
+\frac{dz}{\sin(z)} &= dx\\
+&\Downarrow\\
+\int dx &= \int\frac{dz}{\sin(z)}\\
+x+C &= \int\csc(z)dz\\
+&= -\ln(\cos(z/2))+\ln(\sin(z/2))\\
+&= -\ln\left(\frac{\sin(z/2)}{\cos(z/2)}\right)\\
+&= -\ln(\tan(z/2))
+\end{align*}
+Next we solve for $z$ by 
+\begin{align*}
+x+C &= -\ln(\tan(z/2))+\\
+&\Downarrow\\
+Ae^{-x} &= \tan(z/2)\\
+&\Downarrow\\
+z &= 2\arctan\left(Ae^{-x}\right)
+\end{align*}
+Now we replace $z$ in the solution for $y$ that is given by $y=z-x$. Therefore,
+$$y = 2\arctan\left(Ae^{-x}\right) - x$$
+
+\pagebreak
+
+
+\section{Problem \#3}
+To solve the ordinary differential equation
+\begin{equation}
+3x^2y^2 + 2x^3yy' + 10y^4y' = 0
+\label{Prob3}
+\end{equation}
+we note that equation \ref{Prob3} can be rewritten as
+\begin{align*}
+3x^2y^2 + 2x^3yy' + 10y^4y' &= 0\\
+&\Downarrow\\
+3x^2y^2 &=  -(2x^3y + 10y^4)y'\\
+&\Downarrow\\
+(3x^2y^2)dx + (2x^3y + 10y^4)dy &= 0
+\end{align*}
+which is in the form
+$$A(x,y)dx + B(x,y)dy = 0$$
+where
+\begin{align*}
+A(x,y) &= 3x^2y^2 \\
+B(x,y) &= 2x^3y + 10y^4 
+\end{align*}
+We test to see if this equation is \emph{exact} by the condition
+\begin{equation}
+\frac{\partial A}{\partial y} = \frac{\partial B}{\partial x}.
+\label{Exact}
+\end{equation}
+We calculate 
+\begin{align*}
+\frac{\partial A}{\partial y} &= \frac{\partial}{\partial y}(3x^2y^2)\\
+&= 6x^2y
+\end{align*}
+and
+\begin{align*}
+\frac{\partial B}{\partial x} &= \frac{\partial}{\partial x}(2x^3y + 10y^4)\\
+&= 6x^2y
+\end{align*}
+So, we see that equation \ref{Exact} holds true which implies that equation \ref{Prob3} is 
+exact. Therefore, there exists a function $u$ such that
+\begin{align*}
+\frac{\partial u}{\partial x} &= A(x,y)\\
+\frac{\partial u}{\partial y} &= B(x,y).
+\end{align*}
+We note that we can solve for $u$ using the integral
+\begin{align*}
+u(x,y) &= \int A(x,y)dx + \int B(x,y)dy = C = \textnormal{const.}\\
+&\Downarrow\\
+u(x,y) &= \int 3x^2y^2dx + \int 2x^3y+10y^4dy\\
+&= x^3y^2 + x^3y^2+2y^5dy + C\\
+&=  2x^3y^2+2y^5 + A
+\end{align*}
+So we can see that the solution of equation \ref{Prob3} is 
+$$2x^3y^2+2y^5 = C$$
+Note we combined constants $A$ and $C$ without loss of generality.
+
+\pagebreak
+
+\section{Problem \#4}
+For the given second order ODE
+\begin{equation}
+y'' - 3y' + 2y = e^{3x}(x+x^2)
+\label{Prob4}
+\end{equation}
+we note that this is a nonhomogeneous linear ODE with constant coefficients. Therefore we 
+first need to solve for the homogeneous solution, 
+$$0 = y_0'' - 3y_0' + 2y_0,$$ 
+by the ansatz 
+$$y_0 = e^{mx}.$$
+We see that our homogeneous version of equation \ref{Prob4} becomes
+\begin{align*}
+0 &= y_0'' - 3y_0' + 2y_0\\
+&= m^2\cancel{e^{mx}} - 3m\cancel{e^{mx}} + 2\cancel{e^{mx}}\\
+&= m^2 - 3m + 2\\
+&= (m-1)(m-2).
+\end{align*}
+Solving for $m$ gives us $m =1,2$ so $y_0$ is given by a linear combination 
+$$y_0(x) = C_1e^{x} + C_2e^{2x}$$
+Next we need to construct the particular solution, $y_p$, by the ansatz
+$$y_p = e^{3x}(ax^2+bx+c)$$
+where
+\begin{align*}
+y_p' &= \frac{d}{dx}\left(e^{3x}(ax^2+bx+c)\right)\\
+&= e^{3x}(3)(ax^2+bx+c) + e^{3x}(2ax+b)\\
+&= e^{3x}(3ax^2+3bx+3c+2ax+b)\\
+&= e^{3x}(3ax^2+(3b+2a)x+3c+b)
+\end{align*}
+and
+\begin{align*}
+y_p'' &= \frac{d}{dx}\left(e^{3x}(3ax^2+(3b+2a)x+3c+b)\right)\\
+&= e^{3x}(3)(3ax^2+(3b+2a)x+3c+b) + e^{3x}(6ax+(3b+2a))\\
+&= e^{3x}(9ax^2+(9b+6a)x+9c+3b + 6ax+(3b+2a))\\
+&= e^{3x}(9ax^2+(12a+9b)x+9c+6b+2a))
+\end{align*}
+Now we can replace $y_p$ into equation \ref{Prob4} by first noting the common $e^{3x}$ factor
+that we can cancel yielding the resulting equation 
+\begin{align*}
+9ax^2+(12a+9b)x+9c+6b+2a - 3(3ax^2+(2a+3b)x+3c+b) + 2(ax^2+bx+c) &= x+x^2
+\end{align*}
+Grouping like terms gives us
+\begin{align*}
+\cancel{9ax^2}+(12a+9b)x+9c+6b+2a - \cancel{9ax^2} - (9b+6a)x - 9c - 3b + 2ax^2 + 2bx + 2c &= x+x^2\\
+2ax^2 + (12a+9b-9b-6a+2b)x + 9c+6b+2a-9c-3b+2c &= x+x^2\\
+2ax^2 + (6a+2b)x + 2a+3b+2c &= x+x^2
+\end{align*}
+Which yields the system of equations
+\begin{align*}
+2a &= 1\\
+6a + 2b &= 1\\
+2a + 3b + 2c &= 0
+\end{align*}
+Which implies that
+\begin{align*}
+2 &= \frac{1}{2}\\
+b &= -1\\
+c &= 1
+\end{align*}
+$$\Rightarrow y_p(x) = e^{3x}\left(\frac{1}{2}x^2-x+1\right)$$
+Therefore our solution is a linear combination of both $y_0$ and $y_p$ given by
+$$y(x) = e^{3x}\left(\frac{1}{2}x^2-x+1\right) + y_0(x) = C_1e^{x} + C_2e^{2x}$$
 
 \end{document}
 
