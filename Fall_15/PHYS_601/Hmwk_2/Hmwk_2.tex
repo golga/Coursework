@@ -1,0 +1,324 @@
+\documentclass[11pt]{article}
+
+\usepackage{latexsym}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{enumerate}
+\usepackage{amsmath}
+\usepackage{verbatim}
+\usepackage{graphicx}
+\usepackage{cancel}
+\numberwithin{equation}{section}
+
+\setlength{\evensidemargin}{.25in}
+\setlength{\oddsidemargin}{-.25in}
+\setlength{\topmargin}{-.75in}
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{9.5in}
+\newcommand{\due}{September 16th, 2015}
+\newcommand{\HWnum}{2}
+\input{"C:/Users/joeor_000/Documents/Coursework/Define.tex"}
+
+\begin{document}
+\input{../title.tex}
+
+
+\section{Problem \#1}
+\begin{enumerate}[(a)]
+\item
+
+We note that for bound orbits a finite energy, $E$, must cross the effective potential
+for both $r\rightarrow\infty$ and $r\rightarrow 0$. This implies there exists two 
+turning points $r_{min}$ and $r_{max}$. Therefore if $E$ is any finite value the conditions
+\begin{align*}
+\lim_{r\rightarrow\infty} V_{eff}(r) &= \infty\\ 
+\lim_{r\rightarrow 0} V_{eff}(r) &= \infty\\ 
+\end{align*}
+must be true for all orbits to be bound. Where $V_{eff}$ is given by
+\begin{equation}
+V_{eff}(r) = \frac{L^2}{2mr^2} + V(r)
+\label{EffPot}
+\end{equation}
+So, for the central harmonic oscillator potential 
+$$V(r) = \frac{1}{2}kr^2$$
+which makes equation \ref{EffPot} become
+$$V_{eff}(r) = \frac{L^2}{2mr^2} + \frac{1}{2}kr^2.$$
+so we can see that 
+$$\lim_{r\rightarrow\infty}V_{eff}(r) = \cancelto{0}{\frac{L^2}{2mr^2}} + \cancelto{\infty}{\frac{1}{2}kr^2} = \infty$$
+and
+$$\lim_{r\rightarrow 0}V_{eff}(r) = \cancelto{\infty}{\frac{L^2}{2mr^2}} + \cancelto{0}{\frac{1}{2}kr^2} = \infty.$$
+Therefore we can say that for the potential $V(r) = 1/2kr^2$ all orbits are bound. We note
+that there is a minimum required energy for these orbits. This occurs when $V_{eff}(r)$ is at
+a minimum. Which corresponds to a circular orbit.  We find this minimum as
+\begin{align*}
+\frac{dV_{eff}}{dr} &= 0\\
+&\Downarrow\\
+0 &= -\frac{L^2}{mr^3} + kr\\
+&\Downarrow\\
+\frac{L^2}{mr^3} &= kr\\
+&\Downarrow\\
+r^4 &= \frac{L^2}{mk}\\
+&\Downarrow\\
+r_0 &= \left(\frac{L^2}{mk}\right)^{1/4}
+\end{align*}
+Now we plug $r_0$ into $V_{eff}(r)$ to find the minimum energy by
+\begin{align*}
+V_{eff}(r_0) &= \frac{L^2}{2mr_0^2} + \frac{1}{2}kr_0^2\\
+&= \frac{L^2}{2m}\left(\frac{mk}{L^2}\right)^{2/4} + \frac{1}{2}k\left(\frac{L^2}{mk}\right)^{2/4}\\
+&= \frac{1}{2}\left(\frac{L^4mk}{m^2L^2}\right)^{1/2} + \frac{1}{2}\left(\frac{k^2L^2}{mk}\right)^{1/2}\\
+&= \frac{1}{2}\left(\frac{L^2k}{m}\right)^{1/2} + \frac{1}{2}\left(\frac{kL^2}{m}\right)^{1/2}\\
+E_{min} &= \left(\frac{L^2k}{m}\right)^{1/2}
+\end{align*}
+
+\item 
+To solve for the orbital motion of the given potential we recall the integral of motion
+$$\frac{dr}{dt} = \pm\frac{2}{m}\sqrt{E-V_{eff}}$$
+which we can convert into an equation with respect to $\theta$ instead of $t$ by saying
+\begin{align*}
+\frac{dr}{d\theta} &= \frac{dr}{dt}\frac{dt}{d\theta}\\
+&= \frac{dr}{dt}\frac{mr^2}{L}\\
+&\Downarrow\\
+\frac{dr}{dt} &= \frac{L}{mr^2}\frac{dr}{d\theta}
+\end{align*}
+Which coverts our integral into
+$$\frac{1}{r^2}\frac{dr}{d\theta} = \pm\frac{2}{L}\sqrt{E-V_{eff}}.$$
+Next we can we change to the variable $u$ where $u=1/r$ with
+$$du = -\frac{1}{r^2}dr.$$
+This gives us the integral
+$$\frac{du}{d\theta} = \mp\frac{2}{L}\sqrt{E-V_{eff}}.$$
+where
+$$V_{eff}(r) = \frac{L^2}{2mr^2} + \frac{1}{2}kr^2 = \frac{L^2}{2m}u^2 + \frac{k}{2u^2}$$
+So we can separate the variables to get the integral
+\begin{align*}
+\int d\theta &= \int\frac{du}{2/L\sqrt{E-\frac{L^2}{2m}u^2-\frac{k}{2u^2}}}
+\end{align*}
+where we integrate this function using Mathematica with the command:
+\begin{verbatim}
+Integrate[1/Sqrt[\[Alpha]-\[Beta]*u^2-\[Gamma]*u^-2],u]
+\end{verbatim}
+which yields the
+$$\frac{i u \sqrt{\alpha -\frac{\gamma +\beta  u^4}{u^2}} \log \left(2 \sqrt{-\gamma -\beta  u^4+\alpha  u^2}+\frac{i \left(\alpha -2 \beta  u^2\right)}{\sqrt{\beta }}\right)}{2 \sqrt{\beta } \sqrt{-\gamma -\beta  u^4+\alpha  u^2}}$$
+We see when we replace with the coefficients of our problem the expression reduces to
+$$\frac{i \log \left(2 \sqrt{Eu^2-\frac{L^2}{2m}u^4 -\frac{k}{2}}+\frac{i\left(E-2\frac{L^2}{2m}u^2\right)}{\sqrt{L^2/2m}}\right)}{2\sqrt{L^2/2m}}$$
+which leads to the solution of the integral
+\begin{align*}
+(2/L)\theta + C &= \frac{i \log \left(2 \sqrt{Eu^2-\frac{L^2}{2m}u^4 -\frac{k}{2}}+\frac{i\left(E-2\frac{L^2}{2m}u^2\right)}{\sqrt{L^2/2m}}\right)}{2\sqrt{L^2/2m}}\\
+&\Downarrow\\
+2\sqrt{\frac{L^2}{2m}\frac{4}{L^2}}\theta + C &= i \log \left(2 \sqrt{Eu^2-\frac{L^2}{2m}u^4 -\frac{k}{2}}+\frac{i\left(E-2\frac{L^2}{2m}u^2\right)}{\sqrt{L^2/2m}}\right)\\
+\end{align*}
+Which leads to the result
+$$\frac{1}{r^2} = \frac{2Em}{L^2}+\sqrt{\left(\frac{2Em}{L^2}\right)^2 - \frac{2k}{mL^2}}\sin(2\theta)$$
+note we can write this in terms of $E_{min}$ from part (a) to get
+\begin{equation}
+\frac{1}{r^2} = \frac{2Em}{L^2}+\sqrt{\frac{2km}{L^2}\left(\left(2\frac{E}{E_{min}k}\right)^2 - 1\right)}\sin(2\theta)
+\label{Part1B}
+\end{equation}
+note the eccentricity, $\epsilon$, is given by
+$$\epsilon=\sqrt{\frac{2km}{L^2}\left(\left(2\frac{E}{E_{min}k}\right)^2 - 1\right)}$$
+
+\item
+Now that we have the solution for the elliptical orbit given by equation \ref{Part1B} we can 
+easily see the period of the orbit of an ellipse is
+$$T = 2\pi\sqrt{\frac{m}{k}}$$
+independent of $E$ or $L$.
+
+\end{enumerate}
+
+\pagebreak
+
+\section{Problem \#2}
+Note the two orbital equations for a central force 
+\begin{equation}
+\frac{d\theta}{dt} = \frac{L}{mr^2}
+\label{OrbitEqnA}
+\end{equation}
+and
+\begin{equation}
+\frac{dr}{dt} = \pm\sqrt{\frac{2}{m}\left(\frac{}{}E-V_{eff}(r)\right)}
+\label{OrbitEqnB}
+\end{equation}
+where $V_{eff}(r)$ is given by equation \ref{EffPot}. Given circular motion at radius 
+$r=r_0$ we can say a small perturbation on this orbit oscillates harmonically by
+\begin{equation}
+r(t) = r_0+A\cos(\omega_rt)
+\label{PertOrb}
+\end{equation}
+where
+\begin{equation}
+\omega_r = \sqrt{\frac{V''_{eff}(r_0)}{m}}.
+\label{PertOrb}
+\end{equation}
+
+\begin{enumerate}[(a)]
+\item Given the potential 
+$$V(r) = \frac{k}{\alpha}r^{\alpha}$$
+we can calculate $\omega_r$ by using equation \ref{EffPot} and taking a time derivatives 
+of $V_eff(r)$ by
+\begin{align*}
+V'(r) &= \frac{d}{dt}\left(\frac{L^2}{2mr^2} + \frac{k}{\alpha}r^{\alpha}\right)\\
+&= -\frac{L^2}{mr^3} + kr^{\alpha-1}
+\end{align*}
+Recall when $V'(r) = 0$ our radius becomes $r=r_0$. So we can solve for $r_0$ by
+\begin{align*}
+V'(r_0) = 0 &= -\frac{L^2}{mr_0^3} + kr_0^{\alpha-1}\\
+&\Downarrow\\
+\frac{L^2}{mr_0^3} &= kr_0^{\alpha-1}\\
+&\Downarrow\\
+r_0^{\alpha-1}r_0^3 &= \frac{L^2}{mk} \\
+r_0^{\alpha+2} &= \frac{L^2}{mk} \\
+&\Downarrow\\
+r_0^{\alpha} &= \frac{L^2}{mkr_0^2} 
+\end{align*}
+Next we calculate $V''_{eff}(r)$ by
+\begin{align*}
+V''_{eff}(r) &= \frac{d}{dt}\left(-\frac{L^2}{mr^3} + kr^{\alpha-1}\right)\\
+&= 3\frac{L^2}{mr^4} + k(\alpha-1)r^{\alpha-2}
+\end{align*}
+We note that when $r=r_0$ we have a constant angular velocity given by $\omega$ which implies
+that equation \ref{OrbitEqnA} becomes
+\begin{equation}
+\frac{d\theta}{dt} = \omega = \frac{L}{mr_0^2}
+\end{equation}
+So we can calculate $V''_{eff}(r_0)$ by
+\begin{align*}
+V''_{eff}(r_0) &= 3\frac{L^2}{mr_0^4} + k(\alpha-1)r_0^{\alpha-2}\\
+&= \frac{3L}{r_0^2}\frac{L}{mr_0^2} + \frac{k}{r_0^2}(\alpha-1)r_0^{\alpha}\\
+&= \frac{3L}{r_0^2}\omega + \frac{L}{r_0^2}(\alpha-1)\frac{L}{mr_0^2}\\
+&= \frac{3L}{r_0^2}\omega + \frac{L}{r_0^2}(\alpha-1)\omega\\
+&= \frac{L}{r_0^2}\omega\left(3 + \alpha-1\right)\\
+&= \frac{L}{r_0^2}\omega\left(\alpha+2\right)\\
+&= (m\omega)\omega\left(\alpha+2\right)\\
+&= m\omega^2\left(\alpha+2\right)
+\end{align*}
+Now we can calculate $\omega_r$ by equation \ref{PertOrb}
+\begin{align*}
+\omega_r &= \sqrt{\frac{V''_{eff}(r_0)}{m}}\\
+&= \sqrt{\frac{m\omega^2(\alpha+2}{m}}\\
+&= \omega\sqrt{\alpha+2}
+\end{align*}
+
+\item We can calculate the \emph{apsidal angle}, $\theta_A$, which is defined by the angle
+between $r_{min}$ and $r_{max}$. We note that by equation \ref{PertOrb} we are at a maximum 
+$r$ when $\omega_rt=0$ given by
+$$r_{max} = r_0+A\cos(0) = r_0+A$$
+and we are at a minimum $r$ when $\omega_rt=\pi$ given by
+$$r_{min} = r_0+A\cos(\pi) = r_0-A$$
+noting that $\omega t=\theta$ it follows that the \emph{apsidal angle} is the angle that
+\begin{align*}
+\pi &= \omega_rt\\
+&= \omega t\sqrt{\alpha+2}\\
+&= \theta_A\sqrt{\alpha+2}\\
+&\Downarrow\\
+\theta_A &= \frac{\pi}{\sqrt{\alpha+2}}
+\end{align*}
+
+\item We can find the limit of the given potential as $\alpha\rightarrow0$ by
+\begin{align*}
+\lim_{\alpha\rightarrow0}V(r) &= \lim_{\alpha\rightarrow0}\frac{k}{\alpha}r^{\alpha}\\
+&= \lim_{\alpha\rightarrow0}kr^{\alpha}\ln(r)\\
+&= k\ln(r)
+\end{align*}
+We can also see that as $\alpha\rightarrow0$ we have
+$$\omega_r = \sqrt{2}\omega$$
+therefore the ratio of $\omega_r/\omega$ is
+$$\frac{\omega_r}{\omega} = \frac{\sqrt{2}\cancel{\omega}}{\cancel{\omega}} = \sqrt{2}$$
+which agrees with the result from homework \#1.
+\end{enumerate}
+
+\pagebreak
+
+\section{Problem \#3}
+\begin{enumerate}[(a)]
+\item For $\alpha<0$ we let $\alpha=-s$ with $0<s<2$ which makes our our potential from 
+problem \# 2 become
+$$\frac{k}{\alpha}r^{\alpha}\rightarrow-\frac{k}{s}r^{-s}.$$
+We note that for these potentials all bounded orbits have $E<0$ with the orbital equation
+\begin{equation}
+E = \frac{1}{2}m^*\left(\frac{du}{d\theta}\right)^2 + \frac{1}{2}m^*u^2 - \frac{k}{s}u^s
+\label{OrbitEqu}
+\end{equation}
+Where we change variables such that
+\begin{align*}
+u &= \frac{1}{r}\\
+m^* &= \frac{L^2}{m}.
+\end{align*}
+Using equation \ref{OrbitEqu} we can find the apsidal angle in the limit of $E\rightarrow0$.
+This implies that
+\begin{align*}
+\frac{1}{2}m^*\left(\frac{du}{d\theta}\right)^2 + \frac{1}{2}m^*u^2 - \frac{k}{s}u^s &= 0\\
+&\Downarrow\\
+\frac{k}{s}u^s &= \frac{1}{2}m^*\left(\frac{du}{d\theta}\right)^2 + \frac{1}{2}m^*u^2\\
+\frac{k}{s} &= \frac{1}{2}m^*u^{-s}\left(\frac{du}{d\theta}\right)^2 + \frac{1}{2}m^*u^{2-s}
+\end{align*}
+We desire to change this orbital equation into the form of a harmonic oscillator so that we
+can solve the equation. We see that we want $u^{2-s} = x^2$ to get into this form. We note 
+that we need to change the variables of the derivative by
+$$\frac{du}{d\theta} = \frac{du}{dx}\frac{dx}{d\theta}$$
+where we can find $\frac{du}{dx}$ by
+\begin{align*}
+2xdx &= (2-s)u^{2-u-1}du\\
+&\Downarrow\\
+2xdx &= (2-s)u^{2-u}u^{-1}du\\
+2xdx &= (2-s)x^2u^{-1}du\\
+&\Downarrow\\
+\frac{2}{x}dx &= \frac{(2-s)}{u}du\\
+&\Downarrow\\
+\frac{du}{dx} &= \frac{2u}{(2-s)x}
+\end{align*}
+So we can convert to our new variable $x$ by
+\begin{align*}
+\frac{k}{s} &= \frac{1}{2}m^*u^{-s}\left(\frac{du}{d\theta}\right)^2 + \frac{1}{2}m^*u^{2-s}\\
+&\Downarrow\\
+\frac{k}{s} &= \frac{1}{2}m^*u^{-s}\left(\frac{du}{dx}\frac{dx}{d\theta}\right)^2 + \frac{1}{2}m^*x^2\\
+\frac{k}{s} &= \frac{1}{2}m^*u^{-s}\left(\frac{2u}{(2-s)x}\frac{dx}{d\theta}\right)^2 + \frac{1}{2}m^*x^2\\
+\frac{k}{s} &= \frac{1}{2}m^*\left(\frac{2}{2-s}\right)^2\frac{u^2u^{-s}}{x^2}\left(\frac{dx}{d\theta}\right)^2 + \frac{1}{2}m^*x^2\\
+\frac{k}{s} &= \frac{1}{2}m^*\left(\frac{2}{2-s}\right)^2\cancelto{1}{\frac{u^{2-s}}{x^2}}\left(\frac{dx}{d\theta}\right)^2 + \frac{1}{2}m^*x^2\\
+\frac{k}{s} &= \frac{1}{2}m^*\left(\frac{2}{2-s}\right)^2\left(\frac{dx}{d\theta}\right)^2 + \frac{1}{2}m^*x^2
+\end{align*}
+As we see we have successfully converted our orbital equation into the form of a harmonic 
+oscillator in the variable $x$ under the limit $E\rightarrow0$. Given that a harmonic 
+oscillator has the solution of the form
+\begin{equation}
+x(\theta) = x_0 + A\cos(\omega_x \theta)
+\label{SHO}
+\end{equation}
+where
+$$\omega_x = \sqrt{\frac{k}{m}}.$$
+Therefore for our orbital equation we see that 
+$$k = m^*$$
+and
+$$m = m^*\left(\frac{2}{2-s}\right)^2$$
+so we can see that the frequency of oscillation $\omega$ is given by
+$$\omega_x = \sqrt{\frac{m^*}{m^*}\left(\frac{2}{2-s}\right)^2} = \frac{2}{2-s}.$$
+Now, we can use $\omega_x$ to calculate the apsidal angle, $\theta_A$, by noting that we go
+from a minimum to maximum in equation \ref{SHO} from $\omega_x\theta=0$ to 
+$\omega_x\theta_A=\pi/2$. By solving for $\theta_A$ we get
+\begin{align*}
+\omega_x\theta_A = \frac{2}{2-s}\theta_A &= \frac{\pi}{2}\\
+&\Downarrow\\
+\theta_A &= \frac{\pi}{2-s}
+\end{align*}
+Which in terms of $\alpha$ we have
+$$\theta_A = \frac{\pi}{2+\alpha}$$
+
+\item If we recall that in problem \#2 for near circular orbits we found that 
+$$\theta_A = \frac{\pi}{\sqrt{2+\alpha}}$$
+for a general energy, $E$, and as we see in part (a) that in the limit of $E\rightarrow0$ 
+the apsidal angle becomes
+$$\theta_A = \frac{\pi}{2+\alpha}.$$
+So, we can find the $\alpha$ that keeps $\theta_A$ constant for all energies we solve
+\begin{align*}
+\frac{\pi}{\sqrt{2+\alpha}} &= \frac{\pi}{2+\alpha}\\
+&\Downarrow\\
+\sqrt{2+\alpha} &= 2+\alpha\\
+&\Downarrow\\
+\alpha &= -1
+\end{align*}
+Note that we neglected the solution $\alpha=-2$ as it makes $\theta_A$ ill defined, and is
+outside our defined range for $\alpha$.
+
+
+\end{enumerate}
+
+\end{document}
+

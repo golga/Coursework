@@ -13,7 +13,7 @@
 \setlength{\topmargin}{-.75in}
 \setlength{\textwidth}{6.5in}
 \setlength{\textheight}{9.5in}
-\newcommand{\due}{September 14th, 2015}
+\newcommand{\due}{September 16th, 2015}
 \newcommand{\HWnum}{1}
 \input{"C:/Users/joeor_000/Documents/Coursework/Define.tex"}
 
@@ -21,18 +21,147 @@
 \input{../title.tex}
 
 \section{Problem \#1}
+Given the \emph{translation operator}, $\hat{T}_a$ defined as
+$$\hat{T}_a\Psi(x) = \Psi(x+a)$$
+we can find the Hermitian conjugate of $\hat{T}_a$ by using the definition of a Hermitian 
+conjugate
+\begin{equation}
+\int\psi^*\hat{A}\varphi d\tau = \int\varphi\hat{A}^{\dagger}\psi^* d\tau
+\label{Hermi}
+\end{equation}
+where $\psi$ and $\varphi$ are arbitrary functions. So we can go about finding
+$\hat{T}_a^{\dagger}$ by solving equation \ref{Hermi} in one dimension for $\psi^*(x)$ and
+$\varphi(x)$. Which yields
+\begin{align*}
+\int\psi^*\hat{A}\varphi d\tau &= \int\varphi\hat{A}^{\dagger}\psi^* d\tau\\
+&\Downarrow\\
+\int\psi^*(x)\hat{T}_a\varphi(x)dx &= \int\varphi(x)\hat{T}_a^{\dagger}\psi^*(x) dx\\
+&\Downarrow\\
+\int\psi^*(x)\varphi(x+a)dx &= \int\varphi(x)\hat{T}_a^{\dagger}\psi^*(x) dx
+\end{align*}
+We note that we need to get the left hand side of the above equation to be equal to the right
+hand side. This implies that we need to get $\varphi(x+a)$ to equal $\varphi(x)$. So we can 
+set a change of variables on the left hand side such that $x\rightarrow x-a$ which yields
+\begin{align*}
+\int\psi^*(x)\varphi(x+a)dx &= \int\varphi(x)\hat{T}_a^{\dagger}\psi^*(x) dx\\
+&\Downarrow\\
+\int\psi^*(x-a)\varphi(x-a+a)dx &= \int\varphi(x)\hat{T}_a^{\dagger}\psi^*(x) dx\\
+\int\psi^*(x-a)\varphi(x)dx &= \int\varphi(x)\hat{T}_a^{\dagger}\psi^*(x) dx\\
+&\Downarrow\\
+\hat{T}_a^{\dagger}\psi^*(x) &= \psi^*(x-a)
+\end{align*}
+Therefore, the Hermitian conjugate of the translation operator, $\hat{T}_a$ is the 
+translation in the opposite direction or
+$$\hat{T}_a^{\dagger} = \hat{T}_{-a}$$ 
+where
+$$\hat{T}_a^{\dagger}\Psi(x) = \Psi(x-a)$$
 
 \pagebreak
 
 \section{Problem \#2}
+For an operator of the form $\hat{F} = F\left(\hat{f}\right)$ given that $F(z)$ is expandable
+by 
+$$F(z) = \sum_{n=0}^{\infty}c_nz^n$$
+we can expand the operator as
+\begin{equation}
+\hat{F} = \sum_{n=0}^{\infty}c_n\hat{z}^n
+\label{OperExpand}
+\end{equation}
+
 \begin{enumerate}[(a)]
-\item
-\item
+\item For the given operator 
+$$\hat{G}_a = \exp\left(a\frac{d}{dx}\right)$$
+we can apply equation \ref{OperExpand} by noting that $e^{z}$ can be expanded into the power
+series
+$$e^z = \sum_{n=0}^{\infty}\frac{1}{n!}z^n$$
+by a Taylor expansion. This implies that
+$$\hat{G}_a =  \sum_{n=0}^{\infty}\frac{1}{n!}\left(a\frac{d}{dx}\right)^n.$$
+So we can apply this expansion to the function
+$$\Phi(x) = \hat{G}_a\Psi(x)$$
+which yields
+\begin{align*}
+\Phi(x) &= \hat{G}_a\Psi(x)\\
+&= \sum_{n=0}^{\infty}\frac{1}{n!}\left(a\frac{d}{dx}\right)^n\Psi(x)\\
+&= \sum_{n=0}^{\infty}\frac{1}{n!}\frac{d^n\Psi(x)}{dx^n}a^n\\
+&= \Psi(x+a)
+\end{align*}
+Therefore we can see that $\hat{G}_a$ is the translation operator with distance $a$. This 
+makes sense because we know $\exp(d/dx)$ is related to the wave vector which is related to 
+the velocity. We can therefore infer that this operator would be related to some sort of 
+translation.
+
+\item For a new operator we are given
+$$\hat{G}_a = \exp\left(ax\frac{d}{dx}\right)$$
+which we can expand using the expansion of $e^{z}$ from before this yields the result
+$$\hat{G}_a =  \sum_{n=0}^{\infty}\frac{1}{n!}\left(ax\frac{d}{dx}\right)^n.$$
+which we can use to find the function $\Phi(x)$ by
+\begin{align*}
+\Phi(x) &= \hat{G}_a\Psi(x)\\
+&= \sum_{n=0}^{\infty}\frac{1}{n!}\left(ax\frac{d}{dx}\right)^n\Psi(x)
+\end{align*}
+Next we note that we can expand $\Psi(x)$ by
+$$\Psi(x) = \sum_{m=0}^{\infty}\frac{1}{m!}\frac{d^m\Psi(0)}{dx^m}x^m$$
+replacing this into our series over $n$ we have
+\begin{align*}
+\Rightarrow &= \sum_{n=0}^{\infty}\frac{1}{n!}\left(ax\frac{d}{dx}\right)^n\sum_{m=0}^{\infty}\frac{1}{m!}\frac{d^m\Psi(0)}{dx^m}x^m\\
+&= \sum_{n=0}^{\infty}\sum_{m=0}^{\infty}\frac{a^n}{n!}\frac{1}{m!}\frac{d^m\Psi(0)}{dx^m}x^n\frac{d^n}{dx^n}x^m\\
+&= \sum_{n=0}^{\infty}\sum_{m=0}^{\infty}\frac{a^n}{n!}\frac{1}{m!}\frac{d^m\Psi(0)}{dx^m}x^n\frac{m!}{(m-n)!}x^{m-n}\\
+&= \sum_{n=0}^{\infty}\sum_{m=0}^{\infty}\frac{a^n}{m!}\frac{d^m\Psi(0)}{dx^m}\frac{m!}{(m-n)!n!}x^{m}\\
+&= \sum_{n=0}^{\infty}\sum_{m=0}^{\infty}\frac{a^n}{m!}\frac{d^m\Psi(0)}{dx^m}{m\choose{n}}x^{m}\\
+&= \sum_{m=0}^{\infty}\frac{1}{m!}\frac{d^m\Psi(0)}{dx^m}x^{m}\sum_{n=0}^{\infty}{m\choose n}a^n\\
+&= \sum_{m=0}^{\infty}\frac{1}{m!}\frac{d^m\Psi(0)}{dx^m}x^{m}(1+a)^m\\
+&= \sum_{m=0}^{\infty}\frac{1}{m!}\frac{d^m\Psi(0)}{dx^m}(x(1+a))^m\\
+\Phi(x) &= \Psi(x(1+a))
+\end{align*}
+
+
 \end{enumerate}
 
 \pagebreak
 
 \section{Problem \#3}
+Given the Hermitian operator $\hat{f}$ which follows the relation 
+\begin{equation}
+\hat{f}^3 = c^2\hat{f}
+\label{fEqn}
+\end{equation}
+we can determine the eigenvalues of $\hat{f}$ by noting that because $\hat{f}$ is Hermitian
+it follows that
+$$\hat{f}\ket{\psi} = f\ket{\psi}$$
+where $f$ is a real valued eigenvalue. So we need to determine the value for $f$. We are 
+given the equality from equation \ref{fEqn} we can act both sides of a wave function 
+$\ket{\psi}$
+\begin{align*}
+\hat{f}^3 &= c^2\hat{f}\\
+&\Downarrow\\
+\hat{f}^3\ket{\psi} &= c^2\hat{f}\ket{\psi}
+\end{align*}
+We can calculate the right hand side to get
+\begin{align*}
+\hat{f}^3\ket{\psi} &= \hat{f}^2\hat{f}\ket{\psi}\\
+&= f\hat{f}^2\ket{\psi}\\
+&= f^2\hat{f}\ket{\psi}\\
+&= f^3\ket{\psi}
+\end{align*}
+and the left hand side gives
+\begin{align*}
+c^2\hat{f}\ket{\psi} &= c^2f\ket{\psi}
+\end{align*}
+So by equation \ref{fEqn} we get
+\begin{align*}
+\hat{f}^3\ket{\psi} &= c^2\hat{f}\ket{\psi}\\
+&\Downarrow\\
+f^3\ket{\psi} &= c^2f\ket{\psi}
+\end{align*}
+This implies that
+\begin{align*}
+\left[f^3 - c^2f\right]\ket{\psi} &= 0\\
+&\Downarrow\\
+f^3 - c^2f &= 0\\
+&\Downarrow\\
+f &= \pm c, 0
+\end{align*}
+Therefore the eigenvalues for $\hat{f}$ are $\pm c$ and $0$.
 
 \end{document}
 

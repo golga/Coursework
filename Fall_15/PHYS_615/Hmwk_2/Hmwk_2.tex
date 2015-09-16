@@ -1,0 +1,259 @@
+\documentclass[11pt]{article}
+
+\usepackage{latexsym}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{enumerate}
+\usepackage{amsmath}
+\usepackage{cancel}
+\numberwithin{equation}{section}
+
+\setlength{\evensidemargin}{.25in}
+\setlength{\oddsidemargin}{-.25in}
+\setlength{\topmargin}{-.75in}
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{9.5in}
+\newcommand{\due}{September 16th, 2015}
+\newcommand{\HWnum}{2}
+\input{"C:/Users/joeor_000/Documents/Coursework/Define.tex"}
+
+\begin{document}
+\input{../title.tex}
+
+\section{Problem \#1}
+We can derive the \emph{Rodrigues' formula} given by
+\begin{equation}
+P_l(x) = \frac{1}{2^ll!}\left(\frac{d}{dx}\right)^l(x^2-1)^l
+\label{RodForm}
+\end{equation}
+where $P_l(x)$ represent \emph{Legendre's polynomials}. We first take note of the derivative
+\begin{align*}
+\frac{d}{dx}(x^2-1)^{l} &= l(x^2-1)^{l-1}(2x)
+\end{align*}
+Which leads to the following identity 
+\begin{equation}
+(x^2-1)\frac{d}{dx}(x^2-1)^l = 2lx(x^2-1)^l
+\label{Ident}
+\end{equation}
+Now we need to calculate the $l+1$th derivative of both sides of equation \ref{Ident} by 
+\emph{Leibnitz rule} which is given by
+\begin{equation}
+\frac{d^{l+1}}{dx^{l+1}}\left[\frac{}{}u(x)v(x)\right] = \sum_{k=0}^{l+1}{l+1\choose{k}}\frac{d^{l+1-k}u}{dx^{l+1-k}}\frac{d^kv}{dx^k}.
+\label{Leibnitz}
+\end{equation}
+So if we can see that using equation \ref{Leibnitz} on the left hand side of equation 
+\ref{Ident} to get
+\begin{align*}
+\frac{d^{l+1}}{dx^{l+1}}\left[(x^2-1)\frac{d}{dx}(x^2-1)^l\right] &= \sum_{k=0}^{l+1}{l+1\choose{k}}\frac{d^{l+1-k}}{dx^{l+1-k}}\left[\frac{d}{dx}(x^2-1)^l\right]\frac{d^k}{dx^k}\left[x^2-1\right]\\
+\end{align*}
+We see that the term 
+$$\frac{d^k}{dx^k}\left[x^2-1\right]$$
+goes to zero for $k\ge0$, therefore we our sum only goes to $k=2$. Which makes the sum become
+\begin{align*}
+\Rightarrow &= {l+1\choose{0}}\frac{d^{l+1}}{dx^{l+1}}\left[\frac{d}{dx}(x^2-1)^l\right]\left(x^2-1\right)
+        + {l+1\choose{1}}\frac{d^{l}}{dx^{l}}\left[\frac{d}{dx}(x^2-1)^l\right](2x) 
+        + {l+1\choose{2}}\frac{d^{l-1}}{dx^{l-1}}\left[\frac{d}{dx}(x^2-1)^l\right](2)\\
+&= \frac{d^{2}}{dx^{2}}\left[\frac{d^l}{dx^l}(x^2-1)^l\right]\left(x^2-1\right)
+        + (l+1)2x\frac{d}{dx}\left[\frac{d^l}{dx^l}(x^2-1)^l\right]
+        + l(l+1)\left[\frac{d^{l}}{dx^{l}}(x^2-1)^l\right]
+\end{align*}
+Then we apply equation \ref{Leibnitz} to the right hand side of equation \ref{Ident} to get
+\begin{align*}
+\frac{d^{l+1}}{dx^{l+1}}\left[2lx(x^2-1)^l\right] &= \sum_{k=0}^{l+1}{l+1\choose{k}}\frac{d^{l+1-k}}{dx^{l+1-k}}\left[(x^2-1)^l\right]\frac{d^k}{dx^k}\left[2lx\right]\\
+&= {l+1\choose{0}}\frac{d^{l+1}}{dx^{l+1}}\left[(x^2-1)^l\right](2lx)
+ + {l+1\choose{1}}\frac{d^{l}}{dx^{l}}\left[(x^2-1)^l\right](2l)\\
+&= 2lx\frac{d}{dx}\left[\frac{d^l}{dx^l}(x^2-1)^l\right]
+ + 2l(l+1)\left[\frac{d^{l}}{dx^{l}}(x^2-1)^l\right]
+\end{align*}
+We can define
+$$y \equiv \left(\frac{d}{dx}\right)^l(x^2-1)^l$$
+which when we combine both sides of \ref{Ident}
+\begin{align*}
+\left(x^2-1\right)\frac{d^{2}}{dx^{2}}y+(l+1)2x\frac{d}{dx}y + l(l+1)y &= 2lx\frac{d}{dx}y + 2l(l+1)y\\
+&\Downarrow\\
+\left(x^2-1\right)\frac{d^{2}}{dx^{2}}y+(l+1)2x\frac{d}{dx}y + l(l+1)y - 2lx\frac{d}{dx}y - 2l(l+1)y &=0\\
+\left(x^2-1\right)\frac{d^{2}y}{dx^{2}} + 2x\frac{dy}{dx} - l(l+1)y &=0\\
+\left(1-x^2\right)\frac{d^{2}y}{dx^{2}} - 2x\frac{dy}{dx} + l(l+1)y &=0
+\end{align*}
+We see that this is the \emph{Legendre Differential Equation} which we know has the 
+solutions $P_l(x)$. This implies that $y$ are the Legendre Polynomials with a normalization 
+factor. To find the normalization factor we impose the condition $P_n(1) = 1$. We note that 
+this condition makes every term with $x^2-1$ go to zero. We can infer that the only terms 
+that do not have this term is the term that is derived $l$ times this gives us a factor of
+$2^ll!$. So for $x=1$ we have
+\begin{align*}
+y = {2^ll!}
+\end{align*}
+which implies that 
+$$P_l(x) = \frac{1}{2^ll!}y = \frac{1}{2^ll!}\left(\frac{d}{dx}\right)^l(x^2-1)^l$$
+Which is in agreement with equation \ref{RodForm}.
+
+
+\pagebreak
+
+\section{Problem \#2}
+Given the differential equation 
+\begin{equation}
+xy^2y' - \frac{1}{3}(x^3+y^3) = 0
+\label{Prob2}
+\end{equation}
+we can rearrange equation \ref{Prob2} into the form
+$$A(x,y)dx + B(x,y)dy = 0$$
+which we get as
+$$y^2dy - \frac{1}{3}\left(x^2+\frac{y^3}{x}\right)dx = 0$$
+where $A(x,y) = \frac{1}{3}\left(x^2+\frac{y^3}{x}\right)$ and $B(x,y) = y^2$. We verify 
+that the conditions
+\begin{align*}
+A(ax,ay) &= a^rA(x,y)\\
+B(ax,ay) &= a^rB(x,y)
+\end{align*}
+by
+\begin{align*}
+A(ax,ay) &= \frac{1}{3}\left((ax)^2+\frac{(ay)^3}{ax}\right) \\
+&= \frac{1}{3}\left((ax)^2+\frac{(ay)^3}{ax}\right)\\
+&= \frac{1}{3}\left(a^2x^2+\frac{a^3y^3}{ax}\right)\\
+&= \frac{1}{3}\left(a^2x^2+a^2\frac{y^3}{x}\right)\\
+&= a^2\frac{1}{3}\left(2x^2+\frac{y^3}{x}\right)\\
+&= a^2A(x,y)
+\end{align*}
+and
+\begin{align*}
+B(ax,ay) &= (ay)^2\\
+&= a^2y^2\\
+&= a^2B(x,y).
+\end{align*}
+This implies that we can set a change of variables
+$$x,y\rightarrow x,v=\frac{y}{x}$$
+which transforms equation \ref{Prob2} into
+\begin{align*}
+0 &= y^2dy - \frac{1}{3}\left(x^2+\frac{y^3}{x}\right)dx\\
+&\Downarrow\\
+0 &= (vx)^2(vdx+xdv) - \frac{1}{3}\left(x^2+\frac{(vx)^3}{x}\right)dx
+\end{align*}
+Which allows us to use separation of variables by
+\begin{align*}
+0 &= v^2x^3dv + \left(v^3x^2 - \frac{1}{3}x^2-\frac{1}{3}v^3x^2\right)dx\\
+0 &= v^2x^3dv + \left(-\frac{1}{3}x^2+\frac{2}{3}v^3x^2\right)dx\\
+0 &= v^2x^3dv - \frac{1}{3}x^2\left(1-2v^3\right)dx\\
+&\Downarrow\\
+\frac{3v^2}{1-2v^3}dv &= \frac{1}{x}dx
+\end{align*}
+Now we can solve by integrating both sides 
+\begin{align*}
+\int\frac{1}{x}dx &= \int\frac{3v^2}{1-2v^3}dv\\
+&\Downarrow\\
+\log(x) &= \int\frac{3v^2}{1-2v^3}dv
+\end{align*}
+where we use a substitution $u=1-2v^3$ and $du = -6v^2dv$ to get
+\begin{align*}
+\log(x) &= \int\frac{3v^2}{1-2v^3}dv\\
+&\Downarrow\\
+\log(x) &= \frac{1}{2}\int\frac{du}{u}\\
+\log(x) &= -\frac{1}{2}\log(1-2v^3)+c\\
+&\Downarrow\\
+x &= C\exp\left[\log((1-2v^3)^{-1/2})\right]\\
+x &= C(1-2v^3)^{-1/2}\\
+&\Downarrow\\
+x &= C\left(1-2\left(\frac{y}{x}\right)^3\right)^{-1/2}\\
+&\Downarrow\\
+-\frac{Cx^{-2}-1}{2} &= \frac{y}{x}\\
+&\Downarrow\\
+y^3 &= \frac{Cx+x^3}{2} \\
+&\Downarrow\\
+y(x) &= \left(\frac{x(x^2+C)}{2}\right)^{1/3}
+\end{align*}
+
+\pagebreak
+
+\section{Problem \#3}
+Given the second order differential equation
+\begin{equation}
+y''+3xy'-y=0
+\label{Prob3}
+\end{equation}
+we can solve for the general solution by using a power series given by
+\begin{align*}
+y(x) &= \sum_{n=0}^{\infty}c_nx^n\\
+y'(x) &= \sum_{n=0}^{\infty}c_nnx^{n-1}\\
+y''(x) &= \sum_{n=0}^{\infty}c_nn(n-1)x^{n-2}\\
+\end{align*}
+Note we can shift the indices of $y''(x)$ such that
+$$y''(x) = \sum_{n=0}^{\infty}c_{n+2}(n+1)(n+2)x^{n}.$$
+So, we replace the power series into equation \ref{Prob3} and get
+\begin{align*}
+0 &= y''+3xy'-y\\
+&\Downarrow\\
+0 &= \sum_{n=0}^{\infty}\left(c_{n+2}(n+1)(n+2)x^{n} + 3c_nnx^{n}-c_nx^n\right)\\
+0 &= \sum_{n=0}^{\infty}\left(c_{n+2}(n+1)(n+2) + 3c_nn-c_n\right)x^n
+\end{align*}
+Which implies that for all $x$ 
+$$0 = c_{n+2}(n+1)(n+2) + c_n(3n-1)$$
+must hold true. This leads to a recursion relation
+\begin{equation}
+c_{n+2} = -\frac{3n-1}{(n+1)(n+2)}c_n
+\label{RecCN}
+\end{equation}
+We expect to have two free constants due to the fact that this is a second order equation.
+We note that two constants define the power series where $c_0$ defines the even indices and
+$c_1$ defines the odd indices by equation \ref{RecCN}. These are our two free constants. 
+So, we can write the general solution by
+$$y(x) = c_0\left(1 + \frac{1}{2}x^2 - \frac{5}{24}x^4 + \frac{55}{720}x^6+...\right)
+         +c_1\left(x - \frac{1}{3}x^3 + \frac{2}{15}x^5 + ...\right)$$
+
+
+\pagebreak
+
+\section{Problem \#4}
+Given the differential equation
+\begin{equation}
+y'' - 4y' + 3y = e^{2x}+3x^2
+\label{Prob4}
+\end{equation}
+we can solve for $y(x)$ by first solving the homogeneous version of equation \ref{Prob4} 
+with the ansatz $y_0(x) = e^{ax}$. This yields the equation
+\begin{align*}
+a^2 - 4a + 3 &= 0\\
+(a-3)(a-1) &= 0\\
+&\Downarrow\\
+a &= 3,1
+\end{align*}
+So we can say that 
+$$y_0(x) = c_1e^{3x} + c_2e^{x}.$$
+Now we need to find the particular solution by using the ansatz 
+$$y_p(x) = ae^{2x} + bx^2 + cx + d$$
+which we can calculate
+\begin{align*}
+y_p'(x) &= 2ae^{2x} + 2bx + c\\
+y_p''(x) &= 4ae^{2x} + 2b.
+\end{align*}
+Then we plug $y_p(x)$, $y_p'(x)$, and $y_p''(x)$ in equation \ref{Prob4} 
+\begin{align*}
+y_p'' - 4y_p' + 3y_p &= e^{2x}+3x^2\\
+&\Downarrow\\
+4ae^{2x} + 2b - 4(2ae^{2x} + 2bx + c) + 3(ae^{2x} + bx^2 + cx + d) &= e^{2x}+3x^2\\
+4ae^{2x}-8ae^{2x}+3ae^{2x} + 3bx^2 - 8bx+3cx + 2b-4c+3d &= e^{2x}+3x^2\\
+-ae^{2x} + 3bx^2 + (3c-8b)x + 2b-4c+3d &= e^{2x}+3x^2
+\end{align*}
+and solve for the coefficients by the system of equations
+\begin{align*}
+-a &= 1\\
+3b &= 3\\
+3c - 8c &= 0\\
+2b - 4c +3d &= 0
+\end{align*}
+which gives the solution
+\begin{align*}
+a &= -1\\
+b &= 1\\
+c &= \frac{8}{3}\\
+d &= \frac{26}{9}
+\end{align*}
+Which results in the particular solution
+$$y_p(x) = -e^{2x} + x^2 + \frac{8}{3}x + \frac{26}{9}$$ 
+and the total solution
+$$y(x) =c_1e^{3x} + c_2e^{x} -e^{2x} + x^2 + \frac{8}{3}x + \frac{26}{9}$$ 
+
+
+
+\end{document}
+
