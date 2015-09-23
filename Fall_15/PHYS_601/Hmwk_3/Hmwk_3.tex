@@ -1,0 +1,335 @@
+\documentclass[11pt]{article}
+
+\usepackage{latexsym}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{enumerate}
+\usepackage{amsmath}
+\usepackage{cancel}
+\numberwithin{equation}{section}
+
+\setlength{\evensidemargin}{.25in}
+\setlength{\oddsidemargin}{-.25in}
+\setlength{\topmargin}{-.75in}
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{9.5in}
+\newcommand{\due}{September 23rd, 2015}
+\newcommand{\HWnum}{3}
+\input{"C:/Users/joeor_000/Documents/Coursework/Define.tex"}
+
+\begin{document}
+\input{../title.tex}
+
+\section{Problem \#1}
+Given the \emph{Laplace-Runge-Lenz vector} (LRL-vector) defined as
+\begin{equation}
+\mathbf{A} = \frac{1}{mk}\mathbf{p}\times\mathbf{L}-\mathbf{\hat{r}}.
+\label{LRLVector}
+\end{equation}
+Note, for the central potential $V(r) = -k/r$ the LRL-vector is conserved.
+
+\begin{enumerate}[(a)]
+\item We can show that the momentum vector, $\mathbf{p}$, traces out a circle in momentum 
+space by first calculating $\mathbf{L}\times\mathbf{A}$, which yields
+\begin{align*}
+\mathbf{L}\times\mathbf{A} &= \frac{1}{mk}\mathbf{L}\times\left(\mathbf{p}\times\mathbf{L}\right) - \mathbf{L}\times\mathbf{\hat{r}}
+\end{align*}
+Where we calculate
+\begin{align*}
+\mathbf{L}\times\left(\mathbf{p}\times\mathbf{L}\right) &= \mathbf{p}\left(\mathbf{L}\cdot\mathbf{L}\right) - \mathbf{L}\left(\mathbf{p}\cdot\mathbf{L}\right)\\
+&= L^2\mathbf{p} - \mathbf{L}\left(\mathbf{p}\cdot\left(\mathbf{r}\times\mathbf{p}\right)\right)\\
+&= L^2\mathbf{p} - \mathbf{L}\left(\mathbf{r}\cdot\left(\cancelto{0}{\mathbf{p}\times\mathbf{p}}\right)\right)\\
+&= L^2\mathbf{p}
+\end{align*}
+Next, we assume that $\mathbf{A}$ points in the $\hat{x}$ direction. This coupled with the
+knowledge that our motion is constrained to $xy$-plane implies that $\mathbf{L}$ points in 
+the $\hat{z}$ direction. Therefore
+\begin{align*}
+\mathbf{L}\times\mathbf{A} = LA(\mathbf{\hat{z}}\times\mathbf{\hat{x}}) = LA\mathbf{\hat{y}}
+\end{align*}
+Using this same assumption that $\mathbf{L} = L\mathbf{\hat{z}}$ we find
+$$\mathbf{L}\times\mathbf{\hat{r}} = L(\mathbf{\hat{z}}\times\mathbf{\hat{r}}) = -L\mathbf{\hat{\theta}}$$
+This allows us to rearrange our equation into the form
+\begin{align*}
+\mathbf{L}\times\mathbf{A} &= \frac{1}{mk}\mathbf{L}\times\left(\mathbf{p}\times\mathbf{L}\right) - \mathbf{L}\times\mathbf{\hat{r}}\\
+\mathbf{L}\times\mathbf{A} - \frac{1}{mk}\mathbf{L}\times\left(\mathbf{p}\times\mathbf{L}\right) &= - \mathbf{L}\times\mathbf{\hat{r}}\\
+&\Downarrow\\
+L\mathbf{\hat{\theta}} &= LA\mathbf{\hat{y}} - \frac{L^2}{mk}\mathbf{p}\\
+L\mathbf{\hat{\theta}} &= LA\mathbf{\hat{y}} - \frac{L^2}{mk}(p_x\mathbf{\hat{x}}+p_y\mathbf{\hat{y}})\\
+L\mathbf{\hat{\theta}} &= \left(LA - \frac{L^2}{mk}p_y\right)\mathbf{\hat{y}} - \frac{L^2}{mk}p_x\mathbf{\hat{x}}
+\end{align*}
+Now we calculate the magnitude of both sides to get
+\begin{align*}
+L^2 &= \left(LA - \frac{L^2}{mk}p_y\right)^2 - \left(\frac{L^2}{mk}p_x\right)^2\\
+&= (LA)^2 + \left(\frac{L^2}{mk}\right)^2p_y^2 - 2\frac{AL^3}{mk}p_y + \left(\frac{L^2}{mk}\right)^2p_x^2\\
+\end{align*}
+Which we can rearrange by grouping together the $p_x$ and $p_y$ terms
+\begin{align*}
+\Rightarrow\left(\frac{mk}{L}\right)^2 &= p_x^2 + p_y^2 - 2\frac{m^2k^2}{L^4}\frac{AL^3}{mk}p_y + \frac{m^2k^2}{L^4}(AL)^2\\
+\left(\frac{mk}{L}\right)^2 &= p_x^2 + p_y^2 - 2\frac{Amk}{L}p_y + \left(\frac{mkA}{L}\right)^2\\
+&\Downarrow\\
+\left(\frac{mk}{L}\right)^2 &= p_x^2 + \left(p_y - \frac{Amk}{L}\right)^2
+\end{align*}
+We recall that the magnitude of the LRL-vector is the eccentricity, $e$, which we replace as
+\begin{equation}
+p_x^2 + \left(p_y - \frac{mke}{L}\right)^2 = \left(\frac{mk}{L}\right)^2
+\label{MomCirc}
+\end{equation}
+which is the equation for a circle centered at $(0,mke/L)$ with a radius of $mk/L$ in 
+momentum space.
+
+\item
+We can take the result from part (a) given by equation \ref{MomCirc} and find where it 
+crosses the $p_x$ axis by setting $p_y=0$. This yields
+\begin{align*}
+p_x^2 + \left(0 - \frac{mke}{L}\right)^2 &= \left(\frac{mk}{L}\right)^2\\
+&\Downarrow\\
+p_x^2 &= \left(\frac{mke}{L}\right)^2 - \left(\frac{mke}{L}\right)^2\\
+&= \left(\frac{mk}{L}\right)^2\left(1-e^2\right)\\
+&\Downarrow\\
+p_0 &\equiv \pm\frac{mk}{L}\sqrt{1-e^2}
+\end{align*}
+Where we defined the momentum at this point as $p_0$. We note that for the condition of bound orbits, $|e|<1$, this gives a real result. Note the 
+result that eccentricity is given by
+\begin{equation}
+e = \sqrt{\frac{2L^2E}{mk^2}+1}
+\label{eccen}
+\end{equation}
+for elliptical orbits. We can replace this into the result from above to get
+\begin{align*}
+p_0 = \pm\frac{mk}{L}\sqrt{1-e^2} &= \pm\frac{mk}{L}\sqrt{1-\frac{2L^2E}{mk^2}+1} \\
+&= \pm\sqrt{\frac{m^2k^2}{L^2}\frac{2L^2E}{mk^2}} \\
+&= \pm\sqrt{2mE}
+\end{align*}
+This result can be written in the familiar form as 
+$$E = \frac{p_0^2}{2m}$$
+which implies when we are at $p_0$ the energy is entirely kinetic. This corresponds to the 
+two turning points of our system.
+
+\item
+Given the $p_0$ we found in part (b) we can rescale the momentum to a dimensionless quantity
+$\mathbf{R} = \mathbf{p}/p_0$. Which we can transform equation \ref{MomCirc} by dividing 
+both sides by $p_0^2$
+\begin{align*}
+\left(\frac{p_x}{p_0}\right)^2 + \left(\frac{p_y}{p_0} - \frac{mke}{Lp_0}\right)^2 &= \left(\frac{mk}{Lp_0}\right)^2\\
+&\Downarrow\\
+R_x^2 + \left(R_y - \frac{e}{\sqrt{1-e^2}}\right)^2 &= \frac{1}{1-e^2}
+\end{align*}
+Note that for we have the intersections $\pm1$ on the $X$ axis. Which is consistent with 
+the result from part (b). Now, we can find the intersections of the $Y$ axis by
+\begin{align*}
+\cancelto{0}{R_x^2} + \left(R_y - \frac{e}{\sqrt{1-e^2}}\right)^2 &= \frac{1}{1-e^2}\\
+&\Downarrow\\
+R_y - \frac{e}{\sqrt{1-e^2}} &= \pm\frac{1}{\sqrt{1-e^2}}\\
+R_y &= \pm\frac{1}{\sqrt{1-e^2}} + \frac{e}{\sqrt{1-e^2}} \\
+&= \frac{e\pm1}{\sqrt{1-e^2}}
+\end{align*}
+So our two intersection points on $Y$ are $e-1/\sqrt{1-e^2}$ and $e+1/\sqrt{1-e^2}$.
+
+\item In part (c) we created the $X-Y$ plane. We can take a unit sphere and intersect this 
+plane at the equator of the unit sphere. We can calculate the points that pierce the unit 
+sphere by a line drawn from the north pole of the unit sphere at location $(0,0,1)$ to the
+point on the $X-Y$ plane by
+$$x=\frac{2X}{1+X^2+Y^2},\qquad \; y=\frac{2Y}{1+X^2+Y^2},\qquad z=\frac{-1+X^2+Y^2}{1+X^2+Y^2}$$
+For the points that intersect the $X$ axis we have the points $(1,0)$ and $(-1,0)$ and it is
+easy to see that for the point $(1,0)$
+\begin{align*}
+x &= \frac{2(1)}{1+1} = 1\\
+y &= \frac{0}{1+1} = 0\\
+z &= \frac{-1+1+0}{1+1} = 0
+\end{align*}
+and for $(-1,0)$ the piercing point is
+\begin{align*}
+x &= \frac{2(-1)}{1+1} = -1\\
+y &= \frac{0}{1+1} = 0\\
+z &= \frac{-1+1+0}{1+1} = 0
+\end{align*}
+Now, we can calculate the piercing coordinates for the position $(0,(e+1)/\sqrt{1-e^2})$ by 
+finding $y$ and $z$ with $x=0$.
+\begin{align*}
+y &= \frac{2\frac{e+1}{\sqrt{1-e^2}}}{1+\frac{(e+1)^2}{1-e^2}}\\
+&= \frac{2(e+1)}{\sqrt{1-e^2}}\frac{1-e^2}{1-e^2+(e+1)^2}\\
+&= \frac{2(e+1)}{\sqrt{1-e^2}}\frac{1-e^2}{1-e^2+e^2+1+2e}\\
+&= \frac{2(e+1)}{\sqrt{1-e^2}}\frac{1-e^2}{2(e+1)}\\
+&= \sqrt{1-e^2}
+\end{align*}
+and
+\begin{align*}
+z &= \frac{-1 + \frac{(e+1)^2}{1-e^2}}{1+\frac{(e+1)^2}{1-e^2}}\\
+&= \frac{(e+1)^2-1+e^2}{1-e^2}\frac{1-e^2}{(e+1)^2+1-e^2}\\
+&= \frac{e^2+2e+1-1+e^2}{e^2+2e+1+1-e^2}\\
+&= \frac{2e(e+1)}{2(e+1)}\\
+&= e
+\end{align*}
+And we can repeat this calculation for $(0,(e-1)/\sqrt{1-e^2})$ by
+\begin{align*}
+y &= \frac{2\frac{e-1}{\sqrt{1-e^2}}}{1+\frac{(e-1)^2}{1-e^2}}\\
+&= \frac{2(e-1)}{\sqrt{1-e^2}}\frac{1-e^2}{1-e^2+(e-1)^2}\\
+&= \frac{2(e-1)}{\sqrt{1-e^2}}\frac{1-e^2}{1-e^2+e^2+1-2e}\\
+&= \frac{2(e-1)}{\sqrt{1-e^2}}\frac{1-e^2}{2(1-e)}\\
+&= -\sqrt{1-e^2}
+\end{align*}
+and
+\begin{align*}
+z &= \frac{-1 + \frac{(e-1)^2}{1-e^2}}{1+\frac{(e-1)^2}{1-e^2}}\\
+&= \frac{(e-1)^2-1+e^2}{1-e^2}\frac{1-e^2}{(e-1)^2+1-e^2}\\
+&= \frac{e^2-2e+1-1+e^2}{e^2-2e+1+1-e^2}\\
+&= \frac{2e(e-1)}{-2(e-1)}\\
+&= -e
+\end{align*}
+So we can see the four points found in part (c) correspond to the pierced points
+\begin{align*}
+(1,0) &\Rightarrow (1,0,0)\\
+(-1,0) &\Rightarrow (-1,0,0)\\
+\left(0,\frac{e+1}{\sqrt{1-e^2}}\right) &\Rightarrow (0,\sqrt{1-e^2},e)\\
+\left(0,\frac{e-1}{\sqrt{1-e^2}}\right) &\Rightarrow (0,-\sqrt{1-e^2},-e)
+\end{align*}
+We can calculate the volume made by three of these points by
+\begin{align*}
+(-1,0,0)\cdot((1,0,0)\times(0,\sqrt{1-e^2},e) &= 0\\
+&\textnormal{or}\\
+(-1,0,0)\cdot((0,-\sqrt{1-e^2},-e)\times(0,\sqrt{1-e^2},e) &= 0\\
+(-1,0,0)\cdot((0,-\sqrt{1-e^2},-e)\times(0,\sqrt{1-e^2},e) &= 0\\
+\end{align*}
+that these points lie on the same plane, and we know they intersect the unit sphere. This
+implies that these points must make a greater circle on the unit sphere. We can test to see
+that this holds true for a general point on the normalized $Y$ circle by seeing that for 
+$X=R_x$ and $Y=R_y-e/\sqrt{1-e^2}$ where the equation of our circle becomes
+$$X^2+Y^2 = \frac{1}{1-e^2}$$
+which implies that
+$$1+X^2+Y^2 = \frac{2-e^2}{1-e^2}$$
+so our piecing points become
+\begin{align*}
+x &= 2\frac{1-e^2}{2-e^2}R_x\\
+y &= 2\frac{1-e^2}{2-e^2}R_y - 2\frac{e\sqrt{1-e^2}}{2-e^2}\\
+z &= -\frac{e^2}{1-e^2}
+\end{align*}
+we note that the above $z$ does not depend on $R_x$ or $R_y$ so we can infer that all $R_x$ 
+and $R_y$ lie on a plane. Therefore for all $R_x$ and $R_y$ we project onto a great circle
+on the unit sphere.
+
+\item We see that the hidden symmetry of the Kepler problem arises from the forcing of the
+momentum space to fit onto a circle in the $X$-$Y$ plane.
+\end{enumerate}
+
+\pagebreak
+
+\section{Problem \#2}
+Given Kepler's equation
+\begin{equation}
+\psi - e\sin\psi = \frac{2\pi t}{T}\equiv\omega t
+\label{Keps}
+\end{equation}
+we can expand over a small $e$ using the recursion relation 
+\begin{equation}
+\psi_{n+1} = \omega t + e\sin\psi_n
+\label{Recur}
+\end{equation}
+with $\psi_0=\omega t$. Calculating to first order in $e$ is easy to see
+$$\psi_1 = \omega t + e\sin\psi_0 = \omega t +e \sin\omega t$$
+Now to calculate to second order in $e$ we need to use the fact that $e$ is small.
+\begin{align*}
+\psi_2 &= \omega t + e\sin\psi_1 \\
+&= \omega t +e \sin(\omega t + e\sin\omega t)\\
+&= \omega t +e(\sin\omega t \cos(e\sin\omega t)+ \sin(e\sin\omega t)\cos\omega t)\\
+&= \omega t +e\sin\omega t + e^2\sin\omega t\cos\omega t
+\end{align*}
+And finally to third order we get
+\begin{align*}
+\psi_3 &= \omega t + e\sin\psi_2\\
+&= \omega t + e\sin(\omega t +e\sin\omega t + e^2\sin\omega t\cos\omega t)\\
+&= \omega t + e\sin\left(\frac{}{}\omega t +e\sin\omega t(1 + e\cos\omega t)\right)\\
+&= \omega t + e\left(\frac{}{}\sin\omega t\cancelto{1}{\cos(e\sin\omega t(1 + e\cos\omega t))} + \sin(e\sin\omega t(1 + e\cos\omega t))\cos\omega t\right)\\
+&= \omega t + e\left(\frac{}{}\sin\omega t + e\sin\omega t(1 + e\cos\omega t))\cos\omega t\right)\\
+&= \omega t + e\sin\omega t + e^2\sin\omega t\cos\omega t + e^3\sin\omega t\cos^2\omega t)
+\end{align*}
+\pagebreak
+
+\section{Problem \#3}
+For a gravitational potential with a perturbation given as
+$$V(r) = -\frac{k}{r} + \frac{\beta}{r^n}$$
+we can calculate the resulting precession by the integral
+$$\Delta\theta = \int_{0}^{T}\Omega(t)dt$$
+where $\Omega(t)t$ is the angle of rotation of the LRL-vector about a vector 
+$\mathbf{\Omega}$. Where we know that $\Omega$ is given by
+$$\Omega = \frac{-f(r)}{mk}\frac{\cos\theta}{e}L$$
+which allows us to change the integral over time into an integral over angle $\theta$.
+\begin{align*}
+\Delta\theta &= \int_{0}^{T}\Omega(t)dt\\
+&= \frac{1}{mke}\int_{0}^{T}(-f(r))\cos\theta Ldt\\
+&= \frac{1}{mke}\int_{0}^{2\pi}(-f(r))\cos\theta\left(mr^2\frac{d\theta}{dt}\right)dt\\
+&= \frac{1}{ke}\int_{0}^{2\pi}(-f(r)r^2)\cos\theta d\theta
+\end{align*}
+Where $f(r)$ is the perturbative force which for our case we can calculate as
+\begin{align*}
+f(r) &= -V_p'(r) = -\frac{d}{dr}\frac{\beta}{r^n}\\
+&= \frac{n\beta}{r^{n+1}}
+\end{align*}
+Which gives the equation for $\Delta\theta$
+$$\Delta\theta = \frac{n\beta}{ke}\int_{0}^{2\pi}r^{1-n}(\theta)\cos\theta d\theta$$
+We note that $r$ is a function of $\theta$ and taking the perturbation to be small we can 
+assume that $r$ is the unperturbed result given by
+$$r = \frac{a(1-e^2)}{1+e\cos\theta}$$
+which replacing into the integral yields
+$$\Delta\theta_n = \frac{n\beta (a(1-e^2))^{1-n}}{ke}\int_{0}^{2\pi}\frac{\cos\theta}{(1+e\cos\theta)^{1-n}} d\theta$$
+Now we can calculate the period for $n=2,3,4$ by taking the integrals. First we have
+\begin{align*}
+\Delta\theta_{2} &= \frac{2\beta (a(1-e^2))^{-1}}{ke}\int_{0}^{2\pi}\frac{\cos\theta}{(1+e\cos\theta)^{-1}} d\theta\\
+&= \frac{2\beta }{kae(1-e^2)}\int_{0}^{2\pi}(1+e\cos\theta)\cos\theta d\theta\\
+&= \frac{2\beta \pi}{kae(1-e^2)}e\pi = \frac{2\beta \pi}{ka(1-e^2)}
+\end{align*}
+Now for $n=3$ we can calculate the integral for $\Delta\theta_3$.
+\begin{align*}
+\Delta\theta_{3} &= \frac{3\beta a(1-e^2)^{-2}}{ke}\int_{0}^{2\pi}\frac{\cos\theta}{(1+e\cos\theta)^{-2}} d\theta\\
+&= \frac{3\beta }{ke(a(1-e^2))^{2}}\int_{0}^{2\pi}(1+e\cos\theta)^{2}\cos\theta d\theta\\
+&= \frac{3\beta }{ke(a(1-e^2))^{2}}\int_{0}^{2\pi}(1+2e\cos\theta+e^2\cos^2\theta)\cos\theta d\theta\\
+&= \frac{3\beta }{ke(a(1-e^2))^{2}}\int_{0}^{2\pi}\cos\theta+2e\cos^2\theta+e^2\cos^3\theta d\theta\\
+&= \frac{3\beta }{ke(a(1-e^2))^{2}}2e\pi = \frac{6\beta a\pi}{k(a(1-e^2))^{2}}
+\end{align*}
+And finally for $\Delta\theta_4$ we have
+\begin{align*}
+\Delta\theta_{4} &= \frac{4\beta }{ke(a(1-e^2))^{3}}\int_{0}^{2\pi}(1+e\cos\theta)^{3}\cos\theta d\theta\\
+&= \frac{4\beta a}{ke(a(1-e^2))^{3}}\int_{0}^{2\pi}(1+3e\cos\theta+3e^2\cos^2\theta+e^3\cos^3\theta)\cos\theta d\theta\\
+&= \frac{4\beta a}{ke(a(1-e^2))^{3}}\int_{0}^{2\pi}\cos\theta+3e\cos^2\theta+3e^2\cos^3\theta+e^3\cos^4\theta d\theta\\
+&= \frac{4\beta a}{ke(a(1-e^2))^{3}}\left(3e\pi + \frac{3}{4}e^3\pi\right) = \frac{3\beta \pi(4+e^2)}{k(a(1-e^2))^{3}}
+\end{align*}
+\pagebreak
+
+\section{Problem \#4}
+For the precession of the perihelion of the orbit of Mercury we take a perturbation on the
+potential as
+$$V(r) = \frac{-mMG}{r}\left(1+\alpha\frac{GM}{rc^2}\right)$$ 
+we see that the perturbation is on the order of $1/r^2$. So we can use $\Delta\theta_2$ 
+given by
+$$\Delta\theta_2 = \frac{2\beta \pi}{ka(1-e^2)}$$
+where
+$$k = mMG,\qquad \beta = k\alpha\frac{GM}{c^2}$$
+So we can solve for $\alpha$ by taking $\Delta\theta_2$ for Mercury.
+\begin{align*}
+\Delta\theta_2 &= \frac{2\beta \pi}{ka(1-e^2)}\\
+&= \frac{2 k\pi}{ka(1-e^2)}\frac{GM}{c^2}\alpha\\
+&= \frac{2 \pi}{a(1-e^2)}\frac{GM}{c^2}\alpha\\
+&\Downarrow\\
+\alpha &= \Delta\theta_2\frac{c^2}{GM}\frac{a(1-e^2)}{2\pi}
+\end{align*}
+So in order calculate $\alpha$ we can calculate $\Delta\theta_2$ by using the fact that
+the period of the orbit is $T=0.241\unit{yr}$ and the rate of the perihelion's advancement 
+is $\Omega = 43\unit{arcsec/century}$ which we can convert to radians per year
+$$\Omega = \frac{43\unit{arcsec}}{1\unit{century}}\frac{1\unit{century}}{100\unit{yr}}\frac{4.85\times10^{-6}\unit{radians}}{1\unit{arcsec}}=2.08\times10^{-6}\unit{yr^{-1}}$$
+So we can calculate $\Delta\theta_2$ by
+$$\Delta\theta_2 = \Omega T = 2.08\times10^{-6}\unit{yr^{-1}}(0.241\unit{yr}) = 5.03\times10^{-7}$$
+and we use the given values 
+\begin{align*}
+a &= 57900000\unit{km}\\
+e &= 0.206\\
+GM/c^2 &= 1.475\unit{km}
+\end{align*}
+to calculate
+$$\alpha = 3.01$$
+We note that this perturbation on the potential does not act as an addition to the barrier 
+from the angular momentum. This is because the motion of the orbit is completely constrained
+in the plane. This means any extra terms results in precession.
+
+
+\end{document}
+

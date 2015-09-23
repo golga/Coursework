@@ -1,0 +1,181 @@
+\documentclass[11pt]{article}
+
+\usepackage{latexsym}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{enumerate}
+\usepackage{amsmath}
+\usepackage{cancel}
+\numberwithin{equation}{section}
+
+\setlength{\evensidemargin}{.25in}
+\setlength{\oddsidemargin}{-.25in}
+\setlength{\topmargin}{-.75in}
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{9.5in}
+\newcommand{\due}{September 23rd, 2015}
+\newcommand{\HWnum}{2}
+\input{"C:/Users/joeor_000/Documents/Coursework/Define.tex"}
+
+\begin{document}
+\input{../title.tex}
+
+\section{Problem \#1}
+\begin{enumerate}[(i)]
+\item For an arbitrary function $F(z)$ that is expandable as a power series we can calculate
+the commutation relation of $x_i$ and $G(\mathbf{p})$ where $x$ and $p$ are the position and
+momentum. We note the expansion
+$$F(\mathbf{p}) = \sum_{n=0}^{\infty}a_n\mathbf{p}^n$$
+which we can use to find
+\begin{align*}
+\left[x_i,F(\mathbf{p})\right] &= \sum_{n=0}^{\infty}a_n\left[x_i,\mathbf{p}^n\right]\\
+&= \sum_{n=0}^{\infty}a_n\left[x_i,p_i^n\right]
+\end{align*}
+We note that we select the $i$ component of the momentum vector due to the fact that the 
+commutator is zero for all other components. Now we see that
+\begin{align*}
+\left[x_i,p_i^n\right] &= x_ixp_i^n - p_i^nx_i\\
+&= (x_ip_i)p_i^{n-1} - p_i^nx_i\\
+&= \left(p_ix_ix+[x_ix,p_i]^{}\right)p_i^{n-1} - p_i^nx_ix\\
+&= p_i(x_ip_i)p_i^{n-2}+[x_i,p_i]p_i^{n-1} - p_i^nx_i\\
+&= p_i(p_ix_i+[x_i,p_i])p_i^{n-2}+[x_i,p_i]p_i^{n-1} - p_i^nx_i\\
+&= p_i^2x_ip_i^{n-2} + p_i[x_i,p_i]p_i^{n-2}+[x_i,p_i]p_i^{n-1} - p_i^nx_i\\
+&= p_i^2x_ip_i^{n-2} + 2[x_i,p_i]p_i^{n-1} - p_i^nx_i\\
+&\qquad\vdots\\
+&= p_i^nx_i + n[x_i,p_i]p_i^{n-1} - p_i^nx_i\\
+&= n[x_i,p_i]p_i^{n-1} = -i\hbar np_i^{n-1}
+\end{align*}
+So our summation becomes
+$$\left[x_i,F(\mathbf{p})\right] = -i\hbar\sum_{n=0}^{\infty}a_n np_i^{n-1} = -i\hbar\frac{dF}{dp_i}$$
+
+\item We repeat the process above but this time for the commutation $[p_i,G(\mathbf{x})]$ 
+where we note that 
+$$[p_i,x_i^n] = i\hbar nx^{n-1}$$
+by the same process as above. This gives
+\begin{align*}
+\left[p_i,G(\mathbf{x})\right] &= \sum_{n=0}^{\infty}c_n[p_i,x_i^n]\\
+&= i\hbar\sum_{n=0}^{\infty}c_nnx^{n-1}\\
+&= i\hbar\frac{dG}{dx_i}
+\end{align*}
+\end{enumerate}
+
+\pagebreak
+
+\section{Problem \#2}
+\begin{enumerate}[(i)]
+\item
+Given a free particle inside a one dimensional infinite potential well of width $a$ with a
+wave function at $t=0$ given by
+$$\Psi(x, t=0) = \psi_0 = A\sin^3\left(\frac{\pi x}{a}\right)$$
+we calculate the wave function for an arbitrary time, $t$, by projecting the wave function
+onto the basis of the infinite potential well
+$$\Psi(x,t) = \sum_{n=0}^{\infty}c_n\psi_n\exp\left(-i/\hbar E_nt\right)$$
+where $\psi_n$ are the eigenfunctions of a free particle in an infinitely deep potential 
+well. We know that $\psi_n$ is given by
+\begin{equation}
+\psi_n = \left(\frac{2}{a}\right)^{1/2}\sin\left(\frac{\pi(n+1)x}{a}\right)
+\label{SquBasis}
+\end{equation}
+and $E_n$ are the associated eigenvalues given by
+$$E_n = \frac{\hbar^2\pi^2(n+1)^2}{2ma^2}.$$
+We note that $\psi_n$ forms an orthonormal basis which implies that we can calculate the 
+coefficients $c_n$ from equation \ref{SquBasis} by
+\begin{align*}
+c_n &= \int\psi^*_n\psi_0dx\\
+&\Downarrow\\
+c_n &= \int_{0}^{a}\left(\frac{2}{a}\right)^{1/2}\sin\left(\frac{\pi(n+1)x}{a}\right)A\sin^3\left(\frac{\pi x}{a}\right)dx\\
+&= A\left(\frac{2}{a}\right)^{1/2}\int_{0}^{a}\sin\left(\frac{\pi(n+1)x}{a}\right)\sin^3\left(\frac{\pi x}{a}\right)dx\\
+&= A\left(\frac{2}{a}\right)^{1/2}\int_{0}^{a}\sin\left(\frac{\pi(n+1)x}{a}\right)\sin\left(\frac{\pi x}{a}\right)\left(1-\cos^2\left(\frac{\pi x}{a}\right)\right)dx\\
+&= A\left(\frac{2}{a}\right)^{1/2}\int_{0}^{a}\sin\left(\frac{\pi(n+1)x}{a}\right)\sin\left(\frac{\pi x}{a}\right)dx - \int_{0}^{a}\sin\left(\frac{\pi(n+1)x}{a}\right)\sin\left(\frac{\pi x}{a}\right)\cos^2\left(\frac{\pi x}{a}\right)dx\\
+&= A\left(\frac{2}{a}\right)^{1/2}\int_{0}^{a}\sin\left(\frac{\pi(n+1)x}{a}\right)\sin\left(\frac{\pi x}{a}\right)dx - \frac{1}{4}\int_{0}^{a}\sin\left(\frac{\pi(n+1)x}{a}\right)\left(\sin\left(\frac{\pi x}{a}\right)+\sin\left(\frac{3\pi x}{a}\right)\right)dx\\
+&= A\left(\frac{2}{a}\right)^{1/2}\frac{3}{4}\int_{0}^{a}\sin\left(\frac{\pi(n+1)x}{a}\right)\sin\left(\frac{\pi x}{a}\right)dx - \frac{1}{4}\int_{0}^{a}\sin\left(\frac{\pi(n+1)x}{a}\right)\sin\left(\frac{3\pi x}{a}\right)dx
+\end{align*}
+We note that for the right integral is nonzero for only $n=0$ and the left integral only is
+nonzero for $n=2$. This implies that we picked out only two terms for the sum over our 
+basis. So we calculate $c_0$ by
+\begin{align*}
+c_0 &= A\left(\frac{2}{a}\right)^{1/2}\frac{3}{4}\int_{0}^{a}\sin^2\left(\frac{\pi x}{a}\right)dx\\
+&= A\left(\frac{2}{a}\right)^{1/2}\frac{3}{4}\frac{a}{2} = A\left(\frac{2}{a}\right)^{1/2}\frac{3a}{8}
+\end{align*}
+and then we calculate $c_2$ by
+\begin{align*}
+c_2 &= -A\left(\frac{2}{a}\right)^{1/2}\frac{1}{4}\int_{0}^{a}\sin^2\left(\frac{3\pi x}{a}\right)dx\\
+&= -A\left(\frac{2}{a}\right)^{1/2}\frac{1}{4}\frac{a}{2} = -A\left(\frac{2}{a}\right)^{1/2}\frac{a}{8}
+\end{align*}
+So we can easily write $\Psi(x,t)$ as the sum of two terms
+$$\Psi(x,t) = A\left(\frac{2}{a}\right)^{1/2}\frac{a}{8}\left(3\sin\left(\frac{\pi x}{a}\right)e^{\left(-iE_0t/\hbar\right)} - \sin\left(\frac{3\pi x}{a}\right)e^{\left(-iE_2t/\hbar\right)}\right)$$
+
+\item For a spherical rotator with an initial wave function at $t=0$ given by
+$$\psi_0(\theta,\phi) = A\cos^2(\theta)$$
+we can find the wave function $\Psi(\theta,\phi,t)$ for an arbitrary time, $t$, by 
+projecting on the basis of spherical harmonics given by $\psi_{lm} = Y_{lm}(\theta,\phi)$. 
+We note that each $\psi_{lm}$ has an associated energy, $E_{l}$, given by
+$$E_l = \frac{\hbar^2l(l+1)}{2I}$$
+where $I$ is the moment of inertia. This implies that we can construct
+$$\Psi(\theta,\phi,t) = \sum_{l=0}^{\infty}c_l\psi_{lm}e^{-iE_lt/\hbar}$$
+where we calculate $c_l$ by using the initial condition
+\begin{align*}
+c_l &= \int\psi_{lm}^*\psi_0 dA
+\end{align*}
+We first note that the form of the spherical harmonics is given by
+$$Y_{lm}(\theta, \phi) = Ne^{im\phi}P_l^m(\cos\theta)$$
+where $N$ is a normalization factor and $P_l^m$ are the \emph{Legendre polynomials}. We note
+that $P_l^m$ form a orthonormal basis therefore we will pick out the specific polynomial 
+that is of the form $\cos^2\theta$ this is the $l=2$, $m=0$ term given by
+$$Y_{20}(\theta,\phi) = \frac{1}{4}\sqrt{\frac{5}{\pi}}\left(3\cos^2\theta-1\right)$$
+so we can calculate the only coefficient $c_2$ by
+\begin{align*}
+c_2 &= \int_{0}^{2\pi}\int_{0}^{\pi}\psi_{20}^*\cos^2\theta\sin\theta d\theta d\phi\\
+&= \frac{8}{3}\sqrt{\frac{\pi}{5}}
+\end{align*}
+Note that we can test the orthogonality condition of $\cos^2\theta$ by a Mathematica line of
+code given by \texttt{Table[Table[Integrate[SphericalHarmonicY[l, m, [Theta], [Phi]]\*(Cos[[Theta]]\string^2)* Sin[[Theta]], \{[Theta], 0, Pi\}, \{[Phi], 0, 2 Pi\}] , \{m, -l, l\}] , \{l, 0, 20\}]}
+which confirms that $c_2$ is the only nonzero coefficient. So we have
+$$\Psi(\theta,\phi,t) = \frac{8}{3}\sqrt{\frac{\pi}{5}}Y_{20}(\theta,\phi)e^{-iE_2t/\hbar}$$
+\end{enumerate}
+\pagebreak
+
+\section{Problem \#3}
+For a wave packet at the moment of time, $t=0$, we are given the wave function of a free 
+particle as
+$$\psi_0 = A\exp\left(-\frac{x^2}{2a^2}+i\frac{p_0x}{\hbar}\right).$$
+We note that for a free particle we have a plane wave solution to \emph{Schr\"{o}dinger's 
+Equation}. 
+$$\psi_x = A\exp\left(i(px-Et)/\hbar\right)$$
+We note that the plane was solution will form our basis, but since this state is a free 
+particle we know that we will have a continuous spectrum. For ease we can work in 
+momentum space such that
+$$\Psi(x,t) = \int C(p)\exp\left[i\left(\frac{px}{\hbar}-\frac{p^2}{2\mu\hbar}t\right)\right]dp$$
+Note that we replace $E$ with $E=p^2/2\mu$. We can calculate $C(p)$ by the Fourier Transform 
+\begin{align*}
+C(p) &= \int\psi_0\exp\left(-i\frac{px}{\hbar}\right)dx\\
+&= \int A\exp\left(-\frac{x^2}{2a^2}+i\frac{p_0x}{\hbar}\right)\exp\left(-i\frac{px}{\hbar}\right)dx\\
+&= A\int \exp\left(-\frac{x^2}{2a^2}+i\frac{(p_0-p)x}{\hbar}\right)dx\\
+&= A\exp\left(-\frac{a^2(p-p_0)^2}{2\hbar^2}\right)
+\end{align*}
+So now we can solve for $\Psi(x,t)$ as
+\begin{align*}
+\Psi(x,t) &= \int C(p)\exp\left[i\left(\frac{px}{\hbar}-\frac{p^2}{2\mu\hbar}t\right)\right]dp\\
+&= \int A\exp\left(-\frac{a^2(p-p_0)^2}{2\hbar^2}\right)\exp\left[i\left(\frac{px}{\hbar}-\frac{p^2}{2\mu\hbar}t\right)\right]dp\\
+&= \int A\exp\left(-\frac{a^2(p-p_0)^2}{2\hbar^2} + i\frac{px}{\hbar}-i\frac{p^2}{2\mu\hbar}t\right)dp\\
+&= \int A\exp\left(-\frac{a^2\mu(p-p_0)^2+i(\hbar p^2t-2\hbar\mu xp)}{2\mu\hbar^2}\right)dp\\
+&= \int A\exp\left(-\frac{(a^2\mu-i\hbar t)p^2-(i2\hbar\mu x)p +a^2\mu(p_0^2-2p_0)}{2\mu\hbar^2}\right)dp\\
+&= A\exp\left(-\frac{a^2\mu(p_0^2-2p_0)}{2\mu\hbar^2}\right)\int \exp\left(-\frac{(a^2\mu-i\hbar t)p^2-(i2\hbar\mu x)p}{2\mu\hbar^2}\right)dp\\
+&= A\exp\left(-\frac{a^2\mu(p_0^2-2p_0)}{2\mu\hbar^2}\right)\int \exp\left(-\frac{a^2\mu+it}{2\mu\hbar^2}\left(p^2-\frac{i2\hbar\mu x}{a^2\mu+it}p\right)\right)dp\\
+&= A\exp\left(-\frac{a^2\mu(p_0^2-2p_0)}{2\mu\hbar^2}\right)\int \exp\left(-\frac{a^2\mu+it}{2\mu\hbar^2}\left(\left(p-\frac{i\hbar\mu x}{a^2\mu+it}\right)^2 + \left(\frac{\hbar\mu x}{a^2\mu +it}\right)^2\right)\right)dp\\
+&= A\exp\left(-\frac{a^2p_0(p_0-2)}{2\hbar^2}\right)\exp\left(-\frac{a^2\mu+it}{2\mu\hbar^2}\left(\frac{\hbar\mu x}{a^2\mu +it}\right)^2\right)\int\exp\left(-\frac{a^2\mu+it}{2\mu\hbar^2}\left(\left(p-\frac{i\hbar\mu x}{a^2\mu+it}\right)^2\right)\right)dp\\
+\end{align*}
+We note that the integral over all momentum space yields a factor of $\pi$ which we absorb into $A$ and a square root the 
+$a^2\mu +it/2\mu\hbar^2$ term so 
+\begin{align*}
+\Psi(x,t) &= A\sqrt{\frac{2\mu\hbar^2}{a^2\mu+it}}\exp\left(-\frac{a^2\mu(p_0^2-2p_0)}{2\mu\hbar^2}\right)\exp\left(-\frac{a^2\mu+it}{2\mu\hbar^2}\left(\frac{\hbar\mu x}{a^2\mu +it}\right)^2\right)\\
+&= A\sqrt{\frac{2\mu\hbar^2}{a^2\mu+it}}\exp\left(-\frac{a^2\mu(p_0^2-2p_0)}{2\mu\hbar^2}\right)\exp\left(-\frac{a^2\mu+it}{2\mu\hbar^2}\frac{\hbar^2\mu^2}{(a^2\mu +it)^2}x^2\right)\\
+&= A\sqrt{\frac{2\mu\hbar^2}{a^2\mu+it}}\exp\left(-\frac{a^2\mu(p_0^2-2p_0)}{2\mu\hbar^2}\right)\exp\left(-\frac{\mu}{2(a^2\mu +it)}x^2\right)\\
+&= A\frac{2\hbar}{\sigma_x(t)}\exp\left(-\frac{a^2\mu(p_0^2-2p_0)}{2\mu\hbar^2}\right)\exp\left(-\frac{x^2}{\sigma_x(t)^2}\right)
+\end{align*}
+We see that we still have a wave packet, but now we have a time dependent variance given by 
+$$\sigma_x(t)^2 \equiv \frac{2(a^2\mu+it)}{\mu}$$
+this implies that as time increases the width of the wave packet increases by 
+$$<\Delta x(t)>^2 = |\sigma_x(t)^2| = \sqrt{\frac{(2a\mu)^2+t^2}{\mu^2}}$$
+\end{document}
+

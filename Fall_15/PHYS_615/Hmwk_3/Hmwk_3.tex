@@ -1,0 +1,322 @@
+\documentclass[11pt]{article}
+
+\usepackage{latexsym}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{enumerate}
+\usepackage{amsmath}
+\usepackage{cancel}
+\numberwithin{equation}{section}
+
+\setlength{\evensidemargin}{.25in}
+\setlength{\oddsidemargin}{-.25in}
+\setlength{\topmargin}{-.75in}
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{9.5in}
+\newcommand{\due}{September 23rd, 2015}
+\newcommand{\HWnum}{3}
+\input{"C:/Users/joeor_000/Documents/Coursework/Define.tex"}
+
+\begin{document}
+\input{../title.tex}
+
+\section{Problem \#1}
+For the differential equation given by
+\begin{equation}
+(1-x^3)y''-6x^2y'-6xy=0
+\label{Prob1}
+\end{equation}
+with the boundary conditions
+$$y(0)=1,\qquad y'(0)=0$$
+can be solved by finding a series for $y$ in the form
+$$y(x) = \sum_{n=0}^{\infty}a_nx^n.$$
+Where we note that
+\begin{align*}
+y'(x) &= \sum_{n=0}^{\infty}a_nnx^{n-1}\\
+y''(x) &= \sum_{n=0}^{\infty}a_nn(n-1)x^{n-2}
+\end{align*}
+and we replace these sums into equation \ref{Prob1} to get
+\begin{align*}
+(1-x^3)\sum_{n=0}^{\infty}a_nn(n-1)x^{n-2} - 6x^2\sum_{n=0}^{\infty}a_nnx^{n-1} - 6x\sum_{n=0}^{\infty}a_nx^n &= 0\\
+\sum_{n=0}^{\infty}a_nn(n-1)x^{n-2}-x^3\sum_{n=0}^{\infty}a_nn(n-1)x^{n-2} - 6x^2\sum_{n=0}^{\infty}a_nnx^{n-1} - 6x\sum_{n=0}^{\infty}a_nx^n &= 0\\
+\sum_{n=-3}^{\infty}a_{n+3}(n+2)(n+3)x^{n+1}-\sum_{n=0}^{\infty}a_nn(n-1)x^{n+1} - \sum_{n=0}^{\infty}6a_nnx^{n+1} - \sum_{n=0}^{\infty}6a_nx^{n+1} &= 0\\
+a_2 + \sum_{n=0}^{\infty}\left(\frac{}{}a_{n+3}(n+2)(n+3)-a_nn(n-1)-6a_nn-6a_n\right)x^{n+1} &= 0
+\end{align*}
+Note that we changed the dummy index over the first summation to $n\rightarrow n+3$. We note 
+that the $n=-3,-2$ terms are zero and the $n=-1$ term is $a_2$ which is the pre-factor. We
+now see that for this equation to be true for all $x$ the following needs to be true. This 
+implies that $a_2=0$.
+\begin{align*}
+0 &= a_{n+3}(n+2)(n+3)-a_nn(n-1)-6a_nn-6a_n\\
+0 &= a_{n+3}(n+2)(n+3)-a_n(n(n-1)+6n+6)\\
+0 &= a_{n+3}(n+2)(n+3)-a_n(n^2+5n+6)\\
+0 &= a_{n+3}(n+2)(n+3)-a_n((n+2)(n+3))\\
+&\Downarrow\\
+a_{n+3} &= \frac{(n+2)(n+3)}{(n+2)(n+3)}a_n\\
+a_{n+3} &= a_n
+\end{align*}
+Now that we have a recursion relation for the coefficients $a_n$ we can apply the boundary
+conditions to determine the values for $a_n$. Applying $y(0) = 1$ gives
+\begin{align*}
+y(0) = 1 &=  \sum_{n=0}^{\infty}a_n(0)^n\\
+&= a_0 + \cancelto{0}{\sum_{n=1}^{\infty}a_n(0)^n}\\
+&\Downarrow\\
+1 &= a_0
+\end{align*}
+and
+\begin{align*}
+y'(0) = 0 &=   \sum_{n=0}^{\infty}a_nn(0)^{n-1}\\
+&\Downarrow\\
+0 &= a_1
+\end{align*}
+Therefore we see only the $a_0,a_3,a_6,...$ terms are non-zero and are equal to 1. This 
+makes the series for $y$ become
+$$y(x) = 1 + x^3 + x^6 + x^9 +... =\sum_{n=0}^{\infty}x^{3n} = \frac{1}{1-x^3}$$
+we can verify this is a solution by first noting that
+\begin{align*}
+y(x) &= \frac{1}{1-x^3}\\
+y'(x) &= \frac{3x^2}{(1-x^3)^2}\\
+y''(x) &= 3\left(\frac{2x}{(1-x^3)^2} + \frac{6x^4}{(1-x^3)^3}\right) = \frac{6x(2x^3+1)}{(1-x^3)^3}
+\end{align*}
+and plugging back into equation \ref{Prob1} which yields
+\begin{align*}
+(1-x^3)y''-6x^2y'-6xy &= (1-x^3)\frac{6x(2x^3+1)}{(1-x^3)^3} - 6x^2\frac{3x^2}{(1-x^3)^2} - 6x\frac{1}{1-x^3}\\
+&= \frac{6x(2x^3+1)}{(1-x^3)^2} - \frac{18x^4}{(1-x^3)^2} - \frac{6x(1-x^3)}{(1-x^3)^2}\\ 
+&= \frac{12x^4+6x-18x^4-6x+6x^4)}{(1-x^3)^2}\\
+&=0
+\end{align*}
+Therefore, 
+$$y(x) = \frac{1}{1-x^3}$$
+is a solution for equation \ref{Prob1}.
+
+\pagebreak
+
+\section{Problem \#2}
+For the differential equation 
+\begin{equation}
+y'' - 2xy' - 2y =0
+\label{Prob2}
+\end{equation}
+we can find a solution by a power series like in Problem 1. With
+\begin{align*}
+y(x) &= \sum_{n=0}^{\infty}a_nx^{n}\\
+y'(x) &= \sum_{n=0}^{\infty}a_nnx^{n-1}\\
+y''(x) &= \sum_{n=0}^{\infty}a_nn(n-1)x^{n-2}
+\end{align*}
+which makes equation \ref{Prob2} become
+\begin{align*}
+0 &= \sum_{n=0}^{\infty}a_nn(n-1)x^{n-2} - 2x\sum_{n=0}^{\infty}a_nnx^{n-1} - 2\sum_{n=0}^{\infty}a_nx^{n}\\
+&= \sum_{n=-2}^{\infty}a_{n+2}(n+1)(n+2)x^{n} - 2\sum_{n=0}^{\infty}a_nnx^{n} - 2\sum_{n=0}^{\infty}a_nx^{n}\\
+&= \sum_{n=0}^{\infty}\left(\frac{}{}a_{n+2}(n+1)(n+2)- 2a_nn- 2a_n\right)x^{n}
+\end{align*}
+This leads us to the condition that for all $x$
+\begin{align*}
+0 &= a_{n+2}(n+1)(n+2)- 2a_nn- 2a_n\\
+&\Downarrow\\
+a_{n+2} &= \frac{2n+2}{(n+1)(n+2)}a_n\\
+&= \frac{2}{(n+2)}a_n
+\end{align*}
+We see that even $n$ $a_n$ are proportional to $a_0$ and odd $n$, $a_n$ are proportional to 
+$a_1$. This gives us two solutions to equation \ref{Prob2} given by
+\begin{align*}
+y_1(x) &= a_0 + a_2x^2 + a_4x^4 + a_6x^6...\\
+&= a_0 + a_0x^2 + \frac{1}{2}a_2x^4 + \frac{1}{3}a_4x^6...\\
+&= a_0 + a_0x^2 + \frac{1}{2}a_0x^4 + \frac{1}{6}a_0x^6...\\
+&= a_0\sum_{n=0}^{\infty}\frac{x^{2n}}{n!}\\
+&= a_0e^{x^2}
+\end{align*}
+and the odd terms yield
+\begin{align*}
+y_2(x) &= a_1x + a_3x^3 + a_5x^5 + a_7x^7 + ...\\
+&= a_1x + \frac{2}{3}a_1x^3 + \frac{2}{5}a_3x^5 + \frac{2}{7}a_5x^7 + ...\\
+&= a_1\left(x + \frac{2}{3}x^3 + \frac{4}{5\times3}x^5 + \frac{8}{7\times5\times3}x^7 + ...\right)\\
+&= a_1\sum_{n=0}^{\infty}\frac{2^nx^{2n+1}}{(2n+1)!!} \\
+&= a_1\frac{\sqrt{\pi}}{2}e^{x^2}\textnormal{erf}(x)
+\end{align*}
+We can test to see if these two solutions are linearly independent by calculating the 
+\emph{Wronskian} and if the result is nonzero then we can say the two solutions are linearly 
+independent. We note that for a second order ODE the \emph{Wronskian} is given by
+\begin{align*}
+W &= y_1y_2' - y_2y_1'
+\end{align*}
+Which we can calculate $y_1'(x)$ as
+\begin{align*}
+y_1'(x) &= \frac{d}{dx}\left(a_0e^{x^2}\right)\\
+&= a_0(2x)e^{x^2}
+\end{align*}
+and we calculate $y_2'(x)$ as
+\begin{align*}
+y_2'(x) &= \frac{d}{dx}\left(a_1\frac{\sqrt{\pi}}{2}e^{x^2}\textnormal{erf}(x)\right)\\
+&= a_1\frac{\sqrt{\pi}}{2}\left(2xe^{x^2}\textnormal{erf}(x) + e^{x^2}\frac{2e^{-x^2}}{\pi}\right)\\
+&= a_1\frac{\sqrt{\pi}}{2}\left(2xe^{x^2}\textnormal{erf}(x) + \frac{2}{\pi}\right)
+\end{align*}
+Now we can calculate $W$
+\begin{align*}
+W &= y_1y_2' - y_2y_1'\\
+&= a_0e^{x^2}a_1\frac{\sqrt{\pi}}{2}\left(2xe^{x^2}\textnormal{erf}(x) + \frac{2}{\pi}\right) - a_1\frac{\sqrt{\pi}}{2}e^{x^2}\textnormal{erf}(x)a_0(2x)e^{x^2}\\
+&= a_0a_1e^{x^2}\frac{\sqrt{\pi}}{2}\left(2xe^{x^2}\textnormal{erf}(x) + \frac{2}{\pi} - 2xe^{x^2}\textnormal{erf}(x)\right)\\
+&= a_0a_1e^{x^2}\frac{1}{\sqrt{\pi}}
+\end{align*}
+as nonzero for any value of $x$ and nonzero values of $a_0$ and $a_1$. Therefore, the 
+solutions we found are linearly independent.
+
+\pagebreak
+
+\section{Problem \#3}
+For the differential equation
+\begin{equation}
+xy'' + \frac{3}{x}y = 1 + x^2
+\label{Prob3}
+\end{equation}
+We first solve the homogeneous equation
+$$xy''+\frac{3}{x}y=0$$
+with a solution of the form
+$$y(x) = x^{s}\sum_{n=0}^{\infty}a_nx^n$$
+due to the regular singularity at $x=0$. We note that 
+\begin{align*}
+y'(x) &= \sum_{n=0}^{\infty}a_n(n+s)x^{n+s-1}\\
+y''(x) &= \sum_{n=0}^{\infty}a_n(n+s)(n+s-1)x^{n+s-2}
+\end{align*}
+which we plug into equation \ref{Prob3} to yield
+\begin{align*}
+0 &= x\sum_{n=0}^{\infty}a_n(n+s)(n+s-1)x^{n+s-2} + \frac{3}{x}\sum_{n=0}^{\infty}a_nx^{n+s}\\
+&= \sum_{n=0}^{\infty}a_n(n+s)(n+s-1)x^{n+s-1} + 3\sum_{n=0}^{\infty}a_nx^{n+s-1}\\
+&= \sum_{n=0}^{\infty}a_n\left(\frac{}{}(n+s)(n+s-1) + 3\right)x^{n+s-1}\\
+&= a_0\left(\frac{}{}s(s-1) + 3\right)x^{s-1} + \sum_{n=1}^{\infty}a_n\left(\frac{}{}(n+s)(n+s-1) + 3\right)x^{n+s-1}
+\end{align*}
+Note that we pulled the $n=0$ term out because we want the $x^{s-1}$ term to vanish for all
+$x$. This implies
+\begin{align*} 
+0 &= a_0\left(\frac{}{}s(s-1) + 3\right)\\
+&\Downarrow\\
+0 &= s^2 - s + 3
+\end{align*} 
+We see that this has a complex solution where the value of $s$ becomes 
+$s=1/2(1\pm i\sqrt{11}))$. So we can pick the positive solution to find an indicial equation
+by
+\begin{align*}
+0 &= a_n\left(\frac{}{}(n+s)(n+s-1) + 3\right)\\
+&\Downarrow\\
+0 &= (n+1/2+i/2\sqrt{11}))(n+1/2+i/2\sqrt{11}-1) + 3\\
+&= (n+1/2(1+i\sqrt{11}))(n+1/2(i\sqrt{11}-1)) + 3\\ 
+&= n^2 + \frac{1}{4}(1+i\sqrt{11})(i\sqrt{11}-1) + n\frac{1}{2}(i\sqrt{11}-1) + n\frac{1}{2}(1+i\sqrt{11}) + 3\\
+&= n^2 - \frac{12}{4} + in\sqrt{11} + 3\\
+&= n^2  + in\sqrt{11} = n(n+i\sqrt{11})
+\end{align*}
+We have two solutions for $n$ where $n=0,-i\sqrt{11}$. We note that there is no recursion 
+relation so in general our solution is of the form $x^(s+n)$ for both values of $n$. 
+Therefore our series becomes
+\begin{align*}
+y_0(x) = a_0x^{1/2+i/2\sqrt{11}+0} + a_1x^{1/2+i/2\sqrt{11}-i\sqrt{11}}&= a_0\sqrt{x}x^{i/2\sqrt{11}} + a_1\sqrt{x}x^{-i/2\sqrt{11}}\\
+&= a_0\sqrt{x}\exp\left(\log(x^{i/2\sqrt{11}})\right) + a_1\sqrt{x}\exp\left(\log(x^{-i/2\sqrt{11}})\right)\\
+&= a_0\sqrt{x}\exp\left(\frac{i\sqrt{11}}{2}\log x\right) + a_1\sqrt{x}\exp\left(\frac{-i\sqrt{11}}{2}\log x\right)\\
+&= a_0\sqrt{x}\cos\left(\frac{\sqrt{11}}{2}\log x\right) + a_1\sqrt{x}\sin\left(\frac{\sqrt{11}}{2}\log x\right)
+\end{align*}
+Now we can find the particular solution of equation \ref{Prob3} by first calculating the
+\emph{Wronskian} by
+\begin{align*}
+W &= y_1y_2' - y_1'y_2\\
+&= a_0\sqrt{x}\cos\left(\frac{\sqrt{11}}{2}\log x\right)\frac{a_1}{2\sqrt{x}}\left(\sin\left(\frac{\sqrt{11}}{2}\log x\right) + \sqrt{11}\cos\left(\frac{\sqrt{11}}{2}\log x\right)\right) \\
+&\qquad - a_1\sqrt{x}\sin\left(\frac{\sqrt{11}}{2}\log x\right)\frac{a_0}{2\sqrt{x}}\left(\cos\left(\frac{\sqrt{11}}{2}\log x\right) - \sqrt{11}\sin\left(\frac{\sqrt{11}}{2}\log x\right)\right)\\
+&= \frac{a_0a_1\sqrt{11}}{2}\left(\sin^2\left(\frac{\sqrt{11}}{2}\log x\right) + \cos^2\left(\frac{\sqrt{11}}{2}\log x\right)\right)\\
+&= \frac{a_0a_1\sqrt{11}}{2}
+\end{align*}
+We note that this value is nonzero for all $x$ which confirms that $y_1$ and $y_2$ are 
+linearly independent. So we can find $y_p$ by
+\begin{equation}
+y_p = y_2\int\frac{y_1f}{W} - y_1\int\frac{y_2f}{W}
+\label{PartSoln}
+\end{equation}
+Because $W$ is shown to be a constant we can just remove it from the integral in equation
+\ref{PartSoln}. So for $f=(1+x^2)/x$ we calculate
+\begin{align*}
+\int y_1\frac{(1+x^2)}{x}dx &= \frac{a_0}{18}x^{1/2}\left((3+5x^2)\cos(\sqrt{11}/2\log x) + \sqrt{11}(3+x^2)\sin(\sqrt{11}/2\log x)\right)\\
+\int y_2\frac{(1+x^2)}{x}dx &= \frac{a_1}{18}x^{1/2}\left((3+5x^2)\sin(\sqrt{11}/2\log x) - \sqrt{11}(3+x^2)\cos(\sqrt{11}/2\log x)\right)
+\end{align*}
+using Mathematica. Which gives the particular solution by equation \ref{PartSoln}
+\begin{align*}
+y_p(x) &= \frac{x}{9\sqrt{11}}\left(\cancel{(3+5x^2)\cos(\sqrt{11}/2\log x)\sin(\sqrt{11}/\log x)} + \sqrt{11}(3+x^2)\sin^2(\sqrt{11}/2\log x)\right)\\
+&\qquad + \frac{x}{9\sqrt{11}}\left(\cancel{-(3+5x^2)\cos(\sqrt{11}/2\log x)\sin(\sqrt{11}/\log x)} + \sqrt{11}(3+x^2)\cos^2(\sqrt{11}/2\log x)\right)\\
+&=  \frac{x}{9}(3+x^2)
+\end{align*}
+Which gives the general solution
+$$y(x) = a_0\sqrt{x}\cos(\sqrt{11}/2\log x) + a_1\sqrt{x}\sin(\sqrt{11}/2\log x) +  \frac{x}{9}(3+x^2)$$
+
+\pagebreak
+
+\section{Problem \#4}
+For the differential equation
+\begin{equation}
+2xy'' + y' + xy = 0
+\label{Prob4}
+\end{equation}
+which can be rewritten as
+$$y'' + \frac{1}{2x}y' + \frac{1}{2}y = 0$$
+we note that we have a \emph{regular singular point} at $x=0$ this implies that we try a 
+solution in the form of a power series of the form 
+\begin{align*}
+y(x) &= x^{s}\sum_{n=0}^{\infty}a_nx^{n} = \sum_{n=0}^{\infty}a_nx^{n+s}\\
+y'(x) &= \sum_{n=0}^{\infty}a_n(n+s)x^{n+s-1}\\
+y''(x) &= \sum_{n=0}^{\infty}a_n(n+s)(n+s-1)x^{n+s-2}
+\end{align*}
+which
+\begin{align*}
+0 &= \sum_{n=0}^{\infty}a_n(n+s)(n+s-1)x^{n+s-2} + \frac{1}{2x}\sum_{n=0}^{\infty}a_n(n+s)x^{n+s-1} + \frac{1}{2}\sum_{n=0}^{\infty}a_nx^{n+s}\\
+&= \sum_{n=-2}^{\infty}a_{n+2}(n+s+2)(n+s+1)x^{n+s} + \frac{1}{2}\sum_{n=0}^{\infty}a_n(n+s)x^{n+s-2} + \frac{1}{2}\sum_{n=0}^{\infty}a_nx^{n+s}\\
+&= \sum_{n=-2}^{\infty}a_{n+2}(n+s+2)(n+s+1)x^{n+s} + \frac{1}{2}\sum_{n=-2}^{\infty}a_{n+2}(n+s+2)x^{n+s} + \frac{1}{2}\sum_{n=0}^{\infty}a_nx^{n+s}\\
+&=\left(a_0(s)(s-1)+\frac{1}{2}a_0s\right)x^{s-2} + \left(a_1s(s+1)+\frac{1}{2}a_1(s+1)\right)x^{s-1}\\
+&\qquad  + \sum_{n=-0}^{\infty}\left(a_{n+2}(n+s+2)(n+s+1)+ \frac{1}{2}a_{n+2}(n+s+2) + \frac{1}{2}a_n\right)x^{n+s}
+\end{align*}
+Now we take the coefficients the lowest powers of $x$ to vanish, namely $x^{s-2}$ which is 
+given by the first term
+\begin{align*}
+a_0(s)(s-1) + \frac{1}{2}a_0s &= 0\\
+a_0\left(s^2-s + \frac{1}{2}s\right) &= 0\\
+&\Downarrow\\
+s\left(s-\frac{1}{2}\right) &= 0
+\end{align*}
+assuming $a_0$ is nonzero then we have 
+$$s = 0,\frac{1}{2}$$ 
+next we take the coefficients with the term $x^{s-1}$ which are from the second term this 
+yields
+\begin{align*}
+\left(a_1s(s+1)+\frac{1}{2}a_1(s+1)\right) &= 0\\
+a_1\left(s^2+s+\frac{1}{2}s+\frac{1}{2}\right) &= 0\\
+a_1\left(s^2+\frac{3}{2}s+\frac{1}{2}\right) &= 0\\
+a_1(s+1)\left(s+\frac{1}{2}\right) &= 0
+\end{align*}
+We note for both solutions $s=0,1/2$ the only way for the above to  hold true is if $a_1=0$. 
+This is okay as the values of $s$ are separated by a non-integer value, which implies that 
+the solutions for each $s$ are linearly independent. Next we take the $x^{n+s}$ coefficients
+which includes all term to get
+\begin{align*}
+0 &= a_{n+2}(n+s+2)(n+s+1) + \frac{1}{2}a_{n+2}(n+s+2) + \frac{1}{2}a_n\\
+0 &= a_{n+2}\left((n+s+2)(n+s+1) + \frac{1}{2}(n+s+2)\right) + \frac{1}{2}a_n\\
+&\Downarrow\\
+a_{n+2} &= -\frac{a_n}{2(n+s+2)(n+s+1) + (n+s+2)}\\
+\end{align*}
+We note that due to this recursion relation we have $a_1=a_{\textnormal{odd}}=0$. We can 
+choose $s=0$ so that the relation becomes 
+$$a_{n+2} = -\frac{a_n}{2(n+1)(n+2)+(n+2)}$$
+which allows us to calculate coefficients in terms of $a_0$ by
+\begin{align*}
+a_2 &= -\frac{1}{2(1)(2)+2}a_0 = -\frac{1}{6}a_0
+a_4 &= -\frac{1}{2(3)(4)+2}a_0 = \frac{1}{168}a_0
+a_6 &= -\frac{1}{2(5)(6)+2}a_0 = -\frac{1}{10416}a_0
+&\vdots
+\end{align*}
+So we can say that our first solution is 
+$$y_1(x) = a_0\left(-\frac{1}{6} + \frac{1}{168}x^2 - \frac{1}{10416}x^4+...\right)$$
+Now we can find the other solution by choosing $s=1/2$ while keeping $a_1=0$ to give the 
+recursion relation 
+$$a_{n+2} =  -\frac{a_n}{2(n+5/2)(n+3/2)+(n+5/2)} = -\frac{2a_n}{(2n+5)(2n+3)+(2n+5)}$$
+Calculating our coefficients yields
+\begin{align*}
+a_2 &= -\frac{1}{10}a_0\\
+a_4 &= -\frac{1}{36}a_2 = \frac{1}{360}a_0\\
+a_6 &= -\frac{1}{55}a_4 = -\frac{1}{19800}a_0
+&\vdots
+\end{align*}
+which yields the second solution
+$$y_2(x) = a_0\left(-\frac{1}{10}x^{1/2} + \frac{1}{360}x^{5/2} - \frac{1}{19800}x^{7/2}+...\right)$$
+\end{document}
