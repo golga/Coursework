@@ -1,0 +1,166 @@
+\documentclass[11pt]{article}
+
+\usepackage{latexsym}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{enumerate}
+\usepackage{amsmath}
+\usepackage{cancel}
+\numberwithin{equation}{section}
+
+\setlength{\evensidemargin}{.25in}
+\setlength{\oddsidemargin}{-.25in}
+\setlength{\topmargin}{-.75in}
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{9.5in}
+\newcommand{\due}{September 30th, 2015}
+\newcommand{\HWnum}{3}
+\input{"C:/Users/joeor_000/Documents/Coursework/Define.tex"}
+
+\begin{document}
+\input{../title.tex}
+
+\section{Problem \#1}
+For the operator given by
+$$\hat{A} = -i\hbar\partiald{}{\varphi} + a\sin\varphi$$
+we assume there exists an eigenfunction which is a solution to the equation
+$$(\hat{A} - A)\psi(\varphi) = 0$$
+where $A$ is the eigenvalue of $\hat{A}$. We can see that for the given $\hat{A}$ we have
+\begin{align*}
+\left(-i\hbar\partiald{}{\varphi} + a\sin\varphi\right)\psi(\varphi) - A\psi(\varphi) &= 0\\
+-i\hbar\partiald{}{\varphi}\psi(\varphi) + a\sin\varphi\psi(\varphi) - A\psi(\varphi) &= 0\\
+&\Downarrow\\
+-i\hbar\partiald{}{\varphi}\psi(\varphi) &= - a\sin\varphi\psi(\varphi) + A\psi(\varphi)\\
+\partiald{}{\varphi}\psi(\varphi) &=i\frac{A-a\sin\varphi}{\hbar}\psi(\varphi)
+\end{align*}
+This equation implies that
+$$\psi(\varphi) = C\exp\left(i\frac{A}{\hbar}\varphi\right)\exp\left(i\frac{a\cos\varphi}{\hbar}\right)$$
+We can find the normalization constant, $C$, by normalizing
+\begin{align*}
+1 = \int_{0}^{2\pi}\psi^*(\varphi)\psi(\varphi)d\phi &= C^2\int_{0}^{2\pi}\exp\left(-i\frac{A}{\hbar}\varphi\right)\exp\left(i\frac{A}{\hbar}\varphi\right)\exp\left(-i\frac{a\cos\varphi}{\hbar}\right)\exp\left(i\frac{a\cos\varphi}{\hbar}\right)d\varphi\\
+&= C^2\int_{0}^{2\pi}d\varphi = C^22\pi\\
+&\Downarrow\\
+C &= \frac{1}{\sqrt{2\pi}}
+\end{align*}
+Therefore our normalized eigenfunction is 
+$$\psi(\varphi) = \frac{1}{\sqrt{2\pi}}\exp\left(i\frac{A}{\hbar}\varphi\right)\exp\left(i\frac{a\cos\varphi}{\hbar}\right)$$
+where we apply the periodic boundary condition that $\psi(\varphi+2\pi)=\psi(\varphi)$ we 
+note that the second term satisfies this requirement and the first term is periodic for
+$$A = n\hbar\qquad n=1,2,3,...$$
+so we finally have the eigenfunction 
+$$\psi(\varphi) = \frac{1}{\sqrt{2\pi}}\exp\left(in\varphi\right)\exp\left(i\frac{a\cos\varphi}{\hbar}\right)$$
+with the eigenvalue 
+$$A = n\hbar\qquad n=1,2,3...$$
+\pagebreak
+
+\section{Problem \#2}
+\begin{enumerate}[(a)]
+\item For a general potential $U(x)$ the Hamiltonian operator in three-dimensions, $\hat{H}$,
+becomes
+$$\hat{H} = \frac{\mathbf{p}^2}{2m}+U(x)$$
+where in three-dimensions 
+$$\mathbf{p}^2 = \hat{p}^2_x+\hat{p}^2_y+\hat{p}^2_z$$
+For this Hamiltonian we can calculate the commutator $[\hat{H},y]$ by
+\begin{align*}
+\left[\hat{H},y\right] &= \frac{1}{2m}\left(\cancelto{0}{[\hat{p}^2_x,y]} + [\hat{p}^2_y,y] + \cancelto{0}{[\hat{p}^2_z,y]}\right)+\cancelto{0}{[U(x),y]}\\
+&= \frac{1}{2m}[\hat{p}^2_y,y]\\
+&= \frac{1}{2m}\left(\hat{p}_y[\hat{p}_y,y] +[\hat{p}_y,y]\hat{p}_y\right)\\
+&= \frac{1}{2m}\left(\hat{p}_y(-i\hbar) + (-i\hbar)\hat{p}_y\right)\\
+&= \frac{-i\hbar}{m}\hat{p}_y
+\end{align*}
+
+\item For the same Hamiltonian we calculate
+\begin{align*}
+[\hat{H},\hat{p}_x] &= \frac{1}{2m}\left(\cancelto{0}{[\hat{p}^2_x,\hat{p}_x]} + \cancelto{0}{[\hat{p}^2_y,\hat{p}_x]} + \cancelto{0}{[\hat{p}^2_z,\hat{p}_x]}\right)+[U(x),\hat{p}_x]\\
+&= [U(x),\hat{p}_x]
+\end{align*}
+We can calculate this commutation by multiplying by a function $f$
+\begin{align*}
+[U(x),\hat{p}_x]f(x) &= U(x)\hat{p}_xf(x) - \hat{p}_x(U(x)f(x))\\
+&= U(x)(-i\hbar)\partiald{}{d}f(x) - (-i\hbar)\partiald{}{x}(U(x)f(x))\\
+&= -i\hbar U(x)\partiald{f(x)}{d} + i\hbar\partiald{f(x)}{x}U(x) +i\hbar\partiald{U(x)}{x}f(x)\\
+&\Downarrow\\
+[U(x),\hat{p}_x]\cancel{f(x)} &= i\hbar\partiald{U(x)}{x}\cancel{f(x)}\\
+[U(x),\hat{p}_x] &= i\hbar\partiald{U(x)}{x}
+\end{align*}
+So we have
+$$[\hat{H},\hat{p}_x] = i\hbar\partiald{U(x)}{x}$$
+
+\item Next we calculate how $\hat{p}_x^2$ commutes with the Hamiltonian
+\begin{align*}
+[\hat{H},\hat{p}_x^2] &= \frac{1}{2m}\cancel{([\hat{p}^2_x,\hat{p}_x^2] + [\hat{p}^2_y,\hat{p}_x^2] + [\hat{p}^2_z,\hat{p}_x^2])}+[U(x),\hat{p}_x^2]\\
+&= [U(x),\hat{p}_x^2] = [U(x),\hat{p}_x]\hat{p}_x + \hat{p}_x[U(x),\hat{p}_x]\\
+&= i\hbar\partiald{U(x)}{x}\hat{p}_x + \hat{p}_xi\hbar\partiald{U(x)}{x}\\
+&= i\hbar\partiald{U(x)}{x}\hat{p}_x + i\hbar(-i\hbar)\partiald{}{x}\partiald{U(x)}{x}\\
+&= i\hbar\partiald{U(x)}{x}\hat{p}_x + \hbar^2\partiald{^2U(x)}{x^2}
+\end{align*}
+
+
+
+\end{enumerate}
+
+\pagebreak
+
+\section{Problem \#3}
+In order to express the translation operator $\hat{T}_{\mathbf{a}}$ which is defined as a 
+spacial translation $\mathbf{a}$ given by
+$$\hat{T}_{\mathbf{a}}\psi(\mathbf{r}) = \psi(\mathbf{r}+\mathbf{a})$$
+in terms of the momentum operator $\mathbf{\hat{p}}$ by noting that the expansion
+$$\psi(\mathbf{r}+\mathbf{a}) = \sum_{n=0}^{\infty}\frac{1}{n!}\grad^n(\psi(\mathbf{r}))\cdot\mathbf{a}^n$$
+We can place this into terms of $\mathbf{P}$ by noting that
+$$\mathbf{p} = -i\hbar\grad$$
+which implies that
+\begin{align*}
+\psi(\mathbf{r}+\mathbf{a}) &= \sum_{n=0}^{\infty}\frac{1}{n!}\grad^n(\psi(\mathbf{r}))\cdot\mathbf{a}^n\\
+&= \sum_{n=0}^{\infty}\frac{1}{n!}\mathbf{a}^n\cdot\left(\frac{i}{\hbar}\mathbf{p}\right)^n\psi(\mathbf{r})\\
+&= \sum_{n=0}^{\infty}\frac{1}{n!}\left(\frac{i}{\hbar}\mathbf{a}\cdot\mathbf{p}\right)^n\psi(\mathbf{r})
+\end{align*}
+We note that we have a Taylor expansion of the exponential
+$$\sum_{n=0}^{\infty}\frac{1}{n!}\left(\frac{i}{\hbar}\mathbf{a}\cdot\mathbf{p}\right)^n = \exp\left(i\frac{\mathbf{a}\cdot\mathbf{p}}{\hbar}\right)$$
+So we see that we have found that
+$$\psi(\mathbf{r}+\mathbf{a}) = \exp\left(i\frac{\mathbf{a}\cdot\mathbf{p}}{\hbar}\right)\psi(\mathbf{r})$$
+So the translation operator in terms of the momentum operator is given by
+$$\hat{T}_{\mathbf{a}}= \exp\left(i\frac{\mathbf{a}\cdot\mathbf{p}}{\hbar}\right)$$
+
+\pagebreak
+
+\section{Problem \#4}
+For a free particle in one-dimension in the presence of an impenetrable wall (or barrier) 
+which is given by the potential
+$$U(x) = \left\{\begin{array}{cl}
+                  0       &x>0\\ 
+                  \infty  &x<0
+          \end{array}\right.$$
+We note that in the region $x<0$ there is no wave-function because we have an infinite 
+potential therefore we have $\psi(x)=0$ for $x\le0$. And away from the barrier we have a free
+particle given by
+$$\psi(x) = Ae^{ikx} + Be^{-ikx}$$
+We note that in general the term $kx$ is found by the integral
+$$k(x) = -\int_{x_0}^{x}\frac{1}{\hbar}\sqrt{2\mu(E-U(x'))}dx'$$
+but for $U(x)=0$ we have a constant integral where 
+$$k = \frac{\sqrt{2\mu{E}}}{\hbar}$$
+end
+Next we apply the continuity condition where $\psi(0) = 0$. We note that due to the infinte
+change in potential we cannot have a continuous derivative. So we see that
+\begin{align*}
+\psi(0) = 0 &= Ae^{ik0} + Be^{-ik0}\\
+\psi(0) = 0 &= A + B\\
+&\Downarrow\\
+A &= -B
+\end{align*}
+So our solution becomes
+$$\psi(x) = A\left(\exp\left(\frac{\sqrt{2\mu{E}}}{\hbar}\right) - \exp\left(-\frac{\sqrt{2\mu{E}}}{\hbar}\right)\right)$$
+Now we can normalize our $\psi(x)$ to a delta function in $E$. By calculating 
+\begin{align*}
+\delta(E-E') &= A^2\int_{0}^{E}\left(\exp\left(-\frac{\sqrt{2\mu{E'}}}{\hbar}\right) - \exp\left(\frac{\sqrt{2\mu{E'}}}{\hbar}\right)\right)\left(\exp\left(\frac{\sqrt{2\mu{E'}}}{\hbar}\right) - \exp\left(-\frac{\sqrt{2\mu{E'}}}{\hbar}\right)\right)dE'\\
+&= A^2\int_{0}^{E}2\exp\left(\frac{\sqrt{2\mu{E'}}}{\hbar}\right)\exp\left(-\frac{\sqrt{2\mu{E'}}}{\hbar}\right)dE\\
+&= A^2\int_{0}^{E}2dE\\
+&= 2A^2E\\
+&\Downarrow\\
+A &= \frac{1}{2E\delta(E-E')}
+\end{align*}
+So we have
+$$\psi(x) = \frac{1}{2E\delta(E)}\left(\exp\left(\frac{\sqrt{2\mu{E}}}{\hbar}\right) - \exp\left(-\frac{\sqrt{2\mu{E}}}{\hbar}\right)\right)$$
+
+\end{document}
+
