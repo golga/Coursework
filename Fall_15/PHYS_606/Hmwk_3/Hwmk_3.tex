@@ -149,18 +149,18 @@ change in potential we cannot have a continuous derivative. So we see that
 A &= -B
 \end{align*}
 So our solution becomes
-$$\psi(x) = A\left(\exp\left(\frac{\sqrt{2\mu{E}}}{\hbar}\right) - \exp\left(-\frac{\sqrt{2\mu{E}}}{\hbar}\right)\right)$$
+$$\psi(x) = A\left(\exp\left(\frac{\sqrt{2\mu{E}}}{\hbar}x\right) - \exp\left(-\frac{\sqrt{2\mu{E}}}{\hbar}x\right)\right)$$
 Now we can normalize our $\psi(x)$ to a delta function in $E$. By calculating 
 \begin{align*}
-\delta(E-E') &= A^2\int_{0}^{E}\left(\exp\left(-\frac{\sqrt{2\mu{E'}}}{\hbar}\right) - \exp\left(\frac{\sqrt{2\mu{E'}}}{\hbar}\right)\right)\left(\exp\left(\frac{\sqrt{2\mu{E'}}}{\hbar}\right) - \exp\left(-\frac{\sqrt{2\mu{E'}}}{\hbar}\right)\right)dE'\\
-&= A^2\int_{0}^{E}2\exp\left(\frac{\sqrt{2\mu{E'}}}{\hbar}\right)\exp\left(-\frac{\sqrt{2\mu{E'}}}{\hbar}\right)dE\\
+\delta(E-E') &= A^2\int_{0}^{E}\left(\exp\left(-\frac{\sqrt{2\mu{E'}}}{\hbar}x\right) - \exp\left(\frac{\sqrt{2\mu{E'}}}{\hbar}x\right)\right)\left(\exp\left(\frac{\sqrt{2\mu{E'}}}{\hbar}x\right) - \exp\left(-\frac{\sqrt{2\mu{E'}}}{\hbar}x\right)\right)dE'\\
+&= A^2\int_{0}^{E}2\exp\left(\frac{\sqrt{2\mu{E'}}}{\hbar}x\right)\exp\left(-\frac{\sqrt{2\mu{E'}}}{\hbar}x\right)dE\\
 &= A^2\int_{0}^{E}2dE\\
 &= 2A^2E\\
 &\Downarrow\\
 A &= \frac{1}{2E\delta(E-E')}
 \end{align*}
 So we have
-$$\psi(x) = \frac{1}{2E\delta(E)}\left(\exp\left(\frac{\sqrt{2\mu{E}}}{\hbar}\right) - \exp\left(-\frac{\sqrt{2\mu{E}}}{\hbar}\right)\right)$$
+$$\psi(x) = \frac{1}{2E\delta(E)}\left(\exp\left(\frac{\sqrt{2\mu{E}}}{\hbar}x\right) - \exp\left(-\frac{\sqrt{2\mu{E}}}{\hbar}x\right)\right)$$
 
 \end{document}
 

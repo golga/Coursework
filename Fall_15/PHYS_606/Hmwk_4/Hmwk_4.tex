@@ -1,0 +1,263 @@
+\documentclass[11pt]{article}
+
+\usepackage{latexsym}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{enumerate}
+\usepackage{amsmath}
+\usepackage{cancel}
+\numberwithin{equation}{section}
+
+\setlength{\evensidemargin}{.25in}
+\setlength{\oddsidemargin}{-.25in}
+\setlength{\topmargin}{-.75in}
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{9.5in}
+\newcommand{\due}{October 7th, 2015}
+\newcommand{\HWnum}{4}
+\input{"C:/Users/joeor_000/Documents/Coursework/Define.tex"}
+
+\begin{document}
+\input{../title.tex}
+
+\section{Problem \#1}
+For a step potential given by
+$$U(x) = \left\{\begin{array}{cl}
+                  0      &x<0\\
+                  U_0    &x>0
+         \end{array}\right.$$
+with an energy, $E$, in the range: $0<E<U_0$. We see that we have two regions, region $I$ is
+$x<0$ and region $II$ is given by $x>0$. In the region $I$ we have a free particle with a 
+wave-function 
+$$\psi_I(x) = Ae^{ikx} + Be^{-ikx}$$
+where the positive exponent is related to the right moving incident wave and the negative 
+exponent is the left moving reflection wave. We note that $k$ is given by
+$$k = \frac{\sqrt{2\mu E}}{\hbar}.$$
+Then for region $II$ we note that $U_0>E$ which
+yields an exponential decay given by
+$$\psi_{II}(x) = Ce^{-\kappa x}$$
+where $\kappa$ is a real positive constant given by
+$$\kappa = \frac{\sqrt{2\mu(U_0-E)}}{\hbar}.$$
+We need to use the continuity of the wave-function and it's derivative to find the 
+coefficients $A$, $B$, and $C$. First we see that the wave-function at $x=0$ 
+\begin{align*}
+\psi_I(x=0) &= \psi_{II}(x=0)\\
+&\Downarrow\\
+Ae^{ik0} + Be^{-ik0} &= Ce^{-\kappa 0}\\
+A + B = C
+\end{align*}
+then we take the first spacial derivative of the wave-function at $x=0$ as
+\begin{align*}
+\psi_I'(x=0) &= \psi_{II}'(x=0)\\
+&\Downarrow\\
+A(ik)e^{ik0} + B(-ik)e^{-ik0} &= C(-\kappa)e^{-\kappa 0}\\
+ik(A - B) &= -\kappa C
+\end{align*}
+Using these two continuity conditions we can calculate the reflection by noting that $|B|^2$
+is the magnitude of the reflected wave which implies that
+$$\textnormal{Reflection Coefficient}\rightarrow R\equiv\left|\frac{B}{A}\right|^2$$
+So we can solve for the ratio by
+\begin{align*}
+ik(A - B) &= -\kappa C\\
+ik(A - B) &= -\kappa (A+B)\\
+\frac{ik}{\kappa}A - \frac{ik}{\kappa}B &= -A - B\\
+\frac{ik}{\kappa}A  + A &= \frac{ik}{\kappa}B- B\\
+\left(\frac{ik}{\kappa}+1\right)A&= \left(\frac{ik}{\kappa}-1\right) B\\
+&\Downarrow\\
+\frac{B}{A} &= \frac{\frac{ik}{\kappa}+1}{\frac{ik}{\kappa}-1}
+\end{align*}
+So we can calculate the magnitude squared by
+\begin{align*}
+R = \left|\frac{B}{A}\right|^2 &= \left(\frac{\dfrac{ik}{\kappa}+1}{\dfrac{ik}{\kappa}-1}\right)\left(\frac{\dfrac{ik}{\kappa}+1}{\dfrac{ik}{\kappa}-1}\right)^*\\
+&= \left(\frac{\dfrac{ik}{\kappa}+1}{\dfrac{ik}{\kappa}-1}\right)\left(\frac{-\dfrac{ik}{\kappa}+1}{-\dfrac{ik}{\kappa}-1}\right)\\
+&= \frac{\dfrac{k^2}{\kappa^2}+1}{\dfrac{k^2}{\kappa^2}+1} = 1
+\end{align*}
+We note that for an infinitely deep potential barrier where we have an energy less that the 
+barrier potential we have complete reflection. We can also think about limiting cases the 
+first being when $E\rightarrow\infty$ we see that in this limit we have $E>>U_0$ which makes
+$$\lim_{E\rightarrow\infty}\kappa = \lim_{E\rightarrow\infty}\sqrt{2\mu(U_0-E)}/\hbar = i\sqrt{2\mu E}/\hbar = ik$$
+so we see that in the limit
+\begin{align*}
+\lim_{E\rightarrow\infty} R =\lim_{E\rightarrow\infty} \left|\frac{B}{A}\right|^2 &= \lim_{E\rightarrow\infty}\left(\frac{\dfrac{ik}{\kappa}+1}{\dfrac{ik}{\kappa}-1}\right)\left(\frac{\dfrac{ik}{\kappa}+1}{\dfrac{ik}{\kappa}-1}\right)^*\\
+&= \left(\frac{\dfrac{ik}{ik}+1}{\dfrac{ik}{ik}-1}\right)\left(\frac{\dfrac{ik}{ik}+1}{\dfrac{ik}{ik}-1}\right)^*\\
+&= \left(\frac{2}{1-1}\right)\left(\frac{2}{1-1}\right)^* = 0
+\end{align*}
+So we see that as we go to infinite energy the barrier becomes infinitely small. This implies
+that the reflection coefficient becomes zero or we have no reflected wave. In the other limit
+where $E\rightarrow{U_0}$ we see that the wave-function in region $II$ becomes constant 
+because 
+$$\kappa = \frac{\sqrt{2\mu(U_0-U_0)}}{\hbar} = 0$$
+so $\psi_{II}$ becomes
+$$\psi_{II} = Ce^{0x} = C$$
+So the continuity conditions become
+\begin{align*}
+A + B &= C\\
+A - B &= 0
+\end{align*}
+So we see that $A=B$ which implies that for $E\rightarrow{U_0}$ we have a reflection 
+coefficient, $R$, is still unity. So for up to $E=U_0$ we have full reflection if our step
+potential is infinitely deep.
+
+\pagebreak
+
+\section{Problem \#2}
+For a two-dimensional potential well with absolutely impermeable walls we have a potential 
+given by
+$$U(x,y) = \left\{\begin{array}{ccc}
+                 0       &0<x<a\\
+                 \infty  &x>a \textnormal{\ and\ } x<0\\
+                 0       &0<y<b\\
+                 \infty  &y>b \textnormal{\ and\ } y<0\\
+            \end{array}\right.$$
+We can take the overall wave function as the product of the two individual solutions as
+$$\Psi(x,y) = \psi_n(x)\psi_m(y)$$
+where $\psi_n$ are the normalized eigenfunction of the one-dimensional infinite square well given by
+\begin{align*}
+\psi_n(x) &= \sqrt{\frac{2}{a}}\sin\left(\frac{n\pi}{a}x\right)\\
+\psi_m(y) &= \sqrt{\frac{2}{b}}\sin\left(\frac{m\pi}{b}y\right)
+\end{align*}
+So we can write the overall wave function as
+$$\Psi(x,y) = \sqrt{\frac{2}{a}}\sqrt{\frac{2}{b}}\sin\left(\frac{n\pi}{a}x\right)\sin\left(\frac{m\pi}{b}y\right)$$
+in the domain where $0<x<a$ and $0<y<b$. We note that $\Psi(x,y)=0$ everywhere else. This
+allows us to find the probability of finding a particle in the region $a/3\le{x}\le{2a/3}, 
+b/3\le{y}\le{2b/3}$ by integrating the probability density function given by $\Psi^*(x,y)\Psi(x,y)$ 
+over this domain
+\begin{align*}
+\int_{a/3}^{2a/3}\int_{b/3}^{2b/3}\Psi^*(x,y)\Psi(x,y)dydx &= \int_{a/3}^{2a/3}\int_{b/3}^{2b/3}\left(\sqrt{\frac{2}{a}}\sqrt{\frac{2}{b}}\sin\left(\frac{n\pi}{a}x\right)\sin\left(\frac{m\pi}{b}y\right)\right)^2dydx\\
+&= \frac{4}{ab}\int_{a/3}^{2a/3}\sin^2\left(\frac{n\pi}{a}x\right)dx\int_{b/3}^{2b/3}\sin^2\left(\frac{m\pi}{b}y\right)dy\\
+&= \frac{4}{ab}\int_{a/3}^{2a/3}\frac{1}{2}\left(1-\cos\left(2\frac{n\pi}{a}x\right)\right)dx\int_{b/3}^{2b/3}\frac{1}{2}\left(1-\cos\left(2\frac{m\pi}{b}y\right)\right)dy\\
+&= \frac{1}{ab}\left(x-\frac{a}{2n\pi}\sin\left(2\frac{n\pi}{a}x\right)\right|_{a/3}^{2a/3}\left(y-\frac{2m\pi}{b}\sin\left(2\frac{m\pi}{b}y\right)\right|_{b/3}^{2b/3}\\
+&= \frac{1}{ab}\left(\frac{2a}{3}-\frac{a}{2n\pi}\sin\left(2\frac{n\pi}{a}\frac{2a}{3}\right)-\frac{a}{3}+\frac{a}{2n\pi}\sin\left(2\frac{n\pi}{a}\frac{a}{3}\right)\right)\\
+&\qquad \times\left(\frac{2b}{3}-\frac{b}{2m\pi}\sin\left(2\frac{m\pi}{b}\frac{2b}{3}\right) - \frac{b}{3}+\frac{b}{2m\pi}\sin\left(2\frac{m\pi}{b}\frac{b}{3}\right)\right)\\
+&= \left(\frac{1}{3}-\frac{1}{2n\pi}\sin\left(\frac{4n\pi}{3}\right)+\frac{1}{2n\pi}\sin\left(\frac{2n\pi}{3}\right)\right)\\
+&\qquad\times\left(\frac{1}{3}-\frac{1}{2m\pi}\sin\left(\frac{4m\pi}{3}\right) + \frac{1}{2m\pi}\sin\left(\frac{2m\pi}{3}\right)\right)
+\end{align*}
+We note that the probability depends on which state we are in. If we take the particle to be
+in the ground state which implies that $n=m=1$ so we calculate
+\begin{align*}
+&= \left(\frac{1}{3}-\frac{1}{2n\pi}\sin\left(\frac{4n\pi}{3}\right)+\frac{1}{2n\pi}\sin\left(\frac{2n\pi}{3}\right)\right)\left(\frac{1}{3}-\frac{1}{2m\pi}\sin\left(\frac{4m\pi}{3}\right) + \frac{1}{2m\pi}\sin\left(\frac{2m\pi}{3}\right)\right)\\
+&\Downarrow\\
+&= \left(\frac{1}{3}-\frac{1}{2\pi}\sin\left(\frac{4\pi}{3}\right)+\frac{1}{2\pi}\sin\left(\frac{2\pi}{3}\right)\right)\left(\frac{1}{3}-\frac{1}{2\pi}\sin\left(\frac{4\pi}{3}\right) + \frac{1}{2\pi}\sin\left(\frac{2\pi}{3}\right)\right)\\
+&= \frac{1}{9}+\frac{3}{4\pi^2}+\frac{\sqrt{3}}{3\pi}\approx 0.37
+\end{align*}
+
+\pagebreak
+
+\section{Problem \#3}
+For a particle of mass $m_0$ in a potential well given by
+$$U(x)=\left\{\begin{array}{cl}
+               \infty,     &x<0\\
+               0,          &0<x<a\\
+               U_0,        &x>a
+        \end{array}\right.$$
+with an energy, $E<U_0$. We see that there are three distinct regions for this particle we
+note that for an infinite potential $\psi(x)=0$ with a discontinuous first spacial derivative.
+We then see that for the zero potential we assume we have an oscillating wave-function and
+in the region $x>a$ we have an exponential decay. So our wave function is given by
+$$\psi(x)=\left\{\begin{array}{ll}
+               0,                        &x<0\\
+               A\sin(kx+\delta),          &0<x<a\\
+               Be^{-\kappa{x}},           &x>a
+        \end{array}\right.$$
+Where $k$ and $\kappa$ are real and positive valued given by
+\begin{align*}
+k &= \frac{\sqrt{2m_0E}}{\hbar}\\
+\kappa &= \frac{\sqrt{2m_0(U_0-E)}}{\hbar} = \sqrt{\frac{2m_0U_0}{\hbar^2}-k^2}
+\end{align*}
+Next, we apply the continuity condition at $x=0$ to see
+\begin{align*}
+\psi_{I}(x=0) &= \psi_{II}(x=0)\\
+&\Downarrow\\
+0 &= A\sin(k0+\delta)\\
+0 &= \sin(\delta)
+&\Downarrow\\
+\delta = 0
+\end{align*}
+Next we have the continuity of the wave-function and its derivative at $x=a$ to get
+\begin{align*}
+\psi_{II}(x=a) &= \psi_{III}(x=a)\\
+&\Downarrow\\
+A\sin(ka) &= Be^{-\kappa{a}}
+\end{align*}
+and 
+\begin{align*}
+\psi_{II}'(x=a) &= \psi_{III}'(x=a)\\
+&\Downarrow\\
+Ak\cos(ka) &= -B\kappa e^{-\kappa{a}}
+\end{align*}
+We can divide the two continuity relations to yield
+\begin{align*}
+\frac{Ak\cos(ka)}{A\sin(ka)} &= \frac{-B\kappa e^{-\kappa{a}}}{Be^{-\kappa{a}}}\\
+k\cot(ka) &= -\kappa\\
+&\Downarrow\\
+ka &= -\textnormal{arccot}\left(\sqrt{\frac{2m_0U_0}{\hbar^2k^2}-1}\right)
+\end{align*}
+So we note the relation between $\textnormal{arccot}(x)$ and $\arcsin(x)$ is
+$$\textnormal{arccot}(x) = n\pi - \arcsin\left(\sqrt{\frac{1}{x^2+1}}\right)$$
+which uses the periodicity of the $\cot$ function. This identity yields
+\begin{align*}
+ka &= n\pi-\arcsin\left(\sqrt{\frac{1}{\frac{2m_0U_0}{\hbar^2k^2}-1+1}}\right)\\
+ka &= n\pi-\arcsin\left(\frac{\hbar{k}}{\sqrt{2m_0U_0}}\right)
+\end{align*}
+We next note that for a discrete spectrum to have a condition on $k$ such that
+$$k<\sqrt{\frac{2m_0{U_0}}{\hbar}}.$$
+Therefore, we can see in the limiting case where $k=\sqrt{2m_0U_0}/\hbar$ we can find the 
+total number of discrete states $n$ by
+\begin{align*}
+a\frac{\sqrt{2m_0U_0}}{\hbar} &= n\pi-\arcsin\left(\frac{\hbar{k}}{\sqrt{2m_0U_0}}\frac{\sqrt{2m_0U_0}}{\hbar}\right)\\
+a\frac{\sqrt{2m_0U_0}}{\hbar} &= n\pi-\arcsin(1)\\
+a\frac{\sqrt{2m_0U_0}}{\hbar} &= n\pi-\frac{\pi}{2}\\
+&\Downarrow\\
+n &= \frac{\sqrt{2m_0a^2U_0}}{\hbar\pi}
+\end{align*}
+And for for $a^2U_0=110\hbar^2/m_0$ we can find the number of states as
+\begin{align*}
+n &= \frac{\sqrt{2m_0a^2U_0}}{\hbar\pi}\\
+&\Downarrow\\
+n &= \sqrt{\frac{2m_0}{\hbar^2\pi^2}\frac{110\hbar^2}{m_0}}\\
+&= \frac{\sqrt{220}}{\pi}\approx 4.7
+\end{align*}
+This implies that for the given energy there are four discrete states.
+
+\pagebreak
+
+\section{Problem \#4}
+For the triangle potential barrier given by
+$$U(x) = \left\{\begin{array}{ll}
+               0                    &x<-a\\
+               \frac{U_0}{a}x+U_0   &-a<x<0\\
+               -\frac{U_0}{a}x+U_0  &0<x<a\\
+               0                    &x>a\\
+         \end{array}\right.$$
+we can calculate the transmission coefficient, $D$, for a particle of mass $m_0$ by the 
+equation given by the quasiclassical approximation.
+\begin{equation}
+D = \exp\left(-\frac{2}{\hbar}\int_{x_1}^{x_2}\sqrt{2m_0(U(x)-E)}dx\right)
+\label{Trans}
+\end{equation}
+where $x_1$ and $x_2$ are the classical turning points given when $E=U(x)$. Which we can
+find as
+\begin{align*}
+E &= \frac{U_0}{a}x_1+U_0\\
+&\Downarrow\\
+x_1 &= \frac{a}{U_0}(E-U_0)\\
+&= a\left(\frac{E}{U_0}-1\right)
+\end{align*}
+and
+\begin{align*}
+E &= -\frac{U_0}{a}x_2+U_0\\
+&\Downarrow\\
+x_2 &= -\frac{a}{U_0}(E-U_0)\\
+&= a\left(1-\frac{E}{U_0}\right)
+\end{align*}
+Now, we can calculate the integral in equation \ref{Trans} by
+\begin{align*}
+\int_{x_1}^{x_2}\sqrt{2m_0(U(x)-E)}dx &= \sqrt{2m_0}\int_{x_1}^{0}\sqrt{\frac{U_0}{a}x+U_0-E}dx + \sqrt{2m_0}\int_{0}^{x_2}\sqrt{-\frac{U_0}{a}x+U_0-E}dx\\
+&= \sqrt{2m_0}\left(\frac{2a}{3U_0}\left(\frac{U_0}{a}x+U_0-E\right)^{3/2}\right|_{x_1}^{0} + \sqrt{2m_0}\left(-\frac{2a}{3U_0}\left(-\frac{U_0}{a}x+U_0-E\right)^{3/2}\right|_{0}^{x_2}\\
+&= \sqrt{2m_0}\frac{2a}{3U_0}\left((U_0-E)^{3/2} + (U_0-E)^{3/2}\frac{}{}\right)\\
+&= \frac{4a\sqrt{2m_0}}{3U_0}(U_0-E)^{3/2}
+\end{align*}
+
+
+\end{document}
+

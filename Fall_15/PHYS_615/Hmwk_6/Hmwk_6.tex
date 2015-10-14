@@ -1,0 +1,114 @@
+\documentclass[11pt]{article}
+
+\usepackage{latexsym}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{enumerate}
+\usepackage{amsmath}
+\usepackage{cancel}
+\numberwithin{equation}{section}
+
+\setlength{\evensidemargin}{.25in}
+\setlength{\oddsidemargin}{-.25in}
+\setlength{\topmargin}{-.75in}
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{9.5in}
+\newcommand{\due}{October 14th, 2015}
+\newcommand{\HWnum}{6}
+\input{"C:/Users/joeor_000/Documents/Coursework/Define.tex"}
+
+\begin{document}
+\input{../title.tex}
+
+\section{Problem \#1}
+For the function 
+$$f(z) = \frac{e^z}{z(z^2-16)}$$
+we can see that $f(z)$ is analytic everywhere except $z=0$ and $|z|=4$. So we can calculate 
+the integral 
+$$I = \oint_{C}\frac{e^z}{z(z^2-16)}$$
+where the contour $C$ is defined as the boundary of the annulus between the circles $|z|=1$
+and $|z|=3$. We note that $f(z)$ is analytic everywhere along $C$ which implies that 
+$$I = \oint_{C}\frac{e^z}{z(z^2-16)}=0$$
+due to the fact that $C$ is a closed contour.
+
+\section{Problem \#2}
+\begin{enumerate}[1)]
+\item For the integral
+$$\oint_{C}e^{x^2}\left(\frac{1}{z^2}-\frac{1}{z^3}\right)$$
+where $C$ is the unit circle centered at the origin. We first expand $e^{z^2}$ by
+$$e^{z^2} = 1 + z^2 + \frac{z^4}{2} +...$$
+Which makes our integral become
+\begin{align*}
+\oint_{C}e^{x^2}\left(\frac{1}{z^2}-\frac{1}{z^3}\right) &= \oint_{C}(1 + z^2 + \frac{z^4}{2} +...)\left(\frac{1}{z^2}-\frac{1}{z^3}\right)\\
+&= \oint_{C}\frac{1}{z^2} - \frac{1}{z^3} + 1 - \frac{1}{z} + ...
+\end{align*}
+We note that the only integral in this sum that is nonzero is the $z^{-1}$. We can use the
+fact that $z$ on the unit circle is given by $z=e^{i\phi}$ which allows us to integrate over
+the circle by
+\begin{align*}
+-\oint_{C}\frac{1}{z}dz &= -\oint_{C}\frac{1}{e^{i\phi}}d(e^{i\phi}) \\
+&= -\oint_{0}^{2\pi}\frac{1}{e^{i\phi}}ie^{i\phi}d\phi \\
+&= -\oint_{0}^{2\pi}id\phi \\
+&= -2\pi{i}
+\end{align*}
+So the solution to the integral is
+$$\oint_{C}e^{x^2}\left(\frac{1}{z^2}-\frac{1}{z^3}\right) = -2\pi i$$
+
+\item For the integral 
+$$\oint_{C} \frac{(\sin{z})^6}{(z-\frac{\pi}{6})^3}$$ 
+we note the derivative formula
+$$f^{(n)}(z) = \frac{n!}{2\pi{i}}\oint_{C}\frac{f(w)}{(w-z)^{n+1}}$$
+where we can rearrange
+\begin{align*}
+f^{(n)}(z) &= \frac{n!}{2\pi{i}}\oint_{C}\frac{f(w)}{(w-z)^{n+1}}\\
+&\Downarrow\\
+\oint_{C}\frac{(\sin{z})^6}{(z-\pi/6)^{3}} &= \frac{n!}{2\pi{i}}f^{(2)}(z)\\
+&= \left.\frac{2\pi{i}}{2!}\frac{d^2}{dz^2}(\sin{z})^6\right|_{\pi/6}\\
+&= \left.\frac{2\pi{i}}{2}\frac{d}{dz}6(\sin{z})^5\cos{z}\right|_{\pi/6}\\
+&= i\pi\left(\frac{}{}30(\sin{z})^4(\cos{z})^2-6(\sin{z})^6\right|_{\pi/6}\\
+&= i\pi\left(30(\sin{\pi/6})^4(\cos{\pi/6})^2-6(\sin{\pi/6})^6\right)\\
+&= i\pi\left(30\frac{1}{2^4}\frac{3}{4}-6\frac{1}{2^6}\right)\\
+&= i\pi\left(\frac{90}{64}-\frac{6}{64}\right)\\
+&= i\pi\left(\frac{84}{64}\right)\\
+&= \frac{21}{16}\pi{i}
+\end{align*}
+
+\end{enumerate}
+
+\pagebreak
+
+\section{Problem \#3}
+Given \emph{Rodrigues' formula} 
+\begin{equation}
+P_n(t) = \frac{1}{2^nn!}\left(\frac{d}{dx}\right)^n[(x^2-1)^n]
+\label{RodForm}
+\end{equation}
+we can write the derivative as a complex integral by the formula
+$$f^{(n)}(z) = \frac{n!}{2\pi{i}}\oint_{C}\frac{f(w)}{(w-z)^{n+1}}$$
+where we note that
+$$f^{(n)}(z) = \left(\frac{d}{dz}\right)^n[(z^2-1)^n]$$
+which implies that $f(z) = (z^2-1)^n$. We can take the nth derivative of $f(z)$ by the 
+integral
+$$f^{(n)}(z) = \frac{n!}{2\pi{i}}\oint_{C}\frac{(z^2-1)^n}{(z-t)^{n+1}}$$
+And by replacing into equation \ref{RodForm} we get
+\begin{align*}
+P_n(t) &= \frac{1}{2^nn!}\left(\frac{d}{dx}\right)^n[(x^2-1)^n]\\
+&\Downarrow\\
+P_n(t) &= \frac{1}{2^nn!}\frac{n!}{2\pi{i}}\oint_{C}\frac{(z^2-1)^n}{(z-t)^{n+1}}\\
+&= \frac{1}{{2\pi{i}}\frac{1}{2^n}}\oint_{C}\frac{(z^2-1)^n}{(z-t)^{n+1}}
+\end{align*}
+
+\section{Problem \#4}
+For the function 
+$$f(z) = \frac{1}{e^z-1}$$
+we can calculate the first three non-zero terms in the \emph{Laurent expansion} where we 
+expand about the point $z=0$. We expand 
+$$e^{z} = 1+z+z^2+z^3+...$$
+which makes $f(z)$ become
+$$f(z) = \frac{1}{z+z^2/2+...}=\frac{1}{z}\frac{1}{1+z/2+...}$$
+Now we can expand 
+$$\frac{1}{1+z/2} = 1 - \frac{z}{2} + \frac{z^2}{4} - \frac{z^3}{8}$$
+so the first four terms of the Laurent expansion are
+$$f(z) = \frac{1}{e^z-1} = \frac{1}{z}\frac{1}{1+z/2} = z^{-1} - \frac{1}{2}z + \frac{1}{4}z^2 - \frac{1}{8}z^3$$
+\end{document}
+

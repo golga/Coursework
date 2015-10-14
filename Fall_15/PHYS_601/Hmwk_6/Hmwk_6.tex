@@ -1,0 +1,184 @@
+\documentclass[11pt]{article}
+
+\usepackage{latexsym}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{enumerate}
+\usepackage{amsmath}
+\usepackage{cancel}
+\numberwithin{equation}{section}
+
+\setlength{\evensidemargin}{.25in}
+\setlength{\oddsidemargin}{-.25in}
+\setlength{\topmargin}{-.75in}
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{9.5in}
+\newcommand{\due}{October 14th, 2015}
+\newcommand{\HWnum}{6}
+\input{"C:/Users/joeor_000/Documents/Coursework/Define.tex"}
+
+\begin{document}
+\input{../title.tex}
+
+\section{Problem \#1}
+For a particle that is projected vertically upward from the surface of the rotating earth at
+a co-latitude, $\theta$. Given that we define the earth-fixed coordinates as
+\begin{align*}
+x&\rightarrow\textnormal{East}\\
+y&\rightarrow\textnormal{North}\\
+z&\rightarrow\textnormal{Vertically Up}
+\end{align*}
+In these coordinates the rotation vector, $\mathbf{\omega}$, is given by
+$$\pmb{\omega} = \omega\cos\theta\hat{z}+\omega\sin\theta\hat{y}.$$
+We note that for the rotation of earth we can use the approximation that $\omega<<1$ which 
+allows us to write the \emph{Coriolis Force} to first order in $\omega$ as
+$$\mathbf{F}_{cor} = -2m\pmb{\omega}\times\mathbf{v}.$$
+Which allows us to calculate the force with a vertical velocity $\mathbf{v} = v\hat{z}$
+\begin{align*}
+\mathbf{F}_{cor} &= -2m\boldsymbol{\omega}\times\mathbf{v}\\
+&\Downarrow\\
+\mathbf{F}_{cor} &= -2m(\omega\cos\theta\hat{z}+\omega\sin\theta\hat{y})\times v\hat{z}\\
+&= -2m(\cancelto{0}{\omega\cos\theta\hat{z}\times v\hat{z}}+\omega\sin\theta\hat{y}\times v\hat{z})\\
+&= -2mv\omega\sin\theta(\hat{y}\times\hat{z})\\
+&= -2mv\omega\sin\theta\hat{x}
+\end{align*}
+Now we have reduced this problem to a simple kinematics problem with two accelerations, one 
+in the $x$ direction found above, and one in the $z$ as a constant gravitational acceleration. 
+\begin{align*}
+\mathbf{a}_{cor} &= -2v\omega\sin\theta\hat{x}\\
+\mathbf{a}_{g} &= -g\hat{z}
+\end{align*}
+We note that the acceleration in the $x$ direction is dependent on the velocity that is in 
+the $z$ direction. This motivates us to solve the dynamics in the $z$ direction first. Which
+is simply
+$$v(t) = \sqrt{2gh} - gt$$
+we note that the time required to reach the peak is the time for $v(t)=0$ which yields 
+$$t_{peak} = \sqrt{\frac{2h}{g}}$$
+So we can find the dynamics of the $x$ position by noting the equation of motion
+\begin{align*}
+a(t) &= \mathbf{a}_{cor}\\
+&\Downarrow\\
+a(t) &= -2\omega\sin\theta\left(\sqrt{2gh}-gt\right)
+\end{align*}
+So we need to integrate twice to find the expression for $x(t)$ where we assume that the 
+initial position and velocity is zero.
+\begin{align*}
+v(t) &= \int_{0}^{t}a_{cor}(t')dt'\\
+&\Downarrow\\
+v(t) &= \int_{0}^{t}-2\omega\sin\theta\left(\sqrt{2gh}-gt'\right)dt'\\
+&= -2\omega\sin\theta\left(\sqrt{2gh}t'-\frac{g}{2}t'^2\right)
+\end{align*}
+And for $x$
+\begin{align*}
+x(t) &= \int_{0}^{t}v(t')dt'\\
+&\Downarrow\\
+x(t) &= \int_{0}^{t}-2\omega\sin\theta\left(\sqrt{2gh}t'-\frac{g}{2}t'^2\right)dt'\\
+&= -2\omega\sin\theta\left(\frac{\sqrt{2gh}}{2}t^2-\frac{g}{6}t^3\right)
+\end{align*}
+So for the displacement at the peak we plug in the time.
+\begin{align*}
+x(t_{peak}) &= -2\omega\sin\theta\left(\frac{\sqrt{2gh}}{2}\left(\sqrt{\frac{2h}{g}}\right)^2-\frac{g}{6}\left(\sqrt{\frac{2h}{g}}\right)^3\right)\\
+&= -2\omega\sin\theta\left(\frac{\sqrt{2gh}}{2}\frac{2h}{g}-\frac{g}{6}\frac{2h}{g}\sqrt{\frac{2h}{g}}\right)\\
+&= -2\omega\sin\theta\left(\sqrt{\frac{2h^3}{g}}-\frac{1}{3}\sqrt{\frac{2h^3}{g}}\right)\\
+&= -\frac{4}{3}\omega\sin\theta\sqrt{\frac{2h^3}{g}}
+\end{align*}
+And for the displacement for when it strikes the ground we note that $t=2t_{peak}$ so we 
+find
+\begin{align*}
+x(2t_{peak}) &= -2\omega\sin\theta\left(\frac{\sqrt{2gh}}{2}\left(2\sqrt{\frac{2h}{g}}\right)^2-\frac{g}{6}\left(2\sqrt{\frac{2h}{g}}\right)^3\right)\\
+&= -2\omega\sin\theta\left(4\frac{\sqrt{2gh}}{2}\frac{2h}{g}-8\frac{g}{6}\frac{2h}{g}\sqrt{\frac{2h}{g}}\right)\\
+&= -2\omega\sin\theta\left(4\sqrt{\frac{2h^3}{g}}-\frac{8}{3}\sqrt{\frac{2h^3}{g}}\right)\\
+&= -\frac{8}{3}\omega\sin\theta\sqrt{\frac{2h^3}{g}}
+\end{align*}
+
+
+\pagebreak
+
+\section{Problem \#2}
+\begin{enumerate}[(a)]
+\item For a cannon that makes an angle, $\alpha$, with the horizontal that shoots due east
+we note that the projectile has an initial velocity out of the barrel $V_0$ which is in
+the coordinates defined in question 1 is
+$$\mathbf{v} = V_0\sin\alpha\hat{z} + V_0\cos\alpha\hat{x}$$
+this allows us to calculate the Coriolis Force as
+\begin{align*}
+\mathbf{F}_{cor} &= -2m\boldsymbol{\omega}\times\mathbf{v}\\
+&\Downarrow\\
+\mathbf{F}_{cor} &= -2m(\omega\cos\theta\hat{z}+\omega\sin\theta\hat{y})\times\left(V_0\sin\alpha\hat{z} + V_0\cos\alpha\hat{x}\right)\\
+&= -2m\det\left(\begin{array}{ccc}
+                 \hat{x}         &\hat{y}             &\hat{z}\\
+                 0               &\omega\sin\theta    &\omega\cos\theta\\
+                 V_0\cos\alpha   &0                   &V_0\sin\alpha-gt
+           \end{array}\right)\\
+&= -2m\left(\frac{}{}V_0\omega\sin\theta\sin\alpha - \omega\sin\theta{gt}\hat{x} + V_0\omega\cos\theta\cos\alpha\hat{y} - V_0\omega\sin\theta\cos\alpha\hat{z}\right)
+\end{align*}
+We note that included the constant acceleration due to gravity in the $z$ direction. 
+We can solve for the time it reaches the peak of $z$ by
+\begin{align*}
+0 &= V_0\sin\alpha + (2V_0\omega\sin\theta\cos\alpha-g)t\\
+&\Downarrow\\
+t_{peak} &= \frac{V_0\sin\alpha}{g-2V_0\omega\sin\theta\cos\alpha} \approx \frac{V_0\sin\alpha}{g}
+\end{align*}
+Note in the approximation we use the fact that $\omega<<g$. So, the deflection is given by 
+the $y$ component for the time, $t=2t_{peak}$, which is 
+\begin{align*}
+y(2t_{peak}) &= \frac{1}{2}a_yt^2\\
+&= -\frac{1}{2}2V_0\omega\cos\theta\cos\alpha\left(2\frac{V_0\sin\alpha}{g}\right)^2\\
+&= -\frac{4V_0^3}{g^2}\omega\cos\theta\sin^2\alpha\cos\alpha
+\end{align*}
+
+\item If the range neglecting the Coriolis Force is given by $R$ where we note that 
+$$R = \frac{V_0^2\sin\alpha\cos\alpha}{g}.$$
+Using the $x$ component of the force we found in part (a) we can write 
+$$x(t) = V_0\cos\alpha{t} - V_0\omega\sin\theta\sin\alpha{t^2} + \frac{1}{3}\omega\sin\theta{g}t^3$$
+Note the expansion of $2t_{peak}$ to first order in $\omega$
+$$\frac{V_0\sin\alpha}{g-2V_0\omega\sin\theta\cos\alpha} = \frac{V_0\sin\alpha}{g}\frac{1}{1-2V_0\omega\sin\theta\cos\alpha/g} = \frac{V_0\sin\alpha}{g}\left(1 + 2\frac{2V_0\omega\sin\theta\cos\alpha}{g} +\scrO(\omega^2)\right)$$
+We note that the zeroth order term is just $R$ which implies that the change in range is
+given by
+\begin{align*}
+\delta{R} &= V_0\cos\alpha\frac{V_0\sin\alpha}{g}\frac{2V_0\omega\sin\theta\cos\alpha}{g} - V_0\omega\sin\theta\sin\alpha\left(\frac{V_0\sin\alpha}{g}\right)^2 + \frac{1}{3}\omega\sin\theta\left(\frac{V_0\sin\alpha}{g}\right)^3 + \scrO(\omega^2)\\
+&= \frac{2V_0^3}{g^2}\sin\alpha\cos^2\alpha\omega\sin\theta - \frac{V_0^3}{g^2}\sin^3\alpha\omega\sin\theta + \frac{1}{3}\omega\sin\theta\frac{V_0^3\sin^3\alpha}{g^3}\\
+&= \frac{V_0^3}{g^2}\sin\alpha\omega\sin\theta\left(2\cos^2\alpha-\sin^2\alpha + \frac{1}{3}\sin^2\alpha\right)\\
+&= \frac{2V_0^3}{g^2}\sin\alpha\omega\sin\theta\left(\cos^2\alpha-\frac{1}{3}\sin^2\alpha\right)\\
+&= \frac{2V_0^2\sin\alpha\cos\alpha}{g}\frac{V_0}{g}\omega\sin\theta\left(\cos\alpha-\frac{1}{3}\tan\alpha\sin\alpha\right)\\
+&= \frac{2R}{g}V_0\omega\sin\theta\left(\cos\alpha-\frac{1}{3}\tan\alpha\sin\alpha\right)\\
+&= \frac{2R}{g}\sqrt{\frac{gR}{2\sin\alpha\cos\alpha}}\omega\sin\theta\left(\cos\alpha-\frac{1}{3}\tan\alpha\sin\alpha\right)\\
+&= \left(\frac{2R^3}{g}\right)^{1/2}\omega\sin\theta\left(\frac{\cos\alpha}{\sqrt{\sin\alpha\cos\alpha}}-\frac{1}{3}\frac{\tan\alpha\sin\alpha}{\sqrt{\sin\alpha\cos\alpha}}\right)\\
+&= \left(\frac{2R^3}{g}\right)^{1/2}\omega\sin\theta\left((\cot\alpha)^{1/2}-\frac{1}{3}(\tan\alpha)^{3/2}\right)
+\end{align*}
+\end{enumerate}
+
+\pagebreak
+
+\section{Problem \#3}
+Given that the rate precession of a Foucault Pendulum is 
+\begin{equation}
+\Omega_p = -\omega\cos\theta
+\label{Fouc}
+\end{equation}
+where $\omega$ is the angular frequency of the rotation of earth and $\theta$ is the
+angle of co-latitude. Using equation \ref{Fouc} we can find the precession period of a
+Foucault Pendulum at a given co-latitude, $\theta$, by 
+$$T = \frac{2\pi}{\Omega_p} = \frac{2\pi}{-\omega\cos\theta} =  \frac{2\pi}{-2\pi/24\unit{hrs}\cos\theta} = \frac{24\unit{hrs}}{-\cos\theta}$$
+We note that for $\theta =0$ we have a period of $24\unit{hrs}$ and for $\theta=\pi/2$
+which corresponds to the pendulum sitting on the equator we have an infinite period
+This follows with what we is what we expect. So for various locations on earth we 
+calculate
+
+\begin{center}
+\begin{tabular}{c|c|c|c}
+&Location     &Co-latitude($\theta$)   &Precession Period($T$)\\
+\hline
+(a)      &Moscow, Russia         &$34.25^{\circ}$     &$1\unit{day}\ 5\unit{hrs}\ 2\unit{min}$\\
+(b)      &Rome, Italy            &$47.17^{\circ}$     &$1\unit{day}\ 11\unit{hrs}\ 18\unit{min}$\\
+(c)      &Beijing, China         &$50.07^{\circ}$     &$1\unit{day}\ 13\unit{hrs}\ 23\unit{min}$\\
+(d)      &Washington DC, USA     &$51.10^{\circ}$     &$1\unit{day}\ 14\unit{hrs}\ 13\unit{min}$\\
+(e)      &Seoul, South Korea     &$52.43^{\circ}$     &$1\unit{day}\ 15\unit{hr}\ 21\unit{min}$\\
+(f)      &Tokyo, Japan           &$54.33^{\circ}$     &$1\unit{day}\ 15\unit{hrs}\ 46\unit{min}$\\
+(g)      &College Station, Texas &$59.41^{\circ}$     &$1\unit{day}\ 23\unit{hrs}\ 9\unit{min}$\\
+(h)      &Singapore              &$88.63^{\circ}$     &$41\unit{days}\ 20\unit{hrs}$
+\end{tabular}
+\end{center}
+
+\end{document}
+
