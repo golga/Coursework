@@ -1,0 +1,210 @@
+\documentclass[11pt]{article}
+
+\usepackage{latexsym}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{enumerate}
+\usepackage{amsmath}
+\usepackage{cancel}
+\numberwithin{equation}{section}
+
+\setlength{\evensidemargin}{.25in}
+\setlength{\oddsidemargin}{-.25in}
+\setlength{\topmargin}{-.75in}
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{9.5in}
+\newcommand{\due}{October 21st, 2015}
+\newcommand{\HWnum}{7}
+\input{"C:/Users/joeor_000/Documents/Coursework/Define.tex"}
+
+\begin{document}
+\input{../title.tex}
+
+\section{Problem \#1}
+For the integral 
+$$I = \int_{0}^{2\pi}\frac{\cos3\theta}{5-4\cos\theta}d\theta$$
+we can calculate $I$ by changing to the variable $z=e^{i\theta}$ and integrating over the 
+unit circle in the complex plane. We note that for $z$ we have
+\begin{align*}
+dz &= ie^{i\theta}d\theta\\
+\cos{\theta} &= \frac{1}{2}\left(z+\frac{1}{z}\right)\\
+\cos{3\theta} &= \frac{1}{2}\left(z^3+\frac{1}{z^3}\right)
+\end{align*}
+So our integral, $I$, becomes
+\begin{align*}
+I = \int_{0}^{2\pi}\frac{\cos3\theta}{5-4\cos\theta}d\theta &= -i\oint\frac{dz}{z}\frac{\frac{1}{2}\left(z^3+\frac{1}{z^3}\right)}{5-2\left(z+\frac{1}{z}\right)}\\
+&= -\frac{i}{2}\oint\frac{dz}{z^4}\frac{z^6+1}{5-2\left(z+\frac{1}{z}\right)}\\
+&= -\frac{i}{2}\oint dz\frac{z^6+1}{5z^4-2z^5-2z^3}\\
+&= -\frac{i}{2}\oint dz\frac{z^6+1}{-z^3(2z^2-5z+2)}\\
+&= -\frac{i}{2}\oint dz\frac{z^6+1}{-z^3(z-2)(2z-1)}
+\end{align*}
+So, we have three poles one at $z=0$ of order three and two of first order at $z=2$ and 
+$z=1/2$.  We note that the pole located at $z=2$ is outside the unit circle so we do not 
+need to calculate the residue at $z=2$. So the integral becomes
+$$I = -\frac{i}{2}\oint dz\frac{z^6+1}{-z^3(z-2)(2z-1)} = -\frac{i}{2}2\pi{i}\left(\frac{}{}\Resid{f(z)}{0}+\Resid{f(z)}{1/2}\right)$$
+Where $\Resid{f(z)}{z_0}$ is the Residue at the pole, $z_0$, and $f(z)$ is the integrand
+which is 
+$$f(z) = \frac{z^6+1}{-z^3(z-2)(2z-1)}$$
+for this problem. We can calculate the residue of a pole, $z_0$, of order $N$ by the formula
+\begin{equation}
+\Resid{f(z)}{z_0} = \frac{1}{(N-1)!}\lim_{z\rightarrow{z_0}}\frac{d^{N-1}}{dz^{N-1}}\left(\frac{}{}(z-z_0)^Nf(z)\right)
+\label{ResOrdN}
+\end{equation}
+So for $z_0=1/2$ we have a pole of $N=1$ which makes equation \ref{ResOrdN} become
+\begin{align*}
+\Resid{f(z)}{1/2} &= \lim_{z\rightarrow{1/2}}(z-1/2)\frac{z^6+1}{-z^3(z-2)(2z-1)}\\
+&= \lim_{z\rightarrow{1/2}}\frac{1}{2}\cancel{(2z-1)}\frac{z^6+1}{-z^3(z-2)\cancel{(2z-1)}}\\
+&= \lim_{z\rightarrow{1/2}}\frac{1}{2}\frac{z^6+1}{-z^3(z-2)}\\
+&= \frac{1}{2}\frac{\frac{1}{64}+1}{-\frac{1}{8}\left(\frac{1}{2}-2\right)}= \frac{65}{64}\frac{16}{6} = \frac{65}{24}
+\end{align*}
+For the pole at $z=0$ we can use equation \ref{ResOrdN} again but we will need to have $N=3$
+\begin{align*}
+\Resid{f(z)}{0} &= \frac{1}{2}\lim_{z\rightarrow{0}}\frac{d^{2}}{dz^{2}}\left(z^3\frac{z^6+1}{-z^3(z-2)(2z-1)}\right)\\
+&= -\frac{1}{2}\lim_{z\rightarrow{0}}\frac{d}{dz}\left(\frac{8z^7-25z^6+12z^5-4z+5}{(z-2)^2(2z-1)^2}\right)\\
+&= -\frac{1}{2}\lim_{z\rightarrow{0}}\frac{48z^8-300z^7+636z^6-480z^5+120z^4+24z^2+42}{(z-2)^3(2z-1)^3}\\
+&= -\frac{1}{2}\frac{42}{(-2)^3(-1)^3}\\
+&= -\frac{1}{2}\frac{42}{8} = -\frac{21}{8}
+\end{align*}
+So our integral can be calculated as
+\begin{align*}
+I = -\frac{i}{2}\oint dz\frac{z^6+1}{-z^3(z-2)(2z-1)} &= -\frac{i}{2}2\pi{i}\left(\frac{}{}\Resid{f(z)}{0}+\Resid{f(z)}{1/2}\right)\\
+&= \pi\left(-\frac{21}{8}+\frac{65}{24}\right)\\
+&= \pi\frac{65-63}{24}\\
+&= \frac{\pi}{12}
+\end{align*}
+
+\pagebreak
+
+\section{Problem \#2}
+For the integral given by
+$$\frac{1}{2\pi{i}}\oint_{C} \frac{e^{zt}}{z^2(z^2+2z+2)}dz.$$
+Where the contour, $C$, is a circle of radius $3$ centered at the origin of the complex plane.
+Note that for any value of $t$ we have $e^{zt}$ as analytic in the and on the contour $C$.
+By the fundamental theorem of algebra we are guaranteed the existence of two poles of order 
+one from the quadratic term in the denominator. We note that these poles are given by 
+$$z^2+2z+2 = (z+(1-i))(z+(1+i))$$
+This implies that we have a pole of order one at $z=-1+i$ and $z=-1-i$, as well as a pole of
+order two at $z=0$. We can calculate the residues at each of these poles by equation 
+\ref{ResOrdN}. For $z=0$ we have
+\begin{align*}
+\Resid{f(z)}{0} &= \frac{1}{(1)!}\lim_{z\rightarrow{0}}\frac{d}{dz}\left(\frac{}{}(z)^2\frac{e^{zt}}{z^2(z^2+2z+2)}\right)\\
+&= \lim_{z\rightarrow{0}}\frac{d}{dz}\left(\frac{e^{zt}}{(z^2+2z+2)}\right)\\
+&= \lim_{z\rightarrow{0}}\frac{e^{zt}t}{(z^2+2z+2)}-\frac{e^{zt}(2z+2)}{(z^2+2z+2)^2}\\
+&= \frac{e^{0t}t}{2}-\frac{2}{(2)^2} =\frac{t-1}{2}
+\end{align*}
+for $z=-1+i$ we have the limit
+\begin{align*}
+\Resid{f(z)}{-1+i} &= \lim_{z\rightarrow{-1+i}}(z+(1-i))\frac{e^{zt}}{z^2(z+(1+i))(z+(1-i))}\\
+&= \lim_{z\rightarrow{-1+i}}\frac{e^{zt}}{z^2(z+(1+i))}\\
+&= \frac{e^{(-1+i)t}}{(-1+i)^2(-1+i+(1+i))}\\
+&= \frac{e^{-t+it}}{(1-1-2i)(2i)}\\
+&= \frac{e^{-t+it}}{4}
+\end{align*}
+and for $z=-1-i$ we have
+\begin{align*}
+\Resid{f(z)}{-1-i} &= \lim_{z\rightarrow{-1-i}}(z+(1+i))\frac{e^{zt}}{z^2(z+(1+i))(z+(1-i))}\\
+&= \lim_{z\rightarrow{-1-i}}\frac{e^{zt}}{z^2(z+(1-i))}\\
+&= \frac{e^{-t-it}}{(-1-i)^2(-1-i+(1-i))}\\
+&= \frac{e^{-t-it}}{(2i)(-2i)}\\
+&= \frac{e^{-t-it}}{4}
+\end{align*}
+So now we can calculate the integral by the sum of the residues
+\begin{align*}
+\frac{1}{2\pi{i}}\oint_{C} \frac{e^{zt}}{z^2(z^2+2z+2)}dz &= \frac{1}{2\pi{i}}2\pi{i}\left(\frac{}{}\Resid{f(z)}{0} + \Resid{f(z)}{-1+i} + \Resid{f(z)}{-1-i}\right)\\
+&= \frac{t-1}{2} + \frac{e^{-t+it}}{4} + \frac{e^{-t-it}}{4}\\
+&= \frac{t-1}{2} + \frac{e^{-t}\left(e^{+it}+e^{-it}\right)}{4}\\
+&= \frac{t-1}{2} + \frac{e^{-t}\cos{t}}{2}\\
+&= \frac{t-1+e^{-t}\cos{t}}{2}
+\end{align*}
+
+\pagebreak
+
+\section{Problem \#3}
+Given the function 
+$$f(z) = \frac{z^2-2z}{(z+1)^2(z^2+4)}$$
+we can calculate the residues of $f(z)$ by noting we can factor the quadratic term into
+$$f(z) = \frac{z^2-2z}{(z+1)^2(z+2i)(z-2i)}$$
+Therefore we have two poles of order one at $z=\pm2i$ and a second order pole at $z=-1$. We 
+note the numerator of $f(z)$ is entire. So we calculate the residues by equation 
+\ref{ResOrdN}. For $z=-1$ we have
+\begin{align*}
+\Resid{f(z)}{-1} &= \lim_{z\rightarrow{-1}}\frac{d}{dz}\left(\frac{}{}(z+1)^2\frac{z^2-2z}{(z+1)^2(z+2i)(z-2i)}\right)\\
+&= \lim_{z\rightarrow{-1}}\frac{d}{dz}\left(\frac{}{}\frac{z^2-2z}{z^2+4}\right)\\
+&= \lim_{z\rightarrow{-1}}\frac{2z-2}{z^2+4} - \frac{2z(z^2-2z)}{(z^2+4)^2}\\
+&= \frac{-4}{5} - \frac{-6}{(5)^2}\\
+&= -\frac{20}{25} + \frac{6}{25} = -\frac{14}{25}
+\end{align*}
+For $z=2i$ we have
+\begin{align*}
+\Resid{f(z)}{2i} &= \lim_{z\rightarrow{2i}}(z-2i)\frac{z^2-2z}{(z+1)^2(z+2i)(z-2i)}\\
+&= \lim_{z\rightarrow{2i}}\frac{z^2-2z}{(z+1)^2(z+2i)}\\
+&= \frac{(2i)^2-2(2i)}{(2i+1)^2(2i+2i)}\\
+&= \frac{-4-4i}{(-4+1+4i)4i}\\
+&= \frac{-4-4i}{-12i-16}\\
+&= \frac{1+i}{3i+4}\frac{-3i+4}{-3i+4}\\
+&= \frac{-3i+4+3+4i}{25} = \frac{7+i}{25}
+\end{align*}
+For $z=-2i$ we have
+\begin{align*}
+\Resid{f(z)}{-2i} &= \lim_{z\rightarrow{-2i}}(z+2i)\frac{z^2-2z}{(z+1)^2(z+2i)(z-2i)}\\
+&= \lim_{z\rightarrow{-2i}}\frac{z^2-2z}{(z+1)^2(z-2i)}\\
+&= \frac{(-2i)^2-2(-2i)}{(-2i+1)^2(-2i-2i)}\\
+&= \frac{-4+4i}{(-4+1-4i)(-4i)}\\
+&= \frac{-4+4i}{12i-16} = \frac{i-1}{3i-4}\frac{-3i-4}{-3i-4} = \frac{3-4i+3i+4}{25} = \frac{7-i}{25}
+\end{align*}
+
+\pagebreak
+
+\section{Problem \#4}
+For the given integral 
+$$I = \int_{-\pi}^{\pi}\frac{d\theta}{1+\sin^2\theta}$$
+we can complexify the problem by the change of variable
+\begin{align*}
+dz &= ie^{i\theta}d\theta\\
+\sin{\theta} &= \frac{1}{2i}\left(z-\frac{1}{z}\right)
+\end{align*}
+So that $I$ becomes
+\begin{align*}
+I &= \int_{-\pi}^{\pi}\frac{d\theta}{1+\sin^2\theta}\\
+&\Downarrow\\
+&= -i\oint_{C}\frac{dz}{z}\frac{1}{1+\frac{1}{(2i)^2}\left(z-\frac{1}{z}\right)^2}\\
+&= -i\oint_{C}\frac{dz}{z}\frac{1}{1-\frac{1}{4}\left(z^2+\frac{1}{z^2}-2\right)}\\
+&= -i\oint_{C}\frac{dz}{z-\frac{1}{4}z^3-\frac{1}{4z}+\frac{1}{2}z}\\
+&= -i\oint_{C}\frac{4zdz}{6z^2-z^4-1}\\
+&= -i\oint_{C}\frac{4zdz}{-(z-(\sqrt{2}-1))(z-(\sqrt{2}+1))(z+(\sqrt{2}-1))(z+\sqrt{2}+1)}\\
+&= i\oint_{C}\frac{4zdz}{(z-(\sqrt{2}-1))(z-(\sqrt{2}+1))(z+(\sqrt{2}-1))(z+\sqrt{2}+1)}
+\end{align*}
+Note the contour $C$ is the unit circle in the complex plane. So we have poles at
+\begin{align*}
+z &= \sqrt{2}-1\\
+z &= \sqrt{2}+1\\
+z &= -\sqrt{2}+1\\
+z &= -\sqrt{2}-1
+\end{align*}
+Note the only poles within the contour $C$ are the poles valued less than one these are
+$z = \sqrt{2}-1$ and $z=-\sqrt{2}+1$ so we can calculate the residues for these points by
+equation \ref{ResOrdN}
+\begin{align*}
+\Resid{f(z)}{\sqrt{2}-1} &= \lim_{z\rightarrow{\sqrt{2}-1}}(z-(\sqrt{2}-1))\frac{4z}{(z-(\sqrt{2}-1))(z-(\sqrt{2}+1))(z+(\sqrt{2}-1))(z+\sqrt{2}+1)}\\
+&= \lim_{z\rightarrow{\sqrt{2}-1}}\frac{4z}{(z-(\sqrt{2}+1))(z+(\sqrt{2}-1))(z+\sqrt{2}+1)}\\
+&= \frac{4(\sqrt{2}-1)}{(\sqrt{2}-1-\sqrt{2}-1)(\sqrt{2}-1+\sqrt{2}-1)(\sqrt{2}-1+\sqrt{2}+1)}\\
+&= \frac{4(\sqrt{2}-1)}{(-2)2(\sqrt{2}-1)(2\sqrt{2})} = -\frac{1}{2\sqrt{2}}\\
+\end{align*}
+and
+\begin{align*}
+\Resid{f(z)}{-\sqrt{2}+1} &= \lim_{z\rightarrow{-\sqrt{2}+1}}(z-(-\sqrt{2}+1))\frac{4z}{(z-(\sqrt{2}-1))(z-(\sqrt{2}+1))(z+(\sqrt{2}-1))(z+\sqrt{2}+1)}\\
+&= \lim_{z\rightarrow{-\sqrt{2}+1}}\frac{4z}{(z-(\sqrt{2}-1))(z-(\sqrt{2}+1))(z+\sqrt{2}+1)}\\
+&= \frac{4(-\sqrt{2}+1)}{(-\sqrt{2}+1-\sqrt{2}+1)(-\sqrt{2}+1-\sqrt{2}-1)(-\sqrt{2}+1+\sqrt{2}+1)}\\
+&= \frac{4(-\sqrt{2}+1)}{2(-\sqrt{2}+1)(-2\sqrt{2})(2)}\\
+&= \frac{4}{4(-2\sqrt{2})} = -\frac{1}{2\sqrt{2}}
+\end{align*}
+So we can find $I$ by the summation of residues 
+\begin{align*}
+I &= i\oint_{C}\frac{4zdz}{(z-(\sqrt{2}-1))(z-(\sqrt{2}+1))(z+(\sqrt{2}-1))(z+\sqrt{2}+1)}\\
+&= i(2\pi{i}\left(\frac{}{}\Resid{f(z)}{\sqrt{2}+1} + \Resid{f(z)}{-\sqrt{2}+1}\right)\\
+&= -2\pi\left(-\frac{1}{2\sqrt{2}}-\frac{1}{2\sqrt{2}}\right)\\
+&= 2\pi\frac{1}{\sqrt{2}} = \sqrt{2}\pi
+\end{align*}
+
+\end{document}
+

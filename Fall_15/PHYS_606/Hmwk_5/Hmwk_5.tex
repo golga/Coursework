@@ -1,0 +1,171 @@
+\documentclass[11pt]{article}
+
+\usepackage{latexsym}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{enumerate}
+\usepackage{amsmath}
+\usepackage{cancel}
+\numberwithin{equation}{section}
+
+\setlength{\evensidemargin}{.25in}
+\setlength{\oddsidemargin}{-.25in}
+\setlength{\topmargin}{-.75in}
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{9.5in}
+\newcommand{\due}{October 26th, 2015}
+\newcommand{\HWnum}{5}
+\input{"C:/Users/joeor_000/Documents/Coursework/Define.tex"}
+
+\begin{document}
+\input{../title.tex}
+
+\section{Problem \#1}
+\begin{enumerate}[(a)]
+\item Given the translation operator defined as
+$$\hat{T}_{a}\Psi(x) = \Psi(x+a)$$
+which using coordinate representation we can write it as
+$$\hat{T}_{a}\inprod{x}{a} = \inprod{x}{b}$$
+We can find the momentum representation of $\hat{T}_a$ by first finding the matrix elements 
+by
+$$\bra{p'}\hat{T}_a\ket{p} = \int{dx}\inprod{p'}{x}\hat{T}_{a}\inprod{x}{p}$$
+We note that the eigenfunctions of the momentum operator in coordinate representation is 
+given by
+$$\inprod{x}{p} = (2\pi\hbar)^{-1/2}\exp\left(ip\frac{x}{\hbar}\right)$$
+Acting $\hat{T}_a$ on $\inprod{x}{p}$ yields
+\begin{align*}
+\hat{T}_{a}\inprod{x}{p} &= \hat{T}_{a}(2\pi\hbar)^{-1/2}\exp\left(ip\frac{x}{\hbar}\right)\\
+&= (2\pi\hbar)^{-1/2}\exp\left(ip\frac{x+a}{\hbar}\right)\\
+&= \exp\left(ip\frac{a}{\hbar}\right)(2\pi\hbar)^{-1/2}\exp\left(ip\frac{x}{\hbar}\right)\\
+&= \exp\left(ip\frac{a}{\hbar}\right)\inprod{x}{p}
+\end{align*}
+Therefore we can find the matrix elements by
+\begin{align*}
+\bra{p'}\hat{T}_a\ket{p} &= \int{dx}\inprod{p'}{x}\hat{T}_{a}\inprod{x}{p}\\
+&= \exp\left(ip\frac{a}{\hbar}\right)\int{dx}\inprod{p'}{x}\inprod{x}{p}\\
+&= \exp\left(ip\frac{a}{\hbar}\right)\delta(p'-p)
+\end{align*}
+Note this forms a matrix of continuous indices. Using the matrix elements we can find how
+this operator acts on a wave function in momentum space $\inprod{p}{a}$ as
+\begin{align*}
+\inprod{p'}{b} &= \int{dp}\bra{p'}\hat{T}_{a}\ket{p}\inprod{p}{a}\\
+&= \exp\left(ip\frac{a}{\hbar}\right)\int{dp}\delta(p'-p)\inprod{p}{a}\\
+&= \exp\left(ip\frac{a}{\hbar}\right)\inprod{p'}{a}\\
+\end{align*}
+So in momentum space 
+$$\hat{T}_{a} = \exp\left(ip\frac{a}{\hbar}\right)$$
+
+\item For the inversion operator, $\hat{I}$, defined as
+$$\hat{I}\psi(x) = \psi(-x)$$
+which in coordinate representation is
+$$\hat{I}\inprod{x}{a} = \inprod{x}{b}$$
+We calculate the momentum representation of $\hat{I}$ by finding the matrix elements like in
+part (a) noting that
+\begin{align*}
+\hat{I}\inprod{x}{p} &= \hat{I}(2\pi\hbar)^{-1/2}\exp\left(ip\frac{x}{\hbar}\right)\\
+&= (2\pi\hbar)^{-1/2}\exp\left(ip\frac{-x}{\hbar}\right)\\
+&= \inprod{x}{-p}
+\end{align*}
+So this allows us to find the matrix elements of $\hat{I}$ by
+\begin{align*}
+\bra{p'}\hat{I}\ket{p} &= \int{dx}\inprod{p'}{x}\hat{I}\inprod{x}{p}\\
+&= \int{dx}\inprod{p'}{x}\inprod{x}{-p}\\
+&= \delta(p'+p)
+\end{align*}
+Note that this is a matrix that represents a momentum in the opposite direction as we would 
+expect. Using this we can act the $\hat{I}$ operator on a wave function in momentum space.
+\begin{align*}
+\inprod{p'}{b} &= \int{dp}\bra{p'}\hat{I}\ket{p}\inprod{p}{a}\\
+&= \int{dp}\delta(p'+p)\inprod{p}{a}\\
+&= \inprod{-p'}{a}\\
+\end{align*}
+So we can say the inversion operator in momentum space acts like
+$$\hat{I}\psi(p) = \psi(-p)$$
+\end{enumerate}
+
+\pagebreak
+
+\section{Problem \#2}
+\begin{enumerate}[(a)]
+\item For the translation operator $\hat{T}_{a}$ we note that the inverse of $\hat{T}_a$ is
+$\hat{T}_{-a}$ which implies that these represent a unitary transformation by
+$$\hat{T}_{a}\hat{T}_{-a} = 1$$
+This allows us to do a unitary transformation by the general transformation of an operator 
+$\hat{F}$
+$$\hat{F}' = S\hat{F}S^{-1}$$
+So the transformation of the position operator is given by
+\begin{align*}
+\hat{x'} &= \hat{T}_{a}\hat{x}\hat{T}_{-a}\\
+&= (x+a)\hat{T}_{-a}
+\end{align*}
+Then we can find the transformation of the operator $\hat{p}$ by using $\hat{T}_{a}$ in 
+momentum space which we found in problem one.
+\begin{align*}
+\hat{p}' &= \hat{T}_{a}\hat{p}\hat{T}_{-a}\\
+&= \exp\left(ip\frac{a}{\hbar}\right)\hat{p}\exp\left(ip\frac{-a}{\hbar}\right)\\
+&= \hat{p}\exp\left(ip\frac{a}{\hbar}\right)\exp\left(ip\frac{-a}{\hbar}\right)\\
+&= \hat{p}
+\end{align*}
+So the operator $\hat{p}$ is invariant under the unitary transformation $\hat{T}_{a}$.
+
+\item We note that the inversion operator's inverse operator is itself $\hat{I}^{-1}=\hat{I}$.
+Which we note $\hat{I}$ represents an unitary transformation. Therefore we can calculate the
+transformation of $\hat{x}$ as
+\begin{align*}
+\hat{x}' &= \hat{I}\hat{x}\hat{I}^{-1}\\
+&= -\hat{x}\hat{I}
+\end{align*}
+And for the momentum operator we have a analogous result
+\begin{align*}
+\hat{p}' &= \hat{I}\hat{p}\hat{I}^{-1}\\
+&= -\hat{p}\hat{I}
+\end{align*}
+
+
+
+\end{enumerate}
+
+\pagebreak
+
+\section{Problem \#3}
+For the wave function in coordinate representation
+$$\psi(x) = \inprod{x}{\psi} = \left\{\begin{array}{cc}
+                  a^{-1/2}\exp\left(\dfrac{i}{\hbar}xp_0\right)     &-a/2\le{x}\le{a/2}\\
+                  0                                                &|x|>a/2
+            \end{array}\right.$$
+This allows us the find the momentum representation, $\inprod{p}{\psi}$, by
+\begin{align*}
+\inprod{p}{\psi} &= \int{dx}\inprod{p}{x}\inprod{x}{\psi}\\
+&= \int_{-a/2}^{a/2}dx(2\pi\hbar)^{-1/2}\exp\left(-\frac{i}{\hbar}xp\right)a^{-1/2}\exp\left(\dfrac{i}{\hbar}xp_0\right)\\
+&= \sqrt{\frac{1}{2a\pi\hbar}}\int_{-a/2}^{a/2}dx\exp\left(\frac{i}{\hbar}x(p_0-p)\right)\\
+&= -\sqrt{\frac{1}{2a\pi\hbar}}\frac{i\hbar}{p_0-p}\left(\exp\left(\frac{i}{\hbar}x(p_0-p)\right)\right|_{-a/2}^{a/2}\\
+&= -\sqrt{\frac{1}{2a\pi\hbar}}\frac{i\hbar}{p_0-p}\left(\exp\left(i\frac{a}{2\hbar}(p_0-p)\right)-\exp\left(-i\frac{a}{2\hbar}(p_0-p)\right)\right)\\
+&= -\sqrt{\frac{1}{2a\pi\hbar}}\frac{i\hbar}{p_0-p}2i\sin\left(\frac{a}{2\hbar}(p_0-p)\right)\\
+&= \sqrt{\frac{1}{2a\pi\hbar}}\frac{2\hbar}{p_0-p}\sin\left(\frac{a}{2\hbar}(p_0-p)\right)
+\end{align*}
+\pagebreak
+
+\section{Problem \#4}
+For a particle in a potential $U(x) = \alpha{x}$ we can find the eigenvalues and 
+eigenfunctions of the energy operator, $\hat{H}$, in the momentum representation. Where
+in coordinate representation we have
+$$\hat{H}_x = -\frac{\hbar^2}{2\mu}\partiald{^2}{x^2} + \alpha{x}$$
+by writing the Hamiltonian in momentum representation as
+$$\hat{H}_p = \frac{p^2}{2\mu} + i\alpha\hbar\partiald{}{p}$$
+So by solving the eigenvalue problem we can find the eigenvalues, $E_p$, and eigenfunctions,
+$\phi(p)$.
+\begin{align*}
+\hat{H}_p\phi(p) &= E_p\phi(p)\\
+&\Downarrow\\
+\left[\frac{p^2}{2\mu} + i\alpha\hbar\partiald{}{p}\right]\phi(p) &= E_p\phi(p)\\
+&\Downarrow\\
+i\alpha\hbar\partiald{\phi}{p} &= E_p\phi(p) - \frac{p^2}{2\mu}\phi(p)\\
+&\Downarrow\\
+\int\frac{\partial(\phi(p))}{\phi(p)} &= -\int\frac{i}{\alpha\hbar}\left(E_p - \frac{p^2}{2\mu}\right)\partial{p}\\
+\log(\phi(p)) &= -\frac{i}{\alpha\hbar}\left(E_pp - \frac{p^3}{6\mu}\right) + C\\
+\phi(p) &= A\exp\left(-\frac{iE_p}{\alpha\hbar}p + \frac{i}{6\alpha\hbar\mu}p^3\right)
+\end{align*}
+We note that this is a free particle so $E_p$ represents a continuous spectrum of eigenvalues.
+
+\end{document}
+

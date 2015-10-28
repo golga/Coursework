@@ -1,0 +1,162 @@
+\documentclass[11pt]{article}
+
+\usepackage{latexsym}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{enumerate}
+\usepackage{amsmath}
+\usepackage{cancel}
+\numberwithin{equation}{section}
+
+\setlength{\evensidemargin}{.25in}
+\setlength{\oddsidemargin}{-.25in}
+\setlength{\topmargin}{-.75in}
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{9.5in}
+\newcommand{\due}{October 28th, 2015}
+\newcommand{\HWnum}{8}
+\input{"C:/Users/joeor_000/Documents/Coursework/Define.tex"}
+
+\begin{document}
+\input{../title.tex}
+
+\section{Problem \#1}
+To evaluate the integral
+$$I = \int_{-\infty}^{\infty}\frac{x^2}{x^4+1}dx$$
+We can complexify the integral and integrate over a contour from $-R$ to $R$ along the real
+axis and then over a semicircle of radius $R$. We then take $R$ to infinity. We note the 
+integral along the semicircle $z$ becomes $Re^{i\phi}$ and we integrate from $0$ to $\pi$ so
+as we take the limit as $R\rightarrow\infty$ we see
+\begin{align*}
+\lim_{R\rightarrow\infty}\int_{C_R}\frac{z^2}{z^4+1}dz &= \lim_{R\rightarrow\infty}\int_{0}^{\pi}d\phi\frac{R^2e^{i2\phi}}{R^4e^{i4\phi}+1} = 0
+\end{align*}
+Due to the fact that our integrand goes by $1/R^2$. So we can say that the integral over the
+reals is also
+$$I = \oint_{C_{\infty}}\frac{z^2}{z^4+1}dz = \oint_{C_{\infty}}\frac{z^2}{(z-e^{i\pi/4})(z-e^{i3\pi/4})(z-e^{i5\pi/4})(z-e^{i7\pi/4})}dz$$
+where the contour is over the positive complex plane. We can solve this integral by noting 
+that there are two residues within this contour $z_0=e^{i\pi/4}$ and $z_0=e^{i3\pi/4}$ which are
+both simple poles. This means we can calculate the residues by noting that we are in the form
+of 
+$$f(z) = \frac{g(z)}{h(z)}$$
+\begin{align*}
+\Resid{f(z)}{e^{i\pi/4}} &= \frac{g(e^{i\pi/4})}{h'(e^{i\pi/4})}\\
+&= \frac{(e^{i\pi/4})^2}{4(e^{i\pi/4})^3}\\
+&= \frac{1}{4}e^{-i\pi/4} 
+\end{align*}
+and
+\begin{align*}
+\Resid{f(z)}{e^{i3\pi/4}} &= \frac{g(e^{i3\pi/4})}{h'(e^{i3\pi/4})}\\
+&= \frac{(e^{i3\pi/4})^2}{4(e^{i3\pi/4})^3}\\
+&= \frac{1}{4}e^{-i3\pi/4}
+\end{align*}
+So the integral is the sum of the residues 
+\begin{align*}
+I &= 2\pi{i}\frac{1}{4}\left(e^{-i\pi/4}+e^{-i3\pi/4}\right)\\
+&= \pi{i}\frac{1}{2}\left(\cos(\pi/4)-i\sin(\pi/4) + \cos(3\pi/4) - i\sin(3\pi/4)\right)\\
+&= \pi{i}\frac{1}{2}\left(-i\sqrt{2}\right)\\
+&= \frac{\sqrt{2}}{2}\pi
+\end{align*}
+
+\pagebreak
+
+\section{Problem \#2}
+For the integral 
+$$I = \int_{-\infty}^{\infty}\frac{1}{x^6+1}dx$$ 
+we see that we can use the same contour as before and know that the semicircle contribution
+is zero again. So we note that we have poles in the contour of $z_0=e^{i\pi/6}$, 
+$z_0=e^{i3\pi/6}=i$, and $z_0=e^{i5\pi/6}$. So like before we can calculate
+\begin{align*}
+\Resid{f(z)}{e^{i\pi/6}} &= \frac{1}{h'(e^{i\pi/6})}\\
+&= \frac{1}{6(e^{i\pi/6})^5}\\
+&= \frac{1}{6}e^{-i5\pi/6}
+\end{align*}
+and for $z_0=e^{i5\pi/6}$
+\begin{align*}
+\Resid{f(z)}{e^{i5\pi/6}} &= \frac{1}{h'(e^{i\pi/6})}\\
+&= \frac{1}{6(e^{i5\pi/6})^5}\\
+&= \frac{1}{6}e^{-i25\pi/6}
+\end{align*}
+and finally for $z_0=i$ we have
+\begin{align*}
+\Resid{f(z)}{i} &= \frac{1}{h'(i)}\\
+&= \frac{1}{6(i)^5}\\
+&= -\frac{1}{6}i
+\end{align*}
+So we can solve for $I$ by summing the residues 
+\begin{align*}
+I &= 2\pi{i}\frac{1}{6}\left(e^{-i5\pi/6}+e^{-i25\pi/6}-i\right)\\
+&= \frac{\pi{i}}{3}\left(-\frac{\sqrt{3}}{2} - i\frac{1}{2} + \frac{\sqrt{3}}{2} -i\frac{1}{2} - i\right) \\
+&= \frac{2\pi}{3}
+\end{align*}
+
+\pagebreak
+
+\section{Problem \#3}
+For the given integral 
+$$I = \int_{-\infty}^{\infty}\frac{x\sin\pi{x}}{x^2+2x+5}dx$$
+we can complexify the integral by noting that
+$$\sin(\pi{z}) = \Im[e^{i\pi{z}}]$$
+we note that along semicircle contour we used in problems one and two the integrand only goes
+by $1/R$. Therefore we need to see that the integrand is of the form $g(z)e^{iaz}$ which
+allows us to apply \emph{Jordan's lemma} to say that the semicircle contribution goes to zero
+as the radius is taken to infinity. Therefore 
+$$I = \Im\left[\int_{C}\frac{z(e^{i\pi{z}})}{z^2+2z+5}dz\right]$$
+which implies that we can calculate $I$ by residue theorem where we only need the residue of
+the simple pole at $z_0=-1+2i$ which allows us to calculate
+\begin{align*}
+\Resid{f(z)}{-1+2i} &= \lim_{z\rightarrow{-1+2i}}(z-(-1+2i))\frac{z(e^{i\pi{z}})}{z^2+2z+5}\\
+&= \lim_{z\rightarrow{-1+2i}}\frac{z(e^{i\pi{z}}}{(z+(1+2i))}\\
+&= \frac{(-1+2i)(e^{i\pi{(-1+2i)}})}{-1+2i+1+2i}\\
+&= \frac{(-1+2i)(-e^{-2\pi})}{4i}\\
+&= \frac{-2-i}{4}e^{-2\pi}
+\end{align*}
+So we can calculate $I$ by
+\begin{align*}
+I &= \Im[2\pi{i}\frac{-2-i}{4}e^{-2\pi}]\\
+ &= 2\pi e^{-2\pi}\Im[\frac{-2i+1}{4}]\\
+ &= \pi e^{-2\pi}
+\end{align*}
+
+\pagebreak
+
+\section{Problem \#4}
+We can evaluate the integral 
+$$I = \int_{0}^{\infty}\frac{\log{x}}{(x+a)(x+b)}dx,\qquad a,b>0,a\ne{b}$$
+by considering the integral of the complex function
+$$f(z) = \frac{(\log{z})^2}{(z+a)(z+b)}$$
+over a keyhole contour, $C$, around the branch cut of $\log{z}$. Where we define the branch cut of
+the $\log(z)$ function to be the positive real axis. We note that as we take the circle of 
+radius $\epsilon$ to zero the integral becomes zero. The same holds true when we take $R$ to
+infinity
+\begin{align*}
+\oint_{C}f(z)dz &= \lim_{\epsilon\rightarrow{0}}\lim_{R\rightarrow\infty}\cancelto{0}{\oint_{C_{R}}f(z)dz} + \cancelto{0}{\oint_{C_{\epsilon}}f(z)dz} \int_{\epsilon}^{R}f(z)dz + \int^{\epsilon}_{R}f(ze^{2\pi{i}})dz\\
+&= \int_{0}^{\infty}f(z)dz + \int_{\infty}^{0}f(ze^{2\pi{i}})dz
+\end{align*}
+We note that due to the branch cut this integral does not equal zero. So we can see that
+\begin{align*}
+\oint_{C}f(z)dz = \int_{0}^{\infty}f(z)dz + \int_{\infty}^{0}f(ze^{2\pi{i}})dz &= \int_{0}^{\infty}\frac{(\log{x})^2}{(x+a)(x+b)}dx + \int_{\infty}^{0}\frac{(\log{xe^{2\pi{i}}})^2}{(x+a)(x+b)}dx\\
+&= \int_{0}^{\infty}\frac{(\log{x})^2}{(x+a)(x+b)}dx - \int^{\infty}_{0}\frac{(\log{x}+2\pi{i})^2}{(x+a)(x+b)}dx\\
+&= \int_{0}^{\infty}\frac{(\log{x})^2}{(x+a)(x+b)}dx - \int^{\infty}_{0}\frac{(\log{x})^2-4\pi+4\pi{i}\log{x}}{(x+a)(x+b)}dx\\
+&= 4\pi\int_{0}^{\infty}\frac{1}{(x+a)(x+b)}dx - 4\pi{i}\int^{\infty}_{0}\frac{\log{x}}{(x+a)(x+b)}dx\\
+&\Downarrow\\
+\int^{\infty}_{0}\frac{\log{x}}{(x+a)(x+b)}dx &= -i\int_{0}^{\infty}\frac{1}{(x+a)(x+b)}dx - \frac{1}{4\pi{i}}\oint_{C}f(z)dz
+\end{align*}
+We note that the integral solution to the first integral is
+$$\int_{0}^{\infty}\frac{1}{(x+a)(x+b)}dx = \frac{\log{(a/b)}}{b-a}$$
+which implies that we just need to find the solution to the complex integral which we do using
+residue theorem. Where we can say that
+\begin{align*}
+\Resid{f(z)}{-a} &= \frac{(\log{-a})^2}{b-a} = -\frac{(\log{a})^2-\pi+2\pi i\log{a}}{a-b}\\
+\Resid{f(z)}{-b} &= \frac{(\log{-b})^2}{a-b} = \frac{(\log{b})^2-\pi+2\pi{i}\log{b}}{a-b}
+\end{align*}
+So we have the integral as
+\begin{align*}
+I &= -i\frac{\log{(a/b)}}{b-a} - \frac{2\pi{i}}{4\pi{i}}\left(\frac{(\log{b})^2-\pi+2\pi{i}\log{b}}{a-b} - \frac{(\log{a})^2-\pi+2\pi i\log{a}}{a-b}\right)\\
+&= i\frac{\log{(a/b)}}{a-b} - \frac{(\log{b})^2-(\log{a})^2}{2(a-b)} - {i}\frac{\log{b}-\log{a}}{a-b}\\
+&= \frac{(\log{a})^2-(\log{b})^2}{2(a-b)} 
+\end{align*}
+
+
+
+\end{document}
+
