@@ -199,6 +199,9 @@ same given by
 $$K(Q,P) = \frac{P^2}{2m} + V(Q) + \epsilon\left(P\frac{dV}{dq}-\frac{P}{m}\frac{dV}{dQ}\right) + \epsilon^2\left(\left(\frac{dV}{dq}\right)^2 + \frac{p^2}{m^2}\frac{d^2V}{dQ^2}\right)$$
 
 \item
+
+
+
 \end{enumerate}
 
 \pagebreak
@@ -212,9 +215,29 @@ is a constant of motion by taking the Poisson bracket with $H$ and noting that t
 component of $\mathbf{L}$ is
 $$\left(\frac{}{}\mathbf{r}\times\mathbf{p}\right)_{l} = \epsilon_{lmn}r_mp_n$$
 \begin{align*}
-{\mathbf{L},H} &= 
+\frac{d\mathbf{L}}{dt} = \{\mathbf{L},H\} &= \partiald{\mathbf{L}}{q_i}\partiald{H}{p_i} - \partiald{\mathbf{L}}{p_i}\partiald{H}{q_i}\\
+&= (\epsilon_{lin}p_n)\frac{p_i}{m} - (\epsilon_{lmi}r_m)\left(-\frac{r_i}{|\mathbf{r}|^3}\right)\\
+&= 0
 \end{align*}
-
+Note the above equation is equal to zero due to the permutations about the Levi-Civita 
+symbol. Therefore the angular momentum is a conserved quantity as we expected. We can repeat
+this process for 
+$$\mathbf{A} = \frac{\mathbf{p}\times\mathbf{L}}{km} - \frac{\mathbf{r}}{|\mathbf{r}|}$$
+where we note that the cross product is given by
+\begin{align*}
+(\mathbf{p}\times\mathbf{L})_m = \epsilon_{mni}p_nL_i &= \epsilon_{mni}\epsilon_{ijk}p_nr_jp_k \\
+&= (\delta_{mj}\delta_{nk}-\delta_{mk}\delta_{nj})p_nr_jp_k\\
+&= r_mp_kp_k - p_mr_jp_j
+\end{align*}
+This allows us to calculate the Poisson bracket by
+\begin{align*}
+\frac{d\mathbf{A}}{dt} = \{\mathbf{A},H\}  &= \partiald{\mathbf{A}}{q_i}\partiald{H}{p_i} - \partiald{\mathbf{A}}{p_i}\partiald{H}{q_i}\\
+&= \left(\frac{p_k^2-p_mp_i}{km} - \frac{1}{|\mathbf{r}|} + \frac{r_i^2}{|\mathbf{r}|^3}\right)\frac{p_i}{m} - \left(\frac{2r_mp_i-p_ir_j-p_mr_i}{km}\right)\left(-\frac{r_i}{|\mathbf{r}|^3}\right)\\
+&= \left(\frac{p_k^2-p_mp_i}{km} - \frac{1}{|\mathbf{r}|} + \frac{|\mathbf{r}|^2}{|\mathbf{r}|^3}\right)\frac{p_i}{m} - \left(\frac{2r_mp_i-2p_ir_j}{km}\right)\left(-\frac{r_i}{|\mathbf{r}|^3}\right)\\
+&= \frac{p_ip_k^2-p_mp_i^2}{km^2} 
+&= 0
+\end{align*}
+So under a central potential the LRL-vector is conserved as we expect.
 
 \end{document}
 
