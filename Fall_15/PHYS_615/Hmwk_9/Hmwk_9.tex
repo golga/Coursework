@@ -1,0 +1,119 @@
+\documentclass[11pt]{article}
+
+\usepackage{latexsym}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{enumerate}
+\usepackage{amsmath}
+\usepackage{cancel}
+\numberwithin{equation}{section}
+
+\setlength{\evensidemargin}{.25in}
+\setlength{\oddsidemargin}{-.25in}
+\setlength{\topmargin}{-.75in}
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{9.5in}
+\newcommand{\due}{September 12th, 2015}
+\newcommand{\HWnum}{1}
+\input{"C:/Users/joeor_000/Documents/Coursework/Define.tex"}
+
+\begin{document}
+\input{../title.tex}
+
+\section{Problem \#1}
+To evaluate the integral
+$$I(k) = \int_{0}^{5}\sin{t}e^{-k(\sinh{t})^4}dt$$
+to leading order in $k$ we can use an asymptotic approach by taking $t$ to be small. This 
+implies that
+$$I(k) \approx \int_{0}^{5}te^{-kt^4}dt$$
+where we apply a change in variables as $t'=t^2$ which implies that
+$$I(k) \approx \frac{1}{2}\int_{0}^{\sqrt{5}}e^{-kt'^2}dt'$$
+Now we change variable again where $\tau=\sqrt{k}t'^2$ so 
+\begin{align*}
+d\tau &= 2\sqrt{k}t'dt'
+&\Downarrow\\
+dt' &= \frac{1}{2}\frac{1}{\sqrt{k\tau}}d\tau
+\end{align*}
+So our integral becomes
+\begin{align*}
+I(k) &\approx \int_{0}^{5}te^{-kt^4}dt\\
+&\Downarrow\\
+&\approx \lim_{k\rightarrow\infty}\frac{1}{4\sqrt{k}}\int_{0}^{f(k)}\tau^{-1/2}e^{-\tau}d\tau\\
+&\approx \frac{1}{4\sqrt{k}}\int_{0}^{\infty}\tau^{-1/2}e^{-\tau}d\tau\\
+&\approx \frac{1}{4\sqrt{k}}\Gamma(1/2)\\
+&\approx \frac{\sqrt{\pi}}{4\sqrt{k}}
+\end{align*}
+
+\pagebreak
+
+\section{Problem \#2}
+For the higher order expansion of the Gamma function given as
+$$\Gamma(x) \approx \sqrt{2\pi}x^{x-1/2}e^{-x}\left(1+\frac{A}{x}+\frac{B}{x^2}\right)$$
+we can find $A$ and $B$ using the relation
+$$\Gamma(x+1) = x\Gamma(x)$$
+this implies that for large $x$ we have
+\begin{align*}
+\Gamma(x+1) &= x\Gamma(x)\\
+\sqrt{2\pi}(x+1)^{x+1/2}e^{-(x+1)}\left(1+\frac{A}{x+1}+\frac{B}{(x+1)^2}\right) &= x\sqrt{2\pi}x^{x-1/2}e^{-x}\left(1+\frac{A}{x}+\frac{B}{x^2}\right)\\
+\sqrt{2\pi}(x+1)^{x+1/2}e^{-(x+1)}\left(1+\frac{A}{x+1}+\frac{B}{(x+1)^2}\right) &= \sqrt{2\pi}x^{x+1/2}e^{-x}\left(1+\frac{A}{x}+\frac{B}{x^2}\right)\\
+\Downarrow\\
+\left(\frac{x+1}{x}\right)^{x+1/2}e^{-1}\left(1+\frac{A}{x+1}+\frac{B}{(x+1)^2}\right) &= 1+\frac{A}{x}+\frac{B}{x^2}\\
+\left(1+\frac{1}{x}\right)^{x+1/2}e^{-1}\left(1+\frac{A}{x+1}+\frac{B}{(x+1)^2}\right) &= 1+\frac{A}{x}+\frac{B}{x^2}
+\end{align*}
+This allows us to expand 
+$$\left(1+\frac{1}{x}\right)^{x+1/2} = e\left(1+\frac{1}{12x^2}-\frac{1}{12x^3}+\frac{113}{1440x^4}+\scrO{(x^{-5})}\right)$$
+Which makes our equality become which allows us to solve for $A$ and $B$ by grouping terms of
+equal order.
+\begin{align*}
+\left(1+\frac{1}{12x^2}-\frac{1}{12x^3}\right)\left(1+\frac{A}{x+1}+\frac{B}{(x+1)^2} \right) &= 1+\frac{A}{x}+\frac{B}{x^2} \\
+&\Downarrow\\
+\left(1+\frac{1}{12x^2}-\frac{1}{12x^3}\right)\left(1+\frac{A}{x}-\frac{A}{x^2}+\frac{B}{x^2} - \frac{2B}{x^3}\right) &= 1+\frac{A}{x}+\frac{B}{x^2}\\
+1 + \frac{A}{x} + \frac{B-A+1/12}{x^2} + \frac{13/12A-2B-1/12}{x^3} &= 1+\frac{A}{x}+\frac{B}{x^2}\\
+&\Downarrow\\
+\frac{B-A+1/12}{x^2} + \frac{13/12A-2B-1/12}{x^3} &= \frac{B}{x^2}
+\end{align*}
+So we can say that
+$$A = \frac{1}{12}$$
+which leads to 
+\begin{align*}
+\frac{13}{144}-\frac{1}{12} -2B &= 0\\
+2B = \frac{1}{144}\\ 
+B = \frac{1}{288}
+\end{align*}
+
+
+\pagebreak
+
+\section{Problem \#3}
+We can find the leading term of the integral
+$$I = \int_{0}^{\infty}dte^{kt-e^t}$$
+by changing variables from $x = e^{t}/k$ which is small for large $k$. This implies that
+$dx = e^{t}/kdt$ or $dt = x^{-1}dx$. This allows us to change variables to
+\begin{align*}
+I &= \int_{1/k}^{\infty}e^{k\log(kx)-kx}\frac{1}{x}dx\\
+&= \int_{1/k}^{\infty}e^{k\log(k)+k\log(x)-kx}\frac{1}{x}dx\\
+&= e^{k\log(k)}\int_{1/k}^{\infty}e^{-k(x-\log(x))}\frac{1}{x}dx
+\end{align*}
+We can take $\phi(x) = x-\log(x)$ which has a minimum at $x=1$ where $\phi''(x)>0$ therefore
+we can take the asymptotic solution
+$$I(k) \approx f(c)e^{-k\phi(c)}\sqrt{\frac{2\pi}{k\phi''(c)}}$$
+which for $c=1$ and $f(c) = 1$ we have
+$$I(k) \approx k^ke^{-k}\sqrt{\frac{2\pi}{k}}$$
+
+\pagebreak
+
+\section{Problem \#4}
+To find the sum 
+$$\sum_{n=-\infty}^{\infty}\frac{1}{(a+n)^2}$$
+we can consider the complex integral
+$$I = \oint_{C}\frac{\pi\cot(\pi{z})}{(a+z)^2}$$
+Note that $a$ is not an integer. We note that $\pi\cot(\pi{z})$ has a simple pole at integer 
+values of $z$. They have a residue of value one. So if we take a contour that covers the 
+positive half of the complex plane. This allows us to solve the integral as
+$$I = 2\pi{i}\sum_{n=-N}^{N}\frac{1}{(z+a)^2} + 2\pi{i}\sum[\Resid{\pi\cot(\pi{z})}{a}]$$
+This implies that 
+$$\sum_{n=-\infty}^{\infty}\frac{1}{(a+n)^2} = -\Resid{\pi\cot(\pi{z})}{a} = -\pi^2\csc^2(\pi{a})$$
+
+
+\end{document}
+

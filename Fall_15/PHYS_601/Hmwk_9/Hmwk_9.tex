@@ -1,0 +1,220 @@
+\documentclass[11pt]{article}
+
+\usepackage{latexsym}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{enumerate}
+\usepackage{amsmath}
+\usepackage{cancel}
+\numberwithin{equation}{section}
+
+\setlength{\evensidemargin}{.25in}
+\setlength{\oddsidemargin}{-.25in}
+\setlength{\topmargin}{-.75in}
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{9.5in}
+\newcommand{\due}{November 11th, 2015}
+\newcommand{\HWnum}{9}
+\input{"C:/Users/joeor_000/Documents/Coursework/Define.tex"}
+
+\begin{document}
+\input{../title.tex}
+
+\section{Problem \#1}
+For a one-dimensional harmonic oscillator of mass, $m$, and spring constant $k$ we can 
+construct a Hamiltonian by finding the Lagrangian as
+$$L = \frac{1}{2}m\dot{q}^2 - \frac{1}{2}m\omega^2q^2$$
+where $\omega = \sqrt{k/m}$. We find the canonical momentum of the system as
+$$p = \partiald{L}{\dot{q}} = m\dot{q}$$
+which allows us to construct the Hamiltonian by
+\begin{align*}
+H = p\dot{q} - L  &= \frac{p^2}{m} - \frac{p^2}{2m} + \frac{1}{2}m\omega^2q^2\\
+&= \frac{p^2}{2m} + \frac{1}{2}m\omega^2q^2\\
+&= \frac{1}{2}m\left(\left(\frac{p}{m}\right)^2 + (\omega{q})^2\right)
+\end{align*}
+For the \emph{Canonical Transformation} of a one-dimensional harmonic oscillator given by
+$$Q = C(p+im\omega{q}), \qquad P = C(p-im\omega{q})$$
+We can find the constant $C$ by using the fact that the determinant of the Jacobian is unity. 
+This implies that
+\begin{align*}
+1 &= \partiald{Q}{q}\partiald{P}{p} - \partiald{Q}{p}\partiald{P}{q}\\
+&= (Cim\omega)C - C(-Cim\omega)\\
+& 2C^2im\omega\\
+&\Downarrow\\
+C &= \frac{1}{\sqrt{2im\omega}}
+\end{align*}
+So our transformations become
+$$Q = \frac{1}{\sqrt{2im\omega}}(p+im\omega{q}), \qquad P = \frac{1}{\sqrt{2im\omega}}(p-im\omega{q})$$
+Now we can find the generating function $F_2(q,P)$ for this transformation by noting that
+$$\partiald{F_2}{q} = p, \qquad \partiald{F_2}{P} = Q$$
+Where we can solve the transformations such that
+$$p(q,P) = \sqrt{2im\omega}P+im\omega{q}$$
+and
+$$Q(q,P) = \frac{1}{\sqrt{2im\omega}}(p(q,P)+im\omega{q}) = P +\sqrt{2im\omega}{q}$$
+Which allows us to find 
+\begin{align*}
+\partiald{F_2}{P} = Q  &= P +\sqrt{2im\omega}{q}\\
+&\Downarrow\\
+F_2(q,P) &= \frac{1}{2}P^2 +\sqrt{2im\omega}{q}P + f(q)
+\end{align*}
+Now we can find the function of $q$ by
+\begin{align*}
+\partiald{F_2}{q} = P  &= \sqrt{2im\omega}P + f'(q)\\
+&\Downarrow\\
+\sqrt{2im\omega}P+im\omega{q} &= \sqrt{2im\omega}P + f'(q)\\
+&\Downarrow\\
+f(q) = \frac{1}{2}im\omega{q^2}
+\end{align*}
+So our generator function is
+$$F_2(q,P) = \frac{1}{2}P^2 +\sqrt{2im\omega}{q}P + \frac{1}{2}im\omega{q^2}$$
+which allows us see that
+\begin{align*}
+QP &= \frac{1}{2im\omega}(p+im\omega{q})(p-im\omega{q})\\
+&= -\frac{i}{2m\omega}(p^2+(m\omega{q})^2)\\
+&= -\frac{i}{2}m\left(\frac{1}{\omega}\left(\frac{p}{m}\right)^2+\omega{q}^2\right)
+\end{align*}
+Which implies that the Hamiltonian is 
+$$H = i\omega{QP}$$
+so the equations of motion are given by
+$$\dot{P} = -\partiald{H}{Q} = -i\omega{P},\qquad \dot{Q} = \partiald{H}{P} = i\omega{Q}$$
+Which easily allows us to solve the equations of motion as
+$$P(t) = Ae^{-i\omega{t}},\qquad Q(t) = Be^{i\omega{t}}$$
+
+\pagebreak
+
+\section{Problem \#2}
+We note that the generator $F(q,Q) = F_1(q,Q)$ follows from the Legendre transform that states
+$$\delta\int_{t_1}^{t_2}(p\dot{q}-H)-(P\dot{Q}-K)dt = 0$$
+which implies that the difference in the integrand can only differ by a total time derivative
+$$(p\dot{q}-H)-(P\dot{Q}-K) = \frac{dF}{dt}$$
+which implies that 
+$$dF = (K-H)dt + pdq - PdQ$$
+We note that $F$ is a function of $q$ and $Q$. We can use this to find $F_3(p,Q)$ by noting
+that
+$$d(pq) = pdq + qdp$$
+which allows us to write
+\begin{align*}
+dF &= (K-H)dt + pdq - PdQ\\
+&\Downarrow\\
+dF &= (K-H)dt + d(pq) - qdp - PdQ\\
+&\Downarrow\\
+d(F-pq) &= (K-H)dt - qdp - PdQ
+\end{align*}
+So $F_3(p,Q) = F-pq$. Next we repeat the process to find $F_4(p,P)$ by noting that
+$$d(PQ) = PdQ + QdP$$
+which implies
+\begin{align*}
+dF &= (K-H)dt + pdq - PdQ\\
+&\Downarrow\\
+dF &= (K-H)dt + pdq - (d(PQ) - QdP)\\
+&\Downarrow\\
+d(F+PQ) &= (K-H)dt + pdq + QdP
+\end{align*}
+which implies that $F_4(p,P) = F+PQ$.
+
+\pagebreak
+
+\section{Problem \#3}
+\begin{enumerate}[(a)]
+\item
+For the infinitesimal transformation with the generator given by
+$$F_2(q,P) = qP + \epsilon{H(q,P)}$$
+where $H$ is the Hamiltonian given by
+$$H(q,p) = \frac{p^2}{2m} + V(q)$$
+we can find the canonical transformations associated with $F_2(q,P)$ by 
+\begin{align*}
+Q = \partiald{F_2}{P} &= q + \epsilon\partiald{}{P}\left(\frac{P^2}{2m} + V(q)\right)\\
+&= q + \epsilon\frac{P}{m}
+\end{align*}
+Then we can find $p$ and invert by
+\begin{align*}
+p = \partiald{F_2}{q} &= P + \epsilon\frac{dV}{dq}\\
+&\Downarrow\\
+P &= p - \epsilon\frac{dV}{dq}
+\end{align*}
+So replacing $P$ in the $Q$ term we get the canonical transformations to first order in $\epsilon$
+\begin{align*}
+P &= p - \epsilon\frac{dV}{dq}\\
+Q &= q + \epsilon\frac{p}{m}
+\end{align*}
+
+\item If we take $\epsilon$ to be a small time step we can see that for $q=q(t)$ and $p=p(t)$
+we have the transformations
+\begin{align*}
+q(t+\epsilon) = Q &= q(t) + \epsilon\frac{p(t)}{m}\\
+p(t+\epsilon) = P &= p(t) - \epsilon\frac{dV}{dq}
+\end{align*}
+If we Taylor expand $q(t+\epsilon)$ about $\epsilon$ to first order we see that
+\begin{align*}
+q(t+\epsilon) &= q(t) + \dot{q}\epsilon\\
+p(t+\epsilon) &= p(t) + \dot{p}\epsilon
+\end{align*}
+We note that the velocity $\dot{q}$ is related to momentum $p$ by $\dot{q}=p/m$ which implies
+that The $q$ expansion is the same as the canonical transformation. We also note that 
+$\dot{p} = F = -dV/dq$ so the expansion of $p$ also is the same to first order.
+
+\item Using the results from above we can find the transformed Hamiltonian $K(P,Q)$ by noting
+\begin{align*}
+H(q,p) &= \frac{p^2}{2m} + V(q)\\
+&\Downarrow\\
+K(Q,P) &= \frac{1}{2m}\left(P+\epsilon\frac{dV}{dq}\right)^2 + V\left(Q-\epsilon\frac{P}{m}\right)\\
+&= \frac{1}{2m}\left(P^2+P\epsilon\frac{dV}{dq}+\epsilon^2\left(\frac{dV}{dq}\right)^2\right) + V(Q) - \epsilon\frac{P}{m}\frac{dV}{dQ} + \epsilon^2\frac{p^2}{m^2}\frac{d^2V}{dQ^2}\\
+&= \frac{P^2}{2m} + V(Q) + \epsilon\left(P\frac{dV}{dq}-\frac{P}{m}\frac{dV}{dQ}\right) + \epsilon^2\left(\left(\frac{dV}{dq}\right)^2 + \frac{p^2}{m^2}\frac{d^2V}{dQ^2}\right)
+\end{align*}
+\end{enumerate}
+
+\pagebreak
+
+\section{Problem \#4}
+\begin{enumerate}[(a)]
+\item For the generator 
+$$F_3(p,Q) = -pQ + \epsilon{H(Q,p)}$$
+where $H$ is the same Hamiltonian from problem 3 this allows up to find the transformations 
+by
+\begin{align*}
+q = -\partiald{F_3}{p} &= Q - \epsilon\frac{p}{m}
+\end{align*}
+and 
+$$P = -\partiald{F_3}{Q} = p - \epsilon\frac{dV}{dQ}$$
+So solving for $Q$ we have the canonical transformations by noting that
+$$\partiald{V}{q} = \partiald{V}{Q}\partiald{V}{q}$$
+but as we can see $dQ/dq =1$ so
+\begin{align*}
+Q &= q + \epsilon\frac{p}{m}\\
+P &= p - \epsilon\frac{dV}{dq}
+\end{align*}
+which are the same canonical transformations as problem 3.
+
+\item For $\epsilon$ as a time step we can find the same result that
+\begin{align*}
+q(t+\epsilon) = Q &= q(t) + \epsilon\frac{p(t)}{m}\\
+p(t+\epsilon) = P &= p(t) - \epsilon\frac{dV}{dq}
+\end{align*}
+This again is the same as the Taylor expansion about $\epsilon$ to first order. Where 
+$\dot{p} = -dV/dq$ and $\dot{q} = p/m$.
+
+\item We note that the canonical transformation found in part (a) is the same as the 
+transformation from problem 3. Therefore the transformed Hamiltonian to second order is the
+same given by
+$$K(Q,P) = \frac{P^2}{2m} + V(Q) + \epsilon\left(P\frac{dV}{dq}-\frac{P}{m}\frac{dV}{dQ}\right) + \epsilon^2\left(\left(\frac{dV}{dq}\right)^2 + \frac{p^2}{m^2}\frac{d^2V}{dQ^2}\right)$$
+
+\item
+\end{enumerate}
+
+\pagebreak
+
+\section{Problem \#5}
+For the Kepler problem with a three dimensional Hamiltonian given by
+$$H = \frac{\mathbf{p}^2}{2m} - \frac{k}{|\mathbf{r}|}.$$
+Using this we can show that 
+$$\mathbf{L} = \mathbf{r}\times\mathbf{p}$$
+is a constant of motion by taking the Poisson bracket with $H$ and noting that the $l$ 
+component of $\mathbf{L}$ is
+$$\left(\frac{}{}\mathbf{r}\times\mathbf{p}\right)_{l} = \epsilon_{lmn}r_mp_n$$
+\begin{align*}
+{\mathbf{L},H} &= 
+\end{align*}
+
+
+\end{document}
+

@@ -1,0 +1,267 @@
+\documentclass[11pt]{article}
+
+\usepackage{latexsym}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{enumerate}
+\usepackage{amsmath}
+\usepackage{cancel}
+\numberwithin{equation}{section}
+
+\setlength{\evensidemargin}{.25in}
+\setlength{\oddsidemargin}{-.25in}
+\setlength{\topmargin}{-.75in}
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{9.5in}
+\newcommand{\due}{November 4th, 2015}
+\newcommand{\HWnum}{8}
+\input{"C:/Users/joeor_000/Documents/Coursework/Define.tex"}
+
+\begin{document}
+\input{../title.tex}
+
+\section{Problem \#1}
+\begin{enumerate}[(a)]
+\item For a mass, $m$, moving in a central potential, $V(r)$, we have the Lagrangian in 
+spherical coordinates 
+$$L = \frac{1}{2}m\left(\dot{r}^2 + r^2\dot{\theta}^2 + r^2\sin^2\theta\dot{\phi}^2\right) - V(r)$$
+this allows us to calculate the canonical momenta $p_r$, $p_{\theta}$, and $p_{\phi}$ by 
+taking the derivative of the Lagrangian with respect to the generalized coordinates $\dot{r}$
+, $\dot{\theta}$, and $\dot{\phi}$. So we calculate
+\begin{align*}
+p_r = \partiald{L}{\dot{r}} &= m\dot{r}\\
+p_{\theta} = \partiald{L}{\dot{\theta}} &= mr^2\dot{\theta}\\
+p_{\phi} = \partiald{L}{\dot{\phi}} &= mr^2\sin^2\theta\dot{\phi}
+\end{align*}
+
+\item Using the canonical momenta found in part (a) we can derive the Hamiltonian, $H$, for a 
+central potential in spherical coordinates by
+$$H = \sum_{i}p_i\dot{q}_i - L$$
+where we write $\dot{q}_i$ in terms of the generalized momenta 
+\begin{align*}
+H &= p_r\dot{r} + p_{\theta}\dot{\theta} + p_{\phi}\dot{\phi} - \frac{1}{2}m\left(\dot{r}^2 + r^2\dot{\theta}^2 + r^2\sin^2\theta\dot{\phi}^2\right) + V(r)\\
+&\Downarrow\\
+H &= p_r\frac{p_r}{m} + p_{\theta}\frac{p_{\theta}}{mr^2} + p_{\phi}\frac{p_{\phi}}{mr^2\sin^2\theta} - \frac{1}{2}m\left(\left(\frac{p_r}{m}\right)^2 + r^2\left(\frac{p_{\theta}}{mr^2}\right)^2 + r^2\sin^2\theta\left(\frac{p_{\phi}}{mr^2\sin^2\theta}\right)^2\right) + V(r)\\
+&= \frac{p_r^2}{2m} + \frac{p_{\theta}^2}{2mr^2} + \frac{p_{\phi}^2}{2mr^2\sin^2\theta} + V(r)
+\end{align*}
+
+\item Now that we have the Hamiltonian we can use \emph{Hamilton's Equations}
+\begin{equation}
+\dot{q}_i = \partiald{H}{p_i},\qquad \dot{p}_i = -\partiald{H}{q_i}
+\end{equation}
+to find the equations of motion. So for $\theta$ we have
+\begin{align*}
+\dot{\theta} = \partiald{H}{p_{\theta}} &= \frac{p_{\theta}}{mr^2}
+\end{align*}
+Which, as expected, is the equation from the canonical momentum. The second equation of 
+motion in $\theta$ is given by
+\begin{align*}
+\dot{p}_{\theta} = -\partiald{H}{\theta} &= -\frac{p_{\phi}^2}{2mr^2}\frac{d}{d\theta}\left(\frac{1}{\sin^2\theta}\right)\\
+&= \frac{p_{\phi}^2}{mr^2}\frac{\cos\theta}{\sin^3\theta}
+\end{align*}
+Now we can calculate the equations of motion for $\phi$ as
+\begin{align*}
+\dot{\phi} = \partiald{H}{p_{\theta}} &= \frac{p_{\phi}}{mr^2\sin^2\theta}
+\end{align*}
+and
+$$\dot{p}_{\phi} = -\partiald{H}{\phi} = 0$$
+this implies that $p_{\phi}$ is a constant of motion. Now for the radial equation of motion 
+\begin{align*}
+\dot{r} &= \partiald{H}{p_{r}} = \frac{p_{r}}{m}
+\end{align*}
+and
+\begin{align*}
+\dot{p}_{r} = -\partiald{H}{r} &= \frac{p_{\theta}^2}{mr^3} + \frac{p_{\phi}^2}{mr^3\sin^2\theta} + \frac{dV(r)}{dr}
+\end{align*}
+
+\item We note that in general there is only a single conserved quantity which follows from 
+$\dot{p}_{\phi} = 0$ which implies that there the canonical momentum, $p_{\phi}$, is conserved.
+\end{enumerate}
+
+\pagebreak
+
+\section{Problem \#2}
+For a spherical pendulum in which a particle of mass, $m$, in a gravitational field constrained
+to move on the surface of a sphere of radius, $l$. As we found in problem 1 we have a 
+Hamiltonian in spherical coordinates as
+$$H = \frac{p_r^2}{2m} + \frac{p_{\theta}^2}{2mr^2} + \frac{p_{\phi}^2}{2mr^2\sin^2\theta} + V(r,\theta,\phi)$$
+where we note that $p_r=0$ because we are fixed to the surface of the sphere. Note that the 
+height of particle in the potential is given by $l-l\cos\theta$ which implies that our 
+potential is
+$$V(\theta) = mgl(1-\cos\theta) = -mgl\cos\theta$$
+note that we shifted the zero potential point down by $mgl$ without loss of generality. So 
+our Hamiltonian is 
+$$H = \frac{p_{\theta}^2}{2ml^2} + \frac{p_{\phi}^2}{2ml^2\sin^2\theta} - mgl\cos\theta$$
+We note that like in problem one there is no $\phi$ dependence therefore $p_{\phi}$ is a
+conserved quantity. Which allows us to find the equations of motion in $\theta$ and $\phi$ by 
+\begin{align*} 
+\dot{p}_{\phi} = -\partiald{H}{\phi} &= 0\\
+\dot{\phi} =  \partiald{H}{p_{\phi}} &= \frac{p_{\phi}}{ml^2\sin^2\theta}\\ 
+\dot{p}_{\theta} = -\partiald{H}{\theta} &= \frac{p_{\phi}^2}{ml^2}\frac{\cos\theta}{\sin^3\theta} - mgl\sin\theta\\
+\dot{\theta} =  \partiald{H}{p_{\theta}} &= \frac{p_{\theta}}{ml^2}
+\end{align*} 
+Now we can solve this Hamiltonian by expanding about a constant angle $\theta_0$ to second 
+order where we note the solution for $\dot{p}_{\theta}=0$ which implies that
+$$p_{\phi}^2 = \frac{m^2gl^3\sin^4\theta_0}{\cos\theta_0}$$
+for constant circular motion
+where we note the expansion
+$$f(\theta) = f(\theta_0) + f'(\theta_0)(\theta-\theta_0) + \frac{1}{2}f''(\theta_0)(\theta-\theta_0)^2$$
+So we expand $\sin^{-2}\theta$ about a small perturbation $\theta = \theta_0+\delta\theta$ 
+noting that $\delta\theta = \theta-\theta_0$
+$$\sin^{-2}\theta = \sin^{-2}\theta_0 - 2\frac{\cos\theta_0}{\sin^3\theta_0}\delta\theta + \frac{\cos(2\theta_0)+2}{\sin^4\theta_0}\delta\theta^2 + \scrO(\delta\theta^3)$$
+and $\cos\theta$ as
+$$\cos\theta = \cos\theta_0 - \sin\theta_0\delta\theta - \cos\theta_0\delta\theta^2 + \scrO(\delta\theta^3)$$
+So our Hamiltonian becomes 
+\begin{align*}
+H &= \frac{p_{\theta}^2}{2ml^2} + \frac{p_{\phi}^2}{2ml^2}\left(\sin^{-2}\theta_0 - 2\frac{\cos\theta_0}{\sin^3\theta_0}\delta\theta + \frac{\cos(2\theta_0)+2}{\sin^4\theta_0}\delta\theta^2\right) - mgl(\cos\theta_0 - \sin\theta_0\delta\theta - \cos\theta_0\delta\theta^2)
+\end{align*}
+So we can find the equation of motion for the perturbation $\delta\theta$ by noting that
+$p_{\theta} = ml^2\delta\dot{\theta}$. So we can find the equation of motion
+\begin{align*}
+\dot{p}_{\theta} = ml^2\delta\ddot{\theta} = -\partiald{H}{\delta\theta} &= -\frac{p_{\phi}^2}{2ml^2}\left(-2\frac{\cos\theta_0}{\sin^3\theta_0} + 2\frac{\cos(2\theta_0)+2}{\sin^4\theta_0}\delta\theta\right) + mgl(\sin\theta_0 + \cos\theta_0\delta\theta)\\
+&\Downarrow\\
+\delta\ddot{\theta} &= -\frac{p_{\phi}^2}{2m^2l^4}\left(-2\frac{\cos\theta_0}{\sin^3\theta_0} + 2\frac{\cos(2\theta_0)+2}{\sin^4\theta_0}\delta\theta\right) + \frac{g}{l}(\sin\theta_0 + \cos\theta_0\delta\theta)\\
+&= -\frac{g\sin^4\theta_0}{2l\cos\theta_0}\left(-2\frac{\cos\theta_0}{\sin^3\theta_0} + 2\frac{\cos(2\theta_0)+2}{\sin^4\theta_0}\delta\theta\right) + \frac{g}{l}(\sin\theta_0 + \cos\theta_0\delta\theta)\\
+&= -\frac{g}{l}\left(\frac{\cos(2\theta_0)+2}{\cos\theta_0} + \cos\theta_0\right)\delta\theta\\
+&= -\frac{g}{l}\left(\frac{2\cos^(\theta_0)-1+2 + \cos^2\theta_0}{\cos\theta_0}\right)\delta\theta\\
+&= -\frac{g}{l\cos\theta_0}\left(1+3\cos\theta_0\right)\delta\theta
+\end{align*}
+So we have simple harmonic motion with an oscillation frequency
+$$\omega^2 = \frac{g}{l\cos\theta_0}\left(1+3\cos\theta_0\right)$$
+
+\pagebreak
+
+\section{Problem \#3}
+\begin{enumerate}[(a)]
+\item For a relativistic particle in a static potential $V(\mathbf{r})$ we have a Lagrangian
+$$L = -mc^2\sqrt{1-v^2/c^2}-V(\mathbf{r})$$
+where we note that $v = \dot{\mathbf{r}}$ so our equations of motion from the Lagrangian equations are
+\begin{align*}
+\frac{d}{dt}\partiald{L}{v} &= \frac{d}{dt}\left(-mc^2\frac{1}{2}(1-v^2/c^2)^{-1/2}(-2v/c^2)\right) \\
+&= m\left(\dot{v}(1-v^2/c^2)^{-1/2} + v^2/c^2(1-v^2/c^2)^{-3/2}\dot{v}\right)
+&= m\dot{v}(1-v^2/c^2)^{-1/2}\left(1 + v^2/c^2(1-v^2/c^2)^{-1}\right)
+\end{align*}
+And the derivative with respect to $\mathbf{r}$ is
+$$\partiald{L}{\mathbf{r}} = -\frac{dV}{d\mathbf{r}}$$
+so we have the equation of motion 
+$$m\dot{v}(1-v^2/c^2)^{-1/2}\left(1 + v^2/c^2(1-v^2/c^2)^{-1}\right) = -\frac{dV}{d\mathbf{r}}$$
+note in the non-relativistic limit where $v<<c$ this equation becomes the classical result.
+
+\item
+We can find the canonical momentum $\mathbf{p}$ as
+$$\mathbf{p} = \partiald{L}{v} = \frac{m\mathbf{v}}{\sqrt{1-v^2/c^2}}$$
+which allows us to calculate the Hamiltonian by first solving for $\dot{\mathbf{r}}$ as
+\begin{align*}
+\dot{\mathbf{r}} = \mathbf{v} &= \frac{\mathbf{p}\sqrt{1-v^2/c^2}}{m}\\
+&\Downarrow\\
+v^2 &= \frac{p^2}{m^2}\left(1-\frac{v^2}{c^2}\right)\\
+&\Downarrow\\
+v^2 + v^2\frac{p^2}{m^2c^2}&= \frac{p^2}{m^2}\\
+&\Downarrow\\
+\mathbf{v} &= \frac{\mathbf{p}}{m\sqrt{1+(p/mc)^2}}
+\end{align*}
+So now we can solve the Hamiltonian noting that $(1-v^2/c^2)^{1/2} = (1+(p/mc)^2)^{-1/2}$
+\begin{align*}
+H &= \mathbf{p}\cdot{\mathbf{v}} - L\\
+&\Downarrow\\
+&= \mathbf{p}\cdot\frac{\mathbf{p}}{m\sqrt{1+(p/mc)^2}} + \frac{mc^2}{\sqrt{1+(p/mc)^2}} + V(\mathbf{r})\\
+&= \frac{p^2mc^2}{m\sqrt{m^2c^4+p^2c^2}} + \frac{m^2c^4}{\sqrt{m^2c^4+p^2c^2}} + V(\mathbf{r})\\
+&= \frac{m^2c^4+p^2c^2}{\sqrt{m^2c^4+p^2c^2}}+ V(\mathbf{r})\\
+&= \sqrt{m^2c^4+p^2c^2} + V(\mathbf{r})
+\end{align*}
+We see that $H$ does not depend explicitly on time, $t$. Therefore it is a constant of motion.
+
+\item For a spherically symmetric potential we have $V(\mathbf{r})\rightarrow{V(r)}$. This 
+implies that our potential is independent of $\theta$ and $\phi$. This implies that the motion
+of the particle is constrained to planer motion. This reduces our Hamiltonian to 
+$$H = c^2\sqrt{m^2c^4+p_r^2+r^{-2}p_{\theta}^2} + V(\mathbf{r})$$
+We note that the Hamiltonian is cyclic in $\theta$ which implies that $p_{\theta}$ is a 
+conserved quantity. We note that for planer motion $\mathbf{r}\times\mathbf{p}=p_{\theta}$ 
+therefore we know the angular momentum, $\mathbf{r}\times\mathbf{p}$, is conserved.
+\end{enumerate}
+
+\pagebreak
+
+\section{Problem \#4}
+\begin{enumerate}[(a)]
+\item For a particle of charge, $e$, moving in a electromagnetic field $\Phi = 0$ and 
+$\mathbf{A}=\hat{z}A_{z}(x,y,t)$ we can note that 
+$$\mathbf{E} = \grad\Phi-\frac{1}{c}\partiald{\mathbf{A}}{t} = -\frac{1}{c}\partiald{A_z}{t}$$
+and
+$$\mathbf{B} = \grad\times\mathbf{A} = \partiald{A_z}{y}\hat{x} - \partiald{A_z}{x}\hat{y}$$
+which allows us to construct the explicit first integral through \emph{the Lorentz-Force 
+Equation} 
+\begin{equation}
+m\ddot{\mathbf{r}} = e\left[\mathbf{E}+\frac{1}{c}\dot{\mathbf{r}}\times\mathbf{B}\right]
+\label{Lorz}
+\end{equation}
+where we can calculate 
+\begin{align*}
+\dot{\mathbf{r}}\times\mathbf{B} &= \partiald{A_z}{x}\dot{z}\hat{x} + \partiald{A_z}{y}\dot{z}\hat{y} + \left(-\partiald{A_z}{dx}\dot{x}-\partiald{A_z}{dy}\dot{y}\right)\hat{z}
+\end{align*}
+So we can take the $z$ component of equation \ref{Lorz} as
+\begin{align*}
+m\ddot{z} &= -\frac{e}{c}\left(\partiald{A_z}{t}+\partiald{A_z}{x}\dot{x}+\partiald{A_z}{y}\dot{y}\right)\\
+\ddot{z} &= -\frac{e}{cm}\frac{dA_z}{dt}\\
+&\Downarrow\\
+\frac{d}{dt}\left(\dot{z} + \frac{e}{cm}A_z\right) &= 0\\
+&\Downarrow\\
+\dot{z} + \frac{e}{cm}A_z &= C
+\end{align*}
+This gives us a equation of motion in a propagation in the $z$ direction.
+
+\item Now we can use this result to get the motion in the directions perpendicular to the 
+propagation $x$ and $y$. By grouping the $\hat{x}$ and $\hat{y}$ terms of equation \ref{Lorz}
+\begin{align*}
+m\ddot{\mathbf{r}}_{\perp} &= \frac{e}{c}\left(\partiald{A_z}{x}\dot{z}\hat{x} + \partiald{A_z}{y}\dot{z}\hat{y}\right)\\
+\Downarrow\\
+\ddot{\mathbf{r}}_{\perp} &= \frac{e}{cm}\left(\partiald{A_z}{x}\left(C-\frac{e}{cm}A_z\right)\hat{x} + \partiald{A_z}{y}\left(C-\frac{e}{cm}A_z\right)\hat{y}\right)\\
+&= \frac{e}{cm}\left(\frac{1}{2}\frac{cm}{e}\partiald{}{x}\left(C-\frac{e}{cm}A_z\right)^2\hat{x} + \frac{1}{2}\frac{cm}{e}\partiald{}{y}\left(C-\frac{e}{cm}A_z\right)^2\hat{y}\right)\\
+&= \frac{1}{2}\grad_{\perp}\left(C-\frac{e}{cm}A_z\right)^2
+\end{align*}
+
+\item For a uniform magnetic field given by $\mathbf{B} = B_0\hat{x}$ we can apply the results
+from the above parts by looking at
+$$\mathbf{B} = \grad\times\mathbf{A} = \partiald{A_z}{y}\hat{x} - \partiald{A_z}{x}\hat{y}$$
+which implies that 
+\begin{align*}
+\partiald{A_z}{y} &= B_0\\
+\partiald{A_z}{x} &= 0
+\end{align*}
+So up to an additive constant which we can neglect we have
+$$A_z = B_0y$$
+Therefore our perpendicular motion becomes
+\begin{align*}
+\ddot{\mathbf{r}}_{\perp} &= \frac{1}{2}\grad_{\perp}\left(C-\frac{eB_0}{cm}y\right)^2\\
+&= \frac{eB_0}{cm}\left(C-\frac{eB_0}{cm}y\right)\hat{y}\\
+\end{align*}
+This yields the equations of motion in $x$ and $y$ as
+\begin{align*}
+\ddot{x} &= 0\\
+\ddot{y} &= \frac{CeB_0}{cm}-\left(\frac{eB_0}{cm}\right)^2y
+\end{align*}
+This implies that we have a constant motion in $x$ and oscillatory motion in $y$ which has
+a result
+\begin{align*}
+x(t) &= v_0t\\
+y(t) &= \frac{C}{\omega} + A\cos\left(\omega{t}\right)
+\end{align*}
+where we define the angular frequency as
+$$\omega\equiv\frac{eB_0}{cm}$$
+we can use this result to find the motion in $z$ as
+\begin{align*}
+\dot{z} &= C - \frac{eB_0}{cm}\left(\frac{C}{\omega} + A\cos(\omega{t})\right)\\
+&= -A\omega\cos(\omega{t})\\
+&\Downarrow\\
+z(t) &= -A\sin(\omega{t})
+\end{align*}
+So we have the total equations of motion 
+$$x(t) = v_0t,\qquad y(t) = \frac{C}{\omega} + A\cos\left(\omega{t}\right),\qquad z(t) = -A\sin(\omega{t})$$
+which corresponds to helical motion about $x$ shifted to an new equilibrium position at $y=-C/\omega$.
+
+
+
+\end{enumerate}
+
+\end{document}
+

@@ -1,0 +1,103 @@
+\documentclass[11pt]{article}
+
+\usepackage{latexsym}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{enumerate}
+\usepackage{amsmath}
+\usepackage{cancel}
+\numberwithin{equation}{section}
+
+\setlength{\evensidemargin}{.25in}
+\setlength{\oddsidemargin}{-.25in}
+\setlength{\topmargin}{-.75in}
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{9.5in}
+\newcommand{\due}{November 9th, 2015}
+\newcommand{\HWnum}{7}
+\input{"C:/Users/joeor_000/Documents/Coursework/Define.tex"}
+
+\begin{document}
+\input{../title.tex}
+
+\section{Problem \#1}
+To find the expectation value, $<\hat{L}^2>$, in the state with a wave function
+$$\psi(\theta,\varphi) = A\sin\theta\cos\varphi$$
+we note that $\psi(\theta,\varphi)$ is a spherical harmonic with $l=1$. This implies that
+\begin{align*}  
+<\hat{L}^2> &= \int_{d\Omega}\psi^*(\theta,\varphi)\hat{L}^2\psi(\theta,\varphi)d\Omega\\
+&= \int_{d\Omega}\psi^*(\theta,\varphi)\hbar^2(1)(1+1)\psi(\theta,\varphi)d\Omega\\
+&= 2\hbar^2
+\end{align*}  
+
+\section{Problem \#2}
+To find the eigenvalue of the $\hat{L}^2$ operator corresponding to the eigenfunction
+$$Y(\theta,\varphi) = A(3\cos^2\theta-1+\sin(2\theta)\cos\varphi)$$
+we note that $Y(\theta,\varphi)$ is the eigenfunction that corresponds to the sum of two 
+spherical harmonics 
+$$Y(\theta,\varphi) = A(Y_{20} + 2Y_{21})$$
+note both are in the $l=2$ state. This implies
+\begin{align*}
+\hat{L}^2Y(\theta,\varphi) &= A(\hat{L}^2Y_{20} + 2\hat{L}^2Y_{21})\\
+&= A(\hbar^2(2)(2+1)Y_{20} + \hbar^2(2)(2+1)2Y_{21})\\
+&= 6\hbar^2Y(\theta,\varphi)
+\end{align*}
+
+\pagebreak
+
+\section{Problem \#3}
+For a $s$-state ($l=0$) particle with at mass, $m_0$, in an spherically symmetric infinitely
+deep rectangular potential well of radius $a$ is described by the wave function
+$$\psi_{klm} = Aj_{l}(kr)Y_{lm}(\theta,\varphi)$$
+for $l=0$ we have the state
+$$\psi_{k00} = A\frac{\sin(kr)}{kr}$$
+Where we can find the normalization constant by noting the continuity condition that 
+$\psi_{k00}(r=0) = \psi_{k00}(r=a) = 0$ which implies that $k= n\pi/a$. Where $n$ becomes
+the principle quantum number
+\begin{align*}
+1 &= \int_{V}\psi^*_{k00}\psi_{k00}dV\\
+&= 4\pi\int_{0}^{a}A^2\left(\frac{\sin(kr)}{kr}\right)^2r^2dr\\
+&= \frac{4\pi{a^2}}{n^2\pi^2}A^2\int_{0}^{a}\sin^2(kr)dr\\
+&= \frac{4a^2}{n^2\pi}A^2\frac{a}{2}\\
+&\Downarrow\\
+A &= n\sqrt{\frac{\pi}{2a^3}}
+\end{align*}
+we can find the expectation value of $r$ of a particle in this state by
+\begin{align*}
+<r> &= \int_{V}\psi_{k00}^*r\psi_{k00}dV\\
+&= 4\pi\int_{0}^{a}A\frac{\sin(kr)}{kr}rA\frac{\sin(kr)}{kr}r^2dr\\
+&= 4\pi\frac{n^2\pi}{2a^3}\frac{a^2}{n^2\pi^2}\int_{0}^{a}r\sin^2(kr)dr\\
+&= \frac{2}{a}\frac{a^2}{4} = \frac{a}{2}
+\end{align*}
+which is the same for one dimensional infinite square well which is what we expect. The same
+follows for $<r^2>$
+\begin{align*}
+<r^2> &= \int_{V}\psi_{k00}^*r\psi_{k00}dV\\
+&= \frac{2}{a}\int_{0}^{a}r^2\sin^2(kr)dr\\
+&= \frac{a^2}{6}\left(2-\frac{3}{(n\pi)^2}\right)
+\end{align*}
+Which means we can find the variance as
+$$<(\Delta{r})^2> = <r>^2 - <r^2> = \frac{a^2}{12}\left(1-\frac{6}{(n\pi)^2}\right)$$
+
+\pagebreak
+
+\section{Problem \#4}
+For a particle of mass, $m_0$, in the ground state of a spherically symmetric infinitely 
+deep square potential we a wave function given by
+$$\psi_{100}(r) = \frac{1}{\sqrt{2a\pi}}\frac{\sin(\pi{r}/a)}{r}$$
+which in order to find the momentum probability distribution we find $\psi$ in momentum 
+representation as
+\begin{align*}
+\phi_{100}(p) &= \frac{1}{\sqrt{2\pi\hbar}}\int_{V}\psi_{100}(r)\exp\left(\frac{-ipr}{\hbar}\right)dV\\
+&= \frac{4\pi}{2\pi\sqrt{\hbar}}\int_{0}^a\sin\left(\frac{\pi{r}}{a}\right)\exp\left(\frac{-ipr}{\hbar}\right)dr\\
+&= \frac{2}{\sqrt{\hbar{a}}}a\pi\frac{1+e^{-ipa/\hbar}}{\pi^2-(pa/\hbar)^2}\\
+&= 2\pi\sqrt{\frac{a}{\hbar}}\frac{1+e^{-ipa/\hbar}}{\pi^2-(pa/\hbar)^2}
+\end{align*}
+So the momentum probability distribution is given by
+\begin{align*}
+|\phi(p)|^2 &= \frac{4\pi^2{a}}{\hbar}\frac{1+e^{ipa/\hbar}}{\pi^2-(pa/\hbar)^2}\frac{1+e^{-ipa/\hbar}}{\pi^2-(pa/\hbar)^2}\\
+&= \frac{4\pi^2{a}}{\hbar}\frac{2 + e^{-ipa/\hbar} + e^{ipa/\hbar}}{(\pi^2-(pa/\hbar)^2)^2}\\
+&= \frac{8\pi^2{a}}{\hbar}\frac{1 + \cos(pa/\hbar)}{(\pi^2-(pa/\hbar)^2)^2}
+\end{align*}
+\end{document}
+

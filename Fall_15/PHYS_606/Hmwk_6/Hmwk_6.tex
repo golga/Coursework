@@ -1,0 +1,207 @@
+\documentclass[11pt]{article}
+
+\usepackage{latexsym}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{enumerate}
+\usepackage{amsmath}
+\usepackage{cancel}
+\numberwithin{equation}{section}
+
+\setlength{\evensidemargin}{.25in}
+\setlength{\oddsidemargin}{-.25in}
+\setlength{\topmargin}{-.75in}
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{9.5in}
+\newcommand{\due}{November 1st, 2015}
+\newcommand{\HWnum}{6}
+\input{"C:/Users/joeor_000/Documents/Coursework/Define.tex"}
+
+\begin{document}
+\input{../title.tex}
+
+\section{Problem \#1}
+\begin{enumerate}[(a)]
+\item For a particle of charge, $e$, in an infinitely deep one-dimensional potential well 
+from $0\le{x}\le{a}$. We can find the matrix elements of the dipole moment $e\hat{x}$ in the
+energy representation by noting that the energy eigenfunctions in coordinate representation
+are
+$$\inprod{x}{E_n} = \sqrt{\frac{2}{a}}\sin\left(\frac{n\pi}{a}x\right)$$
+This allows us to calculate
+\begin{align*}
+\bra{E_m}e\hat{x}\ket{E_n} &= \int{dx}\inprod{E_m}{x}e\hat{x}\inprod{x}{E_n}\\
+&= \frac{2e}{a}\int_{0}^{a}\sin\left(\frac{m\pi}{a}x\right)x\sin\left(\frac{n\pi}{a}x\right)dx\\
+&= \frac{e}{a}\left(\int_{0}^{a}x\cos\left(\frac{(n-m)\pi}{a}x\right)dx- \int_{0}^{a}x\cos\left(\frac{(m+n)\pi}{a}x\right)dx\right)\\
+&= \frac{e}{a}\left(\frac{a^2(\cos((m-n)\pi)+(m-n)\pi\sin((m-n)\pi)-1)}{(m-n)^2\pi^2}\right.\\
+&\qquad\qquad \left.- \frac{a^2(\cos((m+n)\pi)+(m+n)\pi\sin((m+n)\pi)-1)}{(m+n)^2\pi^2}\right)\\
+&= \frac{ea}{\pi^2}\left(\frac{\cos((m-n)\pi)-1}{(m-n)^2} - \frac{\cos((m+n)\pi)-1}{(m+n)^2}\right)
+\end{align*}
+Note the term with $\sin((n\pm{m})\pi)$ is zero for all integers $m,n$ so we see that for 
+$n-m=2i$ where $i=1,2,3,...$ we have 
+\begin{align*}
+\bra{E_m}e\hat{x}\ket{E_n} &= \frac{2ea}{\pi^2}\left(\frac{\cos((2i)\pi)-1}{(m-n)^2} - \frac{\cos(2(i+n)\pi)-1}{(m+n)^2}\right)\\
+&= \frac{ea}{\pi^2}\left(\frac{1-1}{(m-n)^2} - \frac{1-1}{(m+n)^2}\right) = 0
+\end{align*} 
+And for $m-n=2i-1$ where $i=1,2,3,...$ we have non-zero matrix elements given by
+\begin{align*}
+\bra{E_m}e\hat{x}\ket{E_n} &= \frac{2ea}{\pi^2}\left(\frac{\cos((2i-1)\pi)-1}{(m-n)^2} - \frac{\cos(2(i+n)-1\pi)-1}{(m+n)^2}\right)\\
+&= \frac{ea}{\pi^2}\left(\frac{-1-1}{(m-n)^2} - \frac{-1-1}{(m+n)^2}\right)\\
+&= \frac{-2ea}{\pi^2}\left(\frac{1}{(m-n)^2} - \frac{1}{(m+n)^2}\right)
+\end{align*} 
+Note these are the matrix elements for $m\ne{n}$ for $n=m$ we have the integral
+\begin{align*}
+\bra{E_n}e\hat{x}\ket{E_n} &= \int{dx}\inprod{E_n}{x}e\hat{x}\inprod{x}{E_n}\\
+&= \frac{e}{a}\left(\int_{0}^{a}xdx- \cancelto{0}{\int_{0}^{a}x\cos\left(\frac{2n\pi}{a}x\right)dx}\right)\\
+&= \frac{e}{a}\frac{a^2}{2} = \frac{ea}{2}
+\end{align*}
+So we have the value $ea/2$ along the diagonal of $\bra{E_m}e\hat{x}\ket{E_n}$.
+
+\item We can repeat this process of the momentum operator $\hat{p}$ which in coordinate 
+representation is
+$$\hat{p} = -i\hbar\partiald{}{x}$$
+So the matrix elements can be calculated as
+\begin{align*}
+\bra{E_m}\hat{p}\ket{E_n} &= \int{dx}\inprod{E_m}{x}\hat{p}\inprod{x}{E_n}\\
+&= -\frac{i2\hbar}{a}\int_{0}^{a}\sin\left(\frac{m\pi}{a}x\right)\partiald{}{x}\sin\left(\frac{n\pi}{a}x\right)dx\\
+&= -\frac{i2\hbar{n}\pi}{a^2}\int_{0}^{a}\sin\left(\frac{m\pi}{a}x\right)\cos\left(\frac{n\pi}{a}x\right)dx\\
+&= \frac{i2\hbar{n}\pi}{a^2}\frac{a(m-m\cos(m\pi)\cos(n\pi)-n\sin(m\pi)\sin(n\pi))}{(m^2-n^2)\pi}\\
+&= \frac{i2\hbar{nm}}{a(m^2-n^2)}(1-\cos(m\pi)\cos(n\pi))\\
+\end{align*}
+Again we have the situation where $n-m=2i$ for $i=1,2,3,...$ we have $\cos(m\pi)\cos(n\pi) = 1$
+which implies that 
+$$\bra{E_m}\hat{p}\ket{E_n} = 0 \qquad \textnormal{for} \  n-m=2i$$ 
+and for $n-m=2i-1$ we have we have $\cos(m\pi)\cos(n\pi) = -1$ which imples
+$$\bra{E_m}\hat{p}\ket{E_n} = -\frac{i4\hbar{nm}}{a(m^2-n^2)} \qquad \textnormal{for} \  n-m=2i-1$$ 
+Note for the case where $m=n$ we have
+\begin{align*}
+\bra{E_m}\hat{p}\ket{E_n} &= -\frac{i2\hbar{n}\pi}{a^2}\int_{0}^{a}\sin\left(\frac{n\pi}{a}x\right)\cos\left(\frac{n\pi}{a}x\right)dx = 0
+\end{align*}
+
+\end{enumerate}
+
+\section{Problem \#2}
+For a particle in a potential field $U(x)$ we have a Hamiltonian operator, $\hat{H}$, given 
+by
+$$\hat{H} = \frac{\mathbf{p}^2}{2m}+U(x)$$
+this allows us to calculate the time variation of the operator $\hat{p}_x^2$ given by
+\begin{align*}
+\frac{d(\hat{p}_{x})^2}{dt} &= [\hat{p}_{x}^2,\hat{H}]\\
+&= [\hat{p}_{x}^2, U(x)]\\
+&= -[U(x), \hat{p}_{x}^2]\\
+&= -i\hbar\partiald{U(x)}{x}\hat{p}_{x} - \hbar^2\partiald{^2U(x)}{x^2}
+\end{align*}
+Note that the calculate of the commutation relation between a potential, $U(x)$, and 
+$\hat{p}_{x}^2$ we done in homework three.
+
+\pagebreak
+
+\section{Problem \#3}
+We can find the Heisenberg representation for the position and momentum operators for a 
+one-dimensional linear harmonic oscillator by the
+transformation 
+$$\hat{F}_{H}(t) = S^{-1}(t)\hat{F}_{S}S(t)$$
+where $S(t) = \exp(-i/\hbar\hat{H}t)$. Note $\hat{H}$ is the Hamiltonian operator give by
+$$\hat{H} = -\frac{\hbar^2}{2m}\partiald{^2}{x^2} + \frac{1}{2}m\omega^2x^2$$
+in coordinate representation. We can find the time evolution of the operator $\hat{x}$ by
+taking the commutation with the Hamiltonian
+\begin{align*}
+\frac{d\hat{x}}{dt} &= \frac{1}{i\hbar}[\hat{x},\hat{H}]\\
+&= -\frac{1}{i\hbar}[\hat{x},\hat{p}^2]\\
+&= -\frac{1}{i\hbar}\frac{-i\hbar}{m}\hat{p}\\
+&= \frac{\hat{p}}{m}
+\end{align*}
+where the time evolution of the momentum operator is found as
+\begin{align*}
+\frac{d\hat{p}}{dt} &= \frac{1}{i\hbar}[\hat{p},\hat{H}]\\
+&= -\frac{1}{i\hbar}i\hbar\partiald{U(x)}{dx}\\
+&= -m\omega^2x
+\end{align*}
+Therefore we can combine these to get
+$$\frac{d^2\hat{x}}{dt^2} = -\omega^2\hat{x}(t)$$
+and
+$$\frac{d^2\hat{p}}{dt^2} = -\omega^2\hat{p}(t)$$
+We which are simple differentials with the solutions
+\begin{align*}
+\hat{x}(t) &= A\sin(\omega{t}) + B\cos(\omega{t})\\
+\hat{p}(t) &= C\sin(\omega{t}) + D\cos(\omega{t})\\
+\end{align*}
+Where we apply the initial conditions 
+\begin{align*}
+\hat{x}(t=0) &= \hat{x}(0)\\ 
+\frac{d\hat{x}(t=0)}{dt} &= \frac{\hat{p}(0)}{m}\\
+\hat{p}(t=0) &= \hat{p}(0)\\
+\frac{d\hat{p}(t=0)}{dt} &= -m\omega^2\hat{x}(0)
+\end{align*}
+This implies that the constants of integration are
+\begin{align*}
+A &= \frac{\hat{p}(0)}{m\omega}\\
+B &= \hat{x}(0)\\
+C &= -m\omega\hat{x}(0)\\
+D &= \hat{p}(0)
+\end{align*}
+so our operators are
+\begin{align*}
+\hat{x}(t) &= \frac{\hat{p}(0)}{m\omega}\sin(\omega{t}) + \hat{x}(0)\cos(\omega{t})\\
+\hat{p}(t) &= -m\omega\hat{x}(0)\sin(\omega{t}) + \hat{p}(0)\cos(\omega{t})\\
+\end{align*}
+We can now use these to find the time evolution of the expectation values of these operators
+with an initial wave packet give by
+$$\psi(x) A\exp\left(-\frac{(x-x_0)^2}{2a^2}+i\frac{p_0x}{\hbar}\right)$$
+We see that this wave packet is exactly localized at $x=x_0$ with a momentum of $p=p_0$ this
+implies that it's initial expectation value is $<\hat{x}(0)> = x_0$ and $<\hat{p}(0) = p_0$.
+There for we can find
+\begin{align*}
+<\hat{x}(t)> &= \left<\frac{\hat{p}(0)}{m\omega}\sin(\omega{t}) + \hat{x}(0)\cos(\omega{t})\right>\\ 
+&= \frac{<\hat{p}(0)>}{m\omega}\sin(\omega{t}) + <\hat{x}(0)>\cos(\omega{t})\\
+&= \frac{p_0}{m\omega}\sin(\omega{t}) + x_0\cos(\omega{t})
+\end{align*}
+and
+\begin{align*}
+<\hat{p}(t)> &= \left<-m\omega\hat{x}(0)\sin(\omega{t}) + \hat{p}(0)\cos(\omega{t})\right>\\
+&= -m\omega<\hat{x}(0)>\sin(\omega{t}) + <\hat{p}(0)>\cos(\omega{t})\\
+&= -m\omega{x_0}\sin(\omega{t}) + p_0\cos(\omega{t})
+\end{align*}
+Next in order to calculate $<\Delta{x}>^2$ we need to find
+\begin{align*}
+<x^2(t)> &= \left<\left(\frac{\hat{p}(0)}{m\omega}\right)^2\sin^2(\omega{t}) + \hat{x}(0)^2\cos^2(\omega{t}) + \frac{\hat{p}(0)\hat{x}(0)+\hat{x}(0)\hat{p}(0)}{m\omega}\sin(\omega{t})\cos(\omega{t})\right>\\
+&= \frac{<\hat{p}(0)^2>}{(m\omega)^2}\sin^2(\omega{t}) + <\hat{x}(0)^2>\cos^2(\omega{t}) + \frac{<2\hat{x}(0)\hat{p}(0)- [\hat{x}(0),\hat{p}(0)]>}{m\omega}\sin(\omega{t})\cos(\omega{t})\\
+&= \frac{<\hat{p}(0)^2>}{(m\omega)^2}\sin^2(\omega{t}) + <\hat{x}(0)^2>\cos^2(\omega{t}) + \frac{<2\hat{x}(0)\hat{p}(0)> - i\hbar>}{m\omega}\sin(\omega{t})\cos(\omega{t})\\
+&= \frac{<\hat{p}(0)^2>}{(m\omega)^2}\sin^2(\omega{t}) + <\hat{x}(0)^2>\cos^2(\omega{t}) + \frac{2x_0p_0 + i\hbar - i\hbar}{m\omega}\sin(\omega{t})\cos(\omega{t})\\
+&= \frac{<\hat{p}(0)^2>}{(m\omega)^2}\sin^2(\omega{t}) + <\hat{x}(0)^2>\cos^2(\omega{t}) + \frac{2x_0p_0}{m\omega}\sin(\omega{t})\cos(\omega{t})\\
+\end{align*}
+This yields
+\begin{align*}
+<\Delta{x(t)}>^2 &= <x(t)^2> - <x(t)>^2\\
+&= \frac{<\hat{p}(0)^2>}{(m\omega)^2}\sin^2(\omega{t}) + <\hat{x}(0)^2>\cos^2(\omega{t}) + \frac{2x_0p_0}{m\omega}\sin(\omega{t})\cos(\omega{t}) - \frac{p_0^2}{(m\omega)^2}\sin^2(\omega{t}) - x_0^2\cos^2(\omega{t})\\
+&\qquad - \frac{2x_0p_0}{m\omega}\sin(\omega{t})\cos(\omega{t})\\
+&= \frac{<\hat{p}(0)^2>-p_0^2}{(m\omega)^2}\sin^2(\omega{t}) + <\hat{x}(0)^2>-x_0^2\cos^2(\omega{t})\\ 
+&= \frac{<\Delta\hat{p}(0)>^2}{(m\omega)^2}\sin^2(\omega{t}) + <\hat{x}(0)>^2\cos^2(\omega{t}) \\
+&= \frac{\hbar^2}{(2m\omega)^2<\Delta{x(0)}>^2}\sin^2(\omega{t}) + <\hat{x}(0)>^2\cos^2(\omega{t}) 
+\end{align*}
+Note we use the limited case of Heisenberg's uncertainty relation 
+$$<\Delta{p(0)}>^2<\Delta{x(0)}>^2 = \frac{\hbar^2}{4}$$
+Now all we need is the variance of $x(0)$ which is just the variance of our initial wave 
+packet with gives us
+$$<\Delta{x(0)}>^2 = \frac{a^2}{2}$$
+So we can find 
+\begin{align*}
+<\Delta{x(t)}>^2 &= \frac{\hbar^2}{(2m\omega)^2<\Delta{x(0)}>^2}\sin^2(\omega{t}) + <\hat{x}(0)>^2\cos^2(\omega{t}) \\
+&= \frac{2\hbar^2}{(2am\omega)^2}\sin^2(\omega{t}) + \frac{a^2}{2}\cos^2(\omega{t}) 
+\end{align*}
+Now we repeat this process for $<\delta{p(t)}>^2$ by noting that
+\begin{align*}
+<\delta{p(t)}^2> &= (m\omega)^2<\hat{x}(0)^2>\sin^2(\omega{t}) + <\hat{p}(0)^2>\cos(\omega{t}) + m\omega(<\hat{p}(0)\hat{x}(0)+\hat{x}(0)\hat{p}(0)>)\sin(\omega{t})\cos(\omega{t})\\
+&= (m\omega)^2<\hat{x}(0)^2>\sin^2(\omega{t}) + <\hat{p}(0)^2>\cos(\omega{t}) + 2m\omega{x_0p_0}\sin(\omega{t})\cos(\omega{t})
+\end{align*}
+So it follows like before that
+\begin{align*}
+<\Delta{p(t)}>^2 &= <p(t)^2> - <p(t)>^2\\
+&=(m\omega)^2<\hat{x}(0)^2>\sin^2(\omega{t}) + <\hat{p}(0)^2>\cos(\omega{t}) + 2m\omega{x_0p_0}\sin(\omega{t})\cos(\omega{t})\\
+&\qquad - (m\omega)^2x_0^2\sin^2(\omega{t}) - p_0^2\cos(\omega{t}) - 2m\omega{x_0p_0}\sin(\omega{t})\cos(\omega{t})\\
+&=(m\omega)^2<\hat{x}(0)>^2\sin^2(\omega{t}) + <\Delta\hat{p}(0)>^2\cos(\omega{t})\\
+&=(m\omega)^2<\hat{x}(0)>^2\sin^2(\omega{t}) + \frac{\hbar^2}{4<\Delta\hat{x}(0)>^2}\cos(\omega{t})\\
+&=\frac{(ma\omega)^2}{2}\sin^2(\omega{t}) + \frac{\hbar^2}{2a^2}\cos(\omega{t})
+\end{align*}
+
+\end{document}
+
