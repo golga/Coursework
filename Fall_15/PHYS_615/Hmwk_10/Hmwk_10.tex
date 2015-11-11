@@ -30,9 +30,9 @@ So we can change variables to
 \begin{align*}
 I(x) &= \int_{0}^{\infty}e^{xt-e^{2t}}dt\\
 &\Downarrow\\
-I(x) &= \int_{1/x}^{\infty}\exp\left(\frac{1}{2}x\log(xu)-xu\right)\frac{2}{u}du\\
-&= e^{x/2\log(x)}\int_{1/x}^{\infty}\exp\left(\frac{1}{2}x\log(u)-xu\right)\frac{2}{u}du\\
-&= x^{x/2}\int_{1/x}^{\infty}\exp\left(-x(u-\log(u^{1/2})\right)\frac{2}{u}du
+I(x) &= \int_{1/x}^{\infty}\exp\left(\frac{1}{2}x\log(xu)-xu\right)\frac{1}{2u}du\\
+&= e^{x/2\log(x)}\int_{1/x}^{\infty}\exp\left(\frac{1}{2}x\log(u)-xu\right)\frac{1}{2u}du\\
+&= x^{x/2}\int_{1/x}^{\infty}\exp\left(-x(u-\log(u^{1/2})\right)\frac{1}{2u}du
 \end{align*}
 We note that this is a Laplace type integral where $\phi(u) = u - \log(u^{1/2})$. We note 
 that $\phi(u)$ has an extrema, $c$, which we find at
@@ -47,8 +47,8 @@ We can test to see that the extrema at $c$ is a minimum by noting
 \end{align*}
 So we use that asymptotic solution given by
 $$I(x) \approx f(c)e^{-x\phi(c)}\sqrt{\frac{2\pi}{x\phi''(c)}}$$
-where $f(c) = 4x^{x/2}$ and $\phi(c) = 1/2(1-\log(2))$ so
-$$I(x) \approx 4x^{x/2}e^{-x/2(1-\log(2))}\sqrt{\frac{\pi}{x}} = 4\sqrt{\frac{\pi}{x}}\left(\frac{2x}{e}\right)^{x/2}$$
+where $f(c) = x^{x/2}$ and $\phi(c) = 1/2(1+\log(2))$ so
+$$I(x) \approx x^{x/2}e^{-x/2(1+\log(2))}\sqrt{\frac{\pi}{x}} = \sqrt{\frac{\pi}{x}}\left(\frac{x}{2e}\right)^{x/2}$$
 
 \pagebreak
 
@@ -72,7 +72,7 @@ so $\theta = \pi/4,-3\pi/4$ where we can pick either solution as still be able t
 contour back to the real axis. So this first integral has the solution
 \begin{align*}
 I_1(x) &\approx e^{i\pi/4}e^{x(i/4x^2-i/2x^2)}\sqrt{\frac{2\pi}{2x}}\\
-&\approx e^{i\pi/4}e^{-i/2x}\sqrt{\frac{\pi}{x}}\\
+&\approx e^{i\pi/4}e^{-i/4x}\sqrt{\frac{\pi}{x}}\\
 \end{align*}
 Now we can solve the negative integral by noting that
 $$\phi(z) = -iz^2+\frac{i}{x}z$$
@@ -83,13 +83,13 @@ So we can find $\theta = -\pi/4,3\pi/2$ So we have an approximate solution by pi
 $\theta=-\pi/4$
 \begin{align*}
 I_2(x) &\approx e^{-i\pi/4}e^{x(-i/4x^2+i/2x^2)}\sqrt{\frac{2\pi}{2x}}\\
-&\approx e^{-i\pi/4}e^{+i/2x}\sqrt{\frac{\pi}{x}}
+&\approx e^{-i\pi/4}e^{+i/4x}\sqrt{\frac{\pi}{x}}
 \end{align*}
 So we can find the total integral by
 \begin{align*}
-I(x) &\approx \frac{1}{2}\left(e^{i\pi/4}e^{-i/2x}\sqrt{\frac{\pi}{x}} + e^{-i\pi/4}e^{+i/2x}\sqrt{\frac{\pi}{x}}\right)\\
-&\approx \frac{\sqrt{\pi}}{2\sqrt{x}}\left(e^{-i(1/2x-\pi/4)} + e^{i(1/2x-\pi/4)}\right)\\
-&\approx \sqrt{\frac{\pi}{x}}\cos\left(\frac{1}{2x}-\frac{\pi}{4}\right)
+I(x) &\approx \frac{1}{2}\left(e^{i\pi/4}e^{-i/4x}\sqrt{\frac{\pi}{x}} + e^{-i\pi/4}e^{+i/4x}\sqrt{\frac{\pi}{x}}\right)\\
+&\approx \frac{\sqrt{\pi}}{2\sqrt{x}}\left(e^{-i(1/4x-\pi/4)} + e^{i(1/4x-\pi/4)}\right)\\
+&\approx \sqrt{\frac{\pi}{x}}\cos\left(\frac{1}{4x}-\frac{\pi}{4}\right)
 \end{align*}
 
 
