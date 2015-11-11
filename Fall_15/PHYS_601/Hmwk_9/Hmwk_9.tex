@@ -116,8 +116,7 @@ which implies that $F_4(p,P) = F+PQ$.
 
 \section{Problem \#3}
 \begin{enumerate}[(a)]
-\item
-For the infinitesimal transformation with the generator given by
+\item For the infinitesimal transformation with the generator given by
 $$F_2(q,P) = qP + \epsilon{H(q,P)}$$
 where $H$ is the Hamiltonian given by
 $$H(q,p) = \frac{p^2}{2m} + V(q)$$
@@ -132,10 +131,10 @@ p = \partiald{F_2}{q} &= P + \epsilon\frac{dV}{dq}\\
 &\Downarrow\\
 P &= p - \epsilon\frac{dV}{dq}
 \end{align*}
-So replacing $P$ in the $Q$ term we get the canonical transformations to first order in $\epsilon$
+So replacing $P$ in the $Q$ term we get the canonical transformations 
 \begin{align*}
 P &= p - \epsilon\frac{dV}{dq}\\
-Q &= q + \epsilon\frac{p}{m}
+Q &= q + \epsilon\frac{p}{m} - \frac{\epsilon^2}{m}\frac{dV}{dq}
 \end{align*}
 
 \item If we take $\epsilon$ to be a small time step we can see that for $q=q(t)$ and $p=p(t)$
@@ -157,9 +156,10 @@ $\dot{p} = F = -dV/dq$ so the expansion of $p$ also is the same to first order.
 \begin{align*}
 H(q,p) &= \frac{p^2}{2m} + V(q)\\
 &\Downarrow\\
-K(Q,P) &= \frac{1}{2m}\left(P+\epsilon\frac{dV}{dq}\right)^2 + V\left(Q-\epsilon\frac{P}{m}\right)\\
-&= \frac{1}{2m}\left(P^2+P\epsilon\frac{dV}{dq}+\epsilon^2\left(\frac{dV}{dq}\right)^2\right) + V(Q) - \epsilon\frac{P}{m}\frac{dV}{dQ} + \epsilon^2\frac{p^2}{m^2}\frac{d^2V}{dQ^2}\\
-&= \frac{P^2}{2m} + V(Q) + \epsilon\left(P\frac{dV}{dq}-\frac{P}{m}\frac{dV}{dQ}\right) + \epsilon^2\left(\left(\frac{dV}{dq}\right)^2 + \frac{p^2}{m^2}\frac{d^2V}{dQ^2}\right)
+K(Q,P) &= \frac{1}{2m}\left(P+\epsilon\frac{dV}{dQ}\right)^2 + V\left(Q-\epsilon\frac{P}{m}\right)\\
+&= \frac{1}{2m}\left(P^2+2P\epsilon\frac{dV}{dQ}+\epsilon^2\left(\frac{dV}{dQ}\right)^2\right) + V(Q) - \epsilon\frac{P}{m}\frac{dV}{dQ} + \frac{1}{2}\epsilon^2\frac{p^2}{m^2}\frac{d^2V}{dQ^2}\\
+&= \frac{P^2}{2m} + V(Q) + \epsilon\left(\frac{P}{m}\frac{dV}{dQ}-\frac{P}{m}\frac{dV}{dQ}\right) + \frac{\epsilon^2}{2m}\left(\left(\frac{dV}{dQ}\right)^2 + \frac{p^2}{m}\frac{d^2V}{dQ^2}\right)\\
+&= \frac{P^2}{2m} + V(Q) +\frac{\epsilon^2}{2m}\left(\left(\frac{dV}{dQ}\right)^2 + \frac{p^2}{m}\frac{d^2V}{dQ^2}\right)
 \end{align*}
 \end{enumerate}
 
@@ -193,12 +193,22 @@ p(t+\epsilon) = P &= p(t) - \epsilon\frac{dV}{dq}
 This again is the same as the Taylor expansion about $\epsilon$ to first order. Where 
 $\dot{p} = -dV/dq$ and $\dot{q} = p/m$.
 
-\item We note that the canonical transformation found in part (a) is the same as the 
-transformation from problem 3. Therefore the transformed Hamiltonian to second order is the
-same given by
-$$K(Q,P) = \frac{P^2}{2m} + V(Q) + \epsilon\left(P\frac{dV}{dq}-\frac{P}{m}\frac{dV}{dQ}\right) + \epsilon^2\left(\left(\frac{dV}{dq}\right)^2 + \frac{p^2}{m^2}\frac{d^2V}{dQ^2}\right)$$
+\item We can find the transformed Hamiltonian by noting that
+\begin{align*} 
+p &= P + \epsilon\frac{dV}{dQ}\\
+q &= Q - \epsilon\frac{P}{m} - \frac{\epsilon^2}{m}\frac{dV}{dQ}
+\end{align*} 
+\begin{align*}
+H(q,p) &= \frac{p^2}{2m} + V(q)\\
+&\Downarrow\\
+K(Q,P) &= \frac{1}{2m}\left(P+\epsilon\frac{dV}{dQ}\right)^2 + V\left(Q-\epsilon\frac{P}{m} - \frac{\epsilon^2}{m}\frac{dV}{dQ}\right)\\
+&= \frac{1}{2m}\left(P^2+2P\epsilon\frac{dV}{dQ}+\epsilon^2\left(\frac{dV}{dQ}\right)^2\right) + V(Q) - \epsilon\frac{P}{m}\frac{dV}{dQ} - \frac{\epsilon^2}{m}\left(\frac{dV}{dQ}\right)^2 + \frac{1}{2}\epsilon^2\frac{P^2}{m^2}\frac{d^2V}{dQ^2}\\
+&= \frac{P^2}{2m} + V(Q) +\frac{\epsilon^2}{2m}\left(\frac{p^2}{m}\frac{d^2V}{dQ^2}-\left(\frac{dV}{dQ}\right)^2 \right)
+\end{align*}
 
-\item
+\item We see that the change from $F_2$ and $F_3$ we have to take a second order term in $Q$
+because $q$ is generated from the generating function not $Q$. This results in a negative 
+$(V')^2$ term
 
 
 

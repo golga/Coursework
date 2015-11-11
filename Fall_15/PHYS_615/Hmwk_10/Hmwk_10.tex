@@ -1,0 +1,112 @@
+\documentclass[11pt]{article}
+
+\usepackage{latexsym}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{enumerate}
+\usepackage{amsmath}
+\usepackage{cancel}
+\numberwithin{equation}{section}
+
+\setlength{\evensidemargin}{.25in}
+\setlength{\oddsidemargin}{-.25in}
+\setlength{\topmargin}{-.75in}
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{9.5in}
+\newcommand{\due}{November 11th, 2015}
+\newcommand{\HWnum}{10}
+\input{"C:/Users/joeor_000/Documents/Coursework/Define.tex"}
+
+\begin{document}
+\input{../title.tex}
+
+\section{Problem \#1}
+For the integral
+$$I(x) = \int_{0}^{\infty}e^{xt-e^{2t}}dt$$
+we can find the leading order behavior for $x\rightarrow\infty$. To do this we change 
+variables by $u = e^{2t}/x$ which implies that 
+$$du = 2\frac{e^{2t}}{x}dt = 2udt$$
+So we can change variables to
+\begin{align*}
+I(x) &= \int_{0}^{\infty}e^{xt-e^{2t}}dt\\
+&\Downarrow\\
+I(x) &= \int_{1/x}^{\infty}\exp\left(\frac{1}{2}x\log(xu)-xu\right)\frac{2}{u}du\\
+&= e^{x/2\log(x)}\int_{1/x}^{\infty}\exp\left(\frac{1}{2}x\log(u)-xu\right)\frac{2}{u}du\\
+&= x^{x/2}\int_{1/x}^{\infty}\exp\left(-x(u-\log(u^{1/2})\right)\frac{2}{u}du
+\end{align*}
+We note that this is a Laplace type integral where $\phi(u) = u - \log(u^{1/2})$. We note 
+that $\phi(u)$ has an extrema, $c$, which we find at
+\begin{align*}
+\phi'(u) = 0 &= 1 - \frac{1}{2u}\\
+&\Downarrow\\
+c &= \frac{1}{2}
+\end{align*}
+We can test to see that the extrema at $c$ is a minimum by noting 
+\begin{align*}
+\phi''(u) = \frac{1}{2u^2} \qquad \Rightarrow \qquad \phi''(c) = 2
+\end{align*}
+So we use that asymptotic solution given by
+$$I(x) \approx f(c)e^{-x\phi(c)}\sqrt{\frac{2\pi}{x\phi''(c)}}$$
+where $f(c) = 4x^{x/2}$ and $\phi(c) = 1/2(1-\log(2))$ so
+$$I(x) \approx 4x^{x/2}e^{-x/2(1-\log(2))}\sqrt{\frac{\pi}{x}} = 4\sqrt{\frac{\pi}{x}}\left(\frac{2x}{e}\right)^{x/2}$$
+
+\pagebreak
+
+\section{Problem \#2}
+We can find the leading behavior of the integral
+$$I(x) = \int_{0}^{\infty}\cos\left(xt^2-t\right)dt$$
+by complexifying this integral and writing it in the form $e^{x\phi(z)}$ by
+$$I(x) = \frac{1}{2}\int_{0}^{\infty}\left(e^{x(iz^2-iz/x)}+e^{-x(iz^2-iz/x)}\right)dz$$
+which allows us to approximate this integral by the method of steepest descent which yields
+$$I(x) \approx f(z_0)e^{i\theta}e^{x\phi(z_0)}\sqrt{\frac{2\pi}{xa}}$$
+Where for the first term we have
+$$\phi(z) = iz^2-\frac{i}{x}z$$
+which has a critical point
+$$\phi'(z) = 0 = 2iz - \frac{i}{x} \qquad\Rightarrow\qquad z_0 = \frac{1}{2x}$$
+Using this critical point we can calculate $\alpha$ setting
+$$\phi''(z_0) = ae^{i\alpha}$$
+so we have $\phi''(z) = 2i$ which implies that $a=2$ and $\alpha=\pi/2$. Using $\alpha$ we 
+can determine $\theta$ by 
+$$\theta = -\frac{\alpha}{2}\pm\frac{\pi}{2}$$
+so $\theta = \pi/4,-3\pi/4$ where we can pick either solution as still be able to deform the
+contour back to the real axis. So this first integral has the solution
+\begin{align*}
+I_1(x) &\approx e^{i\pi/4}e^{x(i/4x^2-i/2x^2)}\sqrt{\frac{2\pi}{2x}}\\
+&\approx e^{i\pi/4}e^{-i/2x}\sqrt{\frac{\pi}{x}}\\
+\end{align*}
+Now we can solve the negative integral by noting that
+$$\phi(z) = -iz^2+\frac{i}{x}z$$
+which has a critical point
+$$\phi'(z) = 0 = -2iz + \frac{i}{x} \qquad\Rightarrow\qquad z_0 = \frac{1}{2x}$$
+Now we can find $\alpha$ by seeing $\phi''(z) = -2i$ which implies that $a=2$ and $\alpha=-\pi/2$.
+So we can find $\theta = -\pi/4,3\pi/2$ So we have an approximate solution by picking 
+$\theta=-\pi/4$
+\begin{align*}
+I_2(x) &\approx e^{-i\pi/4}e^{x(-i/4x^2+i/2x^2)}\sqrt{\frac{2\pi}{2x}}\\
+&\approx e^{-i\pi/4}e^{+i/2x}\sqrt{\frac{\pi}{x}}
+\end{align*}
+So we can find the total integral by
+\begin{align*}
+I(x) &\approx \frac{1}{2}\left(e^{i\pi/4}e^{-i/2x}\sqrt{\frac{\pi}{x}} + e^{-i\pi/4}e^{+i/2x}\sqrt{\frac{\pi}{x}}\right)\\
+&\approx \frac{\sqrt{\pi}}{2\sqrt{x}}\left(e^{-i(1/2x-\pi/4)} + e^{i(1/2x-\pi/4)}\right)\\
+&\approx \sqrt{\frac{\pi}{x}}\cos\left(\frac{1}{2x}-\frac{\pi}{4}\right)
+\end{align*}
+
+
+
+\section{Problem \#3}
+We can take the Fourier transform, $F(\omega)$, of the Gaussian function given by
+$$f(t) = e^{-a^2t^2},\qquad a\in\mathbb{R}$$
+by calculating the integral
+\begin{align*}
+F(\omega) &= \frac{1}{2\pi}\int_{-\infty}^{\infty}f(t)e^{i\omega{t}}\\
+&= \frac{1}{\sqrt{2\pi}}\int_{-\infty}^{\infty}e^{-a^2t^2}e^{i\omega{t}}\\
+&= \frac{1}{\sqrt{2\pi}}\int_{-\infty}^{\infty}e^{-a^2t^2+i\omega{t}}\\
+&= \frac{1}{\sqrt{2\pi}}\int_{-\infty}^{\infty}e^{-a^2t^2 + i\omega{t} + \omega^2/4a^2 - \omega^2/4a^2}\\
+&= \frac{1}{\sqrt{2\pi}}e^{-\omega^2/4a^2}\int_{-\infty}^{\infty}e^{-(at + i\omega/2a)^2} \\
+&= \frac{1}{\sqrt{2\pi}}e^{-\omega^2/4a^2}\frac{\sqrt{\pi}}{a}\\
+&= \frac{1}{\sqrt{2}a}e^{-\omega^2/(2a)^2}
+\end{align*}
+
+\end{document}
+
