@@ -1,0 +1,249 @@
+\documentclass[11pt]{article}
+
+\usepackage{latexsym}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{enumerate}
+\usepackage{amsmath}
+\usepackage{cancel}
+\numberwithin{equation}{section}
+
+\setlength{\evensidemargin}{.25in}
+\setlength{\oddsidemargin}{-.25in}
+\setlength{\topmargin}{-.75in}
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{9.5in}
+\newcommand{\due}{November 18th, 2015}
+\newcommand{\HWnum}{10}
+\input{"C:/Users/joeor_000/Documents/Coursework/Define.tex"}
+
+\begin{document}
+\input{../title.tex}
+
+\section{Problem \#1}
+If we preform a canonical transformation from $(q,p)\rightarrow(Q,P)$ by
+$$F_2(q,P) = qP + \frac{1}{2}\epsilon H(q,P)$$
+where the Hamiltonian is given as
+$$H(q,p) = \frac{p^2}{2m}+V(q)$$
+we can solve for the transformation variables by
+\begin{align*}
+p = \partiald{F_2}{q} &= P + \epsilon\frac{1}{2}\frac{dV}{dq}\\
+&\Downarrow\\
+P &= p - \epsilon\frac{1}{2}\frac{dV}{dq}
+\end{align*}
+and
+\begin{align*}
+Q = \partiald{F_2}{P} &= q + \epsilon\frac{1}{2}\frac{P}{m}\\
+&\Downarrow\\
+Q &= q + \epsilon\frac{p}{2m} - \epsilon^2\frac{1}{4m}\frac{dV}{dq}
+\end{align*}
+This allows us to preform a new canonical transformation from $(Q,P)\rightarrow(q',p')$ by
+$$F_3(P,q') = -Pq' + \frac{1}{2}\epsilon H(q',P)$$
+Which yields
+\begin{align*}
+Q = -\partiald{F_3}{P} &= q' - \epsilon\frac{1}{2}\frac{P}{m}\\
+&\Downarrow\\
+q' &= Q + \epsilon\frac{1}{2}\frac{P}{m}
+\end{align*}
+and
+\begin{align*}
+p' = -\partiald{F_3}{q'} &= P - \epsilon\frac{1}{2}\frac{dV}{dq'}\\
+&= P - \epsilon\frac{1}{2}\frac{dV}{dQ}\cancelto{1}{\frac{dQ}{dq'}}\\
+&\Downarrow\\
+p' &= P - \epsilon\frac{1}{2}\frac{dV}{dQ}
+\end{align*}
+Now we can transform $(Q,P)$ back to $(q,p)$ by the transformations we first found to get the
+transformation from $(q,p)\rightarrow(q',p')$. So first for $q'$ we have
+\begin{align*}
+q' &= Q + \epsilon\frac{1}{2}\frac{P}{m}\\
+&= q + \epsilon\frac{p}{2m} - \epsilon^2\frac{1}{4m}\frac{dV}{dq} + \epsilon\frac{1}{2m}\left( p - \epsilon\frac{1}{2}\frac{dV}{dq}\right)\\
+&= q + \epsilon\frac{p}{m} - \epsilon^2\frac{1}{2m}\frac{dV}{dq} 
+\end{align*}
+We note the expansion of $q(t+\epsilon)$ about epsilon yields
+$$q(t+\epsilon) = q + \epsilon\frac{dq}{dt} + \epsilon^2\frac{1}{2}\frac{d^2q}{dt^2}$$
+we note that this is the same as the transformed result we found, due to the fact that 
+$$\frac{dq}{dt} = \frac{p}{m},\qquad \frac{d^2q}{dt^2} = -\frac{1}{m}\frac{dV}{dq}$$
+Which implies that $q' = q(t+\epsilon)$. Now we can do the same with $p'$ as
+\begin{align*}
+p' &= P - \epsilon\frac{1}{2}\frac{dV(Q)}{dQ}\frac{dQ}{dq}\\
+&= p - \epsilon\frac{1}{2}\frac{dV}{dq} - \epsilon\frac{1}{2}\frac{dV}{dq}\frac{d}{dq}\left(q + \epsilon\frac{p}{2m} - \epsilon^2\frac{1}{4m}\frac{dV}{dq}\right)\\
+&= p - \epsilon\frac{1}{2}\frac{dV}{dq} - \epsilon\frac{1}{2}\frac{dV}{dq}\left(1 - \epsilon^2\frac{1}{4m}\frac{d^2V}{dq^2}\right)\\
+&= p - \epsilon\frac{dV}{dq} + \scrO(\epsilon^3)
+\end{align*}
+We see that this agrees to second order due to the fact that $\ddot{p}=0$.
+
+\pagebreak
+
+\section{Problem \#2}
+\begin{enumerate}[(a)]
+\item For the free fall Hamiltonian
+$$H = \frac{p^2}{2m} + mgq$$
+where we are given the principle function
+$$S(q,\alpha,t) = W(q,\alpha) - Et$$
+Using this we can apply the Hamilton-Jacobi equation 
+$$H + \frac{dS}{dt} = 0$$
+where we note that $p$ is given by 
+$$p = \frac{dS}{dq} = \frac{dW}{dq}$$
+So we have the equation
+$$0 = \frac{1}{2m}\left(\frac{dW}{dq}\right)^2 + mgq - E$$
+
+\item Using the equation if part (a) we can solve for $W(q,\alpha)$ by 
+\begin{align*}
+0 &= \frac{1}{2m}\left(\frac{dW}{dq}\right)^2 + mgq - E\\
+\Downarrow\\
+\frac{dW}{dq} &= \left(\frac{}{}2m(E-mgq)\right)^{1/2}\\
+\Downarrow\\
+W &= C + \int\left(\frac{}{}2m(E-mgq)\right)^{1/2}dq\\
+&= C - \frac{1}{3m^2g}\left(\frac{}{}2m(E-mgq)\right)^{3/2}
+\end{align*}
+Note we take $\alpha$ as a constant of motion which we see is $E$ so
+$$W(q,\alpha) = C - \frac{1}{3m^2g}\left(\frac{}{}2m(\alpha-mgq)\right)^{3/2}$$
+
+\item
+We can solve for the equation of motion, $q(t)$, by taking the transformation
+\begin{align*}
+\beta &= \partiald{S}{\alpha} = \partiald{W}{\alpha} - t\\
+&\Downarrow\\
+\beta +t &= - \frac{1}{3m^2g}\frac{3}{2}\left(\frac{}{}2m(\alpha-mgq)\right)^{1/2}2m\\
+&= - \frac{1}{mg}\left(\frac{}{}2m(\alpha-mgq)\right)^{1/2}\\
+&\Downarrow\\
+(mg(\beta+t))^2-2m\alpha &= -2m^2gq\\
+&\Downarrow\\
+q(t) &= \frac{\alpha}{mg} - \frac{1}{2}g(\beta+t)^2 =  \frac{\alpha}{mg} - \frac{1}{2}g\beta^2 - g\beta{t} - \frac{1}{2}gt^2
+\end{align*}
+
+\item Now we can apply the initial conditions 
+$$p(0) = mv_0,\qquad q(0)=q_0$$
+to find
+\begin{align*}
+q(0) = q_0 &= \frac{\alpha}{mg} - \frac{1}{2}g\beta^2
+\end{align*}
+and we take the momentum initial condition as
+\begin{align*}
+p(0) = mv_0 &= \left(\frac{}{}2m(\alpha-mgq(0))\right)^{1/2}\\
+&= \left(\frac{}{}2m(\alpha-\alpha+1/2mg^2\beta^2)\right)^{1/2}\\
+&= \pm mg\beta\\
+&\Downarrow\\
+\beta &= \pm\frac{v_0}{g}
+\end{align*}
+So replacing in terms of $q_0$ and $v_0$ we find
+\begin{align*}
+q(t) &=  \frac{\alpha}{mg} - \frac{1}{2}g\beta^2 - g\beta{t} - \frac{1}{2}gt^2\\
+&\Downarrow\\
+q(t) &= q_0 \pm v_0{t} - \frac{1}{2}gt^2
+\end{align*}
+\end{enumerate}
+
+\pagebreak
+
+\section{Problem \#3}
+\begin{enumerate}[(a)]
+\item For the simple harmonic oscillator we have the Hamiltonian
+$$H = \frac{p^2}{2m}+\frac{1}{2}kq^2$$
+which gives us the Hamilton-Jacobi equation using the same principle functional form as in
+problem (2) as
+$$0 = \frac{1}{2m}\left(\frac{dW}{dq}\right)^2 + \frac{1}{2}kq^2 - E$$
+
+\item
+We can solve for $W(q,\alpha)$ where we take $\alpha=E$ as
+\begin{align*}
+\frac{dW}{dq} &= \left(2m(\alpha-1/2kq^2)\right)^{1/2}\\
+&\Downarrow\\
+W &= C + \int\left(2m(\alpha-1/2kq^2)\right)^{1/2}dq
+\end{align*}
+Note we will solve the integral when solving for $q$
+
+\item We solve for $q(t)$ by
+\begin{align*}
+\beta = \partiald{S}{\alpha} &= \partiald{W}{\alpha} - t\\
+&\Downarrow\\
+\beta - t &= \partiald{}{\alpha}\int\left(2m(\alpha-1/2kq^2)\right)^{1/2}dq\\
+&= \int\frac{1}{2}\left(2m(\alpha-1/2kq^2)\right)^{-1/2}2mdq\\
+&= \sqrt{\frac{m}{2\alpha}}\int\left(1-\frac{kq^2}{2\alpha}\right)^{-1/2}dq\\
+&= \sqrt{\frac{m}{2\alpha}}\arcsin\left(\sqrt{\frac{k}{2\alpha}}q\right)\sqrt{\frac{2\alpha}{k}}\\
+&\Downarrow\\
+q(t) &= \sqrt{\frac{2\alpha}{k}}\sin\left(\sqrt{\frac{k}{m}}(\beta-t)\right)
+\end{align*}
+
+\item We can apply the initial conditions $q(0) = q_0$ and $p(0) = p_0$. This implies that
+$$q_0 = \sqrt{\frac{2\alpha}{k}}\sin\left(\sqrt{\frac{k}{m}}\beta\right)$$
+and we can find 
+\begin{align*}
+p_0 &= \left(2m(\alpha-1/2kq_0^2)\right)^{1/2}\\
+&= \left(2m\alpha-2m\alpha\sin^2\left(\sqrt{\frac{k}{m}}\beta\right)\right)^{1/2}\\
+&= \sqrt{2m\alpha}\cos\left(\sqrt{\frac{k}{m}}\beta\right)
+\end{align*}
+We note that we can expand $q(t)$ using trigonometric addition
+\begin{align*}
+q(t) &= \sqrt{\frac{2\alpha}{k}}\sin\left(\sqrt{\frac{k}{m}}(\beta-t)\right)\\
+&\Downarrow\\
+q(t) &= \sqrt{\frac{2\alpha}{k}}\sin\left(\sqrt{\frac{k}{m}}\beta\right)\cos\left(\sqrt{\frac{k}{m}}t\right) - \sqrt{\frac{2\alpha}{k}}\sin\left(\sqrt{\frac{k}{m}}\beta\right)\sin\left(\sqrt{\frac{k}{m}}t\right)\\
+q(t) &= q_0\cos\left(\omega{t}\right) - \frac{p_0}{m\omega}\sin\left(\omega{t}\right)
+\end{align*}
+Where we defined $\omega^2=k/m$. We can use this result to get $p(t)$ by
+\begin{align*}
+p(t) &= \left(2m(\alpha-1/2kq(t)^2)\right)^{1/2}\\
+&\Downarrow\\
+p(t) &= \left(2m\alpha-2m\alpha{k}\frac{2\alpha}{k}\sin^2(\omega(\beta-t))\right)^{1/2}\\
+&= \sqrt{2m\alpha}\cos(\omega\beta)\cos(\omega{t}) + \sqrt{2m\alpha}\sin(\omega\beta)\sin(\omega{t})\\
+&= p_0\cos(\omega{t}) + q_0m\omega\sin(\omega{t})
+\end{align*}
+Note as we expect $p_0 = m\dot{q}$.
+\end{enumerate}
+
+\pagebreak
+
+\section{Problem \#4}
+For the system with the following kinetic energy, $T$, and potential energy, $V$
+$$T= \frac{1}{2}(\dot{q_1}^2+\dot{q_2}^2)(q_1^2+q_2^2),\qquad V = (q_1^2+q_2^2)^{-1}$$
+We have the Lagrangian
+$$\frac{1}{2}(\dot{q_1}^2+\dot{q_2}^2)(q_1^2+q_2^2) - (q_1^2+q_2^2)^{-1}$$
+which allows us to calculate the generalized momenta as
+\begin{align*}
+p_1 = \partiald{L}{\dot{q}_1} &= \dot{q}_1(q_1^2+q_2^2)\\
+p_2 = \partiald{L}{\dot{q}_2} &= \dot{q}_2(q_1^2+q_2^2)
+\end{align*}
+Using these we can calculate the Hamiltonian by
+\begin{align*}
+H &= p_1\dot{q}_1 + p_2\dot{q}_2 - L\\
+&\Downarrow\\
+&= \frac{p_1^2}{q_1^2+q_2^2} + \frac{p_2^2}{q_1^2+q_2^2} - \frac{1}{2}\left(\frac{p_1^2}{(q_1^2+q_2^2)^2}\frac{p_2^2}{(q_1^2+q_2^2)^2}\right) + (q_1^2+q_2^2)^{-1}\\
+&= \frac{p_1^2+p_2^2+2}{2(q_1^2+q_2^2)} 
+\end{align*}
+This yields the Hamilton-Jacobi equation 
+$$(q_1^2+q_2^2)^{-1}\left(\frac{1}{2\dfrac{}{}}\left(\partiald{S}{q_1}\right)^2 + \frac{1}{2}\left(\partiald{S}{q_2}\right)^2 + 1\right) + \partiald{S}{t} = 0$$
+where we define the principle function as
+$$S(q_1,q_2,\alpha_1,\alpha_2,t) = W_1(q_1,\alpha_1,\alpha_2) + W(q_2,\alpha_1,\alpha_2) - Et$$
+This makes the Hamilton-Jacobi equation become
+\begin{align*}
+0 &= (q_1^2+q_2^2)^{-1}\left(\frac{1}{2\dfrac{}{}}\left(\partiald{S}{q_1}\right)^2 + \frac{1}{2}\left(\partiald{S}{q_2}\right)^2 + 1\right) + \partiald{S}{t}\\
+&\Downarrow\\
+E(q_1^2+q_2^2) &= \frac{1}{2}\left(\partiald{W_1}{q_1}\right)^2 + \frac{1}{2}\left(\partiald{W_2}{q_2}\right)^2 + 1\\
+&\Downarrow\\
+Eq_1^2 - \frac{1}{2}\left(\partiald{W_1}{q_1}\right)^2 &= \frac{1}{2}\left(\partiald{W_2}{q_2}\right)^2 + 1 - Eq_2^2
+\end{align*}
+We note that we have a function of $q_1$ on the left and a function of $q_2$ on the right. 
+This implies that both are constant and equal. This allows us to solve for $W_1$ and $W_2$.
+\begin{align*}
+C &= Eq_1^2 - \frac{1}{2}\left(\partiald{W_1}{q_1}\right)^2\\
+&\Downarrow\\
+\partiald{W_1}{q_1} &= \sqrt{2(Eq_1^2 - C)}\\
+&\Downarrow\\
+W_1(q_1,\alpha_1,\alpha_2) &= \int\sqrt{2(Eq_1^2 - C)}dq_1
+\end{align*}
+By the same process we can find $W_2$ as
+\begin{align*}
+C &= \frac{1}{2}\left(\partiald{W_2}{q_2}\right)^2 + 1 - Eq_2^2\\
+&\Downarrow\\
+W_2(q_2,\alpha_1,\alpha_2) &= \int\sqrt{2(C + Eq_2^2-1)}dq_2
+\end{align*}
+This gives us the principle function where we pick $\alpha_1=E$ and $\alpha_2=C$ as 
+they are the constants of motion this makes our principle function become
+$$S(q_1,q_2,\alpha_1,\alpha_2) = \int\sqrt{2(\alpha_1q_1^2 - \alpha_2)}dq_1 + \int\sqrt{2(\alpha_2 + \alpha_1q_2^2-1)}dq_2 - \alpha_1t$$
+Where we can solve for the dynamics by
+\begin{align*}
+\beta_1 = \partiald{S}{\alpha_1} &= \int\frac{q_1^2}{\sqrt{2(\alpha_1q_1^2 - \alpha_2)}}dq_1 + \int\frac{q_2^2}{\sqrt{2(\alpha_2 + \alpha_1q_2^2-1)}}dq_2 - t\\
+\beta_2 = \partiald{S}{\alpha_2} &= \int\frac{1}{\sqrt{2(\alpha_1q_1^2 - \alpha_2)}}dq_1 + \int\frac{1}{\sqrt{2(\alpha_2 + \alpha_1q_2^2-1)}}dq_2 
+\end{align*}
+\end{document}
+
