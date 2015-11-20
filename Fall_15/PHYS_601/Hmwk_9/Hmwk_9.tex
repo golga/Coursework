@@ -39,7 +39,7 @@ This implies that
 \begin{align*}
 1 &= \partiald{Q}{q}\partiald{P}{p} - \partiald{Q}{p}\partiald{P}{q}\\
 &= (Cim\omega)C - C(-Cim\omega)\\
-&= 2C^2im\omega\\
+& 2C^2im\omega\\
 &\Downarrow\\
 C &= \frac{1}{\sqrt{2im\omega}}
 \end{align*}
@@ -106,11 +106,11 @@ which implies
 \begin{align*}
 dF &= (K-H)dt + pdq - PdQ\\
 &\Downarrow\\
-dF &= (K-H)dt + d(pq) - qdp - (d(PQ) - QdP)\\
+dF &= (K-H)dt + pdq - (d(PQ) - QdP)\\
 &\Downarrow\\
-d(F+PQ-pq) &= (K-H)dt - qdp + QdP
+d(F+PQ) &= (K-H)dt + pdq + QdP
 \end{align*}
-which implies that $F_4(p,P) = F+PQ-pq$.
+which implies that $F_4(p,P) = F+PQ$.
 
 \pagebreak
 
@@ -208,9 +208,9 @@ K(Q,P) &= \frac{1}{2m}\left(P+\epsilon\frac{dV}{dQ}\right)^2 + V\left(Q-\epsilon
 
 \item We see that the change from $F_2$ and $F_3$ we have to take a second order term in $Q$
 because $q$ is generated from the generating function not $Q$. This results in a negative 
-$(V')^2$ term. Therefore the difference between these Hamiltonians has to be related to the
-time component of the generator function which is given by
-$$\frac{dF}{dt} = \frac{\epsilon^2}{m}\left(\frac{dV}{dQ}\right)^2$$
+$(V')^2$ term
+
+
 
 \end{enumerate}
 
@@ -244,7 +244,7 @@ This allows us to calculate the Poisson bracket by
 \frac{d\mathbf{A}}{dt} = \{\mathbf{A},H\}  &= \partiald{\mathbf{A}}{q_i}\partiald{H}{p_i} - \partiald{\mathbf{A}}{p_i}\partiald{H}{q_i}\\
 &= \left(\frac{p_k^2-p_mp_i}{km} - \frac{1}{|\mathbf{r}|} + \frac{r_i^2}{|\mathbf{r}|^3}\right)\frac{p_i}{m} - \left(\frac{2r_mp_i-p_ir_j-p_mr_i}{km}\right)\left(-\frac{r_i}{|\mathbf{r}|^3}\right)\\
 &= \left(\frac{p_k^2-p_mp_i}{km} - \frac{1}{|\mathbf{r}|} + \frac{|\mathbf{r}|^2}{|\mathbf{r}|^3}\right)\frac{p_i}{m} - \left(\frac{2r_mp_i-2p_ir_j}{km}\right)\left(-\frac{r_i}{|\mathbf{r}|^3}\right)\\
-&= \frac{p_ip_k^2-p_mp_i^2}{km^2} \\
+&= \frac{p_ip_k^2-p_mp_i^2}{km^2} 
 &= 0
 \end{align*}
 So under a central potential the LRL-vector is conserved as we expect.
