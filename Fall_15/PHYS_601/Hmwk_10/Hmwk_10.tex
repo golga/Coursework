@@ -157,12 +157,12 @@ Note we will solve the integral when solving for $q$
 \begin{align*}
 \beta = \partiald{S}{\alpha} &= \partiald{W}{\alpha} - t\\
 &\Downarrow\\
-\beta - t &= \partiald{}{\alpha}\int\left(2m(\alpha-1/2kq^2)\right)^{1/2}dq\\
+\beta + t &= \partiald{}{\alpha}\int\left(2m(\alpha-1/2kq^2)\right)^{1/2}dq\\
 &= \int\frac{1}{2}\left(2m(\alpha-1/2kq^2)\right)^{-1/2}2mdq\\
 &= \sqrt{\frac{m}{2\alpha}}\int\left(1-\frac{kq^2}{2\alpha}\right)^{-1/2}dq\\
 &= \sqrt{\frac{m}{2\alpha}}\arcsin\left(\sqrt{\frac{k}{2\alpha}}q\right)\sqrt{\frac{2\alpha}{k}}\\
 &\Downarrow\\
-q(t) &= \sqrt{\frac{2\alpha}{k}}\sin\left(\sqrt{\frac{k}{m}}(\beta-t)\right)
+q(t) &= \sqrt{\frac{2\alpha}{k}}\sin\left(\sqrt{\frac{k}{m}}(\beta+t)\right)
 \end{align*}
 
 \item We can apply the initial conditions $q(0) = q_0$ and $p(0) = p_0$. This implies that
@@ -175,18 +175,18 @@ p_0 &= \left(2m(\alpha-1/2kq_0^2)\right)^{1/2}\\
 \end{align*}
 We note that we can expand $q(t)$ using trigonometric addition
 \begin{align*}
-q(t) &= \sqrt{\frac{2\alpha}{k}}\sin\left(\sqrt{\frac{k}{m}}(\beta-t)\right)\\
+q(t) &= \sqrt{\frac{2\alpha}{k}}\sin\left(\sqrt{\frac{k}{m}}(\beta+t)\right)\\
 &\Downarrow\\
-q(t) &= \sqrt{\frac{2\alpha}{k}}\sin\left(\sqrt{\frac{k}{m}}\beta\right)\cos\left(\sqrt{\frac{k}{m}}t\right) - \sqrt{\frac{2\alpha}{k}}\sin\left(\sqrt{\frac{k}{m}}\beta\right)\sin\left(\sqrt{\frac{k}{m}}t\right)\\
-q(t) &= q_0\cos\left(\omega{t}\right) - \frac{p_0}{m\omega}\sin\left(\omega{t}\right)
+q(t) &= \sqrt{\frac{2\alpha}{k}}\sin\left(\sqrt{\frac{k}{m}}\beta\right)\cos\left(\sqrt{\frac{k}{m}}t\right) + \sqrt{\frac{2\alpha}{k}}\sin\left(\sqrt{\frac{k}{m}}\beta\right)\sin\left(\sqrt{\frac{k}{m}}t\right)\\
+q(t) &= q_0\cos\left(\omega{t}\right) + \frac{p_0}{m\omega}\sin\left(\omega{t}\right)
 \end{align*}
 Where we defined $\omega^2=k/m$. We can use this result to get $p(t)$ by
 \begin{align*}
 p(t) &= \left(2m(\alpha-1/2kq(t)^2)\right)^{1/2}\\
 &\Downarrow\\
-p(t) &= \left(2m\alpha-2m\alpha{k}\frac{2\alpha}{k}\sin^2(\omega(\beta-t))\right)^{1/2}\\
-&= \sqrt{2m\alpha}\cos(\omega\beta)\cos(\omega{t}) + \sqrt{2m\alpha}\sin(\omega\beta)\sin(\omega{t})\\
-&= p_0\cos(\omega{t}) + q_0m\omega\sin(\omega{t})
+p(t) &= \left(2m\alpha-2m\alpha{k}\frac{2\alpha}{k}\sin^2(\omega(\beta+t))\right)^{1/2}\\
+&= \sqrt{2m\alpha}\cos(\omega\beta)\cos(\omega{t}) - \sqrt{2m\alpha}\sin(\omega\beta)\sin(\omega{t})\\
+&= p_0\cos(\omega{t}) - q_0m\omega\sin(\omega{t})
 \end{align*}
 Note as we expect $p_0 = m\dot{q}$.
 \end{enumerate}

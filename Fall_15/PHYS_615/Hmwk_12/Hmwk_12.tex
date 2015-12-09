@@ -1,0 +1,146 @@
+\documentclass[11pt]{article}
+
+\usepackage{latexsym}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{enumerate}
+\usepackage{amsmath}
+\usepackage{cancel}
+\numberwithin{equation}{section}
+
+\setlength{\evensidemargin}{.25in}
+\setlength{\oddsidemargin}{-.25in}
+\setlength{\topmargin}{-.75in}
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{9.5in}
+\newcommand{\due}{December 2nd, 2015}
+\newcommand{\HWnum}{12}
+\input{"C:/Users/joeor_000/Documents/Coursework/Define.tex"}
+
+\begin{document}
+\input{../title.tex}
+
+\section{Problem \#1}
+To prove the identity
+\begin{equation}
+\exp(i\vec{\sigma}\cdot\vec{n}\omega)=\cos\omega\cdot\mathbf{1}+i\vec{\sigma}\vec{n}\sin\omega
+\label{Prob1}
+\end{equation}
+where $\sigma_i$ are the Pauli matrices, $\mathbf{1}$ is the $2\times2$ identity matrix, and 
+$\vec{n}$ is a unit vector in $\mathbb{R}^3$, we take the exponential of a matrix, $A$, to be 
+defined as
+\begin{equation}
+e^{A} = \sum_{n=0}^{\infty}\frac{1}{n!}A^n
+\label{ExpMat}
+\end{equation}
+Therefore using equation \ref{ExpMat} on equation \ref{Prob1} where $\vec{\sigma}\cdot\vec{n}$
+is taken to be the matrix, $A$
+\begin{align*}
+\exp(i\vec{\sigma}\cdot\vec{n}\omega) &= \sum_{n=0}^{\infty}\frac{1}{n!}(i\omega\vec{\sigma}\cdot\vec{n})^n\\
+&= \sum_{n=0}^{\infty}\frac{i^n}{n!}(\vec{\sigma}\cdot\vec{n})^n\\
+&= \sum_{n=0}^{\infty}\frac{(-1)^{2n}\omega^{2n}}{(2n)!}(\vec{\sigma}\cdot\vec{n})^{2n} + i\sum_{n=0}^{\infty}\frac{(-1)^{2n+1}\omega^{2n+1}}{(2n+1)!}(\vec{\sigma}\cdot\vec{n})^{2n+1}
+\end{align*}
+We note that the Pauli matrices are given as
+$$\sigma_x = \left(\begin{array}{cc}
+               0     &1\\
+               1     &0\\
+             \end{array}\right)\qquad
+\sigma_y = \left(\begin{array}{cc}
+               0     &-i\\
+               i     &0\\
+             \end{array}\right)\qquad
+\sigma_z = \left(\begin{array}{cc}
+               1     &0\\
+               0     &-1\\
+             \end{array}\right)$$
+Which implies that
+$$\vec{\sigma}\cdot\vec{n} = \frac{1}{\sqrt{3}}\left(\begin{array}{cc}
+                                   1     &1-i\\
+                                   1+i  &-1\\
+                                 \end{array}\right)$$
+Note the factor of $\sqrt{3}$ comes from the normalization of $n$ in $\mathbb{R}^3$.  Using
+this we can see that
+\begin{align*}
+(\vec{\sigma}\cdot\vec{n})^2 &= \frac{1}{3}\left(\begin{array}{cc}
+                                   1     &1-i\\
+                                   1+i  &-1\\
+                                 \end{array}\right)
+ \left(\begin{array}{cc}
+                                   1     &1-i\\
+                                   1+i  &-1\\
+                                 \end{array}\right)\\
+&=\frac{1}{3}\left(\begin{array}{cc}
+                                   1+(1-i)(1+i)     &(1-i)-(1-i)\\
+                                   (1+i)-(1+i)  &(1+i)(1-i)+1\\
+                                 \end{array}\right)\\
+&=\left(\begin{array}{cc}
+                                    1   &0\\
+                                    0   &1\\
+                                 \end{array}\right) = \mathbf{1}
+\end{align*}
+And we can generalize to all even powers to say
+$$(\vec{\sigma}\cdot\vec{n})^{2n} = \mathbf{1}$$ 
+Therefore
+\begin{align*}
+\exp(i\vec{\sigma}\cdot\vec{n}\omega) &= \sum_{n=0}^{\infty}\frac{(-1)^{2n}\omega^{2n}}{(2n)!}\mathbf{1} + i\sum_{n=0}^{\infty}\frac{(-1)^{2n+1}\omega^{2n+1}}{(2n+1)!}(\vec{\sigma}\cdot\vec{n})\mathbf{1}\\
+&=\cos\omega\cdot\mathbf{1}+i\vec{\sigma}\vec{n}\sin\omega
+\end{align*}
+
+
+\pagebreak
+
+\section{Problem \#2}
+Given Hermitian matrices $A$, $B$ and unitary matrices $C$, $D$. Which implies that
+$$A=A^{\dagger},\qquad B=B^{\dagger},\qquad C^{\dagger}C=CC^{\dagger}=1 \qquad, D^{\dagger}D=DD^{\dagger} = 1$$
+\begin{enumerate}[1)]
+\item We can show that
+\begin{align*}
+(C^{-1}AC)^{\dagger} &= C^{\dagger}A^{\dagger}\left(C^{-1}\right)^{\dagger}\\
+&= C^{-1}A^{\dagger}C\\
+&= C^{-1}AC
+\end{align*}
+Therefore $C^{-1}AC$ is Hermitian.
+
+\item We can show that
+\begin{align*}
+C^{-1}DC(C^{-1}DC)^{\dagger} &= C^{-1}D\cancelto{1}{CC^{\dagger}}D^{\dagger}(C^{-1})^{\dagger}\\
+&= C^{-1}\cancelto{1}{DD^{\dagger}}(C^{-1})^{\dagger}\\
+&= C^{-1}(C^{-1})^{\dagger}\\
+&= C^{\dagger}C = 1
+\end{align*}
+Therefore $C^{1}DC$ is a unitary matrix.
+
+\item We can show that
+\begin{align*}
+(i(AB-BA))^{\dagger} &= -i((AB)^{\dagger}-(BA)^{\dagger})\\
+&= -i(B^{\dagger}A^{\dagger}-A^{\dagger}B^{\dagger})\\
+&= -i(BA-AB) = i(AB-BA)
+\end{align*}
+Therefore $i(AB-BA)$ is Hermitian.
+\end{enumerate}
+
+\section{Problem \#3}
+Given the unitary matrix $\mathbf{1}$ we can find the eigenvalues $\lambda$ of this matrix 
+by enforcing the condition
+$$\det(\mathbf{A}-\lambda\mathbf{1}) = 0$$
+where we take $\mathbf{A}$ to be the unitary matrix. This implies that
+\begin{align*}
+\det(\mathbf{1}-\lambda\mathbf{1}) = \det((1-\lambda)\mathbf{1}) = (1-\lambda)^n
+\end{align*}
+where $n$ is the rank of the unitary matrix. So the equation 
+$$(1-\lambda)^n=0$$
+implies that $|\lambda|=1$ or that $\lambda$ is unimodular.
+
+\pagebreak
+
+\section{Problem \#4}
+For the center, $Z$, of a group, $G$, defined as the set of elements $z\in{G}$ which commute
+with all elements within $G$
+$$Z = \{z\in{G}| \ zg=gz, \ \forall{g\in{G}}\}$$
+We note that the group $Z$ is an Abelian group by definition. This is due to the fact for
+elements $f,g\in{Z}$ by definition we have $fg=gf$. Therefore we have a commutative operator 
+(multiplication).
+
+
+\end{document}
+

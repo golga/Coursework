@@ -1,0 +1,209 @@
+\documentclass[11pt]{article}
+
+\usepackage{latexsym}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{enumerate}
+\usepackage{amsmath}
+\usepackage{cancel}
+\numberwithin{equation}{section}
+
+\setlength{\evensidemargin}{.25in}
+\setlength{\oddsidemargin}{-.25in}
+\setlength{\topmargin}{-.75in}
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{9.5in}
+\newcommand{\due}{December 4th, 2015}
+\newcommand{\HWnum}{12}
+\input{"C:/Users/joeor_000/Documents/Coursework/Define.tex"}
+
+\begin{document}
+\input{../title.tex}
+
+\section{Problem \#1}
+\begin{enumerate}[(a)]
+\item For the generator
+$$F_2(q,P) = qP + \epsilon{H(q,P)}$$
+where the Hamiltonian is separable and of the form
+$$H(q,p) = \frac{p^2}{2m}+V(q)$$
+we have the Canonical Transformations given by
+\begin{align*}
+Q &= q + \epsilon\frac{p}{m} - \frac{\epsilon^2}{m}\frac{dV}{dq}\\
+P &= p - \epsilon\frac{dV}{dq}
+\end{align*}
+This allows us to calculate the \emph{Jacobian matrix of transformation}, $M$, by
+$$M = \left(\begin{array}{cc}
+      \dfrac{dQ}{dq}      &\dfrac{dQ}{dp}\\
+\\
+      \dfrac{dP}{dq}      &\dfrac{dP}{dp}
+      \end{array}\right)
+= \left(\begin{array}{cc}
+      1 - \dfrac{\epsilon^2}{m}\dfrac{d^2V}{dq^2}  &\dfrac{\epsilon}{m}\\
+\\
+       -\epsilon\dfrac{d^2V}{dq^2}      &1
+      \end{array}\right)$$
+This allows us to calculate the determinant of $M$ as
+\begin{align*}
+\det(M) &= \left(1 - \dfrac{\epsilon^2}{m}\dfrac{d^2V}{dq^2}\right) - \frac{\epsilon}{m}\left(-\epsilon\dfrac{d^2V}{dq^2}\right)\\
+&= 1 - \dfrac{\epsilon^2}{m}\dfrac{d^2V}{dq^2} + \frac{\epsilon^2}{m}\dfrac{d^2V}{dq^2} = 1
+\end{align*}
+Therefore $\det(M)=1$ as we expect for a canonical transformation.
+
+\item We can repeat this for the generator
+$$F_3(Q,P) = -pQ + \epsilon{H(Q,p)}$$
+which has the canonical transformation given by
+\begin{align*}
+Q &= q + \epsilon\frac{p}{m} - \frac{\epsilon^2}{m}\frac{dV}{dq}\\
+P &= p - \epsilon\frac{dV}{dq}
+\end{align*}
+We note that the \emph{Poisson Brackets} give the $\det(M)$ so that we can calculate
+\begin{align*}
+\det(M) = \{Q,P\} &= \partiald{Q}{q}\partiald{P}{p} - \partiald{Q}{p}\partiald{P}{q}\\
+&= 1 - \frac{\epsilon^2}{m}\frac{d^2V}{dq^2}  + \frac{\epsilon^2}{m}\frac{d^2V}{dq^2}\\
+&= 1
+\end{align*}
+\end{enumerate}
+
+\pagebreak
+
+\section{Problem \#2}
+\begin{enumerate}[(a)]
+\item For a Lie operator $\hat{S}$ we are given the identity
+$$\hat{S}(fg) = (\hat{S}f)g + f(\hat{S}g)$$
+which we can use to show that
+$$e^{\epsilon\hat{S}}(fg) = (e^{\epsilon\hat{S}}f)(e^{\epsilon\hat{S}}g).$$
+First we expand the exponential to get
+$$e^{\epsilon\hat{S}} = 1 + \epsilon\hat{S} + \frac{1}{2}(\epsilon\hat{S})^2 + \frac{1}{3!}(\epsilon\hat{S})^3 + ...$$
+So we act the expansion on the product $(fg)$ to get
+\begin{align*}
+e^{\epsilon\hat{S}}(fg) &= \left(1 + \epsilon\hat{S} + \frac{1}{2}(\epsilon\hat{S})^2 + \frac{1}{3!}(\epsilon\hat{S})^3 + ...\right)(fg)\\
+&= fg + \epsilon\hat{S}(fg) + \frac{1}{2}(\epsilon\hat{S})^2(fg) + \frac{1}{3!}(\epsilon\hat{S})^3(fg) + ...\\
+&= fg + \epsilon(\hat{S}f)g + \epsilon{f}(\hat{S}g) + \frac{1}{2}\epsilon^2\hat{S}\left((\hat{S}f)g + f(\hat{S}g)\right) + ...\\
+&= fg + \epsilon(\hat{S}f)g + \epsilon{f}(\hat{S}g) + \frac{1}{2}\epsilon^2\left((\hat{S}^2f)g + 2\hat{S}f(\hat{S}g) + f(\hat{S}^2g)\right) + ...\\
+&= fg + \epsilon(\hat{S}f)g + \epsilon{f}(\hat{S}g) +  \epsilon^2\hat{S}f(\hat{S}g) + \frac{1}{2}\epsilon^2(\hat{S}^2f)g  + \frac{1}{2}\epsilon^2f(\hat{S}^2g) + ...\\
+&= \left(f + \epsilon\hat{S}f + \frac{1}{2}\epsilon^2\hat{S}^2f+...\right)\left(g + \epsilon\hat{S}g + \frac{1}{2}\epsilon^2\hat{S}^2g+...\right)\\
+&=  (e^{\epsilon\hat{S}}f)(e^{\epsilon\hat{S}}g)
+\end{align*}
+
+\item Given 
+$$\hat{S}\{f,g\} = \{\hat{S}f,g\} + \{f,\hat{S}g\}$$
+we can show that 
+\begin{align*}
+e^{\epsilon\hat{S}}\{f,g\} &= \left(1 + \epsilon\hat{S} + \frac{1}{2}(\epsilon\hat{S})^2 + \frac{1}{3!}(\epsilon\hat{S})^3 + ...\right)\{f,g\}\\
+&= \left(\{f,g\} + \epsilon\hat{S}\{f,g\} + \frac{1}{2}(\epsilon\hat{S})^2\{f,g\} + \frac{1}{3!}(\epsilon\hat{S})^3\{f,g\} + ...\right)\\
+&= \{f,g\} + \epsilon\{\hat{S}f,g\} + \epsilon\{f,\hat{S}g\} + \frac{1}{2}\epsilon^2\{f,\hat{S}^2g\} + \frac{1}{2}\epsilon^2\{\hat{S}^2f,g\} + ...\\
+&= \left\{\left(f+\epsilon\hat{S}f+\frac{\epsilon^2}{2}\hat{S}^2f+...\right),\left(g+\epsilon\hat{S}g+\frac{\epsilon^2}{2}\hat{S}^2g+...\right)\right\}\\
+&= \{e^{\epsilon\hat{S}}f, e^{\epsilon\hat{S}}g\}
+\end{align*}
+\end{enumerate}
+
+\pagebreak
+
+\section{Problem \#3}
+For the harmonic oscillator with Hamiltonian
+$$H = \frac{p^2}{2m}+\frac{1}{2}kq^2$$
+we note that the Lie operator is given as
+$$\hat{H} = \{\cdot,H\} = \frac{p}{m}\partiald{}{q} - kq\partiald{}{p}$$
+This allows us to calculate the transformations
+\begin{align*}
+q(t) = e^{t\hat{H}}q &= \left(1 + t\hat{H} + \frac{1}{2}t^2\hat{H}^2 + \frac{1}{3!}t^2\hat{H}^3 +...\right)q\\
+p(t) = e^{t\hat{H}}p &= \left(1 + t\hat{H} + \frac{1}{2}t^2\hat{H}^2 + \frac{1}{3!}t^2\hat{H}^3 +...\right)p\\
+\end{align*}
+Where we take $q$ and $p$ to be the initial position and momentum. So we can calculate $q(t)$
+as
+\begin{align*}
+q(t) &= q + t\hat{H}q + \frac{1}{2}t^2\hat{H}^2q + \frac{1}{3!}t^3\hat{H}^3q +...\\
+&= q + t\frac{p}{m} + \frac{1}{2}t^2\hat{H}\frac{p}{m} + \frac{1}{3!}t^3\hat{H}^2\frac{p}{m} +...\\
+&= q + t\frac{p}{m} - \frac{1}{2}t^2\frac{k}{m}q - \frac{1}{3!}t^3\hat{H}\frac{k}{m}q +...\\
+&= q + t\frac{p}{m} - \frac{1}{2}t^2\frac{k}{m}q - \frac{1}{3!}t^3\frac{k}{m}\frac{p}{m} +...\\
+&= q\left(1 - \frac{1}{2}\left(\sqrt{\frac{k}{m}}t\right)^2 + \frac{1}{4!}\left(\sqrt{\frac{k}{m}}t\right)^4 + ...\right) + \frac{p}{m}\sqrt{\frac{m}{k}}\left(t - \frac{1}{3!}\left(\sqrt{\frac{k}{m}}t\right)^3+...\right)\\
+&= q\cos(\omega{t}) + \frac{p}{m\omega}\sin(\omega{t})
+\end{align*}
+Where we define $\omega^2=k/m$. We repeat for $p(t)$ as
+\begin{align*}
+p(t) &= p + t\hat{H}p + \frac{1}{2}t^2\hat{H}^2p + \frac{1}{3!}t^3\hat{H}^3p +...\\
+&= p - tkq - \frac{1}{2}t^2\hat{H}kq - \frac{1}{3!}t^3\hat{H}^2kq +...\\
+&= p - tkq - \frac{1}{2}t^2\omega^2p - \frac{1}{3!}t^3\hat{H}\omega^2p +...\\
+&= p - tkq - \frac{1}{2}t^2\omega^2p + \frac{1}{3!}t^3\omega^2kq +...\\
+&=p\left(1-\frac{1}{2}(\omega{t})^2+...\right) - \frac{qk}{\omega}\left(t-\frac{1}{3!}(\omega{t})^2+...\right)\\
+&=p\cos(\omega{t}) - qm\omega\sin(\omega{t})
+\end{align*}
+So we note that the transformation given by $e^{t\hat{H}}$ yields the exact solution.
+
+\pagebreak
+
+\section{Problem \#4}
+For the same harmonic oscillator in problem \#3 we can use the transformation
+\begin{align*}
+q(t) &= \mathcal{T}q\\
+p(t) &= \mathcal{T}p
+\end{align*}
+Where we take
+$$\mathcal{T} =  \exp\left(\frac{1}{2}t\hat{T}\right) \exp\left(t\hat{V}\right)\exp\left(\frac{1}{2}t\hat{T}\right)$$
+we note that the transformation $e^{t\hat{H}}$ yields the exact solution. We can write this 
+to second order in $t$ as
+\begin{align*}
+e^{t\hat{H}} = e^{t(\hat{V}+\hat{T})} &= 1 + t(\hat{V}+\hat{T}) + \frac{1}{2}t^2(\hat{V}+\hat{T})^2 + \scrO(t^3)\\ 
+&= 1 + t(\hat{V}+\hat{T}) + \frac{1}{2}t^2(\hat{V}^2 + \hat{V}\hat{T} + \hat{T}\hat{V} +\hat{T}^2) + \scrO(t^3)\\ 
+\end{align*}
+We can see that if we expand $\mathcal{T}$ to second order we see that
+\begin{align*}
+\mathcal{T} &=  \left(1 + t\frac{1}{2}\hat{T} + \frac{1}{2}t^2\frac{1}{2}\hat{T}^2\right)\left(1 + t\hat{V} + \frac{1}{2}t^2\hat{V}^2\right)\left(1 + t\frac{1}{2}\hat{T} + \frac{1}{2}t^2\frac{1}{2}\hat{T}^2\right) + \scrO(t^3)\\
+&=  \left(1 + t\frac{1}{2}\hat{T} + \frac{1}{2}t^2\frac{1}{2}\hat{T}^2\right)\left(1 + \frac{1}{2}t\hat{T} + \frac{1}{4}t^2\hat{T}^2 + t\hat{V} + \frac{1}{2}t^2\hat{V}\hat{T} + \frac{1}{2}t^2\hat{V}^2\right) + \scrO(t^3)\\
+&=  1 + t\frac{1}{2}\hat{T} + \frac{1}{2}t^2\frac{1}{2}\hat{T}^2 + t\hat{V} + \frac{1}{2}t^2\hat{V}\hat{T} + \frac{1}{2}t^2\hat{V}^2 + \frac{1}{2}t\hat{T} + \frac{1}{4}t\hat{T}^2 + \frac{1}{2}t^2\hat{T}\hat{V} + \scrO(t^3)\\
+&= 1 + t(\hat{T}+\hat{V}) + \frac{1}{2}t^2\left(\frac{3}{2}\hat{T}^2 + \hat{V}\hat{T} + \hat{T}\hat{V} + \hat{V}^2\right) + \scrO(t^3)
+\end{align*}
+We note that the $\hat{T}^2$ term has an additional factor, but this term is zero when acting
+on $q$ or $p$. Therefore we can say that
+\begin{align*}
+e^{t\hat{H}}q &= \mathcal{T}q + \scrO(t^3)\\
+e^{t\hat{H}}p &= \mathcal{T}p + \scrO(t^3)
+\end{align*}
+which implies that the transformation $\mathcal{T}$ solves the simple harmonic motion to 
+second order in $t$.
+
+\pagebreak
+
+\section*{Bonus Problem}
+For the transformation given by
+$$\mathcal{T}\left(\frac{t}{2-s}\right)\mathcal{T}\left(\frac{-st}{2-s}\right)\mathcal{T}\left(\frac{t}{2-s}\right)$$
+we can show that this solves the harmonic oscillator to fourth order in $t$ by noting that 
+the operators $\hat{T}^n$ and $\hat{V}^n$ are zero when acting on $p$ or $q$ for this system.
+Therefore we can expand neglecting those terms to get
+\begin{align*}
+e^{t\hat{H}} &= 1 + t(\hat{V}+\hat{T}) + \frac{1}{2}t^2(\hat{V}\hat{T} + \hat{T}\hat{V}) + \frac{1}{3!}t^3(\hat{V}\hat{T} + \hat{T}\hat{V})(\hat{T}+\hat{V}) +  \frac{1}{4!}t^4(\hat{V}\hat{T} + \hat{T}\hat{V})(\hat{T}+\hat{V})^2 + \scrO(t^5)\\
+&= 1 + t(\hat{V}+\hat{T}) + \frac{1}{2}t^2(\hat{V}\hat{T} + \hat{T}\hat{V}) + \frac{1}{3!}t^3(\hat{V}\hat{T}\hat{V} + \hat{T}\hat{V}\hat{T}) +  \frac{1}{4!}t^4(\hat{V}\hat{T}\hat{V} + \hat{T}\hat{V}\hat{T})(\hat{T}+\hat{V}) + \scrO(t^5)\\
+&= 1 + t(\hat{V}+\hat{T}) + \frac{1}{2}t^2(\hat{V}\hat{T} + \hat{T}\hat{V}) + \frac{1}{3!}t^3(\hat{V}\hat{T}\hat{V} + \hat{T}\hat{V}\hat{T}) +  \frac{1}{4!}t^4(\hat{V}\hat{T}\hat{V}\hat{T} + \hat{T}\hat{V}\hat{T}\hat{V}) + \scrO(t^5)\\
+&= 1 + t\hat{V} + \frac{1}{2}t^2\hat{T}\hat{V} + \frac{1}{3!}t^3\hat{V}\hat{T}\hat{V} +  \frac{1}{4!}t^4\hat{T}\hat{V}\hat{T}\hat{V} + \scrO(t^5)
+\end{align*}
+Note we neglected terms with $\hat{T}$ on the right as those terms go to zero for the $q$ 
+transformation.
+Now we can expand our new transformation again neglecting the higher power terms to get
+\begin{align*}
+\mathcal{T}\left(\frac{t}{2-s}\right) & = 1 + \frac{t}{2-s}(\hat{T}+\hat{V}) + \frac{t^2}{2(2-s)^2}(\hat{V}\hat{T}+\hat{T}\hat{V}) + \frac{t^3}{4(2-s)^3}\hat{T}\hat{V}\hat{T}\\
+\mathcal{T}\left(\frac{-st}{2-s}\right) & = 1 - \frac{st}{2-s}(\hat{T}+\hat{V}) + \frac{s^2t^2}{2(2-s)^2}(\hat{V}\hat{T}+\hat{T}\hat{V}) - \frac{s^3t^3}{4(2-s)^3}\hat{T}\hat{V}\hat{T}
+\end{align*}
+So the product of these to fourth order in $t$ yields
+\begin{align*}
+&\mathcal{T}\left(\frac{-st}{2-s}\right)\mathcal{T}\left(\frac{t}{2-s}\right)\\
+&= \left( 1 - \frac{st}{2-s}(\hat{T}+\hat{V}) + \frac{s^2t^2}{2(2-s)^2}(\hat{V}\hat{T}+\hat{T}\hat{V}) - \frac{s^3t^3}{4(2-s)^3}\hat{T}\hat{V}\hat{T}\right)\left(1 + \frac{t}{2-s}\hat{V} + \frac{t^2}{2(2-s)^2}\hat{T}\hat{V}\right)\\
+&= 1 + t\left(\frac{1}{(2-s)}\hat{V}-\frac{s}{(2-s)}\hat{V}\right) + t^2\left(\frac{s^2}{2(2-s)^2}\hat{T}\hat{V} + \frac{1}{2(2-s)^2}\hat{T}\hat{V} - \frac{2s}{2(2-s)^2}\hat{T}\hat{V}\right)\\
+&\qquad + t^3\left(\frac{s^2}{2(2-s)^3}\hat{V}\hat{T}\hat{V} - \frac{s}{2(2-s)^3}\hat{V}\hat{T}\hat{V}\right)
++ t^4\left(\frac{s^2}{4(2-s)^4}\hat{T}\hat{V}\hat{T}\hat{V} - \frac{s^3}{4(2-s)^4}\hat{T}\hat{V}\hat{T}\hat{V}\right) + \scrO(t^5)\\
+&= 1 + \frac{(1-s)t}{2-s}\hat{V} + \frac{(1-s)^2t^2}{(2-s)^2}\hat{T}\hat{V} + \frac{(s^2-s)t^3}{2(2-s)^3}\hat{V}\hat{T}\hat{V} - \frac{(s^3+s^2)t^4}{4(2-s)^4}\hat{T}\hat{V}\hat{T}\hat{V + \scrO(t^5)}
+\end{align*}
+Again we neglected the terms with $\hat{T}$ on the right.  Next we forward multiply 
+$\mathcal{T}(t/(2-s))$ to yield
+\begin{align*}
+&\mathcal{T}\left(\frac{t}{2-s}\right)\mathcal{T}\left(\frac{-st}{2-s}\right)\mathcal{T}\left(\frac{t}{2-s}\right)\\
+&=  \left(1 + \frac{t}{2-s}(\hat{T}+\hat{V}) + \frac{t^2}{2(2-s)^2}(\hat{V}\hat{T}+\hat{T}\hat{V}) + \frac{t^3}{4(2-s)^3}\hat{T}\hat{V}\hat{T}\right)\\
+&\qquad\times \left(1 + \frac{t(1-s)}{2-s}\hat{V} + \frac{(1-s)^2t^2}{(2-s)^2}\hat{T}\hat{V}+ \frac{(s^2-s)t^3}{2(2-s)^3}\hat{V}\hat{T}\hat{V} - \frac{(s^3+s^2)t^4}{4(2-s)^4}\hat{T}\hat{V}\hat{T}\hat{V}\right)+\scrO(t^5)\\
+&= 1 + t\left(\frac{1-s}{2-s}\hat{V}+\frac{1}{2-s}\hat{V}\right) + t^2\left(\frac{2(1-s)^2}{2(2-s)^2}\hat{T}\hat{V} + \frac{1}{2(2-s)^2}\hat{T}\hat{V} + \frac{2(1-s)}{(2-s)^2}\hat{T}\hat{V}\right)\\
+&\qquad + t^3\left(\frac{(1-s)^2}{(2-s)^4}\hat{V}\hat{T}\hat{V} + \frac{1-s}{4(2-s)^4}\hat{V}\hat{T}\hat{V} + \frac{(1-s)}{(2-s)^2}\hat{V}\hat{T}\hat{V}\right) + t^4\left(\frac{(s^2-s)}{2(2-s)^4}\hat{T}\hat{V}\hat{T}\hat{V}-\frac{(s^3+s^2)}{4(2-s)^4}\hat{T}\hat{V}\hat{T}\hat{V}\right)+\scrO(t^5)\\
+&= 1 + t\hat{V} + \frac{1}{2}t^2\hat{T}\hat{V} + \frac{1}{3!}t^3\hat{V}\hat{T}\hat{V} +  \frac{1}{4!}t^4\hat{T}\hat{V}\hat{T}\hat{V} + \scrO(t^5) \qquad\textnormal{ \ for \ } s=2^{1/3}
+\end{align*}
+
+
+
+\end{document}
+
