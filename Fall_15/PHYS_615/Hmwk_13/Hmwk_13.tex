@@ -1,0 +1,95 @@
+\documentclass[11pt]{article}
+
+\usepackage{latexsym}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{enumerate}
+\usepackage{amsmath}
+\usepackage{cancel}
+\numberwithin{equation}{section}
+
+\setlength{\evensidemargin}{.25in}
+\setlength{\oddsidemargin}{-.25in}
+\setlength{\topmargin}{-.75in}
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{9.5in}
+\newcommand{\due}{December 14th, 2015}
+\newcommand{\HWnum}{13}
+\input{"C:/Users/joeor_000/Documents/Coursework/Define.tex"}
+
+\begin{document}
+\input{../title.tex}
+
+\section{Problem \#1}
+Given the monomials 
+$$1,x,x^2,x^3,..,$$
+we can construct four orthogonal functions in the range $-1<x<1$ by taking the inner product
+of each function with the condition
+$$\inprod{f_n(x)}{f_m(x)} = 0 \ \textnormal{for} \ n\ne{m}$$
+the first functions we can pick as $f_0(x) = 1$ and $f_1(x) = x$ such that
+\begin{align*}
+\int_{-1}^{1}f_0(x)f_1(x)dx &= \int_{-1}^{1}xdx\\
+&= \left.\frac{1}{2}x^2\right|_{-1}^{1}\\
+&= \frac{1}{2}-\frac{1}{2} = 0
+\end{align*}
+Now we use a general form $f_2(x) = a+bx+cx^2$ and find $a,b,c$ by the orthogonal condition
+\begin{align*}
+\int_{-1}^{1}f_0(x)f_2(x)dx = 0 &= \int_{-1}^{1}a+bx+cx^2dx\\
+&=\left.ax + \frac{b}{2}x^2 + \frac{c}{3}x^3\right|_{-1}^{1}\\
+&=a + \frac{b}{2} + \frac{c}{3} + a - \frac{b}{2} + \frac{c}{3}\\
+&\Downarrow\\
+-a &= \frac{c}{3}
+\end{align*}
+and
+\begin{align*}
+\int_{-1}^{1}f_1(x)f_2(x)dx = 0 &= \int_{-1}^{1}ax+bx^2+cx^3dx\\
+&=\left.\frac{a}{2}x^2 + \frac{b}{3}x^3 + \frac{c}{4}x^4\right|_{-1}^{1}\\
+&\Downarrow\\
+b &= 0
+\end{align*}
+So we pick $a=1$ which yields
+$$f_2(x) = 3x^2-1$$
+now we repeat for $f_3(x) = a+bx+cx^2+dx^3$ and we find
+\begin{align*}
+\int_{-1}^{1}f_0(x)f_3(x)dx = 0 &= \int_{-1}^{1}a+bx+cx^2+dx^3dx\\
+&=\left.ax + \frac{b}{2}x^2 + \frac{c}{3}x^3+\frac{d}{4}x^4\right|_{-1}^{1}\\
+&=a + \frac{b}{2} + \frac{c}{3} + \frac{d}{4} + a - \frac{b}{2} + \frac{c}{3} -\frac{d}{4}\\
+&\Downarrow\\
+-a &= \frac{c}{3}
+\end{align*}
+and
+\begin{align*}
+\int_{-1}^{1}f_1(x)f_3(x)dx = 0 &= \int_{-1}^{1}ax+bx^2+cx^3+dx^4dx\\
+&=\left.\frac{a}{2}x^2 + \frac{b}{3}x^3 + \frac{c}{4}x^4 + \frac{d}{5}x^5\right|_{-1}^{1}\\
+&= \frac{2b}{3} + \frac{2d}{5}\\
+-5b &= 3d
+\end{align*}
+and
+\begin{align*}
+\int_{-1}^{1}f_2(x)f_3(x)dx = 0 &= \int_{-1}^{1}(a+bx+cx^2+dx^3)(3x^2-1)dx\\
+\Downarrow\\
+c &= 0
+\end{align*}
+So we pick $b=-3$ and we have 
+$$f_3(x) = 5x^3-3x$$
+we note that these polynomials are the Legendre polynomials without the normalization constant.
+
+\pagebreak
+
+\section{Problem \#2}
+Given the differential equation
+$$p(x)y'' + r(x)y' + q(x)y + \lambda\rho(x)y = 0$$
+we can multiply it by a integrating factor 
+$$F(x) = \exp\left[\int^{x}\frac{r(u)-p'(u)}{p(u)}\right]du$$
+where we note that
+\begin{align*}
+\frac{d}{dx}\left(F(x)p(x)y'\right) = F(x)p(x)y'' + F(x)r(x)y'
+\end{align*}
+which yields
+\begin{align*}
+F(x)p(x)y'' + F(x)r(x)y' + F(x)q(x)y + \lambda F(x)\rho(x)y &= \frac{d}{dx}\left(F(x)p(x)\frac{dy}{dx}\right) + F(x)q(x)y + \lambda F(x)\rho(x)y 
+\end{align*}
+Which is is Strum-Liouville form.
+
+\end{document}
+
