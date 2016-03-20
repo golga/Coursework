@@ -1,0 +1,150 @@
+\documentclass[11pt]{article}
+
+\usepackage{latexsym}
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{enumerate}
+\usepackage{amsmath}
+\usepackage{cancel}
+\numberwithin{equation}{section}
+
+\setlength{\evensidemargin}{.25in}
+\setlength{\oddsidemargin}{-.25in}
+\setlength{\topmargin}{-.75in}
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{9.5in}
+\newcommand{\due}{February 7th, 2016}
+\newcommand{\HWnum}{1}
+\input{"C:/Users/joeor_000/Documents/Coursework/Define.tex"}
+
+\begin{document}
+\input{../title.tex}
+
+\section{Problem \#1}
+For the case of a time-independent Hamiltonian the propagator, $K(q,t;q',t'=0)$ satisfies the
+equation
+$$\hat{q}(-t)K(q,t;q',t'=0) = cK(q,t;q',t'=0),$$
+where $\hat{q}(t)$ is an operator in the Heisenberg representation. We can find $c$ by noting
+that the Heisenberg representation of the operator $\hat{q}(t)$ is given by
+$$\hat{q}(t) = S^{-1}(t)\hat{q}S(t)$$
+where $S$ is the unitary transformation given by 
+$$S = \exp\left(-\frac{i}{\hbar}\hat{H}t\right)$$
+Therefore we see that the operator becomes $\hat{q}(-t) = S^{-1}(-t)\hat{q}S(-t)$. This 
+allows us to treat the propagator as a wave function dependent on the parameter $q$ and 
+$t$ that is being acted on by the transformation $S(-t)$. We note that $S(-t)$ evolves the
+wave function that it acts upon backwards $-t$ in time. This implies that
+$$S(-t)K(q,t;q',t'=0) = K(q,0;q',0) = \delta(q'-q)$$
+we note that the delta function arises by the property of the propagator when $t'=t$. Using
+the fact that $\delta(q'-q)$ is an eigenfunction of the operator $\hat{q}$ we note that
+\begin{align*}
+\hat{q}(-t)K(q,t;q',t'=0) &=  S^{-1}(-t)\hat{q}S(-t)K(q,t;q',t'=0)\\
+&=  S^{-1}(-t)\hat{q}\delta(q'-q)\\
+&=  q'S(t)\delta(q'-q)
+\end{align*}
+We note that the inverse transformation on the negative time step $-t$ is the same as the
+transformation with a positive time step $t$. This transformation acting on the delta 
+function, $\delta(q'-q)$, recovers the propagator with implies that
+$$\hat{q}(-t)K(q,t;q',t'=0) = q'K(q,t;q',t'=0)$$
+or that $c=q'$. Therefore when we act $\hat{q}(-t)$ on the propagator we recover the initial
+condition $q'$.
+
+
+\pagebreak
+
+\section{Problem \#2}
+\begin{enumerate}[(a)]
+\item We can find the Green's Function, $G_E(x,x')$ of the Schr\"{o}dinger's Equation for a
+free particle with $E<0$ vanishing at $|x-x'|\rightarrow\infty$ by noting that $G_E(x,x')$
+solves Schr\"{o}dinger's Equation by
+$$(\hat{H}-E)G_E(x,x')\equiv-\frac{\hbar^2}{2m}\partiald{^2}{x^2}G_E(x,x')-EG_E(x,x') = \delta(x-x').$$
+We can solve this equation by using the general solution of $G_E$ given by
+$$G_E(x,x') = A(x')e^{k|x-x'|} + B(x')e^{-k|x-x'|}$$
+where $k=\sqrt{-2mE}/\hbar$ note that we assume that $E<0$ which makes the solution an 
+exponential. Applying the assumption that the particle vanishes for $|x-x'|\rightarrow\infty$
+we see that $A(x')=0$ must be true. In order to find $B(x')$ we note that $G_E$ can be 
+considered as the solution to the delta function potential which yields a discontinuity in 
+the derivative of $G_E$ at $x=x'$ which implies that
+\begin{align*}
+\frac{dG_E(x',x')}{dx} = -\frac{B(x')}{k}e^{-k|x-x'|} &= -\frac{2m}{\hbar^2}\\
+&\Downarrow\\
+B &= \frac{m}{k\hbar^2}
+\end{align*}
+Note the factor of $2m/\hbar^2$ follows from the solution to the delta function potential. 
+Therefore, the Green function is 
+$$G_E(x,x') = \frac{m}{k\hbar^2}e^{-k|x-x'|}$$
+
+\item We can use this Green's function to represent the Schr\"{o}dinger's equation with a
+short-range potential $U(x)$ where $U(x)\rightarrow0$ as $x\rightarrow\infty$. This makes the
+Schr\"{o}dinger's equation become
+$$-\frac{\hbar^2}{2m}\partiald{^2}{x^2}\psi(x)-E\psi(x) = U(x)\psi(x)$$
+which allows us to use the general fact that a Green's function gives the solution to an
+inhomogeneous differential equation by an integral
+\begin{equation}
+y(x) = \int_{-\infty}^{\infty}G(x,x')f(x')dx'
+\label{Green}
+\end{equation}
+So for this potential we have equation \ref{Green} become
+$$\psi(x) = \int_{-\infty}^{\infty}-\frac{m}{k\hbar^2}e^{-k|x-x'|}U(x')\psi(x')dx'$$
+
+\item In order to find the momentum representation of $G_E$ we note that for any linear 
+operator there is an associated Green's function given by
+$$\hat{L}\psi(\xi)\equiv\int L(\xi,\xi')\psi(\xi')d\xi'$$
+this implies that there exists an operator associated with $G_E$ which we will represent with
+$\hat{G}_E$. Given that the Green's function is a solution to the equation
+$$(\hat{H}-E)G_E(x-x') = \delta(x-x')$$
+we can write this relation independent of representation using the fact that the delta 
+function is the position space representation of the identity operator, $\hat{I}$. Therefore,
+\begin{align*}
+(\hat{H}-E)\hat{G}_E &= \hat{I}\\
+&\Downarrow\\
+\hat{G}_E &= (\hat{H}-E)^{-1}
+\end{align*}
+Now we can simply write the Hamiltonian in momentum representation as $\hat{H} = p^2/2m$ 
+which yields
+$$G_E(p) = \frac{1}{p^2/2m-E}$$
+
+\end{enumerate}
+
+\section{Problem \#3}
+\begin{enumerate}[(a)]
+\item Given a particle in the field generated by a uniform force given by
+$$U = -\mathbf{F_0}\cdot\mathbf{r}$$
+we can find the coordinate representation of the propagator, $K(\mathbf{r},t,\mathbf{r'},t_0)$
+by first using the relation found in Problem 1 which states in three dimensions
+$$\mathbf{\hat{r}}(-t)K(\mathbf{r},t,\mathbf{r'},t_0) = \mathbf{r'}K(\mathbf{r},t,\mathbf{r'},t_0)$$
+where $\mathbf{\hat{r}}(t)$ is the Heisenberg representation of the position operator given 
+by
+\begin{align*}
+\mathbf{\hat{r}}(t) = \hat{S}^{-1}(t)\hat{\mathbf{r}}\hat{S} &= \exp\left(i\frac{\hat{H}}{\hbar}t\right)\hat{\mathbf{r}}\exp\left(-i\frac{\hat{H}}{\hbar}t\right)\\
+&= \left(1+\frac{i\hat{H}}{\hbar}t+...\right)\hat{\mathbf{r}}\left(1-\frac{i\hat{H}}{\hbar}t+...\right)\\
+&= \hat{\mathbf{r}} + \frac{i}{\hbar}[\hat{H},\hat{\mathbf{r}}]t - \frac{1}{2\hbar^2}[\hat{H},[\hat{H},\hat{\mathbf{r}}]]t^2
+\end{align*}
+Note that the commutation relation between $\hat{H}$ and $\hat{\mathbf{r}}$ is given as
+$$[\hat{H},\hat{\mathbf{r}}] = -\frac{i\hbar}{m}\hat{\mathbf{p}}$$
+and
+$$[\hat{H},\hat{\mathbf{p}}] = -i\hbar\partiald{U}{d\mathbf{r}}$$
+therefore we have
+$$\mathbf{\hat{r}}(t) = \hat{\mathbf{r}} + \frac{\hat{\mathbf{p}}}{m}t + \frac{\mathbf{F_0}}{2m}t^2$$
+so if we use the relation we find that
+\begin{align*}
+\left(\hat{\mathbf{r}} - \frac{\mathbf{p}}{m}t + \frac{\mathbf{F_0}}{2m}t^2\right)K(\mathbf{r},t,\mathbf{r'},t_0) &= \mathbf{r'}K(\mathbf{r},t,\mathbf{r'},t_0)
+\end{align*}
+which if we generalize to a free particle in three dimensions but where $\mathbf{r'}= \mathbf{r}-\mathbf{F_0}t^2/2m$
+which yields
+$$K(\mathbf{r},t,\mathbf{r'},t_0) = \left(\frac{m}{2\pi{i}\hbar(t-t_0)}\right)^{3/2}\exp\left(\frac{i}{\hbar}\left(\frac{1}{2m(t-t_0)}\left(\mathbf{r}-\mathbf{r'}-\frac{\mathbf{F_0}t^2}{2m}\right)^2+\mathbf{F_0}\cdot\mathbf{r}t-\frac{F_0^2t^3}{6m}\right)\right)$$
+
+\item We follow the same process for the momentum representation noting that
+\begin{align*}
+\hat{\mathbf{p}}(t) &= \hat{\mathbf{p}} + \frac{i}{\hbar}[\hat{H},\hat{\mathbf{p}}]t - \frac{1}{2\hbar^2}\cancelto{0}{[\hat{H},[\hat{H},\hat{\mathbf{p}}]]}t^2\\
+ &= \hat{\mathbf{p}} + \frac{\mathbf{F_0}}{m}t 
+\end{align*}
+which yields
+$$K(\mathbf{p},t,\mathbf{r'},t_0) = \exp\left(-\frac{i(t-t_0)}{2m\hbar}\left(p^2-\mathbf{F_0}\cdot\mathbf{p}(t-t_0)+\frac{1}{3}F_0^2(t-t_0)^2\right)\right)\delta(\mathbf{p}-\mathbf{p'}-\mathbf{F_0}(t-t_0))$$
+
+
+
+\end{enumerate}
+
+\end{document}
+

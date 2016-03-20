@@ -1,0 +1,212 @@
+\documentclass[11pt]{article}
+
+\usepackage{latexsym}
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{enumerate}
+\usepackage{amsmath}
+\usepackage{cancel}
+\numberwithin{equation}{section}
+
+\setlength{\evensidemargin}{.25in}
+\setlength{\oddsidemargin}{-.25in}
+\setlength{\topmargin}{-.75in}
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{9.5in}
+\newcommand{\due}{February 12th, 2016}
+\newcommand{\HWnum}{3}
+\input{"C:/Users/joeor_000/Documents/Coursework/Define.tex"}
+
+\begin{document}
+\input{../title.tex}
+
+\section{Problem \#1}
+\begin{enumerate}[(1)]
+\item Given the mass density of the medium, $\rho$, given by the expression
+$$\rho = \frac{Nm}{V}$$
+Using this relation we can take the partial derivative of pressure with respect to $\rho$ 
+keeping the entropy $S$ constant. Using chain rule we can say that
+$$\left(\partiald{p}{\rho}\right)_{S} = \frac{\left(\partial{S}/\partial{T}\right)_{p}}{\left(\partial{S}/\partial{T}\right)_{\rho}}\left(\partiald{p}{\rho}\right)_{T}$$
+where we apply the cyclic chain rule to state that
+\begin{align*}
+\left(\partiald{S}{T}\right)_{\rho}\left(\partiald{T}{\rho}\right)_{S}\left(\partiald{\rho}{S}\right)_{T} &= -1\\
+&\Downarrow\\
+\left(\partiald{S}{T}\right)_{\rho} &= -\left(\partiald{\rho}{T}\right)_{S}\left(\partiald{S}{\rho}\right)_{T}
+\end{align*}
+We note that $\rho$ is only dependent on $V$ which implies that 
+$$\left(\partiald{\rho}{V}\right)_{S} = \left(\partiald{\rho}{V}\right)_{T}$$ 
+So, applying chain rule we find that
+\begin{align*}
+\left(\partiald{S}{T}\right)_{\rho} &= -\left(\partiald{\rho}{V}\right)_{S}\left(\partiald{V}{T}\right)_{S}\left(\partiald{S}{V}\right)_{T}\left(\partiald{V}{\rho}\right)_{T}\\
+&= -\left(\partiald{V}{T}\right)_{S}\left(\partiald{S}{V}\right)_{T}\\
+&= \left(\partiald{S}{T}\right)_{V}
+\end{align*}
+Note we used the cyclic chain rule to find that the last partial derivative. We note the 
+definitions for specific heat
+\begin{align*}
+C_p &= T\left(\partiald{S}{T}\right)_{p}\\
+C_V &= T\left(\partiald{S}{T}\right)_{V}
+\end{align*}
+which implies that
+$$\left(\partiald{p}{\rho}\right)_{S} = \frac{C_p}{C_V}\left(\partiald{p}{\rho}\right)_{T}$$
+
+\item Starting with the cyclic chain rule for the variables $p$, $V$, and $T$ we have
+\begin{align*}
+-1 &= \left(\partiald{p}{T}\right)_{V}\left(\partiald{T}{V}\right)_{p}\left(\partiald{V}{p}\right)_{T}\\
+&\Downarrow\\
+\left(\partiald{p}{T}\right)_{V} &= -\left(\partiald{V}{T}\right)_{p}\left(\partiald{p}{V}\right)_{T}\\
+\end{align*}
+Therefore if we introduce the thermal expansion coefficient 
+$$\alpha \equiv \frac{1}{V}\left(\partiald{V}{T}\right)_{p}$$
+and isothermic compressibility
+$$\kappa_{T} \equiv -\frac{1}{V}\left(\partiald{V}{p}\right)_{T}$$ 
+we see that
+$$\left(\partiald{p}{T}\right)_{V} = -V\alpha(-V\kappa_T)^{-1} = \frac{\alpha}{\kappa_T}$$
+
+\item We can find a relation to the quantities we introduced in part (2) to the specific 
+heats of the system by noting that $C_V$ is related to the change in energy through heat by
+\begin{align*}
+C_V &= \left(\partiald{E}{T}\right)_{V}
+\end{align*}
+Now, if we treat $E$ as a function of $T$ and $V$ by chain rule we have
+$$dE = \left(\partiald{E}{T}\right)_{V}dT + \left(\partiald{E}{V}\right)_{T}dV$$
+which using the heat function we have
+\begin{align*}
+\delta{Q} &= \left(\partiald{E}{T}\right)_{V}dT + \left(\partiald{E}{V}\right)_{T}dV + pdV\\
+&= C_VdT + \left(\partiald{E}{V}\right)_{T}\left(\partiald{V}{T}\right)_{p}dT + p\left(\partiald{V}{T}\right)_{p}dT\\
+&\Downarrow\\
+\frac{\delta{Q}}{dT} -C_V = C_p - C_V &= \left(\left(\partiald{E}{V}\right)_{T} + p\right)\left(\partiald{V}{T}\right)_{p}\\
+&= \left(T\left(\partiald{P}{T}\right)_{V} - p + p\right)\left(\partiald{V}{T}\right)_{p}\\
+&= T\left(\partiald{p}{T}\right)_{V}\left(\partiald{V}{T}\right)_{p}\\
+&= T\frac{\alpha}{\kappa_T}V\alpha = \frac{TV\alpha^2}{\kappa_T}
+\end{align*}
+\end{enumerate}
+
+\pagebreak
+
+\section{Problem \#2}
+\begin{enumerate}[(1)]
+\item For a glass of water at temperature $T=300\unit{K}$ placed into a heater with 
+temperature $T=363\unit{K}$ and reaches thermal equilibrium. Assuming that the volume of the
+water remains constant implies that the change in energy is only dependent on the change in 
+heat. This allows us to calculate the change in energy for the water in the glass using the
+specific heat
+\begin{align*}
+dQ = dE &= CdT
+\end{align*}
+Note we assume that $C$ is a constant and independent of $T$ allows us to calculate
+\begin{align*}
+\Delta{S} &= \int_{300}^{363}\frac{dQ}{T}\\
+&= C\int_{300}^{363}\frac{dT}{T}\\
+&= \left.C\ln(T)\right|_{300}^{363}\\
+&= C\ln\left(\frac{363}{300}\right)
+\end{align*}
+We note that we assume that the heater reservoir is large enough to have the temperature 
+remain constant. This allows us to directly calculate the change in entropy without integrating
+by noting that by conservation of energy the heat gained by the glass is the heat lost by the
+reservoir. We calculate this as
+$$dQ = -C(363-300) = -63C$$
+which implies that the change in entropy is calculated as
+$$\Delta{S} = \frac{dQ}{T} = -C\frac{63}{363}$$
+So the total change in entropy is given by
+$$\Delta{S_{tot}} = C\left(\ln\left(\frac{363}{300}\right)-\frac{63}{363}\right) = 0.0171C$$
+
+\item Now if we do the same process except with a two-stage heating with the first heater at
+$T=333\unit{K}$ and the second heater at $T= 363\unit{K}$. We note that the change in heat 
+remains the same as the assumption that volume remains constant still holds. Which implies 
+that the change in entropy of the cup can be calculated as
+\begin{align*}
+\Delta{S} &= \int_{300}^{333}\frac{dQ}{T} + \int_{333}^{363}\frac{dQ}{T}\\
+&= \int_{300}^{363}\frac{dQ}{T}\\
+&= C\ln\left(\frac{363}{300}\right)
+\end{align*}
+Note this verifies that the change in entropy is path independent. So we calculate the change
+in entropy of the two reservoirs by the same process
+\begin{align*}
+\Delta{S_1} &= -C\frac{33}{333}\\
+\Delta{S_2} &= -C\frac{30}{363}
+\end{align*}
+so we calculate the total change in entropy 
+$$\Delta{S_{tot}} = C\left(\ln\left(\frac{363}{300}\right)-\frac{33}{333}-\frac{30}{363}\right) = 0.00888C$$
+
+\item We note that the result from parts (1) and (2) that as we increase the number of steps
+between the initial and final temperatures, mathematically we write this as
+$$\lim_{N\rightarrow\infty}\frac{\Delta{T}}{N}$$
+In this limit the sum of the change in entropies of the reservoirs becomes $-C\ln(363/300)$ 
+which makes the total change in entropy equal to zero.
+\end{enumerate}
+
+\pagebreak
+
+\section{Problem \#3}
+\begin{enumerate}[(1)]
+\item Given the energy of a monoatomic ideal gas given by $E=\frac{3}{2}NT$ we can calculate
+the efficiency of a cycle consisting of two isotherms and two isochores which follows the 
+steps
+\begin{itemize}
+\item 1 to 2: Expansion from $V_1$ to $V_2$ at constant temperature $T_2$
+\item 2 to 3: Decrease in temperature from $T_2$ to $T_1$ at constant volume $V_2$
+\item 3 to 4: Compression from $V_2$ to $V_1$ at constant temperature $T_1$
+\item 4 to 1: Increase in temperature from $T_1$ to $T_2$ at constant volume $V_1$
+\end{itemize}
+To calculate the
+efficiency we use the relation between the work done on the environment versus the amount of
+heat used
+$$\eta = \frac{-\Delta{W}}{\Delta{Q}}$$
+Therefore, we need to calculate the work done by the cycle. We note that along the two 
+isotherms $T$ remains constant so all the heat energy is converted to work from $V_1$ to 
+$V_2$. So assuming we our gas is ideal we have an expansion from $V_1$ to $V_2$ at $T_2$ 
+which has a change in heat as
+\begin{align*}
+\Delta{Q}_{12} &= NT_2\ln\left(\frac{V_2}{V_1}\right)
+\end{align*}
+and for the other isotherm we contract from $V_2$ to $V_1$ at a temperature $T_1$ which yields
+\begin{align*}
+\Delta{Q}_{34} &= NT_1\ln\left(\frac{V_1}{V_2}\right)
+\end{align*}
+Note it is assumed that $T_2>T_1$. And as we stated both $\Delta{Q}_1$ and $\Delta{Q}_2$ are
+fully converted to work so
+\begin{align*}
+\Delta{W}_{12} &= -NT_2\ln\left(\frac{V_2}{V_1}\right)\\
+\Delta{W}_{34} &= -NT_1\ln\left(\frac{V_1}{V_2}\right)
+\end{align*}
+Now for the isochores we note that $V$ remains constant so there is no work done or
+$$\Delta{W}_{23} = \Delta{W}_{41} = 0$$
+but there is a change in heat which is the same as the total change in energy given by
+\begin{align*}
+\Delta{Q}_{23} &= \frac{3}{2}N(T_2-T_1)\\
+\Delta{Q}_{41} &= \frac{3}{2}N(T_1-T_2)\\
+\end{align*}
+We note that $\Delta{Q}_{34}$ and $\Delta{Q}_{41}$ are negative and therefore are not heat added to
+the system. Therefore
+$$\Delta{Q} = \Delta{Q}_{12} + \Delta{Q}_{23} = N\left(T_2\ln\left(\frac{V_2}{V_1}\right) + \frac{3}{2}(T_2-T_1)\right)$$
+And we find the work done by
+$$\Delta{W} = \Delta{W}_{12} + \Delta{W}_{34} = N(T_2-T_1)\ln\left(\frac{V_2}{V_1}\right)$$
+So we find the efficiency as
+\begin{align*}
+\eta &= \frac{(T_2-T_1)\ln(V_2/V_1)}{T_2\ln\left({V_2}/{V_1}\right) + 3/2(T_2-T_1)}\\
+&= \frac{T_2-T_1}{T_2+3(T_2-T_1)/2\ln(V_2/V_1)}
+\end{align*}
+We note that the Carnot cycle has an efficiency of
+$$\eta_{c} = 1-\frac{T_1}{T_2} = \frac{T_2-T_1}{T_2}$$
+we see that there is an extra term in the efficiency of the Sterling cycle given by
+$$\frac{3(T_2-T_1)}{2\ln(V_2/V_1)}$$
+which for our assumption $T_2>T_1$ and $V_2>V_1$ must be positive which makes $\eta<\eta_c$.
+
+\item 
+For a refrigerator that works as a reversed Carnot cycle which goes through the following
+\begin{itemize}
+\item 1 to 2: Isothermal expansion at $T_1$
+\item 2 to 3: Reversible compression from $T_1$ to $T_2$
+\item 3 to 4: Isothermal compression at $T_2$ 
+\item 4 to 1: Reversible expansion from $T_2$ to $T_1$ 
+\end{itemize}
+Where we take $T_2>T_1$. By driving the cycle in reverse (doing work onto the system) we take
+heat from from the $T_2$ reservoir and absorbed by the low temperature, $T_1$, reservoir. For
+the Carnot cycle we coefficient of performance is given by
+$$CoF = \frac{Q_{\textnormal{cold}}}{Q_{\textnormal{hot}}-Q_\textnormal{cold}} = \frac{T_1}{T_2-T_1}$$
+so the $CoF$ is less than one for $T_2>2T_1$.
+\end{enumerate}
+\end{document}
+

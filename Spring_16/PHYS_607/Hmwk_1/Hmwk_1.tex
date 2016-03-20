@@ -23,18 +23,81 @@
 
 \section{Problem \#1}
 \begin{enumerate}[(a)]
-\item
-\item
-\item
-\item
+\item Given a gas with a large number, $N$, of non-interacting particles in a box with a 
+volume, $V$. We can find the probability that we will find fixed number, $N_1<N$, of particles
+in a sub-volume, $V_1<V$, by noting that this probability follows a binomial distribution 
+where the probability of finding a single particle in the volume, $V_1$, is given by 
+$$p = \frac{V_1}{V}$$
+therefore if we expand to $N_1$ particles found we have $N-N_1$ particles not in $V_1$. So it
+follows that the total probability of finding $N_1$ particles within $V_1$ is
+\begin{equation}
+P(N_1) = {{N}\choose{N_1}}\left(1-\frac{V_1}{V}\right)^{N-N_1}\left(\frac{V_1}{V}\right)^{N_1}
+\label{Bionom}
+\end{equation}
+where we note the combinatoric is defined as
+$${{N}\choose{N_1}} \equiv \frac{N!}{(N-N_1)!N_1!}.$$
+We can find the value $N_1$ that maximizes equation \ref{Bionom} by noting that the $N_1$ 
+that gives the mean value which is found by
+$$\overline{N_1} = \sum_{N_1=0}^{N}N_1P(N_1)$$
+has the maximum probability. For any binomial distribution this value is given by the total 
+number of trials multiplied by the probability. So equation \ref{Bionom} is maximized for the
+value
+$$\overline{N_1} = N\frac{V_1}{V}$$
+which makes intuitive sense as the assumption that the particle has equal probability of being
+found in any location implies that there is a uniform distribution of particles. We note that
+the average square fluctuations, $\overline{(\Delta{N_1})^2}$, is given as
+$$\overline{(\Delta{N_1})^2} = N\frac{V_1}{V}\left(1-\frac{V_1}{V}\right)$$
+which follows from the standard variance of a binomial distribution. Now if we take the 
+number of particles to be large, $N=10^{20}$, we note that we can approximate the 
+binomial distribution as a Gaussian distribution where
+$$P(N_1) \approx \frac{1}{\sqrt{2\pi{N}p(1-p)}}\exp\left(\frac{(N_1-\overline{N_1})^2}{2\overline{(\Delta{N_1})^2}}\right).$$
+Now if we take the size of the sub-volume to be $V_1 = V/2$ we see that $p=1/2$ and 
+$\overline{N_1} = N/2$ and $\overline{(\Delta{N_1})^2} = N/4$. So we have the probability 
+distribution
+$$P(N_1) \approx \sqrt{\frac{2}{\pi{N}}}\exp\left(\frac{(N_1-N/2)^2}{N/2}\right).$$
+So using this distribution we can calculate the probability that the number, $N_1$ deviates 
+from $N/2$ by $(10^{-4})\%$ by solving the integral
+\begin{align*}
+\int_{N/2(1-10^{-6})}^{N/2(1+10^{-6})}P(N_1)dN_1
+\end{align*}
+But we note that the variance goes by the $\sqrt{N/4}$ which is equal to $1/2\times10^{10}$ 
+which implies that the distribution does not vary out side of $10^{-8}\%$ with any real 
+probability. Therefore we approximate the variance as zero.
+
+\item Now, if we extend the problem to the case where the total volume is divided into an
+arbitrary number, $n$, boxes with volumes $V_1,V_2,...,V_n$. We can find the probability and
+assuming that the probabilities are independent we can calculate the probability that there
+are $N_1$ particles in $V_1$, $N_2$ in $V_2$ and so forth by calculating the product
+$$P(N_1,N_2,...,N_n) = \prod_{k=1}^{n}{{N}\choose{N_k}}\left(1-\frac{V_k}{V}\right)^{N-N_k}\left(\frac{V_k}{V}\right)^{N_i}$$
+
+\item The probability found in part (b) is at a maximum when each probability is at it's mean
+given by
+$$\overline{N_k} = N\frac{V_k}{V}$$
 \end{enumerate}
 
 \pagebreak
 
 \section{Problem \#2}
 \begin{enumerate}[(a)]
-\item
-\item
+\item For a large number, $N$, of non-interacting identical quantum particles with a mass, 
+$m$, confined in a cubic box with the side of length, $L$, we can estimate the density of 
+states for a fixed  total energy, $E$. We first assume that $N>>1$ and $kL>>1$ where
+$$k = \sqrt{2m\epsilon}/\hbar\qquad\textnormal{with}\qquad\epsilon=E/N.$$
+We first consider a single particle in the box with energy $\epsilon$ this implies that
+for a wave function of the form
+$$\psi_{\mathbf{p}} = e^{i\mathbf{p}\cdot\mathbf{r}}$$
+with the periodic boundary condition that $r_i = r_i+L$ for $i=x,y,z$. Which implies that
+$$\frac{p_iL}{\hbar} = 2\pi{n_i}$$
+which quasiclassically yields the number of states for three degrees of freedom as
+$$\frac{dpdq}{(2\pi\hbar)^3}$$
+where $dq$ becomes defined by the allowed position space given as $L^3$ and $dp$ is defined
+by the allowed energy as the energy is fully kinetic. So 
+$$dp = \frac{d\epsilon}{\sqrt{8\pi\epsilon}}$$ 
+So the density of states for $N$ particles with $\epsilon=E/N$ we have
+$$D(N) = \left(\frac{L}{2\pi\hbar}\right)^{3N}\sqrt{\frac{N}{8\pi{E}}}$$
+
+
+
 \end{enumerate}
 
 \end{document}

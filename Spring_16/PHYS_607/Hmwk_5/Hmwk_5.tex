@@ -1,0 +1,223 @@
+\documentclass[11pt]{article}
+
+\usepackage{latexsym}
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{enumerate}
+\usepackage{amsmath}
+\usepackage{cancel}
+\numberwithin{equation}{section}
+
+\setlength{\evensidemargin}{.25in}
+\setlength{\oddsidemargin}{-.25in}
+\setlength{\topmargin}{-.75in}
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{9.5in}
+\newcommand{\due}{February 22nd, 2016}
+\newcommand{\HWnum}{5}
+\input{"C:/Users/joeor_000/Documents/Coursework/Define.tex"}
+
+\begin{document}
+\input{../title.tex}
+
+\section{Problem \#1}
+\begin{enumerate}[(1)]
+\item For a degenerate ($T<<\mu$) Fermi gas we have the number of particles given by the 
+integral
+\begin{equation}
+N = V\int_{0}^{\infty}f(\varepsilon)\nu(\varepsilon)d\varepsilon
+\label{DFGNum}
+\end{equation}
+where $\nu(\varepsilon)$ is the density of states given by
+\begin{equation}
+\nu(\varepsilon) = \frac{g_sm^{3/2}}{\sqrt{2}\pi^2\hbar^3}\varepsilon^{1/2}
+\label{DenOStates}
+\end{equation}
+and $f(\varepsilon)$ is the Fermi-Dirac distribution
+\begin{equation}
+f(\varepsilon) = \frac{1}{e^{(\varepsilon-\mu)/T}+1}
+\label{FDDist}
+\end{equation}
+This implies that we can calculate the energy $E$ of the system by the integral
+\begin{equation}
+E = V\int_{0}^{\infty}{\varepsilon}f(\varepsilon)\nu(\varepsilon)d\varepsilon
+\label{DFGEnergy}
+\end{equation}
+We note that both equations \ref{DFGNum} and \ref{DFGEnergy} have integrals of the form
+$$I = \int_{0}^{\infty}\frac{\varepsilon^n}{e^{(\varepsilon-\mu)/T}+1}$$
+therefore we wish to approximate the solution for $I$ in the limit of small temperatures 
+where we take $1<<\mu/T$. So we apply a change of variable by $(\varepsilon-\mu)/T=z$ so that
+the integral becomes
+\begin{align*}
+I &= \int_{-\mu/T}^{\infty}\frac{(\mu+Tz)^{n}}{e^{z}+1}Tdz\\
+&= -T\int_{0}^{-\mu/T}\frac{(\mu+Tz)^{n}}{e^{z}+1}dz + T\int_{0}^{\infty}\frac{(\mu+Tz)^{n}}{e^{z}+1}dz\\
+&= T\int_{0}^{\mu/T}\frac{(\mu-Tz)^{n}}{e^{-z}+1}dz + T\int_{0}^{\infty}\frac{(\mu+Tz)^{n}}{e^{z}+1}dz
+\end{align*}
+Note that we convert the first integral by $z\rightarrow-z$ also note that
+$$\frac{1}{e^-z+1} = 1 - \frac{1}{e^z+1}$$
+So we have
+\begin{align*}
+I &= \int_{0}^{\mu/T}(\mu-Tz)^{n}Tdz - T\int_{0}^{\mu/T}\frac{(\mu-Tz)^{n}}{e^{z}+1}dz  + T\int_{0}^{\infty}\frac{(\mu+Tz)^{n}}{e^{z}+1}dz\\
+&= \int_{0}^{\mu}\varepsilon^{n}d\varepsilon + T\int_{0}^{\infty}\frac{(\mu+Tz)^{n}-(\mu-Tz)^{n}}{e^{z}+1}dz
+\end{align*}
+Where we take the limit of $\mu/T\rightarrow\infty$ which follows by our low temperature 
+assumption. Note the Taylor expansion of a general function of the form $f(a+bx)$ about $x=0$
+\begin{align*}
+f(a+bx) &\approx f(a) + bf'(a)x + \frac{b^2}{2}f^{(2)}(a)x^2 + \frac{b^3}{3!}f^{(3)}(a)x^3 + \scrO{(x^4)}\\
+f(a-bx) &\approx f(a) - bf'(a)x + \frac{b^2}{2}f^{(2)}(a)x^2 - \frac{b^3}{3!}f^{(3)}(a)x^3 + \scrO{(x^4)}
+\end{align*}
+We note that for $f(a+bx)-f(a-bx)$ all the even powers cancel. So for our integral to leading
+order we have in $T$
+$$I = \int_{0}^{\mu}\varepsilon^{n}d\varepsilon + 2n\mu^{n-1}T^2\int_{0}^{\infty}\frac{z}{e^{z}+1}dz +\scrO{(T^4)}$$
+Note that we can calculate the integral by 
+\begin{align*}
+\int_{0}^{\infty}\frac{z}{e^{z}+1}dz &= 2\int_{0}^{\infty}\frac{ze^{-z}}{e^{-z}+1}dz \\
+&= 2\sum_{k=1}^{\infty}\int_{0}^{\infty}(-1)^kze^{-kz}dz\\
+&= 2\sum_{k=1}^{\infty}\frac{(-1)^{k}}{k^2}\int_{0}^{\infty}e^{-u}udu\\
+&= \Gamma(2)\sum_{k=1}^{\infty}\frac{1}{k^2}\\
+&= \Gamma(2)\zeta(2) = \frac{\pi^2}{6}
+\end{align*}
+Where we use the \emph{Gamma Function}
+$$\Gamma(x) = \int_{0}^{\infty}u^{x-1}e^{-u}du$$
+and the \emph{Riemann Zeta Function}
+$$\zeta(x) = \sum_{k=1}^{\infty}\frac{1}{k^{x}}$$
+So to second order in $T$ we have
+$$I = \frac{\mu^{n+1}}{n+1} + \frac{\pi^2}{6}n\mu^{n-1}T^2 +\scrO{(T^4)}$$
+So we can approximate $N$ where $n=1/2$ as
+\begin{align*}
+N &= V\int_{0}^{\infty}f(\varepsilon)\nu(\varepsilon)d\varepsilon = \frac{Vg_sm^{3/2}}{\sqrt{2}\pi^2\hbar^3}I(n=1/2)\\
+&= \frac{Vg_sm^{3/2}}{\sqrt{2}\pi^2\hbar^3}\left(\frac{2}{3}\mu^{3/2}+\frac{\pi^2}{12}\frac{T^2}{\mu^{1/2}}\right)
+\end{align*}
+and for $E$ we approximate using $n=3/2$ as
+\begin{align*}
+E &= V\int_{0}^{\infty}{\varepsilon}f(\varepsilon)\nu(\varepsilon)d\varepsilon = \frac{Vg_sm^{3/2}}{\sqrt{2}\pi^2\hbar^3}I(n=3/2)\\
+&= \frac{Vg_sm^{3/2}}{\sqrt{2}\pi^2\hbar^3}\left(\frac{2}{5}\mu^{5/2}+\frac{\pi^2}{4}T^2\mu^{1/2}\right)
+\end{align*}
+Given that the thermodynamic potential is related to energy by $\Omega=-2/3E$ we can see that
+$$\Omega = -\frac{2}{3}E =  -\frac{\sqrt{2}Vg_sm^{3/2}}{3\pi^2\hbar^3}\left(\frac{2}{5}\mu^{5/2}+\frac{\pi^2}{4}T^2\mu^{1/2}\right)$$
+Now we can find the free energy to second order in $T$ by
+\begin{align*}
+F &= \Omega + \mu{N} = -\frac{\sqrt{2}Vg_sm^{3/2}}{3\pi^2\hbar^3}\left(\frac{2}{5}\mu^{5/2}+\frac{\pi^2}{4}T^2\mu^{1/2}\right) +\mu\left(\frac{Vg_sm^{3/2}}{\sqrt{2}\pi^2\hbar^3}\left(\frac{2}{3}\mu^{3/2}+\frac{\pi^2}{12}\frac{T^2}{\mu^{1/2}}\right)\right)\\
+&= \frac{Vg_sm^{3/2}}{\sqrt{2}\pi^2\hbar^3}\left[-\frac{4}{15}\mu^{5/2}-\frac{\pi^2}{6}T^2\mu^{1/2}+\frac{2}{3}\mu^{5/2}+\frac{\pi^2}{12}T^2\mu^{1/2}\right]\\
+&= \frac{Vg_sm^{3/2}}{\sqrt{2}\pi^2\hbar^3}\frac{2}{5}\mu^{5/2}\left[1 - \frac{5\pi^2}{24}\left(\frac{T}{\mu}\right)^2\right]
+\end{align*}
+Now we take $\mu=\varepsilon_F$ where $\varepsilon_F$ is the Fermi energy given by
+$$\varepsilon_F = \frac{p_F^2}{2m} = \frac{\hbar^2(6\pi^2N)^{2/3}}{2m(Vg_s)^{2/3}} = \gamma{N^{2/3}}$$
+So we have the free energy as a function of the number of particles given by
+\begin{align*}
+F &= \frac{Vg_sm^{3/2}}{\sqrt{2}\pi^2\hbar^3}\frac{2}{5}\mu^{5/2}\left[1 - \frac{5\pi^2}{24}\left(\frac{T}{\mu}\right)^2\right]\\
+&\Downarrow\\
+&= \frac{3N}{5\varepsilon_F^{3/2}}\left[\varepsilon_F^{5/2} - \frac{5\pi^2}{12}T^2\varepsilon_F^{1/2}\right]\\
+&= \frac{3N}{5}\left[\varepsilon_F - \frac{5\pi^2}{12}\frac{T^2}{\varepsilon_F}\right]\\
+&= \frac{3}{5}\left[\gamma{N^{5/3}} - \frac{5\pi^2}{12\gamma}T^2N^{1/3}\right]
+\end{align*}
+So we can find $\mu$ by the derivative
+\begin{align*}
+\mu = \left(\partiald{F}{N}\right)_{V,T} &= \frac{3}{5}\left[\frac{5}{3}\gamma{N^{2/3}} - \frac{5\pi^2}{12}\frac{1}{3}\frac{T^2}{\gamma{N^{2/3}}}\right]\\
+&\Downarrow\\
+&= \left(\varepsilon_F - \frac{\pi^2}{12}\frac{T^2}{\varepsilon_F}\right)\\
+&= \varepsilon_F\left(1 - \frac{\pi^2}{12}\left(\frac{T}{\varepsilon_F}\right)^2\right) + \scrO(T^3)
+\end{align*}
+
+\item We can use the result from part (1) to find the correction to the energy by taking the
+ratio and keeping only terms to second order in $T$
+\begin{align*}
+\frac{E}{N} &= \left(\frac{2}{5}\mu^{5/2}+\frac{\pi^2}{4}T^2\mu^{1/2}\right)\left(\frac{2}{3}\mu^{3/2}+\frac{\pi^2}{12}\frac{T^2}{\mu^{1/2}}\right)^{-1}\\
+&= \frac{3}{5}\mu\left(1+\frac{5\pi^2}{8}\left(\frac{T}{\mu}\right)^2\right)\left(1+\frac{\pi^2}{8}\left(\frac{T}{\mu}\right)^2\right)^{-1}\\
+&\approx \frac{3}{5}\varepsilon_F\left(1 - \frac{\pi^2}{12}\left(\frac{T}{\varepsilon_F}\right)^2\right)\left(1+\frac{5\pi^2}{8}\left(\frac{T}{\varepsilon_F}\right)^2\right)\left(1-\frac{\pi^2}{8}\left(\frac{T}{\varepsilon_F}\right)^2\right) + \scrO(T^3)\\
+&\approx \frac{3}{5}\varepsilon_F\left(1 + \frac{5\pi^2}{12}\left(\frac{T}{\varepsilon_F}\right)^2\right) + \scrO(T^3)
+\end{align*}
+Now we see that only the second term depends on $T$ this implies that the specific heat at 
+fixed volume to second order in temperature is 
+\begin{align*}
+\left(\partiald{E}{T}\right)_{N,V} &= \partiald{}{T}\left(\frac{N\pi^2}{4\varepsilon_F}T^2\right) \\
+&= \frac{N\pi^2}{2\varepsilon_F}T
+\end{align*}
+
+\item Given the isothermal and adiabatic compressibility
+$$\kappa_T = -\frac{1}{V}\left(\partiald{V}{p}\right)_T\qquad\kappa_S = -\frac{1}{V}\left(\partiald{V}{p}\right)_S$$
+we can calculate $\kappa_T$ and $\kappa_S$ by first noting that 
+$$p = \left(\partiald{E}{V}\right)_{N,S} = -\left(\partiald{F}{V}\right)_{N,T}$$
+We found the approximations for $F$ and $E$ already where we note that the Fermi energy is
+proportional volume by
+$$\varepsilon_F = \frac{\hbar^2(6\pi^2N)^{2/3}}{2m(Vg_s)^{2/3}} = \gamma'V^{-2/3}$$
+so we have
+\begin{align*}
+\kappa_S^{-1} = -V\partiald{^2E}{V^2} &= -V\partiald{^2}{V^2}\left[\frac{3}{5}N\varepsilon_F\left(1 + \frac{5\pi^2}{12}\left(\frac{T}{\varepsilon_F}\right)^2\right)\right]\\
+&= -\frac{3}{5}NV\partiald{^2}{V^2}\left[\gamma'V^{-2/3} + \frac{5\pi^2}{12}\frac{T^2}{\gamma'}V^{2/3}\right]\\
+&= -\frac{3}{5}NV\partiald{}{V}\left[-\frac{2}{3}\gamma'V^{-5/3} + \frac{2}{3}\frac{5\pi^2}{12}\frac{T^2}{\gamma'}V^{-1/3}\right]\\
+&= -\frac{2}{3}NV\left(\gamma'V^{-8/3} - \frac{\pi^2}{12}\frac{T^2}{\gamma'}V^{-4/3}\right)\\
+&= -\frac{2}{3}N\left(\frac{\varepsilon_F}{V} - \frac{\pi^2}{12}\frac{T^2}{\epsilon_FV}\right)\\
+&\Downarrow\\
+\kappa_S &= -\frac{3V}{2N\epsilon_F}\left(1 + \frac{\pi^2}{12}\left(\frac{T}{\epsilon_F}\right)^2\right) +\scrO(T^3)
+\end{align*}
+Now we repeat the process for the isothermal case
+\begin{align*}
+\kappa_T^{-1} = V\partiald{^2F}{V^2} &= V\partiald{^2}{V^2}\left[\frac{3N}{5}\left(\varepsilon_F - \frac{5\pi^2}{12}\frac{T^2}{\varepsilon_F}\right)\right]\\
+&= \frac{3}{5}NV\partiald{^2}{V^2}\left[\gamma'V^{-2/3} - \frac{5\pi^2}{12}\frac{T^2}{\gamma'}V^{2/3}\right]\\
+&= \frac{2}{3}\frac{N\varepsilon_F}{V}\partiald{^2}{V^2}\left[1 + \frac{\pi^2}{12}\left(\frac{T}{\varepsilon_F}\right)^2\right)\\
+&\Downarrow\\
+\kappa_T &= -\frac{3V}{2N\epsilon_F}\left(-1 + \frac{\pi^2}{12}\left(\frac{T}{\epsilon_F}\right)^2\right) +\scrO(T^3)
+\end{align*}
+We see that for $T=0$ we have equal and opposite expansions for each case.
+
+\item For an electron-proton plasma that has turned into a dense neutron gas at zero 
+temperature in which we assume this is an ideal gas. We state that the density of this gas
+must be so great that it overcomes the degeneracy pressure given as
+$$pV = \frac{2}{5}N\varepsilon_F$$
+so that the electrons combine with the protons in the nucleus. This yields the relation
+$$n>>\frac{5}{2}\frac{p}{\varepsilon_F}$$
+\end{enumerate}
+
+
+\section{Problem \#2}
+\begin{enumerate}[(1)]
+\item For a Bose gas of $^{39}K$ atoms whose density is $10^{15}\unit{cm^{-3}}$ we can find 
+the condensation temperature by the formula
+$$T_{BEC} = 3.31\frac{\hbar^2n^{2/3}}{mk} = 3.31\frac{(1.05\times10^{-34}\unit{m^2\ kg\ s^{-1}})^2(10^{15}\unit{cm^{-3}})^{2/3}}{(6.47\times10^{-26}\unit{kg})(1.38\times10^{-23}\unit{J\ K^{-1})}} = 4.1\times10^{-6}\unit{K}$$
+
+\item For a Bose gas of particles with the mass, $m$, is placed into an anisotropic 
+oscillatory potential of the following form
+$$V(x,y,z) = \frac{m\omega^2\left(x^2+y^2\right)}{2} + \frac{m\Omega^2z^2}{2}$$
+where we assume that $\omega<<\Omega$ and both oscillator lengths $I_{\omega} = \sqrt{\hbar/m\omega}$ and 
+$I_{\Omega} = \sqrt{\hbar/m\Omega}$ are much larger than the distance between particles in
+the gas, $n^{-1/3}$. We can find the temperature of it's Bose-Einstein condensate by taking
+the distribution function
+$$f(\varepsilon) = \frac{1}{e^{(\varepsilon(\mathbf{r},\mathbf{p})-\mu)/T} - 1}$$
+where the energy is given by the harmonic oscillator
+$$\varepsilon = \hbar\omega\left(n_x+\frac{1}{2}\right) + \hbar\omega\left(n_y+\frac{1}{2}\right) + \hbar\Omega\left(n_z+\frac{1}{2}\right)$$
+Using this relation we can calculate the density of states $\nu(\varepsilon)$ by integrating 
+over the energy space to find that 
+$$\nu(\varepsilon) = \frac{\varepsilon^2}{2\hbar^3\omega^2\Omega}$$
+This allows us to calculate the number of particles as
+\begin{align*}
+N = \int_{0}^{\infty}f(\varepsilon)\nu(\varepsilon)d\varepsilon &=  \frac{1}{2\hbar^3\omega^2\Omega}\int_{0}^{\infty}\frac{\varepsilon^2}{e^{(\varepsilon-\mu)/T}-1}d\varepsilon
+\end{align*}
+We note that we reach condensation at $T=T_{BEC}$ and $\mu=0$ so we have
+\begin{align*}
+N &=  \frac{1}{2\hbar^3\omega^2\Omega}\int_{0}^{\infty}\frac{\varepsilon^2}{e^{\varepsilon/T_{BEC}}-1}d\varepsilon\\
+&= \frac{2T_{BEC}^3\zeta(3)}{2\hbar^3\omega^2\Omega}\\
+&= \frac{(1.20)T_{BEC}^3}{\hbar^3\omega^2\Omega}\\
+&\Downarrow\\
+T_{BEC} &= \left(\frac{N\hbar^3\omega^2\Omega}{1.20}\right)^{1/3}
+\end{align*}
+
+\item To find the specific heat near the condensation temperature we calculate the energy by
+\begin{align*}
+E = \int_{0}^{\infty}\varepsilon f(\varepsilon)\nu(\varepsilon)d\varepsilon &=  \frac{1}{2\hbar^3\omega^2\Omega}\int_{0}^{\infty}\frac{\varepsilon^3}{e^{(\varepsilon-\mu)/T}-1}d\varepsilon\\
+&\Downarrow\\
+&=  \frac{1}{2\hbar^3\omega^2\Omega}\int_{0}^{\infty}\frac{\varepsilon^3}{e^{\varepsilon/T_{BEC}}-1}d\varepsilon\\
+&=  \frac{1}{2\hbar^3\omega^2\Omega}\frac{\pi^4T_{BEC}^4}{15}
+\end{align*}
+So the specific heat is given by
+\begin{align*}
+C_V = \partiald{E}{T} &= \frac{2\pi^2T_{BEC}^3}{15\hbar^2\omega^2\Omega}
+\end{align*}
+
+
+
+\end{enumerate}
+\pagebreak
+
+\end{document}

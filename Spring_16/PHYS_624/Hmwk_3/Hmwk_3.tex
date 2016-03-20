@@ -1,0 +1,157 @@
+\documentclass[11pt]{article}
+
+\usepackage{latexsym}
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{enumerate}
+\usepackage{amsmath}
+\usepackage{cancel}
+\numberwithin{equation}{section}
+
+\setlength{\evensidemargin}{.25in}
+\setlength{\oddsidemargin}{-.25in}
+\setlength{\topmargin}{-.75in}
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{9.5in}
+\newcommand{\due}{February 24th, 2016}
+\newcommand{\HWnum}{3}
+\input{"C:/Users/joeor_000/Documents/Coursework/Define.tex"}
+
+\begin{document}
+\input{../title.tex}
+
+\section{Problem \#1}
+For a given potential we can use the \emph{First Born Approximation} to approximate 
+the scattering amplitude, $A_{ba}$, by the equation 
+\begin{equation}
+A_{ba}(\mathbf{q}) = -\frac{\mu}{2\pi\hbar^2}\int{e^{-i\mathbf{q}\cdot\mathbf{r}}}V(\mathbf{r})d^3r
+\label{FirstBorn}
+\end{equation}
+where $\hbar\mathbf{q} =  \hbar(\mathbf{k}_a - \mathbf{k}_b)$. Note that $|A_{ba}|^2$ 
+yields the differential cross section.
+
+\begin{enumerate}[(a)]
+\item For the given central potential 
+$$V(r) = V_0\exp\left(-\frac{r}{R}\right)$$
+we note that the potential only depends on the coordinate $r$ which allows us to simplify
+equation \ref{FirstBorn} as
+\begin{align*}
+A_{ba}(\mathbf{q}) &= -\frac{\mu}{2\pi\hbar^2}\int{e^{i\mathbf{q}\cdot\mathbf{r}}}V(\mathbf{r})d^3r\\
+&\Downarrow\\
+A_{ba}(q) &=  -\frac{\mu}{2\pi\hbar^2}\int_{0}^{\infty}\int_{0}^{\pi}\int_{0}^{2\pi}{e^{-iqr\cos\theta}}V(r)\sin\theta r^2{d\theta}{d\phi}{dr}\\
+&=  -\frac{\mu}{\hbar^2}\int_{0}^{\infty}\frac{e^{iqr}-e^{-iqr}}{iqr}V(r)r^2{dr}\\
+&=  -\frac{2\mu}{q\hbar^2}\int_{0}^{\infty}\sin(qr)V(r)rdr
+\end{align*}
+So using the simplified form of equation \ref{FirstBorn} we have
+\begin{align*}
+A_{ba}(q) &= -\frac{2\mu{V_0}}{q\hbar^2}\int_{0}^{\infty}\sin(qr)e^{-r/R}rdr\\
+&= -\frac{2\mu{V_0}}{q\hbar^2}\frac{2qR^3}{(1+(qR)^2)^2}\\
+&= -\frac{4\mu{V_0}R^3}{\hbar^2(1+(qR)^2)^2}
+\end{align*}
+Using this result and noting that $q=2k\sin(\theta/2)$ for a spherically symmetric 
+potential we can calculate the total cross section, $\sigma(E)$, as
+\begin{align*}
+\sigma(k) = \int|A_{ba}|^2d\Omega &= 2\pi\int_{0}^{\pi}|A_{ba}|^2\sin\theta{d\theta}\\
+&= 2\pi\int_{0}^{\pi}\left(\frac{4\mu{V_0}R^3}{\hbar^2(1+(qR)^2)^2}\right)^2\sin\theta{d\theta}\\
+&= \frac{32\pi\mu^2{V_0^2}R^6}{\hbar^4}\int_{0}^{\pi}\frac{\sin\theta}{(1+(2k\sin(\theta/2)R)^2)^4}{d\theta}\\
+&= \frac{16\pi\mu^2{V_0^2}R^4}{3\hbar^4k^2}\left(1-\frac{1}{(1+4k^2R^2)^2}\right)\\
+&\Downarrow\\
+\sigma(E) &= \frac{8\pi\mu{V_0^2}R^4}{3\hbar^2E}\left(1-\frac{1}{(1+8\mu{E}R^2/\hbar^2)^2}\right)
+\end{align*}
+Note we changed to a dependence on energy by $k^2=2\mu{E}/\hbar^2$.
+
+\item Now for the potential 
+$$V(r) = V_0\exp\left(-\frac{r^2}{R^2}\right)$$
+which is also a central potential we repeat the process from part (a) to find $A_{ba}$ as
+\begin{align*}
+A_{ba}(q) &= -\frac{2\mu{V_0}}{q\hbar^2}\int_{0}^{\infty}\sin(qr)e^{-r^2/R^2}rdr\\
+&= -\frac{2\mu{V_0}}{q\hbar^2}\frac{\sqrt{\pi}qR^3e^{-q^2R^2/4}}{4}\\
+&= -\frac{\sqrt{\pi}\mu{V_0}R^3}{2\hbar^2}e^{-q^2R^2/4}
+\end{align*}
+and $\sigma$ as
+\begin{align*}
+\sigma(k) &= 2\pi\int_{0}^{\pi}\left(\frac{\sqrt{\pi}\mu{V_0}R^3}{2\hbar^2}e^{-q^2R^2/4}\right)^2\sin\theta{d\theta}\\
+&= \frac{\pi^2\mu^2V_0^2R^6}{2\hbar^4}\int_{0}^{\pi}e^{-2k^2\sin^2(\theta/2)R^2}\sin\theta{d\theta}\\
+&= \frac{\pi^2\mu^2V_0^2R^4}{2\hbar^4k^2}\left(1-e^{-2k^2R^2}\right)\\
+&\Downarrow\\
+\sigma(E) &= \frac{\pi^2{\mu}V_0^2R^4}{4\hbar^2E}\left(1-e^{-4\mu{E}R^2/\hbar^2}\right)
+\end{align*}
+Again using the free particle energy $k^2=2\mu{E}/\hbar^2$ to get the total cross section
+as a function of the incident energy, $E$.
+\end{enumerate}
+
+\pagebreak
+
+\section{Problem \#2}
+Given a particle with mass, $M$, and incident wave function $\exp(ikx)$ we can calculate the
+wave function after scattering by a potential $V(x)$ is given by 
+\begin{equation}
+\psi(x) = \exp(ikx) + \frac{2M}{\hbar^2}\int_{-\infty}^{\infty}G(x,x')V(x')\psi(x')dx'
+\label{Scatt}
+\end{equation}
+where the Green's function for the one dimensional Schr\"{o}dinger's equation is given as
+$$G(x,x') = \left\{\begin{array}{lc}
+                  (2ik)^{-1}\exp(ik(x-x'))   &x\ge{x'}\\
+                  (2ik)^{-1}\exp(-ik(x-x'))   &x\le{x'}
+            \end{array}\right.$$
+Using $G(x,x')$ we can find the explicit form of $\psi(x)$ for an attractive potential 
+$$V(x) = -\frac{\gamma\hbar^2}{2M}\delta{x}$$
+where $\gamma$ is a positive constant. Therefore equation \ref{Scatt} becomes
+\begin{align*}
+\psi(x) &= \exp(ikx) + \frac{i\gamma}{2k}\int_{-\infty}^{\infty}e^{ik(x-x')}\delta(x')\psi(x')dx'\\
+&= \exp(ikx) + 
+\left\{\begin{array}{lc}
+\dfrac{i\gamma}{2k}\psi(0)e^{ikx}  &x\ge{0}\\
+\\
+\dfrac{i\gamma}{2k}\psi(0)e^{-ikx}  &x\le{0}
+\end{array}\right.
+\end{align*}
+Note for $x<0$ the exponential is negative is but so is $x$ this implies that the wave 
+function is 
+$$\psi(x) = e^{ikx} + \dfrac{i\gamma}{2k}\psi(0)e^{ik|x|}$$
+This allows us to solve for $\psi(0)$ by
+\begin{align*}
+\psi(0) &= e^{ik(0)} + \dfrac{i\gamma}{2k}\psi(0)e^{ik(0)}\\
+&= 1 + \frac{i\gamma}{2k}\psi(0)\\
+&\Downarrow\\
+1 &= \psi(0)\left(1-\frac{i\gamma}{2k}\right)\\
+&\Downarrow\\
+\psi(0) &= \frac{2k}{2k-i\gamma}
+\end{align*}
+So we have the wave-function 
+$$\psi(x) = e^{ikx} + \frac{i\gamma}{2k-i\gamma}e^{ik|x|}$$
+which tells us that in the region left of the potential ($x<0$) we have a scattered 
+wave-function moving to the left with an amplitude 
+$$|R|^2 = \frac{\gamma^2}{4k^2+\gamma^2}$$
+and to the right of the potential ($x>0$) we have a scattered potential moving to the right
+with the amplitude 
+$$|T|^2 = \frac{4k^2}{4k^2+\gamma^2}$$
+
+
+\pagebreak
+
+\section{Problem \#3}
+We can use the \emph{First Born Approximation}, given by equation \ref{FirstBorn}, to
+express the scattering amplitude by $N$ identical scattering centers located along a 
+straight line where $b$ is the distance between any two neighboring centers. Note we 
+are given the scattering amplitude, $f_0(q)$, of a single scattering center $V_0(r)$.
+The total potential, $V(r)$ is given by the sum 
+$$V(r) = \sum_{n=0}^{N}V_0(r+nb)$$
+where there we apply a periodic condition that
+$$V(r) = V(r+b)$$
+We note that the scattering potentials only depend on $r$ so we can calculate the total 
+scattering amplitude, $f_N(q)$, as
+\begin{align*}
+f_N(q) &= -\frac{\mu}{2\pi\hbar^2}\int{e^{-i\mathbf{q}\cdot\mathbf{r}}}V(r)d^3r\\
+&= -\frac{\mu}{2\pi\hbar^2}\int{e^{-i\mathbf{q}\cdot\mathbf{r}}}\sum_{n=0}^{N}V(r+nb)d^3r\\
+&= \sum_{n=0}^{N}-\frac{\mu}{2\pi\hbar^2}\int{e^{-i(r-nb)\mathbf{q}\cdot\hat{r}}}V(r)d^3r\\
+&= \left(-\frac{\mu}{2\pi\hbar^2}\int{e^{-i\mathbf{q}\cdot\mathbf{r}}}V(r)d^3r\right)\sum_{n=0}^Ne^{inb\mathbf{q}\cdot{\hat{r}}}\\
+&= f_0(q)\sum_{n=0}^Ne^{inbq\cos\theta}\\
+&= f_0(q)\left(\frac{1-e^{iNbq\cos\theta}}{1-e^{ibq\cos\theta}}\right)
+\end{align*}
+where we take $\theta$ as the scattering angle.
+
+
+\end{document}
+

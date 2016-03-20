@@ -1,0 +1,248 @@
+\documentclass[11pt]{article}
+
+\usepackage{latexsym}
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{enumerate}
+\usepackage{amsmath}
+\usepackage{cancel}
+\numberwithin{equation}{section}
+
+\setlength{\evensidemargin}{.25in}
+\setlength{\oddsidemargin}{-.25in}
+\setlength{\topmargin}{-.75in}
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{9.5in}
+\newcommand{\due}{February 17th, 2016}
+\newcommand{\HWnum}{4}
+\input{"C:/Users/joeor_000/Documents/Coursework/Define.tex"}
+
+\begin{document}
+\input{../title.tex}
+
+\section{Problem \#1}
+\begin{enumerate}[(1)]
+\item Given the fact that energy per particle depends only on the intensive variables
+$$s = \frac{S}{N},\qquad\textnormal{and}v=\frac{V}{N}$$
+we can show that the Gibbs thermodynamic potential per particle given as
+$$d\Phi = VdP - SdT + \mu{dN}$$
+where $\mu$ is the chemical potential we note that 
+$$\mu = \left(\partiald{\Phi}{N}\right)_{P,T}.$$
+Now if we write $d\Phi$ in terms of the intensive variables we have
+$$d\Phi = NvdP - NsdT + \mu{dN}$$
+which implies that we can write $\Phi$ as
+$$\Phi(T,P) = N\varphi(T,P)$$
+where $T$ and $P$ are intensive variables not dependent on $N$. Then it is easy to see that
+\begin{align*}
+\mu = \left(\partiald{\Phi}{N}\right)_{P,T} &= \varphi(T,P)\\
+&\Downarrow\\
+\mu &= \varphi(T,P)
+\end{align*}
+But by definition we see that
+$$\mu = \varphi(T,P) = \frac{\Phi}{N}$$
+so the chemical potential is just given by the ratio of $\Phi$ with $N$.
+
+\item We can introduce the density of particles given by
+$$n=\frac{N}{V}$$
+as an intensive value that is only a function of intensive variables $P$ and $T$ note that
+by rearranging to $N = nV$ we see that 
+$$\partiald{N}{V} = n.$$ 
+Also using the result from part (a) which states that
+$$\Phi = N\mu\qquad\Rightarrow\qquad d\Phi = \mu{dN} + Nd\mu$$
+which if we combine with our definition of $d\Phi$ yields
+\begin{align*}
+d\Phi = \cancel{\mu{dN}} + Nd\mu &=  VdP - SdT + \cancel{\mu{dN}}\\
+&\Downarrow\\
+Nd\mu &=  VdP - SdT 
+\end{align*}
+It follows that 
+$$\left(\partiald{\mu}{P}\right)_{T} = \frac{V}{N} = \frac{1}{n}$$
+using the above two identities we see that
+\begin{align*}
+\left(\partiald{N}{\mu}\right)_{T,V} &= \partiald{N,V}{\mu,V}\\
+&= \partiald{N,V}{N,P}\partiald{N,P}{\mu,V}\\
+&= \left(\partiald{V}{P}\right)_{T,N}\left(\cancelto{0}{\partiald{N}{\mu}\partiald{P}{V}} - \cancelto{n}{\partiald{N}{V}}\cancelto{n}{\partiald{P}{\mu}}\right)\\
+&= -n^2\left(\partiald{V}{P}\right)_{T,N}
+\end{align*}
+Note we explicitly kept $T$ constant throughout the derivation.
+\end{enumerate}
+
+\pagebreak
+
+\section{Problem \#2}
+\begin{enumerate}[(1)]
+\item For a given gas of Helium atoms expanding adiabatically to a volume ten times its 
+initial volume we and immediately can state that the change in entropy, 
+$$\Delta{S}=0$$
+because this is adiabatic expansion. This fact also implies that the change of energy in the
+system is due to the work of expansion. We note for a mono-atomic gas we have a change in
+internal energy that is given by
+$$dE = \frac{3}{2}NdT$$
+where if we use the equation of state for an ideal gas we have
+$$d(PV) = NdT$$
+where we assume the number of particles is a constant. Using this fact and that the total 
+change in energy is given by the work we have
+\begin{align*}
+dE = \frac{3}{2}d(PV) = \frac{3}{2}(PdV+VdP) &= -PdV\\
+&\Downarrow\\
+-\left(\frac{3}{2}+1\right)PdV &= \frac{3}{2}VdP\\
+&\Downarrow\\
+-\gamma\frac{dV}{V} &= \frac{dP}{P}\\
+&\Downarrow\\
+-\gamma\int_{V_0}^{V}\frac{dV}{V} &= \int_{P_0}^{P}\frac{dP}{P}\\
+&\Downarrow\\
+P_0V_0^{\gamma} &= PV^{\gamma}
+\end{align*}
+Where we defined $\gamma$ by the degrees of freedom, $d$, given by
+$$\gamma\equiv\frac{d/2 + 1}{d/2}$$
+where we take $d=3$ for a mono-atomic gas which yields $\gamma=5/3$. So for $V=10V_0$ we have
+$$P = P_0\left(\frac{V_0}{10V_0}\right)^{5/3} = \frac{P_0}{10^{5/3}}$$
+This implies that the change in pressure is given by
+$$\Delta{P} = P_0\left(10^{-5/3}-1\right)$$
+Using this change in pressure and the equation of state for an ideal gas we can find the 
+change in temperature by 
+\begin{align*}
+\Delta{T} = T - T_0 &=  \frac{PV}{N} - \frac{P_0V_0}{N}\\
+&=  \frac{P_0}{10^{5/3}}\frac{10V_0}{N} - \frac{P_0V_0}{N} \\
+&= \frac{P_0V_0}{N}\left(10^{-2/3} - 1\right)
+\end{align*}
+
+\item Repeating this process of a gas of $H_2$ molecules we note that everything remains the
+same except for the degrees of freedom change to $d=5$ to account for the two new rotational
+degrees of freedom. This implies that $\gamma = 7/5$ so it follows that
+\begin{align*}
+\Delta{S} &= 0\\
+\Delta{P} &= P_0\left(10^{-7/5}-1\right)\\
+\Delta{T} &= \frac{P_0V_0}{N}\left(10^{-2/5} - 1\right)
+\end{align*}
+
+\item We can calculate the adiabatic coefficient of thermal expansion, $\alpha_S$, for an
+ideal gas by noting that $T$ and $V$ are related to a constant, $C$, given by
+$$TV^{\gamma-1} = C$$
+when we hold $S$ constant which represents an adiabatic process. This allows us to calculate
+$\alpha_S$ by
+\begin{align*}
+\alpha_S = \frac{1}{V}\left(\partiald{V}{T}\right)_{S} &= \frac{1}{V}\partiald{}{T}\left(\frac{C}{T}\right)^{1/\gamma-1}\\
+&= \left(\frac{T}{C}\right)^{1/\gamma-1}C^{1/\gamma-1}\left(\frac{-1}{\gamma-1}\right)T^{-\gamma/\gamma-1}\\
+&= -\frac{1}{\gamma-1}T^{\frac{-\gamma+1}{\gamma-1}}\\
+&= -\frac{1}{\gamma-1}\frac{1}{T}
+\end{align*}
+We note for the minimal degrees of freedom $d=3$ we have $\gamma>1$ which implies that 
+$\alpha_S$ is negative. Therefore an ideal gas undergoing adiabatic expansion decrease in 
+temperature at a rate inversely proportional to the temperature.
+\end{enumerate}
+
+\pagebreak
+
+\section{Problem \#3}
+\begin{enumerate}[(1)]
+\item Given an ideal gas with $N$ molecules in a chamber at temperature, $T_1$ under the 
+pressure $P_1$ that is penetrating through a porous tube into another chamber with 
+controllable pressure $P_2<P_1$ we can find the change in temperature, entropy, and volume 
+for this process. Note we assume that $C_P$ is not dependent on temperature. Noting that
+the gas is undergoing a \emph{Joule-Thomson} process which in general is governed by the 
+equations
+\begin{equation}
+\left(\partiald{T}{P}\right)_{W} = \frac{1}{C_P}\left[T\left(\partiald{V}{T}\right)_{P}-V\right]
+\label{JTEqn1}
+\end{equation}
+where we apply the equation of state for an ideal gas which states
+$$V = \frac{NT}{P}\qquad\Rightarrow\qquad \partiald{V}{T} = \frac{N}{P}$$
+Therefore equation \ref{JTEqn1} becomes
+\begin{align*}
+\left(\partiald{T}{P}\right)_{W} &= \frac{1}{C_P}\left[T\left(\partiald{V}{T}\right)_{P}-V\right]\\
+&\Downarrow\\
+\left(\partiald{T}{P}\right)_{W} &= \frac{1}{C_P}\left[T\frac{N}{P}-\frac{NT}{P}\right] = 0
+\end{align*}
+So for any change in pressure we have no change in temperature so 
+$$\Delta{T}=0$$
+This implies that by the equation of state the change in volume is directly related to the 
+change in pressure as $T$ and $N$ are constant. So we see
+\begin{align*}
+\Delta{V} = V_2-V_1 &= \frac{NT}{P_2} - \frac{NT}{P_1}\\
+&= NT\left(\frac{1}{P_2} - \frac{1}{P_1}\right)
+\end{align*}
+Now, if use the relation
+$$dW = TdS+VdP\qquad\Rightarrow\qquad dS = \frac{dW}{T} - \frac{V}{T}dP$$
+we can write the change in entropy as
+\begin{align*}
+\left(\partiald{S}{P}\right)_{W} = -\frac{V}{T} &= -\frac{N}{P}\\
+&\Downarrow\\
+\int_{S_1}^{S_2}dS &= -N\int_{P_1}^{P_2}\frac{dP}{P}\\
+\Delta{S} &= N\ln\left(\frac{P_1}{P_2}\right)
+\end{align*}
+Note that $P_1>P_2$ so as expected $\Delta{S}>0$. 
+
+\item Now, if we take the gas as slightly non-ideal with an energy given as
+$$E = NC_VT + \frac{gN^2}{2V}$$
+where $g$ is the strength of interaction between particles. A positive $g$ corresponds to 
+repulsion, negative to attraction. We assume that the interaction is weak or $|g|n<<T$. So 
+we take the equation of state to be a first order correction given as
+$$V = \frac{NT}{P}+\frac{gN^2}{2}.$$
+Using this new equation of state we can apply equation \ref{JTEqn1} to find the change in 
+temperature
+\begin{align*}
+\left(\partiald{T}{P}\right)_{W} &= \frac{1}{C_P}\left[T\left(\partiald{V}{T}\right)_{P}-V\right]\\
+&\Downarrow\\
+\left(\partiald{T}{P}\right)_{W} &= \frac{1}{C_P}\left[T\frac{N}{P}-\frac{NT}{P} + \frac{gN^2}{2}\right] \\
+&= \frac{1}{C_P}\frac{gN^2}{2}
+\end{align*}
+Note the interaction term allows for the change in temperature to be non-zero given by an
+integration of a constant. This yields
+$$\Delta{T} = \frac{P_2-P_1}{C_P}\frac{gN^2}{2}$$
+And we find the change in entropy by
+\begin{align*}
+\left(\partiald{S}{P}\right)_{W} = -\frac{V}{T} &= -\frac{N}{P} - \frac{gN^2}{2T}\\
+&\Downarrow\\
+\int_{S_1}^{S_2}dS &= -N\int_{P_1}^{P_2}\frac{dP}{P} - \frac{gN^2}{2T}(P_2-P_1)\\
+\Delta{S} &= N\ln\left(\frac{P_1}{P_2}\right) - \frac{gN^2}{2T}(P_2-P_1)
+\end{align*}
+Note we assume that $|g|n<<T$ so the term we are correcting lowers the change in entropy from
+the ideal case but the correction is small so that the total change in entropy remains 
+positive.
+\end{enumerate}
+
+\pagebreak
+
+\section{Problem \#4}
+\begin{enumerate}[(1)]
+\item We can find the chemical potential of an ideal gas as a function of variable pairs. 
+First we start with the partition function for an ideal gas
+$$Z = \frac{(CVT^{3/2})^N}{N!}$$
+where we take the log assuming $N$ is large with yields
+$$\ln(Z) = N\left(\zeta+1-\ln\left(\frac{V}{N}\right)+\frac{3}{2}\ln(T)\right)$$
+So we can calculate $F$ as
+$$F = -T\ln(Z) = -NT\left(\zeta+1-\ln\left(\frac{V}{N}\right)+\frac{3}{2}\ln(T)\right)$$
+which yields the entropy by
+$$S = -\partiald{F}{T} = N\left(\zeta+1+\ln\left(\frac{V}{N}\right) + \frac{3}{2}(1+\ln(T))\right)$$
+So we can calculate the chemical potential by
+\begin{align*}
+\mu = \frac{\Phi}{N} &= \frac{PV+F}{N} = P\frac{V}{N} - T\left(\zeta+1-\ln\left(\frac{V}{N}\right)+\frac{3}{2}\ln(T)\right)\\
+&\Downarrow\\
+\mu(V,T) &= -T\left(\zeta+\ln(V/N)+\frac{3}{2}\ln(T)\right)
+\end{align*}
+Using the relation defined by the entropy we have
+\begin{align*}
+\mu(P,T) &= -T\left(\zeta+\ln(T/P)+\frac{3}{2}\ln(T)\right)\\
+\mu(S,T) &= -T\left(\frac{S}{N}-\frac{5}{2}\right)\\
+\mu(P,S) &= -\left(\frac{S}{N}-\frac{5}{2}\right)P^{2/5}\exp\left(\frac{2}{5}\left(\frac{S}{N}-\zeta\right)-1\right)
+\end{align*}
+
+\item We note that for an ideal gas we have the potential, $\Omega$, given as
+$$\Omega = -PV$$
+Note the result from part (1) for the chemical potential 
+\begin{align*}
+\mu(P,T) &= -T\left(\zeta+\ln(T/P)+\frac{3}{2}\ln(T)\right)\\
+&\Downarrow\\
+P(\mu,T) &= \exp\left(\frac{\mu}{T}+\frac{5}{2}\ln(T)+\zeta\right)
+\end{align*}
+Replacing we have
+$$\Omega = -V\exp\left(\frac{\mu}{T}+\frac{5}{2}\ln(T)+\zeta\right)$$
+
+
+
+\end{enumerate}
+
+\end{document}
+

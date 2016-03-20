@@ -1,0 +1,220 @@
+\documentclass[11pt]{article}
+
+\usepackage{latexsym}
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{enumerate}
+\usepackage{amsmath}
+\usepackage{cancel}
+\usepackage{mathrsfs}
+\numberwithin{equation}{section}
+
+\setlength{\evensidemargin}{.25in}
+\setlength{\oddsidemargin}{-.25in}
+\setlength{\topmargin}{-.75in}
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{9.5in}
+\newcommand{\due}{February 15th, 2016}
+\newcommand{\HWnum}{2}
+\input{"C:/Users/joeor_000/Documents/Coursework/Define.tex"}
+
+\begin{document}
+\input{../title.tex}
+
+\section{Problem \#1}
+Given a particle in a uniform time-dependent field with a force $\mathbf{F}(t)\rightarrow{0}$
+for $|t|\rightarrow\infty$ we can find the change in the average value of the energy caused
+by interaction with the field, $U = -\mathbf{F}(t)\cdot\mathbf{r}(t)$ by noting that the
+time evolution of an operator in the Heisenberg representation is given by the commutator 
+with the Hamiltonian
+$$\frac{d\hat{F}}{dt} =  \frac{1}{i\hbar}[\hat{F},\hat{H}]$$
+which allows us to gain the Heisenberg equations of motion
+\begin{align*}
+\frac{d\hat{\mathbf{p}}(t)}{dt} &= -\grad{U} = \mathbf{F}(t)\\
+\frac{d\hat{\mathbf{r}}(t)}{dt} &= \frac{\mathbf{p}}{m}
+\end{align*}
+Solving for $\hat{\mathbf{p}}(t)$ we integrate to get
+\begin{align*}
+\hat{\mathbf{p}}(t) + C &= \int_{-\infty}^{t}\mathbf{F}(t')dt'\\
+&\Downarrow\\
+\hat{\mathbf{p}}(t) &= \int_{-\infty}^{t}\mathbf{F}(t')dt' + \mathbf{p}_0
+\end{align*}
+Note we use an initial condition to find the integration constant because we assume 
+$\mathbf{F}(t=-\infty)=0$ which implies that 
+$$\mathbf{p}_{0} \equiv \mathbf{p}(t=-\infty)$$. We also apply this assumption to see that 
+at $|t|\rightarrow\infty$ the particle acts like a free particle with the Hamiltonian
+$$\lim_{|t|\rightarrow\infty}\hat{H}(t) = \frac{\hat{\mathbf{p}}^2(t=\pm\infty)}{2m}$$
+therefore we can find the change in the average value of energy from $t=-\infty$ to $t=\infty$
+through the Hamiltonian by noting that
+\begin{align*}
+\average{E(\pm\infty)} &= \average{H}(\pm\infty) = \frac{\average{\hat{\mathbf{p}}^2(\pm\infty)}}{2m}
+\end{align*}
+where
+$$\hat{\mathbf{p}}^2(t) = \mathbf{p}_0^2 + 2\mathbf{p}_0\int_{-\infty}^{t}\mathbf{F}(t')dt' + \left(\int_{-\infty}^{t}\mathbf{F}(t')dt'\right)^2$$
+we note that at $t=-\infty$ we have $\hat{\mathbf{p}}^2(-\infty) = \mathbf{p}_0^2$ as all the
+integrals go to zero. So this implies that
+$$\average{E(-\infty)} = \frac{\average{\mathbf{p}_0^2}}{2m}$$
+and that
+\begin{align*}
+\average{E(\infty)} &= \frac{\average{\mathbf{p}_0^2}}{2m} + \frac{\average{\mathbf{p}_0}}{m}\int_{-\infty}^{\infty}\mathbf{F}(t')dt' + \left(\int_{-\infty}^{\infty}\mathbf{F}(t')dt'\right)^2\\
+\average{E(\infty)} &= \average{E(-\infty)} + \frac{\average{\mathbf{p}_0}}{m}\int_{-\infty}^{\infty}\mathbf{F}(t')dt' + \left(\int_{-\infty}^{\infty}\mathbf{F}(t')dt'\right)^2\\
+&\Downarrow\\
+\average{E(\infty)} - \average{E(-\infty)} &= \frac{\average{\mathbf{p}_0}}{m}\int_{-\infty}^{\infty}\mathbf{F}(t')dt' + \left(\int_{-\infty}^{\infty}\mathbf{F}(t')dt'\right)^2
+\end{align*}
+
+\pagebreak
+
+\section{Problem \#2}
+\begin{enumerate}[(a)]
+\item For a ground state harmonic oscillator under an applied external force $\mathbf{F}(t)$, 
+such that $\mathbf{F}(t)\rightarrow{0}$ for $|t|\rightarrow\infty$ we can find the time 
+evolution of the creation and annihilation operators, $\hat{a}$ and $\hat{a}^{\dagger}$, by taking the
+Heisenberg representation 
+\begin{align*}
+\frac{d\hat{\mathbf{p}}(t)}{dt} &= -m\omega^2\mathbf{r} + \mathbf{F}(t)\\
+\frac{d\hat{\mathbf{r}}(t)}{dt} &= \frac{\mathbf{p}}{m}
+\end{align*}
+This allows us to use the definition of the creation and annihilation operators to say
+\begin{align*}
+\frac{d\hat{a}}{dt} &= \sqrt{\frac{m\omega}{2\hbar}}\left(\frac{d\hat{\mathbf{r}}}{dt}+\frac{i}{m\omega}\frac{d\hat{\mathbf{p}}}{dt}\right)\\
+&= \sqrt{\frac{m\omega}{2\hbar}}\left(\frac{\hat{\mathbf{p}}}{m} - i\omega\hat{\mathbf{r}} + \frac{i\mathbf{F}(t)}{m\omega}\right)\\
+&= -i\omega\sqrt{\frac{m\omega}{2\hbar}}\left(\frac{i\hat{\mathbf{p}}}{m\omega} + \hat{\mathbf{r}}\right) + \sqrt{\frac{m\omega}{2\hbar}}\frac{i\mathbf{F}(t)}{m\omega}\\
+&= -i\omega\hat{a} + i\frac{\mathbf{F}(t)}{\sqrt{2\hbar{m}\omega}}
+\end{align*}
+And the same follows for $\hat{a}^{\dagger}$ as
+$$\frac{d\hat{a}^{\dagger}}{dt} = i\omega\hat{a}^{\dagger} - i\frac{\mathbf{F}(t)}{\sqrt{2\hbar{m}\omega}}$$
+Now we can solve the differentials by direct integration using an integrating factor which 
+yields
+\begin{align*}
+\hat{a}(t) &= a(0)e^{-i\omega{t}} + \frac{ie^{-i\omega{t}}}{\sqrt{2\hbar{m}\omega}}\int_{-\infty}^{t}\mathbf{F}(t')e^{i\omega{t'}}dt'\\
+\hat{a}^{\dagger}(t) &= a^{\dagger}(0)e^{i\omega{t}} - \frac{ie^{i\omega{t}}}{\sqrt{2\hbar{m}\omega}}\int_{-\infty}^{t}\mathbf{F}(t')e^{-i\omega{t'}}dt'
+\end{align*}
+Where we have $a(0)$ and $a^{\dagger}(0)$ follow from the integration constants which we take
+to be initial conditions. Note that the fact that $\hat{a}$ and $\hat{a}^{\dagger}$ are 
+Hermitian conjugates still holds. 
+
+\item To find the average energy as $t\rightarrow+\infty$ we note that in this limit 
+$\mathbf(F)(t)=0$ so we have an unforced harmonic oscillator which has a Hamiltonian 
+$$\lim_{t\rightarrow\infty}\hat{H}(t) = \hbar{\omega}\left(\hat{a}^{\dagger}(\infty)\hat{a}(\infty)+\frac{1}{2}\right)$$
+where we find
+\begin{align*}
+\hat{a}(t)\hat{a}^{\dagger}(t) &= a(0)a^{\dagger}(0) - \frac{ia(0)}{\sqrt{2\hbar{m}\omega}}\int_{-\infty}^{t}\mathbf{F}(t')e^{-i\omega{t'}}dt' + \frac{ia^{\dagger}(0)}{\sqrt{2\hbar{m}\omega}}\int_{-\infty}^{t}\mathbf{F}(t')e^{i\omega{t'}}dt' + \left|\frac{i}{\sqrt{2\hbar{m}\omega}}\int_{-\infty}^{t}\mathbf{F}(t')e^{i\omega{t'}}dt'\right|^2
+\end{align*}
+note that in the $-\infty$ limit the integrals disappear which implies that
+$$\average{E(-\infty)} = \hbar\omega\average{\hat{a}^{\dagger}(-\infty)\hat{a}(-\infty)+\frac{1}{2}} = \hbar\omega\average{a^{\dagger}(0)a(0)+\frac{1}{2}}$$
+which allows us to say that for $t\rightarrow\infty$ we have the average energy
+\begin{align*}
+\average{E(\infty)} &= \average{E(-\infty)} - \frac{i\hbar{\omega}a(0)}{\sqrt{2\hbar{m}\omega}}\int_{-\infty}^{\infty}\mathbf{F}(t')e^{-i\omega{t'}}dt' + \frac{i\hbar{\omega}a^{\dagger}(0)}{\sqrt{2\hbar{m}\omega}}\int_{-\infty}^{\infty}\mathbf{F}(t')e^{i\omega{t'}}dt' + \left|\frac{i}{\sqrt{2m}}\int_{-\infty}^{\infty}\mathbf{F}(t')e^{i\omega{t'}}dt'\right|^2
+\end{align*}
+
+\item Next we can find the excitation probabilities of a stationary state for 
+$t\rightarrow\infty$ using the fact that the system is in the ground state for 
+$t\rightarrow-\infty$ which implies that
+$$\hat{H}(-\infty)\ket{\psi} \left(a^{\dagger}(0)a(0)+\frac{1}{2}\right)\ket{\psi} = \frac{\hbar\omega}{2}\ket{\psi}$$
+or that $\ket{\psi}=\ket{0}_{-\infty}$. Next we note that at positive infinity we are again in a 
+stationary state as $\mathbf{F}=0$. Therefore we can generate the $n^{th}$ excited state by
+acting the creation operator on $\ket{0}$ $n$-times, but due to the fact that we are 
+operating in Heisenberg representation we need to use the creation operator at $t=\infty$
+\begin{align*}
+\ket{n}_{+\infty} &= \frac{\left(\hat{a}^{\dagger}(\infty)\right)^n}{\sqrt{n!}}\ket{0}_{+\infty}
+\end{align*}
+Note that the set of eigenkets $\ket{n}_{+\infty}$ forms an orthonormal basis, which allows 
+us to write the initial state in this basis as
+$$\ket{0}_{-\infty} = \sum_{n=0}^{\infty}c_n\ket{n}_{+\infty}$$
+where the coefficient $|c_n|^2$ is the transition probability from $\ket{0}_{-\infty}$ to 
+$\ket{n}_{+\infty}$. We can determine $c_n$ by noting that if we act the ladder operator
+we get
+$$\hat{a}(\infty)\ket{n}_{+\infty} = \sqrt{n}\ket{n-1}_{+\infty}$$
+and we note that if we act $a(0)$ onto the expansion we get
+$$0 = a(0)\sum_{n=0}^{\infty}c_n\ket{n}_{+\infty}$$
+noting that $a(0)$ is also contained in $\hat{a}(\infty)$ as found in part (a)
+$$\hat{a}(\infty) = e^{-i\omega{t}}\left(a(0) + \frac{i}{\sqrt{2\hbar{m}\omega}}\int_{-\infty}^{\infty}\mathbf{F}(t')e^{i\omega{t'}}dt'\right)$$
+. Therefore it must follow that
+$$c_n = \frac{c_{n-1}}{\sqrt{n}}\frac{i}{\sqrt{2\hbar{m}\omega}}\int_{-\infty}^{\infty}\mathbf{F}(t')e^{i\omega{t'}}dt'$$
+Which implies that the $n^{th}$ state is related to the ground state by
+$$c_n = c_0\frac{1}{\sqrt{n!}}\left(\frac{i}{\sqrt{2\hbar{m}\omega}}\int_{-\infty}^{\infty}\mathbf{F}(t')e^{i\omega{t'}}dt'\right)^n$$
+therefore we can apply the normalization condition to yeild
+\begin{align*}
+\sum_{n=0}^{\infty}|c_n|^2 = 1 &= |c_0|^2\sum_{n=0}^{\infty}\frac{1}{n!}\left|\frac{i}{\sqrt{2\hbar{m}\omega}}\int_{-\infty}^{\infty}\mathbf{F}(t')e^{i\omega{t'}}dt'\right|^{2n}\\
+&= |c_0|^2\exp\left[\left|\frac{i}{\sqrt{2\hbar{m}\omega}}\int_{-\infty}^{\infty}\mathbf{F}(t')e^{i\omega{t'}}dt'\right|^{2}\right]\\
+&\Downarrow\\
+|c_0|^2 &= \exp\left[-\frac{1}{2\hbar{m}\omega}\left|\int_{-\infty}^{\infty}\mathbf{F}(t')e^{i\omega{t'}}dt'\right|^{2}\right]
+\end{align*}
+So the transition probability follows
+$$|c_n|^2 = \frac{1}{n!}\left(\frac{i}{\sqrt{2\hbar{m}\omega}}\int_{-\infty}^{\infty}\mathbf{F}(t')e^{i\omega{t'}}dt'\right)^{2n}\exp\left[-\frac{1}{2\hbar{m}\omega}\left|\int_{-\infty}^{\infty}\mathbf{F}(t')e^{i\omega{t'}}dt'\right|^{2}\right]$$
+\end{enumerate}
+
+\pagebreak
+
+\section{Problem \#3}
+\begin{enumerate}[(a)]
+\item For a transformation from a stationary frame of reference to a frame of reference that
+uniformly rotates with an angular velocity, $\pmb{\omega}$, we can find a unitary operator, 
+$\mathscr{D}(\omega)$, by noting that for a constant angular velocity we move at a
+time-dependent angle $\pmb{\phi}(t) = \pmb{\omega}{t}$. Then we treat this like a infinitesimal rotation 
+through the angle $-\pmb{\phi}(t)$ which yields
+$$\mathscr{D}(\pmb{\omega}) = \lim_{N\rightarrow\infty}\left[1+i\left(\frac{\mathbf{J}}{\hbar}\right)\cdot\left(\frac{\pmb{\omega}{t}}{N}\right)\right]^N = \exp\left(\frac{i\mathbf{J}\cdot\pmb{\omega}{t}}{\hbar}\right)$$
+Note we rotate through a negative angle because we are rotating the frame of reference with 
+can be though of rotating the vectors in the opposite direction. We also are projecting the angular momentum 
+$\mathbf{J}$ to be along the rotation $\pmb{\omega}$. Without loss of generality we assume 
+that both $\mathbf{J}$ and $\pmb{\omega}$ point along the $z$ direction.
+
+\item So we can use transformation $\mathscr{D}$ we found in part (a) to transform the 
+coordinate operator into the rotating frame. This follows like any unitary transformation 
+of an operator where
+\begin{align*}
+\hat{x}(t) &= \mathscr{D}(\pmb{\omega})x\mathscr{D}^{\dagger}(\pmb{\omega})\\
+&= \exp\left(\frac{iJ\omega{t}}{\hbar}\right)x\exp\left(-\frac{iJ\omega{t}}{\hbar}\right)\\
+&= x + \frac{i\omega{t}}{\hbar}[J_z,x] - \frac{1}{2}\left(\frac{\omega{t}}{\hbar}\right)^2[J_z,[J_z,x]] + ...\\
+&= x + \frac{i\omega{t}}{\hbar}(i\hbar{y}) + \frac{1}{2}\left(\frac{\omega{t}}{\hbar}\right)^2(\hbar^2x) + ...\\
+&= x\left(1 + \frac{1}{2}(\omega{t})^2 + ...\right) - y\left(\omega{t} + \frac{1}{3!}(\omega{t})^3\right)\\
+&= x\cos(\omega{t}) - y\sin(\omega{t})
+\end{align*}
+Note this is due to the commutation relation between coordinates and angular momentum. Using
+the same commutation relation it follows that
+\begin{align*}
+\hat{y}(t) &= x\sin(\omega{t}) + y\cos(\omega{t})\\
+\hat{z}(t) &= z
+\end{align*}
+Note the $\hat{z}(t)$ remains untransformed due to the fact that $[J_z,z]=0$.
+
+\item We repeat this process for the momentum noting that 
+\begin{align*}
+[J_z,p_x] &= i\hbar p_y\\
+[J_z,p_y] &= -i\hbar p_x\\
+[J_z,p_z] &= 0
+\end{align*}
+Which yields the same transformation as in part (b), but with momentum. Therefore
+\begin{align*}
+\hat{p}_x(t) &= p_x\cos(\omega{t}) - p_y\sin(\omega{t})\\
+\hat{p}_y(t) &= p_x\sin(\omega{t}) + p_y\cos(\omega{t})\\
+\hat{p}_z(t) &= p_z
+\end{align*}
+
+\item To find the Hamiltonian of the particle in this frame we note that the unrotated 
+Hamiltonian is in the general form 
+$$\hat{H} = \frac{\hat{\mathbf{p}}^2}{2m} + U(\mathbf{r},t)$$
+note that we require the potential to be dependent on time in order to account for the 
+rotation. So we can apply the unitary transformation 
+\begin{align*}
+\hat{H}(t) &= \mathscr{D}\hat{H}\mathscr{D}^{\dagger}
+\end{align*}
+Which must still satisfy the Schr\''{o}dinger equation
+$$i\hbar\frac{d\psi}{dt} = \hat{H}\psi$$
+. So we can transform both sides to yield
+\begin{align*}
+\mathscr{D}i\hbar\frac{d\psi)}{dt} &= \mathscr{D}\hat{H}\psi\\
+&\Downarrow\\
+i\hbar\left(\frac{d(\mathscr{D}\psi)}{dt} - \psi\frac{d\mathscr{D}}{dt}\right) &= \hat{H}(\mathscr{D}\psi)\\
+&\Downarrow\\
+i\hbar\frac{d(\mathscr{D}\psi)}{dt} &=\left(\mathscr{D}\hat{H}\mathscr{D}^{\dagger} + i\hbar\frac{d\mathscr{D}}{dt}\mathscr{D}^{\dagger}\right)(\mathscr{D}\psi)\\
+\end{align*}
+So our new Hamiltonian operator is the term given in the parenthesis. Which for the rotation is
+$$\hat{H}(t) = -\frac{\hat{\mathbf{p}}^2}{2m} + U'(\mathbf{r}) - \frac{\mathbf{J}\cdot\pmb{\omega}}{\hbar}$$
+
+
+\end{enumerate}
+
+\end{document}
+
