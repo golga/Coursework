@@ -1,0 +1,167 @@
+\documentclass[11pt]{article}
+
+\usepackage{latexsym}
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{enumerate}
+\usepackage{amsmath}
+\usepackage{cancel}
+\numberwithin{equation}{section}
+
+\setlength{\evensidemargin}{.25in}
+\setlength{\oddsidemargin}{-.25in}
+\setlength{\topmargin}{-.75in}
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{9.5in}
+\newcommand{\due}{April 27th, 2016}
+\newcommand{\HWnum}{7}
+\input{"C:/Users/joeor_000/Documents/Coursework/Define.tex"}
+
+\begin{document}
+\input{../title.tex}
+
+\section{Problem \#1}
+Given the momentum operator
+$$\hat{\mathbf{P}} = -i\hbar\int\hat{\Psi}^{\dagger}(\xi')\partiald{}{\mathbf{r}'}\hat{\Psi}(\xi')d\xi'$$
+defined on the field $\hat{\Psi}(\xi)$ we can find the commutator $[\hat{\mathbf{P}},\hat{\Psi}(\xi)]$.
+
+\begin{enumerate}[(a)]
+\item For a system of identical fermions we have the anti-commutation relations
+\begin{align*}
+\left\{\hat{\Psi}(\xi),\hat{\Psi}(\xi')\right\} &= 0\\
+\left\{\hat{\Psi}^{\dagger}(\xi),\hat{\Psi}^{\dagger}(\xi')\right\} &= 0\\
+\left\{\hat{\Psi}(\xi),\hat{\Psi}^{\dagger}(\xi')\right\} &= \delta(\xi-\xi')\\
+\end{align*}
+which we can use to calculate
+\begin{align*}
+\left[\hat{\mathbf{P}},\hat{\Psi}(\xi)\right] &= \hat{\mathbf{P}}\hat{\Psi}(\xi) - \hat{\Psi}(\xi)\hat{\mathbf{P}}\\
+&= -i\hbar\int\hat{\Psi}^{\dagger}(\xi')\partiald{}{\mathbf{r}'}\hat{\Psi}(\xi')d\xi\hat{\Psi}(\xi) + i\hbar\hat{\Psi}(\xi)\int\hat{\Psi}^{\dagger}(\xi')\partiald{}{\mathbf{r}'}\hat{\Psi}(\xi')d\xi'\\
+&= i\hbar\int\hat{\Psi}^{\dagger}(\xi')\hat{\Psi}(\xi)\partiald{}{\mathbf{r}'}\hat{\Psi}(\xi')d\xi + i\hbar\int\hat{\Psi}(\xi)\hat{\Psi}^{\dagger}(\xi')\partiald{}{\mathbf{r}'}\hat{\Psi}(\xi')d\xi'\\
+&= i\hbar\int\left(\hat{\Psi}^{\dagger}(\xi')\hat{\Psi}(\xi) + \hat{\Psi}(\xi)\hat{\Psi}^{\dagger}(\xi')\right)\partiald{}{\mathbf{r}'}\hat{\Psi}(\xi')d\xi'\\
+&= i\hbar\int\left\{\hat{\Psi}(\xi),\hat{\Psi}^{\dagger}(\xi')\right\}\partiald{}{\mathbf{r}'}\hat{\Psi}(\xi')d\xi'\\
+&= i\hbar\int\delta(\xi-\xi')\partiald{}{\mathbf{r}'}\hat{\Psi}(\xi')d\xi'\\
+&= i\hbar\partiald{}{\mathbf{r}}\hat{\Psi}(\xi)
+\end{align*}
+
+\item For a system of identical bosons we use the commutation relations
+\begin{align*}
+\left[\hat{\Psi}(\xi),\hat{\Psi}(\xi')\right] &= 0\\
+\left[\hat{\Psi}^{\dagger}(\xi),\hat{\Psi}^{\dagger}(\xi')\right] &= 0\\
+\left[\hat{\Psi}(\xi),\hat{\Psi}^{\dagger}(\xi')\right] &= \delta(\xi-\xi')\\
+\end{align*}
+which yields
+\begin{align*}
+\left[\hat{\mathbf{P}},\hat{\Psi}(\xi)\right] = \hat{\mathbf{P}}\hat{\Psi}(\xi) - \hat{\Psi}(\xi)\hat{\mathbf{P}} &= -i\hbar\int\hat{\Psi}^{\dagger}(\xi')\partiald{}{\mathbf{r}'}\hat{\Psi}(\xi')d\xi\hat{\Psi}(\xi) + i\hbar\hat{\Psi}(\xi)\int\hat{\Psi}^{\dagger}(\xi')\partiald{}{\mathbf{r}'}\hat{\Psi}(\xi')d\xi'\\
+&= -i\hbar\int\hat{\Psi}^{\dagger}(\xi')\hat{\Psi}(\xi)\partiald{}{\mathbf{r}'}\hat{\Psi}(\xi')d\xi + i\hbar\int\hat{\Psi}(\xi)\hat{\Psi}^{\dagger}(\xi')\partiald{}{\mathbf{r}'}\hat{\Psi}(\xi')d\xi'\\
+&= i\hbar\int\left[\hat{\Psi}(\xi),\hat{\Psi}^{\dagger}(\xi')\right]\partiald{}{\mathbf{r}'}\hat{\Psi}(\xi')d\xi'\\
+&= i\hbar\int\delta(\xi-\xi')\partiald{}{\mathbf{r}'}\hat{\Psi}(\xi')d\xi'\\
+&= i\hbar\partiald{}{\mathbf{r}}\hat{\Psi}(\xi)
+\end{align*}
+\end{enumerate}
+
+\pagebreak
+
+\section{Problem \#2}
+Given the Bosonic creation and annihilation operators defined as
+\begin{align*}
+\hat{a} &= \alpha\hat{x} + \beta\hat{p}\\
+\hat{a}^{\dagger} &= \alpha^*\hat{x} + \beta^*\hat{p}
+\end{align*}
+where $\hat{x}$ and $\hat{p}$ are the coordinate and momentum operator. Let 
+$$\alpha=C\frac{\hbar}{L},\qquad\beta=iCL$$
+we can find the normalization constant, $C$, that satisfies the commutation rule for bosonic
+creation and annihilation operators by
+\begin{align*}
+[\hat{a},\hat{a}^{\dagger}] = 1 &= \left(\alpha\hat{x} + \beta\hat{p}\right)\left(\alpha^*\hat{x} + \beta^*\hat{p}\right) - \left( \alpha^*\hat{x} + \beta^*\hat{p}\right)\left(\alpha\hat{x} + \beta\hat{p}\right)\\
+&= \cancel{|\alpha|^2\hat{x}^2 + |\beta|^2\hat{p}^2} + \alpha\beta^*\hat{x}\hat{p} + \beta\alpha^*\hat{p}\hat{x}
+- \cancel{|\alpha|^2\hat{x}^2 - |\beta|^2\hat{p}^2} - \alpha\beta^*\hat{p}\hat{x} - \beta\alpha^*\hat{x}\hat{p}\\
+&= \alpha\beta^*[\hat{x},\hat{p}] + \beta\alpha^*[\hat{p},\hat{x}]\\
+&= (\alpha\beta^*-\alpha^*\beta)[\hat{x},\hat{p}]\\
+&\Downarrow\\
+&= i\hbar\left(-i\hbar{C^2}-i\hbar{C^2}\right)\\
+&= 2\hbar^2{C^2}\\
+&\Downarrow\\
+C &= \frac{1}{\sqrt{2}\hbar}
+\end{align*}
+Using this we can find the wave function of the vacuum state, $\ket{0}$, by noting that 
+$\hat{a}\ket{0} = 0$ which if we calculate in coordinate representation we find
+\begin{align*}
+\left(\frac{1}{\sqrt{2}L}\hat{x} + \frac{iL}{\sqrt{2}\hbar}\hat{p}\right)\ket{0} \Rightarrow \left(\frac{1}{\sqrt{2}L}x - \frac{iL}{\sqrt{2}\hbar}i\hbar\partiald{}{x}\right)\psi_0(x) &= 0\\
+\left(\frac{1}{L}x + L\partiald{}{x}\right)\psi_0(x) &= 0\\
+&\Downarrow\\
+\frac{1}{\psi_0(x)}\partiald{\psi_0(x)}{x} &= - \frac{x}{L^2}\\
+&\Downarrow\\
+\psi_{0}(x) &= Ae^{-x^2/2L^2}
+\end{align*}
+We find $A$ by the normalization condition as
+\begin{align*}
+\inprod{0}{0} = 1 &= |A|^2\int e^{-x^2/L^2}dx\\
+&= |A|^2 \frac{\sqrt{\pi}L}{2}\\
+&\Downarrow\\
+A &= \sqrt{\frac{2}{\sqrt{\pi}L}}
+\end{align*}
+So we have the vacuum wave function as
+$$\psi_{0}(x) = \left(\frac{4}{\pi L^2}\right)^{1/4}e^{-x^2/2L^2}$$
+
+\pagebreak
+
+\section{Problem \#3}
+Given a two-particle state of a system of identical particles described by the eigenfunction
+$$\ket{2} = C\hat{a}^{\dagger}_{f_1}\hat{a}^{\dagger}_{f_2}\ket{0}.$$
+
+\begin{enumerate}[(a)]
+\item For a system of bosons we normalize using the commutation relations
+$$[\hat{a}_{i},\hat{a}^{\dagger}_{j}] = \delta_{ij},\qquad[\hat{a}_{i},\hat{a}_{j}] = [\hat{a}^{\dagger}_{i},\hat{a}^{\dagger}_{j}] = 0$$
+
+\begin{enumerate}[(i)]
+\item This allows us to calculate the normalization for $f_1\ne{f_2}$ which yields
+\begin{align*}
+\inprod{2}{2} = 1 &= |C|^2\bra{0}\hat{a}_{f_2}\hat{a}_{f_1}\hat{a}^{\dagger}_{f_1}\hat{a}^{\dagger}_{f_2}\ket{0}\\
+&= |C|^2\bra{0}1 + \hat{a}_{f_2}^{\dagger}\hat{a}_{f_2} + \hat{a}_{f_2}\hat{a}^{\dagger}_{f_1}\hat{a}_{f_1}\hat{a}^{\dagger}_{f_2}\ket{0}\\
+&= |C|^2\bra{0}1 - \cancel{\hat{a}_{f_2}^{\dagger}\hat{a}_{f_2}} - \cancel{\hat{a}_{f_2}\hat{a}^{\dagger}_{f_1}\hat{a}^{\dagger}_{f_2}\hat{a}_{f_1}}\ket{0}\\
+&= |C|^2\inprod{0}{0}\\
+&\Downarrow\\
+C &= 1
+\end{align*}
+
+\item For $f_1=f_2$ we can repeat the normalization calculation
+\begin{align*}
+\inprod{2}{2} = 1 &= |C|^2\bra{0}\hat{a}_{f_1}\hat{a}_{f_1}\hat{a}^{\dagger}_{f_1}\hat{a}^{\dagger}_{f_1}\ket{0}\\
+&= |C|^2\bra{0}1 + \hat{a}_{f_1}^{\dagger}\hat{a}_{f_1} + \hat{a}_{f_1}\hat{a}^{\dagger}_{f_1}\hat{a}_{f_1}\hat{a}^{\dagger}_{f_1}\ket{0}\\
+&= |C|^2\inprod{0}{0} + |C|^2\bra{0}\hat{a}_{f_1}\hat{a}^{\dagger}_{f_1}\hat{a}_{f_1}\hat{a}^{\dagger}_{f_1}\ket{0}\\
+&= |C|^2\inprod{0}{0} + |C|^2\inprod{0}{0}\\
+&= 2|C|^2\\
+&\Downarrow\\
+C &= \frac{1}{\sqrt{2}}
+\end{align*}
+
+\end{enumerate}
+
+\item For a system of fermions we normalize using the anti-commutation relations
+$$\{\hat{a}_{i},\hat{a}^{\dagger}_{j}\} = \delta_{ij},\qquad\{\hat{a}_{i},\hat{a}_{j}\} = \{\hat{a}^{\dagger}_{i},\hat{a}^{\dagger}_{j}\} = 0$$
+
+\begin{enumerate}[(i)]
+\item This allows us to calculate the normalization for $f_1\ne{f_2}$ which yields
+\begin{align*}
+\inprod{2}{2} = 1 &= |C|^2\bra{0}\hat{a}_{f_2}\hat{a}_{f_1}\hat{a}^{\dagger}_{f_1}\hat{a}^{\dagger}_{f_2}\ket{0}\\
+&= |C|^2\bra{0}1 - \hat{a}_{f_2}^{\dagger}\hat{a}_{f_2} - \hat{a}_{f_2}\hat{a}^{\dagger}_{f_1}\hat{a}_{f_1}\hat{a}^{\dagger}_{f_2}\ket{0}\\
+&= |C|^2\inprod{0}{0}\\
+&\Downarrow\\
+C &= 1
+\end{align*}
+
+\item For $f_1=f_2$ we can repeat the normalization calculation
+\begin{align*}
+\inprod{2}{2} = 1 &= |C|^2\bra{0}\hat{a}_{f_1}\hat{a}_{f_1}\hat{a}^{\dagger}_{f_1}\hat{a}^{\dagger}_{f_1}\ket{0}\\
+&= |C|^2\inprod{0}{0} - |C|^2\bra{0}\hat{a}_{f_1}\hat{a}^{\dagger}_{f_1}\hat{a}_{f_1}\hat{a}^{\dagger}_{f_1}\ket{0}\\
+&= |C|^2\inprod{0}{0} - |C|^2\inprod{0}{0} \ne 1
+\end{align*}
+Note for fermions the state where two particles occupy the same state is no allowed. Therefore
+the normalization condition in this case is not allowed. This follows from the anti-symmetry 
+of fermions.
+\end{enumerate}
+\end{enumerate}
+
+\end{document}
+

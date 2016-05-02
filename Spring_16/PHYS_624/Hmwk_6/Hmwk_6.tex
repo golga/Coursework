@@ -1,0 +1,150 @@
+\documentclass[11pt]{article}
+
+\usepackage{latexsym}
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{enumerate}
+\usepackage{amsmath}
+\usepackage{cancel}
+\numberwithin{equation}{section}
+
+\setlength{\evensidemargin}{.25in}
+\setlength{\oddsidemargin}{-.25in}
+\setlength{\topmargin}{-.75in}
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{9.5in}
+\newcommand{\due}{April 20th, 2016}
+\newcommand{\HWnum}{6}
+\input{"C:/Users/joeor_000/Documents/Coursework/Define.tex"}
+
+\begin{document}
+\input{../title.tex}
+
+\section{Problem \#1}
+For a diatomic molecule where the nuclei move in a potential 
+$$V(r) = -2D\left(\frac{1}{\rho}-\frac{1}{2\rho^2}\right)$$
+where $\rho=r/a$, $a$ is the characteristic size, this effective potential is given by
+$$V_{eff}(r) = V(r) + \frac{\hbar^2}{2\mu{r^2}}K(K+1)$$
+where $K$ is an integer. We can approximate the effective potential as a harmonic oscillator
+about the minimum, $r_0$, which we calculate as
+\begin{align*}
+\left.\partiald{V_{eff}}{r}\right|_{r_0} = 0 &= -2D\left(-\frac{a}{r_0^2}+\frac{a^2}{r_0^3}\right) - \frac{\hbar^2}{\mu{r_0^3}}K(K+1)\\
+&\Downarrow\\
+\frac{2Da}{r_0^2} &= \frac{2Da^2}{r_0^3} + \frac{\hbar^2}{\mu{r_0^3}}K(K+1)\\
+&\Downarrow\\
+r_0 &= a + \frac{\hbar^2}{2\mu{Da}}K(K+1)
+\end{align*}
+Now we can Taylor expand the effective potential about $r_0$ to get a parabolic approximation
+\begin{align*}
+V_{eff}(r) &= V_{eff}(r_0) + \cancelto{0}{\left.\partiald{V_{eff}}{r}\right|_{r_0}}(r-r_0) + \frac{1}{2}\left.\partiald{^2V_{eff}}{r^2}\right|_{r_0}(r-r_0)^2\\
+&= V_{eff}(r_0)  + \frac{1}{2}\left.\partiald{^2V_{eff}}{r^2}\right|_{r_0}(r-r_0)^2\\
+&\Downarrow\\
+&= V_{eff}(r_0)  + \frac{1}{2}\mu\omega^2(r-r_0)^2
+\end{align*}
+Note that this approximation transformed the effective potential into a harmonic oscillator
+potential where
+\begin{align*}
+\mu\omega^2 = \left.\partiald{^2V_{eff}}{r^2}\right|_{r_0} &= -2D\left(\frac{2a}{r_0^3}-\frac{3a^2}{r_0^4}\right) + \frac{3\hbar^2}{\mu{r_0^4}}K(K+1)\\
+&= -4Da\left(\frac{2\mu{Da}}{2\mu{Da^2}+\hbar^2K(K+1)}\right)^3 + 3\frac{2\mu{Da^2}+\hbar^2K(K+1)}{\mu}\left(\frac{2\mu{Da}}{2\mu{Da^2}+\hbar^2K(K+1)}\right)^4\\
+&= -\frac{2}{\mu}\frac{(2\mu{Da})^4}{(2\mu{Da^2}+\hbar^2K(K+1))^3} + \frac{3}{\mu}\frac{(2\mu{Da})^4}{(2\mu{Da^2}+\hbar^2K(K+1))^3}\\
+&\Downarrow\\
+\omega &= \frac{(2\mu{Da})^2}{\mu(2\mu{Da^2}+\hbar^2K(K+1))^{3/2}}
+\end{align*}
+which gives us the energy levels
+$$E = V(r_0) + \frac{\hbar^2K(K+1)}{2I} + \frac{4\hbar\mu({Da})^2}{(2\mu{Da^2}+\hbar^2K(K+1))^{3/2}}\left(n+\frac{1}{2}\right)$$
+where $I=\mu{r_0^2}$. Note the first two terms are constant.
+
+\pagebreak
+
+\section{Problem \#2}
+We can use the variational method with the trial function
+$$\psi = Ae^{-\beta{r}}$$
+to find the ground state energy of the hydrogen atom with has the Hamiltonian
+$$H = -\frac{\hbar^2}{2\mu}\frac{1}{r^2}\partiald{}{r}\left(r^2\partiald{}{r}\right) - \frac{e^2}{r}$$ 
+First we find $A$ by the normalization condition
+\begin{align*}
+\int\psi^*\psi{dr} = 1 &= |A|^24\pi\int_{0}^{\infty}e^{-2\beta{r}}r^2dr\\
+&= |A|^2\frac{\pi}{\beta^3}\\
+&\Downarrow\\
+A &= \sqrt{\frac{\beta^{3}}{\pi}}
+\end{align*}
+Then using the condition of the variational method which states
+$$E_0\le\bra{\psi}H\ket{\psi}$$
+so we calculate
+\begin{align*}
+\bra{\psi}H\ket{\psi} = E(\beta) &= \frac{\beta^3}{\pi}4\pi\int_{0}^{\infty}e^{-\beta{r}}\left(-\frac{\hbar^2}{2\mu}\frac{1}{r^2}\partiald{}{r}\left(r^2\partiald{}{r}\right) - \frac{e^2}{r}\right)e^{-\beta{r}}r^2dr\\
+&= 4\beta^3\int_{0}^{\infty}\frac{\hbar^2}{2\mu}2\beta{e^{-2\beta{r}}}r - \frac{\hbar^2}{2\mu}\beta^2e^{-2\beta{r}}r^2 - e^2e^{-2\beta{r}}rdr\\
+&= \frac{\hbar^2}{2\mu}\beta^2 - e^2\beta
+\end{align*}
+Now we minimize $E(\beta)$ to find that
+\begin{align*}
+\left.\partiald{E(\beta)}{\beta}\right|_{\beta_0} = 0 &= \frac{\hbar^2}{\mu}\beta_0 - e^2\\
+\Downarrow\\
+\beta_0 &= \frac{e^2\mu}{\hbar^2} = \frac{1}{a}
+\end{align*}
+where $a$ is the \emph{Bohr Radius}. This yields the ground state energy
+\begin{align*}
+E_0 \le E(\beta_0) &= \frac{\hbar^2}{2\mu}\beta_0^2 - e^2\beta_0\\
+&= \frac{\hbar^2}{2\mu}\frac{e^4\mu^2}{\hbar^4} - \frac{e^4\mu}{\hbar^2}\\
+&= -\frac{e^4\mu}{2\hbar^2}
+\end{align*}
+Note that this recovers the exact result for the ground state of hydrogen. Also we see that we
+recover the exact ground state wave function
+$$\psi(r) = \frac{1}{\sqrt{\pi{a^3}}}e^{-r/a}$$
+
+\pagebreak
+
+\section{Problem \#3}
+Two particles have equal spins $s_1=s_2=1$. We can find the wave function describing the 
+states with the overall spin $S=1$ and $2$ and $S_z=+1$ and $-1$, as well as $S=1$ and $S_z=0$
+in the $s_{1z}s_{2z}$ representation by first noting that the states with $S=2$ and $S_z=+2$ 
+and $-2$ in the $s_{1z}s_{2z}$ representation are
+$$\Psi_{2,2} = \left(\begin{array}{c} 1\\ 0\\ 0\\\end{array}\right)_{1}\left(\begin{array}{c} 1\\ 0\\ 0\\\end{array}\right)_{2} \qquad
+\Psi_{2,-2} = \left(\begin{array}{c} 0\\ 0\\ 1\\\end{array}\right)_{1}\left(\begin{array}{c} 0\\ 0\\ 1\\\end{array}\right)_{2} $$
+Using these states we can act the ladder operators on the state where
+$$\hat{L}_{\pm}\Psi_{S,S_z} = \sqrt{(S\mp{S_z})(S\pm{S_z}+1)}\Psi_{S,S_z-1}$$
+where we can take the ladder operator in $s_{1z}s_{2z}$ representation as
+$$\hat{L}_{\pm} = \hat{L}_{1\pm}+\hat{L}_{2\pm}$$
+so we can act of the state with $S=2$ and $S_z=+2$ as
+\begin{align*}
+\hat{L}_{-}\Psi_{2,2} &= (\hat{L}_{1-}+\hat{L}_{2-})\left(\begin{array}{c} 1\\ 0\\ 0\\\end{array}\right)_{1}\left(\begin{array}{c} 1\\ 0\\ 0\\\end{array}\right)_{2} \\
+&\Downarrow\\
+2\Psi_{2,1} &= \sqrt{2}\left(\begin{array}{c} 0\\ 1\\ 0\\\end{array}\right)_{1}\left(\begin{array}{c} 1\\ 0\\ 0\\\end{array}\right)_{2} +
+\sqrt{2}\left(\begin{array}{c} 1\\ 0\\ 0\\\end{array}\right)_{1}\left(\begin{array}{c} 0\\ 1\\ 0\\\end{array}\right)_{2} \\
+\Psi_{2,1} &= \frac{1}{\sqrt{2}}\left[\left(\begin{array}{c} 0\\ 1\\ 0\\\end{array}\right)_{1}\left(\begin{array}{c} 1\\ 0\\ 0\\\end{array}\right)_{2} +
+\left(\begin{array}{c} 1\\ 0\\ 0\\\end{array}\right)_{1}\left(\begin{array}{c} 0\\ 1\\ 0\\\end{array}\right)_{2}\right]
+\end{align*}
+And by raising the $S=2$ $S_z=-2$ state we get
+\begin{align*}
+\hat{L}_{+}\Psi_{2,-2} &= (\hat{L}_{1+}+\hat{L}_{2+})\left(\begin{array}{c} 0\\ 0\\ 1\\\end{array}\right)_{1}\left(\begin{array}{c} 0\\ 0\\ 1\\\end{array}\right)_{2} \\
+&\Downarrow\\
+2\Psi_{2,-1} &= \sqrt{2}\left(\begin{array}{c} 0\\ 1\\ 0\\\end{array}\right)_{1}\left(\begin{array}{c} 0\\ 0\\ 1\\\end{array}\right)_{2} +
+\sqrt{2}\left(\begin{array}{c} 0\\ 0\\ 1\\\end{array}\right)_{1}\left(\begin{array}{c} 0\\ 1\\ 0\\\end{array}\right)_{2} \\
+\Psi_{2,-1} &= \frac{1}{\sqrt{2}}\left[\left(\begin{array}{c} 0\\ 1\\ 0\\\end{array}\right)_{1}\left(\begin{array}{c} 0\\ 0\\ 1\\\end{array}\right)_{2} +
+\left(\begin{array}{c} 0\\ 0\\ 1\\\end{array}\right)_{1}\left(\begin{array}{c} 0\\ 1\\ 0\\\end{array}\right)_{2}\right]
+\end{align*}
+We note that these state have parallel spins as the wave function is additive. This yields
+a $S=2$ state if we make the wave function anti-parallel we can find the $S=1$ states as
+\begin{align*}
+\Psi_{1,1} &= \frac{1}{\sqrt{2}}\left[\left(\begin{array}{c} 0\\ 1\\ 0\\\end{array}\right)_{1}\left(\begin{array}{c} 1\\ 0\\ 0\\\end{array}\right)_{2} -
+\left(\begin{array}{c} 1\\ 0\\ 0\\\end{array}\right)_{1}\left(\begin{array}{c} 0\\ 1\\ 0\\\end{array}\right)_{2}\right]\\
+\Psi_{1,-1} &= \frac{1}{\sqrt{2}}\left[\left(\begin{array}{c} 0\\ 1\\ 0\\\end{array}\right)_{1}\left(\begin{array}{c} 0\\ 0\\ 1\\\end{array}\right)_{2} -
+\left(\begin{array}{c} 0\\ 0\\ 1\\\end{array}\right)_{1}\left(\begin{array}{c} 0\\ 1\\ 0\\\end{array}\right)_{2}\right]
+\end{align*}
+From here we can easily find the $S=1$ $S_z=0$ state by using a ladder operator
+\begin{align*}
+\hat{L}_{-}\Psi_{1,1} &= \frac{1}{\sqrt{2}}(\hat{L}_{1-}+\hat{L}_{2-})\left[\left(\begin{array}{c} 0\\ 1\\ 0\\\end{array}\right)_{1}\left(\begin{array}{c} 1\\ 0\\ 0\\\end{array}\right)_{2} -
+\left(\begin{array}{c} 1\\ 0\\ 0\\\end{array}\right)_{1}\left(\begin{array}{c} 0\\ 1\\ 0\\\end{array}\right)_{2}\right]\\
+&\Downarrow\\
+\sqrt{2}\Psi_{1,0} &= \frac{1}{\sqrt{2}}
+\left[\sqrt{2}\left(\begin{array}{c} 0\\ 0\\ 1\\\end{array}\right)_{1}\left(\begin{array}{c} 1\\ 0\\ 0\\\end{array}\right)_{2} -
+\sqrt{2}\left(\begin{array}{c} 0\\ 1\\ 0\\\end{array}\right)_{1}\left(\begin{array}{c} 0\\ 1\\ 0\\\end{array}\right)_{2}\right. + 
+\left.\sqrt{2}\left(\begin{array}{c} 0\\ 1\\ 0\\\end{array}\right)_{1}\left(\begin{array}{c} 0\\ 1\\ 0\\\end{array}\right)_{2} -
+\sqrt{2}\left(\begin{array}{c} 1\\ 0\\ 0\\\end{array}\right)_{1}\left(\begin{array}{c} 0\\ 0\\ 1\\\end{array}\right)_{2}\right]\\
+\Psi_{1,0} &= \frac{1}{\sqrt{2}}\left[\left(\begin{array}{c} 0\\ 0\\ 1\\\end{array}\right)_{1}\left(\begin{array}{c} 1\\ 0\\ 0\\\end{array}\right)_{2} -
+\left(\begin{array}{c} 1\\ 0\\ 0\\\end{array}\right)_{1}\left(\begin{array}{c} 0\\ 0\\ 1\\\end{array}\right)_{2}\right]
+\end{align*}
+
+\end{document}
+

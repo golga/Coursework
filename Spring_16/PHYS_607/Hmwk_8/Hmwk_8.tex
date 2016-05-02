@@ -1,0 +1,130 @@
+\documentclass[11pt]{article}
+
+\usepackage{latexsym}
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{enumerate}
+\usepackage{amsmath}
+\usepackage{cancel}
+\numberwithin{equation}{section}
+
+\setlength{\evensidemargin}{.25in}
+\setlength{\oddsidemargin}{-.25in}
+\setlength{\topmargin}{-.75in}
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{9.5in}
+\newcommand{\due}{March 31st, 2016}
+\newcommand{\HWnum}{8}
+\input{"C:/Users/joeor_000/Documents/Coursework/Define.tex"}
+
+\begin{document}
+\input{../title.tex}
+
+\section{Problem \#1}
+\begin{enumerate}[(1)]
+\item To find the Debye screening length, $\lambda_D$, of a semiconductor with a dielectric constant
+$\varepsilon=20$ and density of electrons $n_0=10^{18}\unit{cm^{-3}}$ at room temperature, 
+$T=300\unit{K}$ we can use the reciprocal length, $\kappa$, given as
+$$\kappa^2 = \frac{4\pi{e^2}}{T}\sum_{a}n_{a0}z_a^2$$
+Noting that for a semiconductor the ions are fixed so we only consider the electrons in the 
+sum. This implies that
+$$\lambda_D = \frac{1}{\kappa} = \sqrt{\frac{\varepsilon\varepsilon_0k_BT}{4\pi n_0e^2}}$$
+note that we added the constants $k_B$ and $\varepsilon_0$ to get the correct dimensionality.
+So for the semiconductor we calculate
+\begin{align*}
+\lambda_D = \sqrt{\frac{\varepsilon\varepsilon_0k_BT}{4\pi n_0e^2}} &= \sqrt{\frac{(20)(8.85\times10^{-12}\unit{C^2\ N^{-1}\ m^{-2}})(1.38\times10^{-23}\unit{J\ K^{-1}})(300\unit{K})}{4\pi(10^{24}\unit{m^{-3}})(1.6\times10^{-19}\unit{C})^2}}\\
+&= 1.51\unit{nm}
+\end{align*}
+
+\item For a semiconductor in the form of a rectangular slab with thickness $L$, where $L$ is 
+much smaller than the other two dimensions, we attach two electrodes to the faces of the slab
+and apply a bias voltage, $V$. To solve for the electric field we solve the \emph{Poisson 
+Equation} given by
+\begin{equation}
+\grad^2\phi-\kappa^2\phi = 0
+\end{equation}
+where $\kappa$ is defined above. Taking the directions that create the face as infinite we 
+assume that $\phi$ is only dependent on $z$ which yields a solution of the form
+$$\phi(z) = C_1e^{\kappa{z}} + C_2e^{-\kappa{z}}$$
+applying the boundary conditions 
+$$\phi(z=0)=0\qquad\phi(z=L)=V$$
+we find that 
+\begin{align*}
+\phi(z=0) = 0 &= C_1e^{\kappa{0}} + C_2e^{-\kappa{0}}\\
+&\Downarrow\\
+C_1 = -C_2\\
+&\Downarrow\\
+\phi(z) = 0 &= C\left(e^{\kappa{z}} - e^{-\kappa{z}}\right) = C\sinh(\kappa{z})
+\end{align*}
+and
+\begin{align*}
+\phi(z=L) = V &=  C\sinh(\kappa{L})\\
+&\Downarrow\\
+C &= \frac{V}{\sinh(\kappa{L})}
+\end{align*}
+So the potential as a function of $z$ is
+$$\phi(z) = \frac{V}{\sinh(\kappa{L})}\sinh(\kappa{z})$$
+
+\item Note if we take the limit as the thickness becomes infinite we have the following 
+condition $$\kappa{L}\rightarrow\infty$$ we see that in this limit we have
+$$\lim_{\kappa{L}\rightarrow\infty}\frac{V}{\sinh(\kappa{L})} = 0$$
+So we see that as we take the thickness to be infinite the screening will completely cancel
+the bias voltage.
+
+\end{enumerate}
+
+\pagebreak
+
+\section{Problem \#2}
+\begin{enumerate}[(a)]
+\item Given the physical characterization of the triple point of water found experimentally
+as
+\begin{align*} 
+T_t = 273.16\unit{K}\qquad P_t=612\unit{Pa}\qquad \rho_{L}=1\unit{g\ cm^{-3}}\qquad \rho_{S} = 0.894\unit{g\ cm^{-3}}
+\end{align*} 
+where $\rho_{L}$ is the density of water in the liquid state and $\rho_{S}$ is the density of
+water in the solid state. Noting the data for the freezing point of water at atmospheric 
+pressure is 
+$$T = 273.15\unit{K}\qquad P_t=101\unit{kPa}\qquad \rho_{L}=1\unit{g\ cm^{-3}}\qquad \rho_{S} = 0.894\unit{g\ cm^{-3}}$$
+we can find the heat of ice melting assuming that it does not change between triple point and 
+the freezing point at normal pressure by taking the \emph{Clapeyron-Clausius formula}
+\begin{equation}
+\frac{dP}{dT} = \frac{q}{T(v_2-v_1)}
+\label{CCform}
+\end{equation}
+and solving for the heat, $q$. Note we can approximate the derivative by taking the two 
+different data points from the freezing point to the triple point. So equation \ref{CCform}
+becomes
+\begin{align*}
+q &= \frac{dP}{dT}{T(v_2-v_1)}\\
+&= \frac{P_t-P}{T_t-T}T\left(\frac{1}{\rho_L}-\frac{1}{\rho_S}\right)\\
+&= \frac{612\unit{Pa}-101000\unit{Pa}}{273.16\unit{K}-273.15\unit{K}}(273.15\unit{K})\left(\frac{1}{1\times10^{6}\unit{g\ m^{-3}}}-\frac{1}{0.894\times10^{6}\unit{g\ m^{-3}}}\right)\\
+&= 325\unit{J\ g^{-1}}
+\end{align*}
+
+\item Using equation \ref{CCform} and the given value for the latent heat of vaporization 
+$$q = 2264.76\unit{J\ g^{-1}}$$
+we can calculate the derivative of boiling temperature
+\begin{align*}
+\frac{dT_b}{dP} &= \frac{T(v_2-v_1)}{q}\\
+&= \frac{T(\rho_{V}^{-1}-\rho_{L}^{-1})}{q}
+\end{align*}
+and the same follows for ice vaporization
+\begin{align*}
+\frac{dT_v}{dP} &= \frac{T(v_2-v_1)}{q}\\
+&= \frac{T(\rho_{V}^{-1}-\rho_{S}^{-1})}{q}
+\end{align*}
+where we take $\rho_{V}$ as the density of water vapor.
+
+\item When we take water at the freezing temperature, $T=273.15\unit{K}$, and atmospheric 
+pressure, $P=103\unit{kPa}$, and decrease the pressure until the pressure reaches 
+$P'=300\unit{Pa}$ We see that this patch will pass through the triple point described in 
+part (a). This implies that the water will skip the liquid phase and sublimate from solid to 
+vapor.
+
+
+\end{enumerate}
+
+\end{document}
+

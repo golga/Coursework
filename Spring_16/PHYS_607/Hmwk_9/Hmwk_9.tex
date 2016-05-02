@@ -1,0 +1,150 @@
+\documentclass[11pt]{article}
+
+\usepackage{latexsym}
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{enumerate}
+\usepackage{amsmath}
+\usepackage{cancel}
+\numberwithin{equation}{section}
+
+\setlength{\evensidemargin}{.25in}
+\setlength{\oddsidemargin}{-.25in}
+\setlength{\topmargin}{-.75in}
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{9.5in}
+\newcommand{\due}{April 7th, 2016}
+\newcommand{\HWnum}{9}
+\input{"C:/Users/joeor_000/Documents/Coursework/Define.tex"}
+
+\begin{document}
+\input{../title.tex}
+
+\section{Problem \#1}
+\begin{enumerate}[(1)]
+\item Given the universal equation of state
+\begin{equation}
+\left(P'+\frac{3}{V'^{2}}\right)\left(3V'-1\right)=8T'
+\label{Univer}
+\end{equation}
+we can find the spinodal curves in the $(T,V)$, $(P,V)$, and $(P,T)$ planes where the
+condition is given as
+$$\left(\partiald{^2F}{V^2}\right)_{T} = 0 \Rightarrow \left(\partiald{P}{V}\right)_{T} = 0$$
+This allows us to solve equation \ref{Univer} and take its derivative with respect to $V$
+to find the spinodal curve in the $(T,V)$ plane as
+\begin{align*}
+P &= \frac{8T}{3V-1}-\frac{3}{V^2}\\
+&\Downarrow\\
+\left(\partiald{P}{V}\right)_{T} = 0 &= -\frac{24T}{(3V-1)^2} + \frac{6}{V^3}\\
+&\Downarrow\\
+T &= \frac{(3V-1)^2}{4V^3}\\
+\end{align*}
+Note we assumed that $T'=P'=V'=1$. Using this we can substitute $T$ into equation
+\ref{Univer} to find the $(P,V)$ spinodal curve as
+\begin{align*}
+\left(P+\frac{3}{V^{2}}\right)\left(3V-1\right) &= 8T\\
+&\Downarrow\\
+\left(P+\frac{3}{V^{2}}\right)\left(3V-1\right) &= \frac{2(3V-1)^2}{V^3}\\
+&\Downarrow\\
+P &= \frac{2(3V-1)}{V^3} - \frac{3}{V^2}
+\end{align*}
+Note we can solve for $V$ in terms of $T$ as 
+$$V = \frac{1}{9}\left(2\sqrt{T^2+3T}+2T+3\right)$$
+and substitute into the equation for $P$ in terms of $V$ to find the $(P,T)$ spinodal curve.
+
+\item We can find the binodal in the vicinity of the critical point $P-1$, $T-1$, $V-1$. 
+Where we define the variables
+$$p\equiv{P-1}\qquad t\equiv{T-1}\qquad v\equiv{V-1}$$
+where we assume that $p,v,t<<1$. Then we write equation \ref{Univer} in terms of these new
+variables and expand about $v$
+\begin{align*}
+p+1 &= \frac{8(t+1)}{3(v+1)-1}-\frac{3}{(v+1)^2}\\
+&= 4(t+1)\left(\frac{3}{2}v+1\right)^{-1} - 3(v+1)^{-2}\\
+&\approx 4(t+1)\left(1-\frac{3}{2}v+\frac{9}{4}v^2-\frac{27}{8}v^3\right) - 3\left(1-2v+3v^2-4v^3\right)\\
+&\approx 4t + 1 - 6vt + 9tv^2 - \frac{27}{2}tv^3 - \frac{3}{2}v^3\\
+&\Downarrow\\
+P &= 10(T-1) - 6(T-1)V - \frac{3}{2}(V-1)^3
+\end{align*}
+Using this approximation we can solve for the spinodal curve by
+\begin{align*}
+\left(\partiald{P}{V}\right)_{T} = 0 &= -6(T-1) -\frac{9}{2}(V-1)^2\\
+&\Downarrow\\
+(V-1) &= \pm\sqrt{\frac{4}{3}(1-T)}
+\end{align*}
+These define the difference between the gas and liquid phases of the binodal curve.
+
+\item Given the free energy of a Van der Waals gas
+\begin{equation}
+F = F_{id} - NT\ln\left(1-\frac{Nb}{V}\right)-\frac{N^2a}{V}
+\label{FreeEn}
+\end{equation}
+we can find the entropy as
+$$S = -\partiald{F}{T} =S_{id} + N\ln\left(1-\frac{Nb}{V}\right)$$
+which implies that the change in entropy from the positive to the negative solutions from 
+part (2) as
+\begin{align*}
+\Delta{S} &= N\ln\left(1-\frac{Nb}{V_l}\right) - N\ln\left(1-\frac{Nb}{V_g}\right)\\
+&= N\ln\left(\frac{V_l}{V_g}\frac{V_g-Nb}{V_l-Nb}\right)\\
+&= N\ln\left(\frac{V_l}{V_g}\right)+N\ln\left(\frac{\sqrt{4/3(1-T/T_c)}+1-Nb}{-\sqrt{4/3(1-T/T_c)}+1-Nb}\right)
+\end{align*}
+So we can find the latent heat by
+$$q = T\Delta{S} = NT\ln\left(\frac{V_l}{V_g}\right)+NT\ln\left(\frac{\sqrt{4/3(1-T/T_c)}+1-Nb}{-\sqrt{4/3(1-T/T_c)}+1-Nb}\right)$$
+\end{enumerate}
+
+\pagebreak
+
+\section{Problem \#2}
+\begin{enumerate}[(a)]
+\item When we add a small amount of salt to boiling water we know that the chemical potential
+for both phases must be equal. Assuming that salt is not volatile we can say that the water
+vapor is pure so 
+$$\mu_{g}^{0}(P_0,T_0) = \mu_{l}^{0}(P_0,T_0) - Tc$$
+where $c$ is the concentration of the salt. Now if we take the pressure to be constant we 
+expand the chemical potential about a $\Delta{T}$ which yields
+$$\left(\partiald{\mu_{g}^{0}}{T}-\partiald{\mu_{l}^{0}}{T}\right)\Delta{T} = -Tc$$
+Now we note that the entropy is given as
+$$\partiald{\mu_{\nu}}{T} = s_{\nu}$$
+and the heat of phase transition is
+$$q = T(s_l-s_g)$$
+which implies that
+\begin{align*}
+-\frac{q}{T}\Delta{T} &= -Tc\\
+&\Downarrow\\
+\Delta{T} &= \frac{T^2c}{q}
+\end{align*}
+So we see that $c$ and $T$ are positive values and $q$ for boiling water is also positive 
+which implies that the temperature of the transition rises.
+
+\item Empirically we know that the concentration of salt in ice is less than in liquid water.
+Where the chemical potential of the solvent is given as
+$$\mu = T\ln(c) + \psi(P,T)$$
+so we have an equilibrium condition
+$$T\ln(c_s) + \psi_s(P,T) = T\ln(c_l) + \psi_l(P,T)$$
+so we see that $c_{s}<c_{l}$ so for this equality to hold we see that the
+$\psi_l(P,T)<\psi_s(P,T)$
+this implies that for the same concentration we have the condition
+$$\mu_l(P,T,c)<\mu_s(P,T,c)$$
+
+\item We see that due to \emph{Le Chatelier's principle} the system wants to counteract the
+increase in concentration from a pure water state. This implies that more water molecules 
+go into the liquid water phase when there is salt in the solution as compared to the pure 
+water state.
+\end{enumerate}
+
+\pagebreak
+
+\section{Problem \#3}
+For $0.1\unit{g}$ of NaCl that is thrown into $200\unit{g}$ of water we have to account for
+the strong electrolyte solution by adding the energy of interaction
+$$E_{int} = -\sqrt{\frac{\pi}{T}}\left(n_{Na+}e^2+n_{Cl-}e^2\right)^{3/2} = -\sqrt{\frac{\pi}{T}}e^3\left(2n\right)^{3/2}$$
+Note that we that the concentration of both ions to be equal to $n = 1.03\times10^{21}5$. So for water at 
+$300\unit{K}$ we need to take the energy of interaction from the water which results in a 
+change in temperature given by
+$$\Delta{T} = \frac{e^3}{k_B}\sqrt{\frac{\pi}{T}}\left(2n\right)^{3/2} = 2.84\times10^{-3}\unit{K}$$
+
+
+
+
+\end{document}
+

@@ -1,0 +1,201 @@
+\documentclass[11pt]{article}
+
+\usepackage{latexsym}
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{enumerate}
+\usepackage{amsmath}
+\usepackage{cancel}
+\numberwithin{equation}{section}
+
+\setlength{\evensidemargin}{.25in}
+\setlength{\oddsidemargin}{-.25in}
+\setlength{\topmargin}{-.75in}
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{9.5in}
+\newcommand{\due}{April 14th, 2016}
+\newcommand{\HWnum}{10}
+\newcommand{\alphaH}{\hat{\alpha}}
+\newcommand{\alphaHD}{\hat{\alpha}^{\dagger}}
+\input{"C:/Users/joeor_000/Documents/Coursework/Define.tex"}
+
+\begin{document}
+\input{../title.tex}
+
+\section{Problem \#1}
+\begin{enumerate}[(a)]
+\item For a system where hydrogen penetrates into a solid at a temperature, $T$, and pressure
+, $P$, we assume that within the solid the hydrogen can exist either in the molecular state,
+$H_2$ or in the atomic state, $H$. We can write this as a chemical reaction
+$$H_2 \rightarrow 2H$$
+We assume that the system satisfies the condition for chemical equilibrium 
+$$\sum_{i}\nu_i\mu_i = 0$$
+where we only have two different types of chemicals. So we see that $\nu_{H2} = 1$ and 
+$\nu_{H} = -2$. This implies that
+$$\mu_{H2} = 2\mu_{H}$$
+Now we can take the chemical potential for $H_2$ to be that of an ideal gas
+$$\mu_{H2} = T\ln(P) + \chi(T)$$
+and assuming that the concentration of atomic hydrogen is small we can take the chemical 
+potential of $H$ to be of the form of a solute
+$$\mu_{H} = T\ln(c) + \psi(P,T)$$
+So we can see that if we satisfy the equilibrium condition
+\begin{align*}
+\mu_{H2} &= 2\mu_{H}\\
+&\Downarrow\\
+T\ln(P) + \chi(T) &= 2T\ln(c) + 2\psi(P,T)\\
+&\Downarrow\\
+\ln(c) &= \frac{1}{2}\ln(P) + \frac{\chi(T) - 2\psi(P,T)}{2T}\\
+&\Downarrow\\
+c &\propto P^{1/2}
+\end{align*}
+Note we neglected the $\psi$ dependence on $P$ we have $\psi$ raised a negative exponential 
+which we take to be negligible.
+
+\item For a reaction of the type
+$$AB \rightarrow A + B$$
+we can find the concentrations of the components if the reaction starts with the pure $AB$ 
+substance and eventually arrives at the equilibrium state at a fixed temperature and pressure
+by applying \emph{the law of mass action}
+\begin{equation}
+\prod_{i}c_{0i}^{\nu_{i}} = K_c(P,T)
+\label{MassAct}
+\end{equation}
+Now because we started with pure $AB$ we know that the equilibrium concentrations of the 
+products, $A$ and $B$, must be the same which yields the condition
+$$c_{0A} = c_{0B}$$
+Now we also can impose the condition that
+$$c_{0AB}+c_{0A}+c_{0B} =1$$
+as we only have those three substances in the system. This combined with our first condition
+implies
+$$c_{0AB} = 1 - 2c_{0A}$$
+noting that $\nu_{AB}=1$ and $\nu_{A}=\nu_{B}=-1$ can use equation \ref{MassAct} to find
+\begin{align*}
+c_{0AB}^{1}c_{0A}^{-1}c_{0B}^{-1} &= K_c(P,T)\\
+&\Downarrow\\
+\frac{1-2c_{0A}}{c_{0A}^2} &= K_c(P,T)\\
+&\Downarrow\\
+1-2c_{0A}-K_c(P,T){c_{0A}^2} &= 0\\
+&\Downarrow\\
+c_{0A} &= \frac{\sqrt{K_c(P,T)+1}-1}{K_c(P,T)} = c_{0B}
+\end{align*}
+Note we took the positive solution to the quadratic as we assume that $K_c>0$ as we increase
+the concentration of the products. So it follows that 
+$$c_{0AB} = 1-2c_{0A} =  \frac{K_{c}(P,T) - 2\sqrt{K_c(P,T)+1}+2}{K_c(P,T)}$$
+\end{enumerate}
+
+\pagebreak
+
+\section{Problem \#2}
+\begin{enumerate}[(1)]
+\item We can find the coefficients of the \emph{Bogoliubov transformation} minimizing the 
+ground state energy at zero temperature by noting the transformed Hamiltonian is of the form
+$$H_{p,-p} = E^{0}_{p,-p} + \varepsilon_{p}\left(\alphaHD_{p}\alphaH_{-p}+\alphaHD_{-p}\alphaH_{p}\right)$$
+where we take the ground state energy to be
+$$E^{0}_{p,-p} = 2v_p^2\xi_p-2gnu_pv_p$$
+and 
+$$\varepsilon_p = \sqrt{\xi_p-(gn)^2}$$
+Now we use the condition that $u_p^2-v_p^2=1$ so we can write
+$$E^{0}_{p,-p} = 2v_p^2\xi_p-2gn\sqrt{1+v_p^2}v_p$$
+which allows us to calculate the $v_p$ which minimizes $E^0_{p,-p}$ as
+\begin{align*}
+\partiald{E_{p,-p}^{0}}{v_p} = 0 &= 4v_p\xi_p - 2gn\frac{2v_p^2+1}{\sqrt{v_p^2+1}}\\
+&\Downarrow\\
+gn\frac{2v_p^2+1}{\sqrt{v_p^2+1}} &= 2v_p\xi_p \\
+\frac{2v_p^2+1}{v_p\sqrt{v_p^2+1}} &= \frac{2\xi_p}{gn} \\
+&\Downarrow\\
+\frac{v_p^2(v_p^2+1)}{(2v_p^2+1)^2} &= \frac{\xi_p^2-\varepsilon_p^2}{4\xi_p^2} \\
+&\Downarrow\\
+v_p^4+v_p^2+\frac{1}{4} &= \left(\frac{\xi_p}{2\varepsilon_p}\right)^2\\
+&\Downarrow\\
+v_p^2 &= \frac{1}{2}\left(\frac{\xi_p}{\varepsilon_p}-1\right)
+\end{align*}
+or if we solve for $u_p^2 = 1+v_p^2$ we have
+$$u_p^2 = \frac{1}{2}\left(\frac{\xi_p}{\varepsilon_p}+1\right)$$
+Note these are the results we expected as they follow from the transformation derivation.
+\end{enumerate}
+
+\pagebreak
+
+\section{Problem \#3}
+\begin{enumerate}[(1)]
+\item To find the density of the over-condensate particles of a weakly interacting Bose 
+gas at zero temperature by taking the number of particles to be
+$$N = N_0 + \sum_{p\ne0}\hat{a}^{\dagger}_p\hat{a}_{p}$$
+Where $N_0$ is the number of particles in the condensate. If we take the \emph{Bogoliubov
+transformation} where
+\begin{align*}
+\hat{a}_{p} &= u_p\alphaH_p-v_p\alphaHD_{-p}\\
+\hat{a}^{\dagger}_{p} &= -v_p\alphaH_{-p} + u_p\alphaHD_p
+\end{align*}
+Which allows us to transform 
+\begin{align*}
+\hat{a}^{\dagger}_p\hat{a}_{p} &=\left(-v_p\alphaH_{-p} + u_p\alphaHD_p\right) \left(u_p\alphaH_p-v_p\alphaHD_{-p}\right)\\
+&= u_p^2\alphaHD_p\alphaH_p + v_p^2\alphaH_{-p}\alphaHD_{-p} -u_pv_p\left(\alphaHD_{p}\alphaHD_{-p}+\alphaH_{-p}\alphaH_{p}\right)\\
+&= u_p^2\alphaHD_p\alphaH_p + v_p^2\left(\alphaHD_{-p}\alphaH_{-p}+1\right) -u_pv_p\left(\alphaHD_{p}\alphaHD_{-p}+\alphaH_{-p}\alphaH_{p}\right)\\
+&= v_p^2 + u_p^2\alphaHD_p\alphaH_p + v_p^2\alphaHD_{-p}\alphaH_{-p} -u_pv_p\left(\alphaHD_{p}\alphaHD_{-p}+\alphaH_{-p}\alphaH_{p}\right)\\
+&= v_p^2
+\end{align*}
+Note that we can neglect all terms that do not conserve momentum which leaves us with 
+the $v_p^2$ term. Now we evaluate the sum 
+\begin{align*}
+N_{e} = \sum_{p\ne{0}}v_p^2 &= V\int_{0}^{\infty}v_p^2p^2\frac{d^3p}{(2\pi\hbar)^3}\\
+n_e &= \frac{4\pi}{2(2\pi\hbar)^3}\int_{0}^{\infty}p^2\left(\frac{\xi_p}{\varepsilon_p}-1\right)dp\\
+&= \frac{4\pi}{2(2\pi\hbar)^3}\int_{0}^{\infty}p^2\left(\frac{p^2/2m+gn}{\sqrt{p^2/2m(2gn+p^2/2m)}}-1\right)dp\\
+&= \frac{4\pi2^{3/2}m^3s^3}{2(2\pi\hbar)^3}\int_{0}^{\infty}y^2\left(\frac{y^2+1}{\sqrt{x^4+2x^2}}-1\right)dy\\
+&= \frac{2^{3/2}m^3s^3}{2(2\pi\hbar)^3}\frac{\sqrt{2}}{3}\\
+&= \frac{4}{3\pi^2}\left(\frac{ms}{\hbar}\right)^3
+\end{align*}
+Note we used the change of variables 
+$$s^2=\frac{gn}{m}\qquad p=(\sqrt{2}ms)x$$
+
+\item In order to calculate the specific heat of the weakly interacting Bose gas we note 
+that the energy spectrum is given as
+$$\varepsilon_p = \sqrt{s^2p^2+\left(\frac{p^2}{2m}\right)^2}$$
+which we take to the small $p$ limit $\varepsilon_p\approx sp$. This allows us to calculate 
+the energy as
+\begin{align*}
+E &= V\int\frac{\varepsilon_p}{e^{\varepsilon_p/T}-1}\frac{d^3p}{(2\pi\hbar)^3}\\
+&= V\frac{s}{2\pi^2\hbar^3}\int\frac{p^3}{e^{sp/T}-1}dp\\
+&= \frac{V\pi^2T^4}{30(s\hbar)^3}\\
+\end{align*}
+Therefore we can find the specific heat as
+$$C_V = \left(\partiald{E}{T}\right)_{V} = \frac{2V\pi^2T^3}{15(s\hbar)^3}$$
+and the entropy as
+$$S = \frac{E}{T} = \frac{V\pi^2T^3}{30(s\hbar)^3}$$
+\end{enumerate}
+
+\pagebreak
+
+\section{Problem \#4}
+\begin{enumerate}[(1)]
+\item We can find the normal density of the Bogoliubov gas by calculating 
+\begin{align*}
+\rho_n &= -\frac{1}{3}\int p^2\frac{df}{d\varepsilon_p}\frac{d^3p}{(2\pi\hbar)^3}\\
+&= \frac{1}{3}\frac{1}{2\pi^2\hbar^3}\int p^4\frac{e^{sp/T}}{e^{sp/T}-1}dp\\
+&= \frac{4\zeta(5)T^5}{\pi^2\hbar^3s^5}
+\end{align*}
+and the superfluid density as
+\begin{align*}
+\rho_s &= -\frac{1}{3s}\int p^2\frac{df}{dp}\frac{d^3p}{(2\pi\hbar)^3}\\
+&= \frac{1}{3}\frac{1}{2\pi^2\hbar^3}\frac{1}{T}\int p^4\frac{e^{sp/T}}{(e^{sp/T}-1)^2}dp\\
+&= \frac{2\pi{T^4}}{45\hbar^3s^5}
+\end{align*}
+We note the difference in the power of $T$ this results in the limited case where $T>>gn=ms^2$ 
+it will result in a normal density that goes to one and a super fluid density that goes to
+zero. In the other limit we see that both densities becomes smaller than one.
+
+\item We can compare the results for the condensate density found as
+\begin{align*}
+n &= \int\frac{1}{e^{\varepsilon_p/T}-1}\frac{d^3p}{(2\pi\hbar)^3}\\
+&= \frac{1}{2\pi^2\hbar^3}\int\frac{p^2}{e^{sp/T}-1}dp\\
+&= \frac{2\zeta(3)T^3}{2\pi^2(s\hbar)^3}
+\end{align*}
+we see that this differs from the normal density by a factor of $(T/s)^2$.
+
+
+
+\end{enumerate}
+
+\end{document}
+

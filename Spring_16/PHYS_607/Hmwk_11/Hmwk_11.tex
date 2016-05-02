@@ -1,0 +1,170 @@
+\documentclass[11pt]{article}
+
+\usepackage{latexsym}
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{enumerate}
+\usepackage{amsmath}
+\usepackage{cancel}
+\numberwithin{equation}{section}
+
+\setlength{\evensidemargin}{.25in}
+\setlength{\oddsidemargin}{-.25in}
+\setlength{\topmargin}{-.75in}
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{9.5in}
+\newcommand{\due}{April 28th, 2016}
+\newcommand{\HWnum}{11}
+\input{"C:/Users/joeor_000/Documents/Coursework/Define.tex"}
+
+\begin{document}
+\input{../title.tex}
+
+\section{Problem \#1}
+\begin{enumerate}[(1)]
+\item  We can find the second critical field, $H_{c2}$ assuming that the area of the 
+normal vortex reaches one half of the area of the elementary cell in the vortex
+lattice by noting that the critical field goes by
+$$H_{c2} = \frac{\Phi_0}{A}$$
+where $A$ is the area of the normal vortex. We see that is this area is half of
+the elementary cell of length, $a$, we have
+$$A = \frac{1}{2}\frac{\sqrt{3}a^2}{2} \Rightarrow H_{c2} = \frac{4\Phi_0}{\sqrt{3}a^2}$$
+
+\item Given the \emph{Ginzburg-Landau equation} in the external field
+\begin{equation}
+\frac{1}{4m}\left(-i\hbar\grad-\frac{2e}{c}\mathbf{A}\right)^2\psi + a\psi + b|\psi|^2 = 0
+\label{Ginz}
+\end{equation}
+where we linearize the wave function near the transition temperature, $T_c$ as
+$$|\psi|^2 = \left\{\begin{array}{cc}
+                 -\dfrac{a}{b}     &a<0\\
+                 0                &a>0\\
+             \end{array}\right.$$
+where we define $a=\alpha(T-T_c)$. Now we use the Landau gauge where we take 
+$\mathbf{A} = Bx\hat{y}$ which allows us to express equation \ref{Ginz} near the transition
+as the linear equation
+$$-\frac{\hbar^2}{4m^*}\grad^2\psi+a\psi$$
+which yields the solution
+$$\psi = \psi_0e^{-x/\xi}\qquad\textnormal{with\ }\xi=\sqrt{\frac{\hbar^2}{-4m^*a}}$$
+Note that $a<0$ in this regime so we can see that $\xi\in\mathbb{R}$. We take $\xi$ to be
+the characteristic length of coherence. This gives us the fact that the quantized vortices 
+within the super conductors have a radius of $\xi$. If we recall that the second critical 
+field is when the lattice of vortices reaches the point of overlap we see that $A=2\pi\xi^2$
+which yields the result
+$$H_{c2} = \frac{\Phi_0}{2\pi\xi^2}$$
+
+\item We can find the energy of an individual superconducting vortex in the superconductor of
+the II-kind by noting the free energy of a vortex filament per unit length is given as
+$$f_{v}^{0} = \int\left(\frac{m^*n_sv_s}{2} + \frac{B^2}{8\pi}\right)\rho{d\rho}{d\varphi}$$
+Where we take $B$ to be the \emph{MacDonald function} solving this integral in the II-kind
+case we have the energy per filament as
+$$\varepsilon = \frac{\pi{n_s}\hbar^2}{m^*}\ln\left(\frac{\lambda}{\xi}\right)$$
+where we take $\lambda$ as the penetration length defined as
+$$\lambda = \sqrt{\frac{m^*c}{4\pi{n_s}e^2}}$$
+note that for II-kind superconductors we have $\lambda<\xi$ so that this energy is negative 
+which implies that the creation of vortices is energy favorable.
+
+\item We see that the free energy of a vortex for a fixed external field, $H$, goes as
+$$f_v = f_v^0 - \int\frac{\mathbf{B}\cdot\mathbf{H}}{4\pi}\rho{d\rho}$$
+we see that the for a fixed $H$ the integral just is the flux of an individual vortex, $\Phi_0$. 
+Therefore,
+$$f_v \approx f_v^0 - H\Phi_0$$
+We see that as $H$ increases we have a decreasing free energy, this implies that at the point
+when $f_v=0$ we are at the first critical field. This implies that
+$$H_{c1} = \frac{f_v^0}{\Phi_0} = \frac{\Phi_0}{2\pi\lambda^2}$$
+\end{enumerate}
+
+\section{Problem \#2}
+\begin{enumerate}[(1)]
+\item Assuming that the radius of the normal core of the vortex is equal to $\xi$ and no 
+pinning forces for vortices we can take the current of the vortex by \emph{London's Equation}
+$$\mathbf{j}_s = -\frac{en_s}{m}\mathbf{A}$$
+We note that due to the \emph{Lorentz Force} we have an electric field $E = vB$ this results
+in a resistivity of the form 
+$$\rho = \frac{vB}{j_s}$$
+which we can approximate as a relation to the normal resistivity, $\rho_n$, by
+$$\rho = \rho_n\frac{H}{H_{c2}}$$
+
+\item Using the result from part (1) we see that for an electric field in the $x$ direction
+$E_x$ and magnetic field in the $z$ direction, $H$, we calculate the electric field in the
+$y$ direction by noting that $E_x$ generates a current 
+$$j_x = \rho{E_x} = \rho_nE_x\frac{H}{H_{c2}}$$
+this current with $H$ generates an electric field by $\mathbf{j}_x\times\mathbf{H}$ which
+yields
+$$E_y = \rho_{n}E_x\frac{H^2}{H_{c2}}$$
+\end{enumerate}
+
+\pagebreak
+
+\section{Problem \#3}
+\begin{enumerate}[(1)]
+\item We can find the partition function of the 1d Ising model at zero magnetic field by taking
+the general energy of the spin configuration as
+$$E = - J\sum_{nn}\pmb{\sigma}_x\pmb{\sigma}_x$$
+which in 1d we have
+$$E(\sigma_x) = -J\sum_{n=0}^{N-1}\sigma_{n}\sigma_{n+1}-J\sigma_{N}\sigma_{1}$$
+where we have $N$ spins in the chain. So the partition follows as
+$$Z(T) = \sum_{\{\sigma_x\}}\exp\left[-\frac{E(\sigma_x)}{T}\right]$$
+which we can represent as
+$$Z(T) = \sum_{\{\sigma_x\}}\prod_{b}\exp\left(K\sigma_b\right)$$
+Using this we can take the free energy of the system as
+$$F = -J - T\ln\left[\cosh(J/T)+\sqrt{\sinh^2(J/T)+e^{-4J/T}}\right]$$
+which allows us to calculate the entropy as
+\begin{align*}
+S = -\left(\partiald{F}{T}\right)_{V,N} &= \ln\left[\cosh(J/T)+\sqrt{\sinh^2(J/T)+e^{-4J/T}}\right]\\
+&\qquad + \frac{J}{T}\left(\cosh(J/T)+\sqrt{e^{-4J/T}+\sinh^2(J/T)}\right)^{-1}\left(\frac{2e^{-4J/T}}{\sqrt{e^{-4J/T}+\sinh^2(J/T)}}-\sinh(J/T)\right)
+\end{align*}
+
+\item We can calculate the  correlation function of two spins, $\average{\sigma_n\sigma_m}$, 
+as a function of the distance $|n-m|$ and temperature by noting that 
+$$\average{\sigma_n\sigma_m} = \cos^2(2\phi) + \left(\frac{\lambda_{-}}{\lambda_{+}}\right)^{n-m}\sin^2(2\phi)$$
+where $\lambda_{\pm}$ are the eigenvalues of the transfer matrix. This result reduces to
+$$\average{\sigma_n\sigma_m} = \left(\tanh(J/T)\right)^{n-m}$$
+
+\item For a Ising chain of $N$ spins placed in an external magnetic field, $H$, we have a 
+energy
+$$E = -J\sum_{i=1}^{N}\sigma_i\sigma_{i+1}-H\sum_{i=1}^{N}\sigma_{i}$$
+which we can write in the symmetric form
+$$E = \sum_{i=1}^{N}\left(-J\sigma_i\sigma_{i+1}-H(\sigma_{i}+\sigma_{i+1})/2\right)$$
+this yields the partition function
+\begin{align*}
+Z &= \sum_{\sigma_1=\pm1}\sum_{\sigma_2=\pm1}...\sum_{\sigma_N=\pm1}\prod_{i=1}^{N}\exp[J\sigma_{i}\sigma_{i+1}/T+H(\sigma_i+\sigma_{i+1})/2T]\\
+&= \sum_{\sigma_1=\pm1}\sum_{\sigma_2=\pm1}...\sum_{\sigma_N=\pm1}T(\sigma_1,\sigma_2)T(\sigma_2,\sigma_3)...T(\sigma_i,\sigma_{i+1})...T(\sigma_N,\sigma_1)
+\end{align*}
+Note the periodic boundary condition $\sigma_{N+1} = \sigma_1$. We define
+$$T(\sigma_{i},\sigma_{i+1}) = \exp[J\sigma_{i}\sigma_{i+1}/T+H(\sigma_i+\sigma_{i+1})/2T]$$
+which we take as a $2\times2$ transfer matrix as
+$$T(\sigma_{i},\sigma_{i+1}) = \left(\begin{array}{cc}
+                                T(+,+) &T(+,-)\\
+                                T(-,+) &T(-,-)
+                               \end{array}\right)
+= \left(\begin{array}{cc}
+       \exp(J/T+H/T)  &\exp(-J/T)\\
+       \exp(-J/T)     &\exp(J/T-H/T)
+  \end{array}\right)$$
+Which correspond to the four different spin configurations. If we diagonalize $T$ such that
+$$U^{-1}TU = \Lambda = \left(\begin{array}{cc}
+                         \lambda_{+}   &0\\
+                         0             &\lambda_{-}
+                       \end{array}\right)$$
+we see that the partition function becomes simply
+$$Z = \textnormal{Tr}\Lambda^N$$
+where
+$$\Lambda^N = \left(\begin{array}{cc}
+                         \lambda_{+}^N   &0\\
+                         0               &\lambda_{-}^N    
+                       \end{array}\right)$$
+where the eigenvalues are given as
+$$\lambda_{\pm} = \exp(J/T)\left(\cosh(H/T)\pm\sqrt{\sinh^2(H/T)+\exp(-4J/T)}$$
+so we can see that 
+$$Z = \lambda_{+}^N + \lambda_{-}^N$$
+Which yields the free energy as
+$$F = -\frac{T}{N}\lim_{N\rightarrow\infty}\ln(Z) = -T\ln(\lambda_{+})$$
+from this it follows that the magnetization per spin is
+$$m = \frac{\sinh(H/T)}{\sqrt{\sinh^2(H/T)+\exp(-4J/T)}}$$
+\end{enumerate}
+
+
+\end{document}
+

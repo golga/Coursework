@@ -1,0 +1,170 @@
+\documentclass[11pt]{article}
+
+\usepackage{latexsym}
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{enumerate}
+\usepackage{amsmath}
+\usepackage{cancel}
+\numberwithin{equation}{section}
+
+\setlength{\evensidemargin}{.25in}
+\setlength{\oddsidemargin}{-.25in}
+\setlength{\topmargin}{-.75in}
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{9.5in}
+\newcommand{\due}{March 24th, 2016}
+\newcommand{\HWnum}{7}
+\input{"C:/Users/joeor_000/Documents/Coursework/Define.tex"}
+
+\begin{document}
+\input{../title.tex}
+
+\section{Problem \#1}
+\begin{enumerate}[(1)]
+\item A single atom (Yb) trapped by a harmonic potential and put into equilibrium with a
+temperature, $T$, when an external time-dependent but spatially uniform force, $F(t)$, is turned on
+at time $t=0$. For this system we can find the value $\average{e^{-R/T}}$ where $R$ is the 
+work done over the atom during the process by applying the \emph{Jarzhinsky equality}
+\begin{equation}
+\average{e^{-\frac{R}{T}}} = e^{-\frac{\Delta{F}}{T}}
+\label{JarEqual}
+\end{equation}
+where $\Delta{F}$ is the change in the free energy from the initial state to the final state.
+Given that initially the atom was in a harmonic potential we know that the system can be 
+described by the Hamiltonian
+$$H_{i} = \frac{p^2}{2m} + \frac{1}{2}m\omega^2x^2$$
+with energy eigenvalues of
+$$E_{n} = \hbar\omega\left(n+\frac{1}{2}\right)$$
+after the force has been turned on the Hamiltonian becomes
+$$H_{f} = \frac{p^2}{2m} + \frac{1}{2}m\omega^2x^2 + F(t)x$$
+where the energy eigenvalues are shifted such that
+$$E_{n} = \hbar\omega\left(n+\frac{1}{2}\right) - \frac{1}{2}\frac{F(t)^2}{m\omega^2}$$
+Using this we can calculate the initial free energy through the \emph{Partition Function}
+\begin{equation}
+Z = \sum_{n}e^{-\frac{E_n}{T}}
+\label{Partition}
+\end{equation}
+by
+\begin{equation}
+F = -T\ln(Z)
+\label{FreePart}
+\end{equation}
+Using equation \ref{Partition} we can calculate the Partition Function initially as
+\begin{align*}
+Z_i &= \sum_{n=0}^{\infty}\exp\left(-\frac{\hbar\omega}{T}(n+1/2)\right)\\
+&= e^{-\hbar\omega/2T}\sum_{n=0}^{\infty}\left(e^{-\hbar\omega/T}\right)^n\\
+&= \frac{e^{-\hbar\omega/2T}}{1-e^{-\hbar\omega/T}}
+\end{align*}
+which gives us the initial free energy as
+\begin{align*}
+F_i &= -T\ln(Z_i) = \frac{\hbar\omega}{2} + T\ln\left(1-e^{-\hbar\omega/T}\right)
+\end{align*}
+Repeating for the final state we find that
+\begin{align*}
+Z_f &= \sum_{n=0}^{\infty}\exp\left(-\frac{\hbar\omega}{T}(n+1/2)+\frac{1}{2m\omega^2}\frac{F(t)^2}{T}\right)\\
+&= Z_ie^{F(t)^2/2m\omega^2}
+\end{align*}
+Which implies that the final free energy is
+$$F_f = \frac{\hbar\omega}{2} + \ln\left(1-e^{\hbar\omega/2}\right) - \frac{1}{2}\frac{F(t)^2}{m\omega^2}$$
+Therefore we can see the change in energy is related to the force by
+$$\Delta{F} = -\frac{1}{2}\frac{F(t)^2}{m\omega^2}$$
+which by equation \ref{JarEqual} we have
+$$\average{e^{-\frac{R}{T}}} = e^{\frac{F(t)^2}{2m\omega{T}}}$$
+Using this result coupled with the \emph{Crooks Equality}
+\begin{equation}
+P(-R) = P(R)e^{-\frac{1}{T}(R-\Delta{F})}
+\label{CrooksEqual}
+\end{equation}
+we can state that the ration of the distribution functions is
+$$\frac{P(-R)}{P(R)} = \exp\left[-\frac{1}{T}\left(R+\frac{1}{2}\frac{F(t)^2}{m\omega^2}\right)\right]$$
+
+\item Now rather than turning on an external force we decrease the potential frequency such
+that $\omega_f<\omega_i$ we note that the final free energy becomes
+$$F_f = \frac{\hbar\omega_f}{2} + T\ln\left(1-e^{-\hbar\omega_f/T}\right)$$
+which allows us to calculate $\Delta{F}$ as
+\begin{align*}
+\Delta{F} &= \frac{\hbar(\omega_f-\omega_i)}{2} + T\ln\left(1-e^{-\hbar\omega_f/T}\right) - T\ln\left(1-e^{-\hbar\omega_i/T}\right)\\
+&= \frac{\hbar(\omega_f-\omega_i)}{2} + T\ln\left(\frac{1-e^{-\hbar\omega_f/T}}{1-e^{-\hbar\omega_i/T}}\right)
+\end{align*}
+Note that for $\omega_f<\omega_i$ the change in free energy is negative like in part (1). We
+can also see that equation \ref{JarEqual} becomes
+$$\average{e^{-\frac{R}{T}}} = \frac{e^{-\hbar\omega_f/2T}}{e^{-\hbar\omega_i/2T}}\frac{1-e^{-\hbar\omega_f/T}}{1-e^{-\hbar\omega_i/T}}$$
+\end{enumerate}
+
+\pagebreak
+
+\section{Problem \#2}
+\begin{enumerate}[(1)]
+\item For the given pair interaction potential
+$$U(r) = \left\{\begin{array}{cl}
+                U_0    &\textnormal{for}\ r<a\\
+                0      &\textnormal{for}\ r>a\\
+          \end{array}\right.$$
+we can find the second virial coefficient of the virial expansion given as
+$$\frac{p}{T} = \frac{N}{V} + B_2(T)\frac{N^2}{V^2} + B_3(T)\frac{N^3}{V^3} + ...$$
+where the $B_j$ are the virial coefficients. We note that the Hamiltonian with this
+interaction potential is 
+$$H = \sum_{i=0}^{N}\frac{p_i^2}{2m} + \sum_{i>j}U(r_ij)$$
+Where $r_{ij}$ is the separation distance given as $r_{ij} = |\mathbf{r}_i - \mathbf{r}_j|$
+allowing us to calculate the partition function
+\begin{align*}
+Z &= \frac{1}{N!\lambda^{3N}}\int\prod_{i=0}^{N}d^3r_i\exp\left(-\frac{1}{T}\sum_{j<{k}}U(r_{jk})\right)
+\end{align*}
+where $\lambda$ is the thermal wavelength defined as
+$$\lambda\equiv\sqrt{\frac{2\pi\hbar^2}{mk_BT}}$$
+which follows from the ideal case. Now by introducing the \emph{Mayer f function}
+$$f(r) = e^{-{U(r)}/T}-1$$
+where we call $f_{ij} = f(r_{ij})$ which makes the partition function
+\begin{align*}
+Z &= \frac{1}{N!\lambda^{3N}}\int\prod_{i=0}^{N}d^3r_i\prod_{j>k}(1+f_{jk})\\
+&= \frac{1}{N!\lambda^{3N}}\int\prod_{i=0}^{N}d^3r_i\prod_{j>k}(1+f_{jk})\\
+&= \frac{1}{N!\lambda^{3N}}\int\prod_{i=0}^{N}d^3r_i\left(1+\sum_{j>k}f_{jk} + \sum_{j>k,l>m}f_{jk}f_{lm}+...\right)\\
+&= \frac{V^N}{N!\lambda^{3N}}\left(1 + \frac{N}{2V}\int d^3rf(r)+...\right)^N\\
+&= Z_{ideal}\left(1 + \frac{N}{2V}\int d^3rf(r)+...\right)^N\\
+&= Z_{ideal}\left(1 + \frac{2\pi{N}}{V}\int_{0}^{a}(e^{-U_0/T}-1)r^2dr+...\right)^N\\
+&= Z_{ideal}\left(1 + \frac{2\pi{N}a^3}{3V}(e^{-U_0/T}-1)+...\right)^N
+\end{align*}
+Now we can calculate $p/T$ by using the partition function and expanding on $N/V$
+\begin{align*}
+\frac{p}{T} &= \partiald{\ln(Z)}{V} = \partiald{}{V}\left[\ln(Z_{ideal})+N\ln\left(1+\frac{2\pi{N}a^3}{3V}(e^{-U_0/T}-1)\right)\right]\\
+&= \frac{N}{V} + \partiald{}{V}\left[N\ln\left(1+\frac{2\pi{N}a^3}{3V}(e^{-U_0/T}-1)\right)\right]\\
+&= \frac{N}{V} + \partiald{}{V}\left[N\frac{2\pi{N}a^3}{3V}(e^{-U_0/T}-1)\right]\\
+&= \frac{N}{V} - \frac{2\pi{a^3}}{3}\left(e^{-U_0/T}-1\right)\left(\frac{N}{V}\right)^2
+\end{align*}
+So we found the second virial coefficient as
+$$B_2 = -\frac{2\pi{a^3}}{3}\left(e^{-U_0/T}-1\right)$$
+note that $B_2$ is negative which implies that with interactions the pressure is decreased 
+compared to the ideal case.
+
+\item In order to calculate the third virial coeficient assuming $|U_0|/T<<1$ we note that
+we have to calculate the higher order cluster integral $J_3$. Noting that we calculated
+$$J_2 = \frac{4\pi{a^3}}{3}\left(e^{-U_0/T}-1\right)$$
+in part (1). Given that $B_3$ is related to both $J_2$ and $J_3$ by
+$$B_3 = J_2^2-\frac{J_3}{3}$$
+all we need to do is calculate 
+\begin{align*}
+J_3 = \int d^3r_{2}d^3r_{3}\left(f_{12}f_{13} + f_{12}f_{23}+f_{13}f_{23}+f_{12}f_{23}f_{23}\right)
+\end{align*}
+Noting that the potential is constant we can say that the first three iterations are the same 
+which yields
+$$J_3 = 3\int d^3r_{2}d^3r_{3}f_{12}f_{13} + \int{d^3r_{2}d^3r_{3}}f_{12}f_{23}f_{23}$$
+We can see that the first integral is related the $J_2$ by
+\begin{align*}
+J_3 &= 3\int d^3r_{3}f_{13}\int d^3r_{2}f_{12}\\
+&= 3J_2^2
+\end{align*}
+Note that this term with cancel with the first term in $B_3$. So now we calculate the second
+integral by expanding $f(r)^3$ as
+$$f(r)^3 = \left(e^{-U_0/T}-1\right)^3 = \approx -\left(\frac{U_0}{T}\right)^3$$
+Noting that $f(r)$ is independent of $r$ we get a factor of $(4/3\pi{a}^3)^2$ from the 
+integration. So it follows that to leading order in $U_0/T$
+$$B_3 \approx -\frac{16\pi^2a^6}{3}\left(\frac{U_0}{T}\right)^3$$
+
+\item Note that in general $B_3$ is in the form
+$$B_3 \approx \frac{16\pi^2a^6}{3}\left(e^{U_0/T}-1\right)^3$$
+\end{enumerate}
+
+\end{document}
+

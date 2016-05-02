@@ -23,23 +23,176 @@
 
 \section{Problem \#1}
 \begin{enumerate}[(a)]
-\item
-\item
-\item
-\end{enumerate}
+\item For a Dirac particle we can find the commutator $[\gamma_5,H]$ where
+$$\gamma_5 = -\left(\begin{array}{cc}
+                   0    &I\\
+                   I    &0\\
+               \end{array}\right)$$
+where $I$ is the $2\times2$ identity matrix and the Hamiltonian is
+$$H = c\pmb{\alpha}\cdot\mathbf{p} + mc^2\beta$$
+where $\beta$ is the matrix
+$$\beta = \left(\begin{array}{cc}
+                   I    &0\\
+                   0    &-I\\
+               \end{array}\right)$$
+and each component of $\pmb{\alpha}$ is a matrix given as
+$$\alpha^{k} = \left(\begin{array}{cc}
+                   0    &\sigma_k\\
+                   \sigma_k    &0\\
+               \end{array}\right)$$
+So we note that we can represent the Hamiltonian as the matrix
+$$H = c\left(\begin{array}{cc}
+       mcI         &\sigma_kp_k\\
+       \sigma_kp_k &-mcI
+        \end{array}\right)$$
+note we are summing over the index $k$ over the three dimensions. So
+\begin{align*}
+[\gamma_5,H] &= -c\left(\begin{array}{cc}
+                   0    &I\\
+                   I    &0\\
+               \end{array}\right)
+\left(\begin{array}{cc}
+       mcI         &\sigma_kp_k\\
+       \sigma_kp_k &-mcI
+        \end{array}\right)
+-c\left(\begin{array}{cc}
+       mcI         &\sigma_kp_k\\
+       \sigma_kp_k &-mcI
+        \end{array}\right)
+ \left(\begin{array}{cc}
+                   0    &-I\\
+                   -I    &0\\
+               \end{array}\right)\\
+&= -c\left(\begin{array}{cc}
+         \sigma_kp_k      &-mcI\\
+         mcI              &\sigma_kp_k
+     \end{array}\right)
++ c\left(\begin{array}{cc}
+         \sigma_kp_k      &mcI\\
+         -mcI              &\sigma_kp_k
+     \end{array}\right)\\
+&= 2mc^2\left(\begin{array}{cc}
+         0    &I\\
+         -I   &0
+     \end{array}\right)
+\end{align*}
 
+\item Next we calculate the commutator $[\mathbf{l}^2,H]$ where 
+$\mathbf{l} = [\mathbf{r}\times\mathbf{p}]$. So we calculate
+\begin{align*}
+[\mathbf{l}^2,H] &= [\mathbf{l}^2,c\pmb{\alpha}\cdot\mathbf{p}] + \cancelto{0}{[\mathbf{l}^2,mc^2\beta]}\\
+&= [l_il_i,c\alpha_kp_k]\\
+&= c\alpha_k(l_i[l_i,p_k] + [l_i,p_k]l_i)\\
+&= c\alpha_k(l_ii\hbar\epsilon_{ikl}p_{l} + i\hbar\epsilon_{ikl}p_ll_i)\\
+&= i\hbar{c}\epsilon_{ikl}\alpha_k(l_ip_{l} + p_ll_i)
+\end{align*}
+
+\item And for the inversion operator $J\psi(\mathbf{r}) = \psi(-\mathbf{r})$ we calculate the
+commutation relation
+\begin{align*}
+[J,H] &= [J,c\pmb{\alpha}\cdot\mathbf{p}] + \cancelto{0}{[J,mc^2\beta]}\\
+&= c\pmb{\alpha}\cdot(J\mathbf{p}) - c\pmb{\alpha}\cdot(\mathbf{p}J) \\
+&= c\pmb{\alpha}\cdot(-\mathbf{p}J) - c\pmb{\alpha}\cdot(\mathbf{p}J) \\
+&= -2c(\pmb{\alpha}\cdot\mathbf{p})J
+\end{align*}
+\end{enumerate}
 \pagebreak
 
-\section{Problem \#1}
+\section{Problem \#2}
 \begin{enumerate}[(a)]
-\item
-\item
-\end{enumerate}
+\item We can find the non-relativistic limit for the expression for the charge density 
+$$\rho = e\psi^*\psi$$
+by taking the lower spinor, $\chi$, of the wave function
+$$\psi = \left(\begin{array}{c}
+        \varphi\\
+        \chi
+        \end{array}\right)$$
+as
+$$\chi = \frac{1}{2mc}\pmb{\sigma}\cdot\left(\hat{\mathbf{p}}-\frac{e}{c}\mathbf{A}\right)\varphi$$
+Note this follows from the solution to the Hamiltonian for a Dirac particle 
+$$i\hbar\partiald{\psi}{t} = (c\pmb{\alpha}\cdot\mathbf{p} + mc^2\beta)\psi$$
+which yields the system of equations
+\begin{align*}
+(mc^2-\varepsilon)\varphi + c\pmb{\sigma}\cdot\mathbf{p}\chi &= 0\\
+c\pmb{\sigma}\cdot\mathbf{p}\varphi - (mc^2+\varepsilon)\chi &= 0
+\end{align*}
+Which if we solve for $\chi$ and taking the non-relativistic limit $\varepsilon<<mc^2$ we 
+find
+$$\chi = \frac{c\pmb{\sigma}\cdot\mathbf{p}}{2mc^2-\varepsilon}\varphi\approx \frac{1}{2mc}\pmb{\sigma}\cdot\left({\mathbf{p}}-\frac{e}{c}\mathbf{A}\right)\varphi$$
+note we take the canonical momentum $\mathbf{p} = \mathbf{p} - e/c\mathbf{A}$. So we
+calculate $\rho$ as
+\begin{align*}
+\rho = e\psi^*\psi &= e\left(\begin{array}{cc}
+                        \varphi^*,   &\frac{1}{2mc}\left(\pmb{\sigma}\cdot\left(\hat{\mathbf{p}}-\frac{e}{c}\mathbf{A}\right)\varphi\right)^*
+                        \end{array}\right)
+\left(\begin{array}{cc}
+                        \varphi\\   \frac{1}{2mc}\pmb{\sigma}\cdot\left(\hat{\mathbf{p}}-\frac{e}{c}\mathbf{A}\right)\varphi
+                        \end{array}\right)\\
+&= e\varphi^*\varphi + \scrO\left(\frac{1}{c^2}\right)
+\end{align*}
 
+\item Using the same wave function we found in part (a) we can calculate the current density
+\begin{align*}
+\mathbf{j} &= ec\psi^*\pmb{\alpha}\psi\\
+&= ec\psi^*\left(\begin{array}{cc}
+              0             &\pmb{\sigma}\\ 
+              \pmb{\sigma}  &0
+            \end{array}\right)
+            \left(\begin{array}{cc}
+              \varphi\\ 
+              \frac{1}{2mc}\pmb{\sigma}\cdot\left(\hat{\mathbf{p}}-\frac{e}{c}\mathbf{A}\right)\varphi
+            \end{array}\right)\\
+&= ec       \left(\begin{array}{cc}
+              \varphi^*,   &\frac{1}{2mc}\left(\pmb{\sigma}\cdot\left(\hat{\mathbf{p}}-\frac{e}{c}\mathbf{A}\right)\varphi\right)^*
+            \end{array}\right)
+            \left(\begin{array}{cc}
+              \frac{\pmb{\sigma}}{2mc}\pmb{\sigma}\cdot\left(\hat{\mathbf{p}}-\frac{e}{c}\mathbf{A}\right)\varphi\\
+              \pmb{\sigma}\varphi\
+            \end{array}\right)\\
+&= \frac{ec}{2mc}\left[\varphi^*\pmb{\sigma}\left(\pmb{\sigma}\cdot\left(\hat{\mathbf{p}}-\frac{e}{c}\mathbf{A}\right)\right)\varphi - \left(\left(\hat{\mathbf{p}}+\frac{e}{c}\mathbf{A}\right)\cdot\varphi^*\pmb{\sigma}\right)\pmb{\sigma}\varphi\right]\\
+&\Downarrow\\
+j_i &= \frac{e}{2m}\left[\varphi^*\sigma_i\left(\sigma_k\left(\hat{p_k}-\frac{e}{c}A_k\right)\right)\varphi - \left(\left(\hat{p_k}+\frac{e}{c}{A_k}\right)\varphi^*\sigma_k\right){\sigma_i}\varphi\right]\\
+&= \frac{e}{2m}\left[\varphi^*(\delta_{ik}+i\epsilon_{ikl}\sigma_l)\left(\hat{p_k}-\frac{e}{c}A_k\right)\varphi - \left(\hat{p_k}+\frac{e}{c}{A_k}\right)\varphi^*(\delta_{ik}+i\epsilon_{ikl}\sigma_l)\varphi\right]\\
+&= \frac{e}{2m}\left[\varphi^*\hat{p}_i\varphi - \hat{p}_i\varphi^*\varphi - \frac{2e}{c}A_i\varphi^*\varphi + i\epsilon_{ikl}\left(\varphi^*\sigma_l\hat{p}_k\varphi + \hat{p}_k\varphi^*\sigma_l\varphi\right)\right]\\
+&\Downarrow\\
+\mathbf{j} &= -\frac{i\hbar{e}}{2m}\left[\varphi^*\pmb{\nabla}\varphi - (\pmb{\nabla}\varphi^*)\varphi\right] - \frac{e^2}{mc}\mathbf{A}\varphi^*\varphi + \frac{e\hbar}{2m}\pmb{\nabla}\times(\varphi^*\pmb{\sigma}\varphi)
+\end{align*}
+\end{enumerate}
 \pagebreak
 
-\section{Problem \#1}
-
+\section{Problem \#3}
+Using the Born approximation and the stationary Klein-Gordon equation
+$$\left\{-\frac{\hbar^2}{2m}\pmb{\nabla}+U(r)\right\}\psi = \frac{p_0^2}{2m}\psi$$
+where $c^2p_0^2 = E^2-m^2c^4$ we can find the dependence of the scattering cross section,
+$\sigma(E)$, on the energy, $E$, for a spinless relativistic particle in an external scalar
+field $U(r)$ in the ultra-relativistic limiting case $(E\rightarrow\infty)$. In order to 
+use the Born approximation we need to write the stationary Klein-Gordon equation in the
+form of the Schr\"{o}dinger equation as 
+$$\left\{-\frac{\hbar^2}{2m}\pmb{\nabla}+U(r)-\frac{U(r)^2}{2mc^2}+\frac{EU(r)}{mc^2}-\frac{E^2}{2mc^2}\right\}\psi = E\psi$$
+Neglecting the constant term this yields an effective potential of the form
+$$U_{eff}(r) = \frac{(E+mc^2)U(r)}{mc^2} - \frac{U(r)^2}{2mc^2}$$
+using this potential we can find the scattering amplitude by the Born approximation
+\begin{align*}
+f_B &= -\frac{m}{2\pi\hbar^2}\int{U_{eff}}e^{-i\mathbf{q}\cdot\mathbf{r}}d^3r\\
+B &= -\frac{1}{2\pi\hbar^2c^2}\int\left((E+mc^2)U(r) - \frac{1}{2}U(r)^2\right)e^{-i\mathbf{q}\cdot\mathbf{r}}d^3r
+\end{align*}
+In the ultra-relativistic case we note that the first term is dominant and we take $E\rightarrow{cp_0}$.
+This results in the integral becoming a Fourier transformation of $U(r)$ by
+\begin{align*}
+f_B &= -\frac{p_0}{2\pi\hbar^2c}\int U(r)e^{-i\mathbf{q}\cdot\mathbf{r}}d^3r\\
+&= -\frac{p_0}{2\pi\hbar^2c}U(q)
+\end{align*}
+Using this result we can take the integral over $d\Omega$ where 
+$$d\Omega = \frac{\pi\hbar^2}{p_0^2}dq^2$$
+which yields
+\begin{align*}
+\sigma &= \int|f_B|^2d\Omega\\
+&= \frac{p_0^2}{4\pi^2\hbar^4c^2}\frac{\pi\hbar^2}{p_0^2}\int|U(q)|^2dq^2\\
+&= \frac{1}{4\pi\hbar^2c^2}\int_{0}^{\infty}|U(q)|^2dq^2
+\end{align*}
+Note that as $E\rightarrow\infty$ we take $p\rightarrow\infty$ which in turn implies that 
+$q\rightarrow\infty$. Therefore the integral in $\sigma$ goes to infinity. Note that if $U(r)$
+goes to zero as $r\rightarrow\infty$ we have $\sigma$ as a constant.
 
 \end{document}
 
