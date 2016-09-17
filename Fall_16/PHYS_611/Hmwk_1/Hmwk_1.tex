@@ -1,0 +1,183 @@
+\documentclass[11pt]{article}
+
+\usepackage{latexsym}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{enumerate}
+\usepackage{amsmath}
+\usepackage{cancel}
+\numberwithin{equation}{section}
+
+\setlength{\evensidemargin}{.25in}
+\setlength{\oddsidemargin}{-.25in}
+\setlength{\topmargin}{-.75in}
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{9.5in}
+\newcommand{\due}{September 19th, 2016}
+\newcommand{\HWnum}{1}
+\input{../../../Define.tex}
+
+\begin{document}
+\input{../title.tex}
+
+\section{Problem \#1}
+\begin{enumerate}[(a)]
+\item
+    For the tensor in three dimensions 
+    \begin{equation}
+        M_{ij} = \delta_{ij}\cos\alpha + n_{i}n_{j}(1-\cos\alpha) + \epsilon_{ijk}n_k\sin\alpha
+        \label{P1Tensor}
+    \end{equation}
+    where $n_i$ is a unit vector. Given the identity
+    \begin{equation}
+        \epsilon_{ijm}\epsilon_{klm} = \delta_{ik}\delta_{jl} - \delta_{il}\delta_{jk}
+        \label{KronInd}
+    \end{equation}
+    where $\delta_{ij}$ is the \emph{Kronecker delta} and $\epsilon_{ijk}$ is the \emph{Levi-Civita symbol} we can 
+    prove the orthogonality of the tensor given by equation \ref{P1Tensor} by
+    \begin{align*}
+        M_{ij}M_{ik} &= \left(\delta_{ij}\cos\alpha + n_{i}n_{j}(1-\cos\alpha) + \epsilon_{ijl}n_l\sin\alpha\right)\left(\delta_{ik}\cos\alpha + n_{i}n_{k}(1-\cos\alpha) + \epsilon_{ikm}n_m\sin\alpha\right) \\
+                     &= \delta_{ij}\delta_{ik}\cos^2\alpha + n_{i}n_{j}n_{i}n_{k}(1-\cos\alpha)^2 + \epsilon_{ijl}\epsilon_{ikm}n_ln_m\sin^2\alpha \\
+                     & \ \ \ \ + \delta_{ij}n_in_k(1-\cos\alpha)\cos\alpha + \delta_{ik}n_in_j(1-\cos\alpha)\cos\alpha \\
+                     & \ \ \ \ + \delta_{ij}\epsilon_{ikm}n_m\sin\alpha\cos\alpha + \delta_{ik}\epsilon_{ijl}n_l\sin\alpha\cos\alpha \\
+                     & \ \ \ \ +\epsilon_{ikm}n_{i}n_{j}n_m(1-\cos\alpha)\sin\alpha + \epsilon_{ijl}n_in_{k}n_{l}(1-\cos\alpha)\sin\alpha\\
+                     &= \delta_{jk}\cos^2\alpha + n_{i}n_{j}n_{i}n_{k}(1-\cos\alpha)^2 + (\delta_{jk}\delta_{lm}-\delta_{jm}\delta_{lk})n_ln_m\sin^2\alpha + 2n_jn_k(1-\cos\alpha)\cos\alpha \\
+                     & \ \ \ \ + \epsilon_{jkm}n_m\sin\alpha\cos\alpha + \epsilon_{kjm}n_m\sin\alpha\cos\alpha + \epsilon_{ikm}n_{i}n_{j}n_m(1-\cos\alpha)\sin\alpha + \epsilon_{ijl}n_in_{k}n_{l}(1-\cos\alpha)\sin\alpha\\
+                     &= \delta_{jk}\cos^2\alpha + n_{i}n_{j}n_{i}n_{k}(1-\cos\alpha)^2 + (\delta_{jk}n_mn_m-n_jn_k)\sin^2\alpha + 2n_jn_k(1-\cos\alpha)\cos\alpha \\
+                     & \ \ \ \ + \cancel{\epsilon_{jkm}n_m\sin\alpha\cos\alpha} - \cancel{\epsilon_{jkm}n_m\sin\alpha\cos\alpha} + \epsilon_{ikm}n_{i}n_{j}n_m(1-\cos\alpha)\sin\alpha + \epsilon_{ijl}n_in_{k}n_{l}(1-\cos\alpha)\sin\alpha \\
+                     &= \delta_{jk}\cancel{\cos^2\alpha} + n_{j}n_{k}(1-\cos\alpha)^2 + \delta_{jk}\cancel{\sin^2\alpha}-n_jn_k\sin^2\alpha + 2n_jn_k(1-\cos\alpha)\cos\alpha \\
+                     & \ \ \ \ +  \cancelto{0}{\epsilon_{ikm}n_{i}n_{m}}n_j(1-\cos\alpha)\sin\alpha +\cancelto{0}{\epsilon_{ijm}n_in_{m}}n_{k}(1-\cos\alpha)\sin\alpha \\
+                     &= \delta_{jk} + n_{j}n_{k} + n_jn_k\cos^2\alpha - n_jn_k\sin^2\alpha - \cancel{2n_jn_k\cos\alpha} +  \cancel{2n_jn_k\cos\alpha} - 2n_jn_k\cos^2\alpha\\
+                     &= \delta_{jk} + n_{j}n_{k} - n_jn_k(\cos^2\alpha + \sin^2\alpha)\\
+                     &= \delta_{jk}
+    \end{align*}
+    Note that we used the fact that $n_1$ is a unit vector with implies $n_in_i = 1$ and that 
+    $\epsilon_{ijk}n_in_j=0$ by the fact that $\epsilon_{ijk}n_in_j = -\epsilon_{jik}n_in_j$ for all no zero values
+    of $\epsilon_{ijk}$ therefore all non-zero terms will cancel within the sum.
+
+\item
+    For the special case where the unit vector, $n_i$ points along the $\hat{z}$ direction we note that $n_1=n_2=0$ 
+    and $n_3=1$ we  can see the $M_{ij}$ are
+    \begin{align*}
+        M_{11} &= \delta_{11}\cos\alpha + n_{1}n_{1}(1-\cos\alpha) + \epsilon_{11k}n_k\sin\alpha = \cos\alpha \\
+        M_{12} &= \delta_{12}\cos\alpha + n_{1}n_{2}(1-\cos\alpha) + \epsilon_{12k}n_k\sin\alpha = \sin\alpha \\
+        M_{13} &= \delta_{13}\cos\alpha + n_{1}n_{3}(1-\cos\alpha) + \epsilon_{13k}n_k\sin\alpha = 0 \\
+        M_{21} &= \delta_{21}\cos\alpha + n_{2}n_{1}(1-\cos\alpha) + \epsilon_{21k}n_k\sin\alpha = -\sin\alpha \\
+        M_{22} &= \delta_{22}\cos\alpha + n_{2}n_{2}(1-\cos\alpha) + \epsilon_{22k}n_k\sin\alpha = \cos\alpha \\
+        M_{23} &= \delta_{23}\cos\alpha + n_{2}n_{3}(1-\cos\alpha) + \epsilon_{23k}n_k\sin\alpha = 0 \\
+        M_{31} &= \delta_{31}\cos\alpha + n_{3}n_{1}(1-\cos\alpha) + \epsilon_{31k}n_k\sin\alpha = 0 \\
+        M_{32} &= \delta_{32}\cos\alpha + n_{3}n_{2}(1-\cos\alpha) + \epsilon_{32k}n_k\sin\alpha = 0 \\
+        M_{33} &= \delta_{33}\cos\alpha + n_{3}n_{3}(1-\cos\alpha) + \epsilon_{33k}n_k\sin\alpha = 1 
+    \end{align*}
+    Where if we write $M_{ij}$ in matrix form we see that this corresponds to a rotation around the z-axes.
+    $$M = \left(\begin{array}{ccc}
+            \cos\alpha  &-\sin\alpha    &0\\
+            \sin\alpha  &\cos\alpha     &0\\
+            0           &0              &1
+    \end{array}\right)$$
+\end{enumerate}
+
+\pagebreak
+
+\section{Problem \#2}
+\begin{enumerate}[(a)]
+\item
+    Given that any two-index Cartesian 3-tensor, $T_{ij}$ can be viewed as a matrix, $T$, with rows labelled by $i$ 
+    columns labelled by $j$, we can rewrite the following equations
+    \begin{equation}
+        D_{ij} = A_{ik}B_{kl}C_{jl}\qquad D_{ij} = A_{ik}B_{jl}C_{kl}\qquad D_{ij} = A_{ik}(B_{kj}+C_{jk})
+        \label{Prob2a}
+    \end{equation}
+    by noting that $M_{ik}N_{kj}$ represents a standard matrix multiplication and that $M_{ik}N_{jk}$ represents
+    matrix multiplication where $N$ is taken as a transpose. This implies that equation \ref{Prob2a} can be written 
+    as
+    $$D = (A\cdot{B})\cdot{C^T}\qquad D  = (A\cdot{C})\cdot{B^T}\qquad D =   A\cdot({B}+{C^T})$$
+
+\item
+    For any $3\times3$ matrix, $W$, with components $W_{ij}$ we can show that 
+    \begin{equation}
+        W_{il}W_{jm}W_{kn}\epsilon_{lmn} = (\det{W})\epsilon_{ijk}
+        \label{Prob2a}
+    \end{equation}
+    by first proving the antisymmetry of the left hand side. Note if we interchange the indices by
+    $i\leftrightarrow{j}$ then we have $W_{jl}W_{im}W_{kn}\epsilon_{lmn}$. Now, now we are free to change the dummy
+    indices freely so we can write
+    $$W_{jl}W_{im}W_{kn}\epsilon_{lmn} \Rightarrow W_{jm}W_{il}W_{kn}\epsilon_{mln} = -W_{il}W_{jm}W_{kn}\epsilon_{lmn}$$
+    Note that this follows for any interchange of $ijk$. For the case where any of the indices $ijk$ are equal we can
+    take the sum of all the non-zero values for $lmn$ as
+    $$ W_{i1}W_{j2}W_{k3} + W_{i3}W_{j1}W_{k2} + W_{i2}W_{j3}W_{k1} - W_{i3}W_{j2}W_{k1} - W_{i1}W_{j3}W_{k2} - W_{i2}W_{j1}W_{k3}$$
+    we can see that if any of the free index $ijk$ are equal then each positive term will have an exact negative term
+    which implies that for any $ijk$ equal we have a zero value. Therefore we see that the left hand side is 
+    antisymmetric which implies that it must be proportional to $\epsilon_{ijk}$. To find the constant of 
+    proportionality we can take a non-zero case where $ijk$ are all different which we can write as
+    \begin{align*}
+        &W_{11}W_{22}W_{33} + W_{13}W_{21}W_{32} + W_{12}W_{23}W_{31} - W_{13}W_{22}W_{31} - W_{11}W_{23}W_{32} - W_{12}W_{21}W_{33}\\
+        &\qquad\qquad\qquad\Downarrow\\
+        &W_{11}(W_{22}W_{33}-W_{23}W_{32}) + W_{12}(W_{23}W_{31}-W_{21}W_{33}) + W_{13}(W_{21}W_{32}-W_{22}W_{31}) = \det(W)
+    \end{align*}
+    and by the antisymmetry we already have shown we see that for any combination of $ijk$ where they are not equal 
+    we will have $\pm\det(W)$ therefore we see that equation \ref{Prob2a} is true.
+
+\item
+    Given an antisymmetric 4-tensor, $A_{\mu\nu}$ and a symmetric 4-tensor, $S_{\mu\nu}$ we can preform a
+    \emph{Lorentz transformation} using $\Lambda^{\mu}_{\ \nu}$ such that
+    \begin{align*}
+        A_{\mu\nu}' &= \Lambda^{\sigma}_{\ \mu}\Lambda^{\rho}_{\ \nu}A_{\sigma\rho}\\
+        S_{\mu\nu}' &= \Lambda^{\sigma}_{\ \mu}\Lambda^{\rho}_{\ \nu}S_{\sigma\rho}
+    \end{align*}
+    we can see that if we interchange the indices $\mu\leftrightarrow\nu$ we have
+    \begin{align*}
+        A_{\nu\mu}' &= \Lambda^{\sigma}_{\ \nu}\Lambda^{\rho}_{\ \mu}A_{\sigma\rho}\\
+        &= \Lambda^{\rho}_{\ \nu}\Lambda^{\sigma}_{\ \mu}A_{\rho\sigma}\\
+        &= \Lambda^{\rho}_{\ \nu}\Lambda^{\sigma}_{\ \mu}(-A_{\sigma\rho})\\
+        &= -\Lambda^{\sigma}_{\ \mu}\Lambda^{\rho}_{\ \nu}A_{\sigma\rho} = A_{\mu\nu}'
+    \end{align*}
+    Therefore the \emph{Lorentz transformation} preserves antisymmetry. The same follows the symmetric tensor, 
+    $A_{\mu\nu}$
+    \begin{align*}
+        S_{\nu\mu}' &= \Lambda^{\sigma}_{\ \nu}\Lambda^{\rho}_{\ \mu}S_{\sigma\rho} = \Lambda^{\rho}_{\ \nu}\Lambda^{\sigma}_{\ \mu}S_{\rho\sigma} = \Lambda^{\rho}_{\ \nu}\Lambda^{\sigma}_{\ \mu}S_{\sigma\rho} = \Lambda^{\sigma}_{\ \mu}\Lambda^{\rho}_{\ \nu}S_{\sigma\rho} = S_{\mu\nu}'
+    \end{align*}
+    Note that we renamed the dummy indices $\rho$ and $\sigma$.
+
+\end{enumerate}
+
+\pagebreak
+
+\section{Problem \#3}
+    Given the constant 4-vector $k_{\mu}$ such that
+    \begin{equation}
+        \phi\equiv e^{ik_{\mu}x^{\mu}}
+        \label{Prob3}
+    \end{equation}
+    we can find the condition on $k_{\mu}$ that solves the wave equation
+    $$\Box\phi=0$$
+    where $\Box$ is the \emph{d'Alembertian operator} defined as
+    \begin{equation}
+        \Box\equiv\partial_{\mu}\partial^{\mu} = -\partial_{0}^{2} + \partial_{i}^{2}
+        \label{dAlemb}
+    \end{equation}
+    So if we apply equation \ref{dAlemb} to equation \ref{Prob3} we find that
+    \begin{align*}
+        \Box\phi = 0 &= (-\partial_{0}^{2} + \partial_{i}^{2})e^{ik_{\mu}x^{\mu}}\\
+                     &= -(ik_0)^2e^{ik_{\mu}} + (ik_1)^2e^{ik_{\mu}}+ (ik_2)^2e^{ik_{\mu}}+ (ik_3)^2e^{ik_{\mu}}\\
+                     &= (k_0^2 - k_1^2  - k_2^2 - k_3^2)e^{ik_{\mu}}\\
+                     &\Downarrow\\
+                   0 &= -k_0^2 + k_1^2  + k_2^2 + k_3^2 \\
+                     &\Downarrow\\
+        k_{\mu}k^{\mu} &= 0
+    \end{align*}
+    Therefore the magnitude of $k_{\mu}$ must be zero in order for equation \ref{Prob3} to satisfy the wave equation.
+
+\pagebreak
+
+\section{Problem \#4}
+\begin{enumerate}[(a)]
+\item
+\item
+\item
+\item
+\end{enumerate}
+
+
+\end{document}
+
