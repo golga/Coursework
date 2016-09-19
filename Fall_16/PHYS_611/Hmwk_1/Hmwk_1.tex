@@ -173,11 +173,96 @@
 \section{Problem \#4}
 \begin{enumerate}[(a)]
 \item
-\item
-\item
-\item
-\end{enumerate}
+    For the case where we take two successive Lorentz boots along the $x$ axis, one with velocity, $v_1$, and the 
+    other with velocity, $v_2$ we use the transformation for a pure boost in $x$ as
+    \begin{equation}
+        x' = \gamma(x-vt),\qquad y'=y,\qquad z'=z,\qquad t'=\gamma(t-vx)
+        \label{PureBoost}
+    \end{equation}
+   where we define
+    \begin{equation} 
+        \gamma\equiv\frac{1}{\sqrt{1-v^2}}
+        \label{Gamma}
+    \end{equation} 
+    note that we are using natural units. Using equation \ref{PureBoost} we can see that the first boost at $v_1$ transforms as
+    $$x' = \gamma_1(x-v_1t),\qquad y'=y,\qquad z'=z,\qquad t'=\gamma_1(t-v_1x)$$
+    Now if we boost again at $v_2$ we have the transformation in $x$
+    \begin{align*}
+        x'' &= \gamma_2(x'-v_2t') \\
+            &= \gamma_2((\gamma_1(x-v_1t)-v_2\gamma_1(t-v_1x)) \\
+            &= \gamma_2\gamma_1(x-v_1t-v_2t+v_1v_2x) \\
+            &= \gamma_2\gamma_1((1+v_1v_2)x-(v_1+v_2)t) 
+    \end{align*}
+    and $t$
+    \begin{align*}
+        t'' &= \gamma_2(t'-v_2x')\\
+            &= \gamma_2(\gamma_1(t-v_1x)-v_2\gamma_1(x-v_1t))\\
+            &= \gamma_2\gamma_1(t-v_1x-v_2x+v_2v_1t)\\
+            &= \gamma_2\gamma_1((1+v_1v_2)t-(v_1+v_2)x)
+    \end{align*}
+    Now if we repeat the same boost but in the reverse order we first take a boost of $v_2$ which yields 
+    $$x' = \gamma_2(x-v_2t),\qquad y'=y,\qquad z'=z,\qquad t'=\gamma_2(t-v_2x)$$
+    next we take another boost in $v_1$ which yields a transform in $x$
+    \begin{align*}
+        x'' &= \gamma_1(x'-v_1t') \\
+            &= \gamma_1((\gamma_2(x-v_2t)-v_1\gamma_2(t-v_2x)) \\
+            &= \gamma_1\gamma_2(x-v_2t-v_1t+v_1v_2x) \\
+            &= \gamma_1\gamma_2((1+v_1v_2)x-(v_1+v_2)t) 
+    \end{align*}
+    and $t$
+    \begin{align*}
+        t'' &= \gamma_1(t'-v_2x')\\
+            &= \gamma_1(\gamma_2(t-v_2x)-v_2\gamma_2(x-v_2t))\\
+            &= \gamma_1\gamma_2(t-v_2x-v_2x+v_2v_1t)\\
+            &= \gamma_1\gamma_2((1+v_1v_2)t-(v_1+v_2)x)
+    \end{align*}
+    We see that two successive boosts of $v_1$ and $v_2$ commute.
 
+\item
+    Taking the results from part (a) we see that we can write the total combined boost as
+    \begin{align*}
+        t'' &= \gamma_1\gamma_2((1+v_1v_2)t-(v_1+v_2)x) \\
+            &= \frac{1}{\sqrt{1-v_1^2}}\frac{1}{\sqrt{1-v_2^2}}(1+v_1v_2)\left(t-\frac{v_1+v_2}{1+v_1v_2}x\right) \\
+            &= \sqrt{\frac{1+2v_1v_2+(v_1v_2)^2}{1-v_2^2-v_1^2+(v_1v_2)^2}}\left(t-\frac{v_1+v_2}{1+v_1v_2}x\right) \\
+            &= \frac{1}{1-((v_1+v_2)/(1+v_1v_2))^2}\left(t-\frac{v_1+v_2}{1+v_1v_2}x\right) 
+            &= \frac{1}{1-v_3^2}\left(t-v_3x\right) 
+    \end{align*}
+    We see that we can write two successive boosts as a single boost with a velocity of $v_3$ where we define $v_3$ with the velocity addition formula given by
+    \begin{equation}
+        v_3 \equiv \frac{v_1+v_2}{1+v_1v_2}
+    \end{equation}
+
+\item
+    Now if we take two successive boost, but now we take the first in the $x$ direction, $\vec{v}_1=(v_1,0,0)$, then the second 
+    in the $y$ direction, $\vec{v}_2 = (0,v_2,0)$ the first boost transforms as
+    $$x' = \gamma_1(x-v_1t),\qquad y'=y,\qquad z'=z,\qquad t'=\gamma_1(t-v_1x)$$
+    now the second transformation transforms as 
+    $$x'' = \gamma_1(x-v_1t),\qquad y''=\gamma_2(y-v_2t'),\qquad z''=z,\qquad t''=\gamma_1(t'-v_2y)$$
+    we note that for $t''$ and $y''$ we need to account for the $x$ boost by
+    \begin{align*}
+        y'' &= \gamma_2(y-v_2t')  \\
+            &= \gamma_2(y-v_2\gamma_1(t-v_1x))  
+    \end{align*}
+    and for $t''$ we have
+    \begin{align*}
+        t'' &= \gamma_2(t'-v_2y)  \\
+            &= \gamma_2(\gamma_1(t-v_1x)-v_2y)  
+    \end{align*}
+    Now, if we reverse the boosts we see that the transformation becomes
+    $$x' = x,\qquad y'=\gamma_1(y-v_1t),\qquad z'=z,\qquad t'=\gamma_1(t-v_1y)$$
+    which in turn makes the second boost into the transformation
+    $$x'' = \gamma_2(x-v_2\gamma_1(t-v_1y)),\qquad y''=\gamma_1(y-v_1t),\qquad z''=z,\qquad t''=\gamma_2(\gamma_1(t-v_1y)-v_2x)$$
+    We see that these two transformations mix the coordinates $x$ and $y$ into the double boosted frame which 
+    depends on the order of the boosts. Therefore the boosts do no commute.
+
+\item
+    Given the results from part (c) 
+    $$y'' = \gamma_2(y-v_2\gamma_1(t-v_1x)),\qquad t'' = \gamma_2(\gamma_1(t-v_1x)-v_2y)$$
+    we see that we cannot write these in form of equation \ref{PureBoost} because we have both $x$ and $y$ coordinates 
+    mixed. Therefore no matter what velocity we choose we cannot make place it in the form of a pure boost.
+    The only way to make it a pure boost is too mix the $x$ and $y$ coordinates into a new coordinate $y'$ this describes a rotation.
+
+\end{enumerate}
 
 \end{document}
 
