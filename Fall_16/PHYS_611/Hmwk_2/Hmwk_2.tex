@@ -24,32 +24,151 @@
 \begin{enumerate}[(a)]
 \item
     Given that $\phi = V^{\mu}U_{\mu}$ is a Lorentz scalar, where $V^{\mu}$ is an arbitrary 4-vector this allows us
-    to determine if $U^{\mu}$ is a 4-vector. Note that 
-
-
-
+    to determine if $U^{\mu}$ is a 4-vector. Note that we know $V^{\mu}$ transforms as 4-vector which implies that
+    $$V'^{\mu} = \Lambda^{\mu}_{\ \nu}V^{\nu}.$$
+    We also know that $\phi$ is a Lorentz scalar which implies that it is invariant under transformation 
+    $\phi'=\phi$. If we take an arbitrary transformation, $T^{\ \rho}_{\mu}$, of $U_{\mu}$ we have
+    \begin{align*}
+        \phi' &= V'^{\mu}U'_{\mu}\\
+              &= \Lambda^{\mu}_{\ \nu}V^{\nu}T^{\ \rho}_{\mu}U_{\rho}\\
+              &= \Lambda^{\mu}_{\ \nu}T^{\ \rho}_{\mu}V^{\nu}U_{\rho}
+    \end{align*}
+    Therefore for $\phi$ to remain Lorentz invariant we have the condition
+    $$\Lambda^{\mu}_{\ \nu}T^{\ \rho}_{\mu} = \delta^{\rho}_{\nu}$$
+    this implies that $T^{\ \rho}_{\mu} = \Lambda^{\ \rho}_{\mu}$. Therefore $U_{\mu}$ must be a 4-vector if $V^{\mu}$
+    is a 4-vector.
 
 \item
+    For the tensor defined as 
+    $$S_{\mu\nu} \equiv W_{\mu\rho}W_{\nu}^{\ \rho}$$
+    we can see that for any 4-tensor $W_{\mu\rho}$ we can calculate $S_{\nu\mu}$ noting that we can raise and lower
+    the indices of the $W$ 4-tensor by
+    $$W_{\nu\rho} = \eta_{\sigma\rho}W_{\nu}^{\ \sigma} \qquad W_{\mu}^{\ \rho} = \eta^{\rho\lambda}W_{\mu\lambda}$$
+    \begin{align*}
+        S_{\nu\mu} &= W_{\nu\rho}W_{\mu}^{\ \rho}\\
+                   &= \eta_{\sigma\rho}W_{\nu}^{\ \sigma}\eta^{\rho\lambda}W_{\mu\lambda}\\
+                   &= \eta_{\sigma\rho}\eta^{\rho\lambda}W_{\nu}^{\ \sigma}W_{\mu\lambda}\\
+                   &= \delta_{\sigma}^{\lambda}W_{\nu}^{\ \sigma}W_{\mu\lambda}\\
+                   &= W_{\nu}^{\ \sigma}W_{\mu\sigma}\\
+                   &= W_{\mu\rho}W_{\nu}^{\ \rho} = S_{\mu\nu}
+    \end{align*}
+    Note that we changed the dummy index $\sigma\rightarrow\rho$. So we see that $S_{\mu\nu} = S_{\nu\mu}$ this
+    implies that $S_{\mu\nu}$ is symmetric for any 4-tensor $W_{\mu\rho}$.
+
 \item
+    Given that $k^{\mu}$ is a \emph{lightlike} vector, that is $k^{\mu}k_{\mu} = 0$, and a non-spacelike 
+    4-vector, $V^{\mu}$, that is orthogonal to $k^{\mu}$ we write each vector as
+    $$k^{\mu} = (k^0,\mathbf{k})\qquad V^{\mu} = (V^0,\mathbf{V})$$
+    Which allows us to write the condition on the components of $k^{\mu}$
+    \begin{align*}
+        k^{\mu}k_{\mu} = 0 &\Rightarrow (k^0)^2 = |\mathbf{k}|^2 \Rightarrow k^0 = |\mathbf{k}|\\
+        V^{\mu}V_{\mu} \le 0 &\Rightarrow |\mathbf{V}|^2 \le (V^0)^2\Rightarrow |\mathbf{V}| \le V^0
+    \end{align*}
+    where $\mathbf{k}$ and $\mathbf{V}$ are Euclidean space 3-vectors. Note by orthogonality we see that
+    \begin{align*}
+        -k^0V^0 + \mathbf{k}\cdot\mathbf{V} &= 0\\
+        &\Downarrow\\
+        k^0V_0 &= \mathbf{k}\cdot\mathbf{V} \le |\mathbf{k}||\mathbf{V}|\\
+        &\Downarrow\\
+        0 &\le - k^0V_0 + |\mathbf{k}||\mathbf{V}|\\
+    \end{align*}
+    But if we take the conditions we first take for $k^{\mu}$ and $V^{\mu}$ we have
+    \begin{align*}
+        |\mathbf{V}| &\le V^{0} \\
+        &\Downarrow\\
+        |\mathbf{k}||\mathbf{V}| &\le k^0V^{0}\\
+        &\Downarrow\\
+        -k^0V^0 + |\mathbf{k}||\mathbf{V}| &\le 0
+    \end{align*}
+    This result implies that the only result that does not contradict the orthogonality condition is if 
+    $V^{0} = |\mathbf{V}|$. This means that $V^{\mu}$ is also a timelike vector and must be a multiple of $k^{\mu}$.
+
 \end{enumerate}
 
 \pagebreak
 
 \section{Problem \#2}
+    We can derive the \emph{Lorentz transformation} that gives $\mathbf{B'}$ in terms of $\mathbf{E}$ and $\mathbf{B}$ 
+    for an arbitrary Lorentz boost with velocity, $\mathbf{v}$. First, we note that we can write the magnetic field
+    in terms of the \emph{Field Tensor}, $F^{\mu\nu}$, by
+    $$B_{i} = -\frac{1}{2}\epsilon_{ijk}F^{jk}.$$
+    So, we can find $B'_{i}$ by the transformation
+    \begin{align*}
+        B'_{i} = \frac{1}{2}\epsilon_{ijk}F'^{jk} 
+            &= \frac{1}{2}\epsilon_{ijk}\Lambda^{j}_{\ \rho}\Lambda^{k}_{\ \sigma}F^{\rho\sigma} \\
+            &= \frac{1}{2}\epsilon_{ijk}\Lambda^{j}_{\ 0}\Lambda^{k}_{\ l}F^{0l}  + \frac{1}{2}\epsilon_{ijk}\Lambda^{j}_{\ l}\Lambda^{k}_{\ 0}F^{l0}  + \frac{1}{2}\epsilon_{ijk}\Lambda^{j}_{\ l}\Lambda^{k}_{\ m}F^{lm}\\
+            &= \frac{1}{2}\epsilon_{ijk}\Lambda^{j}_{\ 0}\Lambda^{k}_{\ l}F^{0l}  - \frac{1}{2}\epsilon_{ijk}\Lambda^{j}_{\ l}\Lambda^{k}_{\ 0}F^{0l}  + \frac{1}{2}\epsilon_{ijk}\Lambda^{j}_{\ l}\Lambda^{k}_{\ m}F^{lm}\\
+            &= \frac{1}{2}\epsilon_{ijk}\Lambda^{j}_{\ 0}\Lambda^{k}_{\ l}F^{0l}  - \frac{1}{2}\epsilon_{ikj}\Lambda^{k}_{\ l}\Lambda^{j}_{\ 0}F^{0l}  + \frac{1}{2}\epsilon_{ijk}\Lambda^{j}_{\ l}\Lambda^{k}_{\ m}F^{lm}\\
+            &= \epsilon_{ijk}\Lambda^{j}_{\ 0}\Lambda^{k}_{\ l}F^{0l}  + \frac{1}{2}\epsilon_{ijk}\Lambda^{j}_{\ l}\Lambda^{k}_{\ m}F^{lm}\\
+            &= \epsilon_{ijk}(-\gamma{v_j})\left(\delta_{kl}+\frac{\gamma-1}{v^2}v_{k}v_{l}\right)E_{l}  + \frac{1}{2}\epsilon_{ijk}\left(\delta_{jl}+\frac{\gamma-1}{v^2}v_{j}v_{l}\right)\left(\delta_{km}+\frac{\gamma-1}{v^2}v_{k}v_{m}\right)\epsilon_{lmn}B_{n}\\
+            &= -\gamma\left(\epsilon_{ijk}\delta_{kl}v_j+\frac{\gamma-1}{v^2}\cancelto{0}{\epsilon_{ijk}v_jv_{k}}v_{l}\right)E_{l}  + \frac{1}{2}\epsilon_{ijk}\left(\delta_{jl}+\frac{\gamma-1}{v^2}v_{j}v_{l}\right)\left(\delta_{km}+\frac{\gamma-1}{v^2}v_{k}v_{m}\right)\epsilon_{lmn}B_{n}\\
+            &= -\gamma\epsilon_{ijk}v_jE_{k} + \frac{1}{2}\epsilon_{ijk}\epsilon_{lmn}B_{n}\left(\delta_{jl}\delta_{km}+\delta_{km}\frac{\gamma-1}{v^2}v_{j}v_{l} + \delta_{jl}\frac{\gamma-1}{v^2}v_{k}v_{m} + \cancel{\frac{\gamma-1}{v^2}v_{j}v_{k}v_{l}v_{m}}\right)\\
+            &= -\gamma\epsilon_{ijk}v_jE_{k} + \frac{1}{2}\epsilon_{ijk}\epsilon_{njk}B_{n} + \frac{\gamma-1}{2v^2}\epsilon_{ijk}\epsilon_{lkn}B_{n}v_{j}v_{l} + \frac{\gamma-1}{2v^2}\epsilon_{ijk}\epsilon_{jmn}B_{n}v_{k}v_{m}\\
+            &= -\gamma\epsilon_{ijk}v_jE_{k} + \frac{1}{2}2\delta_{in}B_{n} + \frac{\gamma-1}{2v^2}\epsilon_{ijk}\epsilon_{lkn}B_{n}v_{j}v_{l} + \frac{\gamma-1}{2v^2}\epsilon_{ikj}\epsilon_{kln}B_{n}v_{j}v_{l}\\
+            &= -\gamma\epsilon_{ijk}v_jE_{k} + B_{i} + \frac{\gamma-1}{2v^2}\epsilon_{ijk}\epsilon_{lkn}B_{n}v_{j}v_{l} + \frac{\gamma-1}{2v^2}\epsilon_{ijk}\epsilon_{lkn}B_{n}v_{j}v_{l}\\
+            &= -\gamma\epsilon_{ijk}v_jE_{k} + B_{i} + \frac{\gamma-1}{v^2}\epsilon_{kji}\epsilon_{kln}B_{n}v_{j}v_{l} \\
+            &= -\gamma\epsilon_{ijk}v_jE_{k} + B_{i} + \frac{\gamma-1}{v^2}(\delta_{jl}\delta_{in}-\delta_{jn}\delta_{il})B_{n}v_{j}v_{l} \\
+            &= -\gamma\epsilon_{ijk}v_jE_{k} + B_{i} + \frac{\gamma-1}{v^2}(B_{i}v_{j}v_{j}-v_{i}B_{j}v_{j}) \\
+            &= -\gamma\epsilon_{ijk}v_jE_{k} + \gamma B_{i} - \frac{\gamma-1}{v^2}v_{i}B_{j}v_{j}) \\
+            &= \gamma(B_{i}-\epsilon_{ijk}v_jE_{k}) - \frac{\gamma-1}{v^2}v_{i}B_{j}v_{j}) 
+    \end{align*}
+    This gives us the transformation result we we can write in vector notation as
+    $$\mathbf{B}' = \gamma(\mathbf{B}-\mathbf{v}\times\mathbf{E}) - \frac{\gamma-1}{v^2}(\mathbf{v}\cdot\mathbf{B})\mathbf{v}$$
 
 \pagebreak
 
 \section{Problem \#3}
 \begin{enumerate}[(a)]
 \item
+    Given the scalar quantity, $R$, defined by
+    $$R^2\equiv\eta_{\mu\nu}x^{\mu}x^{\nu}$$
+    we can see if we take the derivative $\partial_{\mu}$ we have
+    \begin{align*}
+        \partial_{\mu}R &= \partial_{\mu}(\eta_{\mu\nu}x^{\mu}x^{\nu})^{1/2}\\
+                        &= \frac{1}{2}(\eta_{\mu\nu}x^{\mu}x^{\nu})^{-1/2}\eta_{\mu\nu}x^{\nu}(\partial_{\mu}x^{\mu})\\
+                        &= \frac{1}{2}(\eta_{\mu\nu}x^{\mu}x^{\nu})^{-1/2}\eta_{\mu\nu}x^{\nu}(-1+3)\\
+                        &= (\eta_{\mu\nu}x^{\mu}x^{\nu})^{-1/2}\eta_{\mu\nu}x^{\nu}\\
+                        &= \frac{\eta_{\mu\nu}x^{\nu}}{R}
+    \end{align*}
+
 \item
+    Using the result from part (a) we can see that 
+    \begin{align*}
+        \Box\frac{1}{R^2} &=  \partial^{\mu}\partial_{\mu}\frac{1}{R^2}\\
+                          &=  \eta^{\mu\nu}\partial_{\nu}\left(\frac{-2}{R^3}\frac{\eta_{\mu\nu}x^{\nu}}{R}\right)\\
+                          &=  -2\eta^{\mu\nu}\eta_{\mu\nu}\partial_{\nu}\left(\frac{1}{R^4}x^{\nu}\right)\\
+                          &=  -8\left(\frac{-4}{R^5}\frac{\eta_{\mu\nu}x^{\mu}x^{\nu}}{R} + \frac{1}{R^4}\partial_{\nu}x^{\nu}\right)\\
+                          &=  -8\left(\frac{-4}{R^6}R^2 + \frac{4}{R^4}\partial_{\nu}x^{\nu}\right)\\
+                          &=  -8\left(\frac{-4}{R^4} + \frac{4}{R^4}\right) = 0
+    \end{align*}
 \end{enumerate}
 
 \pagebreak
 
 \section{Problem \#4}
-
-\pagebreak
+ Given the constant 4-vector $k_{\mu}$ such that
+    \begin{equation}
+        \phi\equiv e^{ik_{\mu}x^{\mu}}
+        \label{Prob3}
+    \end{equation}
+    we can find the condition on $k_{\mu}$ that solves the wave equation
+    $$\Box\phi=0$$
+    where $\Box$ is the \emph{d'Alembertian operator} defined as
+    \begin{equation}
+        \Box\equiv\partial_{\mu}\partial^{\mu} = -\partial_{0}^{2} + \partial_{i}^{2}
+        \label{dAlemb}
+    \end{equation}
+    So if we apply equation \ref{dAlemb} to equation \ref{Prob3} we find that
+    \begin{align*}
+        \Box\phi = 0 &= (-\partial_{0}^{2} + \partial_{i}^{2})e^{ik_{\mu}x^{\mu}}\\
+                     &= -(ik_0)^2e^{ik_{\mu}} + (ik_1)^2e^{ik_{\mu}}+ (ik_2)^2e^{ik_{\mu}}+ (ik_3)^2e^{ik_{\mu}}\\
+                     &= (k_0^2 - k_1^2  - k_2^2 - k_3^2)e^{ik_{\mu}}\\
+                     &\Downarrow\\
+                   0 &= -k_0^2 + k_1^2  + k_2^2 + k_3^2 \\
+                     &\Downarrow\\
+        k_{\mu}k^{\mu} &= 0
+    \end{align*}
+    Therefore the magnitude of $k_{\mu}$ must be zero (lightlike) in order for equation \ref{Prob3} to satisfy the wave equation.
 
 \end{document}
 
