@@ -6,6 +6,7 @@
 \usepackage{enumerate}
 \usepackage{amsmath}
 \usepackage{cancel}
+\usepackage{mathtools}
 \numberwithin{equation}{section}
 
 \setlength{\evensidemargin}{.25in}
@@ -21,13 +22,143 @@
 \input{../title.tex}
 
 \section{Problem \#1}
+    Given the \emph{Lorentz force equation}
+    \begin{equation}
+        m\frac{d^2x^{\mu}}{d\tau^2} = eF^{\mu}_{\ \ \nu}\frac{dx^{\nu}}{d\tau}
+        \label{LorForce}
+    \end{equation}
+    in the special case where $\mathbf{E} = (E,0,0)$ and $\mathbf{B}=0$ where $E$ is a constant we can solve for the
+    components of $x^{\mu}$ as functions of the proper time, $\tau$. Note that the field tensor in this special case
+    has a zero value for all components except for 
+    $$F_{01} = -E\qquad F_{10} = E$$
+    note that when we raise the first index we have
+    $$F^{\mu}_{\ \ \nu} = \eta^{\mu\sigma}F_{\sigma\nu}\Rightarrow F^{1}_{\ 0} = F^{0}_{\ 1} = E$$
+    Using this fact we can see that for each value for the free index, $\mu$, we have the equation
+    \begin{align*}
+        m\frac{d^2x^{0}}{d\tau^2} = eE\frac{dx^{1}}{d\tau}\qquad
+        m\frac{d^2x^{1}}{d\tau^2} = eE\frac{dx^{0}}{d\tau}\qquad
+        m\frac{d^2x^{2}}{d\tau^2} = 0\qquad
+        m\frac{d^2x^{3}}{d\tau^2} = 0
+    \end{align*} 
+    This allows us to integrate with respect to $d\tau$ which yields
+    \begin{align*}
+        m\frac{dx^{0}}{d\tau} = p^{0} &= eEx^{1}\qquad
+        m\frac{dx^{1}}{d\tau} = p^{1} = eEx^{0}\qquad
+        m\frac{dx^{2}}{d\tau} = p^{2} = A\qquad
+        m\frac{dx^{3}}{d\tau} = p^{3} = B
+    \end{align*} 
+    Note that we wrote the equation in terms of the 4-momentum $p^{\mu}$ which is by definition
+    $p^{\mu} = m\frac{dx^{\mu}}{d\tau}$. This allows us to use the fact that 
+    \begin{equation}
+        p^{\mu}p_{\mu} = -m^2
+        \label{4MomTen}
+    \end{equation}
+    Now we can choose $B=0$ without a loss of generality due to the fact that the electric field only lies in the 
+    $\hat{e}^1$ direction therefore we can rotate freely about this axis. So we can choose a rotation such that 
+    $p^3=0$. We can further rename $A=p_0$ as it represents the total momentum initial (when $x^{0}=0$). Therefore
+    by equation \ref{4MomTen} we have
+    \begin{align*}
+        -(p^{0})^2 + (p^{1})^2 + (p^{2})^2 + \cancelto{0}{(p^{3})^2} &= -m^2\\ 
+                                                                     &\Downarrow\\
+                                                               p^{0} &= \sqrt{m^2 + (p^{1})^2 + (p_0)^2}\\
+                                                                     &\Downarrow\\
+                                                               p^{0} &= \sqrt{\mathcal{E}_0^2 + (eEx^{0})^2}
+    \end{align*}
+    Note that we defined the initial energy as $\mathcal{E}_0^2\equiv m^2+p_0^2$. This allows us to solve the 
+    differential equation
+    \begin{align*}
+        m\frac{dx^{0}}{d\tau} &= p^{0} = \sqrt{\mathcal{E}_0^2 + (eEx^{0})^2}\\
+                              &\Downarrow\\
+        m\int\frac{dx^{0}}{\sqrt{\mathcal{E}_0^2 + (eEx^{0})^2}} &= \int d\tau \\
+        \frac{m}{eE}\textnormal{arcsinh}\left(\frac{eE}{\mathcal{E}_0}x^{0}\right) &= \tau\\
+                              &\Downarrow\\
+        x^{0}(\tau) &= \frac{\mathcal{E}_0}{eE}\sinh\left(\frac{eE}{m}\tau\right)
+    \end{align*}
+    Next we can solve for $x^{1}(\tau)$ using the above result. 
+    \begin{align*}
+        m\frac{dx^{1}}{d\tau}  &= eEx^{0} \\
+                               &\Downarrow\\
+        \int dx^{1}  &= \int\frac{eE}{m}\frac{\mathcal{E}_0}{eE}\sinh\left(\frac{eE}{m}\tau\right)d\tau\\
+        x^{1}(\tau)  &= \frac{\mathcal{E}_0}{m}\cosh\left(\frac{eE}{m}\tau\right)\frac{m}{eE}\\
+                     &= \frac{\mathcal{E}_0}{eE}\cosh\left(\frac{eE}{m}\tau\right)
+    \end{align*}
+    Note for $x^{2}$ and $x^{3}$ we can easily write the equations of motion as
+    \begin{align*}
+        x^{2}(\tau) &= \frac{p_0}{m}\tau\\
+        x^{3}(\tau) &= z_0
+    \end{align*}
+    Where we define any initial position, $z_0$, in the $\hat{e}^3$ direction without loss of generality. So we can solve
+    $\tau$ in terms of $x^{2}$ as $\tau = \frac{m}{p_0}x^{2}$ which if we replace into the equation $x^{1}(0)$ we
+    find
+    \begin{align*}
+        x^{1}(x^{2}) &= \frac{\mathcal{E}_0}{eE}\cosh\left(\frac{eE}{m}\frac{m}{p_0}x^{2}\right)\\
+                     &= \frac{\mathcal{E}_0}{eE}\cosh\left(\frac{eE}{p_0}x^{2}\right)
+    \end{align*}
+    which recovers the result using the non-convariant Lorentz force equation.
 
 \pagebreak
 
-\section{Problem \#1}
+\section{Problem \#2}
 \begin{enumerate}[(a)]
 \item
+    Given the definition of the \emph{Hodge dual}
+    \begin{equation}
+        \prescript{*}{}{F}_{\mu\nu} \equiv \frac{1}{2}\epsilon_{\mu\nu\rho\sigma}F^{\rho\sigma}
+        \label{Hodge}
+    \end{equation}
+    we can write the \emph{Bianchi identity}
+    \begin{equation}
+        \partial_{\mu}F_{\nu\rho} + \partial_{\nu}F_{\rho\mu} + \partial_{\rho}F_{\mu\nu} = 0
+        \label{Bianchi}
+    \end{equation}
+    can be written using equation \ref{Hodge} by 
+    \begin{align*}
+        \partial^{\mu} \prescript{*}{}{F}_{\mu\nu} &= \frac{1}{2}\partial^{\mu}\epsilon_{\mu\nu\rho\sigma}F^{\rho\sigma}
+    \end{align*}
+    We can see how this follows by setting the free index $\nu=0$ and the only terms that are non-zero are
+    \begin{align*}
+        \frac{1}{2}\partial^{\mu}\epsilon_{\mu0\rho\sigma}F^{\rho\sigma} &=
+                \frac{1}{2}\partial^{1}\epsilon_{1023}F^{23} + \frac{1}{2}\partial^{1}\epsilon_{1032}F^{32} +
+                \frac{1}{2}\partial^{2}\epsilon_{2013}F^{13} + \frac{1}{2}\partial^{2}\epsilon_{2031}F^{13} +
+                \frac{1}{2}\partial^{3}\epsilon_{3021}F^{21} + \frac{1}{2}\partial^{3}\epsilon_{3012}F^{21} \\
+                &= \frac{1}{2}\partial^{1}F^{23} - \frac{1}{2}\partial^{1}F^{32} +
+                \frac{1}{2}\partial^{2}F^{13} - \frac{1}{2}\partial^{2}F^{13} +
+                \frac{1}{2}\partial^{3}F^{21} - \frac{1}{2}\partial^{3}F^{21} \\
+                &= \frac{1}{2}\partial^{1}F^{23} + \frac{1}{2}\partial^{1}F^{23} +
+                \frac{1}{2}\partial^{2}F^{13} + \frac{1}{2}\partial^{2}F^{31} +
+                \frac{1}{2}\partial^{3}F^{21} + \frac{1}{2}\partial^{3}F^{12} \\
+                &= \partial^{1}F^{23} + \partial^{2}F^{13} + \partial^{3}F^{21} 
+    \end{align*}
+    So, we see that for a fixed value of $\nu$ we cycle through the remaining free index values. Therefore, for all
+    values of $\nu$ we cover all 12 possible combinations. This implies that
+    $$\partial^{\mu} \prescript{*}{}{F}_{\mu\nu} = \partial_{\mu}F_{\nu\rho} + \partial_{\nu}F_{\rho\mu} + \partial_{\rho}F_{\mu\nu}$$
+    which allows us to write equation \ref{Bianchi} as
+    $$\partial^{\mu} \prescript{*}{}{F}_{\mu\nu} = 0$$
+
 \item
+    Given the vector defined as
+    \begin{equation}
+        V^{\mu} \equiv \epsilon^{\mu\nu\rho\sigma}A_{\nu}F_{\rho\sigma}
+        \label{VDef}
+    \end{equation}
+    where we define $A_{\nu}$ using the \emph{Lorentz gauge} which implies that
+    \begin{equation}
+        F_{\mu\nu} = \partial_{\mu}A_{\nu} - \partial_{\nu}A_{\mu}
+        \label{Lor}
+    \end{equation}
+    we can calculate 
+    \begin{align*}
+        \partial_{\mu}V^{\mu} &= \epsilon^{\mu\nu\rho\sigma}\partial_{\mu}A_{\nu}F_{\rho\sigma}\\
+                              &= \epsilon^{\mu\nu\rho\sigma}(F_{\mu\nu}+\partial_{\nu}A_{\mu})F_{\rho\sigma}\\
+                              &= \epsilon^{\mu\nu\rho\sigma}F_{\mu\nu}F_{\rho\sigma} + \epsilon^{\mu\nu\rho\sigma}\partial_{\nu}A_{\mu}F_{\rho\sigma}\\
+                              &= \epsilon^{\mu\nu\rho\sigma}F_{\mu\nu}F_{\rho\sigma} + \partial_{\mu}\epsilon^{\nu\mu\rho\sigma}A_{\nu}F_{\rho\sigma}\\
+                              &= \epsilon^{\mu\nu\rho\sigma}F_{\mu\nu}F_{\rho\sigma} - \partial_{\mu}\epsilon^{\mu\nu\rho\sigma}A_{\nu}F_{\rho\sigma}\\
+                              &= \epsilon^{\mu\nu\rho\sigma}F_{\mu\nu}F_{\rho\sigma} - \partial_{\mu}V^{\mu}\\
+                              &\Downarrow\\
+        2\partial_{\mu}V^{\mu} &= \epsilon^{\mu\nu\rho\sigma}F_{\mu\nu}F_{\rho\sigma}
+    \end{align*}
+    So we see that $V^{\mu}$ has the property that
+    $$2\partial_{\mu}V^{\mu} = \frac{1}{2}\epsilon^{\mu\nu\rho\sigma}F_{\mu\nu}F_{\rho\sigma}$$
 \end{enumerate}
 
 \pagebreak
@@ -35,8 +166,109 @@
 \section{Problem \#3}
 \begin{enumerate}[(a)]
 \item
+    For the identity
+    \begin{equation}
+        \epsilon^{\mu\nu\rho\sigma}\epsilon_{\alpha\beta\gamma\sigma} = 
+            -\delta^{\mu}_{\alpha}\delta^{\nu}_{\beta}\delta^{\rho}_{\gamma}
+            -\delta^{\nu}_{\alpha}\delta^{\rho}_{\beta}\delta^{\mu}_{\gamma}
+            -\delta^{\rho}_{\alpha}\delta^{\mu}_{\beta}\delta^{\nu}_{\gamma}
+            +\delta^{\nu}_{\alpha}\delta^{\mu}_{\beta}\delta^{\rho}_{\gamma}
+            +\delta^{\mu}_{\alpha}\delta^{\rho}_{\beta}\delta^{\nu}_{\gamma}
+            +\delta^{\rho}_{\alpha}\delta^{\nu}_{\beta}\delta^{\mu}_{\gamma}
+        \label{Ident}
+    \end{equation}
+    we note that the left hand side is antisymmetric in $\mu\nu\rho$ and $\alpha\beta\gamma$ which follows from the 
+    properties of the \emph{Levi-Civita symbol}. So the first step to proving equation \ref{Ident} is to show that 
+    the right hand side is also antisymmetric in both $\mu\nu\rho$ and $\alpha\beta\gamma$. So we can swap $\mu$ and
+    $\nu$ and find that
+    $$-\delta^{\nu}_{\alpha}\delta^{\mu}_{\beta}\delta^{\rho}_{\gamma}
+      -\delta^{\mu}_{\alpha}\delta^{\rho}_{\beta}\delta^{\nu}_{\gamma}
+      -\delta^{\rho}_{\alpha}\delta^{\nu}_{\beta}\delta^{\mu}_{\gamma}
+      +\delta^{\mu}_{\alpha}\delta^{\nu}_{\beta}\delta^{\rho}_{\gamma}
+      +\delta^{\nu}_{\alpha}\delta^{\rho}_{\beta}\delta^{\mu}_{\gamma}
+      +\delta^{\rho}_{\alpha}\delta^{\mu}_{\beta}\delta^{\nu}_{\gamma}
+      =
+      -(-\delta^{\mu}_{\alpha}\delta^{\nu}_{\beta}\delta^{\rho}_{\gamma}
+      -\delta^{\nu}_{\alpha}\delta^{\rho}_{\beta}\delta^{\mu}_{\gamma}
+      -\delta^{\rho}_{\alpha}\delta^{\mu}_{\beta}\delta^{\nu}_{\gamma}
+      +\delta^{\nu}_{\alpha}\delta^{\mu}_{\beta}\delta^{\rho}_{\gamma}
+      +\delta^{\mu}_{\alpha}\delta^{\rho}_{\beta}\delta^{\nu}_{\gamma}
+      +\delta^{\rho}_{\alpha}\delta^{\nu}_{\beta}\delta^{\mu}_{\gamma})
+      $$
+      We see that this follows from the fact that top indices ($\mu\nu\rho$) of the Kronecker deltas are antisymmetric 
+      in permutations of $\mu\nu\rho$. The antisymmetry of $\alpha\beta\gamma$ follows from this fact as swapping 
+      one of these indices can be considered a swapping of $\mu\nu\rho$. So now we can see for the case when 
+      $\mu=\alpha$, $\nu=\beta$, $\rho=\gamma$ we have
+      $$\epsilon^{\mu\nu\rho\sigma}\epsilon_{\mu\nu\rho\sigma} = 
+            -\delta^{\mu}_{\mu}\delta^{\nu}_{\nu}\delta^{\rho}_{\rho}
+            -\cancel{\delta^{\nu}_{\mu}\delta^{\rho}_{\nu}\delta^{\mu}_{\rho}}
+            -\cancel{\delta^{\rho}_{\mu}\delta^{\mu}_{\nu}\delta^{\nu}_{\rho}}
+            +\cancel{\delta^{\nu}_{\mu}\delta^{\mu}_{\nu}\delta^{\rho}_{\rho}}
+            +\cancel{\delta^{\mu}_{\mu}\delta^{\rho}_{\nu}\delta^{\nu}_{\rho}}
+            +\cancel{\delta^{\rho}_{\mu}\delta^{\nu}_{\nu}\delta^{\mu}_{\rho}} = -1$$
+    We can see that for permutations we end up with either $\pm1$. Now in the case where two indices are equal we 
+    take $\mu=\nu$ which yields
+    \begin{align*}
+        \epsilon^{\mu\mu\rho\sigma}\epsilon_{\alpha\beta\gamma\sigma} &= 
+            -\delta^{\mu}_{\alpha}\delta^{\mu}_{\beta}\delta^{\rho}_{\gamma}
+            -\delta^{\mu}_{\alpha}\delta^{\rho}_{\beta}\delta^{\mu}_{\gamma}
+            -\delta^{\rho}_{\alpha}\delta^{\mu}_{\beta}\delta^{\mu}_{\gamma}
+            +\delta^{\mu}_{\alpha}\delta^{\mu}_{\beta}\delta^{\rho}_{\gamma}
+            +\delta^{\mu}_{\alpha}\delta^{\rho}_{\beta}\delta^{\mu}_{\gamma}
+            +\delta^{\rho}_{\alpha}\delta^{\mu}_{\beta}\delta^{\mu}_{\gamma}\\
+            &= \cancel{-\delta^{\mu}_{\alpha}\delta^{\mu}_{\beta}\delta^{\rho}_{\gamma}
+            +\delta^{\mu}_{\alpha}\delta^{\mu}_{\beta}\delta^{\rho}_{\gamma}}
+            \cancel{-\delta^{\mu}_{\alpha}\delta^{\rho}_{\beta}\delta^{\mu}_{\gamma}
+            +\delta^{\mu}_{\alpha}\delta^{\rho}_{\beta}\delta^{\mu}_{\gamma}}
+            \cancel{-\delta^{\rho}_{\alpha}\delta^{\mu}_{\beta}\delta^{\mu}_{\gamma}
+            +\delta^{\rho}_{\alpha}\delta^{\mu}_{\beta}\delta^{\mu}_{\gamma}}\\
+            &= 0
+    \end{align*}
+    So as we expect if the indices are repeated then we have a zero value. We see that this holds for iterations as
+    before. Therefore, we see that equation \ref{Ident} holds true.
+
 \item
+    Using the result from part (a) we can see that
+    \begin{align*}
+        \epsilon^{\mu\nu\rho\sigma}\epsilon_{\alpha\beta\rho\sigma} &= 
+            -\delta^{\mu}_{\alpha}\delta^{\nu}_{\beta}\delta^{\rho}_{\rho}
+            -\delta^{\nu}_{\alpha}\delta^{\rho}_{\beta}\delta^{\mu}_{\rho}
+            -\delta^{\rho}_{\alpha}\delta^{\mu}_{\beta}\delta^{\nu}_{\rho}
+            +\delta^{\nu}_{\alpha}\delta^{\mu}_{\beta}\delta^{\rho}_{\rho}
+            +\delta^{\mu}_{\alpha}\delta^{\rho}_{\beta}\delta^{\nu}_{\rho}
+            +\delta^{\rho}_{\alpha}\delta^{\nu}_{\beta}\delta^{\mu}_{\rho}\\
+            &= -4\delta^{\mu}_{\alpha}\delta^{\nu}_{\beta}
+            -\delta^{\nu}_{\alpha}\delta^{\rho}_{\beta}\delta^{\mu}_{\rho}
+            -\delta^{\rho}_{\alpha}\delta^{\mu}_{\beta}\delta^{\nu}_{\rho}
+            +2\delta^{\nu}_{\alpha}\delta^{\mu}_{\beta}
+            +\delta^{\mu}_{\alpha}\delta^{\rho}_{\beta}\delta^{\nu}_{\rho}
+            +\delta^{\rho}_{\alpha}\delta^{\nu}_{\beta}\delta^{\mu}_{\rho}\\
+            &= -4\delta^{\mu}_{\alpha}\delta^{\nu}_{\beta}
+            -\delta^{\nu}_{\alpha}\delta^{\mu}_{\beta}
+            -\delta^{\nu}_{\alpha}\delta^{\mu}_{\beta}
+            +4\delta^{\nu}_{\alpha}\delta^{\mu}_{\beta}
+            +\delta^{\mu}_{\alpha}\delta^{\nu}_{\beta}
+            +\delta^{\mu}_{\alpha}\delta^{\nu}_{\beta}\\
+            &= -4\delta^{\mu}_{\alpha}\delta^{\nu}_{\beta}
+            +\delta^{\mu}_{\alpha}\delta^{\nu}_{\beta}
+            +\delta^{\mu}_{\alpha}\delta^{\nu}_{\beta}
+            -\delta^{\nu}_{\alpha}\delta^{\mu}_{\beta}
+            -\delta^{\nu}_{\alpha}\delta^{\mu}_{\beta}
+            +4\delta^{\nu}_{\alpha}\delta^{\mu}_{\beta}\\
+            &= -2\delta^{\mu}_{\alpha}\delta^{\nu}_{\beta} +2\delta^{\mu}_{\beta}\delta^{\nu}_{\alpha}
+    \end{align*}
+
 \item
+    Using the result from part (b) we can take the Hodge dual of a Hodge dual using equation \ref{Hodge} to see
+    \begin{align*}
+        ^*\left(\prescript{*}{}{F}_{\mu\nu}\right) &= \frac{1}{2}\epsilon_{\mu\nu\rho\sigma}\prescript{*}{}{F}^{\rho\sigma}\\
+                                                   &= \frac{1}{2}\epsilon_{\mu\nu\rho\sigma}\frac{1}{2}\epsilon^{\rho\sigma\alpha\beta}F_{\alpha\beta}\\
+                                                   &= \frac{1}{4}\epsilon_{\mu\nu\rho\sigma}\epsilon^{\alpha\beta\rho\sigma}F_{\alpha\beta}\\
+                                                   &= \frac{1}{4}\left(-2\delta_{\mu}^{\alpha}\delta_{\nu}^{\beta} +2\delta_{\mu}^{\beta}\delta_{\nu}^{\alpha}\right)F_{\alpha\beta}\\
+                                                   &= \frac{1}{4}\left(-2F_{\mu\nu}+2F_{\nu\mu}\right)\\
+                                                   &= \frac{1}{4}\left(-4F_{\mu\nu}\right)\\
+                                                   &= -F_{\mu\nu}
+    \end{align*}
 \end{enumerate}
 \end{document}
 
