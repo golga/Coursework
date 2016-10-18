@@ -1,0 +1,157 @@
+\documentclass[11pt]{article}
+
+\usepackage{latexsym}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{enumerate}
+\usepackage{amsmath}
+\usepackage{cancel}
+\usepackage{mathtools}
+\numberwithin{equation}{section}
+
+\setlength{\evensidemargin}{.25in}
+\setlength{\oddsidemargin}{-.25in}
+\setlength{\topmargin}{-.75in}
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{9.5in}
+\newcommand{\due}{October 19th, 2016}
+\newcommand{\HWnum}{4}
+\input{../../../Define.tex}
+
+\begin{document}
+\input{../title.tex}
+
+\section{Problem \#1}
+\begin{enumerate}[(a)]
+\item
+    Given the energy-momentum tensor for the electromagnetic field
+    \begin{equation}
+        T_{\mu\nu} = \frac{1}{8\pi}\left(F_{\mu\rho}F^{\ \rho}_{\nu} + \prescript{*}{}{F}_{\mu\rho}\prescript{*}{}{F}^{\ \rho}_{\nu}\right)
+    \label{EnMom}
+    \end{equation}
+    where $\prescript{*}{}{F}_{\mu\nu}=\frac{1}{2}\epsilon_{\mu\nu\rho\sigma}F^{\rho\sigma}$. We can see that 
+    equation \ref{EnMom} can be reduced by noting that
+    \begin{align*}
+        \prescript{*}{}{F}_{\mu\rho}\prescript{*}{}{F}^{\ \rho}_{\nu} &= \left(\frac{1}{2}\epsilon_{\mu\rho\pi\sigma}F^{\pi\sigma}\right)\eta_{\nu\lambda}\prescript{*}{}{F}^{\lambda\rho}\\
+            &= \left(\frac{1}{2}\epsilon_{\mu\rho\pi\sigma}F^{\pi\sigma}\right)\eta_{\nu\lambda}\frac{1}{2}\epsilon^{\lambda\rho\phi\omega}F_{\phi\omega}\\
+            &= \frac{1}{4}\eta_{\nu\lambda}F^{\pi\sigma}F_{\phi\omega}\left(-\delta^{\lambda}_{\mu}\delta^{\phi}_{\pi}\delta^{\omega}_{\sigma}  - \delta^{\phi}_{\mu}\delta^{\omega}_{\pi}\delta^{\lambda}_{\sigma} - \delta^{\omega}_{\mu}\delta^{\lambda}_{\pi}\delta^{\phi}_{\sigma} + \delta^{\phi}_{\mu}\delta^{\lambda}_{\pi}\delta^{\omega}_{\sigma} + \delta^{\lambda}_{\mu}\delta^{\omega}_{\pi}\delta^{\phi}_{\sigma} + \delta^{\omega}_{\mu}\delta^{\phi}_{\pi}\delta^{\lambda}_{\sigma}\right)\\
+            &= \frac{1}{4}\left(-\eta_{\nu\mu}F^{\pi\sigma}F_{\pi\sigma}
+                - \eta_{\nu\sigma}F^{\pi\sigma}F_{\mu\pi}
+                - \eta_{\nu\pi}F^{\sigma\pi}F_{\mu\sigma}
+                + \eta_{\nu\pi}F^{\pi\sigma}F_{\mu\sigma}
+                + \eta_{\nu\mu}F^{\pi\sigma}F_{\sigma\pi}
+                + \eta_{\nu\sigma}F^{\pi\sigma}F_{\pi\mu} \right)\\
+                &= \frac{1}{4}\left(-2\eta_{\mu\nu}F^{\rho\sigma}F_{\rho\sigma} + 4\eta_{\nu\sigma}F^{\sigma\rho}F_{\mu\rho}\right)\\
+                &= -\frac{1}{2}\left(\eta_{\mu\nu}F^{\rho\sigma}F_{\rho\sigma} - 2F^{\ \rho}_{\nu}F_{\mu\rho}\right)\\
+    \end{align*}
+    We see that equation \ref{EnMom} becomes
+    \begin{align*}
+        T_{\mu\nu} &= \frac{1}{8\pi}\left(F_{\mu\rho}F^{\ \rho}_{\nu} + \prescript{*}{}{F}_{\mu\rho}\prescript{*}{}{F}^{\ \rho}_{\nu}\right)\\
+                   &\Downarrow\\
+                   &= \frac{1}{8\pi}\left(F_{\mu\rho}F^{\ \rho}_{\nu} - \frac{1}{2}\eta_{\mu\nu}F^{\rho\sigma}F_{\rho\sigma} + F^{\ \rho}_{\nu}F_{\mu\rho}\right)\\
+                   &= \frac{1}{4\pi}\left(F_{\mu\rho}F^{\ \rho}_{\nu} - \frac{1}{4}\eta_{\mu\nu}F^{\rho\sigma}F_{\rho\sigma} \right)\\
+    \end{align*}
+    Note this is the typical form of the electromagnetic field energy momentum tensor.
+
+\item
+    We can find the expression for $T_{\mu\rho}T^{\nu\rho}$ by noting that
+    \begin{align*}
+        T^{\nu\rho} &= \eta^{\nu\sigma}\eta^{\rho\lambda}T_{\sigma\lambda}\\
+                    &= \frac{1}{4\pi}\left(\eta^{\nu\sigma}\eta^{\rho\lambda}F_{\sigma\phi}F_{\lambda}^{\ \phi} - \frac{1}{4}\eta^{\nu\sigma}\eta^{\rho\lambda}\eta_{\sigma\lambda}F^{\phi\omega}F_{\phi\omega}\right)\\
+                    &= \frac{1}{4\pi}\left(\eta^{\nu\sigma}\eta^{\rho\lambda}F_{\sigma\phi}F_{\lambda}^{\ \phi} - \frac{1}{4}\eta^{\nu\rho}F^{\sigma\lambda}F_{\sigma\lambda}\right)
+    \end{align*}
+    So we can calculate defining $F^2\equiv F^{\mu\nu}F_{\mu\nu}$
+    \begin{align*}
+        T_{\mu\rho}T^{\nu\rho} &= \frac{1}{(4\pi)^2}\left(F_{\mu\sigma}F^{\ \sigma}_{\rho} - \frac{1}{4}\eta_{\mu\rho}F^{\sigma\lambda}F_{\sigma\lambda} \right)\left(\eta^{\nu\sigma}\eta^{\rho\lambda}F_{\sigma\phi}F_{\lambda}^{\ \phi} - \frac{1}{4}\eta^{\nu\rho}F^{\sigma\lambda}F_{\sigma\lambda}\right)\\
+                               &= \frac{1}{(4\pi)^2}\left(\eta^{\nu\sigma}\eta^{\rho\lambda}F_{\sigma\phi}F_{\lambda}^{\ \phi}F_{\mu\omega}F^{\ \omega}_{\rho} + \frac{1}{16}\eta_{\mu\rho}\eta^{\nu\rho}(F^2)^2 - \frac{1}{4}F^2\eta^{\nu\rho}F_{\mu\sigma}F^{\ \sigma}_{\rho} - \frac{1}{4}F^2\eta_{\mu\rho}\eta^{\nu\sigma}\eta^{\rho\lambda}F_{\sigma\phi}F_{\lambda}^{\ \phi}\right)\\
+                               &= \frac{1}{(4\pi)^2}\left(\eta^{\nu\sigma}\eta^{\rho\lambda}F_{\sigma\phi}F_{\lambda}^{\ \phi}F_{\mu\omega}F^{\ \omega}_{\rho} + \frac{1}{16}\delta^{\nu}_{\mu}(F^2)^2 - \frac{1}{4}F^2\eta^{\nu\rho}F_{\mu\sigma}F^{\ \sigma}_{\rho} - \frac{1}{4}F^2\eta^{\nu\rho}F_{\rho\sigma}F_{\mu}^{\ \sigma}\right)
+    \end{align*}
+    
+    Next we consider the term 
+    \begin{align*}
+        \eta^{\nu\sigma}\eta^{\rho\lambda}F_{\sigma\phi}F_{\lambda}^{\ \phi}F_{\mu\omega}F^{\ \omega}_{\rho} &= \eta^{\nu\sigma}\eta^{\rho\lambda}F_{\sigma\phi}F_{\lambda}^{\ \phi}F_{\mu\omega}F^{\ \omega}_{\rho}\\
+    \end{align*}
+
+
+
+
+
+
+\end{enumerate}
+
+\pagebreak
+
+\section{Problem \#2}
+\begin{enumerate}[(a)]
+\item
+    Given the Lagrangian density
+    \begin{equation}
+        \mathcal{L} = -\frac{1}{16}F^{\mu\nu}F_{\mu\nu} - \frac{m^2}{8\pi}A^{\mu}A_{\mu}+J^{\mu}A_{\mu}
+        \label{LagDen}
+    \end{equation}
+    we can derive the equations of motion from the \emph{Euler-Lagrange equations}
+    \begin{equation}
+        \partiald{\mathcal{L}}{A_{\mu}} - \partial_{\nu}\left(\partiald{\mathcal{L}}{(\partial_{\nu}A_{\mu})}\right) = 0
+        \label{EulLag}
+    \end{equation}
+    Noting that $F_{\mu\nu}\equiv\partial_{\mu}A_{\nu}-\partial_{\nu}A_{\mu}$ we have
+    \begin{align*}
+        \partiald{\mathcal{L}}{A_{\mu}} &= -\frac{m^2}{8\pi}A^{\mu} + J^{\mu}\\
+        \partiald{\mathcal{L}}{(\partial_{\nu}A_{\mu})} &= \partiald{}{(\partial_{\nu}A_{\mu})}\left(-\frac{1}{16}F^{\mu\nu}(\partial_{\mu}A_{\nu}-\partial_{\nu}A_{\mu})\right) = \frac{1}{4}F^{\mu\nu}
+    \end{align*}
+    So equation \ref{EulLag} yields the equation of motion
+    $$-\partial_{\nu}F^{\mu\nu} + m^2A^{\mu} = 4\pi{J^{\mu}}$$
+
+\item
+    Using the result from part (a) we can find the solution for the scalar potential $\phi\equiv{A^{0}}$ for a point
+    charge $q$ located at the origin. This implies that we have $J^{0} = q\delta^{3}(\mathbf{r})$ which allows us to 
+    solve for $\mu=0$
+    \begin{align*}
+        -\partial_{\nu}F^{0\nu} + m^2A^{0} &= 4\pi q\delta^{3}(\mathbf{r})\\
+                                           &\Downarrow\\
+        -\grad^2\phi + m^2\phi &= 4\pi q\delta^{3}(\mathbf{r})\\
+                                           &\Downarrow\\
+        -\frac{1}{r^2}\partiald{}{r}\left(r^2\partiald{\phi}{r}\right) + m^2\phi &= 4\pi q\delta(r)\\
+        -\partiald{}{r}\left(r^2\partiald{\phi}{r}\right) + r^2m^2\phi &= 4\pi r^2q\delta(r)\\
+                                           &\Downarrow\\
+                                  r\phi(r) &= Ce^{-mr}
+    \end{align*}
+    Where we can solve for the constant $C$ by noting that for \emph{Gauss' law} to hold $C=q$ therefore
+    $$\phi(r) = \frac{qe^{-mr}}{r}$$
+
+\end{enumerate}
+
+\pagebreak
+
+\section{Problem \#3}
+\begin{enumerate}[(a)]
+\item
+    Given the potentials describing an electric charge, $e$, moving with constant velocity, $\mathbf{v}$ 
+    $$\phi(\mathbf{r},t) = \frac{e\gamma}{r'},\qquad \mathbf{A}(\mathbf{r},t) = \mathbf{v}\phi$$
+    we note that the magnetic field is given as
+    \begin{align*}
+        \mathbf{B} &= \grad\times\mathbf{A}\\
+                   &= \grad\times(\mathbf{v}\phi)\\
+                   &= \grad\phi\times\mathbf{v} + \phi(\cancelto{0}{\grad\times\mathbf{v}})\\
+                   &= -\mathbf{E}\times\mathbf{v}\\
+                   &= \mathbf{v}\times\mathbf{E}
+    \end{align*}
+
+\item
+    Using the expressions we were given in part (a) we can find the electric field by
+    \begin{align*}
+        \mathbf{E} &= -\grad\phi - \partiald{\mathbf{A}}{t}\\
+                   &= -\grad\frac{e\gamma}{r'} - \mathbf{v}\partiald{}{t}\frac{e\gamma}{r'}
+    \end{align*}
+    we note that we can assume that $\mathbf{v}$ is pointing along the $\hat{x}$ direction this gives us
+    $$r' = \gamma\sqrt{(x-vt)^2+y^2+z^2$$
+    which allows us to say that
+    \begin{align*}
+    \end{align*}
+    
+
+
+\end{enumerate}
+
+\end{document}
+
