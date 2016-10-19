@@ -144,9 +144,19 @@
                    &= -\grad\frac{e\gamma}{r'} - \mathbf{v}\partiald{}{t}\frac{e\gamma}{r'}
     \end{align*}
     we note that we can assume that $\mathbf{v}$ is pointing along the $\hat{x}$ direction this gives us
-    $$r' = \gamma\sqrt{(x-vt)^2+y^2+z^2$$
-    which allows us to say that
+    $$r' = \gamma\sqrt{(x-vt)^2+y^2+z^2}$$
+    which allows us to calculate
     \begin{align*}
+        \partiald{r'}{t} &= \gamma\partiald{}{t}\left(\sqrt{(x-vt)^2+y^2+z^2}\right) = \gamma\left((x-vt)^2+y^2+z^2\right)^{-1/2}2(x-vt)(-v)\\
+                         &= -\frac{2\gamma^2(x-vt)v}{r'}\\
+        \partiald{r'}{x} &= \frac{2\gamma^2(x-vt)}{r'}\\
+        \partiald{r'}{y} &= \frac{2\gamma^2y}{r'}\\
+        \partiald{r'}{z} &= \frac{2\gamma^2z}{r'}
+    \end{align*}
+    So this gives the resulting electric field
+    \begin{align*}
+        \mathbf{E} &= -\grad\frac{e\gamma}{r'} - \mathbf{v}\partiald{}{t}\frac{e\gamma}{r'}\\
+        &= \frac{e\gamma}{r'2}\grad{r'} + v\hat{x}\frac{e\gamma}{r'^2}\\
     \end{align*}
     
 
