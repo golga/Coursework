@@ -64,13 +64,21 @@
     \begin{align*}
         T_{\mu\rho}T^{\nu\rho} &= \frac{1}{(4\pi)^2}\left(F_{\mu\sigma}F^{\ \sigma}_{\rho} - \frac{1}{4}\eta_{\mu\rho}F^{\sigma\lambda}F_{\sigma\lambda} \right)\left(\eta^{\nu\sigma}\eta^{\rho\lambda}F_{\sigma\phi}F_{\lambda}^{\ \phi} - \frac{1}{4}\eta^{\nu\rho}F^{\sigma\lambda}F_{\sigma\lambda}\right)\\
                                &= \frac{1}{(4\pi)^2}\left(\eta^{\nu\sigma}\eta^{\rho\lambda}F_{\sigma\phi}F_{\lambda}^{\ \phi}F_{\mu\omega}F^{\ \omega}_{\rho} + \frac{1}{16}\eta_{\mu\rho}\eta^{\nu\rho}(F^2)^2 - \frac{1}{4}F^2\eta^{\nu\rho}F_{\mu\sigma}F^{\ \sigma}_{\rho} - \frac{1}{4}F^2\eta_{\mu\rho}\eta^{\nu\sigma}\eta^{\rho\lambda}F_{\sigma\phi}F_{\lambda}^{\ \phi}\right)\\
-                               &= \frac{1}{(4\pi)^2}\left(\eta^{\nu\sigma}\eta^{\rho\lambda}F_{\sigma\phi}F_{\lambda}^{\ \phi}F_{\mu\omega}F^{\ \omega}_{\rho} + \frac{1}{16}\delta^{\nu}_{\mu}(F^2)^2 - \frac{1}{4}F^2\eta^{\nu\rho}F_{\mu\sigma}F^{\ \sigma}_{\rho} - \frac{1}{4}F^2\eta^{\nu\rho}F_{\rho\sigma}F_{\mu}^{\ \sigma}\right)
+                               &= \frac{1}{(4\pi)^2}\left(\eta^{\nu\sigma}\eta^{\rho\lambda}F_{\sigma\phi}F_{\lambda}^{\ \phi}F_{\mu\omega}F^{\ \omega}_{\rho} + \frac{1}{16}\delta^{\nu}_{\mu}(F^2)^2 - \frac{1}{4}F^2\eta^{\nu\rho}F_{\mu\sigma}F^{\ \sigma}_{\rho} - \frac{1}{4}F^2\eta^{\nu\rho}F_{\rho\sigma}F_{\mu}^{\ \sigma}\right)\\
+                               &= \frac{1}{(4\pi)^2}\left(\eta^{\nu\sigma}\eta^{\rho\lambda}F_{\sigma\phi}F_{\lambda}^{\ \phi}F_{\mu\omega}F^{\ \omega}_{\rho} + \frac{1}{16}\delta^{\nu}_{\mu}(F^2)^2 - \cancel{\frac{1}{4}F^2\eta^{\nu\rho}F_{\mu\sigma}F^{\ \sigma}_{\rho} + \frac{1}{4}F^2\eta^{\nu\rho}F_{\mu\sigma}F_{\rho}^{\ \sigma}}\right)
     \end{align*}
-    
     Next we consider the term 
     \begin{align*}
-        \eta^{\nu\sigma}\eta^{\rho\lambda}F_{\sigma\phi}F_{\lambda}^{\ \phi}F_{\mu\omega}F^{\ \omega}_{\rho} &= \eta^{\nu\sigma}\eta^{\rho\lambda}F_{\sigma\phi}F_{\lambda}^{\ \phi}F_{\mu\omega}F^{\ \omega}_{\rho}\\
+        \eta^{\nu\sigma}\eta^{\rho\lambda}F_{\sigma\phi}F_{\lambda}^{\ \phi}F_{\mu\omega}F^{\ \omega}_{\rho} &= F^{\nu}_{\ \sigma}F_{\lambda}^{\ \sigma}F_{\mu\rho}F^{\lambda\rho} \\
+                                                                                                             &= F_{\mu\lambda}F_{\sigma\rho}F^{\sigma\lambda}F^{\nu\rho}
     \end{align*}
+    Note that if we swap the dummy indices $\lambda$ and $\rho$ we see
+    $$F_{\mu\lambda}F_{\sigma\rho}F^{\sigma\lambda}F^{\nu\rho} = F_{\mu\rho}F_{\sigma\lambda}F^{\sigma\rho}F^{\nu\lambda}$$
+    which is only non zero if $\mu=\nu$ which implies that this term must be proportional to $\delta^{\nu}_{\mu}$. We 
+    can also note that each product of two field tensors must be antisymmetric which allows us to say
+    $$F_{\mu\lambda}F_{\rho\lambda}F^{\nu\sigma}F^{\rho\sigma} = \left(\epsilon^{\nu\lambda\sigma\rho}F^{\nu\lambda}F^{\sigma\rho}\right)\left(\epsilon^{\mu\rho\sigma\lambda}F_{\mu\rho}F_{\sigma\lambda}\right)\delta^{\nu}_{\mu} = (2\mathbf{E}\cdot\mathbf{B})^2\delta^{\nu}_{\mu}$$
+    So ultimately we have
+    $$T_{\mu\rho}T^{\nu\rho} = \frac{1}{(4\pi)^2}\left(\eta^{\nu\sigma}\eta^{\rho\lambda}F_{\sigma\phi}F_{\lambda}^{\ \phi}F_{\mu\omega}F^{\ \omega}_{\rho} + \frac{1}{16}\delta^{\nu}_{\mu}(F^2)^2\right) = \frac{1}{(8\pi)^2}\left((E^2-B^2)^2+(2\mathbf{E}\cdot\mathbf{B})^2\right)\delta^{\nu}_{\mu}$$
 
 
 
@@ -144,20 +152,23 @@
                    &= -\grad\frac{e\gamma}{r'} - \mathbf{v}\partiald{}{t}\frac{e\gamma}{r'}
     \end{align*}
     we note that we can assume that $\mathbf{v}$ is pointing along the $\hat{x}$ direction this gives us
-    $$r' = \gamma\sqrt{(x-vt)^2+y^2+z^2}$$
+    $$r' = \sqrt{\gamma^2(x-vt)^2+y^2+z^2}$$
     which allows us to calculate
     \begin{align*}
         \partiald{r'}{t} &= \gamma\partiald{}{t}\left(\sqrt{(x-vt)^2+y^2+z^2}\right) = \gamma\left((x-vt)^2+y^2+z^2\right)^{-1/2}2(x-vt)(-v)\\
                          &= -\frac{2\gamma^2(x-vt)v}{r'}\\
         \partiald{r'}{x} &= \frac{2\gamma^2(x-vt)}{r'}\\
-        \partiald{r'}{y} &= \frac{2\gamma^2y}{r'}\\
-        \partiald{r'}{z} &= \frac{2\gamma^2z}{r'}
+        \partiald{r'}{y} &= \frac{2y}{r'}\\
+        \partiald{r'}{z} &= \frac{2z}{r'}
     \end{align*}
     So this gives the resulting electric field
     \begin{align*}
         \mathbf{E} &= -\grad\frac{e\gamma}{r'} - \mathbf{v}\partiald{}{t}\frac{e\gamma}{r'}\\
-        &= \frac{e\gamma}{r'2}\grad{r'} + v\hat{x}\frac{e\gamma}{r'^2}\\
+                   &= \frac{e\gamma}{r'^2}\grad{r'} + v\hat{x}\frac{e\gamma}{r'^2}\partiald{r'}{t}\\
+                   &= \frac{2e\gamma}{r'^3}\mathbf{r'} + v^2\frac{2e\gamma}{r'^3}\\
+                   &= \frac{e(1-v^2)\mathbf{R}}{R_*^3}
     \end{align*}
+    Note this matches the result derived in the notes where $R_*^2 \equiv (x-vt)^2 + (1-v^2)(y^2+z^2)$
     
 
 
