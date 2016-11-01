@@ -1,0 +1,192 @@
+\documentclass[11pt]{article}
+
+\usepackage{latexsym}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{enumerate}
+\usepackage{amsmath}
+\usepackage{cancel}
+\numberwithin{equation}{section}
+
+\setlength{\evensidemargin}{.25in}
+\setlength{\oddsidemargin}{-.25in}
+\setlength{\topmargin}{-.75in}
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{9.5in}
+\newcommand{\due}{November 2nd, 2016}
+\newcommand{\HWnum}{6}
+\input{../../../Define.tex}
+
+\begin{document}
+\input{../title.tex}
+
+\section{Problem \#1}
+For a small test particle with mass, $m$, and positive charge, $q$, which has a \emph{circular} orbit in the $x-y$ 
+plane around a fixed positive charge $Q$ at the origin. This is due to the presence of a uniform magnetic field
+$B$ oriented along the $z$ direction. Given that the orbit is circular we can say the that the velocity 
+of the particle is given by
+$$\mathbf{v} = \omega{R}\hat{\theta}$$
+where $\omega$ is the angular frequency and $R$ is the radius of the orbit. Note that we are in plane so we can work
+within \emph{cylindrical coordinates}. This implies that the \emph{fully relativistic Lorentz force equation}
+\begin{equation}
+    \frac{d\mathbf{p}}{dt} = q\left(\mathbf{E}+\mathbf{v}\times\mathbf{B}\right)
+\label{LorFor}
+\end{equation}
+can be written in the form 
+\begin{align*}
+    \frac{d\mathbf{p}}{dt} &= q\left(\mathbf{E}+\mathbf{v}\times\mathbf{B}\right) \\
+                           &\Downarrow\\
+    \frac{d}{dt}(m\gamma{\mathbf{v}}) &= q\left(\frac{Q}{R^2}\hat{r} + \omega{RB}(\hat{\theta}\times\hat{z})\right)\\
+    m\gamma\frac{d\mathbf{v}}{dt} &= q\left(\frac{Q}{R^2} - \omega{RB}\right)\hat{r}
+\end{align*}
+Note that for circular motion to exist we need a radial acceleration of the form $d\mathbf{v}/dt = -\omega^2R\hat{r}$ this 
+implies that
+\begin{align*}
+    -m\gamma\omega^2R &= q\left(\frac{Q}{R^2} - \omega{RB}\right)\\
+                     &\Downarrow\\
+    \frac{q}{m} &= \frac{-\gamma\omega^2R}{\left(\frac{Q}{R^2} - \omega{RB}\right)}\\
+                &= \frac{-\omega^2R}{\sqrt{1-(\omega{R})^2}}\frac{1}{\frac{Q}{R^2} - \omega{RB}}\\
+                &= \frac{\omega^2}{\sqrt{1-(\omega{R})^2}}\frac{1}{\omega{B} - \frac{Q}{R^3}}
+\end{align*}
+Note that $\gamma = (1-v^2)^{-1/2} = (1-(\omega{R})^2)^{-1/2}$.
+
+\pagebreak
+
+\section{Problem \#2}
+\begin{enumerate}[(a)]
+\item
+    For an electromagnetic wave for which the electric field is given as
+    \begin{equation}
+        \mathbf{E} = E_0\sin\omega{t}\left(\sin\omega{z},\cos\omega{z},0\right)
+    \label{Prob2a}
+    \end{equation}
+    where $E_0$ and $\omega$ are constant we can solve for $\mathbf{B}$ by noting the maxwell equation
+    \begin{align*}
+        -\partiald{\mathbf{B}}{t} &= \grad\times\mathbf{E} \\
+                                  &= \det\left|\begin{array}{ccc}
+                                                \hat{x}                       &\hat{y}                        &\hat{z}\\
+                                                \partial_{x}                  &\partial_{y}                   &\partial_{z}\\
+                                                E_0\sin\omega{t}\sin\omega{z} &E_0\sin\omega{t}\cos\omega{z} &0
+                                          \end{array}\right|\\
+                                   &= (E_0\omega\sin\omega{t}\sin\omega{z}, E_0\omega\sin\omega{t}\cos\omega{z}, 0)\\
+                                   &\Downarrow\\
+                                          \mathbf{B} &= E_0\cos\omega{t}\left(\sin\omega{z}, \cos\omega{z}, 0\right)
+    \end{align*}
+    Note that this satisfies one of the four source-free Maxwell equation. The remaining three are
+    $$\grad\cdot\mathbf{E}=0\qquad \grad\cdot\mathbf{B} = 0\qquad \grad\times\mathbf{B} = \partiald{\mathbf{E}}{t}$$
+    We can quickly verify the first two equations by calculating
+    \begin{align*}
+        \grad\cdot\mathbf{E} &= E_0\sin\omega{t}\left( \cancelto{0}{\partiald{}{x}(\sin\omega{z})} + \cancelto{0}{\partiald{}{y}(\cos\omega{z})} + \partiald{}{z}(0)\right) = 0\\
+        \grad\cdot\mathbf{B} &= E_0\cos\omega{t}\left( \cancelto{0}{\partiald{}{x}(\sin\omega{z})} + \cancelto{0}{\partiald{}{y}(\cos\omega{z})} + \partiald{}{z}(0)\right) = 0
+    \end{align*}
+    and for the last we equation we calculate 
+    \begin{align*}
+        \grad\times\mathbf{B} - \partiald{\mathbf{E}}{t} &= \det\left|\begin{array}{ccc}
+                                                \hat{x}                       &\hat{y}                        &\hat{z}\\
+                                                \partial_{x}                  &\partial_{y}                   &\partial_{z}\\
+                                                E_0\cos\omega{t}\sin\omega{z} &E_0\cos\omega{t}\cos\omega{z} &0 
+    \end{array}\right| - \partiald{}{t}(E_0\sin\omega{t})\left(\sin\omega{z},\cos\omega{z},0\right)\\
+    &= E_0\omega\cos\omega{t}(\sin\omega{z},\cos\omega{z},0) - E_0\omega\cos\omega{t}\left(\sin\omega{z},\cos\omega{z},0\right) = 0
+    \end{align*}
+    Therefore all the source-free Maxwell equations hold.
+
+\item
+    For the electromagnetic wave in part (a) we can calculate the energy density, $W$, by
+    \begin{align*}
+        W = \frac{1}{8\pi}\left(E^2+B^2\right) &= \frac{1}{8\pi}\left(E_0^2\sin^2\omega{t}\cancelto{1}{(\sin^2\omega{z}+\cos^2\omega{z})} + E_0^2\cos^2\omega{t}\cancelto{1}{(\cos^2\omega{z}+\sin^2\omega{z})}\right)\\
+                                               &= \frac{1}{8\pi}\left(E_0^2\cancelto{1}{(\sin^2\omega{t}+\cos^2\omega{t})}\right)\\
+                                               &= \frac{E_0^2}{8\pi}
+    \end{align*}
+    We can also calculate the \emph{Poynting vector}, $\mathbf{S}$, as
+    \begin{align*}
+        \mathbf{S} = \frac{1}{4\pi}\mathbf{E}\times\mathbf{B} &= \frac{1}{4\pi}\det\left|\begin{array}{ccc}
+                                                \hat{x}                       &\hat{y}                       &\hat{z}\\
+                                                E_0\sin\omega{t}\sin\omega{z} &E_0\sin\omega{t}\cos\omega{z} &0      \\
+                                                E_0\cos\omega{t}\sin\omega{z} &E_0\cos\omega{t}\cos\omega{z} &0 
+                                                                    \end{array}\right|\\
+                                                                    &= 0\hat{x} + 0\hat{y} + \frac{E_0^2}{4\pi}(\sin\omega{t}\cos\omega{t}\sin\omega{z}\cos\omega{z}-\sin\omega{t}\cos\omega{t}\sin\omega{z}\cos\omega{z})\hat{z}\\
+                                                &=0
+    \end{align*}
+
+\item
+    We can repeat the process from parts (a) and (b) for the electric field
+    \begin{equation}
+        \mathbf{E} = E_0\cos\omega{z}\left(\cos\omega{t},-\sin\omega{t},0\right)
+    \label{Prob2c}
+    \end{equation}
+    which gives us 
+    \begin{align*}
+        -\partiald{\mathbf{B}}{t} &= \grad\times\mathbf{E} \\
+                                  &= \det\left|\begin{array}{ccc}
+                                                \hat{x}                       &\hat{y}                        &\hat{z}\\
+                                                \partial_{x}                  &\partial_{y}                   &\partial_{z}\\
+                                                E_0\cos\omega{t}\cos\omega{z} &-E_0\sin\omega{t}\cos\omega{z} &0
+                                          \end{array}\right|\\
+                                   &= (-E_0\omega\sin\omega{t}\sin\omega{z}, -E_0\omega\cos\omega{t}\sin\omega{z}, 0)\\
+                                   &\Downarrow\\
+                                          \mathbf{B} &= E_0\sin\omega{z}\left(\cos\omega{t}, -\sin\omega{t}, 0\right)
+    \end{align*}
+\end{enumerate}
+   which allows us to calculate 
+   \begin{align*}
+       \grad\cdot\mathbf{E} &= E_0\left(\cos\omega{t}\cancelto{0}{\partiald{}{x}(\cos\omega{z})} - \sin\omega{t}\cancelto{0}{\partiald{}{y}(\cos\omega{z})} + \partiald{}{z}(0)\right) = 0\\
+       \grad\cdot\mathbf{B} &= E_0\left( \cos\omega{t}\cancelto{0}{\partiald{}{x}(\sin\omega{z})} - \sin\omega{t}\cancelto{0}{\partiald{}{y}(\sin\omega{z})} + \partiald{}{z}(0)\right) = 0
+   \end{align*}
+   and
+    \begin{align*}
+        \grad\times\mathbf{B} - \partiald{\mathbf{E}}{t} &= \det\left|\begin{array}{ccc}
+                                                \hat{x}                       &\hat{y}                        &\hat{z}\\
+                                                \partial_{x}                  &\partial_{y}                   &\partial_{z}\\
+                                                E_0\cos\omega{t}\sin\omega{z} &-E_0\sin\omega{t}\sin\omega{z} &0 
+    \end{array}\right| - \partiald{}{t}(E_0\cos\omega{z})\left(\cos\omega{t},-\sin\omega{t},0\right)\\
+    &= E_0\omega\cos\omega{z}(-\sin\omega{t},-\cos\omega{t},0) - E_0\omega\cos\omega{z}\left(-\sin\omega{t},-\cos\omega{t},0\right) = 0
+    \end{align*}
+    We also calculate 
+    \begin{align*}
+        W = \frac{1}{8\pi}\left(E^2+B^2\right) &= \frac{1}{8\pi}\left(E_0^2\cos^2\omega{z}\cancelto{1}{(\sin^2\omega{t}+\cos^2\omega{t})} + E_0^2\cos^2\omega{z}\cancelto{1}{(\cos^2\omega{t}+\sin^2\omega{t})}\right)\\
+                                               &= \frac{1}{8\pi}\left(E_0^2\cancelto{1}{(\sin^2\omega{z}+\cos^2\omega{z})}\right)\\
+                                               &= \frac{E_0^2}{8\pi}
+    \end{align*}
+    and 
+    \begin{align*}
+        \mathbf{S} = \frac{1}{4\pi}\mathbf{E}\times\mathbf{B} &= \frac{1}{4\pi}\det\left|\begin{array}{ccc}
+                                                \hat{x}                       &\hat{y}                       &\hat{z}\\
+                                                E_0\cos\omega{t}\cos\omega{z} &-E_0\sin\omega{t}\cos\omega{z} &0 \\
+                                                E_0\cos\omega{t}\sin\omega{z} &-E_0\sin\omega{t}\sin\omega{z} &0 
+                                                                    \end{array}\right|\\
+                                                                    &= 0\hat{x} + 0\hat{y} + \frac{E_0^2}{4\pi}(\sin\omega{t}\cos\omega{t}\sin\omega{z}\cos\omega{z}-\sin\omega{t}\cos\omega{t}\sin\omega{z}\cos\omega{z})\hat{z}\\
+                                                &=0
+    \end{align*}
+
+\section{Problem \#3}
+\begin{enumerate}[(a)]
+\item
+    For constant $\mathbf{E}$ and $\mathbf{B}$ fields we can show that in general it is possible to find a new
+    \emph{Lorentz frame} related to the original by a boost velocity of the form
+    $$\mathbf{v} = \lambda\mathbf{E}\times\mathbf{B}$$
+    such that in the boosted frame $\mathbf{E}'$ and $\mathbf{B}'$ are parallel. We can do this by taking the boosted
+    field equations 
+    \begin{align*}
+        \mathbf{E}' &= \gamma(\mathbf{E}+\mathbf{v}\times\mathbf{B}) - \frac{\gamma-1}{v^2}(\mathbf{v}\cdot\mathbf{E})\mathbf{v}\\
+        \mathbf{B}' &= \gamma(\mathbf{B}-\mathbf{v}\times\mathbf{E}) - \frac{\gamma-1}{v^2}(\mathbf{v}\cdot\mathbf{B})\mathbf{v}
+    \end{align*}
+    Now if we replace $\mathbf{v}$ with the velocity we were given we find
+    \begin{align*}
+        \mathbf{E}' &= \gamma(\mathbf{E}+(\lambda\mathbf{E}\times\mathbf{B})\times\mathbf{B}) - \frac{\gamma-1}{v^2}\cancelto{0}{((\lambda\mathbf{E}\times\mathbf{B})\cdot\mathbf{E})}(\lambda\mathbf{E}\times\mathbf{B})\\
+                    &= \gamma\left(\mathbf{E} + \lambda\left((\mathbf{E}\cdot\mathbf{B})\mathbf{B}-(\mathbf{B}\cdot\mathbf{B})\mathbf{E}\right)\right)\\
+                    &= \gamma\left((1-\lambda{B^2})\mathbf{E} + \lambda(\mathbf{E}\cdot\mathbf{B})\mathbf{B})\right)
+    \end{align*}
+    And similarly we find
+    \begin{align*}
+        \mathbf{B}' &= \gamma(\mathbf{B}-(\lambda\mathbf{E}\times\mathbf{E})\times\mathbf{B}) - \frac{\gamma-1}{v^2}\cancelto{0}{((\lambda\mathbf{E}\times\mathbf{B})\cdot\mathbf{B})}(\lambda\mathbf{E}\times\mathbf{B})\\
+                    &= \gamma\left(\mathbf{E} - \lambda\left((\mathbf{E}\cdot\mathbf{E})\mathbf{B}+(\mathbf{B}\cdot\mathbf{E})\mathbf{E}\right)\right)\\
+                    &= \gamma\left((1-\lambda{E^2})\mathbf{B} + \lambda(\mathbf{E}\cdot\mathbf{B})\mathbf{E})\right)
+    \end{align*}
+
+
+
+\item
+\end{enumerate}
+
+\end{document}
+
