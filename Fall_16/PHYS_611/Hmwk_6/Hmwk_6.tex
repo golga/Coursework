@@ -178,14 +178,30 @@ Note that $\gamma = (1-v^2)^{-1/2} = (1-(\omega{R})^2)^{-1/2}$.
     \end{align*}
     And similarly we find
     \begin{align*}
-        \mathbf{B}' &= \gamma(\mathbf{B}-(\lambda\mathbf{E}\times\mathbf{E})\times\mathbf{B}) - \frac{\gamma-1}{v^2}\cancelto{0}{((\lambda\mathbf{E}\times\mathbf{B})\cdot\mathbf{B})}(\lambda\mathbf{E}\times\mathbf{B})\\
-                    &= \gamma\left(\mathbf{E} - \lambda\left((\mathbf{E}\cdot\mathbf{E})\mathbf{B}+(\mathbf{B}\cdot\mathbf{E})\mathbf{E}\right)\right)\\
+        \mathbf{B}' &= \gamma(\mathbf{B}-(\lambda\mathbf{E}\times\mathbf{B})\times\mathbf{E}) - \frac{\gamma-1}{v^2}\cancelto{0}{((\lambda\mathbf{E}\times\mathbf{B})\cdot\mathbf{B})}(\lambda\mathbf{E}\times\mathbf{B})\\
+                    &= \gamma\left(\mathbf{B} - \lambda\left((\mathbf{E}\cdot\mathbf{E})\mathbf{B}-(\mathbf{B}\cdot\mathbf{E})\mathbf{E}\right)\right)\\
                     &= \gamma\left((1-\lambda{E^2})\mathbf{B} + \lambda(\mathbf{E}\cdot\mathbf{B})\mathbf{E})\right)
     \end{align*}
-
-
+    This allows us to calculate
+    \begin{align*}
+        \mathbf{E}'\times\mathbf{B} &= \gamma^2\left((1-\lambda{B^2})(1-\lambda{E^2})\mathbf{E}\times\mathbf{B} + \lambda^2(\mathbf{E}\cdot\mathbf{B})^2\mathbf{B}\times\mathbf{E}\right)\\
+        &= \gamma^2\left((1-\lambda{B^2})(1-\lambda{E^2}) - \lambda^2(\mathbf{E}\cdot\mathbf{B})^2\right)\mathbf{B}\times\mathbf{E}
+    \end{align*}
+    Therefore we see that $\mathbf{E}'$ and $\mathbf{B}'$ are parallel if
+    \begin{align*}
+        (1-\lambda{B^2})(1-\lambda{E^2}) - \lambda^2(\mathbf{E}\cdot\mathbf{B})^2 &= 0\\
+                                     &\Downarrow\\
+        \lambda = \frac{(E^2+B^2) \pm \sqrt{E^4+B^4+4(\mathbf{E}\cdot\mathbf{B})^2 - 2E^2B^2}}{-2(\mathbf{E}\cdot\mathbf{B})^2-B^2E^2}
+    \end{align*}
+    Note this exists for any $\mathbf{E}$ and $\mathbf{B}$.
 
 \item
+    If $\mathbf{E}\cdot\mathbf{B}=0$ and $|\mathbf{E}|=|\mathbf{B}|$ are true then we can see that $\mathbf{E}$ is perpendicular in all 
+    reference frames due to the fact that $\mathbf{E}\cdot\mathbf{B}$ is \emph{Lorentz invariant}. 
+    Therefore it is not possible to construct a frame in with $\mathbf{E}$ and $\mathbf{B}$ are parallel. 
+    Note this follows from the result from part (a) as $\lambda$ goes to infinity in this case.
+
+
 \end{enumerate}
 
 \end{document}
