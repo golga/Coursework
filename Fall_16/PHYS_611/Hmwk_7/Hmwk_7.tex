@@ -1,0 +1,171 @@
+\documentclass[11pt]{article}
+
+\usepackage{latexsym}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{enumerate}
+\usepackage{amsmath}
+\usepackage{cancel}
+\numberwithin{equation}{section}
+
+\setlength{\evensidemargin}{.25in}
+\setlength{\oddsidemargin}{-.25in}
+\setlength{\topmargin}{-.75in}
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{9.5in}
+\newcommand{\due}{November 9th, 2016}
+\newcommand{\HWnum}{7}
+\input{../../../Define.tex}
+
+\begin{document}
+\input{../title.tex}
+
+\section{Problem \#1}
+\begin{enumerate}[(a)]
+\item
+    We can solve for the TE modes in a waveguide whose cross section is a rectangle of side $a$ along the $x$ axis
+    and side $b$ along the $y$ axis by solving the two dimensional \emph{Helmholtz Equation}
+    \begin{equation}
+        \partiald{^2\psi}{x^2} + \partiald{^2\psi}{y^2} + \Omega^2\psi = 0.
+    \label{Helm}
+    \end{equation}
+    Note for the TE modes we take $E_z=0$ and $B_z=\psi$ where we apply the boundary condition 
+    $$\left.\partiald{\psi}{n}\right|_{S} = 0$$
+    where $n$ is normal to the surface $S$ that defines the waveguide cross section. We can solve equation \ref{Helm}
+    through the standard separation of variable technique where we take $\psi(x,y) = X(x)Y(y)$ which implies
+    \begin{align*}
+        \partiald{^2\psi}{x^2} + \partiald{^2\psi}{y^2} + \Omega^2\psi &= 0 \\
+                                                                       &\Downarrow\\
+        \frac{1}{X(x)}\partiald{^2X}{x^2} + \frac{1}{Y(y)}\partiald{^2Y}{y^2} + \Omega^2 &= 0 
+    \end{align*}
+    This allows us to take the partial differential equation into two ordinary differential equations
+    \begin{align*}
+        \partiald{^2X}{x^2} &= k_x^2X(x)\\
+        \partiald{^2Y}{y^2} &= k_y^2Y(y)
+    \end{align*}
+    Where $k_y^2 = \Omega^2-k_x^2$. So we see that we can solve each of these through a combination of sine and 
+    cosine.
+    \begin{align*}
+        X(x) &= A\sin{k_xx} + B\cos{k_xx}\\
+        Y(y) &= C\sin{k_yy} + D\cos{k_yy}
+    \end{align*}
+    Now we apply the boundary conditions, first for $x=0$ we see that we have
+    \begin{align*}
+        \left.\frac{dX}{dx}\right|_{x=0} = 0 &= Ak_x\cos{0} - Bk_x\sin{0} \Rightarrow A = 0
+    \end{align*}
+    And that for a non trivial solution for $x=a$ we must have
+    \begin{align*}
+        \left.\frac{dX}{dx}\right|_{x=a} = 0 &=  -Bk_x\sin{k_xa} \Rightarrow k_x = \frac{m\pi}{a}
+    \end{align*}
+    The same follows for $y=0$ and $y=b$ which gives us the solution
+    $$\psi_{mn}(x,y) = C_{mn}\cos\left(\frac{m\pi}{a}x\right)\cos\left(\frac{n\pi}{b}y\right)$$
+    note we combine the constants $B$ and $D$ into $C_{mn}$. This gives us the TE modes
+    $$E_{z} = 0\qquad B_z(x,y) = C_{mn}\cos\left(\frac{m\pi}{a}x\right)\cos\left(\frac{n\pi}{b}y\right)$$
+    where $\Omega^2_{mn} = m^2\pi^2/a^2 + n^2\pi^2/b^2$.
+
+\item
+    Recall that by definition $k^2 = \omega^2-\Omega^2_{mn}$ this relation gives a cutoff frequency in which we have
+    a real wave vector. We can see from the solution to part (a) that the smallest value of $\Omega$ that results in
+    an oscillating field is when $m=1$ and $n=0$. The $TE_{10}$ mode gives a value for $\Omega$ as
+    \begin{align*}
+        \Omega &= \frac{\pi}{a}
+    \end{align*}
+    This implies that $\omega_{\textnormal{min}}^{TE} = \pi/a$
+    If we compare this result to the result for the TM mode which is 
+    $\omega_{\textnormal{min}}^{TM} = \pi\sqrt{1/a^2+1/b^2}$
+    we can see that the ratio of the two cutoff frequencies is
+    $$\frac{\omega_{\textnormal{min}}^{TE}}{\omega_{\textnormal{min}}^{TM}} = \left(1+\frac{a^2}{b^2}\right)^{-1/2}$$
+\end{enumerate}
+
+\section{Problem \#2}
+\begin{enumerate}[(a)]
+\item
+    For a waveguide made out of an isosceles right-triangle with sides $a$, $a$, and $a\sqrt{2}$ we can use the 
+    special case of the rectangular waveguide where $a=b$, but with a linear combination of the eigenfunctions
+    of the form $\psi_{mn} + \alpha\psi_{nm}$. This gives the TM solution of the form
+    $$E_z = C_{mn}\sin\left(\frac{m\pi}{a}x\right)\sin\left(\frac{n\pi}{a}y\right) + \alpha C_{nm}\sin\left(\frac{n\pi}{a}x\right)\sin\left(\frac{m\pi}{a}y\right)$$
+    Note for the legs $x=a$ and $y=0$ we already satisfy the boundary condition $E_z(a,y)=E_z(x,0)=0$. So, we just need
+    to satisfy the boundary condition on the hypotenuse which is defined by the line $y=x$. Note for this case we
+    have
+    \begin{align*}
+        C_{mn}\sin\left(\frac{m\pi}{a}x\right)\sin\left(\frac{n\pi}{a}x\right) + \alpha C_{nm}\sin\left(\frac{m\pi}{a}x\right)\sin\left(\frac{n\pi}{a}x\right) &= 0\\
+                                                                                                                                                               &\Downarrow\\
+        C_{mn} + \alpha C_{nm} &= 0\\
+        \alpha &= -\frac{C_{mn}}{C_{nm}}
+    \end{align*}
+    So we have the solution of the form 
+    $$E_z = C_{mn}\left[\sin\left(\frac{m\pi}{a}x\right)\sin\left(\frac{n\pi}{a}x\right) - \sin\left(\frac{m\pi}{a}x\right)\sin\left(\frac{n\pi}{a}x\right)\right]$$
+
+\item
+    Note for the general right-triangle we have a solution of the form 
+    $$E_z = C_{mn}\sin\left(\frac{m\pi}{a}x\right)\sin\left(\frac{n\pi}{b}y\right) + \alpha C_{nm}\sin\left(\frac{m\pi}{a}y\right)\sin\left(\frac{n\pi}{b}x\right)$$
+    Note this follows from the same argument from part (a). We constructed a linear combination of the solutions where
+    we take the $E_z(x,y)$ rectangular solution then solve for the case where we swap the coordinates $(E_z(y,x))$. 
+    The problem with this approach is that there is no longer the symmetry of the system that is present in the 
+    isosceles triangle case. This is why we cannot write the solution as $\psi_{nm}+\alpha\psi_{mn}$.
+    This becomes clear when we apply the boundary condition on the line $y=\frac{b}{a}x$ this yields 
+    \begin{align*}
+        0 &= C_{mn}\sin\left(\frac{m\pi}{a}x\right)\sin\left(\frac{n\pi}{b}y\right) + \alpha C_{nm}\sin\left(\frac{m\pi}{a}y\right)\sin\left(\frac{n\pi}{b}x\right)\\
+          &\Downarrow\\
+        0 &= C_{mn}\sin\left(\frac{m\pi}{a}x\right)\sin\left(\frac{n\pi}{a}x\right) + \alpha C_{nm}\sin\left(\frac{m\pi b}{a^2}x\right)\sin\left(\frac{n\pi}{b}x\right)
+    \end{align*}
+    which we cannot for $\alpha$ for any $x$ and $y$.
+
+\item
+    Note for the special case where we take a right-triangle with $b=a/\sqrt{3}$ we can verify that the function
+    $$\psi_{nm} = \sin\frac{l\pi{x}}{a}\sin\frac{(m-n)\pi{y}}{a\sqrt{3}}
+    + \sin\frac{m\pi{x}}{a}\sin\frac{(n-l)\pi{y}}{a\sqrt{3}}
+    + \sin\frac{n\pi{x}}{a}\sin\frac{(l-m)\pi{y}}{a\sqrt{3}}$$
+    where $l\equiv{-m-n}$ is an eigenfunction of the \emph{Helmholtz Equation}.
+    \begin{align*}
+        \partiald{^2\psi}{x^2} + \partiald{^2\psi}{y^2} &= -\Omega^2\psi \\
+                                                        &\Downarrow\\
+        -\Omega^2\psi &= -\frac{\pi^2}{a^2}\left(\left(l^2+\frac{(m-n)^2}{3}\right)\sin\frac{l\pi{x}}{a}\sin\frac{(m-n)\pi{y}}{a\sqrt{3}}\right.\\
+                      &\qquad+\left.\left(m^2+\frac{(n-l)^2}{3}\right)\sin\frac{m\pi{x}}{a}\sin\frac{(n-l)\pi{y}}{a\sqrt{3}}\right.\\
+                      &\qquad+\left.\left(n^2+\frac{(l-m)^2}{3}\right)\sin\frac{n\pi{x}}{a}\sin\frac{(l-m)\pi{y}}{a\sqrt{3}}\right)\\
+                      &= -\frac{\pi^2}{a^2}\left(\left(m^2+n^2+2nm+\frac{m^2+n^2-2mn}{3}\right)\sin\frac{l\pi{x}}{a}\sin\frac{(m-n)\pi{y}}{a\sqrt{3}}\right.\\
+                      &\qquad+\left.\left(m^2+\frac{n^2+l^2-2ln}{3}\right)\sin\frac{m\pi{x}}{a}\sin\frac{(n-l)\pi{y}}{a\sqrt{3}}\right.\\
+                      &\qquad+\left.\left(n^2+\frac{m^2+l^2-2lm}{3}\right)\sin\frac{n\pi{x}}{a}\sin\frac{(l-m)\pi{y}}{a\sqrt{3}}\right)\\
+                      &= -\frac{\pi^2}{a^2}\left(\left(\frac{4m^2+4n^2+4mn}{3}\right)\sin\frac{l\pi{x}}{a}\sin\frac{(m-n)\pi{y}}{a\sqrt{3}}\right.\\
+                      &\qquad+\left.\left(\frac{3m^2+n^2+n^2+m^2+2nm+2n(n+m)}{3}\right)\sin\frac{m\pi{x}}{a}\sin\frac{(n-l)\pi{y}}{a\sqrt{3}}\right.\\
+                      &\qquad+\left.\left(\frac{3n^2+m^2+n^2+m^2+2nm+2m(n+m)}{3}\right)\sin\frac{n\pi{x}}{a}\sin\frac{(l-m)\pi{y}}{a\sqrt{3}}\right)\\
+                      &= -\frac{\pi^2}{a^2}\left(\left(\frac{4m^2+4n^2+4mn}{3}\right)\sin\frac{l\pi{x}}{a}\sin\frac{(m-n)\pi{y}}{a\sqrt{3}}\right.\\
+                      &\qquad+\left.\left(\frac{4m^2+4n^2+4nm}{3}\right)\sin\frac{m\pi{x}}{a}\sin\frac{(n-l)\pi{y}}{a\sqrt{3}}\right.\\
+                      &\qquad+\left.\left(\frac{4m^2+4n^2+4nm)}{3}\right)\sin\frac{n\pi{x}}{a}\sin\frac{(l-m)\pi{y}}{a\sqrt{3}}\right)\\
+                      &= -\frac{4\pi^2}{3a^2}(m^2+n^2+mn)\psi
+    \end{align*}
+    Therefore we see that $\psi$ is an eigenfunction of the \emph{Helmholtz Equation} with the eigenvalue
+    $$\Omega^2_{mn} = -\frac{4\pi^2}{3a^2}(m^2+n^2+mn)$$
+
+\item
+    Note using the eigenfunction from part (c) we can verify that the boundary conditions for the TM modes hold for
+    each leg of the triangle. For $x=a$ we see that we have
+    $$\psi_{nm}(a,y) = \cancelto{0}{\sin{l\pi}}\sin\frac{(m-n)\pi{y}}{a\sqrt{3}}
+    + \cancelto{0}{\sin{m\pi}}\sin\frac{(n-l)\pi{y}}{a\sqrt{3}}
+    + \cancelto{0}{\sin{n\pi}}\sin\frac{(l-m)\pi{y}}{a\sqrt{3}} = 0$$
+    for any integer value of $m$ and $n$. Next for $y = 0$ we see that each term gets a $\sin{0}$ so every term goes
+    to zero or $\psi_{nm}(x,0) = 0$. The final boundary condition is on the line $y = x/\sqrt{3}$ this implies that
+    \begin{align*}
+        \psi_{nm} &= \sin\frac{l\pi{x}}{a}\sin\frac{(m-n)\pi{x}}{3a}
+            + \sin\frac{m\pi{x}}{a}\sin\frac{(n-l)\pi{x}}{3a}
+            + \sin\frac{n\pi{x}}{a}\sin\frac{(l-m)\pi{x}}{3a}\\
+        &= \frac{1}{2}\left[\cos\left(\frac{\pi{x}}{3a}(3l-m+n)\right) - \cos\left(\frac{\pi{x}}{3a}(3l+m-n)\right)\right.\\
+        &\qquad+\cos\left(\frac{\pi{x}}{3a}(3m-n+l)\right) - \cos\left(\frac{\pi{x}}{3a}(3m+n-l)\right)\\
+        &\qquad+\left.\cos\left(\frac{\pi{x}}{3a}(3n-l+m)\right) - \cos\left(\frac{\pi{x}}{3a}(3n+l-m)\right)\right]\\
+        &= \frac{1}{2}\left[\cos\left(\frac{\pi{x}}{3a}(-4m-2n)\right) - \cos\left(\frac{\pi{x}}{3a}(-2m-4n)\right)\right.\\
+        &\qquad+\cos\left(\frac{\pi{x}}{3a}(2m-2n)\right) - \cos\left(\frac{\pi{x}}{3a}(4m+2n)\right)\\
+        &\qquad+\left.\cos\left(\frac{\pi{x}}{3a}(4n+2m)\right) - \cos\left(\frac{\pi{x}}{3a}(2n-2m)\right)\right]\\
+        &= \frac{1}{2}\left[\cos\left(\frac{\pi{x}}{3a}(4m+2n)\right) - \cos\left(\frac{\pi{x}}{3a}(4m+2n)\right)\right.\\
+        &\qquad+\cos\left(\frac{\pi{x}}{3a}(2m-2n)\right) - \cos\left(\frac{\pi{x}}{3a}(2m-2n)\right)\\
+        &\qquad+\left.\cos\left(\frac{\pi{x}}{3a}(4n+2m)\right) - \cos\left(\frac{\pi{x}}{3a}(4n+2m)\right)\right]\\
+        &= 0
+    \end{align*}
+    So $\psi_{nm}=0$ on all boundaries.
+    
+
+
+
+\end{enumerate}
+
+\end{document}
+
