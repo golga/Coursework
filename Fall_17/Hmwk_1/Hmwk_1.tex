@@ -1,0 +1,163 @@
+\documentclass[11pt]{article}
+
+\usepackage{latexsym}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{enumerate}
+\usepackage{amsmath}
+\usepackage{cancel}
+\numberwithin{equation}{section}
+
+\setlength{\evensidemargin}{.25in}
+\setlength{\oddsidemargin}{-.25in}
+\setlength{\topmargin}{-.75in}
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{9.5in}
+\newcommand{\due}{September 11th, 2017}
+\newcommand{\HWnum}{1}
+\input{../../Define.tex}
+
+\begin{document}
+\input{../title.tex}
+
+\section{Problem \#1}
+For two noncommuting operators $\hat{A}$ and $\hat{B}$ which satisfy the conditions
+\begin{equation}
+    [[\hat{A},\hat{B}],\hat{A}] = [[\hat{A},\hat{B}],\hat{B}] = 0
+    \label{Prob1}
+\end{equation}
+we can find an expression for $e^{\hat{A}+\hat{B}}$ we define a function
+    $$f(x) \equiv e^{\hat{A}x}e^{\hat{B}x}$$
+and take the derivate with respect to $x$ to find that
+\begin{align*}
+    \frac{df(x)}{dx} &=  \hat{A}e^{\hat{A}x}e^{\hat{B}x} + e^{\hat{A}x}e^{\hat{B}x}\hat{B}\\
+                     &=  e^{\hat{A}x}e^{\hat{B}x}\left(e^{-\hat{B}x}\hat{A}e^{\hat{B}x} + \hat{B}\right)\\
+                     &=  f(x)\left(\left(\hat{A} + [\hat{A},\hat{B}]x + \cancelto{0}{\frac{1}{2!}[[\hat{A},\hat{B}],\hat{B}] +...}\right) + \hat{B}\right)\\
+                     &\Downarrow\\
+    \frac{df}{f}     &= \left(\hat{A} + [\hat{A},\hat{B}]x + \hat{B}\right)dx\\
+    \ln(f)           &= \hat{A}x + \frac{1}{2}[\hat{A},\hat{B}]x^2 + \hat{B}x\\
+                     &\Downarrow\\
+    f(x)           &= \exp\left(\hat{A}x + \frac{1}{2}[\hat{A},\hat{B}]x^2 + \hat{B}x\right)
+\end{align*}
+Note that we used the \emph{Baker-Hausdorff formula}
+\begin{equation}
+    e^{-\hat{T}}\hat{A}e^{\hat{T}} = \hat{A} + [\hat{A},\hat{B}]x + \frac{1}{2!}[[\hat{A},\hat{B}],\hat{B}] + \frac{1}{3!}[[[\hat{A},\hat{T}],\hat{T},\hat{T}]] + ...
+    \label{Baker}
+\end{equation}
+which due to equation \ref{Prob1} is zero for all terms except the first two. Now for $x=1$ we find that
+\begin{align*}
+    e^{\hat{A}}e^{\hat{B}} &= e^{\hat{A}+\hat{B}}e^{\frac{1}{2}[\hat{A},\hat{B}]}\\
+                           &\Downarrow\\
+    e^{\hat{A}+\hat{B}}    &= e^{-\frac{1}{2}[\hat{A},\hat{B}]}e^{\hat{A}}e^{\hat{B}} 
+\end{align*}
+Note that we can factor $f(x)$ differently which yields
+    $$\frac{df(x)}{dx} = e^{\hat{B}x}e^{\hat{A}x}\left(\hat{A} + e^{-\hat{A}x}\hat{B}e^{\hat{A}x}\right)$$
+which results in 
+    $$e^{\hat{A}+\hat{B}} = e^{\frac{1}{2}[\hat{A},\hat{B}]}e^{\hat{B}}e^{\hat{A}}$$
+by following the same steps as above.
+\pagebreak
+
+\section{Problem \#2}
+For two noncommuting operators $\hat{A}$ and $\hat{B}$ and the parameter $\alpha$ we can see find a generalized 
+result for equation \ref{Baker} by taking $e^{-\alpha\hat{A}}\hat{B}e^{\alpha\hat{A}}$ and expanding each exponential
+to yield
+\begin{align*}
+    e^{-\alpha\hat{A}}\hat{B}e^{\alpha\hat{A}} &= \left(1-\alpha\hat{A}+\frac{(\alpha\hat{A})^2}{2!}+...\right)\hat{B}\left(1+\alpha\hat{A}+\frac{(\alpha\hat{A})^2}{2}+...\right)\\
+                                               &= \hat{B} - \alpha[\hat{A},\hat{B}] + \frac{\alpha^2}{2!}[\hat{A},[\hat{A},\hat{B}]] + ...
+\end{align*}
+Note that the result follows from simply expanding the products and grouping powers of $\alpha$.
+
+\section{Problem \#3}
+Given a function, $f(a,a^{\dagger})$ which can be expanded in a power series of $a$ and $a^{\dagger}$
+\begin{equation}
+    f(a,a^{\dagger}) = 1 + \partiald{f}{a}a + \partiald{f}{a^{\dagger}}a^{\dagger} + \partiald{f}{aa^{\dagger}}aa^{\dagger} + \partiald{f}{a^{\dagger}a}a^{\dagger}a + ...
+    \label{Prob3}
+\end{equation}
+while noting that $[a,a^{\dagger}] = 1$ we can find the following relations
+\begin{enumerate}[(a)]
+\item
+    \begin{align*}
+        [a,f(a,a^{\dagger})] &= \partiald{f}{a}\cancel{[a,a]} + \partiald{f}{a^{\dagger}}[a,a^{\dagger}] + \partiald{f}{aa^{\dagger}}\cancel[{a,aa^{\dagger}}] + \partiald{f}{a^{\dagger}a}\cancel{[a,a^{\dagger}a]} + ...\\
+                             &= \partiald{f}{a^{\dagger}}
+    \end{align*}
+
+\item
+    \begin{align*}
+        [a^{\dagger},f(a,a^{\dagger})] &= \partiald{f}{a}[a^{\dagger},a] + \partiald{f}{a^{\dagger}}\cancel{[a^{\dagger},a^{\dagger}]} + \partiald{f}{aa^{\dagger}}\cancel[{a^{\dagger},aa^{\dagger}]} + \partiald{f}{a^{\dagger}a}\cancel{[a^{\dagger},a^{\dagger}a]} + ...\\
+                             &= -\partiald{f}{a}
+    \end{align*}
+
+\item
+    \begin{align*}
+        e^{-\alpha{aa^{\dagger}}}f(a,a^{\dagger})e^{\alpha{aa^{\dagger}}} &= f(a,a^{\dagger}) - \alpha[aa^{\dagger},f(a,a^{\dagger})] + ...\\
+                                                                          &= f(a,a^{\dagger}) - \alpha a^{\dagger}[a,f(a,a^{\dagger}] - \alpha [a^{\dagger},f(a,a^{\dagger}]a+...
+                                                                          &= f(a,a^{\dagger}) - \alpha a^{\dagger}\partiald{f}{a^{\dagger}} + \alpha a\partiald{f}{a}+...\\
+                                                                          &= f(ae^{\alpha},a^{\dagger}e^{-\alpha})
+    \end{align*}
+\end{enumerate}
+\pagebreak
+
+\section{Problem \#4}
+Expanding the exponential we can show that
+\begin{align*}
+    [a,e^{-\alpha{a^{\dagger}a}}] &= [a, 1 - \alpha{a^{\dagger}a} + (\alpha{a^{\dagger}a})^2+...]\\
+                                  &=  - \alpha[a,a^{\dagger}a] + \alpha^2[a,(a^{\dagger}a)^2]+...\\
+                                  &=  - \alpha{a} + \alpha^2(a-2a^{\dagger}a)+...\\
+                                  &= \left(-\alpha + \frac{1}{2}\alpha^2 + ...\right)\left(1-\alpha{a^{\dagger}a}+...\right)a\\
+                                  &= \left(e^{-\alpha}-1\right)e^{-\alpha{a^{\dagger}a}}a
+\end{align*}
+and
+\begin{align*}
+    [a^{\dagger},e^{-\alpha{a^{\dagger}a}}] &= [a^{\dagger}, 1 - \alpha{a^{\dagger}a} + (\alpha{a^{\dagger}a})^2+...]\\
+                                  &=  - \alpha[a^{\dagger},a^{\dagger}a] + \alpha^2[a^{\dagger},(a^{\dagger}a)^2]+...\\
+                                  &=  \alpha{a^{\dagger}} + \alpha^2(a-2a^{\dagger}a^{\dagger})+...\\
+                                  &= \left(\alpha + \frac{1}{2}\alpha^2 + ...\right)\left(1-\alpha{a^{\dagger}a}+...\right)a^{\dagger}\\
+                                  &= \left(e^{\alpha}-1\right)e^{-\alpha{a^{\dagger}a}}a^{\dagger}
+\end{align*}
+
+\section{Problem \#5}
+We can verify that $\sum_i\hat{\mathbf{e}}_i\cdot\hat{\mathbf{e}}_i = \mathbf{1}$ by taking the dot product with any vector 
+$\mathbf{v}$ which we define as
+\begin{equation}
+    \mathbf{v} = \sum_{i}v_i\hat{\mathbf{e}}_i
+    \label{Prob5}
+\end{equation}
+we note that by equation \ref{Prob5} we find that
+    $$\mathbf{v}\cdot\mathbf{v} = \sum_iv_i^2\hat{\mathbf{e}}_i\cdot\hat{\mathbf{e}}_i = \sum_iv_i^2\sum_i\hat{\mathbf{e}}_i\cdot\hat{\mathbf{e}}_i = \sum_{i}v_i^2$$
+which only holds true if 
+    $$\sum_i\hat{\mathbf{e}}_i\cdot\hat{\mathbf{e}}_i = \mathbf{1}$$
+So, if we define the direction of our basis to be along the wavevetor $\mathbf{k}$ we have
+    $$\hat{\mathbf{e}}_1 = \hat{\epsilon}_{\mathbf{k}}^{(1)},\qquad
+        \hat{\mathbf{e}}_2 = \hat{\epsilon}_{\mathbf{k}}^{(2)},\qquad
+        \hat{\mathbf{e}}_3 = \mathbf{k}/k$$
+which if we take to be in polar coordinates we can find that 
+\begin{align*}
+    \hat{\epsilon}_{\mathbf{k}}^{(1)} &\equiv (\sin\phi,-\cos\phi,0)\\
+    \hat{\epsilon}_{\mathbf{k}}^{(2)} &\equiv (\cos\theta\cos\phi,\cos\theta\sin\phi,-\sin\theta)
+\end{align*}
+Which if we take the dot product we find that
+\begin{align*}
+    \mathbf{1} &= \hat{\epsilon}_{\mathbf{k}}^{(1)}\cdot\hat{\epsilon}_{\mathbf{k}}^{(1)} + \hat{\epsilon}_{\mathbf{k}}^{(2)}\cdot\hat{\epsilon}_{\mathbf{k}}^{(2)} + k^2/k^2\\
+      &= \sin^2\phi+\cos^2\phi + \cos^2\theta\cos^2\phi + \cos^2\theta\sin^2\phi + \sin^2\theta + 1\\
+      &= 3
+\end{align*}
+So it follows that
+$$\epsilon_{\mathbf{k}i}^{(1)}\epsilon_{\mathbf{k}j}^{(1)} + \epsilon_{\mathbf{k}i}^{(2)}\epsilon_{\mathbf{k}j}^{(2)} = \delta_{ij} - \frac{k_ik_j}{k^2}$$
+
+\pagebreak
+
+\section{Problem \#6}
+For a one dimensional system where two conducting reflecting mirrors are placed at a distance $L$ apart we see that
+\begin{align*}
+    H_0^{box} &= \sum_{l}\frac{1}{2}\hbar\nu_l = \sum_{l}\frac{1}{2}\hbar{c}\frac{l\pi}{L}
+\end{align*}
+and for outside the box we have the vacuum energy
+    $$H_0^{vac} = \frac{c\hbar}{2}\int_{0}^{\infty}\frac{l\pi}{L'}dl$$
+this allows us to calculate the difference in energy as
+\begin{align*}
+    H_0^{box} - H_0^{vac}  &= \sum_{l}\frac{1}{2}\hbar{c}\frac{l\pi}{L} - \frac{c\hbar}{2}\int_{0}^{\infty}\frac{l\pi}{L'}dl\\
+                           &= -\frac{c\hbar}{2L}\frac{1}{180}
+\end{align*}
+
+\end{document}
+
